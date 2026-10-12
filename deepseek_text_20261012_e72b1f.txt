@@ -1,7 +1,0 @@
-my-ecommerce-website/
-│
-├── index.html          (Home page)
-├── products.html       (Product listing)
-├── cart.html           (Shopping cart)
-├── style.css           (All styling)
-└── script.js           (All JavaScript)
