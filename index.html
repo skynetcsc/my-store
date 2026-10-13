@@ -20,20 +20,31 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #7c3aed; --primary-dark: #5b21b6; --primary-light: #8b5cf6;
-            --secondary: #ec489a; --accent: #f59e0b; --success: #10b981;
-            --dark: #0f172a; --gray-dark: #334155; --gray: #64748b;
-            --gray-light: #e2e8f0; --light: #f8fafc; --white: #ffffff;
-            --gradient-header: linear-gradient(135deg, #7c3aed 0%, #ec489a 100%);
+            --primary: #1e3a8a; /* Deep Professional Blue */
+            --primary-light: #3b82f6;
+            --secondary: #ec489a; 
+            --accent: #f59e0b; /* Gold/Orange */
+            --success: #10b981;
+            --dark: #0f172a; 
+            --gray-dark: #334155; 
+            --gray: #64748b;
+            --gray-light: #e2e8f0; 
+            --light: #f8fafc; 
+            --white: #ffffff;
+            --gradient-header: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
             --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1);
             --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1);
         }
-        body { font-family: 'Inter', sans-serif; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding-bottom: 75px; line-height: 1.5; }
-        .ticker { background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent)); color: white; padding: 8px 0; overflow: hidden; white-space: nowrap; font-weight: 700; font-size: 12px; }
+        body { font-family: 'Inter', sans-serif; background: #f1f5f9; padding-bottom: 75px; line-height: 1.5; }
+        
+        /* Top Ticker */
+        .ticker { background: linear-gradient(90deg, var(--primary), var(--primary-light)); color: white; padding: 8px 0; overflow: hidden; white-space: nowrap; font-weight: 600; font-size: 13px; }
         .ticker-content { display: inline-block; animation: ticker 30s linear infinite; }
         @keyframes ticker { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
-        header { background: var(--gradient-header); color: white; padding: 20px 20px 16px; position: relative; }
+        
+        /* Header */
+        header { background: var(--dark); color: white; padding: 20px 20px 16px; position: relative; }
         .logo-container { display: flex; align-items: center; gap: 16px; max-width: 1200px; margin: 0 auto; flex-wrap: wrap; }
         .center-logo { width: 70px; height: 70px; border-radius: 20px; background: white; padding: 5px; box-shadow: var(--shadow-lg); cursor: pointer; object-fit: cover; }
         .brand-info h1 { font-size: 24px; font-weight: 800; background: linear-gradient(135deg, #fff, #fbbf24); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -43,101 +54,47 @@
         .lang-btn.active { background: white; color: var(--primary); }
         
         /* Address Bar */
-        .address-bar {
-            background: #1e293b;
-            color: #f1f5f9;
-            padding: 10px 20px;
-            font-size: 13px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            border-bottom: 2px solid var(--accent);
-        }
+        .address-bar { background: #1e293b; color: #f1f5f9; padding: 10px 20px; font-size: 13px; text-align: center; display: flex; justify-content: center; align-items: center; gap: 20px; flex-wrap: wrap; border-bottom: 2px solid var(--accent); }
         .address-bar i { margin-right: 5px; color: var(--accent); }
         .address-bar a { color: #fbbf24; text-decoration: none; }
         
         /* Service Row (Category Badges) */
-        .service-row {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 20px 16px;
-        }
-        .service-badge {
-            background: white;
-            padding: 10px 16px;
-            border-radius: 60px;
-            font-weight: 700;
-            font-size: 13px;
-            box-shadow: var(--shadow-md);
-            transition: all 0.2s;
-            cursor: pointer;
-            border: 1px solid rgba(124,58,237,0.2);
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
+        .service-row { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; margin: 20px 16px; }
+        .service-badge { background: white; padding: 10px 16px; border-radius: 60px; font-weight: 700; font-size: 13px; box-shadow: var(--shadow-md); transition: all 0.2s; cursor: pointer; border: 1px solid rgba(30,58,138,0.2); display: inline-flex; align-items: center; gap: 8px; }
         .service-badge i { font-size: 18px; color: var(--primary); }
-        .service-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--primary); background: linear-gradient(135deg, #f5f3ff, white); }
+        .service-badge:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); border-color: var(--primary); background: linear-gradient(135deg, #eff6ff, white); }
         
         .stats-panel { display: flex; gap: 12px; padding: 0 16px; margin-top: -20px; position: relative; z-index: 10; }
         .stat-card { flex: 1; background: white; padding: 14px 8px; border-radius: 20px; text-align: center; box-shadow: var(--shadow-lg); cursor: pointer; transition: transform 0.2s; }
-        .stat-number { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-number { font-size: 22px; font-weight: 800; background: linear-gradient(135deg, var(--primary), var(--primary-light)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .search-section { margin: 16px; }
         .search-container { display: flex; gap: 10px; background: white; border-radius: 50px; padding: 4px 20px; box-shadow: var(--shadow-md); border: 1px solid var(--gray-light); }
         .search-container input { flex: 1; border: none; padding: 14px 0; font-size: 14px; background: transparent; outline: none; }
         .voice-btn { background: none; border: none; cursor: pointer; color: var(--primary); font-size: 18px; }
         .nav-tabs { display: flex; gap: 8px; padding: 0 16px; margin-bottom: 16px; overflow-x: auto; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-        .tab-btn { padding: 10px 20px; background: white; border: none; border-radius: 40px; font-weight: 600; font-size: 13px; cursor: pointer; white-space: nowrap; transition: all 0.2s; box-shadow: var(--shadow-md); }
-        .tab-btn.active { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+        .tab-btn { padding: 10px 20px; background: white; border: none; border-radius: 40px; font-weight: 600; font-size: 13px; cursor: pointer; white-space: nowrap; transition: all 0.2s; box-shadow: var(--shadow-md); color: var(--gray-dark); }
+        .tab-btn.active { background: var(--primary); color: white; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; padding: 0 16px 20px; }
-        .service-item { background: white; border-radius: 20px; padding: 18px 12px; text-align: center; cursor: pointer; transition: all 0.25s ease; box-shadow: var(--shadow-md); border: 1px solid rgba(124,58,237,0.1); }
-        .service-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-xl); border-color: var(--primary); }
-        .service-icon { font-size: 42px; margin-bottom: 8px; display: block; }
-        .service-name { font-size: 14px; font-weight: 700; color: var(--dark); margin-top: 8px; }
-        .service-price-badge { font-size: 12px; font-weight: 600; color: var(--success); background: #eef2ff; display: inline-block; padding: 4px 12px; border-radius: 30px; margin-top: 8px; }
-        .section-header { display: flex; align-items: center; gap: 10px; padding: 0 16px 12px; margin-top: 8px; }
-        .section-header i { font-size: 22px; color: var(--primary); background: #eef2ff; padding: 8px; border-radius: 14px; }
-        .section-header h3 { font-size: 18px; font-weight: 700; }
-        /* Highlighted sections */
-        #cscGrid, #cyberGrid, #coursesGrid, #mobileAccGrid {
-            border: 2px solid rgba(124,58,237,0.6);
-            border-radius: 28px;
-            margin: 12px 16px;
-            padding: 12px 12px 20px 12px;
-            background: rgba(255,255,255,0.75);
-            backdrop-filter: blur(2px);
-            animation: borderPulse 2s infinite;
-            transition: all 0.3s ease;
-        }
-        @keyframes borderPulse {
-            0% { box-shadow: 0 0 0 0 rgba(124,58,237,0.4); border-color: rgba(124,58,237,0.3); }
-            70% { box-shadow: 0 0 0 12px rgba(124,58,237,0); border-color: rgba(124,58,237,0.9); }
-            100% { box-shadow: 0 0 0 0 rgba(124,58,237,0); border-color: rgba(124,58,237,0.3); }
-        }
-        @keyframes textPulse {
-            0% { text-shadow: 0 0 0px #7c3aed; opacity: 0.9; letter-spacing: 0px; }
-            50% { text-shadow: 0 0 8px #7c3aed, 0 0 12px #ec489a; opacity: 1; letter-spacing: 0.5px; }
-            100% { text-shadow: 0 0 0px #7c3aed; opacity: 0.9; letter-spacing: 0px; }
-        }
-        #cscGrid .section-header h3,
-        #cyberGrid .section-header h3,
-        #coursesGrid .section-header h3,
-        #mobileAccGrid .section-header h3 {
-            animation: textPulse 1.2s infinite ease-in-out;
-            background: linear-gradient(135deg, #7c3aed, #ec489a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            font-size: 1.2rem;
-            font-weight: 800;
-        }
+        
+        /* ================= PROFESSIONAL SERVICE CARDS WITH IMAGES ================= */
+        .services-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 10px 20px 30px; max-width: 1200px; margin: 0 auto; }
+        .service-item { background: var(--white); border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-md); transition: all 0.3s ease; cursor: pointer; border: 1px solid #f1f5f9; display: flex; flex-direction: column; text-align: left; padding: 0; }
+        .service-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-xl); border-color: #cbd5e1; }
+        
+        .card-img-wrapper { position: relative; height: 160px; overflow: hidden; background: #e2e8f0; }
+        .card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .service-item:hover .card-img-wrapper img { transform: scale(1.05); }
+        .price-tag { position: absolute; top: 12px; right: 12px; background: var(--accent); color: var(--dark); padding: 6px 14px; border-radius: 30px; font-weight: 800; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.2); }
+        
+        .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+        .service-name { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; margin-top: 0; }
+        .service-price-badge { font-size: 13px; font-weight: 600; color: var(--success); background: #eef2ff; display: inline-block; padding: 6px 12px; border-radius: 30px; margin-top: auto; align-self: flex-start; }
+
+        .section-header { display: flex; align-items: center; gap: 10px; padding: 0 16px 12px; margin-top: 8px; max-width: 1200px; margin: 0 auto; }
+        .section-header i { font-size: 22px; color: var(--primary); background: #e0e7ff; padding: 10px; border-radius: 14px; }
+        .section-header h3 { font-size: 20px; font-weight: 800; color: var(--dark); }
+        
         /* Job portal */
         .job-portal-container { background: white; margin: 16px; border-radius: 28px; overflow: hidden; box-shadow: var(--shadow-lg); }
         .job-header { background: linear-gradient(135deg, #1e293b, #0f172a); padding: 20px; color: white; text-align: center; }
@@ -149,8 +106,9 @@
         .job-title { font-size: 18px; font-weight: 800; color: var(--dark); }
         .job-company { color: var(--primary); font-weight: 600; margin: 4px 0; }
         .job-location, .job-salary { font-size: 13px; color: var(--gray); margin: 4px 0; display: inline-block; margin-right: 16px; }
-        .apply-btn-sm { background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none; padding: 6px 16px; border-radius: 30px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 10px; margin-right: 8px; }
+        .apply-btn-sm { background: linear-gradient(135deg, var(--primary), var(--primary-light)); border: none; padding: 6px 16px; border-radius: 30px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 10px; margin-right: 8px; }
         .delete-job-btn { background: #ef4444; border: none; padding: 6px 16px; border-radius: 30px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; margin-top: 10px; }
+        
         /* FAQ, Social, etc */
         .faq-section, .social-feed { background: white; margin: 16px; padding: 20px; border-radius: 24px; }
         .faq-question { font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; padding: 8px 0; }
@@ -158,162 +116,49 @@
         .faq-answer.show { display: block; }
         .video-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; padding: 16px; }
         .video-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); cursor: pointer; }
-        .video-thumb { width: 100%; height: 180px; background: linear-gradient(135deg, var(--primary), var(--secondary)); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; }
+        .video-thumb { width: 100%; height: 180px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; }
         .feed-grid { display: flex; gap: 12px; overflow-x: auto; padding: 8px 0; -webkit-overflow-scrolling: touch; }
         .feed-post { min-width: 260px; background: var(--light); border-radius: 16px; padding: 14px; }
         .social-links { display: flex; gap: 24px; justify-content: center; margin: 20px 0; flex-wrap: wrap; }
         .social-icon { font-size: 36px; color: var(--primary); transition: 0.2s; }
         
         /* ======================== BUTTONS FIXED AT CENTER POSITION ======================== */
-        /* Left Side Login Button - Fixed at Center Left */
-        .float-login {
-            position: fixed;
-            top: 50%;
-            left: 16px;
-            transform: translateY(-50%);
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #f59e0b, #ea580c);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            font-size: 24px;
-            cursor: pointer;
-            border: none;
-            transition: transform 0.2s;
-            z-index: 100;
-        }
+        .float-login { position: fixed; top: 50%; left: 16px; transform: translateY(-50%); width: 54px; height: 54px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #ea580c); color: white; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg); font-size: 24px; cursor: pointer; border: none; transition: transform 0.2s; z-index: 100; }
         .float-login:hover { transform: translateY(-50%) scale(1.05); }
-        
-        /* Right Side Floating Actions - Fixed at Center Right */
-        .floating-actions {
-            position: fixed;
-            top: 50%;
-            right: 16px;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            z-index: 100;
-        }
-        .float-action {
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow-lg);
-            font-size: 24px;
-            cursor: pointer;
-            border: none;
-            transition: transform 0.2s;
-        }
+        .floating-actions { position: fixed; top: 50%; right: 16px; transform: translateY(-50%); display: flex; flex-direction: column; gap: 12px; z-index: 100; }
+        .float-action { width: 54px; height: 54px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg); font-size: 24px; cursor: pointer; border: none; transition: transform 0.2s; color: white; text-decoration: none; }
         .float-action:hover { transform: scale(1.05); }
-        .float-wa { background: #25D366; color: white; }
-        .float-call { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
-        .float-help { background: linear-gradient(135deg, var(--accent), #f97316); color: white; }
-        .float-job { background: #1e293b; color: white; }
+        .float-wa { background: #25D366; }
+        .float-call { background: linear-gradient(135deg, var(--primary), var(--primary-light)); }
+        .float-help { background: linear-gradient(135deg, var(--accent), #f97316); }
+        .float-job { background: #1e293b; }
         
         /* Login Modal */
-        .login-modal {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            border-radius: 28px;
-            z-index: 1001;
-            width: calc(100% - 32px);
-            max-width: 400px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            overflow: hidden;
-        }
-        .login-modal-header {
-            background: linear-gradient(135deg, #f59e0b, #ea580c);
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        .login-modal-header h3 {
-            font-size: 1.3rem;
-            margin: 0;
-        }
-        .login-modal-body {
-            padding: 24px;
-        }
-        .login-modal-body input {
-            width: 100%;
-            padding: 12px 16px;
-            margin: 10px 0;
-            border: 1px solid #e2e8f0;
-            border-radius: 30px;
-            font-size: 1rem;
-            outline: none;
-            transition: border 0.2s;
-        }
-        .login-modal-body input:focus {
-            border-color: #f59e0b;
-        }
-        .login-btn-submit {
-            background: linear-gradient(135deg, #f59e0b, #ea580c);
-            color: white;
-            border: none;
-            padding: 12px;
-            border-radius: 40px;
-            font-weight: 700;
-            width: 100%;
-            cursor: pointer;
-            margin-top: 10px;
-            font-size: 1rem;
-        }
-        .login-btn-submit:hover {
-            opacity: 0.9;
-        }
-        .login-error {
-            color: #ef4444;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-top: 10px;
-            display: none;
-        }
-        .login-success {
-            color: #10b981;
-            font-size: 0.9rem;
-            text-align: center;
-            margin-top: 10px;
-            display: none;
-            padding: 10px;
-            background: #d1fae5;
-            border-radius: 30px;
-        }
-        .close-login-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
+        .login-modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 28px; z-index: 1001; width: calc(100% - 32px); max-width: 400px; box-shadow: 0 25px 50px rgba(0,0,0,0.3); overflow: hidden; }
+        .login-modal-header { background: linear-gradient(135deg, #f59e0b, #ea580c); color: white; padding: 20px; text-align: center; }
+        .login-modal-header h3 { font-size: 1.3rem; margin: 0; }
+        .login-modal-body { padding: 24px; }
+        .login-modal-body input { width: 100%; padding: 12px 16px; margin: 10px 0; border: 1px solid #e2e8f0; border-radius: 30px; font-size: 1rem; outline: none; transition: border 0.2s; }
+        .login-modal-body input:focus { border-color: #f59e0b; }
+        .login-btn-submit { background: linear-gradient(135deg, #f59e0b, #ea580c); color: white; border: none; padding: 12px; border-radius: 40px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 10px; font-size: 1rem; }
+        .login-error { color: #ef4444; font-size: 0.8rem; text-align: center; margin-top: 10px; display: none; }
+        .login-success { color: #10b981; font-size: 0.9rem; text-align: center; margin-top: 10px; display: none; padding: 10px; background: #d1fae5; border-radius: 30px; }
+        .close-login-modal { position: absolute; top: 15px; right: 20px; color: white; font-size: 24px; cursor: pointer; background: none; border: none; }
         
-        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); display: flex; justify-content: space-around; padding: 10px 0 18px; border-top: 1px solid rgba(124,58,237,0.2); z-index: 200; }
+        .bottom-nav { position: fixed; bottom: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(12px); display: flex; justify-content: space-around; padding: 10px 0 18px; border-top: 1px solid rgba(30,58,138,0.2); z-index: 200; }
         .nav-action { text-align: center; font-size: 10px; color: var(--gray); text-decoration: none; flex: 1; }
         .nav-action i { font-size: 22px; display: block; color: var(--primary); margin-bottom: 4px; }
+        
         /* Modals */
         .modal { display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; border-radius: 32px; z-index: 1000; width: calc(100% - 32px); max-width: 500px; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-xl); }
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(6px); z-index: 999; }
-        .btn-submit { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 8px; }
+        .btn-submit { background: linear-gradient(135deg, var(--primary), var(--primary-light)); color: white; border: none; padding: 14px; border-radius: 40px; font-weight: 700; width: 100%; cursor: pointer; margin-top: 8px; }
         .btn-close { background: var(--gray-light); border: none; padding: 12px; border-radius: 40px; width: 100%; margin-top: 12px; cursor: pointer; font-weight: 600; }
         .price-option { background: var(--light); border-radius: 16px; padding: 12px; margin: 8px 0; cursor: pointer; transition: all 0.2s; border: 2px solid transparent; }
-        .price-option:hover, .price-option.selected { border-color: var(--primary); background: #eef2ff; }
+        .price-option:hover, .price-option.selected { border-color: var(--primary); background: #eff6ff; }
         .price-table { width: 100%; border-collapse: collapse; }
         .price-table td, .price-table th { padding: 10px; border-bottom: 1px solid #ddd; text-align: left; }
+        
         /* Sarkari services grid */
         .sarkari-category { margin-bottom: 32px; }
         .sarkari-category h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 16px; border-left: 5px solid var(--primary); padding-left: 16px; }
@@ -323,14 +168,14 @@
         .sarkari-card i { font-size: 1.6rem; color: var(--primary); width: 32px; text-align: center; }
         .sarkari-card a { text-decoration: none; color: var(--dark); font-weight: 500; flex: 1; }
         .badge-new { background: #f97316; color: white; font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 20px; margin-left: 8px; display: inline-block; }
+        
         /* Desktop enhancements */
         @media (min-width: 1024px) {
-            .services-grid { grid-template-columns: repeat(4, 1fr); max-width: 1200px; margin: 0 auto; }
             .sarkari-grid { grid-template-columns: repeat(3, 1fr); }
             .job-portal-container { max-width: 1200px; margin: 16px auto; }
         }
         @media (max-width: 640px) {
-            .service-name { font-size: 12px; }
+            .service-name { font-size: 16px; }
             .stat-number { font-size: 18px; }
             .section-header h3 { font-size: 16px; }
             .tab-btn { padding: 8px 16px; font-size: 11px; }
@@ -345,7 +190,7 @@
 <div class="ticker"><div class="ticker-content">⚡ SKYNET DIGITAL CENTER | 20+ Years Trusted Service | CSC Centre | Cyber Cafe | All Govt. Services | 24/7 Available | Call: 8901010994 ⚡</div></div>
 <header>
     <div class="logo-container">
-        <img id="centerLogo" class="center-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%237c3aed'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='%23f59e0b' font-size='48' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E" alt="SKYNET">
+        <img id="centerLogo" class="center-logo" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231e3a8a'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='%23f59e0b' font-size='48' font-weight='bold'%3ES%3C/text%3E%3C/svg%3E" alt="SKYNET">
         <div class="brand-info">
             <h1>SKYNET DIGITAL CENTER</h1>
             <p>CSC Centre | Cyber Cafe | Govt. Services | 20+ Years</p>
@@ -392,12 +237,10 @@
 <div id="feedTab" class="tab-content"><div class="social-feed"><h3><i class="fas fa-share-alt"></i> Connect With Us</h3><div class="social-links"><a href="https://www.instagram.com/skynet_ramgarh/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a><a href="https://www.facebook.com/skynetramgarh" target="_blank" class="social-icon"><i class="fab fa-facebook"></i></a><a href="https://wa.me/918054061994" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a><a href="mailto:skynetramgarh@gmail.com" class="social-icon"><i class="fas fa-envelope"></i></a></div><div class="feed-grid" id="socialFeed"></div></div></div>
 <div id="offlineTab" class="tab-content"><div class="social-feed"><h3><i class="fas fa-database"></i> Offline Service Guide</h3><div id="offlineGuide"></div></div></div>
 
-<!-- LEFT SIDE LOGIN BUTTON (FIXED AT CENTER LEFT) -->
-<button class="float-login" id="loginBtn" title="Staff Login">
-    <i class="fas fa-user-lock"></i>
-</button>
+<!-- LEFT SIDE LOGIN BUTTON -->
+<button class="float-login" id="loginBtn" title="Staff Login"><i class="fas fa-user-lock"></i></button>
 
-<!-- RIGHT SIDE FLOATING ACTIONS (FIXED AT CENTER RIGHT) -->
+<!-- RIGHT SIDE FLOATING ACTIONS -->
 <div class="floating-actions">
     <button class="float-action float-job" onclick="switchTabManual('jobs')"><i class="fas fa-briefcase"></i></button>
     <button class="float-action float-help" onclick="openHelpModal()"><i class="fas fa-question"></i></button>
@@ -429,72 +272,78 @@
 </div>
 <div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
 <div class="modal" id="serviceRateModal"><h3 id="modalServiceName">Select Service Option</h3><div id="rateOptionsList"></div><button class="btn-close" onclick="closeAllModals()">Cancel</button></div>
-<div class="modal" id="postJobModal"><div class="job-form-modal"><div class="job-form-header" style="background:linear-gradient(135deg,var(--primary),var(--secondary)); padding:20px; color:white; border-radius:28px 28px 0 0;"><h3><i class="fas fa-plus-circle"></i> Post a New Job</h3><p>Free job posting (Offline)</p></div><div class="job-form-body" style="padding:24px;"><input type="text" id="jobTitle" placeholder="Job Title *" required><input type="text" id="jobCompany" placeholder="Company Name *" required><input type="text" id="jobLocation" placeholder="Location *" required><input type="text" id="jobSalary" placeholder="Salary (e.g., ₹8,000 - ₹12,000)" required><textarea id="jobDescription" placeholder="Job Description, Requirements..."></textarea><input type="text" id="jobContact" placeholder="Contact Number / Email"><button class="btn-submit" onclick="postNewJob()">✅ Post Job Now</button><button class="btn-close" onclick="closeAllModals()">Cancel</button></div></div></div>
-<div class="modal" id="applyJobModal"><div class="job-form-modal"><div class="job-form-header" style="background:linear-gradient(135deg,var(--primary),var(--secondary)); padding:20px; color:white; border-radius:28px 28px 0 0;"><h3><i class="fas fa-paper-plane"></i> Apply for Job</h3></div><div class="job-form-body" style="padding:24px;"><p id="applyJobTitle" style="font-weight:700; margin-bottom:10px;"></p><input type="text" id="applicantName" placeholder="Your Full Name *" required><input type="tel" id="applicantPhone" placeholder="Mobile Number *" required><input type="text" id="applicantExperience" placeholder="Experience (e.g., 1 year / Fresher)"><textarea id="applicantMessage" placeholder="Why are you suitable?"></textarea><button class="btn-submit" onclick="sendJobApplication()">📤 Apply via WhatsApp</button><button class="btn-close" onclick="closeAllModals()">Cancel</button></div></div></div>
+<div class="modal" id="postJobModal"><div class="job-form-modal"><div class="job-form-header" style="background:linear-gradient(135deg,var(--primary),var(--primary-light)); padding:20px; color:white; border-radius:28px 28px 0 0;"><h3><i class="fas fa-plus-circle"></i> Post a New Job</h3><p>Free job posting (Offline)</p></div><div class="job-form-body" style="padding:24px;"><input type="text" id="jobTitle" placeholder="Job Title *" required><input type="text" id="jobCompany" placeholder="Company Name *" required><input type="text" id="jobLocation" placeholder="Location *" required><input type="text" id="jobSalary" placeholder="Salary (e.g., ₹8,000 - ₹12,000)" required><textarea id="jobDescription" placeholder="Job Description, Requirements..."></textarea><input type="text" id="jobContact" placeholder="Contact Number / Email"><button class="btn-submit" onclick="postNewJob()">✅ Post Job Now</button><button class="btn-close" onclick="closeAllModals()">Cancel</button></div></div></div>
+<div class="modal" id="applyJobModal"><div class="job-form-modal"><div class="job-form-header" style="background:linear-gradient(135deg,var(--primary),var(--primary-light)); padding:20px; color:white; border-radius:28px 28px 0 0;"><h3><i class="fas fa-paper-plane"></i> Apply for Job</h3></div><div class="job-form-body" style="padding:24px;"><p id="applyJobTitle" style="font-weight:700; margin-bottom:10px;"></p><input type="text" id="applicantName" placeholder="Your Full Name *" required><input type="tel" id="applicantPhone" placeholder="Mobile Number *" required><input type="text" id="applicantExperience" placeholder="Experience (e.g., 1 year / Fresher)"><textarea id="applicantMessage" placeholder="Why are you suitable?"></textarea><button class="btn-submit" onclick="sendJobApplication()">📤 Apply via WhatsApp</button><button class="btn-close" onclick="closeAllModals()">Cancel</button></div></div></div>
 <div class="modal" id="priceModal"><h3>💰 Complete Price List</h3><div style="max-height:60vh; overflow-y:auto;"><table class="price-table" id="priceTable"></table></div><button class="btn-close" onclick="closeAllModals()">Close</button></div>
 <div class="modal" id="helpModal"><h3>Need Help?</h3><div id="helpButtons"></div><button class="btn-close" onclick="closeAllModals()">Close</button></div>
 <div class="modal" id="bookingModal"><h3>Book Service</h3><form id="bookingForm"><input type="text" id="fullName" placeholder="Full Name" required><input type="tel" id="mobile" placeholder="Mobile" required><select id="serviceSelect"></select><button type="submit" class="btn-submit">Book Now</button></form></div>
 
 <script>
-// ======================== COMPLETE SERVICE DATA ========================
+// ======================== COMPLETE SERVICE DATA WITH IMAGES ========================
+// NOTE: Abhi placeholder images lagi hain. Jab aapko apni photo lagani ho, 
+// toh bas image:"link" ko apni photo ke naam (e.g., "aadhar.jpg") se replace kar dein.
 const cscServices = [
-    { name_en:"Aadhar Card", name_hi:"आधार कार्ड", name_pa:"ਆਧਾਰ ਕਾਰਡ", icon:"fas fa-id-card", rates:[{label:"Correction",price:"₹100"},{label:"PVC Card Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"PAN Card", name_hi:"पैन कार्ड", name_pa:"ਪੈਨ ਕਾਰਡ", icon:"fas fa-credit-card", rates:[{label:"Correction",price:"₹160"},{label:"New Apply",price:"₹160"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Voter Card", name_hi:"वोटर कार्ड", name_pa:"ਵੋਟਰ ਕਾਰਡ", icon:"fas fa-vote-yea", rates:[{label:"Correction",price:"₹50"},{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Passport", name_hi:"पासपोर्ट", name_pa:"ਪਾਸਪੋਰਟ", icon:"fas fa-passport", rates:[{label:"Correction",price:"₹1650"},{label:"New Apply",price:"₹1650"}] },
-    { name_en:"Eshram Card", name_hi:"ई श्रम कार्ड", name_pa:"ਈ-ਸ਼ਰਮ ਕਾਰਡ", icon:"fas fa-hand-holding-heart", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Ayushman Card", name_hi:"आयुष्मान कार्ड", name_pa:"ਆਯੁਸ਼ਮਾਨ ਕਾਰਡ", icon:"fas fa-heartbeat", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Happy Card", name_hi:"हैप्पी कार्ड", name_pa:"ਹੈਪੀ ਕਾਰਡ", icon:"fas fa-smile", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Ration Card", name_hi:"राशन कार्ड", name_pa:"ਰਾਸ਼ਨ ਕਾਰਡ", icon:"fas fa-shopping-basket", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Covid Card", name_hi:"कोविड कार्ड", name_pa:"ਕੋਵਿਡ ਕਾਰਡ", icon:"fas fa-virus", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
-    { name_en:"Birth Certificate", name_hi:"जन्म प्रमाण पत्र", name_pa:"ਜਨਮ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-baby", rates:[{label:"New Apply",price:"₹150"},{label:"Correction",price:"₹150"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Death Certificate", name_hi:"मृत्यु प्रमाण पत्र", name_pa:"ਮੌਤ ਦਾ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-dove", rates:[{label:"New Apply",price:"₹150"},{label:"Correction",price:"₹150"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Caste Certificate", name_hi:"जाति प्रमाण पत्र", name_pa:"ਜਾਤੀ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-users", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Resident Certificate", name_hi:"निवास प्रमाण पत्र", name_pa:"ਨਿਵਾਸੀ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-home", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Income Certificate", name_hi:"आय प्रमाण पत्र", name_pa:"ਆਮਦਨ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-file-invoice-dollar", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"EWS Certificate", name_hi:"ईडब्ल्यूएस प्रमाण पत्र", name_pa:"ਈਡਬਲਯੂਐਸ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-chart-line", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Marriage Certificate", name_hi:"विवाह प्रमाण पत्र", name_pa:"ਵਿਆਹ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-heart", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Stamp Paper", name_hi:"स्टाम्प पेपर", name_pa:"ਸਟੈਂਪ ਪੇਪਰ", icon:"fas fa-stamp", rates:[{label:"New Apply",price:"₹20"}] },
-    { name_en:"Family ID", name_hi:"परिवार पहचान पत्र", name_pa:"ਪਰਿਵਾਰ ਪਹਿਚਾਣ ਪੱਤਰ", icon:"fas fa-users", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹50"},{label:"Print+Lamination",price:"₹40"}] },
-    { name_en:"Nakal Fard Intkal", name_hi:"नकल फर्द इंतकाल", name_pa:"ਨਕਲ ਫਰਦ ਇੰਤਕਾਲ", icon:"fas fa-file-alt", rates:[{label:"New Apply",price:"₹100"}] },
-    { name_en:"PF Withdraw", name_hi:"पीएफ निकासी", name_pa:"ਪੀਐਫ ਨਿਕਾਸੀ", icon:"fas fa-money-bill-wave", rates:[{label:"New Apply",price:"₹80"},{label:"Correction",price:"₹800"}] },
-    { name_en:"Police Verification", name_hi:"पुलिस सत्यापन", name_pa:"ਪੁਲਿਸ ਵੇਰੀਫਿਕੇਸ਼ਨ", icon:"fas fa-shield-alt", rates:[{label:"New Apply",price:"₹100"}] },
-    { name_en:"Unemployment Registration", name_hi:"बेरोजगार पंजीकरण", name_pa:"ਬੇਰੋਜ਼ਗਾਰ ਰਜਿਸਟ੍ਰੇਸ਼ਨ", icon:"fas fa-user-graduate", rates:[{label:"New Apply",price:"₹100"}] },
-    { name_en:"Saksham Yojana", name_hi:"सक्षम योजना", name_pa:"ਸਕਸ਼ਮ ਯੋਜਨਾ", icon:"fas fa-hand-holding-usd", rates:[{label:"New Apply",price:"₹100"}] },
-    { name_en:"New Electricity Connection", name_hi:"नया बिजली कनेक्शन", name_pa:"ਨਵਾਂ ਬਿਜਲੀ ਕਨੈਕਸ਼ਨ", icon:"fas fa-bolt", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹50"}] },
-    { name_en:"Admission Form", name_hi:"प्रवेश फार्म", name_pa:"ਦਾਖਲਾ ਫਾਰਮ", icon:"fas fa-edit", rates:[{label:"New Apply",price:"₹100"}] },
-    { name_en:"Fee Payment", name_hi:"फीस भुगतान", name_pa:"ਫੀਸ ਭੁਗਤਾਨ", icon:"fas fa-rupee-sign", rates:[{label:"Fee Payment",price:"₹30 extra"}] }
+    { name_en:"Aadhar Card", name_hi:"आधार कार्ड", name_pa:"ਆਧਾਰ ਕਾਰਡ", icon:"fas fa-id-card", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Aadhar+Card", rates:[{label:"Correction",price:"₹100"},{label:"PVC Card Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"PAN Card", name_hi:"पैन कार्ड", name_pa:"ਪੈਨ ਕਾਰਡ", icon:"fas fa-credit-card", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=PAN+Card", rates:[{label:"Correction",price:"₹160"},{label:"New Apply",price:"₹160"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Voter Card", name_hi:"वोटर कार्ड", name_pa:"ਵੋਟਰ ਕਾਰਡ", icon:"fas fa-vote-yea", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Voter+Card", rates:[{label:"Correction",price:"₹50"},{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Passport", name_hi:"पासपोर्ट", name_pa:"ਪਾਸਪੋਰਟ", icon:"fas fa-passport", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Passport", rates:[{label:"Correction",price:"₹1650"},{label:"New Apply",price:"₹1650"}] },
+    { name_en:"Eshram Card", name_hi:"ई श्रम कार्ड", name_pa:"ਈ-ਸ਼ਰਮ ਕਾਰਡ", icon:"fas fa-hand-holding-heart", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Eshram+Card", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Ayushman Card", name_hi:"आयुष्मान कार्ड", name_pa:"ਆਯੁਸ਼ਮਾਨ ਕਾਰਡ", icon:"fas fa-heartbeat", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Ayushman+Card", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Happy Card", name_hi:"हैप्पी कार्ड", name_pa:"ਹੈਪੀ ਕਾਰਡ", icon:"fas fa-smile", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Happy+Card", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Ration Card", name_hi:"राशन कार्ड", name_pa:"ਰਾਸ਼ਨ ਕਾਰਡ", icon:"fas fa-shopping-basket", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Ration+Card", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Covid Card", name_hi:"कोविड कार्ड", name_pa:"ਕੋਵਿਡ ਕਾਰਡ", icon:"fas fa-virus", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Covid+Card", rates:[{label:"New Apply",price:"₹100"},{label:"PVC Print",price:"₹70"},{label:"Print+Lamination",price:"₹60"}] },
+    { name_en:"Birth Certificate", name_hi:"जन्म प्रमाण पत्र", name_pa:"ਜਨਮ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-baby", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Birth+Certificate", rates:[{label:"New Apply",price:"₹150"},{label:"Correction",price:"₹150"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Death Certificate", name_hi:"मृत्यु प्रमाण पत्र", name_pa:"ਮੌਤ ਦਾ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-dove", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Death+Certificate", rates:[{label:"New Apply",price:"₹150"},{label:"Correction",price:"₹150"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Caste Certificate", name_hi:"जाति प्रमाण पत्र", name_pa:"ਜਾਤੀ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-users", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Caste+Certificate", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Resident Certificate", name_hi:"निवास प्रमाण पत्र", name_pa:"ਨਿਵਾਸੀ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-home", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Resident+Certificate", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Income Certificate", name_hi:"आय प्रमाण पत्र", name_pa:"ਆਮਦਨ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-file-invoice-dollar", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Income+Certificate", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"EWS Certificate", name_hi:"ईडब्ल्यूएस प्रमाण पत्र", name_pa:"ਈਡਬਲਯੂਐਸ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-chart-line", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=EWS+Certificate", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Marriage Certificate", name_hi:"विवाह प्रमाण पत्र", name_pa:"ਵਿਆਹ ਸਰਟੀਫਿਕੇਟ", icon:"fas fa-heart", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Marriage+Certificate", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹100"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Stamp Paper", name_hi:"स्टाम्प पेपर", name_pa:"ਸਟੈਂਪ ਪੇਪਰ", icon:"fas fa-stamp", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Stamp+Paper", rates:[{label:"New Apply",price:"₹20"}] },
+    { name_en:"Family ID", name_hi:"परिवार पहचान पत्र", name_pa:"ਪਰਿਵਾਰ ਪਹਿਚਾਣ ਪੱਤਰ", icon:"fas fa-users", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Family+ID", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹50"},{label:"Print+Lamination",price:"₹40"}] },
+    { name_en:"Nakal Fard Intkal", name_hi:"नकल फर्द इंतकाल", name_pa:"ਨਕਲ ਫਰਦ ਇੰਤਕਾਲ", icon:"fas fa-file-alt", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Nakal+Fard", rates:[{label:"New Apply",price:"₹100"}] },
+    { name_en:"PF Withdraw", name_hi:"पीएफ निकासी", name_pa:"ਪੀਐਫ ਨਿਕਾਸੀ", icon:"fas fa-money-bill-wave", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=PF+Withdraw", rates:[{label:"New Apply",price:"₹80"},{label:"Correction",price:"₹800"}] },
+    { name_en:"Police Verification", name_hi:"पुलिस सत्यापन", name_pa:"ਪੁਲਿਸ ਵੇਰੀਫਿਕੇਸ਼ਨ", icon:"fas fa-shield-alt", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Police+Verification", rates:[{label:"New Apply",price:"₹100"}] },
+    { name_en:"Unemployment Registration", name_hi:"बेरोजगार पंजीकरण", name_pa:"ਬੇਰੋਜ਼ਗਾਰ ਰਜਿਸਟ੍ਰੇਸ਼ਨ", icon:"fas fa-user-graduate", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Unemployment+Reg", rates:[{label:"New Apply",price:"₹100"}] },
+    { name_en:"Saksham Yojana", name_hi:"सक्षम योजना", name_pa:"ਸਕਸ਼ਮ ਯੋਜਨਾ", icon:"fas fa-hand-holding-usd", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Saksham+Yojana", rates:[{label:"New Apply",price:"₹100"}] },
+    { name_en:"New Electricity Connection", name_hi:"नया बिजली कनेक्शन", name_pa:"ਨਵਾਂ ਬਿਜਲੀ ਕਨੈਕਸ਼ਨ", icon:"fas fa-bolt", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=New+Electricity", rates:[{label:"New Apply",price:"₹100"},{label:"Correction",price:"₹50"}] },
+    { name_en:"Admission Form", name_hi:"प्रवेश फार्म", name_pa:"ਦਾਖਲਾ ਫਾਰਮ", icon:"fas fa-edit", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Admission+Form", rates:[{label:"New Apply",price:"₹100"}] },
+    { name_en:"Fee Payment", name_hi:"फीस भुगतान", name_pa:"ਫੀਸ ਭੁਗਤਾਨ", icon:"fas fa-rupee-sign", image:"https://placehold.co/600x400/1e3a8a/ffffff?text=Fee+Payment", rates:[{label:"Fee Payment",price:"₹30 extra"}] }
 ];
+
 const cyberServices = [
-    { name_en:"Photocopy", name_hi:"फोटोकॉपी", name_pa:"ਫੋਟੋਕਾਪੀ", icon:"fas fa-copy", rates:[{label:"Per Page",price:"₹2"},{label:"Bulk (200+)",price:"₹1"}] },
-    { name_en:"Print Black", name_hi:"ब्लैक प्रिंट", name_pa:"ਬਲੈਕ ਪ੍ਰਿੰਟ", icon:"fas fa-print", rates:[{label:"Per Page",price:"₹5"},{label:"Bulk (100+)",price:"₹2"}] },
-    { name_en:"Print Color", name_hi:"कलर प्रिंट", name_pa:"ਕਲਰ ਪ੍ਰਿੰਟ", icon:"fas fa-palette", rates:[{label:"Per Page",price:"₹10"},{label:"Bulk (200+)",price:"₹5"}] },
-    { name_en:"Passport Photo", name_hi:"पासपोर्ट फोटो", name_pa:"ਪਾਸਪੋਰਟ ਫੋਟੋ", icon:"fas fa-camera", rates:[{label:"4 Photos",price:"₹20"},{label:"Bulk (200+)",price:"₹10"}] },
-    { name_en:"Lamination", name_hi:"लैमिनेशन", name_pa:"ਲੈਮੀਨੇਸ਼ਨ", icon:"fas fa-layer-group", rates:[{label:"Per Sheet",price:"₹10"},{label:"Bulk (100+)",price:"₹7"}] },
-    { name_en:"Spiral Binding", name_hi:"स्पाइरल बाइंडिंग", name_pa:"ਸਪਾਇਰਲ ਬਾਈਂਡਿੰਗ", icon:"fas fa-book", rates:[{label:"Binding",price:"₹10-100"}] },
-    { name_en:"Resume", name_hi:"रिज्यूमे", name_pa:"ਰਿਜਿਊਮੇ", icon:"fas fa-file-alt", rates:[{label:"Resume Making",price:"₹20"}] },
-    { name_en:"Scanning", name_hi:"स्कैनिंग", name_pa:"ਸਕੈਨਿੰਗ", icon:"fas fa-scanner", rates:[{label:"Per Page",price:"₹10"},{label:"Bulk (100+)",price:"₹5"}] },
-    { name_en:"Money Transfer", name_hi:"मनी ट्रांसफर", name_pa:"ਮਨੀ ਟ੍ਰਾਂਸਫਰ", icon:"fas fa-exchange-alt", rates:[{label:"Up to ₹5000",price:"₹20"},{label:"₹5000-20000",price:"₹50"},{label:"Above ₹20000",price:"₹100"}] },
-    { name_en:"Typing", name_hi:"टाइपिंग", name_pa:"ਟਾਈਪਿੰਗ", icon:"fas fa-keyboard", rates:[{label:"Hindi/English/Punjabi",price:"₹20-100"}] },
-    { name_en:"ITR Filing", name_hi:"आयकर रिटर्न", name_pa:"ਆਇਕਰ ਰਿਟਰਨ", icon:"fas fa-file-invoice", rates:[{label:"ITR Filing",price:"₹300"}] },
-    { name_en:"Driving Licence", name_hi:"ड्राइविंग लाइसेंस", name_pa:"ਡ੍ਰਾਈਵਿੰਗ ਲਾਇਸੈਂਸ", icon:"fas fa-id-card", rates:[{label:"Apply/Correction",price:"₹50"}] },
-    { name_en:"RC Transfer", name_hi:"आरसी ट्रांसफर", name_pa:"ਆਰਸੀ ਟ੍ਰਾਂਸਫਰ", icon:"fas fa-car", rates:[{label:"Transfer",price:"₹50"}] },
-    { name_en:"Online Form", name_hi:"ऑनलाइन फॉर्म", name_pa:"ਆਨਲਾਈਨ ਫਾਰਮ", icon:"fas fa-laptop", rates:[{label:"Form Fill",price:"₹50-100"}] },
-    { name_en:"Ticket Booking", name_hi:"टिकट बुकिंग", name_pa:"ਟਿਕਟ ਬੁਕਿੰਗ", icon:"fas fa-ticket-alt", rates:[{label:"Per Person",price:"₹20"}] },
-    { name_en:"PVC Card", name_hi:"पीवीसी कार्ड", name_pa:"ਪੀਵੀਸੀ ਕਾਰਡ", icon:"fas fa-id-card", rates:[{label:"PVC Print",price:"₹70"}] },
-    { name_en:"Life Certificate", name_hi:"जीवन प्रमाण पत्र", name_pa:"ਜੀਵਨ ਪ੍ਰਮਾਣ ਪੱਤਰ", icon:"fas fa-calendar-check", rates:[{label:"Apply",price:"₹50"}] },
-    { name_en:"Computer Repair", name_hi:"कंप्यूटर रिपेयर", name_pa:"ਕੰਪਿਊਟਰ ਰਿਪੇਅਰ", icon:"fas fa-desktop", rates:[{label:"Repair",price:"As per work"}] },
-    { name_en:"Windows Install", name_hi:"विंडोज इंस्टॉल", name_pa:"ਵਿੰਡੋਜ਼ ਇੰਸਟਾਲ", icon:"fas fa-windows", rates:[{label:"Install",price:"₹200"}] },
-    { name_en:"Mobile Accessories", name_hi:"मोबाइल एक्सेसरीज़", name_pa:"ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼", icon:"fas fa-mobile-alt", rates:[{label:"Market Price",price:"As per market"}] }
+    { name_en:"Photocopy", name_hi:"फोटोकॉपी", name_pa:"ਫੋਟੋਕਾਪੀ", icon:"fas fa-copy", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Photocopy", rates:[{label:"Per Page",price:"₹2"},{label:"Bulk (200+)",price:"₹1"}] },
+    { name_en:"Print Black", name_hi:"ब्लैक प्रिंट", name_pa:"ਬਲੈਕ ਪ੍ਰਿੰਟ", icon:"fas fa-print", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Black+Print", rates:[{label:"Per Page",price:"₹5"},{label:"Bulk (100+)",price:"₹2"}] },
+    { name_en:"Print Color", name_hi:"कलर प्रिंट", name_pa:"ਕਲਰ ਪ੍ਰਿੰਟ", icon:"fas fa-palette", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Color+Print", rates:[{label:"Per Page",price:"₹10"},{label:"Bulk (200+)",price:"₹5"}] },
+    { name_en:"Passport Photo", name_hi:"पासपोर्ट फोटो", name_pa:"ਪਾਸਪੋਰਟ ਫੋਟੋ", icon:"fas fa-camera", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Passport+Photo", rates:[{label:"4 Photos",price:"₹20"},{label:"Bulk (200+)",price:"₹10"}] },
+    { name_en:"Lamination", name_hi:"लैमिनेशन", name_pa:"ਲੈਮੀਨੇਸ਼ਨ", icon:"fas fa-layer-group", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Lamination", rates:[{label:"Per Sheet",price:"₹10"},{label:"Bulk (100+)",price:"₹7"}] },
+    { name_en:"Spiral Binding", name_hi:"स्पाइरल बाइंडिंग", name_pa:"ਸਪਾਇਰਲ ਬਾਈਂਡਿੰਗ", icon:"fas fa-book", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Spiral+Binding", rates:[{label:"Binding",price:"₹10-100"}] },
+    { name_en:"Resume", name_hi:"रिज्यूमे", name_pa:"ਰਿਜਿਊਮੇ", icon:"fas fa-file-alt", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Resume", rates:[{label:"Resume Making",price:"₹20"}] },
+    { name_en:"Scanning", name_hi:"स्कैनिंग", name_pa:"ਸਕੈਨਿੰਗ", icon:"fas fa-scanner", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Scanning", rates:[{label:"Per Page",price:"₹10"},{label:"Bulk (100+)",price:"₹5"}] },
+    { name_en:"Money Transfer", name_hi:"मनी ट्रांसफर", name_pa:"ਮਨੀ ਟ੍ਰਾਂਸਫਰ", icon:"fas fa-exchange-alt", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Money+Transfer", rates:[{label:"Up to ₹5000",price:"₹20"},{label:"₹5000-20000",price:"₹50"},{label:"Above ₹20000",price:"₹100"}] },
+    { name_en:"Typing", name_hi:"टाइपिंग", name_pa:"ਟਾਈਪਿੰਗ", icon:"fas fa-keyboard", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Typing", rates:[{label:"Hindi/English/Punjabi",price:"₹20-100"}] },
+    { name_en:"ITR Filing", name_hi:"आयकर रिटर्न", name_pa:"ਆਇਕਰ ਰਿਟਰਨ", icon:"fas fa-file-invoice", image:"https://placehold.co/600x400/f59e0b/ffffff?text=ITR+Filing", rates:[{label:"ITR Filing",price:"₹300"}] },
+    { name_en:"Driving Licence", name_hi:"ड्राइविंग लाइसेंस", name_pa:"ਡ੍ਰਾਈਵਿੰਗ ਲਾਇਸੈਂਸ", icon:"fas fa-id-card", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Driving+Licence", rates:[{label:"Apply/Correction",price:"₹50"}] },
+    { name_en:"RC Transfer", name_hi:"आरसी ट्रांसफर", name_pa:"ਆਰਸੀ ਟ੍ਰਾਂਸਫਰ", icon:"fas fa-car", image:"https://placehold.co/600x400/f59e0b/ffffff?text=RC+Transfer", rates:[{label:"Transfer",price:"₹50"}] },
+    { name_en:"Online Form", name_hi:"ऑनलाइन फॉर्म", name_pa:"ਆਨਲਾਈਨ ਫਾਰਮ", icon:"fas fa-laptop", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Online+Form", rates:[{label:"Form Fill",price:"₹50-100"}] },
+    { name_en:"Ticket Booking", name_hi:"टिकट बुकिंग", name_pa:"ਟਿਕਟ ਬੁਕਿੰਗ", icon:"fas fa-ticket-alt", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Ticket+Booking", rates:[{label:"Per Person",price:"₹20"}] },
+    { name_en:"PVC Card", name_hi:"पीवीसी कार्ड", name_pa:"ਪੀਵੀਸੀ ਕਾਰਡ", icon:"fas fa-id-card", image:"https://placehold.co/600x400/f59e0b/ffffff?text=PVC+Card", rates:[{label:"PVC Print",price:"₹70"}] },
+    { name_en:"Life Certificate", name_hi:"जीवन प्रमाण पत्र", name_pa:"ਜੀਵਨ ਪ੍ਰਮਾਣ ਪੱਤਰ", icon:"fas fa-calendar-check", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Life+Certificate", rates:[{label:"Apply",price:"₹50"}] },
+    { name_en:"Computer Repair", name_hi:"कंप्यूटर रिपेयर", name_pa:"ਕੰਪਿਊਟਰ ਰਿਪੇਅਰ", icon:"fas fa-desktop", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Computer+Repair", rates:[{label:"Repair",price:"As per work"}] },
+    { name_en:"Windows Install", name_hi:"विंडोज इंस्टॉल", name_pa:"ਵਿੰਡੋਜ਼ ਇੰਸਟਾਲ", icon:"fas fa-windows", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Windows+Install", rates:[{label:"Install",price:"₹200"}] },
+    { name_en:"Mobile Accessories", name_hi:"मोबाइल एक्सेसरीज़", name_pa:"ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼", icon:"fas fa-mobile-alt", image:"https://placehold.co/600x400/f59e0b/ffffff?text=Mobile+Accessories", rates:[{label:"Market Price",price:"As per market"}] }
 ];
+
 const courses = [
-    { name_en:"CCC (3 Months)", name_hi:"सीसीसी (3 माह)", name_pa:"ਸੀਸੀਸੀ (3 ਮਹੀਨੇ)", icon:"fas fa-laptop-code", price:"₹2,500", url:"https://skynetcc.in/courseDetails/1" },
-    { name_en:"BCA (6 Months)", name_hi:"बीसीए (6 माह)", name_pa:"ਬੀਸੀਏ (6 ਮਹੀਨੇ)", icon:"fas fa-graduation-cap", price:"₹5,500", url:"https://skynetcc.in/courseDetails/2" },
-    { name_en:"DCA (1 Year)", name_hi:"डीसीए (1 वर्ष)", name_pa:"ਡੀਸੀਏ (1 ਸਾਲ)", icon:"fas fa-chalkboard-teacher", price:"₹8,500", url:"https://skynetcc.in/courseDetails/5" }
+    { name_en:"CCC (3 Months)", name_hi:"सीसीसी (3 माह)", name_pa:"ਸੀਸੀਸੀ (3 ਮਹੀਨੇ)", icon:"fas fa-laptop-code", image:"https://placehold.co/600x400/10b981/ffffff?text=CCC+Course", price:"₹2,500", url:"https://skynetcc.in/courseDetails/1" },
+    { name_en:"BCA (6 Months)", name_hi:"बीसीए (6 माह)", name_pa:"ਬੀਸੀਏ (6 ਮਹੀਨੇ)", icon:"fas fa-graduation-cap", image:"https://placehold.co/600x400/10b981/ffffff?text=BCA+Course", price:"₹5,500", url:"https://skynetcc.in/courseDetails/2" },
+    { name_en:"DCA (1 Year)", name_hi:"डीसीए (1 वर्ष)", name_pa:"ਡੀਸੀਏ (1 ਸਾਲ)", icon:"fas fa-chalkboard-teacher", image:"https://placehold.co/600x400/10b981/ffffff?text=DCA+Course", price:"₹8,500", url:"https://skynetcc.in/courseDetails/5" }
 ];
+
 const mobileAccess = [
-    { name_en:"Mobile Accessories", name_hi:"मोबाइल एक्सेसरीज़", name_pa:"ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼", icon:"fas fa-mobile-alt", price:"Market Price", url:"https://skynetcc.in/mobile-accessories" }
+    { name_en:"Mobile Accessories", name_hi:"मोबाइल एक्सेसरीज़", name_pa:"ਮੋਬਾਈਲ ਐਕਸੈਸਰੀਜ਼", icon:"fas fa-mobile-alt", image:"https://placehold.co/600x400/8b5cf6/ffffff?text=Mobile+Accessories", price:"Market Price", url:"https://skynetcc.in/mobile-accessories" }
 ];
+
 const faqData = [
     { q_en:"Aadhar Card - Documents & Charges", q_hi:"आधार कार्ड - दस्तावेज़ और शुल्क", q_pa:"ਆਧਾਰ ਕਾਰਡ - ਦਸਤਾਵੇਜ਼ ਅਤੇ ਚਾਰਜ", a_en:"Documents: ID proof, Address proof. Charges: Correction ₹100, PVC ₹70, Print+Lam ₹60", a_hi:"दस्तावेज़: पहचान पत्र, पता प्रमाण। शुल्क: सुधार ₹100, पीवीसी ₹70, प्रिंट+लैमिनेशन ₹60", a_pa:"ਦਸਤਾਵੇਜ਼: ਪਛਾਣ ਪੱਤਰ, ਪਤਾ ਪ੍ਰਮਾਣ। ਚਾਰਜ: ਸੁਧਾਰ ₹100, ਪੀਵੀਸੀ ₹70, ਪ੍ਰਿੰਟ+ਲੈਮੀਨੇਸ਼ਨ ₹60" },
     { q_en:"PAN Card - New & Correction", q_hi:"पैन कार्ड - नया और सुधार", q_pa:"ਪੈਨ ਕਾਰਡ - ਨਵਾਂ ਅਤੇ ਸੁਧਾਰ", a_en:"New & Correction ₹160 each. PVC ₹70, Print+Lam ₹60. e-PAN instant.", a_hi:"नया और सुधार ₹160 प्रत्येक। पीवीसी ₹70, प्रिंट+लैमिनेशन ₹60। ई-पैन तुरंत।", a_pa:"ਨਵਾਂ ਅਤੇ ਸੁਧਾਰ ₹160 ਹਰੇਕ। ਪੀਵੀਸੀ ₹70, ਪ੍ਰਿੰਟ+ਲੈਮੀਨੇਸ਼ਨ ₹60। ਈ-ਪੈਨ ਤੁਰੰਤ।" },
@@ -504,35 +353,61 @@ const faqData = [
     { q_en:"Money Transfer Charges", q_hi:"मनी ट्रांसफर शुल्क", q_pa:"ਮਨੀ ਟ੍ਰਾਂਸਫਰ ਚਾਰਜ", a_en:"₹20 to ₹100 depending on amount. Instant transfer.", a_hi:"राशि के अनुसार ₹20 से ₹100। तत्काल ट्रांसफर।", a_pa:"ਰਕਮ ਅਨੁਸਾਰ ₹20 ਤੋਂ ₹100। ਤੁਰੰਤ ਟ੍ਰਾਂਸਫਰ।" },
     { q_en:"Computer Courses", q_hi:"कंप्यूटर कोर्स", q_pa:"ਕੰਪਿਊਟਰ ਕੋਰਸ", a_en:"CCC ₹2500 (3 months), BCA ₹5500 (6 months), DCA ₹8500 (1 year). Click on course for details.", a_hi:"सीसीसी ₹2500 (3 माह), बीसीए ₹5500 (6 माह), डीसीए ₹8500 (1 वर्ष)। विवरण के लिए कोर्स पर क्लिक करें।", a_pa:"ਸੀਸੀਸੀ ₹2500 (3 ਮਹੀਨੇ), ਬੀਸੀਏ ₹5500 (6 ਮਹੀਨੇ), ਡੀਸੀਏ ₹8500 (1 ਸਾਲ)। ਵੇਰਵਿਆਂ ਲਈ ਕੋਰਸ 'ਤੇ ਕਲਿੱਕ ਕਰੋ।" }
 ];
+
 let currentLang = 'en';
 function getText(obj) { return obj[`name_${currentLang}`] || obj.name_en; }
 function getFaqQ(f) { return f[`q_${currentLang}`] || f.q_en; }
 function getFaqA(f) { return f[`a_${currentLang}`] || f.a_en; }
+
 function renderServices() {
     const search = document.getElementById('voiceSearchInput').value.toLowerCase();
     const filterFn = item => getText(item).toLowerCase().includes(search);
-    const firstRate = (item) => item.rates[0]?.price || '₹?';
-    document.getElementById('cscGrid').innerHTML = `<div class="section-header"><i class="fas fa-id-card"></i><h3>📇 CSC Government Services</h3></div>` + cscServices.filter(filterFn).map(s => `<div class="service-item" onclick="showRateOptions('${s.name_en.replace(/'/g, "\\'")}', ${JSON.stringify(s.rates).replace(/"/g, '&quot;')}, '${getText(s)}', '${s.icon}')"><i class="${s.icon}" style="font-size: 42px; color: var(--primary); margin-bottom: 8px;"></i><div class="service-name">${getText(s)}</div><div class="service-price-badge">💰 ${firstRate(s)}</div></div>`).join('');
-    document.getElementById('cyberGrid').innerHTML = `<div class="section-header"><i class="fas fa-print"></i><h3>🖨️ Cyber Cafe Services</h3></div>` + cyberServices.filter(filterFn).map(s => `<div class="service-item" onclick="showRateOptions('${s.name_en.replace(/'/g, "\\'")}', ${JSON.stringify(s.rates).replace(/"/g, '&quot;')}, '${getText(s)}', '${s.icon}')"><i class="${s.icon}" style="font-size: 42px; color: var(--secondary); margin-bottom: 8px;"></i><div class="service-name">${getText(s)}</div><div class="service-price-badge">💰 ${firstRate(s)}</div></div>`).join('');
-    document.getElementById('coursesGrid').innerHTML = `<div class="section-header"><i class="fas fa-laptop-code"></i><h3>💻 Computer Courses</h3></div>` + courses.filter(c => c.name_en.toLowerCase().includes(search)).map(c => `<div class="service-item" onclick="window.open('${c.url}','_blank')"><i class="${c.icon}" style="font-size: 42px; color: var(--accent);"></i><div class="service-name">${getText(c)}</div><div class="service-price-badge">💰 ${c.price}</div></div>`).join('');
-    document.getElementById('mobileAccGrid').innerHTML = `<div class="section-header"><i class="fas fa-mobile-alt"></i><h3>📱 Mobile Accessories</h3></div>` + mobileAccess.map(m => `<div class="service-item" onclick="window.open('${m.url}','_blank')"><i class="${m.icon}" style="font-size: 42px; color: var(--success);"></i><div class="service-name">${getText(m)}</div><div class="service-price-badge">💰 ${m.price}</div></div>`).join('');
+
+    const renderCard = (item, themeColor, isCourseOrMobile = false) => {
+        const title = getText(item);
+        const firstPrice = isCourseOrMobile ? item.price : (item.rates[0]?.price || '₹?');
+        const onclickAction = isCourseOrMobile 
+            ? `window.open('${item.url}','_blank')` 
+            : `showRateOptions('${item.name_en.replace(/'/g, "\\'")}', ${JSON.stringify(item.rates).replace(/"/g, '&quot;')}, '${title}', '${item.icon}')`;
+        
+        return `
+        <div class="service-item" onclick="${onclickAction}">
+            <div class="card-img-wrapper">
+                <img src="${item.image}" alt="${item.name_en}" loading="lazy">
+                <div class="price-tag">${firstPrice}</div>
+            </div>
+            <div class="card-body">
+                <div class="service-name">${title}</div>
+                <div class="service-price-badge">💰 ${firstPrice}</div>
+            </div>
+        </div>`;
+    };
+
+    document.getElementById('cscGrid').innerHTML = `<div class="section-header"><i class="fas fa-id-card"></i><h3>📇 CSC Government Services</h3></div>` + cscServices.filter(filterFn).map(s => renderCard(s, 'primary')).join('');
+    document.getElementById('cyberGrid').innerHTML = `<div class="section-header"><i class="fas fa-print"></i><h3>🖨️ Cyber Cafe Services</h3></div>` + cyberServices.filter(filterFn).map(s => renderCard(s, 'secondary')).join('');
+    document.getElementById('coursesGrid').innerHTML = `<div class="section-header"><i class="fas fa-laptop-code"></i><h3>💻 Computer Courses</h3></div>` + courses.filter(c => c.name_en.toLowerCase().includes(search)).map(c => renderCard(c, 'accent', true)).join('');
+    document.getElementById('mobileAccGrid').innerHTML = `<div class="section-header"><i class="fas fa-mobile-alt"></i><h3>📱 Mobile Accessories</h3></div>` + mobileAccess.map(m => renderCard(m, 'success', true)).join('');
 }
+
 window.showRateOptions = (serviceKey, rates, displayName, iconClass) => {
     document.getElementById('modalServiceName').innerHTML = `<i class="${iconClass}"></i> ${displayName} - Select Option`;
     document.getElementById('rateOptionsList').innerHTML = rates.map((rate, idx) => `<div class="price-option" onclick="selectRateAndSend('${serviceKey}', '${rate.label}', '${rate.price}')"><div class="title">${rate.label}</div><div class="rate">💰 ${rate.price}</div></div>`).join('');
     openModal('serviceRateModal');
 };
+
 window.selectRateAndSend = (service, option, price) => {
     const msg = `*SKYNET DIGITAL CENTER*%0A📌 *Service:* ${service}%0A📋 *Option:* ${option}%0A💰 *Price:* ${price}%0A👤 Customer wants to avail this service%0A📍 SKYNET Center, Ramgarh, Panchkula`;
     window.open(`https://wa.me/918054061994?text=${msg}`, '_blank');
     closeAllModals();
 };
+
 function renderFAQ() {
     const search = document.getElementById('faqSearch')?.value.toLowerCase() || '';
     const filtered = faqData.filter(f => getFaqQ(f).toLowerCase().includes(search));
     document.getElementById('faqList').innerHTML = filtered.map((f,idx) => `<div class="faq-item"><div class="faq-question" onclick="toggleFaq(${idx})"><span>❓ ${getFaqQ(f)}</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer" id="faqAns${idx}">${getFaqA(f)}</div></div>`).join('');
 }
 window.toggleFaq = (idx) => document.getElementById(`faqAns${idx}`).classList.toggle('show');
+
 function renderOfflineGuide() {
     let html = `<div style="background:#f0fdf4;padding:20px;border-radius:20px;"><h4>📋 SKYNET Quick Price Guide</h4>`;
     cscServices.slice(0,10).forEach(s => { html += `<p><i class="${s.icon}"></i> <strong>${getText(s)}</strong> : ${s.rates[0]?.price || '₹100'}+</p>`; });
@@ -540,6 +415,7 @@ function renderOfflineGuide() {
     html += `<hr><p>📞 Call 8901010994 for full list | 🏢 SKYNET Digital Center, Ramgarh, Panchkula</p></div>`;
     document.getElementById('offlineGuide').innerHTML = html;
 }
+
 function renderPriceModalContent() {
     let html = `<table class="price-table">`;
     html += `  <tr><th>Service</th><th>Starting Price</th></tr>`;
@@ -550,6 +426,7 @@ function renderPriceModalContent() {
     html += `<\/table>`;
     document.getElementById('priceTable').innerHTML = html;
 }
+
 function renderHelpModal() {
     let btns = `<button class="btn-submit" onclick="sendAutoReply('All Services')">📋 All Services Info</button>`;
     const topServices = cscServices.slice(0,6).concat(cyberServices.slice(0,4));
@@ -560,6 +437,7 @@ function renderHelpModal() {
     document.getElementById('helpButtons').innerHTML = btns;
 }
 function sendAutoReply(svc) { window.open(`https://wa.me/918054061994?text=Need help for: ${svc}`, '_blank'); closeAllModals(); }
+
 // Job Portal Functions
 let jobsDatabase = [];
 function loadJobsFromStorage() { const saved = localStorage.getItem('skynet_jobs'); if(saved) jobsDatabase = JSON.parse(saved); else jobsDatabase = [ { id: Date.now()+1, title: "Computer Operator", company: "SKYNET DIGITAL CENTER", location: "Ramgarh, Panchkula", salary: "₹8,000 - ₹10,000", description: "Computer operator for CSC center", contact: "8901010994" } ]; saveJobsToStorage(); renderJobsList(); }
@@ -573,6 +451,7 @@ function postNewJob() { const title=document.getElementById('jobTitle').value.tr
 let currentApplyJobId=null;
 function openApplyModal(jobId) { const job=jobsDatabase.find(j=>j.id===jobId); if(job) { currentApplyJobId=jobId; document.getElementById('applyJobTitle').innerHTML=`<i class="fas fa-briefcase"></i> ${job.title} at ${job.company}`; openModal('applyJobModal'); } }
 function sendJobApplication() { const name=document.getElementById('applicantName').value.trim(), phone=document.getElementById('applicantPhone').value.trim(), experience=document.getElementById('applicantExperience').value.trim(), message=document.getElementById('applicantMessage').value.trim(), job=jobsDatabase.find(j=>j.id===currentApplyJobId); if(!name||!phone) { alert("Please enter Name and Mobile"); return; } const jobDetails=job?`${job.title} at ${job.company}`:"Job"; const msg=`*JOB APPLICATION*%0A📌 Job: ${jobDetails}%0A👤 Name: ${name}%0A📞 Mobile: ${phone}%0A💼 Exp: ${experience||'N/A'}%0A💬 Message: ${message||'Interested'}`; window.open(`https://wa.me/918054061994?text=${msg}`,'_blank'); alert("Application sent!"); closeAllModals(); document.getElementById('applicantName').value=''; document.getElementById('applicantPhone').value=''; document.getElementById('applicantExperience').value=''; document.getElementById('applicantMessage').value=''; }
+
 function switchTab(tab) { 
     document.querySelectorAll('.tab-btn').forEach(btn=>btn.classList.remove('active')); 
     document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); 
@@ -642,7 +521,6 @@ function openLoginModal() {
     loginModal.style.display = 'block';
     loginOverlay.style.display = 'block';
     document.body.style.overflow = 'hidden';
-    // Reset form
     document.getElementById('userId').value = '';
     document.getElementById('password').value = '';
     loginError.style.display = 'none';
@@ -662,12 +540,9 @@ function checkLogin() {
     if (userId === VALID_USER_ID && password === VALID_PASSWORD) {
         loginError.style.display = 'none';
         loginSuccess.style.display = 'block';
-        
-        // After successful login, open the Blogger link in a new tab
         setTimeout(() => {
             closeLoginModal();
             window.open(REDIRECT_URL, '_blank');
-            // Optional success alert
             alert("Welcome " + userId + "! Login successful. Opening courses page...");
         }, 1500);
     } else {
@@ -681,7 +556,6 @@ closeLoginBtn.onclick = closeLoginModal;
 loginOverlay.onclick = closeLoginModal;
 submitLoginBtn.onclick = checkLogin;
 
-// Also close with Escape key
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape' && loginModal.style.display === 'block') {
         closeLoginModal();
