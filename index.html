@@ -42,6 +42,7 @@
             color: var(--text);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
 
         .hindi {
@@ -182,6 +183,12 @@
             gap: 4px;
             overflow-x: auto;
             padding: 0 16px;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none; /* Firefox */
+        }
+        
+        .nav-bar .container::-webkit-scrollbar {
+            display: none; /* Safari and Chrome */
         }
 
         .nav-bar a {
@@ -320,7 +327,7 @@
         /* ===== SERVICE GRID ===== */
         .service-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
             gap: 12px;
         }
 
@@ -337,6 +344,7 @@
             position: relative;
             overflow: hidden;
             cursor: pointer;
+            min-height: 70px;
         }
 
         .service-item::before {
@@ -387,6 +395,7 @@
             font-weight: 600;
             font-size: 0.9rem;
             line-height: 1.3;
+            word-break: break-word;
         }
 
         .service-item .service-name small {
@@ -733,7 +742,16 @@
             color: var(--accent);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== RESPONSIVE (AUTO ADJUST FOR ALL SCREENS) ===== */
+        
+        /* Tablet & Small Laptops */
+        @media (max-width: 1024px) {
+            .service-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+        }
+
+        /* Tablets */
         @media (max-width: 768px) {
             .header .container {
                 flex-direction: column;
@@ -742,33 +760,74 @@
 
             .header-contact {
                 justify-content: center;
+                width: 100%;
+            }
+
+            .hero {
+                padding: 32px 0;
             }
 
             .hero h2 {
-                font-size: 1.5rem;
+                font-size: 1.6rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
             }
 
             .nav-bar {
                 top: 0;
             }
 
-            .service-grid {
-                grid-template-columns: 1fr;
+            .section {
+                padding: 30px 0;
+            }
+
+            .section-header {
+                flex-direction: row;
+                align-items: center;
+            }
+
+            .section-header .icon-box {
+                width: 38px;
+                height: 38px;
+                font-size: 1rem;
+            }
+
+            .section-header h3 {
+                font-size: 1.2rem;
+            }
+
+            .section-header p {
+                font-size: 0.8rem;
             }
 
             .image-showcase {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
             }
 
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .service-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
             }
-        }
 
-        @media (max-width: 480px) {
-            .hero-cards {
-                grid-template-columns: repeat(2, 1fr);
+            .service-item {
+                padding: 12px;
+                min-height: 60px;
+            }
+
+            .service-item .service-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 0.9rem;
+            }
+
+            .service-item .service-name {
+                font-size: 0.85rem;
+            }
+
+            .service-item .service-price {
+                font-size: 0.9rem;
             }
 
             .contact-info {
@@ -777,8 +836,110 @@
                 gap: 16px;
             }
 
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        /* Small Mobile Phones */
+        @media (max-width: 480px) {
+            .top-bar {
+                font-size: 0.75rem;
+                padding: 6px 0;
+            }
+
+            .top-bar .container {
+                justify-content: center;
+                text-align: center;
+            }
+
+            .top-bar-left {
+                justify-content: center;
+            }
+
+            .logo-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            .logo-text h1 {
+                font-size: 1.1rem;
+            }
+
+            .hero-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+            }
+
+            .hero-card {
+                padding: 12px 4px;
+            }
+
+            .hero-card i {
+                font-size: 1.2rem;
+            }
+
+            .hero-card span {
+                font-size: 0.7rem;
+            }
+
             .image-showcase {
                 grid-template-columns: 1fr;
+            }
+
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-item {
+                padding: 14px;
+            }
+
+            .service-item .service-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .service-item .service-name {
+                font-size: 0.9rem;
+            }
+
+            .job-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .job-card .job-salary {
+                text-align: center;
+            }
+
+            .modal-box {
+                max-width: 95%;
+                margin: 10px;
+            }
+
+            .modal-header h4 {
+                font-size: 1rem;
+            }
+
+            .modal-option {
+                padding: 14px 16px;
+            }
+
+            .modal-option .opt-name {
+                font-size: 0.9rem;
+            }
+
+            .modal-option .opt-price {
+                font-size: 0.9rem;
             }
         }
 
@@ -1406,7 +1567,7 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // 1. WhatsApp Number CHANGED TO 8054061994 (with country code 91)
+        // 1. WhatsApp Number
         const MY_WHATSAPP_NUMBER = "918054061994"; 
 
         // 2. Service Data (Options and Prices)
