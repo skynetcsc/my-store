@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SKYNET DIGITAL CENTER | CSC Centre | Cyber Cafe | Govt. Services</title>
+    <title>SKYNET DIGITAL CENTER | CSC Centre | Cyber Cafe | Computer Services</title>
     <meta name="description" content="SKYNET DIGITAL CENTER - CSC Centre, Cyber Cafe, Govt. Services, Computer Courses. 20+ Years Trusted Service. Call: 8054061994">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -184,11 +184,11 @@
             overflow-x: auto;
             padding: 0 16px;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-        
+
         .nav-bar .container::-webkit-scrollbar {
-            display: none; /* Safari and Chrome */
+            display: none;
         }
 
         .nav-bar a {
@@ -229,11 +229,31 @@
             margin-bottom: 12px;
         }
 
-        .hero p {
-            font-size: 1.05rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 24px;
+        /* Marquee (Right to Left) */
+        .marquee-container {
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            padding: 12px 0;
+            border-radius: var(--radius);
+            margin-bottom: 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .marquee-text {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee-right-to-left 25s linear infinite;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* Right to Left Animation */
+        @keyframes marquee-right-to-left {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
         }
 
         .hero-badges {
@@ -256,9 +276,9 @@
 
         .hero-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 12px;
-            max-width: 600px;
+            max-width: 800px; /* Increased to fit 5 cards perfectly */
             margin: 0 auto;
         }
 
@@ -269,6 +289,15 @@
             text-align: center;
             backdrop-filter: blur(4px);
             border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.2s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .hero-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
         }
 
         .hero-card i {
@@ -313,6 +342,7 @@
         .section-header .icon-box.cyber { background: var(--accent); color: var(--primary-dark); }
         .section-header .icon-box.course { background: var(--success); }
         .section-header .icon-box.jobs { background: var(--danger); }
+        .section-header .icon-box.other { background: #8b5cf6; }
 
         .section-header h3 {
             font-size: 1.35rem;
@@ -360,6 +390,7 @@
 
         .service-item.cyber::before { background: var(--accent); }
         .service-item.course::before { background: var(--success); }
+        .service-item.other::before { background: #8b5cf6; }
 
         .service-item:hover {
             transform: translateY(-2px);
@@ -390,6 +421,7 @@
 
         .service-item.cyber .service-icon { background: #fffbeb; color: var(--accent-dark); }
         .service-item.course .service-icon { background: #ecfdf5; color: var(--success); }
+        .service-item.other .service-icon { background: #f5f3ff; color: #8b5cf6; }
 
         .service-item .service-name {
             font-weight: 600;
@@ -421,70 +453,24 @@
             display: block;
         }
 
-        /* ===== COURSE POSTER (UPDATED FOR AUTO-STRETCH) ===== */
+        /* ===== COURSE POSTER ===== */
         .course-poster-container {
             width: 100%;
             text-align: center;
             margin-top: 10px;
-            padding: 0 10px; /* Small padding on sides for mobile */
+            padding: 0 10px;
         }
 
         .course-poster-img {
-            width: 100%;           /* Auto-stretch to fit container */
-            height: auto;          /* Maintain aspect ratio */
-            max-width: 1000px;     /* Limit size on large PCs */
+            width: 100%;
+            height: auto;
+            max-width: 1000px;
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border);
             display: block;
             margin: 0 auto;
-            object-fit: contain;   /* Prevent distortion */
-        }
-
-        /* ===== IMAGE SHOWCASE ===== */
-        .image-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 16px;
-            margin-bottom: 32px;
-        }
-
-        .image-card {
-            background: #fff;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .image-card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .image-card img {
-            width: 100%;
-            height: 120px;
-            object-fit: cover;
-            background: #f8fafc;
-            display: block;
-        }
-
-        .image-card .img-label {
-            padding: 10px;
-            font-weight: 700;
-            font-size: 0.85rem;
-            color: var(--primary);
-            border-top: 1px solid var(--border);
-        }
-
-        .image-card .img-label small {
-            display: block;
-            font-weight: 400;
-            font-size: 0.7rem;
-            color: var(--text-light);
+            object-fit: contain;
         }
 
         /* ===== MODAL (POPUP) ===== */
@@ -788,10 +774,6 @@
                 font-size: 1.6rem;
             }
 
-            .hero p {
-                font-size: 0.95rem;
-            }
-
             .nav-bar {
                 top: 0;
             }
@@ -817,11 +799,6 @@
 
             .section-header p {
                 font-size: 0.8rem;
-            }
-
-            .image-showcase {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
             }
 
             .service-grid {
@@ -905,10 +882,6 @@
 
             .hero-card span {
                 font-size: 0.7rem;
-            }
-
-            .image-showcase {
-                grid-template-columns: 1fr;
             }
 
             .service-grid {
@@ -1017,7 +990,7 @@
         <div class="container">
             <a href="#gov-services" class="active"><i class="fas fa-landmark"></i> Govt. Services</a>
             <a href="#cyber-services"><i class="fas fa-print"></i> Cyber Cafe</a>
-            <a href="#computer-courses"><i class="fas fa-laptop-code"></i> Computer Courses</a>
+            <a href="#computer-services"><i class="fas fa-laptop-code"></i> Computer Services</a>
             <a href="#jobs-portal"><i class="fas fa-briefcase"></i> Jobs Portal</a>
             <a href="#contact"><i class="fas fa-headset"></i> Contact</a>
         </div>
@@ -1027,11 +1000,18 @@
     <section class="hero">
         <div class="container">
             <h2 class="hindi">आपकी हर सरकारी सेवा, एक ही जगह</h2>
-            <p class="hindi">आधार कार्ड, पैन कार्ड, पासपोर्ट, जन्म प्रमाण पत्र, राशन कार्ड और अन्य सभी सरकारी सेवाएं। 20+ वर्षों का भरोसा।</p>
+
+            <!-- SCROLLING TEXT (RIGHT TO LEFT) -->
+            <div class="marquee-container">
+                <div class="marquee-text hindi">
+                    आधार कार्ड, पैन कार्ड, पासपोर्ट, जन्म प्रमाण पत्र, राशन कार्ड और अन्य सभी सरकारी सेवाएं। 20+ वर्षों का भरोसा।
+                </div>
+            </div>
+
             <div class="hero-badges">
-                <span class="hero-badge"><i class="fas fa-check-circle"></i> 500+ Happy Customers</span>
+                <span class="hero-badge"><i class="fas fa-users"></i> 50,000+ Happy Customers</span>
                 <span class="hero-badge"><i class="fas fa-star"></i> 20+ Years Experience</span>
-                <span class="hero-badge"><i class="fas fa-clock"></i> 24/7 Available</span>
+                <span class="hero-badge"><i class="fas fa-clock"></i> Time: 8:00 AM - 9:30 PM</span>
             </div>
             <div class="hero-cards">
                 <div class="hero-card">
@@ -1050,50 +1030,21 @@
                     <i class="fas fa-vote-yea"></i>
                     <span class="hindi">वोटर कार्ड</span>
                 </div>
+                <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="hero-card">
+                    <i class="fas fa-bullhorn" style="color: #ef4444;"></i>
+                    <span class="hindi">नया अपडेट</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== IMAGE SHOWCASE ===== -->
-    <section class="section" style="padding-bottom: 0;">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box" style="background: linear-gradient(135deg, #1a3a6b, #2a5a9b);">
-                    <i class="fas fa-images"></i>
-                </div>
-                <div>
-                    <h3 class="hindi">प्रमुख दस्तावेज़</h3>
-                    <p class="hindi">आधार कार्ड, पैन कार्ड, वोटर आईडी और पासपोर्ट की सेवाएं उपलब्ध</p>
-                </div>
-            </div>
-            <div class="image-showcase">
-                <div class="image-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Aadhaar_Logo.svg/320px-Aadhaar_Logo.svg.png" alt="Aadhaar Card Hindi" style="object-fit: contain; padding: 16px; background: #fff;">
-                    <div class="img-label hindi">आधार कार्ड <small>नया / सुधार / PVC</small></div>
-                </div>
-                <div class="image-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Permanent_Account_Number_Card.jpg/320px-Permanent_Account_Number_Card.jpg" alt="PAN Card Hindi" style="object-fit: contain; padding: 8px; background: #fff;">
-                    <div class="img-label hindi">पैन कार्ड <small>नया / सुधार / e-PAN</small></div>
-                </div>
-                <div class="image-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Voter_ID_card_India.jpg/320px-Voter_ID_card_India.jpg" alt="Voter ID Card Hindi" style="object-fit: contain; padding: 8px; background: #fff;">
-                    <div class="img-label hindi">वोटर कार्ड <small>नया / सुधार</small></div>
-                </div>
-                <div class="image-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Indian_Passport_2015.jpg/200px-Indian_Passport_2015.jpg" alt="Passport Hindi" style="object-fit: contain; padding: 12px; background: #fff;">
-                    <div class="img-label hindi">पासपोर्ट <small>नया / नवीनीकरण</small></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CSC GOVERNMENT SERVICES ===== -->
+    <!-- ===== GOVERNMENT SERVICES ===== -->
     <section class="section" id="gov-services">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box gov"><i class="fas fa-landmark"></i></div>
                 <div>
-                    <h3 class="hindi">सीएससी सरकारी सेवाएं</h3>
+                    <h3 class="hindi">सरकारी सेवाएं</h3>
                     <p class="hindi">सभी सरकारी दस्तावेज़ और सेवाएं एक ही स्थान पर (क्लिक करें ऑप्शन देखने के लिए)</p>
                 </div>
             </div>
@@ -1458,26 +1409,127 @@
         </div>
     </section>
 
-    <!-- ===== COMPUTER COURSES (UPDATED WITH YOUR NEW WEBP IMAGE) ===== -->
-    <section class="section" id="computer-courses">
+    <!-- ===== COMPUTER SERVICES (From File Content) ===== -->
+    <section class="section" id="computer-services">
         <div class="container">
             <div class="section-header">
-                <div class="icon-box course"><i class="fas fa-laptop-code"></i></div>
+                <div class="icon-box other"><i class="fas fa-tools"></i></div>
                 <div>
-                    <h3 class="hindi">कंप्यूटर कोर्स</h3>
-                    <p class="hindi">सरकारी मान्यता प्राप्त कंप्यूटर कोर्स - सीखें और आगे बढ़ें</p>
+                    <h3 class="hindi">कंप्यूटर सेवाएं</h3>
+                    <p class="hindi">कंप्यूटर रिपेयर, इंस्टॉलेशन और एक्सेसरीज़ (क्लिक करें ऑप्शन देखने के लिए)</p>
                 </div>
             </div>
-            
-            <!-- YAHAN AAPKI NAYI UPLOAD KI HUI IMAGE LAGI HAI (skynet.webp) -->
-            <div class="course-poster-container">
-                <img src="skynet.webp" alt="SKYNET Computer Center Course Details" class="course-poster-img">
+            <div class="service-grid">
+                <div class="service-item other" onclick="openModal('toner_refill')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-fill-drip"></i></div>
+                        <div class="service-name hindi">टोनर रिफिलिंग <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">As per work</div>
+                </div>
+                <div class="service-item other" onclick="openModal('antivirus')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-shield-virus"></i></div>
+                        <div class="service-name hindi">एंटीवायरस इंस्टॉलेशन <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">As per work</div>
+                </div>
+                <div class="service-item other" onclick="openModal('printer_repair')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-print"></i></div>
+                        <div class="service-name hindi">प्रिंटर रिपेयर <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">As per work</div>
+                </div>
+                <div class="service-item other" onclick="openModal('computer_acc')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-keyboard"></i></div>
+                        <div class="service-name hindi">कंप्यूटर एक्सेसरीज़ <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">Market Price</div>
+                </div>
+                <div class="service-item other" onclick="openModal('shop_reg')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-store"></i></div>
+                        <div class="service-name hindi">दुकान एवं उद्यम रजिस्ट्रेशन <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
+                <div class="service-item other" onclick="openModal('ncrb')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-file-shield"></i></div>
+                        <div class="service-name hindi">एनसीआरबी रिपोर्ट <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+                <div class="service-item other" onclick="openModal('vehicle_tax')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-truck"></i></div>
+                        <div class="service-name hindi">वाहन टैक्स भुगतान <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+                <div class="service-item other" onclick="openModal('fir')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-file-signature"></i></div>
+                        <div class="service-name hindi">एफआईआर संबंधी सेवाएँ <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
+                <div class="service-item other" onclick="openModal('vehicle_agreement')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+                        <div class="service-name hindi">वाहन खरीद-बिक्री एग्रीमेंट <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
+                <div class="service-item other" onclick="openModal('insurance')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="service-name hindi">बाइक-कार बीमा <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">Market Price</div>
+                </div>
+                <div class="service-item other" onclick="openModal('food_licence')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-utensils"></i></div>
+                        <div class="service-name hindi">फूड लाइसेंस <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
+                <div class="service-item other" onclick="openModal('lic_premium')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-money-bill-wave"></i></div>
+                        <div class="service-name hindi">एलआईसी प्रीमियम भुगतान <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹20</div>
+                </div>
+                <div class="service-item other" onclick="openModal('pcc')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-id-card"></i></div>
+                        <div class="service-name hindi">पुलिस क्लीयरेंस सर्टिफिकेट <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
+                <div class="service-item other" onclick="openModal('aadhaar_pan_link')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-link"></i></div>
+                        <div class="service-name hindi">आधार-पैन लिंकिंग <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+                <div class="service-item other" onclick="openModal('rent_agreement')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-file-contract"></i></div>
+                        <div class="service-name hindi">किरायानामा <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
             </div>
-
         </div>
     </section>
 
-    <!-- ===== LOCAL JOBS PORTAL ===== -->
+    <!-- ===== LOCAL JOBS PORTAL (UPDATED WITH LINK) ===== -->
     <section class="section" id="jobs-portal">
         <div class="container">
             <div class="section-header">
@@ -1487,16 +1539,18 @@
                     <p class="hindi">अपने आस-पास नौकरी खोजें</p>
                 </div>
             </div>
-            <div class="job-card">
-                <div class="job-info">
-                    <h4 class="hindi">कंप्यूटर ऑपरेटर</h4>
-                    <p class="hindi"><i class="fas fa-building"></i> SKYNET DIGITAL CENTER, रामगढ़, पंचकूला</p>
+            <a href="https://skynetramgarhh.blogspot.com/2026/10/job-portal.html" target="_blank" style="text-decoration: none; color: inherit; display: block;">
+                <div class="job-card">
+                    <div class="job-info">
+                        <h4 class="hindi">कंप्यूटर ऑपरेटर</h4>
+                        <p class="hindi"><i class="fas fa-building"></i> SKYNET DIGITAL CENTER, रामगढ़, पंचकूला</p>
+                    </div>
+                    <div class="job-salary">
+                        ₹8,000 - ₹10,000
+                        <small class="hindi">प्रति माह</small>
+                    </div>
                 </div>
-                <div class="job-salary">
-                    ₹8,000 - ₹10,000
-                    <small class="hindi">प्रति माह</small>
-                </div>
-            </div>
+            </a>
         </div>
     </section>
 
@@ -1504,11 +1558,15 @@
     <section class="contact-section" id="contact">
         <div class="container">
             <h3 class="hindi">संपर्क करें</h3>
-            <p class="hindi">किसी भी सेवा के लिए हमसे संपर्क करें - 24/7 उपलब्ध</p>
+            <p class="hindi">किसी भी सेवा के लिए हमसे संपर्क करें - 8:00 AM से 9:30 PM तक</p>
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
-                    <a href="tel:8054061994">8054061994</a>
+                    <div style="display: flex; flex-direction: column; gap: 4px;">
+                        <a href="tel:8054061994">8054061994</a>
+                        <a href="tel:8901010994">8901010994</a>
+                        <a href="tel:8872511757">8872511757</a>
+                    </div>
                 </div>
                 <div class="contact-item">
                     <i class="fab fa-whatsapp"></i>
@@ -1519,7 +1577,7 @@
                     <a href="mailto:skynetramgarh@gmail.com">skynetramgarh@gmail.com</a>
                 </div>
             </div>
-            
+
             <!-- Social Links (WhatsApp Channel & Instagram) -->
             <div class="social-links">
                 <a href="https://whatsapp.com/channel/0029Va5JAfyCnA7x10ZQdh27" target="_blank" class="social-btn whatsapp-channel">
@@ -1567,7 +1625,7 @@
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         // 1. WhatsApp Number
-        const MY_WHATSAPP_NUMBER = "918054061994"; 
+        const MY_WHATSAPP_NUMBER = "918054061994";
 
         // 2. Service Data (Options and Prices)
         const servicesData = {
@@ -1649,10 +1707,22 @@
             repair: { title: "Computer Repair - Select Option", options: [{ name: "Diagnosis", price: "Free" }, { name: "Repair", price: "As per work" }] },
             windows: { title: "Windows Install - Select Option", options: [{ name: "Windows 10/11", price: "₹200" }] },
 
-            // Courses (Data is still here just in case, but the UI now uses the poster image)
-            ccc: { title: "CCC Course - Select Option", options: [{ name: "Full Course (3 Months)", price: "₹2,500" }] },
-            bca: { title: "BCA Course - Select Option", options: [{ name: "Full Course (6 Months)", price: "₹5,500" }] },
-            dca: { title: "DCA Course - Select Option", options: [{ name: "Full Course (1 Year)", price: "₹8,500" }] }
+            // Computer Services (from file content)
+            toner_refill: { title: "Toner Refilling - Select Option", options: [{ name: "Toner Refill", price: "As per work" }] },
+            antivirus: { title: "Antivirus Installation - Select Option", options: [{ name: "Antivirus Install", price: "As per work" }] },
+            printer_repair: { title: "Printer Repair - Select Option", options: [{ name: "Printer Repair", price: "As per work" }] },
+            computer_acc: { title: "Computer Accessories - Select Option", options: [{ name: "All Accessories", price: "Market Price" }] },
+            shop_reg: { title: "Shop & Udyam Registration - Select Option", options: [{ name: "New Registration", price: "₹100" }] },
+            ncrb: { title: "NCRB Report - Select Option", options: [{ name: "NCRB Report", price: "₹50" }] },
+            vehicle_tax: { title: "Vehicle Tax Payment - Select Option", options: [{ name: "Tax Payment", price: "₹50" }] },
+            fir: { title: "FIR Related Services - Select Option", options: [{ name: "FIR Service", price: "₹100" }] },
+            vehicle_agreement: { title: "Vehicle Sale-Purchase Agreement - Select Option", options: [{ name: "Agreement", price: "₹100" }] },
+            insurance: { title: "Bike-Car Insurance - Select Option", options: [{ name: "Insurance", price: "Market Price" }] },
+            food_licence: { title: "Food Licence - Select Option", options: [{ name: "Food Licence", price: "₹100" }] },
+            lic_premium: { title: "LIC Premium Payment - Select Option", options: [{ name: "Premium Payment", price: "₹20" }] },
+            pcc: { title: "PCC Application - Select Option", options: [{ name: "PCC Application", price: "₹100" }] },
+            aadhaar_pan_link: { title: "Aadhaar-PAN Linking - Select Option", options: [{ name: "Linking", price: "₹50" }] },
+            rent_agreement: { title: "Rent Agreement - Select Option", options: [{ name: "Rent Agreement", price: "₹100" }] }
         };
 
         // 3. Function to Open Modal
@@ -1674,7 +1744,7 @@
                     <span class="opt-name hindi">${opt.name}</span>
                     <span class="opt-price">${opt.price}</span>
                 `;
-                
+
                 // Add click event to send WhatsApp
                 optionDiv.onclick = function() {
                     sendWhatsApp(service.title, opt.name, opt.price);
@@ -1696,13 +1766,13 @@
         function sendWhatsApp(serviceTitle, optionName, price) {
             // Create a clean message
             const message = `Hello SKYNET DIGITAL CENTER,%0A%0AI want to apply for: *${serviceTitle.replace(' - Select Option', '')}*%0AOption: *${optionName}*%0APrice: *${price}*%0A%0APlease guide me.`;
-            
+
             // WhatsApp URL with the NEW number
             const whatsappUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
 
             // Open in new tab
             window.open(whatsappUrl, '_blank');
-            
+
             // Close modal
             closeModal();
         }
