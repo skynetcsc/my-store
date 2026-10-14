@@ -421,6 +421,24 @@
             display: block;
         }
 
+        /* ===== COURSE POSTER ===== */
+        .course-poster-container {
+            width: 100%;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .course-poster-img {
+            width: 100%;
+            max-width: 1000px; /* Prevents it from getting too huge on big screens */
+            height: auto;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border);
+            display: block;
+            margin: 0 auto;
+        }
+
         /* ===== IMAGE SHOWCASE ===== */
         .image-showcase {
             display: grid;
@@ -742,16 +760,13 @@
             color: var(--accent);
         }
 
-        /* ===== RESPONSIVE (AUTO ADJUST FOR ALL SCREENS) ===== */
-        
-        /* Tablet & Small Laptops */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 1024px) {
             .service-grid {
                 grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             }
         }
 
-        /* Tablets */
         @media (max-width: 768px) {
             .header .container {
                 flex-direction: column;
@@ -848,7 +863,6 @@
             }
         }
 
-        /* Small Mobile Phones */
         @media (max-width: 480px) {
             .top-bar {
                 font-size: 0.75rem;
@@ -1442,7 +1456,7 @@
         </div>
     </section>
 
-    <!-- ===== COMPUTER COURSES ===== -->
+    <!-- ===== COMPUTER COURSES (UPDATED WITH YOUR UPLOADED IMAGE) ===== -->
     <section class="section" id="computer-courses">
         <div class="container">
             <div class="section-header">
@@ -1452,29 +1466,12 @@
                     <p class="hindi">सरकारी मान्यता प्राप्त कंप्यूटर कोर्स - सीखें और आगे बढ़ें</p>
                 </div>
             </div>
-            <div class="service-grid">
-                <div class="service-item course" onclick="openModal('ccc')">
-                    <div class="service-info">
-                        <div class="service-icon"><i class="fas fa-certificate"></i></div>
-                        <div class="service-name hindi">CCC <small>3 महीने</small></div>
-                    </div>
-                    <div class="service-price">₹2,500</div>
-                </div>
-                <div class="service-item course" onclick="openModal('bca')">
-                    <div class="service-info">
-                        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div class="service-name hindi">BCA <small>6 महीने</small></div>
-                    </div>
-                    <div class="service-price">₹5,500</div>
-                </div>
-                <div class="service-item course" onclick="openModal('dca')">
-                    <div class="service-info">
-                        <div class="service-icon"><i class="fas fa-university"></i></div>
-                        <div class="service-name hindi">DCA <small>1 साल</small></div>
-                    </div>
-                    <div class="service-price">₹8,500</div>
-                </div>
+            
+            <!-- YAHAN AAPKI UPLOAD KI HUI IMAGE LAGI HAI -->
+            <div class="course-poster-container">
+                <img src="image.png" alt="SKYNET Computer Center Course Details" class="course-poster-img">
             </div>
+
         </div>
     </section>
 
@@ -1650,7 +1647,7 @@
             repair: { title: "Computer Repair - Select Option", options: [{ name: "Diagnosis", price: "Free" }, { name: "Repair", price: "As per work" }] },
             windows: { title: "Windows Install - Select Option", options: [{ name: "Windows 10/11", price: "₹200" }] },
 
-            // Courses
+            // Courses (Data is still here just in case, but the UI now uses the poster image)
             ccc: { title: "CCC Course - Select Option", options: [{ name: "Full Course (3 Months)", price: "₹2,500" }] },
             bca: { title: "BCA Course - Select Option", options: [{ name: "Full Course (6 Months)", price: "₹5,500" }] },
             dca: { title: "DCA Course - Select Option", options: [{ name: "Full Course (1 Year)", price: "₹8,500" }] }
