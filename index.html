@@ -42,6 +42,9 @@
         .nav-bar .container::-webkit-scrollbar { display: none; }
         .nav-bar a { padding: 12px 16px; text-decoration: none; color: var(--text); font-weight: 500; font-size: 0.9rem; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.2s; }
         .nav-bar a:hover, .nav-bar a.active { color: var(--primary); border-bottom-color: var(--accent); }
+        .nav-bar a.dept-link { background: linear-gradient(135deg, #6366f1, #8b5cf6); color: #fff; border-radius: 50px; margin: 6px 4px; padding: 8px 16px; font-weight: 700; box-shadow: 0 4px 10px rgba(139, 92, 246, 0.3); display: inline-flex; align-items: center; gap: 8px; }
+        .nav-bar a.dept-link:hover { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 18px rgba(139, 92, 246, 0.5); }
+        .nav-bar a.dept-link i { color: #fff; }
         .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
         .hero { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%); color: #fff; padding: 48px 0; text-align: center; }
         .hero h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
@@ -94,94 +97,6 @@
         .service-item .service-name small { display: block; font-weight: 500; font-size: 0.75rem; color: #475569; }
         .service-item .service-price { font-weight: 800; font-size: 1rem; color: #0f2447; white-space: nowrap; margin-left: 8px; text-align: right; }
         .service-item .service-price small { font-weight: 500; font-size: 0.7rem; color: #475569; display: block; }
-        
-        /* Department Link Card */
-        .dept-link-card {
-            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #ec4899 100%);
-            color: #fff;
-            border-radius: 16px;
-            padding: 32px;
-            text-align: center;
-            text-decoration: none;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            transition: all 0.3s;
-            box-shadow: 0 15px 30px -5px rgba(139, 92, 246, 0.4);
-            position: relative;
-            overflow: hidden;
-        }
-        .dept-link-card:hover { transform: translateY(-5px); box-shadow: 0 25px 40px -5px rgba(139, 92, 246, 0.6); }
-        .dept-link-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: rotate 15s linear infinite;
-        }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .dept-link-card .dept-icon {
-            width: 80px; height: 80px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 2.2rem;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255,255,255,0.3);
-            position: relative;
-            z-index: 1;
-        }
-        .dept-link-card h3 {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin: 0;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-        .dept-link-card p {
-            font-size: 1rem;
-            opacity: 0.95;
-            margin: 0;
-            max-width: 600px;
-            position: relative;
-            z-index: 1;
-        }
-        .dept-link-card .dept-btn {
-            background: #fff;
-            color: #8b5cf6;
-            padding: 14px 40px;
-            border-radius: 50px;
-            font-weight: 800;
-            font-size: 1.05rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 8px;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-        .dept-link-card:hover .dept-btn { transform: scale(1.08); background: #fef3c7; color: #92400e; }
-        .dept-link-card .dept-badge {
-            position: absolute;
-            top: 20px; right: 20px;
-            background: #ef4444;
-            color: #fff;
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            z-index: 1;
-            animation: pulse 1.5s infinite;
-        }
-        @keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.08); } }
-        
         .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
         .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.2s; }
         .blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
@@ -253,14 +168,11 @@
             .service-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
             .service-item { padding: 12px; min-height: 60px; }
             .service-item .service-icon { width: 34px; height: 34px; font-size: 0.9rem; }
-            .service-item .service-name { font-size: 0.85rem; }
-            .service-item .service-price { font-size: 0.9rem; }
+            .service-item .service-name { font-size: 0.82rem; }
+            .service-item .service-price { font-size: 0.85rem; }
             .contact-info { flex-direction: column; align-items: center; gap: 16px; }
             .social-links { flex-direction: column; align-items: center; }
             .social-btn { width: 100%; max-width: 280px; justify-content: center; }
-            .dept-link-card { padding: 24px 16px; }
-            .dept-link-card h3 { font-size: 1.3rem; }
-            .dept-link-card p { font-size: 0.85rem; }
         }
         @media (max-width: 480px) {
             .top-bar { font-size: 0.75rem; padding: 6px 0; }
@@ -284,8 +196,7 @@
             .modal-option .opt-name { font-size: 0.9rem; }
             .modal-option .opt-price { font-size: 0.9rem; }
             .reviews-grid, .blog-grid { grid-template-columns: 1fr; }
-            .dept-link-card h3 { font-size: 1.1rem; }
-            .dept-link-card .dept-btn { padding: 12px 28px; font-size: 0.95rem; }
+            .nav-bar a.dept-link { padding: 8px 12px; font-size: 0.8rem; }
         }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 8px; }
@@ -329,7 +240,7 @@
     <nav class="nav-bar">
         <div class="container">
             <a href="#gov-services" class="active"><i class="fas fa-landmark"></i> Govt. Services</a>
-            <a href="departments.html"><i class="fas fa-list-ul"></i> सभी विभागीय सेवाएं</a>
+            <a href="departments.html" class="dept-link"><i class="fas fa-list-ul"></i> सभी विभागीय सेवाएं (250+)</a>
             <a href="#cyber-services"><i class="fas fa-print"></i> Cyber Cafe</a>
             <a href="#computer-services"><i class="fas fa-laptop-code"></i> Computer Services</a>
             <a href="#blog-updates"><i class="fas fa-newspaper"></i> Blog</a>
@@ -365,17 +276,6 @@
             </div>
         </div>
     </section>
-
-    <!-- ===== DEPARTMENT LINK CARD ===== -->
-    <div class="container" style="padding-top: 30px;">
-        <a href="departments.html" class="dept-link-card">
-            <span class="dept-badge">250+ सेवाएं</span>
-            <div class="dept-icon"><i class="fas fa-list-ul"></i></div>
-            <h3 class="hindi">सभी विभागीय सेवाएं</h3>
-            <p class="hindi">कृषि, पशुपालन, BOCW, बिजली, रोजगार, मत्स्य पालन, पुलिस, परिवहन और 43+ विभागों की 250+ सरकारी सेवाएं एक ही जगह</p>
-            <span class="dept-btn"><i class="fas fa-arrow-right"></i> अभी देखें</span>
-        </a>
-    </div>
 
     <!-- ===== BLOG / UPDATES SECTION ===== -->
     <section class="section" id="blog-updates">
@@ -745,6 +645,7 @@
 
         document.querySelectorAll('.nav-bar a').forEach(link => {
             link.addEventListener('click', function(e) {
+                if (this.classList.contains('dept-link')) return;
                 document.querySelectorAll('.nav-bar a').forEach(l => l.classList.remove('active'));
                 this.classList.add('active');
             });
@@ -752,7 +653,7 @@
 
         window.addEventListener('scroll', () => {
             const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-bar a');
+            const navLinks = document.querySelectorAll('.nav-bar a:not(.dept-link)');
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 120;
