@@ -421,22 +421,24 @@
             display: block;
         }
 
-        /* ===== COURSE POSTER ===== */
+        /* ===== COURSE POSTER (UPDATED FOR AUTO-STRETCH) ===== */
         .course-poster-container {
             width: 100%;
             text-align: center;
             margin-top: 10px;
+            padding: 0 10px; /* Small padding on sides for mobile */
         }
 
         .course-poster-img {
-            width: 100%;
-            max-width: 1000px; /* Prevents it from getting too huge on big screens */
-            height: auto;
+            width: 100%;           /* Auto-stretch to fit container */
+            height: auto;          /* Maintain aspect ratio */
+            max-width: 1000px;     /* Limit size on large PCs */
             border-radius: var(--radius);
             box-shadow: var(--shadow-lg);
             border: 1px solid var(--border);
             display: block;
             margin: 0 auto;
+            object-fit: contain;   /* Prevent distortion */
         }
 
         /* ===== IMAGE SHOWCASE ===== */
@@ -1456,7 +1458,7 @@
         </div>
     </section>
 
-    <!-- ===== COMPUTER COURSES (UPDATED WITH YOUR UPLOADED IMAGE) ===== -->
+    <!-- ===== COMPUTER COURSES (UPDATED WITH YOUR NEW WEBP IMAGE) ===== -->
     <section class="section" id="computer-courses">
         <div class="container">
             <div class="section-header">
@@ -1467,9 +1469,9 @@
                 </div>
             </div>
             
-            <!-- YAHAN AAPKI UPLOAD KI HUI IMAGE LAGI HAI -->
+            <!-- YAHAN AAPKI NAYI UPLOAD KI HUI IMAGE LAGI HAI (skynet.webp) -->
             <div class="course-poster-container">
-                <img src="image.png" alt="SKYNET Computer Center Course Details" class="course-poster-img">
+                <img src="skynet.webp" alt="SKYNET Computer Center Course Details" class="course-poster-img">
             </div>
 
         </div>
