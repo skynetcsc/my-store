@@ -229,7 +229,6 @@
             margin-bottom: 12px;
         }
 
-        /* Marquee (Right to Left) */
         .marquee-container {
             overflow: hidden;
             white-space: nowrap;
@@ -250,7 +249,6 @@
             color: #fff;
         }
 
-        /* Right to Left Animation */
         @keyframes marquee-right-to-left {
             0% { transform: translateX(100%); }
             100% { transform: translateX(-100%); }
@@ -278,7 +276,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
             gap: 12px;
-            max-width: 800px; /* Increased to fit 5 cards perfectly */
+            max-width: 800px;
             margin: 0 auto;
         }
 
@@ -372,12 +370,62 @@
             align-items: center;
             box-shadow: var(--shadow);
             border: 1px solid var(--border);
-            transition: all 0.2s;
+            transition: all 0.3s;
             position: relative;
             overflow: hidden;
             cursor: pointer;
             min-height: 70px;
         }
+
+        /* ===== COLORFUL BACKGROUND CARDS (Har card ka apna rang) ===== */
+
+        /* 1. Blue Background */
+        .service-item:nth-child(6n+1) {
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+            border-color: #bfdbfe;
+        }
+        .service-item:nth-child(6n+1)::before { background: #3b82f6; }
+        .service-item:nth-child(6n+1) .service-icon { background: #3b82f6; color: #fff; }
+
+        /* 2. Green Background */
+        .service-item:nth-child(6n+2) {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-color: #a7f3d0;
+        }
+        .service-item:nth-child(6n+2)::before { background: #10b981; }
+        .service-item:nth-child(6n+2) .service-icon { background: #10b981; color: #fff; }
+
+        /* 3. Orange Background */
+        .service-item:nth-child(6n+3) {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            border-color: #fde68a;
+        }
+        .service-item:nth-child(6n+3)::before { background: #f59e0b; }
+        .service-item:nth-child(6n+3) .service-icon { background: #f59e0b; color: #fff; }
+
+        /* 4. Purple Background */
+        .service-item:nth-child(6n+4) {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-color: #ddd6fe;
+        }
+        .service-item:nth-child(6n+4)::before { background: #8b5cf6; }
+        .service-item:nth-child(6n+4) .service-icon { background: #8b5cf6; color: #fff; }
+
+        /* 5. Pink Background */
+        .service-item:nth-child(6n+5) {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border-color: #fbcfe8;
+        }
+        .service-item:nth-child(6n+5)::before { background: #ec4899; }
+        .service-item:nth-child(6n+5) .service-icon { background: #ec4899; color: #fff; }
+
+        /* 6. Teal Background */
+        .service-item:nth-child(6n+6) {
+            background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%);
+            border-color: #99f6e4;
+        }
+        .service-item:nth-child(6n+6)::before { background: #14b8a6; }
+        .service-item:nth-child(6n+6) .service-icon { background: #14b8a6; color: #fff; }
 
         .service-item::before {
             content: '';
@@ -385,19 +433,13 @@
             left: 0;
             top: 0;
             bottom: 0;
-            width: 4px;
-            background: var(--primary);
+            width: 5px;
             border-radius: 0 4px 4px 0;
         }
 
-        .service-item.cyber::before { background: var(--accent); }
-        .service-item.course::before { background: var(--success); }
-        .service-item.other::before { background: #8b5cf6; }
-
         .service-item:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary-light);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 20px -5px rgba(0,0,0,0.15), 0 4px 8px -4px rgba(0,0,0,0.1);
         }
 
         .service-item .service-info {
@@ -411,47 +453,43 @@
         .service-item .service-icon {
             width: 40px;
             height: 40px;
-            border-radius: 8px;
+            border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 1rem;
             flex-shrink: 0;
-            background: #eff6ff;
-            color: var(--primary);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.12);
         }
 
-        .service-item.cyber .service-icon { background: #fffbeb; color: var(--accent-dark); }
-        .service-item.course .service-icon { background: #ecfdf5; color: var(--success); }
-        .service-item.other .service-icon { background: #f5f3ff; color: #8b5cf6; }
-
         .service-item .service-name {
-            font-weight: 600;
+            font-weight: 700;
             font-size: 0.9rem;
             line-height: 1.3;
             word-break: break-word;
+            color: #1e293b;
         }
 
         .service-item .service-name small {
             display: block;
-            font-weight: 400;
+            font-weight: 500;
             font-size: 0.75rem;
-            color: var(--text-light);
+            color: #475569;
         }
 
         .service-item .service-price {
-            font-weight: 700;
+            font-weight: 800;
             font-size: 1rem;
-            color: var(--primary);
+            color: #0f2447;
             white-space: nowrap;
             margin-left: 8px;
             text-align: right;
         }
 
         .service-item .service-price small {
-            font-weight: 400;
+            font-weight: 500;
             font-size: 0.7rem;
-            color: var(--text-light);
+            color: #475569;
             display: block;
         }
 
@@ -475,7 +513,7 @@
             object-fit: contain;
         }
 
-        /* ===== BLOG / UPDATES SECTION ===== */
+        /* ===== BLOG SECTION ===== */
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -498,7 +536,6 @@
         .blog-card:hover {
             transform: translateY(-3px);
             box-shadow: var(--shadow-lg);
-            border-color: #0ea5e9;
         }
 
         .blog-img {
@@ -648,6 +685,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
         }
 
         .modal-header h4 {
@@ -719,12 +757,12 @@
 
         /* ===== JOBS PORTAL ===== */
         .job-card {
-            background: #fff;
+            background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%);
             border-radius: var(--radius);
             padding: 20px;
             box-shadow: var(--shadow);
-            border: 1px solid var(--border);
-            border-left: 4px solid var(--danger);
+            border: 1px solid #fecdd3;
+            border-left: 5px solid var(--danger);
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -1141,7 +1179,6 @@
         <div class="container">
             <h2 class="hindi">आपकी हर सरकारी सेवा, एक ही जगह</h2>
 
-            <!-- SCROLLING TEXT (RIGHT TO LEFT) -->
             <div class="marquee-container">
                 <div class="marquee-text hindi">
                     आधार कार्ड, पैन कार्ड, पासपोर्ट, जन्म प्रमाण पत्र, राशन कार्ड और अन्य सभी सरकारी सेवाएं। 20+ वर्षों का भरोसा।
@@ -1189,7 +1226,6 @@
                 </div>
             </div>
             <div class="blog-grid">
-                <!-- Blog Card 1 -->
                 <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="blog-card">
                     <div class="blog-img">
                         <i class="fas fa-bullhorn"></i>
@@ -1200,7 +1236,6 @@
                         <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <!-- Blog Card 2 -->
                 <a href="https://skynetramgarhh.blogspot.com/2026/10/job-portal.html" target="_blank" class="blog-card">
                     <div class="blog-img" style="background: linear-gradient(135deg, #ef4444, #f97316);">
                         <i class="fas fa-briefcase"></i>
@@ -1211,7 +1246,6 @@
                         <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <!-- Blog Card 3 -->
                 <a href="https://skynetramgarhh.blogspot.com/" target="_blank" class="blog-card">
                     <div class="blog-img" style="background: linear-gradient(135deg, #10b981, #059669);">
                         <i class="fas fa-laptop-code"></i>
@@ -1237,7 +1271,6 @@
                 </div>
             </div>
             <div class="service-grid">
-                <!-- Aadhaar Card -->
                 <div class="service-item" onclick="openModal('aadhaar')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-id-card"></i></div>
@@ -1245,7 +1278,6 @@
                     </div>
                     <div class="service-price">₹60<span style="font-size:0.7rem; font-weight:400; color:var(--text-light);"> से</span></div>
                 </div>
-                <!-- PAN Card -->
                 <div class="service-item" onclick="openModal('pan')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-file-invoice"></i></div>
@@ -1253,7 +1285,6 @@
                     </div>
                     <div class="service-price">₹60<span style="font-size:0.7rem; font-weight:400; color:var(--text-light);"> से</span></div>
                 </div>
-                <!-- Voter Card -->
                 <div class="service-item" onclick="openModal('voter')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-vote-yea"></i></div>
@@ -1261,7 +1292,6 @@
                     </div>
                     <div class="service-price">₹40<span style="font-size:0.7rem; font-weight:400; color:var(--text-light);"> से</span></div>
                 </div>
-                <!-- Passport -->
                 <div class="service-item" onclick="openModal('passport')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-passport"></i></div>
@@ -1269,7 +1299,6 @@
                     </div>
                     <div class="service-price">₹20<span style="font-size:0.7rem; font-weight:400; color:var(--text-light);"> से</span></div>
                 </div>
-                <!-- E-Shram -->
                 <div class="service-item" onclick="openModal('eshram')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-briefcase"></i></div>
@@ -1277,7 +1306,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Ayushman -->
                 <div class="service-item" onclick="openModal('ayushman')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-heartbeat"></i></div>
@@ -1285,7 +1313,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Happy Card -->
                 <div class="service-item" onclick="openModal('happy')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-smile"></i></div>
@@ -1293,7 +1320,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Ration Card -->
                 <div class="service-item" onclick="openModal('ration')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-utensils"></i></div>
@@ -1301,7 +1327,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Covid Card -->
                 <div class="service-item" onclick="openModal('covid')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-virus"></i></div>
@@ -1309,7 +1334,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Birth Certificate -->
                 <div class="service-item" onclick="openModal('birth')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-baby"></i></div>
@@ -1317,7 +1341,6 @@
                     </div>
                     <div class="service-price">₹40<span style="font-size:0.7rem; font-weight:400; color:var(--text-light);"> से</span></div>
                 </div>
-                <!-- Death Certificate -->
                 <div class="service-item" onclick="openModal('death')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-cross"></i></div>
@@ -1325,7 +1348,6 @@
                     </div>
                     <div class="service-price">₹40<span style="font-size:0.7rem; font-weight:400; color:var(--text-light);"> से</span></div>
                 </div>
-                <!-- Caste Certificate -->
                 <div class="service-item" onclick="openModal('caste')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-users"></i></div>
@@ -1333,7 +1355,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Residence Certificate -->
                 <div class="service-item" onclick="openModal('residence')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-home"></i></div>
@@ -1341,7 +1362,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Income Certificate -->
                 <div class="service-item" onclick="openModal('income')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-chart-line"></i></div>
@@ -1349,7 +1369,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- EWS Certificate -->
                 <div class="service-item" onclick="openModal('ews')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-file-alt"></i></div>
@@ -1357,7 +1376,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Marriage Certificate -->
                 <div class="service-item" onclick="openModal('marriage')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-ring"></i></div>
@@ -1365,7 +1383,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Stamp Paper -->
                 <div class="service-item" onclick="openModal('stamp')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-stamp"></i></div>
@@ -1373,7 +1390,6 @@
                     </div>
                     <div class="service-price">₹20</div>
                 </div>
-                <!-- Family ID -->
                 <div class="service-item" onclick="openModal('family')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-id-badge"></i></div>
@@ -1381,7 +1397,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Nakal Fard Intkal -->
                 <div class="service-item" onclick="openModal('nakal')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-file-contract"></i></div>
@@ -1389,7 +1404,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- PF Withdraw -->
                 <div class="service-item" onclick="openModal('pf')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-money-bill-wave"></i></div>
@@ -1397,7 +1411,6 @@
                     </div>
                     <div class="service-price">₹80</div>
                 </div>
-                <!-- Police Verification -->
                 <div class="service-item" onclick="openModal('police')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-shield-alt"></i></div>
@@ -1405,7 +1418,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Unemployment Registration -->
                 <div class="service-item" onclick="openModal('unemployment')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-user-slash"></i></div>
@@ -1413,7 +1425,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Saksham Yojana -->
                 <div class="service-item" onclick="openModal('saksham')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-hands-helping"></i></div>
@@ -1421,7 +1432,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- New Electricity Connection -->
                 <div class="service-item" onclick="openModal('electricity')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-bolt"></i></div>
@@ -1429,7 +1439,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Admission Form -->
                 <div class="service-item" onclick="openModal('admission')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-file-signature"></i></div>
@@ -1437,7 +1446,6 @@
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <!-- Fee Payment -->
                 <div class="service-item" onclick="openModal('fee')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-credit-card"></i></div>
@@ -1753,7 +1761,6 @@
                 </div>
             </div>
             <div class="reviews-grid">
-                <!-- Review 1 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -1767,7 +1774,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Review 2 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -1781,7 +1787,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- Review 3 -->
                 <div class="review-card">
                     <div class="review-stars">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
@@ -1823,7 +1828,6 @@
                 </div>
             </div>
 
-            <!-- Social Links (WhatsApp Channel & Instagram) -->
             <div class="social-links">
                 <a href="https://whatsapp.com/channel/0029Va5JAfyCnA7x10ZQdh27" target="_blank" class="social-btn whatsapp-channel">
                     <i class="fab fa-whatsapp"></i> Follow WhatsApp Channel
@@ -1851,7 +1855,7 @@
         </div>
     </footer>
 
-    <!-- ===== MODAL POPUP (For Service Options) ===== -->
+    <!-- ===== MODAL POPUP ===== -->
     <div class="modal-overlay" id="serviceModal">
         <div class="modal-box">
             <div class="modal-header">
@@ -1859,7 +1863,6 @@
                 <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body" id="modalOptions">
-                <!-- Options will be injected by JavaScript -->
             </div>
             <div class="modal-footer">
                 <button onclick="closeModal()">Cancel</button>
@@ -1869,45 +1872,13 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
-        // 1. WhatsApp Number
         const MY_WHATSAPP_NUMBER = "918054061994";
 
-        // 2. Service Data (Options and Prices)
         const servicesData = {
-            // Govt Services
-            aadhaar: {
-                title: "Aadhaar Card - Select Option",
-                options: [
-                    { name: "Correction", price: "₹100" },
-                    { name: "PVC Card Print", price: "₹70" },
-                    { name: "Print + Lamination", price: "₹60" }
-                ]
-            },
-            pan: {
-                title: "PAN Card - Select Option",
-                options: [
-                    { name: "New PAN Card", price: "₹160" },
-                    { name: "Correction", price: "₹160" },
-                    { name: "PVC Card Print", price: "₹70" },
-                    { name: "Print + Lamination", price: "₹60" }
-                ]
-            },
-            voter: {
-                title: "Voter Card - Select Option",
-                options: [
-                    { name: "New Voter ID", price: "₹50" },
-                    { name: "Correction", price: "₹50" },
-                    { name: "Print + Lamination", price: "₹40" }
-                ]
-            },
-            passport: {
-                title: "Passport - Select Option",
-                options: [
-                    { name: "New Passport", price: "₹1650" },
-                    { name: "Renewal", price: "₹1650" },
-                    { name: "Passport Photo (4 pcs)", price: "₹20" }
-                ]
-            },
+            aadhaar: { title: "Aadhaar Card - Select Option", options: [{ name: "Correction", price: "₹100" }, { name: "PVC Card Print", price: "₹70" }, { name: "Print + Lamination", price: "₹60" }] },
+            pan: { title: "PAN Card - Select Option", options: [{ name: "New PAN Card", price: "₹160" }, { name: "Correction", price: "₹160" }, { name: "PVC Card Print", price: "₹70" }, { name: "Print + Lamination", price: "₹60" }] },
+            voter: { title: "Voter Card - Select Option", options: [{ name: "New Voter ID", price: "₹50" }, { name: "Correction", price: "₹50" }, { name: "Print + Lamination", price: "₹40" }] },
+            passport: { title: "Passport - Select Option", options: [{ name: "New Passport", price: "₹1650" }, { name: "Renewal", price: "₹1650" }, { name: "Passport Photo (4 pcs)", price: "₹20" }] },
             eshram: { title: "E-Shram Card - Select Option", options: [{ name: "New Registration", price: "₹100" }, { name: "Correction", price: "₹100" }] },
             ayushman: { title: "Ayushman Card - Select Option", options: [{ name: "New Card", price: "₹100" }, { name: "Download/Print", price: "₹50" }] },
             happy: { title: "Happy Card - Select Option", options: [{ name: "New Card", price: "₹100" }] },
@@ -1930,8 +1901,6 @@
             electricity: { title: "New Electricity Connection - Select Option", options: [{ name: "New Connection", price: "₹100" }] },
             admission: { title: "Admission Form - Select Option", options: [{ name: "Form Filling", price: "₹100" }] },
             fee: { title: "Fee Payment - Select Option", options: [{ name: "Fee Payment", price: "₹30 (Extra Charges)" }] },
-
-            // Cyber Cafe
             photocopy: { title: "Photocopy - Select Option", options: [{ name: "Single Side", price: "₹2" }, { name: "Double Side", price: "₹3" }] },
             print_bw: { title: "Print Black & White - Select Option", options: [{ name: "Single Side", price: "₹5" }, { name: "Double Side", price: "₹8" }] },
             print_color: { title: "Print Color - Select Option", options: [{ name: "Single Side", price: "₹10" }, { name: "Double Side", price: "₹15" }] },
@@ -1951,8 +1920,6 @@
             life: { title: "Life Certificate - Select Option", options: [{ name: "Life Certificate", price: "₹50" }] },
             repair: { title: "Computer Repair - Select Option", options: [{ name: "Diagnosis", price: "Free" }, { name: "Repair", price: "As per work" }] },
             windows: { title: "Windows Install - Select Option", options: [{ name: "Windows 10/11", price: "₹200" }] },
-
-            // Computer Services (from file content)
             toner_refill: { title: "Toner Refilling - Select Option", options: [{ name: "Toner Refill", price: "As per work" }] },
             antivirus: { title: "Antivirus Installation - Select Option", options: [{ name: "Antivirus Install", price: "As per work" }] },
             printer_repair: { title: "Printer Repair - Select Option", options: [{ name: "Printer Repair", price: "As per work" }] },
@@ -1970,66 +1937,37 @@
             rent_agreement: { title: "Rent Agreement - Select Option", options: [{ name: "Rent Agreement", price: "₹100" }] }
         };
 
-        // 3. Function to Open Modal
         function openModal(serviceId) {
             const service = servicesData[serviceId];
             if (!service) return;
-
-            // Set Title
             document.getElementById('modalTitle').innerText = service.title;
-
-            // Build Options HTML
             const optionsContainer = document.getElementById('modalOptions');
             optionsContainer.innerHTML = '';
-
             service.options.forEach(opt => {
                 const optionDiv = document.createElement('div');
                 optionDiv.className = 'modal-option';
-                optionDiv.innerHTML = `
-                    <span class="opt-name hindi">${opt.name}</span>
-                    <span class="opt-price">${opt.price}</span>
-                `;
-
-                // Add click event to send WhatsApp
-                optionDiv.onclick = function() {
-                    sendWhatsApp(service.title, opt.name, opt.price);
-                };
-
+                optionDiv.innerHTML = `<span class="opt-name hindi">${opt.name}</span><span class="opt-price">${opt.price}</span>`;
+                optionDiv.onclick = function() { sendWhatsApp(service.title, opt.name, opt.price); };
                 optionsContainer.appendChild(optionDiv);
             });
-
-            // Show Modal
             document.getElementById('serviceModal').classList.add('active');
         }
 
-        // 4. Function to Close Modal
         function closeModal() {
             document.getElementById('serviceModal').classList.remove('active');
         }
 
-        // 5. Function to Send WhatsApp Message
         function sendWhatsApp(serviceTitle, optionName, price) {
-            // Create a clean message
             const message = `Hello SKYNET DIGITAL CENTER,%0A%0AI want to apply for: *${serviceTitle.replace(' - Select Option', '')}*%0AOption: *${optionName}*%0APrice: *${price}*%0A%0APlease guide me.`;
-
-            // WhatsApp URL with the NEW number
             const whatsappUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
-
-            // Open in new tab
             window.open(whatsappUrl, '_blank');
-
-            // Close modal
             closeModal();
         }
 
-        // 6. Close modal when clicking outside the box
         document.getElementById('serviceModal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeModal();
-            }
+            if (e.target === this) { closeModal(); }
         });
 
-        // 7. Smooth scroll active nav highlight
         document.querySelectorAll('.nav-bar a').forEach(link => {
             link.addEventListener('click', function(e) {
                 document.querySelectorAll('.nav-bar a').forEach(l => l.classList.remove('active'));
@@ -2043,15 +1981,11 @@
             let current = '';
             sections.forEach(section => {
                 const sectionTop = section.offsetTop - 120;
-                if (window.scrollY >= sectionTop) {
-                    current = section.getAttribute('id');
-                }
+                if (window.scrollY >= sectionTop) { current = section.getAttribute('id'); }
             });
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                if (link.getAttribute('href') === '#' + current) { link.classList.add('active'); }
             });
         });
     </script>
