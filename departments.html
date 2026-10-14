@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सभी विभागीय सेवाएं | SKYNET DIGITAL CENTER</title>
+    <meta name="description" content="हरियाणा सरकार के सभी 43 विभागों की 250+ सेवाएं - SKYNET DIGITAL CENTER">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a3a6b; --primary-dark: #0f2447; --primary-light: #2a5a9b;
+            --accent: #f59e0b; --accent-dark: #d97706; --success: #10b981; --danger: #ef4444;
+            --bg: #f0f4f8; --card-bg: #ffffff; --text: #1e293b; --text-light: #64748b;
+            --border: #e2e8f0; --radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
+            --font-hindi: 'Noto Sans Devanagari', sans-serif;
+            --font: 'Inter', sans-serif;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        .hindi { font-family: var(--font-hindi); }
+        .header { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); color: #fff; padding: 16px 0; position: sticky; top: 0; z-index: 1000; box-shadow: var(--shadow-lg); }
+        .header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary-dark); font-weight: 800; }
+        .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px; }
+        .logo-text span { font-size: 0.75rem; opacity: 0.85; display: block; }
+        .header-contact { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .header-contact a { color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 500; }
+        .header-contact a:hover { color: var(--accent); }
+        .header-contact .btn-call { background: var(--accent); color: var(--primary-dark); padding: 8px 16px; border-radius: 8px; font-weight: 700; transition: all 0.2s; }
+        .header-contact .btn-call:hover { background: #fff; transform: translateY(-1px); }
+        .back-bar { background: #fff; border-bottom: 1px solid var(--border); padding: 12px 0; box-shadow: 0 1px 3px rgba(0,0,0,0.05); position: sticky; top: 80px; z-index: 999; }
+        .back-bar .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+        .back-bar .page-title { font-size: 1.15rem; font-weight: 700; color: var(--primary); display: flex; align-items: center; gap: 10px; }
+        .back-bar .page-title i { color: var(--accent); }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; background: var(--primary); color: #fff; padding: 10px 20px; border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 0.9rem; transition: all 0.2s; }
+        .back-btn:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 6px 15px rgba(26, 58, 107, 0.4); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 16px; }
+        .section { padding: 40px 0; }
+        .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
+        .section-header .icon-box { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; flex-shrink: 0; background: linear-gradient(135deg, #6366f1, #8b5cf6); }
+        .section-header h3 { font-size: 1.35rem; font-weight: 700; }
+        .section-header p { font-size: 0.85rem; color: var(--text-light); }
+        .dept-header { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin: 28px 0 14px; padding: 10px 16px; background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%); border-radius: 10px; border-left: 5px solid var(--primary); display: flex; align-items: center; gap: 10px; }
+        .dept-header:first-of-type { margin-top: 0; }
+        .dept-header i { color: var(--primary); font-size: 1.2rem; }
+        .dept-count { background: var(--accent); color: var(--primary-dark); padding: 2px 10px; border-radius: 50px; font-size: 0.7rem; font-weight: 700; margin-left: auto; }
+        .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+        .service-item { background: var(--card-bg); border-radius: var(--radius); padding: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); border: 1px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; cursor: pointer; min-height: 70px; }
+        .service-item:nth-child(6n+1) { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color: #bfdbfe; }
+        .service-item:nth-child(6n+1)::before { background: #3b82f6; }
+        .service-item:nth-child(6n+1) .service-icon { background: #3b82f6; color: #fff; }
+        .service-item:nth-child(6n+2) { background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-color: #a7f3d0; }
+        .service-item:nth-child(6n+2)::before { background: #10b981; }
+        .service-item:nth-child(6n+2) .service-icon { background: #10b981; color: #fff; }
+        .service-item:nth-child(6n+3) { background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border-color: #fde68a; }
+        .service-item:nth-child(6n+3)::before { background: #f59e0b; }
+        .service-item:nth-child(6n+3) .service-icon { background: #f59e0b; color: #fff; }
+        .service-item:nth-child(6n+4) { background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-color: #ddd6fe; }
+        .service-item:nth-child(6n+4)::before { background: #8b5cf6; }
+        .service-item:nth-child(6n+4) .service-icon { background: #8b5cf6; color: #fff; }
+        .service-item:nth-child(6n+5) { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-color: #fbcfe8; }
+        .service-item:nth-child(6n+5)::before { background: #ec4899; }
+        .service-item:nth-child(6n+5) .service-icon { background: #ec4899; color: #fff; }
+        .service-item:nth-child(6n+6) { background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%); border-color: #99f6e4; }
+        .service-item:nth-child(6n+6)::before { background: #14b8a6; }
+        .service-item:nth-child(6n+6) .service-icon { background: #14b8a6; color: #fff; }
+        .service-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; border-radius: 0 4px 4px 0; }
+        .service-item:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 20px -5px rgba(0,0,0,0.15), 0 4px 8px -4px rgba(0,0,0,0.1); }
+        .service-item .service-info { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+        .service-item .service-icon { width: 40px; height: 40px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; box-shadow: 0 3px 8px rgba(0,0,0,0.12); }
+        .service-item .service-name { font-weight: 700; font-size: 0.9rem; line-height: 1.3; word-break: break-word; color: #1e293b; }
+        .service-item .service-name small { display: block; font-weight: 500; font-size: 0.75rem; color: #475569; }
+        .service-item .service-price { font-weight: 800; font-size: 1rem; color: #0f2447; white-space: nowrap; margin-left: 8px; text-align: right; }
+        .service-item .service-price small { font-weight: 500; font-size: 0.7rem; color: #475569; display: block; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 16px; }
+        .modal-overlay.active { display: flex; }
+        .modal-box { background: #fff; border-radius: var(--radius); width: 100%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2); overflow: hidden; animation: slideUp 0.3s ease-out; }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .modal-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #eff6ff, #dbeafe); }
+        .modal-header h4 { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
+        .modal-header .close-btn { background: none; border: none; font-size: 1.2rem; color: var(--text-light); cursor: pointer; }
+        .modal-body { padding: 0; }
+        .modal-option { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; cursor: pointer; transition: background 0.2s; }
+        .modal-option:hover { background: #f8fafc; }
+        .modal-option:last-child { border-bottom: none; }
+        .modal-option .opt-name { font-weight: 600; font-size: 0.95rem; }
+        .modal-option .opt-price { font-weight: 700; color: var(--success); font-size: 0.95rem; }
+        .modal-footer { padding: 12px 20px; background: #f8fafc; text-align: center; border-top: 1px solid var(--border); }
+        .modal-footer button { background: none; border: none; color: var(--text-light); font-weight: 600; cursor: pointer; font-size: 0.9rem; }
+        .modal-footer button:hover { color: var(--danger); }
+        .footer { background: var(--primary-dark); color: rgba(255,255,255,0.7); padding: 24px 0; text-align: center; font-size: 0.85rem; margin-top: 30px; }
+        .footer a { color: var(--accent); text-decoration: none; }
+        @media (max-width: 1024px) { .service-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } }
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; text-align: center; }
+            .header-contact { justify-content: center; width: 100%; }
+            .back-bar { top: 0; }
+            .back-bar .container { flex-direction: column; text-align: center; }
+            .section { padding: 30px 0; }
+            .section-header .icon-box { width: 38px; height: 38px; font-size: 1rem; }
+            .section-header h3 { font-size: 1.2rem; }
+            .service-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .service-item { padding: 12px; min-height: 60px; }
+            .service-item .service-icon { width: 34px; height: 34px; font-size: 0.9rem; }
+            .service-item .service-name { font-size: 0.82rem; }
+            .service-item .service-price { font-size: 0.85rem; }
+            .dept-header { font-size: 0.95rem; padding: 8px 12px; }
+        }
+        @media (max-width: 480px) {
+            .logo-icon { width: 40px; height: 40px; font-size: 1.2rem; }
+            .logo-text h1 { font-size: 1.1rem; }
+            .service-grid { grid-template-columns: 1fr; }
+            .service-item { padding: 14px; }
+            .service-item .service-icon { width: 38px; height: 38px; }
+            .service-item .service-name { font-size: 0.9rem; }
+            .modal-box { max-width: 95%; margin: 10px; }
+            .modal-header h4 { font-size: 1rem; }
+            .modal-option { padding: 14px 16px; }
+            .modal-option .opt-name { font-size: 0.9rem; }
+            .modal-option .opt-price { font-size: 0.9rem; }
+            .dept-header { font-size: 0.88rem; padding: 8px 10px; flex-wrap: wrap; }
+        }
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-light); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="container">
+            <div class="logo-area">
+                <div class="logo-icon">SK</div>
+                <div class="logo-text">
+                    <h1>SKYNET DIGITAL CENTER</h1>
+                    <span>20+ Years Trusted Service | CSC Centre | Cyber Cafe</span>
+                </div>
+            </div>
+            <div class="header-contact">
+                <a href="tel:8054061994"><i class="fas fa-phone-alt"></i> 8054061994</a>
+                <a href="https://wa.me/918054061994" class="btn-call" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- BACK BAR -->
+    <div class="back-bar">
+        <div class="container">
+            <div class="page-title"><i class="fas fa-list-ul"></i> सभी विभागीय सेवाएं (43 विभाग, 250+ सेवाएं)</div>
+            <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> मुख्य पेज पर जाएं</a>
+        </div>
+    </div>
+
+    <!-- ===== ALL DEPARTMENT SERVICES ===== -->
+    <section class="section" id="all-gov-services">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box"><i class="fas fa-list-ul"></i></div>
+                <div>
+                    <h3 class="hindi">विभाग अनुसार सभी सेवाएं</h3>
+                    <p class="hindi">किसी भी सेवा पर क्लिक करें, WhatsApp पर आवेदन भेजें</p>
+                </div>
+            </div>
+
+            <!-- 1. Agriculture -->
+            <h4 class="dept-header"><i class="fas fa-tractor"></i> Agriculture Department (कृषि विभाग) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('agri_fertilizer_auth')"><div class="service-info"><div class="service-icon"><i class="fas fa-seedling"></i></div><div class="service-name hindi">Fertilizer Authorization Letter <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('agri_pesticide_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-spray-can"></i></div><div class="service-name hindi">Pesticides License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('agri_seed_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-seedling"></i></div><div class="service-name hindi">Seed License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('agri_cotton_ginning')"><div class="service-info"><div class="service-icon"><i class="fas fa-industry"></i></div><div class="service-name hindi">Cotton Ginning License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('agri_khandsari')"><div class="service-info"><div class="service-icon"><i class="fas fa-candy-cane"></i></div><div class="service-name hindi">Khandsari Sugar License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 2. Animal Husbandry -->
+            <h4 class="dept-header"><i class="fas fa-cow"></i> Animal Husbandry & Dairying (पशुपालन विभाग) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('animal_livestock_insurance')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">Livestock Insurance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('animal_dairy_unit')"><div class="service-info"><div class="service-icon"><i class="fas fa-glass-whiskey"></i></div><div class="service-name hindi">Hi-Tech Dairy Unit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('animal_piggery')"><div class="service-info"><div class="service-icon"><i class="fas fa-piggy-bank"></i></div><div class="service-name hindi">Piggery/Sheep/Goat Unit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('animal_poultry')"><div class="service-info"><div class="service-icon"><i class="fas fa-egg"></i></div><div class="service-name hindi">Backyard Poultry Unit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('animal_gaushala_grant')"><div class="service-info"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="service-name hindi">Gaushala Fodder Grant <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 3. BOCW -->
+            <h4 class="dept-header"><i class="fas fa-hard-hat"></i> BOCW Board (निर्माण श्रमिक बोर्ड) <span class="dept-count">10</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('bocw_registration')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-plus"></i></div><div class="service-name hindi">Worker Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-tie"></i></div><div class="service-name hindi">Pension Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_death')"><div class="service-info"><div class="service-icon"><i class="fas fa-cross"></i></div><div class="service-name hindi">Death Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_disability')"><div class="service-info"><div class="service-icon"><i class="fas fa-wheelchair"></i></div><div class="service-name hindi">Disability Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_maternity')"><div class="service-info"><div class="service-icon"><i class="fas fa-baby"></i></div><div class="service-name hindi">Maternity Benefit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_marriage')"><div class="service-info"><div class="service-icon"><i class="fas fa-ring"></i></div><div class="service-name hindi">Marriage Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_education')"><div class="service-info"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><div class="service-name hindi">Children Education Aid <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_bicycle')"><div class="service-info"><div class="service-icon"><i class="fas fa-bicycle"></i></div><div class="service-name hindi">Bicycle Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_tools')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">Tools Purchase Grant <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('bocw_funeral')"><div class="service-info"><div class="service-icon"><i class="fas fa-pray"></i></div><div class="service-name hindi">Funeral Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 4. Chief Electrical -->
+            <h4 class="dept-header"><i class="fas fa-bolt"></i> Chief Electrical Inspector (मुख्य विद्युत निरीक्षक) <span class="dept-count">4</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('electrical_installation_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">Electrical Installation Certification <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('electrical_lift_new')"><div class="service-info"><div class="service-icon"><i class="fas fa-elevator"></i></div><div class="service-name hindi">New Lift Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('electrical_lift_renewal')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">Lift Renewal <small>क्लिक करें</small></div></div><div class="service-price">₹300</div></div>
+                <div class="service-item" onclick="openModal('electrical_hti_inspection')"><div class="service-info"><div class="service-icon"><i class="fas fa-search"></i></div><div class="service-name hindi">HTI/Transformer Inspection <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 5. CM Relief Fund -->
+            <h4 class="dept-header"><i class="fas fa-hand-holding-heart"></i> Chief Minister Relief Fund (मुख्यमंत्री राहत कोष) <span class="dept-count">1</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('cm_relief')"><div class="service-info"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="service-name hindi">CM Relief Fund Application <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 6. Cooperation -->
+            <h4 class="dept-header"><i class="fas fa-hands-helping"></i> Cooperation Department (सहकारिता विभाग) <span class="dept-count">1</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('coop_society_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">Cooperative Society Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 7. CRID -->
+            <h4 class="dept-header"><i class="fas fa-database"></i> CRID (नागरिक संसाधन सूचना विभाग) <span class="dept-count">2</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('crid_marriage_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-ring"></i></div><div class="service-name hindi">Marriage Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('crid_bank_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-university"></i></div><div class="service-name hindi">Bank Account Verification (PPP) <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+            </div>
+
+            <!-- 8. DHBVN -->
+            <h4 class="dept-header"><i class="fas fa-bolt"></i> DHBVN (दक्षिण हरियाणा बिजली वितरण निगम) <span class="dept-count">10</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('dhbvn_new_conn_lt')"><div class="service-info"><div class="service-icon"><i class="fas fa-plug"></i></div><div class="service-name hindi">New Connection - LT <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_new_conn_11kv')"><div class="service-info"><div class="service-icon"><i class="fas fa-bolt"></i></div><div class="service-name hindi">New Connection - 11 KV <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_load_enhance')"><div class="service-info"><div class="service-icon"><i class="fas fa-arrow-up"></i></div><div class="service-name hindi">Load Enhancement <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_name_change')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-edit"></i></div><div class="service-name hindi">Name Change <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_meter_complaint')"><div class="service-info"><div class="service-icon"><i class="fas fa-tachometer-alt"></i></div><div class="service-name hindi">Meter Complaint <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_billing_complaint')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">Billing Complaint <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_no_dues')"><div class="service-info"><div class="service-icon"><i class="fas fa-check-circle"></i></div><div class="service-name hindi">No Dues Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_disconnection')"><div class="service-info"><div class="service-icon"><i class="fas fa-power-off"></i></div><div class="service-name hindi">Disconnection Request <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_shifting')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">Meter/Line Shifting <small>क्लिक करें</small></div></div><div class="service-price">₹200</div></div>
+                <div class="service-item" onclick="openModal('dhbvn_reconnection')"><div class="service-info"><div class="service-icon"><i class="fas fa-redo"></i></div><div class="service-name hindi">Reconnection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 9. Employment -->
+            <h4 class="dept-header"><i class="fas fa-briefcase"></i> Employment Department (रोजगार विभाग) <span class="dept-count">9</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('emp_jobseeker_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-plus"></i></div><div class="service-name hindi">Jobseeker Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('emp_employer_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-building"></i></div><div class="service-name hindi">Employer Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('emp_saksham_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-hands-helping"></i></div><div class="service-name hindi">SAKSHAM Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('emp_unemployment_allow')"><div class="service-info"><div class="service-icon"><i class="fas fa-money-bill-wave"></i></div><div class="service-name hindi">Unemployment Allowance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('emp_one_family_job')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">One Family One Job <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('emp_reg_renewal')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">Registration Renewal <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('emp_qualification_add')"><div class="service-info"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><div class="service-name hindi">Qualification Add/Update <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('emp_transfer_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">Transfer Registration <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('emp_travel_voucher')"><div class="service-info"><div class="service-icon"><i class="fas fa-ticket-alt"></i></div><div class="service-name hindi">Free Travel Voucher <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+            </div>
+
+            <!-- 10. Fisheries -->
+            <h4 class="dept-header"><i class="fas fa-fish"></i> Fisheries Department (मत्स्य पालन विभाग) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('fish_pond_construction')"><div class="service-info"><div class="service-icon"><i class="fas fa-water"></i></div><div class="service-name hindi">New Pond Construction <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fish_pond_renovation')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">Pond Renovation <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fish_seed_subsidy')"><div class="service-info"><div class="service-icon"><i class="fas fa-seedling"></i></div><div class="service-name hindi">Fish Seed Subsidy <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fish_ras_unit')"><div class="service-info"><div class="service-icon"><i class="fas fa-flask"></i></div><div class="service-name hindi">RAS/Biofloc Unit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fish_ice_plant')"><div class="service-info"><div class="service-icon"><i class="fas fa-snowflake"></i></div><div class="service-name hindi">Ice Plant/Cold Store <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 11. Food & Civil Supplies -->
+            <h4 class="dept-header"><i class="fas fa-shopping-basket"></i> Food & Civil Supplies (खाद्य एवं नागरिक आपूर्ति) <span class="dept-count">4</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('fcs_apl_ration')"><div class="service-info"><div class="service-icon"><i class="fas fa-id-card"></i></div><div class="service-name hindi">New APL Ration Card <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fcs_fair_price_shop')"><div class="service-info"><div class="service-icon"><i class="fas fa-store"></i></div><div class="service-name hindi">Fair Price Shop License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('fcs_brick_kiln_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-industry"></i></div><div class="service-name hindi">Brick Kiln License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('fcs_legal_metrology')"><div class="service-info"><div class="service-icon"><i class="fas fa-balance-scale"></i></div><div class="service-name hindi">Legal Metrology License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 12. Forest -->
+            <h4 class="dept-header"><i class="fas fa-tree"></i> Forest Department (वन विभाग) <span class="dept-count">2</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('forest_tree_felling')"><div class="service-info"><div class="service-icon"><i class="fas fa-tree"></i></div><div class="service-name hindi">Tree Felling Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('forest_land_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">NOC for Forest Land <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 13. Excise & Taxation -->
+            <h4 class="dept-header"><i class="fas fa-wine-bottle"></i> Haryana Excise & Taxation (आबकारी एवं कराधान) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('excise_l1_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-wine-bottle"></i></div><div class="service-name hindi">L-1 Wholesale License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('excise_l12a_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-glass-cheers"></i></div><div class="service-name hindi">L-12A Temporary License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('excise_l4_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-utensils"></i></div><div class="service-name hindi">L-4/5 Bar License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('excise_l10c_microbrewery')"><div class="service-info"><div class="service-icon"><i class="fas fa-beer"></i></div><div class="service-name hindi">L-10C Microbrewery License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('excise_liquor_pass')"><div class="service-info"><div class="service-icon"><i class="fas fa-ticket-alt"></i></div><div class="service-name hindi">Liquor Pass/Permit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 14. HLWB -->
+            <h4 class="dept-header"><i class="fas fa-users"></i> Haryana Labour Welfare Board (श्रम कल्याण बोर्ड) <span class="dept-count">10</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('hlwb_bicycle')"><div class="service-info"><div class="service-icon"><i class="fas fa-bicycle"></i></div><div class="service-name hindi">Bicycle Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_social_security')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">CM Labour Social Security <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_dental')"><div class="service-info"><div class="service-icon"><i class="fas fa-tooth"></i></div><div class="service-name hindi">Dental Care Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_disability')"><div class="service-info"><div class="service-icon"><i class="fas fa-wheelchair"></i></div><div class="service-name hindi">Disability Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_marriage')"><div class="service-info"><div class="service-icon"><i class="fas fa-ring"></i></div><div class="service-name hindi">Marriage Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_coaching')"><div class="service-info"><div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div><div class="service-name hindi">Coaching Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_scholarship')"><div class="service-info"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><div class="service-name hindi">Scholarship Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_sewing_machine')"><div class="service-info"><div class="service-icon"><i class="fas fa-cut"></i></div><div class="service-name hindi">Sewing Machine Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_spectacle')"><div class="service-info"><div class="service-icon"><i class="fas fa-glasses"></i></div><div class="service-name hindi">Spectacle Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hlwb_funeral')"><div class="service-info"><div class="service-icon"><i class="fas fa-pray"></i></div><div class="service-name hindi">Funeral Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 15. HSFDC -->
+            <h4 class="dept-header"><i class="fas fa-hand-holding-usd"></i> HSFDC (अनुसूचित जाति वित्त निगम) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('hsfdc_education_loan')"><div class="service-info"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><div class="service-name hindi">Education Loan SC <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsfdc_term_loan')"><div class="service-info"><div class="service-icon"><i class="fas fa-money-bill-wave"></i></div><div class="service-name hindi">Term Loan SC <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsfdc_micro_finance')"><div class="service-info"><div class="service-icon"><i class="fas fa-coins"></i></div><div class="service-name hindi">Micro Finance Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsfdc_mahila_samridhi')"><div class="service-info"><div class="service-icon"><i class="fas fa-female"></i></div><div class="service-name hindi">Mahila Samridhi Yojana <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsfdc_green_business')"><div class="service-info"><div class="service-icon"><i class="fas fa-leaf"></i></div><div class="service-name hindi">Green Business Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 16. HSVP -->
+            <h4 class="dept-header"><i class="fas fa-building"></i> HSVP (हरियाणा शहरी विकास प्राधिकरण) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('hsvp_building_plan')"><div class="service-info"><div class="service-icon"><i class="fas fa-drafting-compass"></i></div><div class="service-name hindi">Fresh Building Plan <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hsvp_occupation_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">Occupation Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hsvp_transfer_permission')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">Transfer Permission <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hsvp_conveyance_deed')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-contract"></i></div><div class="service-name hindi">Conveyance Deed <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hsvp_no_dues')"><div class="service-info"><div class="service-icon"><i class="fas fa-check-circle"></i></div><div class="service-name hindi">No Dues Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsvp_water_conn')"><div class="service-info"><div class="service-icon"><i class="fas fa-tint"></i></div><div class="service-name hindi">Water Connection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsvp_sewer_conn')"><div class="service-info"><div class="service-icon"><i class="fas fa-toilet"></i></div><div class="service-name hindi">Sewerage Connection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsvp_name_change')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-edit"></i></div><div class="service-name hindi">Name Change in Plot <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 17. HSAMB -->
+            <h4 class="dept-header"><i class="fas fa-store"></i> HSAMB (कृषि विपणन बोर्ड) <span class="dept-count">4</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('hsamb_conveyance_deed')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-contract"></i></div><div class="service-name hindi">Conveyance Deed <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hsamb_no_dues')"><div class="service-info"><div class="service-icon"><i class="fas fa-check-circle"></i></div><div class="service-name hindi">No Dues Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsamb_noc_mortgage')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">NOC for Mortgage <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('hsamb_reallotment')"><div class="service-info"><div class="service-icon"><i class="fas fa-redo"></i></div><div class="service-name hindi">Re-allotment Letter <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 18. Pollution Control Board -->
+            <h4 class="dept-header"><i class="fas fa-leaf"></i> Pollution Control Board (प्रदूषण नियंत्रण बोर्ड) <span class="dept-count">4</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('pcb_consent_establish')"><div class="service-info"><div class="service-icon"><i class="fas fa-industry"></i></div><div class="service-name hindi">Consent to Establish <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('pcb_consent_operate')"><div class="service-info"><div class="service-icon"><i class="fas fa-check-circle"></i></div><div class="service-name hindi">Consent to Operate <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('pcb_bio_medical')"><div class="service-info"><div class="service-icon"><i class="fas fa-biohazard"></i></div><div class="service-name hindi">Bio Medical Waste Authorization <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('pcb_hazardous_waste')"><div class="service-info"><div class="service-icon"><i class="fas fa-radiation"></i></div><div class="service-name hindi">Hazardous Waste Authorization <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 19. Health Services -->
+            <h4 class="dept-header"><i class="fas fa-heartbeat"></i> Health Services Department (स्वास्थ्य सेवाएं) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('health_birth_cert_copy')"><div class="service-info"><div class="service-icon"><i class="fas fa-baby"></i></div><div class="service-name hindi">Birth/Death Certificate Copy <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('health_birth_correction')"><div class="service-info"><div class="service-icon"><i class="fas fa-edit"></i></div><div class="service-name hindi">Birth/Death Correction <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('health_delayed_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-clock"></i></div><div class="service-name hindi">Delayed Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('health_child_name')"><div class="service-info"><div class="service-icon"><i class="fas fa-child"></i></div><div class="service-name hindi">Child Name Registration <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('health_genetic_centre')"><div class="service-info"><div class="service-icon"><i class="fas fa-dna"></i></div><div class="service-name hindi">Genetic Centre Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 20. Higher Education -->
+            <h4 class="dept-header"><i class="fas fa-university"></i> Higher Education Department (उच्च शिक्षा विभाग) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('he_sc_stipend')"><div class="service-info"><div class="service-icon"><i class="fas fa-book"></i></div><div class="service-name hindi">SC Stipend & Free Books <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('he_meritorious_incentive')"><div class="service-info"><div class="service-icon"><i class="fas fa-medal"></i></div><div class="service-name hindi">Meritorious Incentive Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('he_lower_income')"><div class="service-info"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="service-name hindi">Lower Income Group Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('he_merit_scholarship_ug')"><div class="service-info"><div class="service-icon"><i class="fas fa-star"></i></div><div class="service-name hindi">State Merit Scholarship UG <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('he_stipend_freedom')"><div class="service-info"><div class="service-icon"><i class="fas fa-flag"></i></div><div class="service-name hindi">Freedom Fighter Grandchildren Stipend <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 21. Home Department -->
+            <h4 class="dept-header"><i class="fas fa-home"></i> Home Department (गृह विभाग) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('home_arms_new')"><div class="service-info"><div class="service-icon"><i class="fas fa-crosshairs"></i></div><div class="service-name hindi">New Arms License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_arms_renewal')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">Arms License Renewal <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_arms_duplicate')"><div class="service-info"><div class="service-icon"><i class="fas fa-copy"></i></div><div class="service-name hindi">Duplicate Arms License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_arms_transfer')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">Arms Sale/Transfer <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_cracker_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-fire"></i></div><div class="service-name hindi">Cracker Sale License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_explosive_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-bomb"></i></div><div class="service-name hindi">Explosives NOC <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_petroleum_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-gas-pump"></i></div><div class="service-name hindi">Petroleum Storage NOC <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('home_cinematograph')"><div class="service-info"><div class="service-icon"><i class="fas fa-film"></i></div><div class="service-name hindi">Cinematograph License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 22. Horticulture -->
+            <h4 class="dept-header"><i class="fas fa-apple-alt"></i> Horticulture Department (बागवानी विभाग) <span class="dept-count">3</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('hort_fruit_nursery')"><div class="service-info"><div class="service-icon"><i class="fas fa-tree"></i></div><div class="service-name hindi">Fruit Nursery License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hort_seed_nursery')"><div class="service-info"><div class="service-icon"><i class="fas fa-seedling"></i></div><div class="service-name hindi">Seed Nursery License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('hort_hortnet')"><div class="service-info"><div class="service-icon"><i class="fas fa-globe"></i></div><div class="service-name hindi">HORTNET Services <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 23. Industries & Commerce -->
+            <h4 class="dept-header"><i class="fas fa-industry"></i> Industries & Commerce (उद्योग एवं वाणिज्य) <span class="dept-count">6</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('ind_society_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">Society Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ind_firm_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-contract"></i></div><div class="service-name hindi">Firm Registration (Partnership) <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ind_boiler_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-fire"></i></div><div class="service-name hindi">Boiler Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ind_boiler_attendant')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-cog"></i></div><div class="service-name hindi">Boiler Attendant Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ind_startup_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-rocket"></i></div><div class="service-name hindi">Startup Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ind_employment_subsidy')"><div class="service-info"><div class="service-icon"><i class="fas fa-money-bill-wave"></i></div><div class="service-name hindi">Employment Generation Subsidy <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 24. Labour Department -->
+            <h4 class="dept-header"><i class="fas fa-hard-hat"></i> Labour Department (श्रम विभाग) <span class="dept-count">5</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('labour_factory_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-industry"></i></div><div class="service-name hindi">Factory License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('labour_contract_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-signature"></i></div><div class="service-name hindi">Contract Labour License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('labour_bocw_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-plus"></i></div><div class="service-name hindi">BOCW Establishment Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('labour_shop_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-store"></i></div><div class="service-name hindi">Shop Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('labour_grievance')"><div class="service-info"><div class="service-icon"><i class="fas fa-comment-dots"></i></div><div class="service-name hindi">Labour Grievance <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+            </div>
+
+            <!-- 25. Mines & Geology -->
+            <h4 class="dept-header"><i class="fas fa-mountain"></i> Mines & Geology (खनन एवं भूविज्ञान) <span class="dept-count">4</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('mines_dealer_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-id-card"></i></div><div class="service-name hindi">Mineral Dealer License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('mines_stone_crusher')"><div class="service-info"><div class="service-icon"><i class="fas fa-industry"></i></div><div class="service-name hindi">Stone Crusher License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('mines_brick_earth')"><div class="service-info"><div class="service-icon"><i class="fas fa-cube"></i></div><div class="service-name hindi">Brick Earth Permit <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('mines_transport_permit')"><div class="service-info"><div class="service-icon"><i class="fas fa-truck"></i></div><div class="service-name hindi">Mineral Transport Permit <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 26. MSME -->
+            <h4 class="dept-header"><i class="fas fa-store-alt"></i> MSME (सूक्ष्म, लघु एवं मध्यम उद्यम) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('msme_credit_subsidy')"><div class="service-info"><div class="service-icon"><i class="fas fa-percent"></i></div><div class="service-name hindi">Credit Linked Interest Subsidy <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_credit_rating')"><div class="service-info"><div class="service-icon"><i class="fas fa-star"></i></div><div class="service-name hindi">Credit Rating Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_energy_audit')"><div class="service-info"><div class="service-icon"><i class="fas fa-bolt"></i></div><div class="service-name hindi">Energy Audit Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_water_audit')"><div class="service-info"><div class="service-icon"><i class="fas fa-tint"></i></div><div class="service-name hindi">Water Audit Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_patent_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-file"></i></div><div class="service-name hindi">Patent Registration <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_quality_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">Quality Certification <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_stamp_duty_refund')"><div class="service-info"><div class="service-icon"><i class="fas fa-money-bill-wave"></i></div><div class="service-name hindi">Stamp Duty Refund <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('msme_freight_assistance')"><div class="service-info"><div class="service-icon"><i class="fas fa-truck"></i></div><div class="service-name hindi">Freight Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 27. Police Department -->
+            <h4 class="dept-header"><i class="fas fa-shield-alt"></i> Police Department (पुलिस विभाग) <span class="dept-count">12</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('police_character_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">Character Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_fir_copy')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">FIR/DDR Copy <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_pcc')"><div class="service-info"><div class="service-icon"><i class="fas fa-id-card"></i></div><div class="service-name hindi">Police Clearance Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_tenant_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">Tenant Verification <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_domestic_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-check"></i></div><div class="service-name hindi">Domestic Help Verification <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_employee_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-tie"></i></div><div class="service-name hindi">Employee Verification <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_passport_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-passport"></i></div><div class="service-name hindi">Passport Verification <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_event_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-calendar-check"></i></div><div class="service-name hindi">Event/Fair NOC <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_loudspeaker_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-volume-up"></i></div><div class="service-name hindi">Loudspeaker NOC <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_vehicle_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-car"></i></div><div class="service-name hindi">Pre-Owned Vehicle NOC <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_lost_property')"><div class="service-info"><div class="service-icon"><i class="fas fa-search"></i></div><div class="service-name hindi">Lost Property Disposal <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('police_foreigner_reg')"><div class="service-info"><div class="service-icon"><i class="fas fa-globe"></i></div><div class="service-name hindi">Foreigner Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 28. PHED -->
+            <h4 class="dept-header"><i class="fas fa-tint"></i> PHED (जन स्वास्थ्य अभियांत्रिकी विभाग) <span class="dept-count">6</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('phed_water_conn')"><div class="service-info"><div class="service-icon"><i class="fas fa-tint"></i></div><div class="service-name hindi">Water Supply Connection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('phed_sewer_conn')"><div class="service-info"><div class="service-icon"><i class="fas fa-toilet"></i></div><div class="service-name hindi">Sewerage Connection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('phed_water_quality')"><div class="service-info"><div class="service-icon"><i class="fas fa-flask"></i></div><div class="service-name hindi">Water Quality Testing <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('phed_water_leakage')"><div class="service-info"><div class="service-icon"><i class="fas fa-water"></i></div><div class="service-name hindi">Water Leakage Complaint <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('phed_sewer_block')"><div class="service-info"><div class="service-icon"><i class="fas fa-plug"></i></div><div class="service-name hindi">Sewer Blockage Complaint <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('phed_road_restore')"><div class="service-info"><div class="service-icon"><i class="fas fa-road"></i></div><div class="service-name hindi">Road Restoration <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+            </div>
+
+            <!-- 29. PWD -->
+            <h4 class="dept-header"><i class="fas fa-road"></i> PWD (लोक निर्माण विभाग) <span class="dept-count">4</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('pwd_contractor_enlist')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-tie"></i></div><div class="service-name hindi">Contractor Enlistment <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('pwd_gas_pipeline')"><div class="service-info"><div class="service-icon"><i class="fas fa-gas-pump"></i></div><div class="service-name hindi">Gas Pipeline Permission <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('pwd_ofc_permission')"><div class="service-info"><div class="service-icon"><i class="fas fa-wifi"></i></div><div class="service-name hindi">OFC Laying Permission <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('pwd_highway_clearance')"><div class="service-info"><div class="service-icon"><i class="fas fa-road"></i></div><div class="service-name hindi">Highway Entry/Exit Clearance <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 30. Renewable Energy -->
+            <h4 class="dept-header"><i class="fas fa-solar-panel"></i> Renewable Energy Department (नवीकरणीय ऊर्जा) <span class="dept-count">2</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('re_solar_inverter')"><div class="service-info"><div class="service-icon"><i class="fas fa-solar-panel"></i></div><div class="service-name hindi">Solar Inverter Charger Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('re_solar_pump')"><div class="service-info"><div class="service-icon"><i class="fas fa-water"></i></div><div class="service-name hindi">Solar Water Pumping Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 31. Revenue & Disaster Management -->
+            <h4 class="dept-header"><i class="fas fa-file-alt"></i> Revenue & Disaster Management (राजस्व एवं आपदा प्रबंधन) <span class="dept-count">15</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('rev_income_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-chart-line"></i></div><div class="service-name hindi">Income Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_caste_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">Caste Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_resident_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">Resident Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_ews_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">EWS Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_rural_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-tractor"></i></div><div class="service-name hindi">Rural Area Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_sc_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">SC Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_obc_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">OBC Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_bc_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">Backward Class Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_dogra_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">Dogra Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_minority_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-pray"></i></div><div class="service-name hindi">Minority Community Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_deprived_sc')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">Deprived SC Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_covid_ex_gratia')"><div class="service-info"><div class="service-icon"><i class="fas fa-virus"></i></div><div class="service-name hindi">COVID Ex-Gratia <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_land_demarcation')"><div class="service-info"><div class="service-icon"><i class="fas fa-map-marked-alt"></i></div><div class="service-name hindi">Land Demarcation <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('rev_loudspeaker_permission')"><div class="service-info"><div class="service-icon"><i class="fas fa-volume-up"></i></div><div class="service-name hindi">Loudspeaker/DJ Permission <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('rev_event_permission')"><div class="service-info"><div class="service-icon"><i class="fas fa-calendar-check"></i></div><div class="service-name hindi">Event/Funfair Permission <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 32. Rural Development -->
+            <h4 class="dept-header"><i class="fas fa-tractor"></i> Rural Development (ग्रामीण विकास) <span class="dept-count">1</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('rural_job_card')"><div class="service-info"><div class="service-icon"><i class="fas fa-id-card"></i></div><div class="service-name hindi">MGNREGS Job Card <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+            </div>
+
+            <!-- 33. Sainik Welfare -->
+            <h4 class="dept-header"><i class="fas fa-medal"></i> Sainik & Ardh Sainik Welfare (सैनिक कल्याण विभाग) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('sainik_disabled_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-wheelchair"></i></div><div class="service-name hindi">Disabled ESM Pension <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_widow_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-female"></i></div><div class="service-name hindi">Widow Pension <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_old_age')"><div class="service-info"><div class="service-icon"><i class="fas fa-blind"></i></div><div class="service-name hindi">Old Age Assistance (ESM) <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_disability_grant')"><div class="service-info"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="service-name hindi">Disability Ex-Gratia Grant <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_marriage_grant')"><div class="service-info"><div class="service-icon"><i class="fas fa-ring"></i></div><div class="service-name hindi">Marriage Grant <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_war_widow')"><div class="service-info"><div class="service-icon"><i class="fas fa-flag"></i></div><div class="service-name hindi">War Widow Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_blind_esm')"><div class="service-info"><div class="service-icon"><i class="fas fa-eye-slash"></i></div><div class="service-name hindi">Blind ESM Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sainik_tetraplegic')"><div class="service-info"><div class="service-icon"><i class="fas fa-wheelchair"></i></div><div class="service-name hindi">Para Tetraplegic ESM Aid <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 34. Science & Technology -->
+            <h4 class="dept-header"><i class="fas fa-flask"></i> Science & Technology (विज्ञान एवं प्रौद्योगिकी) <span class="dept-count">2</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('sci_hscst_fellowship')"><div class="service-info"><div class="service-icon"><i class="fas fa-award"></i></div><div class="service-name hindi">HSCST Fellowship <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sci_pose_scholarship')"><div class="service-info"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><div class="service-name hindi">POSE Scholarship <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 35. Social Justice -->
+            <h4 class="dept-header"><i class="fas fa-hands-helping"></i> Social Justice & Empowerment (सामाजिक न्याय) <span class="dept-count">10</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('sj_dwarf_allowance')"><div class="service-info"><div class="service-icon"><i class="fas fa-user"></i></div><div class="service-name hindi">Dwarf Allowance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_eunuchs_allowance')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-friends"></i></div><div class="service-name hindi">Eunuchs Allowance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_cancer_patient')"><div class="service-info"><div class="service-icon"><i class="fas fa-heartbeat"></i></div><div class="service-name hindi">Cancer Patient Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_destitute_children')"><div class="service-info"><div class="service-icon"><i class="fas fa-child"></i></div><div class="service-name hindi">Destitute Children Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_kashmiri_migrants')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">Kashmiri Migrants Aid <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_disabled_children')"><div class="service-info"><div class="service-icon"><i class="fas fa-wheelchair"></i></div><div class="service-name hindi">Disabled Children Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_rare_disease')"><div class="service-info"><div class="service-icon"><i class="fas fa-notes-medical"></i></div><div class="service-name hindi">Rare Disease Assistance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_ladli_allowance')"><div class="service-info"><div class="service-icon"><i class="fas fa-female"></i></div><div class="service-name hindi">Ladli Social Security Allowance <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_widow_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-female"></i></div><div class="service-name hindi">Widow & Destitute Women Pension <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sj_national_family')"><div class="service-info"><div class="service-icon"><i class="fas fa-users"></i></div><div class="service-name hindi">National Family Benefit (BPL) <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 36. Tourism -->
+            <h4 class="dept-header"><i class="fas fa-plane"></i> Tourism Department (पर्यटन विभाग) <span class="dept-count">3</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('tourism_gurudarshan')"><div class="service-info"><div class="service-icon"><i class="fas fa-place-of-worship"></i></div><div class="service-name hindi">Gurudarshan Yatra Scheme <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('tourism_kailash')"><div class="service-info"><div class="service-icon"><i class="fas fa-mountain"></i></div><div class="service-name hindi">Kailash Mansarovar Yatra <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('tourism_sindhu')"><div class="service-info"><div class="service-icon"><i class="fas fa-water"></i></div><div class="service-name hindi">Sindhu Darshan Yatra <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 37. Town & Country Planning -->
+            <h4 class="dept-header"><i class="fas fa-city"></i> Town & Country Planning (नगर एवं ग्राम नियोजन) <span class="dept-count">7</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('tcp_clu_permission')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-signature"></i></div><div class="service-name hindi">CLU Permission <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('tcp_building_plan')"><div class="service-info"><div class="service-icon"><i class="fas fa-drafting-compass"></i></div><div class="service-name hindi">Building Plan Approval <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('tcp_occupation_cert')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">Occupation Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('tcp_brick_kiln')"><div class="service-info"><div class="service-icon"><i class="fas fa-industry"></i></div><div class="service-name hindi">Brick Kiln License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('tcp_stone_crusher')"><div class="service-info"><div class="service-icon"><i class="fas fa-mountain"></i></div><div class="service-name hindi">Stone Crusher License <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('tcp_clu_extension')"><div class="service-info"><div class="service-icon"><i class="fas fa-clock"></i></div><div class="service-name hindi">CLU Extension <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('tcp_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">NOC Services <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 38. Transport Sarathi -->
+            <h4 class="dept-header"><i class="fas fa-id-card"></i> Transport - Sarathi (परिवहन - सारथी) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('sarathi_learner_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-id-card"></i></div><div class="service-name hindi">Learner License <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sarathi_permanent_dl')"><div class="service-info"><div class="service-icon"><i class="fas fa-id-card"></i></div><div class="service-name hindi">Permanent Driving License <small>क्लिक करें</small></div></div><div class="service-price">₹200</div></div>
+                <div class="service-item" onclick="openModal('sarathi_dl_renewal')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">DL Renewal <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sarathi_dl_duplicate')"><div class="service-info"><div class="service-icon"><i class="fas fa-copy"></i></div><div class="service-name hindi">Duplicate DL <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sarathi_dl_address_change')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">DL Address Change <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sarathi_dl_class_add')"><div class="service-info"><div class="service-icon"><i class="fas fa-plus-circle"></i></div><div class="service-name hindi">Add New Class to DL <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sarathi_conductor_license')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-tie"></i></div><div class="service-name hindi">Conductor License <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sarathi_conductor_renewal')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">Conductor License Renewal <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 39. Transport Vahan -->
+            <h4 class="dept-header"><i class="fas fa-car"></i> Transport - Vahan (परिवहन - वाहन) <span class="dept-count">10</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('vahan_new_vehicle')"><div class="service-info"><div class="service-icon"><i class="fas fa-car"></i></div><div class="service-name hindi">New Vehicle Registration <small>क्लिक करें</small></div></div><div class="service-price">₹200</div></div>
+                <div class="service-item" onclick="openModal('vahan_rc_duplicate')"><div class="service-info"><div class="service-icon"><i class="fas fa-copy"></i></div><div class="service-name hindi">Duplicate RC <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_rc_transfer')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">RC Transfer <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_noc')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">NOC for Other State <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_hypothecation_add')"><div class="service-info"><div class="service-icon"><i class="fas fa-plus-circle"></i></div><div class="service-name hindi">Hypothecation Addition <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_hypothecation_remove')"><div class="service-info"><div class="service-icon"><i class="fas fa-minus-circle"></i></div><div class="service-name hindi">Hypothecation Removal <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_address_change')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">RC Address Change <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_fitness')"><div class="service-info"><div class="service-icon"><i class="fas fa-check-circle"></i></div><div class="service-name hindi">Fitness Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('vahan_permit')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-contract"></i></div><div class="service-name hindi">Permit (Haryana/National) <small>क्लिक करें</small></div></div><div class="service-price">₹200</div></div>
+                <div class="service-item" onclick="openModal('vahan_vehicle_alteration')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">Vehicle Alteration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 40. UHBVN -->
+            <h4 class="dept-header"><i class="fas fa-bolt"></i> UHBVN (उत्तर हरियाणा बिजली वितरण निगम) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('uhbvn_new_conn_lt')"><div class="service-info"><div class="service-icon"><i class="fas fa-plug"></i></div><div class="service-name hindi">New Connection - LT <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_new_conn_11kv')"><div class="service-info"><div class="service-icon"><i class="fas fa-bolt"></i></div><div class="service-name hindi">New Connection - 11 KV <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_load_enhance')"><div class="service-info"><div class="service-icon"><i class="fas fa-arrow-up"></i></div><div class="service-name hindi">Load Enhancement <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_name_change')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-edit"></i></div><div class="service-name hindi">Name Change <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_meter_complaint')"><div class="service-info"><div class="service-icon"><i class="fas fa-tachometer-alt"></i></div><div class="service-name hindi">Meter Complaint <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_billing_complaint')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">Billing Complaint <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_no_dues')"><div class="service-info"><div class="service-icon"><i class="fas fa-check-circle"></i></div><div class="service-name hindi">No Dues Certificate <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('uhbvn_disconnection')"><div class="service-info"><div class="service-icon"><i class="fas fa-power-off"></i></div><div class="service-name hindi">Disconnection Request <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 41. Urban Local Bodies -->
+            <h4 class="dept-header"><i class="fas fa-city"></i> Urban Local Bodies (शहरी स्थानीय निकाय) <span class="dept-count">8</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('ulb_building_plan')"><div class="service-info"><div class="service-icon"><i class="fas fa-drafting-compass"></i></div><div class="service-name hindi">Building Plan Approval <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ulb_road_cutting')"><div class="service-info"><div class="service-icon"><i class="fas fa-road"></i></div><div class="service-name hindi">Road Cutting Permission <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ulb_property_tax')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">Property Tax <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('ulb_water_conn')"><div class="service-info"><div class="service-icon"><i class="fas fa-tint"></i></div><div class="service-name hindi">Water Connection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('ulb_sewer_conn')"><div class="service-info"><div class="service-icon"><i class="fas fa-toilet"></i></div><div class="service-name hindi">Sewer Connection <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('ulb_conveyance_deed')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-contract"></i></div><div class="service-name hindi">Conveyance Deed <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('ulb_dog_registration')"><div class="service-info"><div class="service-icon"><i class="fas fa-dog"></i></div><div class="service-name hindi">Dog Registration <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('ulb_community_center')"><div class="service-info"><div class="service-icon"><i class="fas fa-building"></i></div><div class="service-name hindi">Community Center Booking <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+            </div>
+
+            <!-- 42. Welfare of SCs & BCs -->
+            <h4 class="dept-header"><i class="fas fa-users"></i> Welfare of SCs & BCs (अनुसूचित जाति कल्याण) <span class="dept-count">6</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('sc_ambedkar_chattar')"><div class="service-info"><div class="service-icon"><i class="fas fa-graduation-cap"></i></div><div class="service-name hindi">Dr. Ambedkar Medhavi Chattar <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sc_ambedkar_naweenikaran')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">Dr. Ambedkar Naweenikaran <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sc_legal_aid')"><div class="service-info"><div class="service-icon"><i class="fas fa-gavel"></i></div><div class="service-name hindi">Legal Aid to SC/Vimukt <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sc_atrocity_relief')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">Atrocity Victim Relief <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sc_samrasta_yojna')"><div class="service-info"><div class="service-icon"><i class="fas fa-handshake"></i></div><div class="service-name hindi">Samajik Samrasta Yojna <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sc_vivah_shagun')"><div class="service-info"><div class="service-icon"><i class="fas fa-ring"></i></div><div class="service-name hindi">Vivah Shagun Yojna <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+            <!-- 43. Women & Child Development -->
+            <h4 class="dept-header"><i class="fas fa-female"></i> Women & Child Development (महिला एवं बाल विकास) <span class="dept-count">6</span></h4>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('wcd_aapki_beti')"><div class="service-info"><div class="service-icon"><i class="fas fa-child"></i></div><div class="service-name hindi">Aapki Beti Hamari Beti <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('wcd_matritva_sahayata')"><div class="service-info"><div class="service-icon"><i class="fas fa-baby"></i></div><div class="service-name hindi">Matritva Sahayata Yojana <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('wcd_domestic_violence')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">Domestic Violence Protection <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('wcd_play_school')"><div class="service-info"><div class="service-icon"><i class="fas fa-school"></i></div><div class="service-name hindi">Private Play School Recognition <small>क्लिक करें</small></div></div><div class="service-price">₹500</div></div>
+                <div class="service-item" onclick="openModal('wcd_acid_victim')"><div class="service-info"><div class="service-icon"><i class="fas fa-first-aid"></i></div><div class="service-name hindi">Acid Victim Relief <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('wcd_working_women_hostel')"><div class="service-info"><div class="service-icon"><i class="fas fa-hotel"></i></div><div class="service-name hindi">Working Women Hostel <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 SKYNET DIGITAL CENTER. All Rights Reserved. | <a href="https://www.skynetcc.co.in/">www.skynetcc.co.in</a></p>
+            <p style="margin-top: 4px; font-size: 0.75rem;">CSC Centre | Cyber Cafe | Govt. Services | 20+ Years Trusted Service</p>
+        </div>
+    </footer>
+
+    <!-- ===== MODAL POPUP ===== -->
+    <div class="modal-overlay" id="serviceModal">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h4 id="modalTitle">Select Option</h4>
+                <button class="close-btn" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body" id="modalOptions"></div>
+            <div class="modal-footer">
+                <button onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        const MY_WHATSAPP_NUMBER = "918054061994";
+
+        const servicesData = {
+            // Agriculture
+            agri_fertilizer_auth: { title: "Fertilizer Authorization Letter", options: [{ name: "New Application", price: "₹100" }, { name: "Renewal", price: "₹100" }] },
+            agri_pesticide_license: { title: "Pesticides License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }, { name: "Duplicate", price: "₹500" }] },
+            agri_seed_license: { title: "Seed License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }, { name: "Amendment", price: "₹500" }] },
+            agri_cotton_ginning: { title: "Cotton Ginning License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            agri_khandsari: { title: "Khandsari Sugar License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            // Animal
+            animal_livestock_insurance: { title: "Livestock Insurance", options: [{ name: "New Insurance", price: "₹100" }, { name: "Claim Settlement", price: "₹100" }] },
+            animal_dairy_unit: { title: "Hi-Tech Dairy Unit", options: [{ name: "New Application", price: "₹100" }] },
+            animal_piggery: { title: "Piggery/Sheep/Goat Unit", options: [{ name: "New Application", price: "₹100" }] },
+            animal_poultry: { title: "Backyard Poultry Unit", options: [{ name: "New Application", price: "₹100" }] },
+            animal_gaushala_grant: { title: "Gaushala Fodder Grant", options: [{ name: "New Application", price: "₹100" }] },
+            // BOCW
+            bocw_registration: { title: "Worker Registration", options: [{ name: "New Registration", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
+            bocw_pension: { title: "Pension Scheme", options: [{ name: "New Application", price: "₹100" }, { name: "Status Check", price: "₹30" }] },
+            bocw_death: { title: "Death Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_disability: { title: "Disability Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_maternity: { title: "Maternity Benefit", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_marriage: { title: "Marriage Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_education: { title: "Children Education Aid", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_bicycle: { title: "Bicycle Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_tools: { title: "Tools Purchase Grant", options: [{ name: "New Application", price: "₹100" }] },
+            bocw_funeral: { title: "Funeral Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            // Chief Electrical
+            electrical_installation_cert: { title: "Electrical Installation Certification", options: [{ name: "New Certificate", price: "₹500" }] },
+            electrical_lift_new: { title: "New Lift Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            electrical_lift_renewal: { title: "Lift Renewal", options: [{ name: "Renewal", price: "₹300" }] },
+            electrical_hti_inspection: { title: "HTI/Transformer Inspection", options: [{ name: "New Inspection", price: "₹500" }, { name: "Periodical", price: "₹500" }] },
+            cm_relief: { title: "CM Relief Fund", options: [{ name: "New Application", price: "₹100" }] },
+            coop_society_reg: { title: "Cooperative Society Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            crid_marriage_reg: { title: "Marriage Registration", options: [{ name: "New Registration", price: "₹100" }] },
+            crid_bank_verify: { title: "Bank Account Verification", options: [{ name: "Verification", price: "₹50" }] },
+            // DHBVN
+            dhbvn_new_conn_lt: { title: "New Connection - LT", options: [{ name: "New Connection", price: "₹100" }] },
+            dhbvn_new_conn_11kv: { title: "New Connection - 11 KV", options: [{ name: "New Connection", price: "₹500" }] },
+            dhbvn_load_enhance: { title: "Load Enhancement", options: [{ name: "Load Enhancement", price: "₹100" }] },
+            dhbvn_name_change: { title: "Name Change", options: [{ name: "Name Change", price: "₹100" }] },
+            dhbvn_meter_complaint: { title: "Meter Complaint", options: [{ name: "New Complaint", price: "₹50" }] },
+            dhbvn_billing_complaint: { title: "Billing Complaint", options: [{ name: "New Complaint", price: "₹50" }] },
+            dhbvn_no_dues: { title: "No Dues Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            dhbvn_disconnection: { title: "Disconnection Request", options: [{ name: "New Request", price: "₹100" }] },
+            dhbvn_shifting: { title: "Meter/Line Shifting", options: [{ name: "Shifting Request", price: "₹200" }] },
+            dhbvn_reconnection: { title: "Reconnection", options: [{ name: "Reconnection", price: "₹100" }] },
+            // Employment
+            emp_jobseeker_reg: { title: "Jobseeker Registration", options: [{ name: "New Registration", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
+            emp_employer_reg: { title: "Employer Registration", options: [{ name: "New Registration", price: "₹100" }] },
+            emp_saksham_reg: { title: "SAKSHAM Scheme", options: [{ name: "New Registration", price: "₹100" }] },
+            emp_unemployment_allow: { title: "Unemployment Allowance", options: [{ name: "New Application", price: "₹100" }] },
+            emp_one_family_job: { title: "One Family One Job", options: [{ name: "New Application", price: "₹100" }] },
+            emp_reg_renewal: { title: "Registration Renewal", options: [{ name: "Renewal", price: "₹50" }] },
+            emp_qualification_add: { title: "Qualification Add/Update", options: [{ name: "Add/Update", price: "₹50" }] },
+            emp_transfer_reg: { title: "Transfer Registration", options: [{ name: "Transfer", price: "₹50" }] },
+            emp_travel_voucher: { title: "Free Travel Voucher", options: [{ name: "New Voucher", price: "Free" }] },
+            // Fisheries
+            fish_pond_construction: { title: "New Pond Construction", options: [{ name: "New Application", price: "₹100" }] },
+            fish_pond_renovation: { title: "Pond Renovation", options: [{ name: "New Application", price: "₹100" }] },
+            fish_seed_subsidy: { title: "Fish Seed Subsidy", options: [{ name: "New Application", price: "₹100" }] },
+            fish_ras_unit: { title: "RAS/Biofloc Unit", options: [{ name: "New Application", price: "₹100" }] },
+            fish_ice_plant: { title: "Ice Plant/Cold Store", options: [{ name: "New Application", price: "₹100" }] },
+            // FCS
+            fcs_apl_ration: { title: "New APL Ration Card", options: [{ name: "New Card", price: "₹100" }] },
+            fcs_fair_price_shop: { title: "Fair Price Shop License", options: [{ name: "New License", price: "₹500" }] },
+            fcs_brick_kiln_license: { title: "Brick Kiln License", options: [{ name: "New License", price: "₹500" }] },
+            fcs_legal_metrology: { title: "Legal Metrology License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            forest_tree_felling: { title: "Tree Felling Certificate", options: [{ name: "New Application", price: "₹100" }] },
+            forest_land_noc: { title: "NOC for Forest Land", options: [{ name: "New NOC", price: "₹100" }] },
+            // Excise
+            excise_l1_license: { title: "L-1 Wholesale License", options: [{ name: "New License", price: "₹500" }] },
+            excise_l12a_license: { title: "L-12A Temporary License", options: [{ name: "New License", price: "₹500" }] },
+            excise_l4_license: { title: "L-4/5 Bar License", options: [{ name: "New License", price: "₹500" }] },
+            excise_l10c_microbrewery: { title: "L-10C Microbrewery License", options: [{ name: "New License", price: "₹500" }] },
+            excise_liquor_pass: { title: "Liquor Pass/Permit", options: [{ name: "New Pass", price: "₹100" }] },
+            // HLWB
+            hlwb_bicycle: { title: "Bicycle Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_social_security: { title: "CM Labour Social Security", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_dental: { title: "Dental Care Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_disability: { title: "Disability Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_marriage: { title: "Marriage Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_coaching: { title: "Coaching Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_scholarship: { title: "Scholarship Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_sewing_machine: { title: "Sewing Machine Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_spectacle: { title: "Spectacle Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            hlwb_funeral: { title: "Funeral Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            // HSFDC
+            hsfdc_education_loan: { title: "Education Loan SC", options: [{ name: "New Loan", price: "₹100" }] },
+            hsfdc_term_loan: { title: "Term Loan SC", options: [{ name: "New Loan", price: "₹100" }] },
+            hsfdc_micro_finance: { title: "Micro Finance Scheme", options: [{ name: "New Loan", price: "₹100" }] },
+            hsfdc_mahila_samridhi: { title: "Mahila Samridhi Yojana", options: [{ name: "New Loan", price: "₹100" }] },
+            hsfdc_green_business: { title: "Green Business Scheme", options: [{ name: "New Loan", price: "₹100" }] },
+            // HSVP
+            hsvp_building_plan: { title: "Fresh Building Plan", options: [{ name: "New Plan", price: "₹500" }] },
+            hsvp_occupation_cert: { title: "Occupation Certificate", options: [{ name: "New Certificate", price: "₹500" }] },
+            hsvp_transfer_permission: { title: "Transfer Permission", options: [{ name: "New Permission", price: "₹500" }] },
+            hsvp_conveyance_deed: { title: "Conveyance Deed", options: [{ name: "New Deed", price: "₹500" }] },
+            hsvp_no_dues: { title: "No Dues Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            hsvp_water_conn: { title: "Water Connection", options: [{ name: "New Connection", price: "₹100" }] },
+            hsvp_sewer_conn: { title: "Sewerage Connection", options: [{ name: "New Connection", price: "₹100" }] },
+            hsvp_name_change: { title: "Name Change in Plot", options: [{ name: "Name Change", price: "₹100" }] },
+            // HSAMB
+            hsamb_conveyance_deed: { title: "Conveyance Deed", options: [{ name: "New Deed", price: "₹500" }] },
+            hsamb_no_dues: { title: "No Dues Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            hsamb_noc_mortgage: { title: "NOC for Mortgage", options: [{ name: "New NOC", price: "₹100" }] },
+            hsamb_reallotment: { title: "Re-allotment Letter", options: [{ name: "New Letter", price: "₹100" }] },
+            // PCB
+            pcb_consent_establish: { title: "Consent to Establish", options: [{ name: "New Consent", price: "₹500" }] },
+            pcb_consent_operate: { title: "Consent to Operate", options: [{ name: "New Consent", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            pcb_bio_medical: { title: "Bio Medical Waste Authorization", options: [{ name: "New Authorization", price: "₹500" }] },
+            pcb_hazardous_waste: { title: "Hazardous Waste Authorization", options: [{ name: "New Authorization", price: "₹500" }] },
+            // Health
+            health_birth_cert_copy: { title: "Birth/Death Certificate Copy", options: [{ name: "New Copy", price: "₹100" }] },
+            health_birth_correction: { title: "Birth/Death Correction", options: [{ name: "Correction", price: "₹100" }] },
+            health_delayed_reg: { title: "Delayed Registration", options: [{ name: "New Registration", price: "₹100" }] },
+            health_child_name: { title: "Child Name Registration", options: [{ name: "New Registration", price: "₹50" }] },
+            health_genetic_centre: { title: "Genetic Centre Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            // Higher Education
+            he_sc_stipend: { title: "SC Stipend & Free Books", options: [{ name: "New Application", price: "₹100" }] },
+            he_meritorious_incentive: { title: "Meritorious Incentive", options: [{ name: "New Application", price: "₹100" }] },
+            he_lower_income: { title: "Lower Income Group Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            he_merit_scholarship_ug: { title: "State Merit Scholarship UG", options: [{ name: "New Application", price: "₹100" }] },
+            he_stipend_freedom: { title: "Freedom Fighter Grandchildren Stipend", options: [{ name: "New Application", price: "₹100" }] },
+            // Home
+            home_arms_new: { title: "New Arms License", options: [{ name: "New License", price: "₹500" }] },
+            home_arms_renewal: { title: "Arms License Renewal", options: [{ name: "Renewal", price: "₹500" }] },
+            home_arms_duplicate: { title: "Duplicate Arms License", options: [{ name: "Duplicate", price: "₹500" }] },
+            home_arms_transfer: { title: "Arms Sale/Transfer", options: [{ name: "Transfer", price: "₹500" }] },
+            home_cracker_license: { title: "Cracker Sale License", options: [{ name: "New License", price: "₹500" }] },
+            home_explosive_noc: { title: "Explosives NOC", options: [{ name: "New NOC", price: "₹500" }] },
+            home_petroleum_noc: { title: "Petroleum Storage NOC", options: [{ name: "New NOC", price: "₹500" }] },
+            home_cinematograph: { title: "Cinematograph License", options: [{ name: "New License", price: "₹500" }] },
+            // Horticulture
+            hort_fruit_nursery: { title: "Fruit Nursery License", options: [{ name: "New License", price: "₹500" }] },
+            hort_seed_nursery: { title: "Seed Nursery License", options: [{ name: "New License", price: "₹500" }] },
+            hort_hortnet: { title: "HORTNET Services", options: [{ name: "New Application", price: "₹100" }] },
+            // Industries
+            ind_society_reg: { title: "Society Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            ind_firm_reg: { title: "Firm Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            ind_boiler_reg: { title: "Boiler Registration", options: [{ name: "New Registration", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            ind_boiler_attendant: { title: "Boiler Attendant Certificate", options: [{ name: "New Certificate", price: "₹500" }] },
+            ind_startup_reg: { title: "Startup Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            ind_employment_subsidy: { title: "Employment Generation Subsidy", options: [{ name: "New Application", price: "₹500" }] },
+            // Labour
+            labour_factory_license: { title: "Factory License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            labour_contract_license: { title: "Contract Labour License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            labour_bocw_reg: { title: "BOCW Establishment Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            labour_shop_reg: { title: "Shop Registration", options: [{ name: "New Registration", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            labour_grievance: { title: "Labour Grievance", options: [{ name: "New Complaint", price: "Free" }] },
+            // Mines
+            mines_dealer_license: { title: "Mineral Dealer License", options: [{ name: "New License", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            mines_stone_crusher: { title: "Stone Crusher License", options: [{ name: "New License", price: "₹500" }] },
+            mines_brick_earth: { title: "Brick Earth Permit", options: [{ name: "New Permit", price: "₹500" }] },
+            mines_transport_permit: { title: "Mineral Transport Permit", options: [{ name: "New Permit", price: "₹100" }] },
+            // MSME
+            msme_credit_subsidy: { title: "Credit Linked Interest Subsidy", options: [{ name: "New Application", price: "₹500" }] },
+            msme_credit_rating: { title: "Credit Rating Scheme", options: [{ name: "New Application", price: "₹500" }] },
+            msme_energy_audit: { title: "Energy Audit Scheme", options: [{ name: "New Application", price: "₹500" }] },
+            msme_water_audit: { title: "Water Audit Scheme", options: [{ name: "New Application", price: "₹500" }] },
+            msme_patent_reg: { title: "Patent Registration", options: [{ name: "New Registration", price: "₹500" }] },
+            msme_quality_cert: { title: "Quality Certification", options: [{ name: "New Application", price: "₹500" }] },
+            msme_stamp_duty_refund: { title: "Stamp Duty Refund", options: [{ name: "New Application", price: "₹500" }] },
+            msme_freight_assistance: { title: "Freight Assistance", options: [{ name: "New Application", price: "₹500" }] },
+            // Police
+            police_character_cert: { title: "Character Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            police_fir_copy: { title: "FIR/DDR Copy", options: [{ name: "New Copy", price: "₹100" }] },
+            police_pcc: { title: "Police Clearance Certificate", options: [{ name: "New PCC", price: "₹100" }] },
+            police_tenant_verify: { title: "Tenant Verification", options: [{ name: "New Verification", price: "₹100" }] },
+            police_domestic_verify: { title: "Domestic Help Verification", options: [{ name: "New Verification", price: "₹100" }] },
+            police_employee_verify: { title: "Employee Verification", options: [{ name: "New Verification", price: "₹100" }] },
+            police_passport_verify: { title: "Passport Verification", options: [{ name: "New Verification", price: "₹100" }] },
+            police_event_noc: { title: "Event/Fair NOC", options: [{ name: "New NOC", price: "₹100" }] },
+            police_loudspeaker_noc: { title: "Loudspeaker NOC", options: [{ name: "New NOC", price: "₹100" }] },
+            police_vehicle_noc: { title: "Pre-Owned Vehicle NOC", options: [{ name: "New NOC", price: "₹100" }] },
+            police_lost_property: { title: "Lost Property Disposal", options: [{ name: "New Application", price: "₹100" }] },
+            police_foreigner_reg: { title: "Foreigner Registration", options: [{ name: "New Registration", price: "₹100" }] },
+            // PHED
+            phed_water_conn: { title: "Water Supply Connection", options: [{ name: "New Connection", price: "₹100" }] },
+            phed_sewer_conn: { title: "Sewerage Connection", options: [{ name: "New Connection", price: "₹100" }] },
+            phed_water_quality: { title: "Water Quality Testing", options: [{ name: "New Test", price: "₹100" }] },
+            phed_water_leakage: { title: "Water Leakage Complaint", options: [{ name: "New Complaint", price: "Free" }] },
+            phed_sewer_block: { title: "Sewer Blockage Complaint", options: [{ name: "New Complaint", price: "Free" }] },
+            phed_road_restore: { title: "Road Restoration", options: [{ name: "New Complaint", price: "Free" }] },
+            // PWD
+            pwd_contractor_enlist: { title: "Contractor Enlistment", options: [{ name: "New Enlistment", price: "₹500" }] },
+            pwd_gas_pipeline: { title: "Gas Pipeline Permission", options: [{ name: "New Permission", price: "₹500" }] },
+            pwd_ofc_permission: { title: "OFC Laying Permission", options: [{ name: "New Permission", price: "₹500" }] },
+            pwd_highway_clearance: { title: "Highway Entry/Exit Clearance", options: [{ name: "New Clearance", price: "₹500" }] },
+            // Renewable
+            re_solar_inverter: { title: "Solar Inverter Charger Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            re_solar_pump: { title: "Solar Water Pumping Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            // Revenue
+            rev_income_cert: { title: "Income Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_caste_cert: { title: "Caste Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_resident_cert: { title: "Resident Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_ews_cert: { title: "EWS Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_rural_cert: { title: "Rural Area Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_sc_cert: { title: "SC Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_obc_cert: { title: "OBC Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_bc_cert: { title: "Backward Class Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_dogra_cert: { title: "Dogra Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_minority_cert: { title: "Minority Community Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_deprived_sc: { title: "Deprived SC Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            rev_covid_ex_gratia: { title: "COVID Ex-Gratia", options: [{ name: "New Application", price: "₹100" }] },
+            rev_land_demarcation: { title: "Land Demarcation", options: [{ name: "New Application", price: "₹500" }] },
+            rev_loudspeaker_permission: { title: "Loudspeaker/DJ Permission", options: [{ name: "New Permission", price: "₹100" }] },
+            rev_event_permission: { title: "Event/Funfair Permission", options: [{ name: "New Permission", price: "₹100" }] },
+            rural_job_card: { title: "MGNREGS Job Card", options: [{ name: "New Card", price: "Free" }] },
+            // Sainik
+            sainik_disabled_pension: { title: "Disabled ESM Pension", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_widow_pension: { title: "Widow Pension", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_old_age: { title: "Old Age Assistance (ESM)", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_disability_grant: { title: "Disability Ex-Gratia Grant", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_marriage_grant: { title: "Marriage Grant", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_war_widow: { title: "War Widow Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_blind_esm: { title: "Blind ESM Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            sainik_tetraplegic: { title: "Para Tetraplegic ESM Aid", options: [{ name: "New Application", price: "₹100" }] },
+            // Science
+            sci_hscst_fellowship: { title: "HSCST Fellowship", options: [{ name: "New Application", price: "₹100" }] },
+            sci_pose_scholarship: { title: "POSE Scholarship", options: [{ name: "New Application", price: "₹100" }] },
+            // Social Justice
+            sj_dwarf_allowance: { title: "Dwarf Allowance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_eunuchs_allowance: { title: "Eunuchs Allowance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_cancer_patient: { title: "Cancer Patient Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_destitute_children: { title: "Destitute Children Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_kashmiri_migrants: { title: "Kashmiri Migrants Aid", options: [{ name: "New Application", price: "₹100" }] },
+            sj_disabled_children: { title: "Disabled Children Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_rare_disease: { title: "Rare Disease Assistance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_ladli_allowance: { title: "Ladli Social Security Allowance", options: [{ name: "New Application", price: "₹100" }] },
+            sj_widow_pension: { title: "Widow & Destitute Women Pension", options: [{ name: "New Application", price: "₹100" }] },
+            sj_national_family: { title: "National Family Benefit (BPL)", options: [{ name: "New Application", price: "₹100" }] },
+            // Tourism
+            tourism_gurudarshan: { title: "Gurudarshan Yatra Scheme", options: [{ name: "New Application", price: "₹100" }] },
+            tourism_kailash: { title: "Kailash Mansarovar Yatra", options: [{ name: "New Application", price: "₹100" }] },
+            tourism_sindhu: { title: "Sindhu Darshan Yatra", options: [{ name: "New Application", price: "₹100" }] },
+            // TCP
+            tcp_clu_permission: { title: "CLU Permission", options: [{ name: "New Permission", price: "₹500" }] },
+            tcp_building_plan: { title: "Building Plan Approval", options: [{ name: "New Approval", price: "₹500" }] },
+            tcp_occupation_cert: { title: "Occupation Certificate", options: [{ name: "New Certificate", price: "₹500" }] },
+            tcp_brick_kiln: { title: "Brick Kiln License", options: [{ name: "New License", price: "₹500" }] },
+            tcp_stone_crusher: { title: "Stone Crusher License", options: [{ name: "New License", price: "₹500" }] },
+            tcp_clu_extension: { title: "CLU Extension", options: [{ name: "New Extension", price: "₹500" }] },
+            tcp_noc: { title: "NOC Services", options: [{ name: "New NOC", price: "₹500" }] },
+            // Sarathi
+            sarathi_learner_license: { title: "Learner License", options: [{ name: "New LL", price: "₹100" }] },
+            sarathi_permanent_dl: { title: "Permanent Driving License", options: [{ name: "New DL", price: "₹200" }] },
+            sarathi_dl_renewal: { title: "DL Renewal", options: [{ name: "Renewal", price: "₹100" }] },
+            sarathi_dl_duplicate: { title: "Duplicate DL", options: [{ name: "Duplicate", price: "₹100" }] },
+            sarathi_dl_address_change: { title: "DL Address Change", options: [{ name: "Address Change", price: "₹100" }] },
+            sarathi_dl_class_add: { title: "Add New Class to DL", options: [{ name: "Add Class", price: "₹100" }] },
+            sarathi_conductor_license: { title: "Conductor License", options: [{ name: "New License", price: "₹100" }] },
+            sarathi_conductor_renewal: { title: "Conductor License Renewal", options: [{ name: "Renewal", price: "₹100" }] },
+            // Vahan
+            vahan_new_vehicle: { title: "New Vehicle Registration", options: [{ name: "New Registration", price: "₹200" }] },
+            vahan_rc_duplicate: { title: "Duplicate RC", options: [{ name: "Duplicate", price: "₹100" }] },
+            vahan_rc_transfer: { title: "RC Transfer", options: [{ name: "Transfer", price: "₹100" }] },
+            vahan_noc: { title: "NOC for Other State", options: [{ name: "New NOC", price: "₹100" }] },
+            vahan_hypothecation_add: { title: "Hypothecation Addition", options: [{ name: "Add", price: "₹100" }] },
+            vahan_hypothecation_remove: { title: "Hypothecation Removal", options: [{ name: "Remove", price: "₹100" }] },
+            vahan_address_change: { title: "RC Address Change", options: [{ name: "Address Change", price: "₹100" }] },
+            vahan_fitness: { title: "Fitness Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            vahan_permit: { title: "Permit", options: [{ name: "Haryana Permit", price: "₹200" }, { name: "National Permit", price: "₹500" }] },
+            vahan_vehicle_alteration: { title: "Vehicle Alteration", options: [{ name: "Alteration", price: "₹100" }] },
+            // UHBVN
+            uhbvn_new_conn_lt: { title: "New Connection - LT", options: [{ name: "New Connection", price: "₹100" }] },
+            uhbvn_new_conn_11kv: { title: "New Connection - 11 KV", options: [{ name: "New Connection", price: "₹500" }] },
+            uhbvn_load_enhance: { title: "Load Enhancement", options: [{ name: "Load Enhancement", price: "₹100" }] },
+            uhbvn_name_change: { title: "Name Change", options: [{ name: "Name Change", price: "₹100" }] },
+            uhbvn_meter_complaint: { title: "Meter Complaint", options: [{ name: "New Complaint", price: "₹50" }] },
+            uhbvn_billing_complaint: { title: "Billing Complaint", options: [{ name: "New Complaint", price: "₹50" }] },
+            uhbvn_no_dues: { title: "No Dues Certificate", options: [{ name: "New Certificate", price: "₹100" }] },
+            uhbvn_disconnection: { title: "Disconnection Request", options: [{ name: "New Request", price: "₹100" }] },
+            // ULB
+            ulb_building_plan: { title: "Building Plan Approval", options: [{ name: "New Approval", price: "₹500" }] },
+            ulb_road_cutting: { title: "Road Cutting Permission", options: [{ name: "New Permission", price: "₹500" }] },
+            ulb_property_tax: { title: "Property Tax", options: [{ name: "New Assessment", price: "₹100" }, { name: "Payment", price: "₹100" }] },
+            ulb_water_conn: { title: "Water Connection", options: [{ name: "New Connection", price: "₹100" }] },
+            ulb_sewer_conn: { title: "Sewer Connection", options: [{ name: "New Connection", price: "₹100" }] },
+            ulb_conveyance_deed: { title: "Conveyance Deed", options: [{ name: "New Deed", price: "₹500" }] },
+            ulb_dog_registration: { title: "Dog Registration", options: [{ name: "New Registration", price: "₹100" }, { name: "Renewal", price: "₹100" }] },
+            ulb_community_center: { title: "Community Center Booking", options: [{ name: "New Booking", price: "₹500" }] },
+            // SC/BC
+            sc_ambedkar_chattar: { title: "Dr. Ambedkar Medhavi Chattar", options: [{ name: "New Application", price: "₹100" }] },
+            sc_ambedkar_naweenikaran: { title: "Dr. Ambedkar Naweenikaran", options: [{ name: "New Application", price: "₹100" }] },
+            sc_legal_aid: { title: "Legal Aid to SC/Vimukt", options: [{ name: "New Application", price: "₹100" }] },
+            sc_atrocity_relief: { title: "Atrocity Victim Relief", options: [{ name: "New Application", price: "₹100" }] },
+            sc_samrasta_yojna: { title: "Samajik Samrasta Yojna", options: [{ name: "New Application", price: "₹100" }] },
+            sc_vivah_shagun: { title: "Vivah Shagun Yojna", options: [{ name: "New Application", price: "₹100" }] },
+            // WCD
+            wcd_aapki_beti: { title: "Aapki Beti Hamari Beti", options: [{ name: "New Application", price: "₹100" }] },
+            wcd_matritva_sahayata: { title: "Matritva Sahayata Yojana", options: [{ name: "New Application", price: "₹100" }] },
+            wcd_domestic_violence: { title: "Domestic Violence Protection", options: [{ name: "New Complaint", price: "Free" }] },
+            wcd_play_school: { title: "Private Play School Recognition", options: [{ name: "New Recognition", price: "₹500" }, { name: "Renewal", price: "₹500" }] },
+            wcd_acid_victim: { title: "Acid Victim Relief", options: [{ name: "New Application", price: "₹100" }] },
+            wcd_working_women_hostel: { title: "Working Women Hostel", options: [{ name: "New Application", price: "₹100" }] }
+        };
+
+        function openModal(serviceId) {
+            const service = servicesData[serviceId];
+            if (!service) {
+                const defaultService = {
+                    title: serviceId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                    options: [{ name: "Apply Now", price: "Click to Apply" }]
+                };
+                document.getElementById('modalTitle').innerText = defaultService.title;
+                const optionsContainer = document.getElementById('modalOptions');
+                optionsContainer.innerHTML = '';
+                defaultService.options.forEach(opt => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'modal-option';
+                    optionDiv.innerHTML = `<span class="opt-name hindi">${opt.name}</span><span class="opt-price">${opt.price}</span>`;
+                    optionDiv.onclick = function() { sendWhatsApp(defaultService.title, opt.name, opt.price); };
+                    optionsContainer.appendChild(optionDiv);
+                });
+                document.getElementById('serviceModal').classList.add('active');
+                return;
+            }
+            document.getElementById('modalTitle').innerText = service.title;
+            const optionsContainer = document.getElementById('modalOptions');
+            optionsContainer.innerHTML = '';
+            service.options.forEach(opt => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'modal-option';
+                optionDiv.innerHTML = `<span class="opt-name hindi">${opt.name}</span><span class="opt-price">${opt.price}</span>`;
+                optionDiv.onclick = function() { sendWhatsApp(service.title, opt.name, opt.price); };
+                optionsContainer.appendChild(optionDiv);
+            });
+            document.getElementById('serviceModal').classList.add('active');
+        }
+
+        function closeModal() { document.getElementById('serviceModal').classList.remove('active'); }
+
+        function sendWhatsApp(serviceTitle, optionName, price) {
+            const message = `Hello SKYNET DIGITAL CENTER,%0A%0AI want to apply for: *${serviceTitle.replace(' - Select Option', '')}*%0AOption: *${optionName}*%0APrice: *${price}*%0A%0APlease guide me.`;
+            const whatsappUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+            closeModal();
+        }
+
+        document.getElementById('serviceModal').addEventListener('click', function(e) { if (e.target === this) { closeModal(); } });
+    </script>
+
+</body>
+</html>
