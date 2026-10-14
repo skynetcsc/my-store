@@ -343,6 +343,8 @@
         .section-header .icon-box.course { background: var(--success); }
         .section-header .icon-box.jobs { background: var(--danger); }
         .section-header .icon-box.other { background: #8b5cf6; }
+        .section-header .icon-box.blog { background: #0ea5e9; }
+        .section-header .icon-box.review { background: #f59e0b; }
 
         .section-header h3 {
             font-size: 1.35rem;
@@ -471,6 +473,138 @@
             display: block;
             margin: 0 auto;
             object-fit: contain;
+        }
+
+        /* ===== BLOG / UPDATES SECTION ===== */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .blog-card {
+            background: #fff;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.2s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: #0ea5e9;
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 140px;
+            background: linear-gradient(135deg, #0ea5e9, #3b82f6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 3rem;
+        }
+
+        .blog-info {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-info h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+
+        .blog-info p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            flex: 1;
+        }
+
+        .blog-info .read-more {
+            color: #0ea5e9;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* ===== REVIEWS SECTION ===== */
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .review-card {
+            background: #fff;
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transition: all 0.2s;
+        }
+
+        .review-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--accent);
+        }
+
+        .review-stars {
+            color: #f59e0b;
+            font-size: 0.9rem;
+        }
+
+        .review-text {
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.6;
+            flex: 1;
+            font-style: italic;
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-top: 1px solid var(--border);
+            padding-top: 12px;
+        }
+
+        .review-author img {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .review-author h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .review-author span {
+            font-size: 0.75rem;
+            color: var(--text-light);
         }
 
         /* ===== MODAL (POPUP) ===== */
@@ -930,6 +1064,10 @@
             .modal-option .opt-price {
                 font-size: 0.9rem;
             }
+
+            .reviews-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         html {
@@ -991,7 +1129,9 @@
             <a href="#gov-services" class="active"><i class="fas fa-landmark"></i> Govt. Services</a>
             <a href="#cyber-services"><i class="fas fa-print"></i> Cyber Cafe</a>
             <a href="#computer-services"><i class="fas fa-laptop-code"></i> Computer Services</a>
+            <a href="#blog-updates"><i class="fas fa-newspaper"></i> Blog</a>
             <a href="#jobs-portal"><i class="fas fa-briefcase"></i> Jobs Portal</a>
+            <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
             <a href="#contact"><i class="fas fa-headset"></i> Contact</a>
         </div>
     </nav>
@@ -1038,8 +1178,56 @@
         </div>
     </section>
 
+    <!-- ===== BLOG / UPDATES SECTION ===== -->
+    <section class="section" id="blog-updates">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box blog"><i class="fas fa-newspaper"></i></div>
+                <div>
+                    <h3 class="hindi">ब्लॉग और नई जानकारी</h3>
+                    <p class="hindi">सरकारी योजनाओं, सेवाओं और अपडेट्स के बारे में पढ़ें</p>
+                </div>
+            </div>
+            <div class="blog-grid">
+                <!-- Blog Card 1 -->
+                <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="blog-card">
+                    <div class="blog-img">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <div class="blog-info">
+                        <h4 class="hindi">नया अपडेट: सरकारी योजनाएं और सेवाएं</h4>
+                        <p class="hindi">नई सरकारी योजनाओं, आधार, पैन और अन्य सेवाओं की नवीनतम जानकारी यहाँ पढ़ें।</p>
+                        <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <!-- Blog Card 2 -->
+                <a href="https://skynetramgarhh.blogspot.com/2026/10/job-portal.html" target="_blank" class="blog-card">
+                    <div class="blog-img" style="background: linear-gradient(135deg, #ef4444, #f97316);">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="blog-info">
+                        <h4 class="hindi">लोकल जॉब्स पोर्टल: नौकरी के अवसर</h4>
+                        <p class="hindi">रामगढ़ और आस-पास के क्षेत्रों में नौकरी के नए अवसरों की जानकारी प्राप्त करें।</p>
+                        <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+                <!-- Blog Card 3 -->
+                <a href="https://skynetramgarhh.blogspot.com/" target="_blank" class="blog-card">
+                    <div class="blog-img" style="background: linear-gradient(135deg, #10b981, #059669);">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="blog-info">
+                        <h4 class="hindi">कंप्यूटर कोर्स और टिप्स</h4>
+                        <p class="hindi">कंप्यूटर सीखने और सरकारी सेवाओं का लाभ उठाने के लिए उपयोगी टिप्स और जानकारी।</p>
+                        <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== GOVERNMENT SERVICES ===== -->
-    <section class="section" id="gov-services">
+    <section class="section" id="gov-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box gov"><i class="fas fa-landmark"></i></div>
@@ -1262,7 +1450,7 @@
     </section>
 
     <!-- ===== CYBER CAFE SERVICES ===== -->
-    <section class="section" id="cyber-services" style="background: #fff;">
+    <section class="section" id="cyber-services">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box cyber"><i class="fas fa-print"></i></div>
@@ -1409,8 +1597,8 @@
         </div>
     </section>
 
-    <!-- ===== COMPUTER SERVICES (From File Content) ===== -->
-    <section class="section" id="computer-services">
+    <!-- ===== COMPUTER SERVICES ===== -->
+    <section class="section" id="computer-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box other"><i class="fas fa-tools"></i></div>
@@ -1529,7 +1717,7 @@
         </div>
     </section>
 
-    <!-- ===== LOCAL JOBS PORTAL (UPDATED WITH LINK) ===== -->
+    <!-- ===== LOCAL JOBS PORTAL ===== -->
     <section class="section" id="jobs-portal">
         <div class="container">
             <div class="section-header">
@@ -1551,6 +1739,63 @@
                     </div>
                 </div>
             </a>
+        </div>
+    </section>
+
+    <!-- ===== CUSTOMER REVIEWS SECTION ===== -->
+    <section class="section" id="reviews" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box review"><i class="fas fa-star"></i></div>
+                <div>
+                    <h3 class="hindi">हमारे ग्राहकों की राय</h3>
+                    <p class="hindi">हमारे काम पर ग्राहकों का भरोसा और प्यार</p>
+                </div>
+            </div>
+            <div class="reviews-grid">
+                <!-- Review 1 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text hindi">"बहुत अच्छा काम करते हैं। मेरा आधार कार्ड का सुधार बहुत जल्दी और आसानी से हो गया। समय पर काम मिलता है।"</p>
+                    <div class="review-author">
+                        <img src="https://i.pravatar.cc/150?img=11" alt="Customer">
+                        <div>
+                            <h4 class="hindi">राहुल शर्मा</h4>
+                            <span class="hindi">रामगढ़, पंचकूला</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 2 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text hindi">"यहाँ की सेवा बहुत अच्छी है। मैंने अपना पैन कार्ड और वोटर कार्ड यहीं से बनवाया। स्टाफ बहुत ही मददगार है।"</p>
+                    <div class="review-author">
+                        <img src="https://i.pravatar.cc/150?img=5" alt="Customer">
+                        <div>
+                            <h4 class="hindi">प्रिया वर्मा</h4>
+                            <span class="hindi">पंचकूला</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Review 3 -->
+                <div class="review-card">
+                    <div class="review-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text hindi">"20 साल से यहाँ सेवा दे रहे हैं। मेरे पिताजी भी यहीं से काम करवाते थे। भरोसेमंद और ईमानदार दुकान है।"</p>
+                    <div class="review-author">
+                        <img src="https://i.pravatar.cc/150?img=12" alt="Customer">
+                        <div>
+                            <h4 class="hindi">अमित सिंह</h4>
+                            <span class="hindi">रामगढ़</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
