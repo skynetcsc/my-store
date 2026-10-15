@@ -52,11 +52,17 @@
         @keyframes marquee-right-to-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
         .hero-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
         .hero-badge { background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.2); }
-        .hero-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; max-width: 800px; margin: 0 auto; }
-        .hero-card { background: rgba(255,255,255,0.12); border-radius: var(--radius); padding: 16px 8px; text-align: center; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.15); transition: all 0.2s; text-decoration: none; color: inherit; display: block; }
-        .hero-card:hover { background: rgba(255,255,255,0.2); transform: translateY(-2px); }
-        .hero-card i { font-size: 1.5rem; margin-bottom: 6px; color: var(--accent); }
-        .hero-card span { display: block; font-size: 0.75rem; font-weight: 600; }
+        
+        /* Updated Hero Cards (3 Colored Cards) */
+        .hero-blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 30px; text-align: left; }
+        .hero-blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; border: none; }
+        .hero-blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
+        .hero-blog-img { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; }
+        .hero-blog-info { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+        .hero-blog-info h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
+        .hero-blog-info p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; flex: 1; }
+        .hero-blog-info .read-more { font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; }
+
         .section { padding: 40px 0; }
         .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
         .section-header .icon-box { width: 44px; height: 44px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: #fff; flex-shrink: 0; }
@@ -64,7 +70,6 @@
         .section-header .icon-box.cyber { background: var(--accent); color: var(--primary-dark); }
         .section-header .icon-box.other { background: #8b5cf6; }
         .section-header .icon-box.jobs { background: var(--danger); }
-        .section-header .icon-box.blog { background: #0ea5e9; }
         .section-header .icon-box.review { background: #f59e0b; }
         .section-header .icon-box.scheme { background: #f97316; }
         .section-header .icon-box.banking { background: #059669; }
@@ -72,7 +77,10 @@
         .section-header .icon-box.health { background: #dc2626; }
         .section-header h3 { font-size: 1.35rem; font-weight: 700; }
         .section-header p { font-size: 0.85rem; color: var(--text-light); }
-        .service-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+        
+        /* Updated Grid to force 4 columns like in the pictures */
+        .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        
         .service-item { background: var(--card-bg); border-radius: var(--radius); padding: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); border: 1px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; cursor: pointer; min-height: 70px; }
         .service-item:nth-child(6n+1) { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color: #bfdbfe; }
         .service-item:nth-child(6n+1)::before { background: #3b82f6; }
@@ -100,14 +108,6 @@
         .service-item .service-name small { display: block; font-weight: 500; font-size: 0.75rem; color: #475569; }
         .service-item .service-price { font-weight: 800; font-size: 1rem; color: #0f2447; white-space: nowrap; margin-left: 8px; text-align: right; }
         .service-item .service-price small { font-weight: 500; font-size: 0.7rem; color: #475569; display: block; }
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
-        .blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); border: 1px solid var(--border); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.2s; }
-        .blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-        .blog-img { width: 100%; height: 140px; background: linear-gradient(135deg, #0ea5e9, #3b82f6); display: flex; align-items: center; justify-content: center; color: #fff; font-size: 3rem; }
-        .blog-info { padding: 16px; flex: 1; display: flex; flex-direction: column; }
-        .blog-info h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
-        .blog-info p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; flex: 1; }
-        .blog-info .read-more { color: #0ea5e9; font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; }
         .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
         .review-card { background: #fff; border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; transition: all 0.2s; }
         .review-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
@@ -157,7 +157,9 @@
         .footer-social { margin-bottom: 12px; display: flex; justify-content: center; gap: 20px; }
         .footer-social a { color: #fff; font-size: 1.2rem; }
         .footer-social a:hover { color: var(--accent); }
-        @media (max-width: 1024px) { .service-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); } }
+
+        /* Responsive Grid Layouts */
+        @media (max-width: 1024px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) {
             .header .container { flex-direction: column; text-align: center; }
             .header-contact { justify-content: center; width: 100%; }
@@ -168,7 +170,7 @@
             .section-header .icon-box { width: 38px; height: 38px; font-size: 1rem; }
             .section-header h3 { font-size: 1.2rem; }
             .section-header p { font-size: 0.8rem; }
-            .service-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .service-grid { grid-template-columns: repeat(2, 1fr); }
             .service-item { padding: 12px; min-height: 60px; }
             .service-item .service-icon { width: 34px; height: 34px; font-size: 0.9rem; }
             .service-item .service-name { font-size: 0.82rem; }
@@ -176,6 +178,7 @@
             .contact-info { flex-direction: column; align-items: center; gap: 16px; }
             .social-links { flex-direction: column; align-items: center; }
             .social-btn { width: 100%; max-width: 280px; justify-content: center; }
+            .hero-blog-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 480px) {
             .top-bar { font-size: 0.75rem; padding: 6px 0; }
@@ -183,10 +186,6 @@
             .top-bar-left { justify-content: center; }
             .logo-icon { width: 40px; height: 40px; font-size: 1.2rem; }
             .logo-text h1 { font-size: 1.1rem; }
-            .hero-cards { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-            .hero-card { padding: 12px 4px; }
-            .hero-card i { font-size: 1.2rem; }
-            .hero-card span { font-size: 0.7rem; }
             .service-grid { grid-template-columns: 1fr; }
             .service-item { padding: 14px; }
             .service-item .service-icon { width: 38px; height: 38px; }
@@ -198,7 +197,7 @@
             .modal-option { padding: 14px 16px; }
             .modal-option .opt-name { font-size: 0.9rem; }
             .modal-option .opt-price { font-size: 0.9rem; }
-            .reviews-grid, .blog-grid { grid-template-columns: 1fr; }
+            .reviews-grid { grid-template-columns: 1fr; }
             .nav-bar a.dept-link { padding: 8px 12px; font-size: 0.8rem; }
         }
         html { scroll-behavior: smooth; }
@@ -239,17 +238,17 @@
         </div>
     </header>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION (Updated Order) -->
     <nav class="nav-bar">
         <div class="container">
             <a href="#gov-services" class="active"><i class="fas fa-landmark"></i> Govt. Services</a>
             <a href="departments.html" class="dept-link"><i class="fas fa-list-ul"></i> सभी विभागीय सेवाएं (250+)</a>
+            <a href="#cyber-services"><i class="fas fa-print"></i> साइबर कैफे</a>
+            <a href="#computer-services"><i class="fas fa-laptop-code"></i> कंप्यूटर</a>
             <a href="#central-schemes"><i class="fas fa-star"></i> केंद्रीय योजनाएं</a>
             <a href="#banking-services"><i class="fas fa-university"></i> बैंकिंग</a>
             <a href="#education-services"><i class="fas fa-graduation-cap"></i> शिक्षा</a>
             <a href="#health-services"><i class="fas fa-heartbeat"></i> स्वास्थ्य</a>
-            <a href="#cyber-services"><i class="fas fa-print"></i> साइबर कैफे</a>
-            <a href="#computer-services"><i class="fas fa-laptop-code"></i> कंप्यूटर</a>
             <a href="#jobs-portal"><i class="fas fa-briefcase"></i> Jobs</a>
             <a href="#reviews"><i class="fas fa-star"></i> Reviews</a>
             <a href="#contact"><i class="fas fa-headset"></i> Contact</a>
@@ -270,59 +269,43 @@
                 <span class="hero-badge"><i class="fas fa-star"></i> 20+ Years Experience</span>
                 <span class="hero-badge"><i class="fas fa-clock"></i> Time: 8:00 AM - 9:30 PM</span>
             </div>
-            <div class="hero-cards">
-                <div class="hero-card"><i class="fas fa-id-card"></i><span class="hindi">आधार कार्ड</span></div>
-                <div class="hero-card"><i class="fas fa-file-invoice"></i><span class="hindi">पैन कार्ड</span></div>
-                <div class="hero-card"><i class="fas fa-passport"></i><span class="hindi">पासपोर्ट</span></div>
-                <div class="hero-card"><i class="fas fa-vote-yea"></i><span class="hindi">वोटर कार्ड</span></div>
-                <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="hero-card">
-                    <i class="fas fa-bullhorn" style="color: #ef4444;"></i>
-                    <span class="hindi">नया अपडेट</span>
-                </a>
-            </div>
-        </div>
-    </section>
 
-    <!-- ===== BLOG / UPDATES SECTION ===== -->
-    <section class="section" id="blog-updates">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box blog"><i class="fas fa-newspaper"></i></div>
-                <div>
-                    <h3 class="hindi">ब्लॉग और नई जानकारी</h3>
-                    <p class="hindi">सरकारी योजनाओं, सेवाओं और अपडेट्स के बारे में पढ़ें</p>
-                </div>
-            </div>
-            <div class="blog-grid">
-                <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="blog-card">
-                    <div class="blog-img"><i class="fas fa-bullhorn"></i></div>
-                    <div class="blog-info">
+            <!-- 3 Colored Cards (Replaced the 4 buttons) -->
+            <div class="hero-blog-grid">
+                <!-- Card 1: Blue (Naya Update) -->
+                <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="hero-blog-card">
+                    <div class="hero-blog-img" style="background: #3b82f6;"><i class="fas fa-bullhorn"></i></div>
+                    <div class="hero-blog-info">
                         <h4 class="hindi">नया अपडेट: सरकारी योजनाएं और सेवाएं</h4>
                         <p class="hindi">नई सरकारी योजनाओं, आधार, पैन और अन्य सेवाओं की नवीनतम जानकारी यहाँ पढ़ें।</p>
-                        <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
+                        <span class="read-more hindi" style="color: #3b82f6;">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <a href="https://skynetramgarhh.blogspot.com/2026/10/job-portal.html" target="_blank" class="blog-card">
-                    <div class="blog-img" style="background: linear-gradient(135deg, #ef4444, #f97316);"><i class="fas fa-briefcase"></i></div>
-                    <div class="blog-info">
+
+                <!-- Card 2: Red (Local Jobs) -->
+                <a href="https://skynetramgarhh.blogspot.com/2026/10/job-portal.html" target="_blank" class="hero-blog-card">
+                    <div class="hero-blog-img" style="background: #ef4444;"><i class="fas fa-briefcase"></i></div>
+                    <div class="hero-blog-info">
                         <h4 class="hindi">लोकल जॉब्स पोर्टल: नौकरी के अवसर</h4>
                         <p class="hindi">रामगढ़ और आस-पास के क्षेत्रों में नौकरी के नए अवसरों की जानकारी प्राप्त करें।</p>
-                        <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
+                        <span class="read-more hindi" style="color: #ef4444;">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
-                <a href="https://skynetramgarhh.blogspot.com/" target="_blank" class="blog-card">
-                    <div class="blog-img" style="background: linear-gradient(135deg, #10b981, #059669);"><i class="fas fa-laptop-code"></i></div>
-                    <div class="blog-info">
+
+                <!-- Card 3: Green (Computer Course) -->
+                <a href="https://skynetramgarhh.blogspot.com/" target="_blank" class="hero-blog-card">
+                    <div class="hero-blog-img" style="background: #10b981;"><i class="fas fa-laptop-code"></i></div>
+                    <div class="hero-blog-info">
                         <h4 class="hindi">कंप्यूटर कोर्स और टिप्स</h4>
                         <p class="hindi">कंप्यूटर सीखने और सरकारी सेवाओं का लाभ उठाने के लिए उपयोगी टिप्स और जानकारी।</p>
-                        <span class="read-more hindi">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
+                        <span class="read-more hindi" style="color: #10b981;">पूरा पढ़ें <i class="fas fa-arrow-right"></i></span>
                     </div>
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- ===== MAIN GOVERNMENT SERVICES ===== -->
+    <!-- 1. ===== MAIN GOVERNMENT SERVICES (PIC 1) ===== -->
     <section class="section" id="gov-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
@@ -373,109 +356,7 @@
         </div>
     </section>
 
-    <!-- ===== CENTRAL GOVERNMENT SCHEMES (NEW) ===== -->
-    <section class="section" id="central-schemes">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box scheme"><i class="fas fa-star"></i></div>
-                <div>
-                    <h3 class="hindi">केंद्रीय सरकारी योजनाएं</h3>
-                    <p class="hindi">प्रधानमंत्री योजनाएं और CSC सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
-                </div>
-            </div>
-            <div class="service-grid">
-                <div class="service-item" onclick="openModal('pm_vishwakarma')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">PM विश्वकर्मा योजना <small>कारीगर पंजीकरण</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_suryaghar')"><div class="service-info"><div class="service-icon"><i class="fas fa-solar-panel"></i></div><div class="service-name hindi">PM सूर्य घर योजना <small>सोलर पैनल</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_kisan_maandhan')"><div class="service-info"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="service-name hindi">PM किसान मानधन <small>पेंशन योजना</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_fasal_bima')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">PM फसल बीमा योजना <small>फसल सुरक्षा</small></div></div><div class="service-price">₹50</div></div>
-                <div class="service-item" onclick="openModal('kcc')"><div class="service-info"><div class="service-icon"><i class="fas fa-credit-card"></i></div><div class="service-name hindi">किसान क्रेडिट कार्ड <small>KCC</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('swachh_bharat')"><div class="service-info"><div class="service-icon"><i class="fas fa-toilet"></i></div><div class="service-name hindi">स्वच्छ भारत अभियान <small>शौचालय योजना</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pmay')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">प्रधानमंत्री आवास योजना <small>PMAY</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('stree_swabhiman')"><div class="service-info"><div class="service-icon"><i class="fas fa-female"></i></div><div class="service-name hindi">स्ट्री स्वाभिमान <small>महिला सशक्तिकरण</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pmjay')"><div class="service-info"><div class="service-icon"><i class="fas fa-heartbeat"></i></div><div class="service-name hindi">PM जन आरोग्य योजना <small>PMJAY</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_svanidhi')"><div class="service-info"><div class="service-icon"><i class="fas fa-store"></i></div><div class="service-name hindi">PM स्वनिधि योजना <small>रेहड़ी-पटरी विक्रेता</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_kisan_samman')"><div class="service-info"><div class="service-icon"><i class="fas fa-seedling"></i></div><div class="service-name hindi">PM किसान सम्मान निधि <small>किसान सहायता</small></div></div><div class="service-price">₹50</div></div>
-                <div class="service-item" onclick="openModal('pmuy')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-graduate"></i></div><div class="service-name hindi">PM युवा योजना <small>कौशल विकास</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('atal_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-shield"></i></div><div class="service-name hindi">अटल पेंशन योजना <small>APY</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('sukanya_samridhi')"><div class="service-info"><div class="service-icon"><i class="fas fa-child"></i></div><div class="service-name hindi">सुकन्या समृद्धि योजना <small>बालिका योजना</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_jeevan_jyoti')"><div class="service-info"><div class="service-icon"><i class="fas fa-life-ring"></i></div><div class="service-name hindi">PM जीवन ज्योति बीमा <small>जीवन बीमा</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pm_suraksha_bima')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">PM सुरक्षा बीमा योजना <small>दुर्घटना बीमा</small></div></div><div class="service-price">₹20</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== BANKING & FINANCIAL SERVICES (NEW) ===== -->
-    <section class="section" id="banking-services" style="background: #fff;">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box banking"><i class="fas fa-university"></i></div>
-                <div>
-                    <h3 class="hindi">बैंकिंग और वित्तीय सेवाएं</h3>
-                    <p class="hindi">DigiPay, AEPS, बीमा और अन्य वित्तीय सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
-                </div>
-            </div>
-            <div class="service-grid">
-                <div class="service-item" onclick="openModal('digipay')"><div class="service-info"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><div class="service-name hindi">DigiPay AEPS <small>नकद निकासी/जमा</small></div></div><div class="service-price">₹20</div></div>
-                <div class="service-item" onclick="openModal('dmt')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">डोमेस्टिक मनी ट्रांसफर <small>DMT</small></div></div><div class="service-price">₹20-100</div></div>
-                <div class="service-item" onclick="openModal('insurance_life')"><div class="service-info"><div class="service-icon"><i class="fas fa-heart"></i></div><div class="service-name hindi">लाइफ इंश्योरेंस <small>जीवन बीमा</small></div></div><div class="service-price">Market Price</div></div>
-                <div class="service-item" onclick="openModal('insurance_general')"><div class="service-info"><div class="service-icon"><i class="fas fa-car"></i></div><div class="service-name hindi">नॉन-लाइफ इंश्योरेंस <small>वाहन/स्वास्थ्य बीमा</small></div></div><div class="service-price">Market Price</div></div>
-                <div class="service-item" onclick="openModal('nps')"><div class="service-info"><div class="service-icon"><i class="fas fa-piggy-bank"></i></div><div class="service-name hindi">राष्ट्रीय पेंशन सिस्टम <small>NPS</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('fastag')"><div class="service-info"><div class="service-icon"><i class="fas fa-car-side"></i></div><div class="service-name hindi">फास्टैग <small>FASTag बनवाएं</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('fastag_recharge')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">फास्टैग रिचार्ज <small>FASTag Recharge</small></div></div><div class="service-price">₹20</div></div>
-                <div class="service-item" onclick="openModal('bc_banking')"><div class="service-info"><div class="service-icon"><i class="fas fa-landmark"></i></div><div class="service-name hindi">BC बैंकिंग सेवाएं <small>खाता खोलें</small></div></div><div class="service-price">₹50</div></div>
-                <div class="service-item" onclick="openModal('money_transfer')"><div class="service-info"><div class="service-icon"><i class="fas fa-paper-plane"></i></div><div class="service-name hindi">मनी ट्रांसफर <small>तत्काल भेजें</small></div></div><div class="service-price">₹20-100</div></div>
-                <div class="service-item" onclick="openModal('balance_check')"><div class="service-info"><div class="service-icon"><i class="fas fa-search-dollar"></i></div><div class="service-name hindi">बैलेंस चेक <small>मिनी स्टेटमेंट</small></div></div><div class="service-price">₹20</div></div>
-                <div class="service-item" onclick="openModal('pan_services')"><div class="service-info"><div class="service-icon"><i class="fas fa-credit-card"></i></div><div class="service-name hindi">पैन कार्ड सेवाएं <small>नया/सुधार</small></div></div><div class="service-price">₹60</div></div>
-                <div class="service-item" onclick="openModal('form_16')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">फॉर्म 16 <small>टैक्स दस्तावेज़</small></div></div><div class="service-price">₹50</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== EDUCATION & SKILL DEVELOPMENT (NEW) ===== -->
-    <section class="section" id="education-services">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box education"><i class="fas fa-graduation-cap"></i></div>
-                <div>
-                    <h3 class="hindi">शिक्षा और कौशल विकास</h3>
-                    <p class="hindi">CSC अकादमी, PMGDISHA और अन्य शैक्षिक सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
-                </div>
-            </div>
-            <div class="service-grid">
-                <div class="service-item" onclick="openModal('csc_academy')"><div class="service-info"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><div class="service-name hindi">CSC अकादमी कोर्स <small>कंप्यूटर शिक्षा</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('pmgdisha')"><div class="service-info"><div class="service-icon"><i class="fas fa-book-reader"></i></div><div class="service-name hindi">PMGDISHA <small>डिजिटल साक्षरता</small></div></div><div class="service-price">Free</div></div>
-                <div class="service-item" onclick="openModal('online_exam')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">ऑनलाइन परीक्षा फॉर्म <small>SSC/BPSC/RRB</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('nielit_course')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">NIELIT कोर्स <small>कंप्यूटर सर्टिफिकेट</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('skill_development')"><div class="service-info"><div class="service-icon"><i class="fas fa-hands"></i></div><div class="service-name hindi">कौशल विकास कोर्स <small>Skill Development</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('scholarship_apply')"><div class="service-info"><div class="service-icon"><i class="fas fa-award"></i></div><div class="service-name hindi">छात्रवृत्ति आवेदन <small>Scholarship</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('university_form')"><div class="service-info"><div class="service-icon"><i class="fas fa-university"></i></div><div class="service-name hindi">विश्वविद्यालय फॉर्म <small>UG/PG Admission</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('iti_form')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">ITI/ Polytechnic फॉर्म <small>तकनीकी शिक्षा</small></div></div><div class="service-price">₹100</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== HEALTHCARE SERVICES (NEW) ===== -->
-    <section class="section" id="health-services" style="background: #fff;">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box health"><i class="fas fa-heartbeat"></i></div>
-                <div>
-                    <h3 class="hindi">स्वास्थ्य सेवाएं</h3>
-                    <p class="hindi">टेलीमेडिसिन, टेली-लॉ और स्वास्थ्य संबंधी सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
-                </div>
-            </div>
-            <div class="service-grid">
-                <div class="service-item" onclick="openModal('esanjeevani')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-md"></i></div><div class="service-name hindi">ई-संजीवनी <small>ऑनलाइन डॉक्टर परामर्श</small></div></div><div class="service-price">Free</div></div>
-                <div class="service-item" onclick="openModal('tele_law')"><div class="service-info"><div class="service-icon"><i class="fas fa-gavel"></i></div><div class="service-name hindi">टेली-लॉ <small>मुफ्त कानूनी सलाह</small></div></div><div class="service-price">Free</div></div>
-                <div class="service-item" onclick="openModal('ayushman_bharat')"><div class="service-info"><div class="service-icon"><i class="fas fa-hospital"></i></div><div class="service-name hindi">आयुष्मान भारत कार्ड <small>स्वास्थ्य बीमा</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="openModal('health_checkup')"><div class="service-info"><div class="service-icon"><i class="fas fa-stethoscope"></i></div><div class="service-name hindi">स्वास्थ्य जांच शिविर <small>Health Checkup</small></div></div><div class="service-price">Free</div></div>
-                <div class="service-item" onclick="openModal('blood_donation')"><div class="service-info"><div class="service-icon"><i class="fas fa-tint"></i></div><div class="service-name hindi">रक्तदान पंजीकरण <small>Blood Donation</small></div></div><div class="service-price">Free</div></div>
-                <div class="service-item" onclick="openModal('covid_certificate')"><div class="service-info"><div class="service-icon"><i class="fas fa-virus"></i></div><div class="service-name hindi">कोविड प्रमाण पत्र <small>Covid Certificate</small></div></div><div class="service-price">₹50</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CYBER CAFE SERVICES ===== -->
+    <!-- 2. ===== CYBER CAFE SERVICES (PIC 2) ===== -->
     <section class="section" id="cyber-services">
         <div class="container">
             <div class="section-header">
@@ -515,7 +396,7 @@
         </div>
     </section>
 
-    <!-- ===== COMPUTER SERVICES ===== -->
+    <!-- 3. ===== COMPUTER SERVICES (PIC 3) ===== -->
     <section class="section" id="computer-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
@@ -544,6 +425,108 @@
                 <div class="service-item other" onclick="openModal('army_recruitment')"><div class="service-info"><div class="service-icon"><i class="fas fa-fighter-jet"></i></div><div class="service-name hindi">आर्मी/नेवी भर्ती <small>Online Form</small></div></div><div class="service-price">₹100</div></div>
                 <div class="service-item other" onclick="openModal('gst_filing')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice-dollar"></i></div><div class="service-name hindi">GST रिटर्न फाइलिंग <small>व्यापारियों के लिए</small></div></div><div class="service-price">₹500</div></div>
                 <div class="service-item other" onclick="openModal('sparsh_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-medal"></i></div><div class="service-name hindi">SPARSH डिफेंस पेंशन <small>रक्षा पेंशन</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ===== CENTRAL GOVERNMENT SCHEMES (PIC 4) ===== -->
+    <section class="section" id="central-schemes">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box scheme"><i class="fas fa-star"></i></div>
+                <div>
+                    <h3 class="hindi">केंद्रीय सरकारी योजनाएं</h3>
+                    <p class="hindi">प्रधानमंत्री योजनाएं और CSC सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('pm_vishwakarma')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">PM विश्वकर्मा योजना <small>कारीगर पंजीकरण</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_suryaghar')"><div class="service-info"><div class="service-icon"><i class="fas fa-solar-panel"></i></div><div class="service-name hindi">PM सूर्य घर योजना <small>सोलर पैनल</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_kisan_maandhan')"><div class="service-info"><div class="service-icon"><i class="fas fa-hand-holding-usd"></i></div><div class="service-name hindi">PM किसान मानधन <small>पेंशन योजना</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_fasal_bima')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">PM फसल बीमा योजना <small>फसल सुरक्षा</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('kcc')"><div class="service-info"><div class="service-icon"><i class="fas fa-credit-card"></i></div><div class="service-name hindi">किसान क्रेडिट कार्ड <small>KCC</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('swachh_bharat')"><div class="service-info"><div class="service-icon"><i class="fas fa-toilet"></i></div><div class="service-name hindi">स्वच्छ भारत अभियान <small>शौचालय योजना</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pmay')"><div class="service-info"><div class="service-icon"><i class="fas fa-home"></i></div><div class="service-name hindi">प्रधानमंत्री आवास योजना <small>PMAY</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('stree_swabhiman')"><div class="service-info"><div class="service-icon"><i class="fas fa-female"></i></div><div class="service-name hindi">स्ट्री स्वाभिमान <small>महिला सशक्तिकरण</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pmjay')"><div class="service-info"><div class="service-icon"><i class="fas fa-heartbeat"></i></div><div class="service-name hindi">PM जन आरोग्य योजना <small>PMJAY</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_svanidhi')"><div class="service-info"><div class="service-icon"><i class="fas fa-store"></i></div><div class="service-name hindi">PM स्वनिधि योजना <small>रेहड़ी-पटरी विक्रेता</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_kisan_samman')"><div class="service-info"><div class="service-icon"><i class="fas fa-seedling"></i></div><div class="service-name hindi">PM किसान सम्मान निधि <small>किसान सहायता</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('pmuy')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-graduate"></i></div><div class="service-name hindi">PM युवा योजना <small>कौशल विकास</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('atal_pension')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-shield"></i></div><div class="service-name hindi">अटल पेंशन योजना <small>APY</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('sukanya_samridhi')"><div class="service-info"><div class="service-icon"><i class="fas fa-child"></i></div><div class="service-name hindi">सुकन्या समृद्धि योजना <small>बालिका योजना</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_jeevan_jyoti')"><div class="service-info"><div class="service-icon"><i class="fas fa-life-ring"></i></div><div class="service-name hindi">PM जीवन ज्योति बीमा <small>जीवन बीमा</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pm_suraksha_bima')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">PM सुरक्षा बीमा योजना <small>दुर्घटना बीमा</small></div></div><div class="service-price">₹20</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BANKING & FINANCIAL SERVICES ===== -->
+    <section class="section" id="banking-services" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box banking"><i class="fas fa-university"></i></div>
+                <div>
+                    <h3 class="hindi">बैंकिंग और वित्तीय सेवाएं</h3>
+                    <p class="hindi">DigiPay, AEPS, बीमा और अन्य वित्तीय सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('digipay')"><div class="service-info"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><div class="service-name hindi">DigiPay AEPS <small>नकद निकासी/जमा</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="openModal('dmt')"><div class="service-info"><div class="service-icon"><i class="fas fa-exchange-alt"></i></div><div class="service-name hindi">डोमेस्टिक मनी ट्रांसफर <small>DMT</small></div></div><div class="service-price">₹20-100</div></div>
+                <div class="service-item" onclick="openModal('insurance_life')"><div class="service-info"><div class="service-icon"><i class="fas fa-heart"></i></div><div class="service-name hindi">लाइफ इंश्योरेंस <small>जीवन बीमा</small></div></div><div class="service-price">Market Price</div></div>
+                <div class="service-item" onclick="openModal('insurance_general')"><div class="service-info"><div class="service-icon"><i class="fas fa-car"></i></div><div class="service-name hindi">नॉन-लाइफ इंश्योरेंस <small>वाहन/स्वास्थ्य बीमा</small></div></div><div class="service-price">Market Price</div></div>
+                <div class="service-item" onclick="openModal('nps')"><div class="service-info"><div class="service-icon"><i class="fas fa-piggy-bank"></i></div><div class="service-name hindi">राष्ट्रीय पेंशन सिस्टम <small>NPS</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fastag')"><div class="service-info"><div class="service-icon"><i class="fas fa-car-side"></i></div><div class="service-name hindi">फास्टैग <small>FASTag बनवाएं</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('fastag_recharge')"><div class="service-info"><div class="service-icon"><i class="fas fa-sync-alt"></i></div><div class="service-name hindi">फास्टैग रिचार्ज <small>FASTag Recharge</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="openModal('bc_banking')"><div class="service-info"><div class="service-icon"><i class="fas fa-landmark"></i></div><div class="service-name hindi">BC बैंकिंग सेवाएं <small>खाता खोलें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="openModal('money_transfer')"><div class="service-info"><div class="service-icon"><i class="fas fa-paper-plane"></i></div><div class="service-name hindi">मनी ट्रांसफर <small>तत्काल भेजें</small></div></div><div class="service-price">₹20-100</div></div>
+                <div class="service-item" onclick="openModal('balance_check')"><div class="service-info"><div class="service-icon"><i class="fas fa-search-dollar"></i></div><div class="service-name hindi">बैलेंस चेक <small>मिनी स्टेटमेंट</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="openModal('pan_services')"><div class="service-info"><div class="service-icon"><i class="fas fa-credit-card"></i></div><div class="service-name hindi">पैन कार्ड सेवाएं <small>नया/सुधार</small></div></div><div class="service-price">₹60</div></div>
+                <div class="service-item" onclick="openModal('form_16')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">फॉर्म 16 <small>टैक्स दस्तावेज़</small></div></div><div class="service-price">₹50</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== EDUCATION & SKILL DEVELOPMENT ===== -->
+    <section class="section" id="education-services">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box education"><i class="fas fa-graduation-cap"></i></div>
+                <div>
+                    <h3 class="hindi">शिक्षा और कौशल विकास</h3>
+                    <p class="hindi">CSC अकादमी, PMGDISHA और अन्य शैक्षिक सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('csc_academy')"><div class="service-info"><div class="service-icon"><i class="fas fa-laptop-code"></i></div><div class="service-name hindi">CSC अकादमी कोर्स <small>कंप्यूटर शिक्षा</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('pmgdisha')"><div class="service-info"><div class="service-icon"><i class="fas fa-book-reader"></i></div><div class="service-name hindi">PMGDISHA <small>डिजिटल साक्षरता</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('online_exam')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-alt"></i></div><div class="service-name hindi">ऑनलाइन परीक्षा फॉर्म <small>SSC/BPSC/RRB</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('nielit_course')"><div class="service-info"><div class="service-icon"><i class="fas fa-certificate"></i></div><div class="service-name hindi">NIELIT कोर्स <small>कंप्यूटर सर्टिफिकेट</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('skill_development')"><div class="service-info"><div class="service-icon"><i class="fas fa-hands"></i></div><div class="service-name hindi">कौशल विकास कोर्स <small>Skill Development</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('scholarship_apply')"><div class="service-info"><div class="service-icon"><i class="fas fa-award"></i></div><div class="service-name hindi">छात्रवृत्ति आवेदन <small>Scholarship</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('university_form')"><div class="service-info"><div class="service-icon"><i class="fas fa-university"></i></div><div class="service-name hindi">विश्वविद्यालय फॉर्म <small>UG/PG Admission</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('iti_form')"><div class="service-info"><div class="service-icon"><i class="fas fa-tools"></i></div><div class="service-name hindi">ITI/ Polytechnic फॉर्म <small>तकनीकी शिक्षा</small></div></div><div class="service-price">₹100</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== HEALTHCARE SERVICES ===== -->
+    <section class="section" id="health-services" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box health"><i class="fas fa-heartbeat"></i></div>
+                <div>
+                    <h3 class="hindi">स्वास्थ्य सेवाएं</h3>
+                    <p class="hindi">टेलीमेडिसिन, टेली-लॉ और स्वास्थ्य संबंधी सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <div class="service-item" onclick="openModal('esanjeevani')"><div class="service-info"><div class="service-icon"><i class="fas fa-user-md"></i></div><div class="service-name hindi">ई-संजीवनी <small>ऑनलाइन डॉक्टर परामर्श</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('tele_law')"><div class="service-info"><div class="service-icon"><i class="fas fa-gavel"></i></div><div class="service-name hindi">टेली-लॉ <small>मुफ्त कानूनी सलाह</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('ayushman_bharat')"><div class="service-info"><div class="service-icon"><i class="fas fa-hospital"></i></div><div class="service-name hindi">आयुष्मान भारत कार्ड <small>स्वास्थ्य बीमा</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="openModal('health_checkup')"><div class="service-info"><div class="service-icon"><i class="fas fa-stethoscope"></i></div><div class="service-name hindi">स्वास्थ्य जांच शिविर <small>Health Checkup</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('blood_donation')"><div class="service-info"><div class="service-icon"><i class="fas fa-tint"></i></div><div class="service-name hindi">रक्तदान पंजीकरण <small>Blood Donation</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="openModal('covid_certificate')"><div class="service-info"><div class="service-icon"><i class="fas fa-virus"></i></div><div class="service-name hindi">कोविड प्रमाण पत्र <small>Covid Certificate</small></div></div><div class="service-price">₹50</div></div>
             </div>
         </div>
     </section>
@@ -699,7 +682,7 @@
             widow_pension: { title: "Widow Pension - Select Option", options: [{ name: "New Application", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
             old_pension: { title: "Old Age Pension - Select Option", options: [{ name: "New Application", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
 
-            // ===== CENTRAL GOVT SCHEMES (NEW) =====
+            // ===== CENTRAL GOVT SCHEMES =====
             pm_vishwakarma: { title: "PM Vishwakarma Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Biometric Verification", price: "₹50" }, { name: "Toolkit Grant", price: "₹100" }, { name: "Loan Application", price: "₹100" }] },
             pm_suryaghar: { title: "PM Surya Ghar Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Subsidy Application", price: "₹100" }, { name: "Net Metering", price: "₹100" }] },
             pm_kisan_maandhan: { title: "PM Kisan Maandhan Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Contribution Payment", price: "₹50" }, { name: "Status Check", price: "₹30" }] },
@@ -717,7 +700,7 @@
             pm_jeevan_jyoti: { title: "PM Jeevan Jyoti Bima Yojana", options: [{ name: "New Enrollment", price: "₹100" }, { name: "Premium Payment", price: "₹20" }] },
             pm_suraksha_bima: { title: "PM Suraksha Bima Yojana", options: [{ name: "New Enrollment", price: "₹20" }, { name: "Premium Payment", price: "₹20" }] },
 
-            // ===== BANKING (NEW) =====
+            // ===== BANKING =====
             digipay: { title: "DigiPay AEPS", options: [{ name: "Cash Withdrawal", price: "₹20" }, { name: "Cash Deposit", price: "₹20" }, { name: "Balance Check", price: "₹10" }, { name: "Mini Statement", price: "₹20" }, { name: "Aadhaar Pay", price: "₹20" }] },
             dmt: { title: "Domestic Money Transfer (DMT)", options: [{ name: "IMPS Transfer", price: "₹20-100" }, { name: "NEFT Transfer", price: "₹20-50" }, { name: "Beneficiary Add", price: "₹20" }] },
             insurance_life: { title: "Life Insurance", options: [{ name: "Term Plan", price: "Market Price" }, { name: "Endowment Plan", price: "Market Price" }, { name: "ULIP", price: "Market Price" }, { name: "Money Back Plan", price: "Market Price" }] },
@@ -731,7 +714,7 @@
             pan_services: { title: "PAN Services", options: [{ name: "New PAN", price: "₹160" }, { name: "Correction", price: "₹160" }, { name: "e-PAN Download", price: "₹50" }] },
             form_16: { title: "Form 16", options: [{ name: "Download", price: "₹30" }, { name: "Print", price: "₹50" }] },
 
-            // ===== EDUCATION (NEW) =====
+            // ===== EDUCATION =====
             csc_academy: { title: "CSC Academy Courses", options: [{ name: "Basic Computer", price: "₹100" }, { name: "Tally", price: "₹100" }, { name: "DTP", price: "₹100" }, { name: "Web Design", price: "₹100" }] },
             pmgdisha: { title: "PMGDISHA", options: [{ name: "New Registration", price: "Free" }, { name: "Digital Literacy Test", price: "Free" }] },
             online_exam: { title: "Online Exam Forms", options: [{ name: "SSC Form", price: "₹100" }, { name: "BPSC Form", price: "₹100" }, { name: "RRB Form", price: "₹100" }, { name: "State Exam Form", price: "₹100" }] },
@@ -741,7 +724,7 @@
             university_form: { title: "University Forms", options: [{ name: "UG Admission", price: "₹100" }, { name: "PG Admission", price: "₹100" }, { name: "PhD Form", price: "₹100" }] },
             iti_form: { title: "ITI/Polytechnic Forms", options: [{ name: "ITI Admission", price: "₹100" }, { name: "Polytechnic Admission", price: "₹100" }] },
 
-            // ===== HEALTHCARE (NEW) =====
+            // ===== HEALTHCARE =====
             esanjeevani: { title: "e-Sanjeevani", options: [{ name: "Doctor Consultation", price: "Free" }, { name: "Follow-up", price: "Free" }] },
             tele_law: { title: "Tele-Law", options: [{ name: "Legal Consultation", price: "Free" }, { name: "Case Status", price: "Free" }] },
             ayushman_bharat: { title: "Ayushman Bharat", options: [{ name: "New Card", price: "₹100" }, { name: "Download Card", price: "₹50" }, { name: "Hospital List", price: "Free" }] },
