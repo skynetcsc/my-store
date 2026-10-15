@@ -53,64 +53,15 @@
         .hero-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
         .hero-badge { background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.2); }
         
-        /* 🆕 UPDATED: Hero Cards (Size Reduced) */
-        .hero-blog-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* width kam ki */
-            gap: 12px; /* gap kam kiya */
-            margin-top: 20px; /* margin kam kiya */
-            text-align: left; 
-        }
-        .hero-blog-card { 
-            background: #fff; 
-            border-radius: var(--radius); 
-            overflow: hidden; 
-            box-shadow: var(--shadow); /* shadow thodi light ki */
-            text-decoration: none; 
-            color: inherit; 
-            display: flex; 
-            flex-direction: column; 
-            transition: all 0.3s ease; 
-            border: none; 
-        }
-        .hero-blog-card:hover { 
-            transform: translateY(-3px); 
-            box-shadow: var(--shadow-lg); 
-        }
-        .hero-blog-img { 
-            width: 100%; 
-            height: 70px; /* height kam ki */
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
-            color: #fff; 
-            font-size: 1.8rem; /* icon size kam kiya */
-        }
-        .hero-blog-info { 
-            padding: 12px; /* padding kam ki */
-            flex: 1; 
-            display: flex; 
-            flex-direction: column; 
-        }
-        .hero-blog-info h4 { 
-            font-size: 0.95rem; /* font size kam kiya */
-            font-weight: 700; 
-            margin-bottom: 4px; 
-            color: var(--primary); 
-        }
-        .hero-blog-info p { 
-            font-size: 0.75rem; /* font size kam kiya */
-            color: var(--text-light); 
-            margin-bottom: 8px; 
-            flex: 1; 
-        }
-        .hero-blog-info .read-more { 
-            font-weight: 600; 
-            font-size: 0.75rem; /* font size kam kiya */
-            display: inline-flex; 
-            align-items: center; 
-            gap: 4px; 
-        }
+        /* Updated Hero Cards (Size Reduced) */
+        .hero-blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; text-align: left; }
+        .hero-blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; border: none; }
+        .hero-blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .hero-blog-img { width: 100%; height: 70px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.8rem; }
+        .hero-blog-info { padding: 12px; flex: 1; display: flex; flex-direction: column; }
+        .hero-blog-info h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; color: var(--primary); }
+        .hero-blog-info p { font-size: 0.75rem; color: var(--text-light); margin-bottom: 8px; flex: 1; }
+        .hero-blog-info .read-more { font-weight: 600; font-size: 0.75rem; display: inline-flex; align-items: center; gap: 4px; }
 
         .section { padding: 40px 0; }
         .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
@@ -127,7 +78,7 @@
         .section-header h3 { font-size: 1.35rem; font-weight: 700; }
         .section-header p { font-size: 0.85rem; color: var(--text-light); }
         
-        /* Updated Grid to force 4 columns like in the pictures */
+        /* 4 Columns Grid */
         .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
         
         .service-item { background: var(--card-bg); border-radius: var(--radius); padding: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); border: 1px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; cursor: pointer; min-height: 70px; }
@@ -288,13 +239,12 @@
         </div>
     </header>
 
-    <!-- NAVIGATION (Updated Order) -->
+    <!-- NAVIGATION (Computer link removed) -->
     <nav class="nav-bar">
         <div class="container">
             <a href="#gov-services" class="active"><i class="fas fa-landmark"></i> Govt. Services</a>
             <a href="departments.html" class="dept-link"><i class="fas fa-list-ul"></i> सभी विभागीय सेवाएं (250+)</a>
             <a href="#cyber-services"><i class="fas fa-print"></i> साइबर कैफे</a>
-            <a href="#computer-services"><i class="fas fa-laptop-code"></i> कंप्यूटर</a>
             <a href="#central-schemes"><i class="fas fa-star"></i> केंद्रीय योजनाएं</a>
             <a href="#banking-services"><i class="fas fa-university"></i> बैंकिंग</a>
             <a href="#education-services"><i class="fas fa-graduation-cap"></i> शिक्षा</a>
@@ -406,17 +356,18 @@
         </div>
     </section>
 
-    <!-- 2. ===== CYBER CAFE SERVICES (PIC 2) ===== -->
+    <!-- 2. ===== CYBER CAFE + COMPUTER SERVICES (PIC 2 + PIC 1 MERGED) ===== -->
     <section class="section" id="cyber-services">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box cyber"><i class="fas fa-print"></i></div>
                 <div>
-                    <h3 class="hindi">साइबर कैफ़े सेवाएं</h3>
-                    <p class="hindi">प्रिंट, फोटोकॉपी, लेमिनेशन, टाइपिंग और अन्य डिजिटल सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                    <h3 class="hindi">साइबर कैफ़े और कंप्यूटर सेवाएं</h3>
+                    <p class="hindi">प्रिंट, फोटोकॉपी, लेमिनेशन, टाइपिंग, कंप्यूटर रिपेयर और अन्य डिजिटल सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
                 </div>
             </div>
             <div class="service-grid">
+                <!-- --- Cyber Cafe Services --- -->
                 <div class="service-item cyber" onclick="openModal('photocopy')"><div class="service-info"><div class="service-icon"><i class="fas fa-copy"></i></div><div class="service-name hindi">फोटोकॉपी <small>क्लिक करें</small></div></div><div class="service-price">₹2</div></div>
                 <div class="service-item cyber" onclick="openModal('print_bw')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">प्रिंट ब्लैक <small>क्लिक करें</small></div></div><div class="service-price">₹5</div></div>
                 <div class="service-item cyber" onclick="openModal('print_color')"><div class="service-info"><div class="service-icon"><i class="fas fa-palette"></i></div><div class="service-name hindi">प्रिंट कलर <small>क्लिक करें</small></div></div><div class="service-price">₹10</div></div>
@@ -442,21 +393,8 @@
                 <div class="service-item cyber" onclick="openModal('estamp')"><div class="service-info"><div class="service-icon"><i class="fas fa-stamp"></i></div><div class="service-name hindi">ई-स्टाम्प <small>डिजिटल स्टाम्प</small></div></div><div class="service-price">₹50</div></div>
                 <div class="service-item cyber" onclick="openModal('dsc')"><div class="service-info"><div class="service-icon"><i class="fas fa-signature"></i></div><div class="service-name hindi">डिजिटल सिग्नेचर <small>DSC</small></div></div><div class="service-price">₹500</div></div>
                 <div class="service-item cyber" onclick="openModal('jeevan_pramaan')"><div class="service-info"><div class="service-icon"><i class="fas fa-fingerprint"></i></div><div class="service-name hindi">जीवन प्रमाण पत्र <small>Jeevan Pramaan</small></div></div><div class="service-price">₹50</div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. ===== COMPUTER SERVICES (PIC 3) ===== -->
-    <section class="section" id="computer-services" style="background: #fff;">
-        <div class="container">
-            <div class="section-header">
-                <div class="icon-box other"><i class="fas fa-tools"></i></div>
-                <div>
-                    <h3 class="hindi">कंप्यूटर सेवाएं</h3>
-                    <p class="hindi">कंप्यूटर रिपेयर, इंस्टॉलेशन और एक्सेसरीज़ (क्लिक करें ऑप्शन देखने के लिए)</p>
-                </div>
-            </div>
-            <div class="service-grid">
+                
+                <!-- --- Computer Services (Merged from Pic 1) --- -->
                 <div class="service-item other" onclick="openModal('toner_refill')"><div class="service-info"><div class="service-icon"><i class="fas fa-fill-drip"></i></div><div class="service-name hindi">टोनर रिफिलिंग <small>क्लिक करें</small></div></div><div class="service-price">As per work</div></div>
                 <div class="service-item other" onclick="openModal('antivirus')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-virus"></i></div><div class="service-name hindi">एंटीवायरस इंस्टॉलेशन <small>क्लिक करें</small></div></div><div class="service-price">As per work</div></div>
                 <div class="service-item other" onclick="openModal('printer_repair')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">प्रिंटर रिपेयर <small>क्लिक करें</small></div></div><div class="service-price">As per work</div></div>
@@ -480,7 +418,7 @@
     </section>
 
     <!-- 4. ===== CENTRAL GOVERNMENT SCHEMES (PIC 4) ===== -->
-    <section class="section" id="central-schemes">
+    <section class="section" id="central-schemes" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box scheme"><i class="fas fa-star"></i></div>
@@ -511,7 +449,7 @@
     </section>
 
     <!-- ===== BANKING & FINANCIAL SERVICES ===== -->
-    <section class="section" id="banking-services" style="background: #fff;">
+    <section class="section" id="banking-services">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box banking"><i class="fas fa-university"></i></div>
@@ -538,7 +476,7 @@
     </section>
 
     <!-- ===== EDUCATION & SKILL DEVELOPMENT ===== -->
-    <section class="section" id="education-services">
+    <section class="section" id="education-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box education"><i class="fas fa-graduation-cap"></i></div>
@@ -561,7 +499,7 @@
     </section>
 
     <!-- ===== HEALTHCARE SERVICES ===== -->
-    <section class="section" id="health-services" style="background: #fff;">
+    <section class="section" id="health-services">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box health"><i class="fas fa-heartbeat"></i></div>
@@ -582,7 +520,7 @@
     </section>
 
     <!-- ===== LOCAL JOBS PORTAL ===== -->
-    <section class="section" id="jobs-portal">
+    <section class="section" id="jobs-portal" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box jobs"><i class="fas fa-briefcase"></i></div>
@@ -607,7 +545,7 @@
     </section>
 
     <!-- ===== REVIEWS ===== -->
-    <section class="section" id="reviews" style="background: #fff;">
+    <section class="section" id="reviews">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box review"><i class="fas fa-star"></i></div>
