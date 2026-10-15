@@ -53,15 +53,64 @@
         .hero-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
         .hero-badge { background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.2); }
         
-        /* Updated Hero Cards (3 Colored Cards) */
-        .hero-blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 30px; text-align: left; }
-        .hero-blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-lg); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; border: none; }
-        .hero-blog-card:hover { transform: translateY(-5px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.2); }
-        .hero-blog-img { width: 100%; height: 120px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 2.5rem; }
-        .hero-blog-info { padding: 20px; flex: 1; display: flex; flex-direction: column; }
-        .hero-blog-info h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; color: var(--primary); }
-        .hero-blog-info p { font-size: 0.85rem; color: var(--text-light); margin-bottom: 16px; flex: 1; }
-        .hero-blog-info .read-more { font-weight: 600; font-size: 0.85rem; display: inline-flex; align-items: center; gap: 6px; }
+        /* 🆕 UPDATED: Hero Cards (Size Reduced) */
+        .hero-blog-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* width kam ki */
+            gap: 12px; /* gap kam kiya */
+            margin-top: 20px; /* margin kam kiya */
+            text-align: left; 
+        }
+        .hero-blog-card { 
+            background: #fff; 
+            border-radius: var(--radius); 
+            overflow: hidden; 
+            box-shadow: var(--shadow); /* shadow thodi light ki */
+            text-decoration: none; 
+            color: inherit; 
+            display: flex; 
+            flex-direction: column; 
+            transition: all 0.3s ease; 
+            border: none; 
+        }
+        .hero-blog-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: var(--shadow-lg); 
+        }
+        .hero-blog-img { 
+            width: 100%; 
+            height: 70px; /* height kam ki */
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #fff; 
+            font-size: 1.8rem; /* icon size kam kiya */
+        }
+        .hero-blog-info { 
+            padding: 12px; /* padding kam ki */
+            flex: 1; 
+            display: flex; 
+            flex-direction: column; 
+        }
+        .hero-blog-info h4 { 
+            font-size: 0.95rem; /* font size kam kiya */
+            font-weight: 700; 
+            margin-bottom: 4px; 
+            color: var(--primary); 
+        }
+        .hero-blog-info p { 
+            font-size: 0.75rem; /* font size kam kiya */
+            color: var(--text-light); 
+            margin-bottom: 8px; 
+            flex: 1; 
+        }
+        .hero-blog-info .read-more { 
+            font-weight: 600; 
+            font-size: 0.75rem; /* font size kam kiya */
+            display: inline-flex; 
+            align-items: center; 
+            gap: 4px; 
+        }
 
         .section { padding: 40px 0; }
         .section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 2px solid var(--border); }
@@ -178,7 +227,7 @@
             .contact-info { flex-direction: column; align-items: center; gap: 16px; }
             .social-links { flex-direction: column; align-items: center; }
             .social-btn { width: 100%; max-width: 280px; justify-content: center; }
-            .hero-blog-grid { grid-template-columns: 1fr; }
+            .hero-blog-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 480px) {
             .top-bar { font-size: 0.75rem; padding: 6px 0; }
@@ -199,6 +248,7 @@
             .modal-option .opt-price { font-size: 0.9rem; }
             .reviews-grid { grid-template-columns: 1fr; }
             .nav-bar a.dept-link { padding: 8px 12px; font-size: 0.8rem; }
+            .hero-blog-grid { grid-template-columns: 1fr; }
         }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 8px; }
@@ -270,7 +320,7 @@
                 <span class="hero-badge"><i class="fas fa-clock"></i> Time: 8:00 AM - 9:30 PM</span>
             </div>
 
-            <!-- 3 Colored Cards (Replaced the 4 buttons) -->
+            <!-- 3 Colored Cards (Size Reduced) -->
             <div class="hero-blog-grid">
                 <!-- Card 1: Blue (Naya Update) -->
                 <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="hero-blog-card">
