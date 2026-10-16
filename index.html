@@ -53,7 +53,6 @@
         .hero-badges { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
         .hero-badge { background: rgba(255,255,255,0.15); padding: 8px 18px; border-radius: 50px; font-size: 0.85rem; font-weight: 600; backdrop-filter: blur(4px); border: 1px solid rgba(255,255,255,0.2); }
         
-        /* Updated Hero Cards (Size Reduced) */
         .hero-blog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 20px; text-align: left; }
         .hero-blog-card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: all 0.3s ease; border: none; }
         .hero-blog-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
@@ -75,10 +74,12 @@
         .section-header .icon-box.banking { background: #059669; }
         .section-header .icon-box.education { background: #7c3aed; }
         .section-header .icon-box.health { background: #dc2626; }
+        .section-header .icon-box.other-important { background: #ec4899; }
+        .section-header .icon-box.election { background: #8b5cf6; }
+        .section-header .icon-box.vehicle { background: #14b8a6; }
         .section-header h3 { font-size: 1.35rem; font-weight: 700; }
         .section-header p { font-size: 0.85rem; color: var(--text-light); }
         
-        /* 4 Columns Grid */
         .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
         
         .service-item { background: var(--card-bg); border-radius: var(--radius); padding: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); border: 1px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; cursor: pointer; min-height: 70px; }
@@ -119,7 +120,7 @@
         .review-author span { font-size: 0.75rem; color: var(--text-light); }
         .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); backdrop-filter: blur(4px); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 16px; }
         .modal-overlay.active { display: flex; }
-        .modal-box { background: #fff; border-radius: var(--radius); width: 100%; max-width: 400px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2); overflow: hidden; animation: slideUp 0.3s ease-out; }
+        .modal-box { background: #fff; border-radius: var(--radius); width: 100%; max-width: 500px; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2); overflow: hidden; animation: slideUp 0.3s ease-out; }
         @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
         .modal-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: linear-gradient(135deg, #eff6ff, #dbeafe); }
         .modal-header h4 { font-size: 1.1rem; font-weight: 700; color: var(--primary); }
@@ -158,7 +159,6 @@
         .footer-social a { color: #fff; font-size: 1.2rem; }
         .footer-social a:hover { color: var(--accent); }
 
-        /* Responsive Grid Layouts */
         @media (max-width: 1024px) { .service-grid { grid-template-columns: repeat(3, 1fr); } }
         @media (max-width: 768px) {
             .header .container { flex-direction: column; text-align: center; }
@@ -239,7 +239,7 @@
         </div>
     </header>
 
-    <!-- NAVIGATION (Computer link removed) -->
+    <!-- NAVIGATION -->
     <nav class="nav-bar">
         <div class="container">
             <a href="#gov-services" class="active"><i class="fas fa-landmark"></i> Govt. Services</a>
@@ -270,9 +270,7 @@
                 <span class="hero-badge"><i class="fas fa-clock"></i> Time: 8:00 AM - 9:30 PM</span>
             </div>
 
-            <!-- 3 Colored Cards (Size Reduced) -->
             <div class="hero-blog-grid">
-                <!-- Card 1: Blue (Naya Update) -->
                 <a href="https://skynetramgarhh.blogspot.com/2026/10/latest-update.html" target="_blank" class="hero-blog-card">
                     <div class="hero-blog-img" style="background: #3b82f6;"><i class="fas fa-bullhorn"></i></div>
                     <div class="hero-blog-info">
@@ -282,7 +280,6 @@
                     </div>
                 </a>
 
-                <!-- Card 2: Red (Local Jobs) -->
                 <a href="https://skynetramgarhh.blogspot.com/2026/10/job-portal.html" target="_blank" class="hero-blog-card">
                     <div class="hero-blog-img" style="background: #ef4444;"><i class="fas fa-briefcase"></i></div>
                     <div class="hero-blog-info">
@@ -292,7 +289,6 @@
                     </div>
                 </a>
 
-                <!-- Card 3: Green (Computer Course) -->
                 <a href="https://skynetramgarhh.blogspot.com/" target="_blank" class="hero-blog-card">
                     <div class="hero-blog-img" style="background: #10b981;"><i class="fas fa-laptop-code"></i></div>
                     <div class="hero-blog-info">
@@ -305,7 +301,7 @@
         </div>
     </section>
 
-    <!-- 1. ===== MAIN GOVERNMENT SERVICES (PIC 1) ===== -->
+    <!-- 1. ===== MAIN GOVERNMENT SERVICES ===== -->
     <section class="section" id="gov-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
@@ -356,7 +352,7 @@
         </div>
     </section>
 
-    <!-- 2. ===== CYBER CAFE + COMPUTER SERVICES (PIC 2 + PIC 1 MERGED) ===== -->
+    <!-- 2. ===== CYBER CAFE + COMPUTER SERVICES ===== -->
     <section class="section" id="cyber-services">
         <div class="container">
             <div class="section-header">
@@ -367,7 +363,6 @@
                 </div>
             </div>
             <div class="service-grid">
-                <!-- --- Cyber Cafe Services --- -->
                 <div class="service-item cyber" onclick="openModal('photocopy')"><div class="service-info"><div class="service-icon"><i class="fas fa-copy"></i></div><div class="service-name hindi">फोटोकॉपी <small>क्लिक करें</small></div></div><div class="service-price">₹2</div></div>
                 <div class="service-item cyber" onclick="openModal('print_bw')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">प्रिंट ब्लैक <small>क्लिक करें</small></div></div><div class="service-price">₹5</div></div>
                 <div class="service-item cyber" onclick="openModal('print_color')"><div class="service-info"><div class="service-icon"><i class="fas fa-palette"></i></div><div class="service-name hindi">प्रिंट कलर <small>क्लिक करें</small></div></div><div class="service-price">₹10</div></div>
@@ -394,7 +389,6 @@
                 <div class="service-item cyber" onclick="openModal('dsc')"><div class="service-info"><div class="service-icon"><i class="fas fa-signature"></i></div><div class="service-name hindi">डिजिटल सिग्नेचर <small>DSC</small></div></div><div class="service-price">₹500</div></div>
                 <div class="service-item cyber" onclick="openModal('jeevan_pramaan')"><div class="service-info"><div class="service-icon"><i class="fas fa-fingerprint"></i></div><div class="service-name hindi">जीवन प्रमाण पत्र <small>Jeevan Pramaan</small></div></div><div class="service-price">₹50</div></div>
                 
-                <!-- --- Computer Services (Merged from Pic 1) --- -->
                 <div class="service-item other" onclick="openModal('toner_refill')"><div class="service-info"><div class="service-icon"><i class="fas fa-fill-drip"></i></div><div class="service-name hindi">टोनर रिफिलिंग <small>क्लिक करें</small></div></div><div class="service-price">As per work</div></div>
                 <div class="service-item other" onclick="openModal('antivirus')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-virus"></i></div><div class="service-name hindi">एंटीवायरस इंस्टॉलेशन <small>क्लिक करें</small></div></div><div class="service-price">As per work</div></div>
                 <div class="service-item other" onclick="openModal('printer_repair')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">प्रिंटर रिपेयर <small>क्लिक करें</small></div></div><div class="service-price">As per work</div></div>
@@ -417,8 +411,185 @@
         </div>
     </section>
 
-    <!-- 4. ===== CENTRAL GOVERNMENT SCHEMES (PIC 4) ===== -->
-    <section class="section" id="central-schemes" style="background: #fff;">
+    <!-- 3. ===== OTHER IMPORTANT SERVICES (UPDATED WITH NEW LINKS) ===== -->
+    <section class="section" id="other-important" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box other-important"><i class="fas fa-star"></i></div>
+                <div>
+                    <h3 class="hindi">📌 अन्य महत्वपूर्ण सेवाएँ</h3>
+                    <p class="hindi">मोबाइल, बैंकिंग और अन्य उपयोगी सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <!-- 1. Know Your Mobile Connections (TAFCOP) -->
+                <div class="service-item" onclick="window.open('https://tafcop.sancharsaathi.gov.in/telecomUser/', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-sim-card"></i></div>
+                        <div class="service-name hindi">आपके नाम पर कितने सिम <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹20</div>
+                </div>
+
+                <!-- 2. Block Stolen Mobile (CEIR) -->
+                <div class="service-item" onclick="window.open('https://ceir.sancharsaathi.gov.in/', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="service-name hindi">चोरी हुई मोबाइल ब्लॉक करें <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+
+                <!-- 3. Unblock Found Mobile (CEIR) -->
+                <div class="service-item" onclick="window.open('https://ceir.sancharsaathi.gov.in/Request/CeirUserUnblockRequestDirect.jsp', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-lock-open"></i></div>
+                        <div class="service-name hindi">मिल जाने पर अनब्लॉक करें <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+
+                <!-- 4. Check Theft / Duplicate IMEI (CEIR) -->
+                <div class="service-item" onclick="window.open('https://ceir.sancharsaathi.gov.in/', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-search"></i></div>
+                        <div class="service-name hindi">मोबाइल चोरी या डुप्लीकेट चेक <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹30</div>
+                </div>
+
+                <!-- 5. Gas Subsidy (NEW) -->
+                <div class="service-item" onclick="window.open('https://pmuy.gov.in/mylpg.html', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-fire"></i></div>
+                        <div class="service-name hindi">गैस सब्सिडी देखें <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹20</div>
+                </div>
+
+                <!-- 6. LPG Gas eKYC (NEW) -->
+                <div class="service-item" onclick="window.open('https://www.pmuy.gov.in/e-kyc.html', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-gas-pump"></i></div>
+                        <div class="service-name hindi">LPG Gas eKYC <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹30</div>
+                </div>
+
+                <!-- 7. Haryana Pension Status (NEW) -->
+                <div class="service-item" onclick="window.open('https://pension.socialjusticehry.gov.in/Ben_Inf', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-users"></i></div>
+                        <div class="service-name hindi">हरियाणा पेंशन स्टेटस <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹30</div>
+                </div>
+
+                <!-- 8. Haryana Pension Form (NEW) -->
+                <div class="service-item" onclick="window.open('https://pension.socialjusticehry.gov.in/form_and_proc', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="service-name hindi">हरियाणा पेंशन फॉर्म <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹100</div>
+                </div>
+
+                <!-- 9. NPCI Aadhaar Link (NEW) -->
+                <div class="service-item" onclick="window.open('https://www.npci.org.in/', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-link"></i></div>
+                        <div class="service-name hindi">बैंक से आधार लिंक करें (NPCI) <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹30</div>
+                </div>
+
+                <!-- 10. UPI Complaint (NEW) -->
+                <div class="service-item" onclick="window.open('https://www.npci.org.in/what-we-do/upi/dispute-redressal-mechanism', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-comment-dots"></i></div>
+                        <div class="service-name hindi">UPI से गलत पेमेंट पर कम्प्लेंट <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+
+                <!-- 11. Bank Balance Check (NEW - With Modal Popup) -->
+                <div class="service-item" onclick="openModal('bank_balance_check')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-phone-alt"></i></div>
+                        <div class="service-name hindi">बैंक बैलेंस चेक (कॉल/मैसेज) <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹20</div>
+                </div>
+
+                <!-- 12. NSP OTR (NEW) -->
+                <div class="service-item" onclick="window.open('https://scholarships.gov.in/', '_blank')">
+                    <div class="service-info">
+                        <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="service-name hindi">NSP नेशनल स्कॉलरशिप OTR <small>क्लिक करें</small></div>
+                    </div>
+                    <div class="service-price">₹50</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. ===== ELECTION & VOTER LIST (HARYANA, PUNJAB, CHANDIGARH) ===== -->
+    <section class="section" id="election" style="background: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box election"><i class="fas fa-vote-yea"></i></div>
+                <div>
+                    <h3 class="hindi">🗳️ चुनाव एवं वोटर सूची</h3>
+                    <p class="hindi">हरियाणा, पंजाब और चंडीगढ़ की मतदाता सूची (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <!-- 1. New Voter List (SIR Draft Roll) -->
+                <div class="service-item" onclick="openElectionModal('sir_draft')"><div class="service-info"><div class="service-icon"><i class="fas fa-list-ol"></i></div><div class="service-name hindi">नई वोटर लिस्ट (SIR Draft Roll) <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                
+                <!-- 2. SIR Form Online -->
+                <div class="service-item" onclick="openElectionModal('sir_form')"><div class="service-info"><div class="service-icon"><i class="fas fa-edit"></i></div><div class="service-name hindi">SIR फॉर्म ऑनलाइन भरें <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                
+                <!-- 3. BLO Verification -->
+                <div class="service-item" onclick="openElectionModal('blo_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-question-circle"></i></div><div class="service-name hindi">BLO ने सक्ष्मित किया की नहीं जाने <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                
+                <!-- 4. Sarpanch/Pradhan Election Expense -->
+                <div class="service-item" onclick="openElectionModal('sarpanch_expense')"><div class="service-info"><div class="service-icon"><i class="fas fa-rupee-sign"></i></div><div class="service-name hindi">सरपंच/प्रधान/मुखिया किस काम का कितना पैसा <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                
+                <!-- 5. Voter List Download -->
+                <div class="service-item" onclick="openElectionModal('voter_list_download')"><div class="service-info"><div class="service-icon"><i class="fas fa-download"></i></div><div class="service-name hindi">वोटर लिस्ट डाउनलोड करें <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                
+                <!-- 6. E-Challan (Vehicle) - Not election, but keeping for completeness -->
+                <div class="service-item" onclick="window.open('https://echallan.parivahan.nic.in/challan/challan-services', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">चालान चेक करें <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. ===== VEHICLE, DRIVING LICENCE & CHALLAN ===== -->
+    <section class="section" id="vehicle" style="background: #fff;">
+        <div class="container">
+            <div class="section-header">
+                <div class="icon-box vehicle"><i class="fas fa-car"></i></div>
+                <div>
+                    <h3 class="hindi">🚗 गाड़ी, ड्राइविंग लाइसेंस एवं चालान</h3>
+                    <p class="hindi">DL, RC, चालान, बीमा और अन्य वाहन सेवाएं (क्लिक करें ऑप्शन देखने के लिए)</p>
+                </div>
+            </div>
+            <div class="service-grid">
+                <div class="service-item" onclick="window.open('https://sarathi.parivahan.gov.in/', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><div class="service-name hindi">ड्राइविंग लाइसेंस में मोबाइल अपडेट <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-phone"></i></div><div class="service-name hindi">गाड़ी मालिक मोबाइल नंबर अपडेट <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">RC दुबारा प्रिंट करवाएं <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="window.open('https://echallan.parivahan.nic.in/challan/challan-services', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">चालान चेक करें <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-search"></i></div><div class="service-name hindi">Know Your Vehicle Status <small>क्लिक करें</small></div></div><div class="service-price">₹30</div></div>
+                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-user"></i></div><div class="service-name hindi">गाड़ी मालिक जाने <small>क्लिक करें</small></div></div><div class="service-price">₹30</div></div>
+                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">इन्शुरेंस एक्सपायरी जाने <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="window.open('https://parivahan.gov.in/', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-globe"></i></div><div class="service-name hindi">Parivahan / Sarathi अधिकारिक साइट <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ===== CENTRAL GOVERNMENT SCHEMES ===== -->
+    <section class="section" id="central-schemes" style="background: #f8fafc;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box scheme"><i class="fas fa-star"></i></div>
@@ -449,7 +620,7 @@
     </section>
 
     <!-- ===== BANKING & FINANCIAL SERVICES ===== -->
-    <section class="section" id="banking-services">
+    <section class="section" id="banking-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box banking"><i class="fas fa-university"></i></div>
@@ -476,7 +647,7 @@
     </section>
 
     <!-- ===== EDUCATION & SKILL DEVELOPMENT ===== -->
-    <section class="section" id="education-services" style="background: #fff;">
+    <section class="section" id="education-services" style="background: #f8fafc;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box education"><i class="fas fa-graduation-cap"></i></div>
@@ -499,7 +670,7 @@
     </section>
 
     <!-- ===== HEALTHCARE SERVICES ===== -->
-    <section class="section" id="health-services">
+    <section class="section" id="health-services" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box health"><i class="fas fa-heartbeat"></i></div>
@@ -520,7 +691,7 @@
     </section>
 
     <!-- ===== LOCAL JOBS PORTAL ===== -->
-    <section class="section" id="jobs-portal" style="background: #fff;">
+    <section class="section" id="jobs-portal" style="background: #f8fafc;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box jobs"><i class="fas fa-briefcase"></i></div>
@@ -545,7 +716,7 @@
     </section>
 
     <!-- ===== REVIEWS ===== -->
-    <section class="section" id="reviews">
+    <section class="section" id="reviews" style="background: #fff;">
         <div class="container">
             <div class="section-header">
                 <div class="icon-box review"><i class="fas fa-star"></i></div>
@@ -629,6 +800,11 @@
 
     <!-- ===== JAVASCRIPT ===== -->
     <script>
+        // =========================================================
+        // WHATSAPP NUMBER SETUP
+        // Aapka number: 8054061994
+        // Country code (91) India ke liye zaroori hai
+        // =========================================================
         const MY_WHATSAPP_NUMBER = "918054061994";
 
         const servicesData = {
@@ -669,6 +845,26 @@
             shramik: { title: "Shramik Card - Select Option", options: [{ name: "New Card", price: "₹100" }, { name: "Correction", price: "₹100" }, { name: "Download", price: "₹50" }] },
             widow_pension: { title: "Widow Pension - Select Option", options: [{ name: "New Application", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
             old_pension: { title: "Old Age Pension - Select Option", options: [{ name: "New Application", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
+
+            // ===== NEW: BANK BALANCE CHECK (With Details) =====
+            bank_balance_check: { 
+                title: "बैंक बैलेंस चेक - बैंक चुनें", 
+                options: [
+                    { name: "SBI - मिस्ड कॉल: 09223766666, SMS: BAL to 09223766666", price: "SBI" },
+                    { name: "PNB - मिस्ड कॉल: 18001802223 / 01202303090", price: "PNB" },
+                    { name: "BOB - मिस्ड कॉल: 8468001155 / 7304015000", price: "BOB" },
+                    { name: "ICICI - मिस्ड कॉल: 9594612612", price: "ICICI" },
+                    { name: "Axis Bank - मिस्ड कॉल: 18004195858 (Hindi) / 18004195959 (English)", price: "Axis" },
+                    { name: "HDFC Bank - SMS: BAL to 7308080808", price: "HDFC" }
+                ]
+            },
+
+            // ===== ELECTION & VOTER LIST (HARYANA, PUNJAB, CHANDIGARH) =====
+            sir_draft: { title: "नई वोटर लिस्ट (SIR Draft Roll)", options: [] },
+            sir_form: { title: "SIR फॉर्म ऑनलाइन भरें", options: [] },
+            blo_verify: { title: "BLO ने सक्ष्मित किया की नहीं जाने", options: [] },
+            sarpanch_expense: { title: "सरपंच/प्रधान/मुखिया किस काम का कितना पैसा", options: [] },
+            voter_list_download: { title: "वोटर लिस्ट डाउनलोड करें", options: [] },
 
             // ===== CENTRAL GOVT SCHEMES =====
             pm_vishwakarma: { title: "PM Vishwakarma Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Biometric Verification", price: "₹50" }, { name: "Toolkit Grant", price: "₹100" }, { name: "Loan Application", price: "₹100" }] },
@@ -768,6 +964,40 @@
             sparsh_pension: { title: "SPARSH Defence Pension", options: [{ name: "New Registration", price: "₹100" }, { name: "Life Certificate", price: "₹50" }] }
         };
 
+        // =========================================================
+        // ELECTION MODAL DATA (Haryana, Punjab, Chandigarh)
+        // =========================================================
+        const electionServiceLinks = {
+            sir_draft: {
+                "Haryana": "https://ceoharyana.gov.in/",
+                "Punjab": "https://ceopunjab.gov.in/",
+                "Chandigarh": "https://ceochandigarh.gov.in/"
+            },
+            sir_form: {
+                "Haryana": "https://voters.eci.gov.in/",
+                "Punjab": "https://voters.eci.gov.in/",
+                "Chandigarh": "https://voters.eci.gov.in/"
+            },
+            blo_verify: {
+                "Haryana": "https://ceoharyana.gov.in/",
+                "Punjab": "https://ceopunjab.gov.in/",
+                "Chandigarh": "https://ceochandigarh.gov.in/"
+            },
+            sarpanch_expense: {
+                "Haryana": "https://ceoharyana.gov.in/",
+                "Punjab": "https://ceopunjab.gov.in/",
+                "Chandigarh": "https://ceochandigarh.gov.in/"
+            },
+            voter_list_download: {
+                "Haryana": "https://voters.eci.gov.in/download-eroll",
+                "Punjab": "https://voters.eci.gov.in/download-eroll",
+                "Chandigarh": "https://voters.eci.gov.in/download-eroll"
+            }
+        };
+
+        // =========================================================
+        // OPEN MODAL FUNCTIONS
+        // =========================================================
         function openModal(serviceId) {
             const service = servicesData[serviceId];
             if (!service) return;
@@ -784,10 +1014,54 @@
             document.getElementById('serviceModal').classList.add('active');
         }
 
+        function openElectionModal(serviceId) {
+            const links = electionServiceLinks[serviceId];
+            const title = servicesData[serviceId] ? servicesData[serviceId].title : "चुनाव सेवा";
+            
+            document.getElementById('modalTitle').innerText = title + " - राज्य चुनें";
+            const optionsContainer = document.getElementById('modalOptions');
+            optionsContainer.innerHTML = '';
+            
+            // Create state options
+            const states = [
+                { name: "हरियाणा (Haryana)", value: "Haryana", icon: "fa-map-marker-alt" },
+                { name: "पंजाब (Punjab)", value: "Punjab", icon: "fa-map-marker-alt" },
+                { name: "चंडीगढ़ (Chandigarh)", value: "Chandigarh", icon: "fa-map-marker-alt" }
+            ];
+            
+            states.forEach(state => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'modal-option';
+                optionDiv.innerHTML = `<span class="opt-name hindi"><i class="fas ${state.icon}" style="margin-right: 8px; color: var(--primary-light);"></i>${state.name}</span><span class="opt-price" style="color: var(--primary); font-weight: 700;">→</span>`;
+                optionDiv.onclick = function() { 
+                    if (links && links[state.value]) {
+                        window.open(links[state.value], '_blank');
+                        closeModal();
+                    }
+                };
+                optionsContainer.appendChild(optionDiv);
+            });
+            
+            document.getElementById('serviceModal').classList.add('active');
+        }
+
         function closeModal() { document.getElementById('serviceModal').classList.remove('active'); }
 
+        // =========================================================
+        // WHATSAPP MESSAGE FUNCTION
+        // =========================================================
         function sendWhatsApp(serviceTitle, optionName, price) {
-            const message = `Hello SKYNET DIGITAL CENTER,%0A%0AI want to apply for: *${serviceTitle.replace(' - Select Option', '')}*%0AOption: *${optionName}*%0APrice: *${price}*%0A%0APlease guide me.`;
+            const cleanTitle = serviceTitle.replace(' - Select Option', '').replace('Select Option', '');
+            
+            const message = `Hello SKYNET DIGITAL CENTER,%0A%0A` +
+                            `*Service Details:*%0A` +
+                            `Service: *${cleanTitle}*%0A` +
+                            `Option: *${optionName}*%0A` +
+                            `Price: *${price}*%0A%0A` +
+                            `*Required Documents / Details:*%0A` +
+                            `Kripya is seva ke liye aavashyak dastavez (documents) aur poori jaankari bhejein.%0A%0A` +
+                            `*Please guide me.*`;
+                            
             const whatsappUrl = `https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`;
             window.open(whatsappUrl, '_blank');
             closeModal();
