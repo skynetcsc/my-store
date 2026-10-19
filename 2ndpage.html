@@ -38,48 +38,116 @@
   }
   .contact-bar a:hover { background: rgba(56,189,248,0.3); }
 
-  /* ---------- MAIN CONTAINER ---------- */
+  /* ---------- SEARCH BAR ---------- */
+  .search-wrapper {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(248, 250, 252, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 16px 18px;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 2px 10px rgba(15,23,42,0.06);
+  }
+  .search-box {
+    max-width: 720px;
+    margin: 0 auto;
+    position: relative;
+  }
+  .search-box input {
+    width: 100%;
+    padding: 14px 50px 14px 50px;
+    font-size: 1rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 50px;
+    outline: none;
+    background: #fff;
+    transition: 0.25s;
+    font-family: inherit;
+  }
+  .search-box input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59,130,246,0.15);
+  }
+  .search-box .icon-left {
+    position: absolute; left: 18px; top: 50%; transform: translateY(-50%);
+    font-size: 1.15rem; color: #64748b; pointer-events: none;
+  }
+  .search-box .clear-btn {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    background: #e2e8f0; border: none; cursor: pointer;
+    width: 32px; height: 32px; border-radius: 50%;
+    font-size: 1rem; color: #475569;
+    display: none; align-items: center; justify-content: center;
+    transition: 0.2s;
+  }
+  .search-box .clear-btn:hover { background: #cbd5e1; }
+  .search-box .clear-btn.show { display: flex; }
+
+  /* ---------- MAIN CONTAINER & GRID ---------- */
   .container {
-    max-width: 800px; /* 2 buttons ke liye center aligned */
-    margin: 40px auto;
+    max-width: 1300px;
+    margin: 30px auto;
     padding: 0 18px;
   }
 
-  /* ---------- COLORFUL GRID BUTTONS ---------- */
-  .service-grid {
+  .top-services {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
   }
 
-  .service-btn {
-    background: #fff; border-radius: 12px; padding: 20px;
-    display: flex; justify-content: space-between; align-items: center;
-    cursor: pointer; transition: all 0.2s ease;
-    border: 1px solid transparent; border-left: 6px solid transparent;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    text-decoration: none; color: inherit; font-family: inherit; text-align: left;
+  /* =========================================
+     EXACT BUTTON STYLE (For all services)
+     ========================================= */
+  .exact-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    text-align: left;
+    border-top: 1px solid #e2e8f0;
+    border-right: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
   }
-  .service-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 20px rgba(0,0,0,0.1);
-  }
+  .exact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
-  .sb-left { display: flex; align-items: center; gap: 15px; }
-  .sb-icon {
+  .btn-left { display: flex; align-items: center; gap: 15px; }
+  .icon-box {
     width: 50px; height: 50px; border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.5rem; color: white; flex-shrink: 0;
+    color: white; font-size: 1.5rem; flex-shrink: 0;
   }
-  .sb-text h4 { font-size: 1.1rem; font-weight: 800; margin: 0; color: #1e293b; line-height: 1.2; }
-  .sb-text span { font-size: 0.85rem; color: #64748b; font-weight: 500; }
+  .text-box h4 {
+    margin: 0 0 4px 0; font-size: 1.1rem; font-weight: 700; color: #1e293b;
+  }
+  .text-box p {
+    margin: 0; font-size: 0.85rem; color: #64748b; font-weight: 500;
+  }
+  .chevron { color: #94a3b8; font-size: 1.2rem; }
 
-  /* Color Classes */
-  .color-blue { background: #eff6ff; border-left-color: #3b82f6; }
-  .color-blue .sb-icon { background: #3b82f6; }
+  /* Color Variations */
+  .color-blue { background-color: #f4f8ff; border-left: 6px solid #3b82f6; }
+  .color-blue .icon-box { background-color: #3b82f6; }
   
-  .color-green { background: #ecfdf5; border-left-color: #10b981; }
-  .color-green .sb-icon { background: #10b981; }
+  .color-green { background-color: #f2fcf7; border-left: 6px solid #10b981; }
+  .color-green .icon-box { background-color: #10b981; }
+  
+  .color-yellow { background-color: #fffdf5; border-left: 6px solid #f59e0b; }
+  .color-yellow .icon-box { background-color: #f59e0b; }
+  
+  .color-purple { background-color: #f8f5ff; border-left: 6px solid #8b5cf6; }
+  .color-purple .icon-box { background-color: #8b5cf6; }
+  
+  .color-pink { background-color: #fff5f9; border-left: 6px solid #ec4899; }
+  .color-pink .icon-box { background-color: #ec4899; }
+  
+  .color-teal { background-color: #f0fdfa; border-left: 6px solid #14b8a6; }
+  .color-teal .icon-box { background-color: #14b8a6; }
 
   /* ---------- MODAL (POPUP) STYLES ---------- */
   .modal-overlay {
@@ -95,19 +163,15 @@
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
     animation: slideUp 0.3s ease-out;
   }
-  @keyframes slideUp {
-    from { transform: translateY(30px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-  }
+  @keyframes slideUp { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  
   .modal-header {
     padding: 16px 20px; border-bottom: 1px solid #e2e8f0;
     display: flex; justify-content: space-between; align-items: center;
     background: linear-gradient(135deg, #eff6ff, #dbeafe); border-radius: 14px 14px 0 0;
   }
   .modal-header h3 { margin: 0; font-size: 1.15rem; color: #1e3a8a; display: flex; align-items: center; gap: 10px; }
-  .close-btn {
-    background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #64748b;
-  }
+  .close-btn { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: #64748b; }
   .close-btn:hover { color: #ef4444; }
   .modal-body { padding: 0; overflow-y: auto; }
   
@@ -117,14 +181,10 @@
   }
   .modal-service-link:hover { background: #f8fafc; }
   .modal-service-link:last-child { border-bottom: none; }
-  .modal-service-link strong {
-    display: block; color: #1e40af; font-size: 1rem; margin-bottom: 4px;
-  }
-  .modal-service-link span {
-    display: block; font-size: 0.85rem; color: #64748b; line-height: 1.4;
-  }
+  .modal-service-link strong { display: block; color: #1e40af; font-size: 1rem; margin-bottom: 4px; }
+  .modal-service-link span { display: block; font-size: 0.85rem; color: #64748b; line-height: 1.4; }
 
-  /* Provider Selection Buttons (NSDL / UTI) */
+  /* PAN Provider Selection */
   .provider-btn {
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px; margin: 15px; border-radius: 10px; text-decoration: none;
@@ -148,11 +208,8 @@
   footer strong { color: #38bdf8; }
   footer .addr { margin-top: 6px; font-size: 0.85rem; color: #94a3b8; }
 
-  /* ---------- RESPONSIVE ---------- */
   @media (max-width: 768px) {
-    .service-grid { grid-template-columns: 1fr; }
     header h1 { font-size: 1.5rem; }
-    .modal-box { max-height: 85vh; }
   }
 </style>
 </head>
@@ -169,25 +226,143 @@
   </div>
 </header>
 
+<!-- 🔍 SEARCH BAR -->
+<div class="search-wrapper">
+  <div class="search-box">
+    <span class="icon-left">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search services... (जैसे: Aadhaar, Ticket, PAN, Bill, Police)" autocomplete="off">
+    <button class="clear-btn" id="clearBtn" title="Clear search">✕</button>
+  </div>
+</div>
+
 <div class="container">
-  <div class="service-grid">
+  
+  <div class="top-services" id="mainGrid">
     
     <!-- 1. Aadhaar Button -->
-    <button onclick="openModal('aadhaarModal')" class="service-btn color-blue">
-      <div class="sb-left">
-        <div class="sb-icon"><i class="fas fa-id-card"></i></div>
-        <div class="sb-text"><h4>Aadhaar Card Services</h4><span>आधार कार्ड (सभी सेवाएं)</span></div>
+    <button onclick="openModal('aadhaarModal')" class="exact-btn color-blue searchable-item" data-search="aadhaar card services आधार कार्ड">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-id-card"></i></div>
+        <div class="text-box"><h4>Aadhaar Card Services</h4><p>आधार कार्ड (सभी सेवाएं)</p></div>
       </div>
-      <i class="fas fa-chevron-right" style="color: #94a3b8;"></i>
+      <i class="fas fa-chevron-right chevron"></i>
     </button>
 
     <!-- 2. PAN Button -->
-    <button onclick="openModal('panModal')" class="service-btn color-green">
-      <div class="sb-left">
-        <div class="sb-icon"><i class="fas fa-credit-card"></i></div>
-        <div class="sb-text"><h4>PAN Card Services</h4><span>पैन कार्ड (सभी सेवाएं)</span></div>
+    <button onclick="openModal('panModal')" class="exact-btn color-green searchable-item" data-search="pan card services पैन कार्ड">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-credit-card"></i></div>
+        <div class="text-box"><h4>PAN Card Services</h4><p>पैन कार्ड (सभी सेवाएं)</p></div>
       </div>
-      <i class="fas fa-chevron-right" style="color: #94a3b8;"></i>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 3. Ticket Booking -->
+    <button onclick="openDynamicModal('ticketBooking')" class="exact-btn color-yellow searchable-item" data-search="Ticket Booking Train IRCTC Aeroplane Cinema Movie">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-ticket-alt"></i></div>
+        <div class="text-box"><h4>Ticket Booking</h4><p>टिकट बुकिंग</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 4. Online Admission Forms -->
+    <button onclick="openDynamicModal('admission')" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-file-signature"></i></div>
+        <div class="text-box"><h4>Online Admission Forms</h4><p>ऑनलाइन एडमिशन फॉर्म</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 5. Community Center -->
+    <button onclick="openDynamicModal('communityCenter')" class="exact-btn color-pink searchable-item" data-search="Community Center Booking HUDA MC">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-building"></i></div>
+        <div class="text-box"><h4>Community Center</h4><p>कम्युनिटी सेंटर बुकिंग</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 6. Driving Licence -->
+    <button onclick="openDynamicModal('drivingLicence')" class="exact-btn color-teal searchable-item" data-search="Driving Licence LTV HTV Heavy Light Motor Vehicle">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-car"></i></div>
+        <div class="text-box"><h4>Driving Licence</h4><p>ड्राइविंग लाइसेंस</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 7. Passport Services -->
+    <button onclick="openDynamicModal('passport')" class="exact-btn color-blue searchable-item" data-search="Passport Services Apply Appointment Track Status">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-passport"></i></div>
+        <div class="text-box"><h4>Passport Services</h4><p>पासपोर्ट सेवाएं</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 8. Link Aadhaar with Bank -->
+    <button onclick="openDynamicModal('linkBank')" class="exact-btn color-green searchable-item" data-search="Link Aadhaar with Bank LIC SBI UBI HDFC Dena United PNB">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-university"></i></div>
+        <div class="text-box"><h4>Link Aadhaar with Bank</h4><p>बैंक से आधार लिंक</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 9. Other Bill Payments -->
+    <button onclick="openDynamicModal('billPayments')" class="exact-btn color-yellow searchable-item" data-search="Other Bill Payments LIC Home Credit BSNL Bus Pass">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+        <div class="text-box"><h4>Other Bill Payments</h4><p>अन्य बिल भुगतान</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 10. Police & E-DISHA -->
+    <button onclick="openDynamicModal('police')" class="exact-btn color-purple searchable-item" data-search="Police E-DISHA Haryana Login Certificate Print">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+        <div class="text-box"><h4>Police & E-DISHA</h4><p>पुलिस और ई-दिशा</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 11. Tax & Permit Payment -->
+    <button onclick="openDynamicModal('tax')" class="exact-btn color-pink searchable-item" data-search="Tax Permit Payment Haryana National Punjab Vehicle">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
+        <div class="text-box"><h4>Tax & Permit Payment</h4><p>टैक्स और परमिट</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 12. Farad / Intkal / Nakal -->
+    <button onclick="openDynamicModal('landRecords')" class="exact-btn color-teal searchable-item" data-search="Farad Intkal Nakal Haryana Jamabandi Punjab Land Records">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-file-contract"></i></div>
+        <div class="text-box"><h4>Farad / Intkal / Nakal</h4><p>फर्द / इंतकाल / नकल</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 13. Electricity & Water -->
+    <button onclick="openDynamicModal('electricity')" class="exact-btn color-blue searchable-item" data-search="Electricity Water Connection Haryana Bill">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-bolt"></i></div>
+        <div class="text-box"><h4>Electricity & Water</h4><p>बिजली और पानी</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 14. Ration Card & SARAL -->
+    <button onclick="openDynamicModal('ration')" class="exact-btn color-green searchable-item" data-search="Ration Card SARAL Haryana">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-utensils"></i></div>
+        <div class="text-box"><h4>Ration Card & SARAL</h4><p>राशन कार्ड और सरल</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
     </button>
 
   </div>
@@ -206,48 +381,33 @@
       <button class="close-btn" onclick="closeModal('aadhaarModal')">✕</button>
     </div>
     <div class="modal-body">
-      <p style="padding: 12px 20px; font-size: 0.85rem; color: #475569; background: #f8fafc; border-bottom: 1px solid #e2e8f0; margin: 0; text-align: center;">
-        नीचे दी गई किसी भी सेवा पर क्लिक करें, आप सीधे UIDAI की आधिकारिक वेबसाइट पर पहुंच जाएंगे।
-      </p>
-      
       <a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar/en" target="_blank" class="modal-service-link">
         <strong>📥 ई-आधार डाउनलोड करना (Download e-Aadhaar)</strong>
-        <span>ग्राहक अपना डिजिटल आधार कार्ड डाउनलोड और प्रिंट कर सकते हैं। यह पूरी तरह से मुफ्त है, लेकिन इसे खोलने के लिए पासवर्ड की आवश्यकता होती है (ग्राहक के नाम के पहले 4 अक्षर CAPITAL में + जन्म का वर्ष)।</span>
+        <span>अपना डिजिटल आधार कार्ड डाउनलोड और प्रिंट करें। (मुफ्त)</span>
       </a>
-
       <a href="https://myaadhaar.uidai.gov.in/order-pvc-aadhaar" target="_blank" class="modal-service-link">
-        <strong>💳 आधार PVC कार्ड ऑर्डर करना (Order Aadhaar PVC Card)</strong>
-        <span>ग्राहक एक मजबूत और टिकाऊ प्लास्टिक (PVC) आधार कार्ड ऑर्डर कर सकते हैं। इसके लिए ₹75 का शुल्क लगता है।</span>
+        <strong>💳 आधार PVC कार्ड ऑर्डर करना</strong>
+        <span>प्लास्टिक (PVC) आधार कार्ड ऑर्डर करें। (₹75 शुल्क)</span>
       </a>
-
       <a href="https://myaadhaar.uidai.gov.in/update-address" target="_blank" class="modal-service-link">
         <strong>📍 पता अपडेट करना (Address Update)</strong>
-        <span>ग्राहक अपने आधार में पता बदल सकते हैं। ऑनलाइन पोर्टल के माध्यम से पता अपडेट करने पर ₹75 का शुल्क लगता है (कुछ शर्तों के तहत यह सेवा अभी मुफ्त भी हो सकती है)।</span>
+        <span>आधार में पता बदलें। (₹75 शुल्क)</span>
       </a>
-
       <a href="https://myaadhaar.uidai.gov.in/update-document" target="_blank" class="modal-service-link">
         <strong>📄 दस्तावेज़ अपडेट (Document Update)</strong>
-        <span>अगर ग्राहक को अपने आधार में कोई दस्तावेज़ (जैसे पहचान पत्र या पते का प्रमाण) अपलोड या अपडेट करना है, तो यह सेवा ऑनलाइन उपलब्ध है। UIDAI ने हाल ही में इस सेवा को 14 जून 2027 तक मुफ्त कर दिया है।</span>
+        <span>दस्तावेज़ अपलोड या अपडेट करें। (अभी मुफ्त)</span>
       </a>
-
       <a href="https://myaadhaar.uidai.gov.in/generate-virtual-id" target="_blank" class="modal-service-link">
         <strong>🔐 वर्चुअल आईडी (VID) जनरेट करना</strong>
-        <span>ग्राहक अपने आधार नंबर की सुरक्षा के लिए एक 16-अंकों की वर्चुअल आईडी बना सकते हैं। यह मुफ्त है।</span>
+        <span>आधार की सुरक्षा के लिए 16-अंकों की आईडी बनाएं। (मुफ्त)</span>
       </a>
-
       <a href="https://myaadhaar.uidai.gov.in/lock-unlock-biometric" target="_blank" class="modal-service-link">
-        <strong>🔒 बायोमेट्रिक लॉक/अनलॉक (Biometric Lock/Unlock)</strong>
-        <span>ग्राहक अपनी बायोमेट्रिक जानकारी (फिंगरप्रिंट और आईरिस) को सुरक्षित रूप से लॉक या अनलॉक कर सकते हैं। यह मुफ्त है।</span>
+        <strong>🔒 बायोमेट्रिक लॉक/अनलॉक</strong>
+        <span>फिंगरप्रिंट और आईरिस लॉक या अनलॉक करें। (मुफ्त)</span>
       </a>
-
-      <a href="https://myaadhaar.uidai.gov.in/genricDownloadAadhaar/en" target="_blank" class="modal-service-link">
-        <strong>🙈 मास्क्ड आधार डाउनलोड (Masked Aadhaar)</strong>
-        <span>एक ऐसा आधार कार्ड डाउनलोड करना जिसमें आधार नंबर के पहले 8 अंक छिपे होते हैं और सिर्फ आखिरी 4 अंक दिखते हैं। यह मुफ्त है।</span>
-      </a>
-
       <a href="https://resident.uidai.gov.in/check-aadhaar-status" target="_blank" class="modal-service-link">
-        <strong>🔍 आधार स्थिति की जाँच (Check Aadhaar Status)</strong>
-        <span>नए एनरोलमेंट या अपडेट की स्थिति को ट्रैक किया जा सकता है। यह मुफ्त है।</span>
+        <strong>🔍 आधार स्थिति की जाँच (Check Status)</strong>
+        <span>एनरोलमेंट या अपडेट की स्थिति ट्रैक करें। (मुफ्त)</span>
       </a>
     </div>
   </div>
@@ -260,96 +420,202 @@
       <h3 id="panModalTitle">💳 पैन कार्ड - कंपनी चुनें</h3>
       <button class="close-btn" onclick="closeModal('panModal')">✕</button>
     </div>
-    
     <div class="modal-body" id="panModalBody">
-      <!-- Default view: Provider Selection -->
       <div id="providerSelection">
         <p style="padding: 12px 20px; font-size: 0.85rem; color: #475569; background: #f8fafc; border-bottom: 1px solid #e2e8f0; margin: 0; text-align: center;">
-          भारत सरकार द्वारा पैन कार्ड के लिए केवल 2 कंपनियां अधिकृत हैं। कृपया अपनी सुविधा अनुसार कंपनी चुनें।
+          भारत सरकार द्वारा पैन कार्ड के लिए 2 कंपनियां अधिकृत हैं।
         </p>
-        
         <div onclick="showPanServices('nsdl')" class="provider-btn">
-          <div>
-            <h4>Protean (NSDL)</h4>
-            <p>टिन पैन सर्विसेज</p>
-          </div>
+          <div><h4>Protean (NSDL)</h4><p>टिन पैन सर्विसेज</p></div>
           <i class="fas fa-chevron-right" style="color: #3b82f6; font-size: 1.2rem;"></i>
         </div>
-
         <div onclick="showPanServices('uti')" class="provider-btn" style="margin-top: 10px;">
-          <div>
-            <h4>UTIITSL (UTI)</h4>
-            <p>यूटीआई पैन सर्विसेज</p>
-          </div>
+          <div><h4>UTIITSL (UTI)</h4><p>यूटीआई पैन सर्विसेज</p></div>
           <i class="fas fa-chevron-right" style="color: #10b981; font-size: 1.2rem;"></i>
         </div>
       </div>
 
-      <!-- NSDL Services List (Hidden by default) -->
       <div id="nsdlServices" style="display: none;">
         <button class="back-btn" onclick="backToProviders()"><i class="fas fa-arrow-left"></i> वापस जाएं</button>
-        
         <a href="https://tinpan.proteantech.in/" target="_blank" class="modal-service-link">
-          <strong>🆕 नया पैन कार्ड आवेदन (Apply for New PAN)</strong>
-          <span>Protean (NSDL) की आधिकारिक वेबसाइट पर जाकर नया पैन कार्ड बनवाएं।</span>
+          <strong>🆕 नया पैन कार्ड आवेदन (New PAN)</strong>
+          <span>Protean (NSDL) की वेबसाइट पर जाएं।</span>
         </a>
-        
         <a href="https://tinpan.proteantech.in/services/pan/pan-index/" target="_blank" class="modal-service-link">
-          <strong>🖨️ पैन कार्ड रीप्रिंट (Reprint of PAN Card)</strong>
-          <span>अपने पुराने पैन कार्ड को नए डिटेल्स के साथ दोबारा प्रिंट करवाएं।</span>
-        </a>
-
-        <a href="https://tinpan.proteantech.in/services/pan/pan-index/" target="_blank" class="modal-service-link">
-          <strong>🔍 आवेदन की स्थिति (Status Enquiry)</strong>
-          <span>अपने पैन कार्ड आवेदन की वर्तमान स्थिति को ट्रैक करें।</span>
+          <strong>🖨️ पैन कार्ड रीप्रिंट (Reprint PAN)</strong>
+          <span>पैन कार्ड दोबारा प्रिंट करवाएं।</span>
         </a>
       </div>
 
-      <!-- UTI Services List (Hidden by default) -->
       <div id="utiServices" style="display: none;">
         <button class="back-btn" onclick="backToProviders()"><i class="fas fa-arrow-left"></i> वापस जाएं</button>
-        
         <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>🆕 नया पैन कार्ड (Apply for New PAN)</strong>
-          <span>भारतीय नागरिकों के लिए नया पैन कार्ड आवेदन करें।</span>
+          <strong>🆕 नया पैन कार्ड (New PAN)</strong>
+          <span>UTI की वेबसाइट पर जाएं।</span>
         </a>
-
         <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>🌍 विदेशी नागरिक पैन (Foreign Citizen PAN)</strong>
-          <span>विदेशी नागरिकों या कंपनियों के लिए पैन कार्ड आवेदन।</span>
+          <strong>✏️ पैन में सुधार (Correction)</strong>
+          <span>पैन कार्ड में सुधार करवाएं।</span>
         </a>
-
         <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>✏️ पैन में सुधार (Change/Correction in PAN)</strong>
-          <span>पैन कार्ड में नाम, पता या जन्मतिथि आदि में बदलाव करवाएं।</span>
-        </a>
-
-        <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>📥 ई-पैन डाउनलोड (Download e-PAN)</strong>
-          <span>अपने रजिस्टर्ड मोबाइल नंबर से ई-पैन डाउनलोड करें।</span>
-        </a>
-
-        <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>🖨️ पैन रीप्रिंट (Reprint PAN Card)</strong>
-          <span>अपने पैन कार्ड की एक और कॉपी प्रिंट करवाएं।</span>
-        </a>
-
-        <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>📍 eKYC से पता अपडेट (Address Update via eKYC)</strong>
-          <span>बिना कागजी झंझट के सिर्फ eKYC के जरिए अपना पता बदलें।</span>
-        </a>
-
-        <a href="https://www.pan.utiitsl.com/PAN/" target="_blank" class="modal-service-link">
-          <strong>🔍 पैन कार्ड ट्रैक (Track PAN Card)</strong>
-          <span>अपने पैन कार्ड के डिलीवरी स्टेटस को ट्रैक करें।</span>
+          <strong>📥 ई-पैन डाउनलोड (e-PAN)</strong>
+          <span>ई-पैन डाउनलोड करें।</span>
         </a>
       </div>
     </div>
   </div>
 </div>
 
+<!-- ===== DYNAMIC MODAL (For other services) ===== -->
+<div class="modal-overlay" id="dynamicModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="dynamicModalTitle">Service Name</h3>
+      <button class="close-btn" onclick="closeModal('dynamicModal')">✕</button>
+    </div>
+    <div class="modal-body" id="dynamicModalBody">
+      <!-- Links will be injected here by JS -->
+    </div>
+  </div>
+</div>
+
 <script>
-// ===== MODAL FUNCTIONS =====
+// ==========================================
+// 1. DATA FOR OTHER SERVICES (Dynamic)
+// ==========================================
+const dynamicServicesData = {
+  ticketBooking: {
+    title: "🎫 Ticket Booking",
+    links: [
+      { name: "Train Ticket (IRCTC)", url: "https://www.irctc.co.in/eticketing/loginHome.jsf", desc: "ट्रेन का टिकट बुक करें।" },
+      { name: "Aeroplane Ticket", url: "https://www.air.irctc.co.in/", desc: "फ्लाइट का टिकट बुक करें।" },
+      { name: "Cinema / Movie Booking", url: "https://in.bookmyshow.com/movies/", desc: "मूवी का टिकट बुक करें (BookMyShow)।" }
+    ]
+  },
+  admission: {
+    title: "📝 Online Admission Forms",
+    links: [
+      { name: "KVS Online Form 2020", url: "https://kvsonlineadmission.kvs.gov.in/", desc: "केंद्रीय विद्यालय एडमिशन फॉर्म।" },
+      { name: "134A Online Form", url: "http://3.6.154.194/haryana_school_mis/backend/web/student-primary-detail/student-registration", desc: "हरियाणा स्कूल 134A फॉर्म।" },
+      { name: "Chandigarh School Admission", url: "http://59.91.196.51/ut2020/createnewstudent.aspx", desc: "चंडीगढ़ स्कूल ऑनलाइन एडमिशन।" },
+      { name: "HBSE Rechecking", url: "http://bsehexam.org/", desc: "हरियाणा बोर्ड रीचेकिंग।" },
+      { name: "10th Result", url: "https://results.bseh.org.in/", desc: "हरियाणा बोर्ड 10वीं का रिजल्ट।" }
+    ]
+  },
+  communityCenter: {
+    title: "🏛️ Community Center Booking",
+    links: [
+      { name: "Community Center Booking (HUDA)", url: "https://www.communitycentre.huda.org.in/", desc: "HUDA कम्युनिटी सेंटर बुकिंग।" },
+      { name: "MC Community Center Booking", url: "https://mcpanchkula.org/communitycenter/availability/index", desc: "पंचकूला MC कम्युनिटी सेंटर।" }
+    ]
+  },
+  drivingLicence: {
+    title: "🚗 Driving Licence",
+    links: [
+      { name: "LTV (Light Motor Vehicle)", url: "https://sarathi.parivahan.gov.in/", desc: "हल्के वाहन का लाइसेंस (कार/बाइक)।" },
+      { name: "HTV (Heavy Transport Vehicle)", url: "http://dts.hrtransport.gov.in/default.aspx", desc: "भारी वाहन का लाइसेंस (ट्रक आदि)।" },
+      { name: "Know Status", url: "http://dts.hrtransport.gov.in/TrainingApplicationStatus.aspx", desc: "लाइसेंस ट्रेनिंग की स्थिति जानें।" }
+    ]
+  },
+  passport: {
+    title: "🛂 Passport Services",
+    links: [
+      { name: "Passport Apply", url: "https://portal2.passportindia.gov.in/AppOnlineProject/user/RegistrationBaseAction?request_locale=en", desc: "नया पासपोर्ट अप्लाई करें।" },
+      { name: "Appointment Status", url: "http://www.passportindia.gov.in/AppOnlineProject/online/apptAvailStatus", desc: "अपॉइंटमेंट की उपलब्धता चेक करें।" },
+      { name: "Track Application", url: "http://www.passportindia.gov.in/AppOnlineProject/statusTracker/trackStatusInpNew", desc: "पासपोर्ट की स्थिति ट्रैक करें।" }
+    ]
+  },
+  linkBank: {
+    title: "🔗 Link Aadhaar with Bank",
+    links: [
+      { name: "Link with LIC Policy", url: "https://kyclink.licindia.in/UIDSeedingWebApp/", desc: "LIC पॉलिसी से आधार लिंक करें।" },
+      { name: "SBI Aadhaar Link", url: "https://retail.onlinesbi.com/retops/aadhaarlinkinginitial.htm", desc: "SBI बैंक से आधार लिंक।" },
+      { name: "UBI Aadhaar Link", url: "https://eremit.unionbankofindia.co.in/linkaadhaar/GUIs/unionaadhaar.aspx", desc: "UBI बैंक से आधार लिंक।" },
+      { name: "HDFC Aadhaar Link", url: "https://leads.hdfcbank.com/applications/webforms/apply/HDFC_Aadhaar_Adapt/HDFC_Aadhaar.aspx?Promocode=AadhaarFAQsPage", desc: "HDFC बैंक से आधार लिंक।" },
+      { name: "Dena Bank Link", url: "https://webserver1.denabank.co.in:3371/aadhar_sheeding/frm_online_request.aspx", desc: "देना बैंक से आधार लिंक।" },
+      { name: "United Bank Link", url: "https://ubionline.unitedbank.co.in/aadhaar/user_login.html", desc: "यूनाइटेड बैंक से आधार लिंक।" },
+      { name: "PNB Aadhaar Link", url: "https://gateway.netpnb.com/Aadhaar/default.aspx", desc: "PNB बैंक से आधार लिंक।" }
+    ]
+  },
+  billPayments: {
+    title: "💰 Other Bill Payments",
+    links: [
+      { name: "LIC Payment", url: "https://ebiz.licindia.in/D2CPM/#DirectPay", desc: "LIC का बीमा प्रीमियम भरें।" },
+      { name: "Home Credit Loan", url: "https://cpweb.homecredit.co.in/webpay/loanpayment", desc: "होम क्रेडिट का लोन भरें।" },
+      { name: "BSNL Bill Payment", url: "https://portal2.bsnl.in/myportal/cfa.do", desc: "BSNL का बिल भरें।" },
+      { name: "Bus Pass Fee", url: "http://epay.hrtransport.gov.in/", desc: "हरियाणा बस पास फीस भरें।" }
+    ]
+  },
+  police: {
+    title: "👮 Police & E-DISHA",
+    links: [
+      { name: "Haryana Police Service", url: "http://haryanapoliceonline.gov.in/login.aspx", desc: "हरियाणा पुलिस की सेवाएं।" },
+      { name: "E-DISHA Login", url: "https://edisha.gov.in/", desc: "ई-दिशा पोर्टल पर लॉगिन करें।" },
+      { name: "Certificate Print", url: "https://edisha.gov.in/Default_VerifyCertificate.aspx", desc: "जाति/निवास प्रमाण पत्र प्रिंट करें।" }
+    ]
+  },
+  tax: {
+    title: "🧾 Tax & Permit Payment",
+    links: [
+      { name: "Haryana Tax", url: "https://vahan.parivahan.gov.in/", desc: "हरियाणा वाहन टैक्स भरें।" },
+      { name: "National Permit", url: "https://parivahan.gov.in/npermit/faces/np/jsp/nationalpermit.jsp", desc: "नेशनल परमिट के लिए आवेदन करें।" },
+      { name: "Punjab Vehicle Payment", url: "https://olps.punjabtransport.org/Dealer/PaymentHomePage.aspx", desc: "पंजाब वाहन का टैक्स भरें।" }
+    ]
+  },
+  landRecords: {
+    title: "📜 Farad / Intkal / Nakal",
+    links: [
+      { name: "Haryana (Jamabandi)", url: "https://jamabandi.nic.in/", desc: "हरियाणा की जमीन का रिकॉर्ड देखें।" },
+      { name: "Punjab Land Records", url: "http://210.212.41.167/frmSelectDistrict.aspx", desc: "पंजाब की जमीन का रिकॉर्ड देखें।" }
+    ]
+  },
+  electricity: {
+    title: "💡 Electricity & Water",
+    links: [
+      { name: "Electricity Connection", url: "http://112.196.3.244/ApplicationForm/OnlineApplyNewCon.aspx", desc: "हरियाणा में नया बिजली कनेक्शन लें।" },
+      { name: "Water Bill", url: "https://waterbilling.hsvphry.org.in/", desc: "हरियाणा का पानी का बिल भरें।" },
+      { name: "New Water Connection", url: "https://waterbilling.hsvphry.org.in/", desc: "नया पानी का कनेक्शन लें।" }
+    ]
+  },
+  ration: {
+    title: "🌾 Ration Card & SARAL",
+    links: [
+      { name: "Ration Card", url: "https://epds.haryanafood.gov.in/", desc: "हरियाणा का राशन कार्ड देखें।" },
+      { name: "SARAL Haryana", url: "http://saralharyana.gov.in/", desc: "सरल हरियाणा पोर्टल।" }
+    ]
+  }
+};
+
+// ==========================================
+// 2. SEARCH FUNCTIONALITY
+// ==========================================
+const searchInput = document.getElementById('searchInput');
+const clearBtn = document.getElementById('clearBtn');
+const searchableItems = document.querySelectorAll('.searchable-item');
+
+searchInput.addEventListener('input', function() {
+  const query = this.value.toLowerCase().trim();
+  clearBtn.classList.toggle('show', query.length > 0);
+
+  searchableItems.forEach(item => {
+    const searchText = item.getAttribute('data-search').toLowerCase();
+    if (searchText.includes(query)) {
+      item.style.display = ''; // Show
+    } else {
+      item.style.display = 'none'; // Hide
+    }
+  });
+});
+
+clearBtn.addEventListener('click', () => {
+  searchInput.value = '';
+  searchInput.dispatchEvent(new Event('input'));
+  searchInput.focus();
+});
+
+// ==========================================
+// 3. MODAL FUNCTIONS
+// ==========================================
 function openModal(id) {
   document.getElementById(id).classList.add('active');
 }
@@ -357,7 +623,7 @@ function openModal(id) {
 function closeModal(id) {
   document.getElementById(id).classList.remove('active');
   
-  // Reset PAN modal to provider selection when closed
+  // Reset PAN modal to default view when closed
   if (id === 'panModal') {
     setTimeout(() => {
       document.getElementById('panModalTitle').innerText = '💳 पैन कार्ड - कंपनी चुनें';
@@ -368,14 +634,43 @@ function closeModal(id) {
   }
 }
 
-// Close modal when clicking outside
+// ==========================================
+// 4. DYNAMIC MODAL LOGIC
+// ==========================================
+function openDynamicModal(serviceId) {
+  const data = dynamicServicesData[serviceId];
+  if (!data) return;
+
+  // Set Title
+  document.getElementById('dynamicModalTitle').innerText = data.title;
+
+  // Build Links HTML
+  const bodyContainer = document.getElementById('dynamicModalBody');
+  bodyContainer.innerHTML = ''; // Clear previous
+
+  data.links.forEach(link => {
+    const a = document.createElement('a');
+    a.href = link.url;
+    a.target = '_blank';
+    a.className = 'modal-service-link';
+    a.innerHTML = `<strong>${link.name}</strong><span>${link.desc}</span>`;
+    bodyContainer.appendChild(a);
+  });
+
+  // Open Modal
+  openModal('dynamicModal');
+}
+
+// Close modals when clicking outside
 window.addEventListener('click', function(e) {
   if (e.target.classList.contains('modal-overlay')) {
     closeModal(e.target.id);
   }
 });
 
-// ===== PAN MODAL LOGIC =====
+// ==========================================
+// 5. PAN LOGIC (NSDL / UTI)
+// ==========================================
 function showPanServices(company) {
   document.getElementById('providerSelection').style.display = 'none';
   
