@@ -38,9 +38,31 @@
         .header-contact .btn-call { background: var(--accent); color: var(--primary-dark); padding: 8px 16px; border-radius: 8px; font-weight: 700; transition: all 0.2s; }
         .header-contact .btn-call:hover { background: #fff; transform: translateY(-1px); }
         
-        /* नया स्टाफ लॉगिन बटन स्टाइल */
+        /* स्टाफ लॉगिन बटन स्टाइल */
         .btn-login { background: #ffffff; color: var(--primary-dark); border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font); }
         .btn-login:hover { background: var(--bg); transform: translateY(-1px); }
+
+        /* नया डायरेक्टरी बटन स्टाइल (हरे रंग में ताकि साफ दिखे) */
+        .header-contact a.btn-directory { 
+            background: #10b981; 
+            color: #ffffff !important; 
+            border: 1px solid #10b981; 
+            padding: 8px 16px; 
+            border-radius: 8px; 
+            font-weight: 700; 
+            cursor: pointer; 
+            transition: all 0.2s; 
+            font-size: 0.9rem; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 6px; 
+            text-decoration: none;
+        }
+        .header-contact a.btn-directory:hover { 
+            background: #059669; 
+            transform: translateY(-1px); 
+            color: #ffffff !important; 
+        }
         
         .nav-bar { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 80px; z-index: 999; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .nav-bar .container { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
@@ -139,7 +161,7 @@
         .modal-footer button { background: none; border: none; color: var(--text-light); font-weight: 600; cursor: pointer; font-size: 0.9rem; }
         .modal-footer button:hover { color: var(--danger); }
         
-        /* नया लॉगिन फॉर्म स्टाइल */
+        /* लॉगिन फॉर्म स्टाइल */
         .login-form { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
         .login-form input { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; font-family: var(--font); transition: 0.2s; }
         .login-form input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26, 58, 107, 0.1); }
@@ -248,6 +270,10 @@
             <div class="header-contact">
                 <a href="tel:8054061994"><i class="fas fa-phone-alt"></i> 8054061994</a>
                 <a href="https://wa.me/918054061994" class="btn-call" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                
+                <!-- LOCAL DIRECTORY BUTTON (अब हरे रंग में साफ दिखेगा) -->
+                <a href="directory.html" class="btn-directory"><i class="fas fa-address-book"></i> Local Directory</a>
+                
                 <!-- STAFF LOGIN BUTTON -->
                 <button class="btn-login" onclick="openLoginModal()"><i class="fas fa-user-lock"></i> Staff Login</button>
             </div>
