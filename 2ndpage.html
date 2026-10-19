@@ -91,6 +91,32 @@
     padding: 0 18px;
   }
 
+  /* Category Heading Styles */
+  .category-section {
+    margin-bottom: 35px;
+  }
+  .category-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #1e293b;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+  }
+  .category-title .title-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+  }
+
   .top-services {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -150,7 +176,6 @@
   .color-teal { border-left: 6px solid #14b8a6; }
   .color-teal .icon-box { background-color: #14b8a6; }
 
-  /* NEW COLOR FOR GUIDE */
   .color-orange { border-left: 6px solid #f97316; }
   .color-orange .icon-box { background-color: #f97316; }
 
@@ -204,6 +229,26 @@
     color: #3b82f6; font-weight: 600; cursor: pointer; padding: 15px 20px 5px 20px; font-family: inherit;
   }
 
+  /* ---------- SERVICE OPTION MODAL (WhatsApp) ---------- */
+  .modal-option {
+    padding: 14px 20px; border-bottom: 1px solid #e2e8f0;
+    display: flex; justify-content: space-between; align-items: center;
+    cursor: pointer; transition: background 0.2s; gap: 12px;
+  }
+  .modal-option:hover { background: #f8fafc; }
+  .modal-option:last-child { border-bottom: none; }
+  .modal-option .opt-name { font-weight: 600; font-size: 0.92rem; color: #1e293b; }
+  .modal-option .opt-price { font-weight: 700; color: #10b981; font-size: 0.92rem; white-space: nowrap; }
+  .modal-footer {
+    padding: 12px 20px; background: #f8fafc; text-align: center;
+    border-top: 1px solid #e2e8f0; border-radius: 0 0 14px 14px;
+  }
+  .modal-footer button {
+    background: none; border: none; color: #64748b; font-weight: 600;
+    cursor: pointer; font-size: 0.9rem; font-family: inherit;
+  }
+  .modal-footer button:hover { color: #ef4444; }
+
   /* ---------- GUIDE SPECIFIC STYLES ---------- */
   .guide-container { padding: 15px; display: flex; flex-direction: column; gap: 12px; }
   
@@ -242,6 +287,7 @@
 
   @media (max-width: 768px) {
     header h1 { font-size: 1.5rem; }
+    .top-services { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -262,151 +308,551 @@
 <div class="search-wrapper">
   <div class="search-box">
     <span class="icon-left">🔍</span>
-    <input type="text" id="searchInput" placeholder="Search services... (जैसे: Aadhaar, Ticket, PAN, Guide)" autocomplete="off">
+    <input type="text" id="searchInput" placeholder="Search services... (जैसे: Aadhaar, PAN, Yojana, Banking, Voter)" autocomplete="off">
     <button class="clear-btn" id="clearBtn" title="Clear search">✕</button>
   </div>
 </div>
 
 <div class="container">
   
-  <div class="top-services" id="mainGrid">
-    
-    <!-- 1. Aadhaar Button -->
-    <button onclick="openModal('aadhaarModal')" class="exact-btn color-blue searchable-item" data-search="aadhaar card services आधार कार्ड">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-id-card"></i></div>
-        <div class="text-box"><h4>Aadhaar Card Services</h4><p>आधार कार्ड (सभी सेवाएं)</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+  <!-- ==========================================
+       CATEGORY 1: मुख्य सरकारी सेवाएं
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #1e3a8a;"><i class="fas fa-landmark"></i></div>
+      मुख्य सरकारी सेवाएं
+    </div>
+    <div class="top-services">
+      <button onclick="openModal('aadhaarModal')" class="exact-btn color-blue searchable-item" data-search="aadhaar card services आधार कार्ड">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-id-card"></i></div>
+          <div class="text-box"><h4>Aadhaar Card Services</h4><p>आधार कार्ड (सभी सेवाएं)</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 2. PAN Button -->
-    <button onclick="openModal('panModal')" class="exact-btn color-green searchable-item" data-search="pan card services पैन कार्ड">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-credit-card"></i></div>
-        <div class="text-box"><h4>PAN Card Services</h4><p>पैन कार्ड (सभी सेवाएं)</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openModal('panModal')" class="exact-btn color-green searchable-item" data-search="pan card services पैन कार्ड">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-credit-card"></i></div>
+          <div class="text-box"><h4>PAN Card Services</h4><p>पैन कार्ड (सभी सेवाएं)</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 3. NEW: Service Guides Button -->
-    <button onclick="openGuideModal()" class="exact-btn color-orange searchable-item" data-search="Service Guides Video PDF Blog Tutorial Help सहायता गाइड">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-book-open"></i></div>
-        <div class="text-box"><h4>Service Guides & Videos</h4><p>वीडियो, पीडीएफ और ब्लॉग गाइड</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openGuideModal()" class="exact-btn color-orange searchable-item" data-search="Service Guides Video PDF Blog Tutorial Help सहायता गाइड">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-book-open"></i></div>
+          <div class="text-box"><h4>Service Guides & Videos</h4><p>वीडियो, पीडीएफ और ब्लॉग गाइड</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 4. Ticket Booking -->
-    <button onclick="openDynamicModal('ticketBooking')" class="exact-btn color-yellow searchable-item" data-search="Ticket Booking Train IRCTC Aeroplane Cinema Movie">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-ticket-alt"></i></div>
-        <div class="text-box"><h4>Ticket Booking</h4><p>टिकट बुकिंग</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('ticketBooking')" class="exact-btn color-yellow searchable-item" data-search="Ticket Booking Train IRCTC Aeroplane Cinema Movie">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-ticket-alt"></i></div>
+          <div class="text-box"><h4>Ticket Booking</h4><p>टिकट बुकिंग</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 5. Online Admission Forms -->
-    <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result ITI Polytechnic">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-file-signature"></i></div>
-        <div class="text-box"><h4>Online Admission Forms</h4><p>ऑनलाइन एडमिशन फॉर्म</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result ITI Polytechnic">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-file-signature"></i></div>
+          <div class="text-box"><h4>Online Admission Forms</h4><p>ऑनलाइन एडमिशन फॉर्म</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 6. Community Center -->
-    <button onclick="openDynamicModal('communityCenter')" class="exact-btn color-pink searchable-item" data-search="Community Center Booking HUDA MC">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-building"></i></div>
-        <div class="text-box"><h4>Community Center</h4><p>कम्युनिटी सेंटर बुकिंग</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('communityCenter')" class="exact-btn color-pink searchable-item" data-search="Community Center Booking HUDA MC">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-building"></i></div>
+          <div class="text-box"><h4>Community Center</h4><p>कम्युनिटी सेंटर बुकिंग</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 7. Driving Licence -->
-    <button onclick="openDynamicModal('drivingLicence')" class="exact-btn color-teal searchable-item" data-search="Driving Licence LTV HTV Heavy Light Motor Vehicle">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-car"></i></div>
-        <div class="text-box"><h4>Driving Licence</h4><p>ड्राइविंग लाइसेंस</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('drivingLicence')" class="exact-btn color-teal searchable-item" data-search="Driving Licence LTV HTV Heavy Light Motor Vehicle">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-car"></i></div>
+          <div class="text-box"><h4>Driving Licence</h4><p>ड्राइविंग लाइसेंस</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 8. Passport Services -->
-    <button onclick="openDynamicModal('passport')" class="exact-btn color-blue searchable-item" data-search="Passport Services Apply Appointment Track Status">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-passport"></i></div>
-        <div class="text-box"><h4>Passport Services</h4><p>पासपोर्ट सेवाएं</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('passport')" class="exact-btn color-blue searchable-item" data-search="Passport Services Apply Appointment Track Status">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-passport"></i></div>
+          <div class="text-box"><h4>Passport Services</h4><p>पासपोर्ट सेवाएं</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 9. Link Aadhaar with Bank -->
-    <button onclick="openDynamicModal('linkBank')" class="exact-btn color-green searchable-item" data-search="Link Aadhaar with Bank LIC SBI UBI HDFC Dena United PNB">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-university"></i></div>
-        <div class="text-box"><h4>Link Aadhaar with Bank</h4><p>बैंक से आधार लिंक</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('linkBank')" class="exact-btn color-green searchable-item" data-search="Link Aadhaar with Bank LIC SBI UBI HDFC Dena United PNB">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-university"></i></div>
+          <div class="text-box"><h4>Link Aadhaar with Bank</h4><p>बैंक से आधार लिंक</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 10. Other Bill Payments -->
-    <button onclick="openDynamicModal('billPayments')" class="exact-btn color-yellow searchable-item" data-search="Other Bill Payments LIC Home Credit BSNL Bus Pass">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
-        <div class="text-box"><h4>Other Bill Payments</h4><p>अन्य बिल भुगतान</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('billPayments')" class="exact-btn color-yellow searchable-item" data-search="Other Bill Payments LIC Home Credit BSNL Bus Pass">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
+          <div class="text-box"><h4>Other Bill Payments</h4><p>अन्य बिल भुगतान</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 11. Police & E-DISHA -->
-    <button onclick="openDynamicModal('police')" class="exact-btn color-purple searchable-item" data-search="Police E-DISHA Haryana Login Certificate Print">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
-        <div class="text-box"><h4>Police & E-DISHA</h4><p>पुलिस और ई-दिशा</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('police')" class="exact-btn color-purple searchable-item" data-search="Police E-DISHA Haryana Login Certificate Print">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+          <div class="text-box"><h4>Police & E-DISHA</h4><p>पुलिस और ई-दिशा</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 12. Tax & Permit Payment -->
-    <button onclick="openDynamicModal('tax')" class="exact-btn color-pink searchable-item" data-search="Tax Permit Payment Haryana National Punjab Vehicle">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
-        <div class="text-box"><h4>Tax & Permit Payment</h4><p>टैक्स और परमिट</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('tax')" class="exact-btn color-pink searchable-item" data-search="Tax Permit Payment Haryana National Punjab Vehicle">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
+          <div class="text-box"><h4>Tax & Permit Payment</h4><p>टैक्स और परमिट</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 13. Farad / Intkal / Nakal -->
-    <button onclick="openDynamicModal('landRecords')" class="exact-btn color-teal searchable-item" data-search="Farad Intkal Nakal Haryana Jamabandi Punjab Land Records">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-file-contract"></i></div>
-        <div class="text-box"><h4>Farad / Intkal / Nakal</h4><p>फर्द / इंतकाल / नकल</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('landRecords')" class="exact-btn color-teal searchable-item" data-search="Farad Intkal Nakal Haryana Jamabandi Punjab Land Records">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-file-contract"></i></div>
+          <div class="text-box"><h4>Farad / Intkal / Nakal</h4><p>फर्द / इंतकाल / नकल</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 14. Electricity & Water -->
-    <button onclick="openDynamicModal('electricity')" class="exact-btn color-blue searchable-item" data-search="Electricity Water Connection Haryana Bill">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-bolt"></i></div>
-        <div class="text-box"><h4>Electricity & Water</h4><p>बिजली और पानी</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
+      <button onclick="openDynamicModal('electricity')" class="exact-btn color-blue searchable-item" data-search="Electricity Water Connection Haryana Bill">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-bolt"></i></div>
+          <div class="text-box"><h4>Electricity & Water</h4><p>बिजली और पानी</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
 
-    <!-- 15. Ration Card & SARAL -->
-    <button onclick="openDynamicModal('ration')" class="exact-btn color-green searchable-item" data-search="Ration Card SARAL Haryana">
-      <div class="btn-left">
-        <div class="icon-box"><i class="fas fa-utensils"></i></div>
-        <div class="text-box"><h4>Ration Card & SARAL</h4><p>राशन कार्ड और सरल</p></div>
-      </div>
-      <i class="fas fa-chevron-right chevron"></i>
-    </button>
-
+      <button onclick="openDynamicModal('ration')" class="exact-btn color-green searchable-item" data-search="Ration Card SARAL Haryana">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-utensils"></i></div>
+          <div class="text-box"><h4>Ration Card & SARAL</h4><p>राशन कार्ड और सरल</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
   </div>
+
+  <!-- ==========================================
+       CATEGORY 2: अन्य महत्वपूर्ण सेवाएँ
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #ec4899;"><i class="fas fa-star"></i></div>
+      📌 अन्य महत्वपूर्ण सेवाएँ
+    </div>
+    <div class="top-services">
+      <button onclick="window.open('https://tafcop.sancharsaathi.gov.in/telecomUser/', '_blank')" class="exact-btn color-pink searchable-item" data-search="SIM count check आपके नाम पर कितने सिम TAFCOP">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-sim-card"></i></div>
+          <div class="text-box"><h4>आपके नाम पर कितने सिम</h4><p>SIM Count Check</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://ceir.sancharsaathi.gov.in/', '_blank')" class="exact-btn color-teal searchable-item" data-search="Mobile block चोरी हुई मोबाइल ब्लॉक करें CEIR">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+          <div class="text-box"><h4>चोरी हुई मोबाइल ब्लॉक करें</h4><p>Block Stolen Mobile</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://ceir.sancharsaathi.gov.in/Request/CeirUserUnblockRequestDirect.jsp', '_blank')" class="exact-btn color-blue searchable-item" data-search="Mobile unblock मिल जाने पर अनब्लॉक करें">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-lock-open"></i></div>
+          <div class="text-box"><h4>मिल जाने पर अनब्लॉक करें</h4><p>Unblock Mobile</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://ceir.sancharsaathi.gov.in/', '_blank')" class="exact-btn color-green searchable-item" data-search="Mobile theft duplicate check चोरी डुप्लीकेट चेक">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-search"></i></div>
+          <div class="text-box"><h4>मोबाइल चोरी / डुप्लीकेट चेक</h4><p>Theft / Duplicate Check</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://pmuy.gov.in/mylpg.html', '_blank')" class="exact-btn color-yellow searchable-item" data-search="Gas subsidy LPG गैस सब्सिडी देखें">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-fire"></i></div>
+          <div class="text-box"><h4>गैस सब्सिडी देखें</h4><p>Gas Subsidy</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://www.pmuy.gov.in/e-kyc.html', '_blank')" class="exact-btn color-orange searchable-item" data-search="LPG Gas eKYC">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-gas-pump"></i></div>
+          <div class="text-box"><h4>LPG Gas eKYC</h4><p>eKYC</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://pension.socialjusticehry.gov.in/Ben_Inf', '_blank')" class="exact-btn color-purple searchable-item" data-search="Haryana Pension Status हरियाणा पेंशन स्टेटस">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-users"></i></div>
+          <div class="text-box"><h4>हरियाणा पेंशन स्टेटस</h4><p>Pension Status</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://pension.socialjusticehry.gov.in/form_and_proc', '_blank')" class="exact-btn color-pink searchable-item" data-search="Haryana Pension Form हरियाणा पेंशन फॉर्म">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-file-alt"></i></div>
+          <div class="text-box"><h4>हरियाणा पेंशन फॉर्म</h4><p>Pension Form</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://www.npci.org.in/', '_blank')" class="exact-btn color-teal searchable-item" data-search="NPCI Aadhaar Link बैंक से आधार लिंक करें">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-link"></i></div>
+          <div class="text-box"><h4>बैंक से आधार लिंक करें (NPCI)</h4><p>Aadhaar-Bank Link</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://www.npci.org.in/what-we-do/upi/dispute-redressal-mechanism', '_blank')" class="exact-btn color-blue searchable-item" data-search="UPI Complaint गलत पेमेंट कम्प्लेंट">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-comment-dots"></i></div>
+          <div class="text-box"><h4>UPI गलत पेमेंट कम्प्लेंट</h4><p>UPI Complaint</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="openServiceModal('bank_balance_check')" class="exact-btn color-green searchable-item" data-search="Bank Balance Check बैंक बैलेंस चेक SBI PNB HDFC ICICI">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-phone-alt"></i></div>
+          <div class="text-box"><h4>बैंक बैलेंस चेक (कॉल/मैसेज)</h4><p>Balance Check</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://scholarships.gov.in/', '_blank')" class="exact-btn color-yellow searchable-item" data-search="NSP National Scholarship OTR नेशनल स्कॉलरशिप">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-graduation-cap"></i></div>
+          <div class="text-box"><h4>NSP नेशनल स्कॉलरशिप OTR</h4><p>NSP OTR</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATEGORY 3: चुनाव एवं वोटर सूची
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #8b5cf6;"><i class="fas fa-vote-yea"></i></div>
+      🗳️ चुनाव एवं वोटर सूची
+    </div>
+    <div class="top-services">
+      <button onclick="openElectionModal('sir_draft')" class="exact-btn color-purple searchable-item" data-search="SIR Draft Roll नई वोटर लिस्ट Election">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-list-ol"></i></div>
+          <div class="text-box"><h4>नई वोटर लिस्ट (SIR Draft)</h4><p>SIR Draft Roll</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="openElectionModal('sir_form')" class="exact-btn color-pink searchable-item" data-search="SIR Form वोटर फॉर्म ऑनलाइन भरें">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-edit"></i></div>
+          <div class="text-box"><h4>SIR फॉर्म ऑनलाइन भरें</h4><p>SIR Form</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="openElectionModal('blo_verify')" class="exact-btn color-teal searchable-item" data-search="BLO Verify सक्ष्मित वोटर">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-question-circle"></i></div>
+          <div class="text-box"><h4>BLO ने सक्ष्मित किया या नहीं</h4><p>BLO Verification</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="openElectionModal('sarpanch_expense')" class="exact-btn color-orange searchable-item" data-search="Sarpanch Pradhan Mukhiya Expense सरपंच प्रधान मुखिया">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-rupee-sign"></i></div>
+          <div class="text-box"><h4>सरपंच/प्रधान/मुखिया खर्च जानकारी</h4><p>Panchayat Expense</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="openElectionModal('voter_list_download')" class="exact-btn color-blue searchable-item" data-search="Voter List Download वोटर लिस्ट डाउनलोड">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-download"></i></div>
+          <div class="text-box"><h4>वोटर लिस्ट डाउनलोड करें</h4><p>Download Voter List</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://echallan.parivahan.nic.in/challan/challan-services', '_blank')" class="exact-btn color-green searchable-item" data-search="Challan Check चालान चेक">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
+          <div class="text-box"><h4>चालान चेक करें</h4><p>Challan Check</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATEGORY 4: गाड़ी, ड्राइविंग लाइसेंस एवं चालान
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #14b8a6;"><i class="fas fa-car"></i></div>
+      🚗 गाड़ी, ड्राइविंग लाइसेंस एवं चालान
+    </div>
+    <div class="top-services">
+      <button onclick="window.open('https://sarathi.parivahan.gov.in/', '_blank')" class="exact-btn color-yellow searchable-item" data-search="Driving Licence Mobile Update ड्राइविंग लाइसेंस मोबाइल अपडेट">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-mobile-alt"></i></div>
+          <div class="text-box"><h4>DL में मोबाइल अपडेट</h4><p>Driving Licence Update</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')" class="exact-btn color-purple searchable-item" data-search="RC Mobile Update गाड़ी मालिक मोबाइल नंबर अपडेट">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-phone"></i></div>
+          <div class="text-box"><h4>गाड़ी मालिक मोबाइल अपडेट</h4><p>RC Mobile Update</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')" class="exact-btn color-pink searchable-item" data-search="RC Reprint दुबारा प्रिंट">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-print"></i></div>
+          <div class="text-box"><h4>RC दुबारा प्रिंट करवाएं</h4><p>RC Reprint</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')" class="exact-btn color-teal searchable-item" data-search="Know Your Vehicle Status गाड़ी स्थिति">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-search"></i></div>
+          <div class="text-box"><h4>Know Your Vehicle Status</h4><p>Vehicle Status</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')" class="exact-btn color-blue searchable-item" data-search="Vehicle Owner गाड़ी मालिक जाने">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-user"></i></div>
+          <div class="text-box"><h4>गाड़ी मालिक जाने</h4><p>Vehicle Owner</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')" class="exact-btn color-green searchable-item" data-search="Insurance Expiry इन्शुरेंस एक्सपायरी">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
+          <div class="text-box"><h4>इन्शुरेंस एक्सपायरी जाने</h4><p>Insurance Expiry</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+
+      <button onclick="window.open('https://parivahan.gov.in/', '_blank')" class="exact-btn color-orange searchable-item" data-search="Parivahan Sarathi Official Site अधिकारिक साइट">
+        <div class="btn-left">
+          <div class="icon-box"><i class="fas fa-globe"></i></div>
+          <div class="text-box"><h4>Parivahan / Sarathi Official</h4><p>अधिकारिक साइट</p></div>
+        </div>
+        <i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATEGORY 5: केंद्रीय सरकारी योजनाएं
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #f97316;"><i class="fas fa-star"></i></div>
+      ⭐ केंद्रीय सरकारी योजनाएं
+    </div>
+    <div class="top-services">
+      <button onclick="openServiceModal('pm_vishwakarma')" class="exact-btn color-purple searchable-item" data-search="PM Vishwakarma Yojana विश्वकर्मा कारीगर पंजीकरण">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-tools"></i></div><div class="text-box"><h4>PM विश्वकर्मा योजना</h4><p>कारीगर पंजीकरण</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_suryaghar')" class="exact-btn color-yellow searchable-item" data-search="PM Surya Ghar Yojana सूर्य घर सोलर पैनल">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-solar-panel"></i></div><div class="text-box"><h4>PM सूर्य घर योजना</h4><p>सोलर पैनल</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_kisan_maandhan')" class="exact-btn color-green searchable-item" data-search="PM Kisan Maandhan किसान मानधन पेंशन योजना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div><div class="text-box"><h4>PM किसान मानधन</h4><p>पेंशन योजना</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_fasal_bima')" class="exact-btn color-orange searchable-item" data-search="PM Fasal Bima फसल बीमा योजना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-shield-alt"></i></div><div class="text-box"><h4>PM फसल बीमा योजना</h4><p>फसल सुरक्षा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('kcc')" class="exact-btn color-teal searchable-item" data-search="Kisan Credit Card KCC किसान क्रेडिट कार्ड">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-credit-card"></i></div><div class="text-box"><h4>किसान क्रेडिट कार्ड (KCC)</h4><p>KCC</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('swachh_bharat')" class="exact-btn color-blue searchable-item" data-search="Swachh Bharat Mission शौचालय योजना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-toilet"></i></div><div class="text-box"><h4>स्वच्छ भारत अभियान</h4><p>शौचालय योजना</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pmay')" class="exact-btn color-pink searchable-item" data-search="PMAY Pradhan Mantri Awas Yojana आवास योजना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-home"></i></div><div class="text-box"><h4>प्रधानमंत्री आवास योजना</h4><p>PMAY</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('stree_swabhiman')" class="exact-btn color-purple searchable-item" data-search="Stree Swabhiman स्ट्री स्वाभिमान महिला सशक्तिकरण">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-female"></i></div><div class="text-box"><h4>स्ट्री स्वाभिमान</h4><p>महिला सशक्तिकरण</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pmjay')" class="exact-btn color-green searchable-item" data-search="PMJAY PM Jan Arogya जन आरोग्य योजना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-heartbeat"></i></div><div class="text-box"><h4>PM जन आरोग्य योजना</h4><p>PMJAY</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_svanidhi')" class="exact-btn color-yellow searchable-item" data-search="PM SVANidhi रेहड़ी पटरी विक्रेता">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-store"></i></div><div class="text-box"><h4>PM स्वनिधि योजना</h4><p>रेहड़ी-पटरी विक्रेता</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_kisan_samman')" class="exact-btn color-teal searchable-item" data-search="PM Kisan Samman Nidhi किसान सम्मान निधि">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-seedling"></i></div><div class="text-box"><h4>PM किसान सम्मान निधि</h4><p>किसान सहायता</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pmuy')" class="exact-btn color-orange searchable-item" data-search="PM Yuva Yojana युवा कौशल विकास">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-user-graduate"></i></div><div class="text-box"><h4>PM युवा योजना</h4><p>कौशल विकास</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('atal_pension')" class="exact-btn color-blue searchable-item" data-search="Atal Pension Yojana APY अटल पेंशन">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-user-shield"></i></div><div class="text-box"><h4>अटल पेंशन योजना</h4><p>APY</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('sukanya_samridhi')" class="exact-btn color-pink searchable-item" data-search="Sukanya Samridhi सुकन्या समृद्धि बालिका योजना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-child"></i></div><div class="text-box"><h4>सुकन्या समृद्धि योजना</h4><p>बालिका योजना</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_jeevan_jyoti')" class="exact-btn color-green searchable-item" data-search="PM Jeevan Jyoti Bima जीवन ज्योति बीमा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-life-ring"></i></div><div class="text-box"><h4>PM जीवन ज्योति बीमा</h4><p>जीवन बीमा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pm_suraksha_bima')" class="exact-btn color-purple searchable-item" data-search="PM Suraksha Bima सुरक्षा बीमा दुर्घटना">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-shield-alt"></i></div><div class="text-box"><h4>PM सुरक्षा बीमा योजना</h4><p>दुर्घटना बीमा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATEGORY 6: बैंकिंग और वित्तीय सेवाएं
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #059669;"><i class="fas fa-university"></i></div>
+      🏦 बैंकिंग और वित्तीय सेवाएं
+    </div>
+    <div class="top-services">
+      <button onclick="openServiceModal('digipay')" class="exact-btn color-yellow searchable-item" data-search="DigiPay AEPS नकद निकासी जमा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-mobile-alt"></i></div><div class="text-box"><h4>DigiPay AEPS</h4><p>नकद निकासी/जमा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('dmt')" class="exact-btn color-green searchable-item" data-search="Domestic Money Transfer DMT डोमेस्टिक मनी ट्रांसफर">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-exchange-alt"></i></div><div class="text-box"><h4>डोमेस्टिक मनी ट्रांसफर</h4><p>DMT</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('insurance_life')" class="exact-btn color-pink searchable-item" data-search="Life Insurance जीवन बीमा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-heart"></i></div><div class="text-box"><h4>लाइफ इंश्योरेंस</h4><p>जीवन बीमा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('insurance_general')" class="exact-btn color-teal searchable-item" data-search="Non Life Insurance वाहन स्वास्थ्य बीमा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-car"></i></div><div class="text-box"><h4>नॉन-लाइफ इंश्योरेंस</h4><p>वाहन/स्वास्थ्य बीमा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('nps')" class="exact-btn color-blue searchable-item" data-search="NPS National Pension System राष्ट्रीय पेंशन सिस्टम">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-piggy-bank"></i></div><div class="text-box"><h4>राष्ट्रीय पेंशन सिस्टम</h4><p>NPS</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('fastag')" class="exact-btn color-orange searchable-item" data-search="FASTag फास्टैग बनवाएं">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-car-side"></i></div><div class="text-box"><h4>फास्टैग</h4><p>FASTag बनवाएं</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('fastag_recharge')" class="exact-btn color-purple searchable-item" data-search="FASTag Recharge फास्टैग रिचार्ज">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-sync-alt"></i></div><div class="text-box"><h4>फास्टैग रिचार्ज</h4><p>FASTag Recharge</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('bc_banking')" class="exact-btn color-green searchable-item" data-search="BC Banking खाता खोलें बैंकिंग">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-landmark"></i></div><div class="text-box"><h4>BC बैंकिंग सेवाएं</h4><p>खाता खोलें</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('money_transfer')" class="exact-btn color-yellow searchable-item" data-search="Money Transfer मनी ट्रांसफर तत्काल भेजें">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-paper-plane"></i></div><div class="text-box"><h4>मनी ट्रांसफर</h4><p>तत्काल भेजें</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('balance_check')" class="exact-btn color-pink searchable-item" data-search="Balance Check Mini Statement बैलेंस चेक">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-search-dollar"></i></div><div class="text-box"><h4>बैलेंस चेक</h4><p>मिनी स्टेटमेंट</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pan_services')" class="exact-btn color-teal searchable-item" data-search="PAN Services पैन कार्ड नया सुधार">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-credit-card"></i></div><div class="text-box"><h4>पैन कार्ड सेवाएं</h4><p>नया/सुधार</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('form_16')" class="exact-btn color-blue searchable-item" data-search="Form 16 टैक्स दस्तावेज़">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-file-invoice"></i></div><div class="text-box"><h4>फॉर्म 16</h4><p>टैक्स दस्तावेज़</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATEGORY 7: शिक्षा और कौशल विकास
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #7c3aed;"><i class="fas fa-graduation-cap"></i></div>
+      🎓 शिक्षा और कौशल विकास
+    </div>
+    <div class="top-services">
+      <button onclick="openServiceModal('csc_academy')" class="exact-btn color-orange searchable-item" data-search="CSC Academy Computer Course कंप्यूटर शिक्षा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-laptop-code"></i></div><div class="text-box"><h4>CSC अकादमी कोर्स</h4><p>कंप्यूटर शिक्षा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('pmgdisha')" class="exact-btn color-purple searchable-item" data-search="PMGDISHA डिजिटल साक्षरता">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-book-reader"></i></div><div class="text-box"><h4>PMGDISHA</h4><p>डिजिटल साक्षरता</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('online_exam')" class="exact-btn color-green searchable-item" data-search="Online Exam Form SSC BPSC RRB ऑनलाइन परीक्षा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-file-alt"></i></div><div class="text-box"><h4>ऑनलाइन परीक्षा फॉर्म</h4><p>SSC/BPSC/RRB</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('nielit_course')" class="exact-btn color-yellow searchable-item" data-search="NIELIT Course CCC O Level A Level कंप्यूटर सर्टिफिकेट">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-certificate"></i></div><div class="text-box"><h4>NIELIT कोर्स</h4><p>कंप्यूटर सर्टिफिकेट</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('skill_development')" class="exact-btn color-pink searchable-item" data-search="Skill Development कौशल विकास कोर्स">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-hands"></i></div><div class="text-box"><h4>कौशल विकास कोर्स</h4><p>Skill Development</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('scholarship_apply')" class="exact-btn color-teal searchable-item" data-search="Scholarship Apply छात्रवृत्ति आवेदन">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-award"></i></div><div class="text-box"><h4>छात्रवृत्ति आवेदन</h4><p>Scholarship</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('university_form')" class="exact-btn color-blue searchable-item" data-search="University Form UG PG Admission विश्वविद्यालय फॉर्म">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-university"></i></div><div class="text-box"><h4>विश्वविद्यालय फॉर्म</h4><p>UG/PG Admission</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('iti_form')" class="exact-btn color-orange searchable-item" data-search="ITI Polytechnic Form तकनीकी शिक्षा">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-tools"></i></div><div class="text-box"><h4>ITI/Polytechnic फॉर्म</h4><p>तकनीकी शिक्षा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       CATEGORY 8: स्वास्थ्य सेवाएं
+       ========================================== -->
+  <div class="category-section">
+    <div class="category-title">
+      <div class="title-icon" style="background: #dc2626;"><i class="fas fa-heartbeat"></i></div>
+      ❤️ स्वास्थ्य सेवाएं
+    </div>
+    <div class="top-services">
+      <button onclick="openServiceModal('esanjeevani')" class="exact-btn color-purple searchable-item" data-search="eSanjeevani ई-संजीवनी ऑनलाइन डॉक्टर">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-user-md"></i></div><div class="text-box"><h4>ई-संजीवनी</h4><p>ऑनलाइन डॉक्टर परामर्श</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('tele_law')" class="exact-btn color-green searchable-item" data-search="Tele Law टेली लॉ मुफ्त कानूनी सलाह">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-gavel"></i></div><div class="text-box"><h4>टेली-लॉ</h4><p>मुफ्त कानूनी सलाह</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('ayushman_bharat')" class="exact-btn color-yellow searchable-item" data-search="Ayushman Bharat आयुष्मान भारत कार्ड">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-hospital"></i></div><div class="text-box"><h4>आयुष्मान भारत कार्ड</h4><p>स्वास्थ्य बीमा</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('health_checkup')" class="exact-btn color-pink searchable-item" data-search="Health Checkup स्वास्थ्य जांच शिविर">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-stethoscope"></i></div><div class="text-box"><h4>स्वास्थ्य जांच शिविर</h4><p>Health Checkup</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('blood_donation')" class="exact-btn color-teal searchable-item" data-search="Blood Donation रक्तदान पंजीकरण">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-tint"></i></div><div class="text-box"><h4>रक्तदान पंजीकरण</h4><p>Blood Donation</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+      <button onclick="openServiceModal('covid_certificate')" class="exact-btn color-blue searchable-item" data-search="Covid Certificate कोविड प्रमाण पत्र">
+        <div class="btn-left"><div class="icon-box"><i class="fas fa-virus"></i></div><div class="text-box"><h4>कोविड प्रमाण पत्र</h4><p>Covid Certificate</p></div></div><i class="fas fa-chevron-right chevron"></i>
+      </button>
+    </div>
+  </div>
+
 </div>
 
 <footer>
@@ -507,20 +953,18 @@
   </div>
 </div>
 
-<!-- ===== DYNAMIC MODAL (For other services) ===== -->
+<!-- ===== DYNAMIC MODAL ===== -->
 <div class="modal-overlay" id="dynamicModal">
   <div class="modal-box">
     <div class="modal-header">
       <h3 id="dynamicModalTitle">Service Name</h3>
       <button class="close-btn" onclick="closeModal('dynamicModal')">✕</button>
     </div>
-    <div class="modal-body" id="dynamicModalBody">
-      <!-- Links will be injected here by JS -->
-    </div>
+    <div class="modal-body" id="dynamicModalBody"></div>
   </div>
 </div>
 
-<!-- ===== ADMISSION MODAL (Multi-Level) ===== -->
+<!-- ===== ADMISSION MODAL ===== -->
 <div class="modal-overlay" id="admissionModal">
   <div class="modal-box">
     <div class="modal-header">
@@ -528,64 +972,31 @@
       <button class="close-btn" onclick="closeModal('admissionModal')">✕</button>
     </div>
     <div class="modal-body" id="admissionModalBody">
-      
-      <!-- Level 1: State Selection -->
       <div id="admLevel1" style="padding: 15px; display: flex; flex-direction: column; gap: 10px;">
-        <button onclick="admSelectState('haryana')" class="provider-btn" style="margin: 0;">
-          <h4>Haryana (हरियाणा)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
-        <button onclick="admSelectState('punjab')" class="provider-btn" style="margin: 0;">
-          <h4>Punjab (पंजाब)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
-        <button onclick="admSelectState('chandigarh')" class="provider-btn" style="margin: 0;">
-          <h4>Chandigarh (चंडीगढ़)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
+        <button onclick="admSelectState('haryana')" class="provider-btn" style="margin: 0;"><h4>Haryana (हरियाणा)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
+        <button onclick="admSelectState('punjab')" class="provider-btn" style="margin: 0;"><h4>Punjab (पंजाब)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
+        <button onclick="admSelectState('chandigarh')" class="provider-btn" style="margin: 0;"><h4>Chandigarh (चंडीगढ़)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
       </div>
-
-      <!-- Level 2: Type Selection (School/College/ITI/Polytechnic) -->
       <div id="admLevel2" style="display: none; padding: 15px; flex-direction: column; gap: 10px;">
         <button class="back-btn" onclick="admBackToLevel1()" style="align-self: flex-start; padding: 0 0 10px 0;"><i class="fas fa-arrow-left"></i> राज्य बदलें</button>
-        
-        <button onclick="admSelectType('school')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-school"></i> School Admission (स्कूल)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
-        
-        <button onclick="admSelectType('college')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-university"></i> College Admission (कॉलेज)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
-        
-        <button onclick="admSelectType('iti')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-tools"></i> ITI Admission (आईटीआई)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
-        
-        <button onclick="admSelectType('polytechnic')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-cogs"></i> Polytechnic (पॉलिटेक्निक)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
-        </button>
+        <button onclick="admSelectType('school')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-school"></i> School Admission (स्कूल)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
+        <button onclick="admSelectType('college')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-university"></i> College Admission (कॉलेज)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
+        <button onclick="admSelectType('iti')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-tools"></i> ITI Admission (आईटीआई)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
+        <button onclick="admSelectType('polytechnic')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-cogs"></i> Polytechnic (पॉलिटेक्निक)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
       </div>
-
-      <!-- Level 3: School Boards -->
       <div id="admLevel3School" style="display: none; padding: 15px; flex-direction: column; gap: 10px;">
         <button class="back-btn" onclick="admBackToLevel2()" style="align-self: flex-start; padding: 0 0 10px 0;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>
         <div id="boardButtonsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
       </div>
-
-      <!-- Level 4: Board Specific Links -->
       <div id="admLevel4Links" style="display: none; padding: 0;"></div>
-
-      <!-- Level 3: College Links -->
       <div id="admLevel3College" style="display: none; padding: 0;"></div>
-      
-      <!-- Level 3: ITI Links -->
       <div id="admLevel3ITI" style="display: none; padding: 0;"></div>
-      
-      <!-- Level 3: Polytechnic Links -->
       <div id="admLevel3Poly" style="display: none; padding: 0;"></div>
-
     </div>
   </div>
 </div>
 
-<!-- ===== NEW: GUIDE MODAL ===== -->
+<!-- ===== GUIDE MODAL ===== -->
 <div class="modal-overlay" id="guideModal">
   <div class="modal-box">
     <div class="modal-header">
@@ -593,36 +1004,32 @@
       <button class="close-btn" onclick="closeModal('guideModal')">✕</button>
     </div>
     <div class="modal-body" id="guideModalBody">
-      
-      <!-- Level 1: Guide Service List -->
       <div id="guideLevel1" style="padding: 15px; display: flex; flex-direction: column; gap: 10px;">
         <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-bottom: 10px;">किसी भी सेवा को चुनें और उससे जुड़े वीडियो, पीडीएफ और ब्लॉग देखें।</p>
-        
-        <button onclick="showGuide('aadhaar')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-id-card" style="color: #3b82f6;"></i> Aadhaar Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
-        </button>
-        <button onclick="showGuide('pan')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-credit-card" style="color: #10b981;"></i> PAN Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
-        </button>
-        <button onclick="showGuide('voter')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-vote-yea" style="color: #f59e0b;"></i> Voter Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
-        </button>
-        <button onclick="showGuide('passport')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-passport" style="color: #8b5cf6;"></i> Passport Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
-        </button>
-        <button onclick="showGuide('ticket')" class="provider-btn" style="margin: 0;">
-          <h4><i class="fas fa-ticket-alt" style="color: #ec4899;"></i> Ticket Booking Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
-        </button>
+        <button onclick="showGuide('aadhaar')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-id-card" style="color: #3b82f6;"></i> Aadhaar Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i></button>
+        <button onclick="showGuide('pan')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-credit-card" style="color: #10b981;"></i> PAN Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i></button>
+        <button onclick="showGuide('voter')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-vote-yea" style="color: #f59e0b;"></i> Voter Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i></button>
+        <button onclick="showGuide('passport')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-passport" style="color: #8b5cf6;"></i> Passport Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i></button>
+        <button onclick="showGuide('ticket')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-ticket-alt" style="color: #ec4899;"></i> Ticket Booking Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i></button>
       </div>
-
-      <!-- Level 2: Guides for Selected Service -->
       <div id="guideLevel2" style="display: none; padding: 0;">
         <button class="back-btn" onclick="backToGuideList()" style="padding: 15px 20px;"><i class="fas fa-arrow-left"></i> सेवा बदलें</button>
-        <div id="guideContent" class="guide-container">
-          <!-- Dynamic Content goes here -->
-        </div>
+        <div id="guideContent" class="guide-container"></div>
       </div>
+    </div>
+  </div>
+</div>
 
+<!-- ===== SERVICE OPTION MODAL (WhatsApp) ===== -->
+<div class="modal-overlay" id="serviceModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="serviceModalTitle">Select Option</h3>
+      <button class="close-btn" onclick="closeModal('serviceModal')">✕</button>
+    </div>
+    <div class="modal-body" id="serviceModalOptions"></div>
+    <div class="modal-footer">
+      <button onclick="closeModal('serviceModal')">Cancel</button>
     </div>
   </div>
 </div>
@@ -721,14 +1128,14 @@ const dynamicServicesData = {
 };
 
 // ==========================================
-// 2. DATA FOR GUIDE MODAL (Videos, PDFs, Blogs)
+// 2. DATA FOR GUIDE MODAL
 // ==========================================
 const guideData = {
   aadhaar: {
     title: "Aadhaar Card Guides",
     video: "https://www.youtube.com/results?search_query=how+to+download+aadhaar+card+2024",
     pdf: "https://uidai.gov.in/images/commdoc/updated_aadhaar_enrolment_correction_form.pdf",
-    blog: "https://www.skynetcc.co.in/blog/aadhaar-card-update-guide" // Example blog link
+    blog: "https://www.skynetcc.co.in/blog/aadhaar-card-update-guide"
   },
   pan: {
     title: "PAN Card Guides",
@@ -757,22 +1164,115 @@ const guideData = {
 };
 
 // ==========================================
-// 3. SEARCH FUNCTIONALITY
+// 3. SERVICE OPTIONS DATA (WhatsApp)
+// ==========================================
+const MY_WHATSAPP_NUMBER = "918054061994";
+
+const servicesData = {
+  bank_balance_check: {
+    title: "बैंक बैलेंस चेक - बैंक चुनें",
+    options: [
+      { name: "SBI - मिस्ड कॉल: 09223766666, SMS: BAL to 09223766666", price: "SBI" },
+      { name: "PNB - मिस्ड कॉल: 18001802223 / 01202303090", price: "PNB" },
+      { name: "BOB - मिस्ड कॉल: 8468001155 / 7304015000", price: "BOB" },
+      { name: "ICICI - मिस्ड कॉल: 9594612612", price: "ICICI" },
+      { name: "Axis Bank - मिस्ड कॉल: 18004195858 (Hindi) / 18004195959 (English)", price: "Axis" },
+      { name: "HDFC Bank - SMS: BAL to 7308080808", price: "HDFC" }
+    ]
+  },
+
+  pm_vishwakarma: { title: "PM Vishwakarma Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Biometric Verification", price: "₹50" }, { name: "Toolkit Grant", price: "₹100" }, { name: "Loan Application", price: "₹100" }] },
+  pm_suryaghar: { title: "PM Surya Ghar Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Subsidy Application", price: "₹100" }, { name: "Net Metering", price: "₹100" }] },
+  pm_kisan_maandhan: { title: "PM Kisan Maandhan Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Contribution Payment", price: "₹50" }, { name: "Status Check", price: "₹30" }] },
+  pm_fasal_bima: { title: "PM Fasal Bima Yojana", options: [{ name: "New Application", price: "₹50" }, { name: "Renewal", price: "₹50" }, { name: "Claim Status", price: "₹30" }] },
+  kcc: { title: "Kisan Credit Card", options: [{ name: "New Application", price: "₹100" }, { name: "Renewal", price: "₹50" }] },
+  swachh_bharat: { title: "Swachh Bharat Abhiyan", options: [{ name: "Toilet Application", price: "₹100" }, { name: "Subsidy Status", price: "₹30" }] },
+  pmay: { title: "PM Awas Yojana", options: [{ name: "Urban Application", price: "₹100" }, { name: "Rural Application", price: "₹100" }, { name: "Status Check", price: "₹30" }] },
+  stree_swabhiman: { title: "Stree Swabhiman Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Sanitary Napkin Unit", price: "₹100" }] },
+  pmjay: { title: "PM Jan Arogya Yojana (PMJAY)", options: [{ name: "New Registration", price: "₹100" }, { name: "Card Download", price: "₹50" }, { name: "Status Check", price: "₹30" }] },
+  pm_svanidhi: { title: "PM SVANidhi Yojana", options: [{ name: "New Loan Application", price: "₹100" }, { name: "Loan Renewal", price: "₹100" }, { name: "Status Check", price: "₹30" }] },
+  pm_kisan_samman: { title: "PM Kisan Samman Nidhi", options: [{ name: "New Registration", price: "₹50" }, { name: "e-KYC", price: "₹30" }, { name: "Status Check", price: "₹20" }] },
+  pmuy: { title: "PM Yuva Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Course Enrollment", price: "₹100" }] },
+  atal_pension: { title: "Atal Pension Yojana", options: [{ name: "New Registration", price: "₹100" }, { name: "Contribution Payment", price: "₹50" }, { name: "Status Check", price: "₹30" }] },
+  sukanya_samridhi: { title: "Sukanya Samridhi Yojana", options: [{ name: "New Account", price: "₹100" }, { name: "Deposit", price: "₹20" }, { name: "Passbook Print", price: "₹30" }] },
+  pm_jeevan_jyoti: { title: "PM Jeevan Jyoti Bima Yojana", options: [{ name: "New Enrollment", price: "₹100" }, { name: "Premium Payment", price: "₹20" }] },
+  pm_suraksha_bima: { title: "PM Suraksha Bima Yojana", options: [{ name: "New Enrollment", price: "₹20" }, { name: "Premium Payment", price: "₹20" }] },
+
+  digipay: { title: "DigiPay AEPS", options: [{ name: "Cash Withdrawal", price: "₹20" }, { name: "Cash Deposit", price: "₹20" }, { name: "Balance Check", price: "₹10" }, { name: "Mini Statement", price: "₹20" }, { name: "Aadhaar Pay", price: "₹20" }] },
+  dmt: { title: "Domestic Money Transfer (DMT)", options: [{ name: "IMPS Transfer", price: "₹20-100" }, { name: "NEFT Transfer", price: "₹20-50" }, { name: "Beneficiary Add", price: "₹20" }] },
+  insurance_life: { title: "Life Insurance", options: [{ name: "Term Plan", price: "Market Price" }, { name: "Endowment Plan", price: "Market Price" }, { name: "ULIP", price: "Market Price" }, { name: "Money Back Plan", price: "Market Price" }] },
+  insurance_general: { title: "Non-Life Insurance", options: [{ name: "Two Wheeler Insurance", price: "Market Price" }, { name: "Four Wheeler Insurance", price: "Market Price" }, { name: "Health Insurance", price: "Market Price" }, { name: "Home Insurance", price: "Market Price" }] },
+  nps: { title: "National Pension System (NPS)", options: [{ name: "New Registration", price: "₹100" }, { name: "Contribution", price: "₹20" }, { name: "Statement Print", price: "₹30" }] },
+  fastag: { title: "FASTag", options: [{ name: "New FASTag", price: "₹100" }, { name: "Recharge", price: "₹20" }, { name: "Balance Check", price: "₹10" }] },
+  fastag_recharge: { title: "FASTag Recharge", options: [{ name: "Recharge", price: "₹20" }, { name: "Balance Check", price: "₹10" }] },
+  bc_banking: { title: "BC Banking Services", options: [{ name: "Account Opening", price: "₹50" }, { name: "Cash Deposit", price: "₹20" }, { name: "Cash Withdrawal", price: "₹20" }, { name: "Loan Application", price: "₹100" }] },
+  money_transfer: { title: "Money Transfer", options: [{ name: "IMPS", price: "₹20-100" }, { name: "NEFT", price: "₹20-50" }, { name: "UPI Transfer", price: "₹20" }] },
+  balance_check: { title: "Balance Check", options: [{ name: "Balance Enquiry", price: "₹10" }, { name: "Mini Statement", price: "₹20" }] },
+  pan_services: { title: "PAN Services", options: [{ name: "New PAN", price: "₹160" }, { name: "Correction", price: "₹160" }, { name: "e-PAN Download", price: "₹50" }] },
+  form_16: { title: "Form 16", options: [{ name: "Download", price: "₹30" }, { name: "Print", price: "₹50" }] },
+
+  csc_academy: { title: "CSC Academy Courses", options: [{ name: "Basic Computer", price: "₹100" }, { name: "Tally", price: "₹100" }, { name: "DTP", price: "₹100" }, { name: "Web Design", price: "₹100" }] },
+  pmgdisha: { title: "PMGDISHA", options: [{ name: "New Registration", price: "Free" }, { name: "Digital Literacy Test", price: "Free" }] },
+  online_exam: { title: "Online Exam Forms", options: [{ name: "SSC Form", price: "₹100" }, { name: "BPSC Form", price: "₹100" }, { name: "RRB Form", price: "₹100" }, { name: "State Exam Form", price: "₹100" }] },
+  nielit_course: { title: "NIELIT Courses", options: [{ name: "CCC", price: "₹100" }, { name: "O Level", price: "₹100" }, { name: "A Level", price: "₹100" }] },
+  skill_development: { title: "Skill Development", options: [{ name: "New Enrollment", price: "₹100" }, { name: "Course Info", price: "Free" }] },
+  scholarship_apply: { title: "Scholarship Apply", options: [{ name: "Post Matric SC", price: "₹100" }, { name: "Pre Matric SC", price: "₹100" }, { name: "Minority Scholarship", price: "₹100" }, { name: "OBC Scholarship", price: "₹100" }] },
+  university_form: { title: "University Forms", options: [{ name: "UG Admission", price: "₹100" }, { name: "PG Admission", price: "₹100" }, { name: "PhD Form", price: "₹100" }] },
+  iti_form: { title: "ITI/Polytechnic Forms", options: [{ name: "ITI Admission", price: "₹100" }, { name: "Polytechnic Admission", price: "₹100" }] },
+
+  esanjeevani: { title: "e-Sanjeevani", options: [{ name: "Doctor Consultation", price: "Free" }, { name: "Follow-up", price: "Free" }] },
+  tele_law: { title: "Tele-Law", options: [{ name: "Legal Consultation", price: "Free" }, { name: "Case Status", price: "Free" }] },
+  ayushman_bharat: { title: "Ayushman Bharat", options: [{ name: "New Card", price: "₹100" }, { name: "Download Card", price: "₹50" }, { name: "Hospital List", price: "Free" }] },
+  health_checkup: { title: "Health Checkup", options: [{ name: "Basic Checkup", price: "Free" }, { name: "BP/Sugar Checkup", price: "Free" }] },
+  blood_donation: { title: "Blood Donation Registration", options: [{ name: "New Registration", price: "Free" }] },
+  covid_certificate: { title: "Covid Certificate", options: [{ name: "Download", price: "₹50" }, { name: "Print", price: "₹30" }] }
+};
+
+// ==========================================
+// 4. ELECTION STATE LINKS
+// ==========================================
+const electionServiceLinks = {
+  sir_draft:             { "Haryana": "https://ceoharyana.gov.in/",       "Punjab": "https://ceopunjab.gov.in/",       "Chandigarh": "https://ceochandigarh.gov.in/" },
+  sir_form:              { "Haryana": "https://voters.eci.gov.in/",        "Punjab": "https://voters.eci.gov.in/",      "Chandigarh": "https://voters.eci.gov.in/" },
+  blo_verify:            { "Haryana": "https://ceoharyana.gov.in/",       "Punjab": "https://ceopunjab.gov.in/",       "Chandigarh": "https://ceochandigarh.gov.in/" },
+  sarpanch_expense:      { "Haryana": "https://ceoharyana.gov.in/",       "Punjab": "https://ceopunjab.gov.in/",       "Chandigarh": "https://ceochandigarh.gov.in/" },
+  voter_list_download:   { "Haryana": "https://voters.eci.gov.in/download-eroll", "Punjab": "https://voters.eci.gov.in/download-eroll", "Chandigarh": "https://voters.eci.gov.in/download-eroll" }
+};
+
+// ==========================================
+// 5. SEARCH FUNCTIONALITY (With Category Hiding)
 // ==========================================
 const searchInput = document.getElementById('searchInput');
 const clearBtn = document.getElementById('clearBtn');
 const searchableItems = document.querySelectorAll('.searchable-item');
+const categorySections = document.querySelectorAll('.category-section');
 
 searchInput.addEventListener('input', function() {
   const query = this.value.toLowerCase().trim();
   clearBtn.classList.toggle('show', query.length > 0);
 
   searchableItems.forEach(item => {
-    const searchText = item.getAttribute('data-search').toLowerCase();
+    const searchText = (item.getAttribute('data-search') || '').toLowerCase();
     if (searchText.includes(query)) {
-      item.style.display = ''; // Show
+      item.style.display = 'flex'; // exact-btn uses flex
     } else {
-      item.style.display = 'none'; // Hide
+      item.style.display = 'none';
+    }
+  });
+
+  // Hide category titles if all items in it are hidden
+  categorySections.forEach(section => {
+    const items = section.querySelectorAll('.searchable-item');
+    let hasVisibleItem = false;
+    items.forEach(item => {
+      if (item.style.display !== 'none') {
+        hasVisibleItem = true;
+      }
+    });
+    if (hasVisibleItem) {
+      section.style.display = 'block';
+    } else {
+      section.style.display = 'none';
     }
   });
 });
@@ -784,7 +1284,7 @@ clearBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 4. MODAL FUNCTIONS
+// 6. MODAL FUNCTIONS
 // ==========================================
 function openModal(id) {
   document.getElementById(id).classList.add('active');
@@ -822,7 +1322,7 @@ window.addEventListener('click', function(e) {
 });
 
 // ==========================================
-// 5. DYNAMIC MODAL LOGIC
+// 7. DYNAMIC MODAL LOGIC
 // ==========================================
 function openDynamicModal(serviceId) {
   const data = dynamicServicesData[serviceId];
@@ -845,11 +1345,81 @@ function openDynamicModal(serviceId) {
 }
 
 // ==========================================
-// 6. PAN LOGIC
+// 8. SERVICE OPTIONS MODAL (WhatsApp)
+// ==========================================
+function openServiceModal(serviceId) {
+  const service = servicesData[serviceId];
+  if (!service) return;
+
+  document.getElementById('serviceModalTitle').innerText = service.title;
+  const optionsContainer = document.getElementById('serviceModalOptions');
+  optionsContainer.innerHTML = '';
+
+  service.options.forEach(opt => {
+    const optionDiv = document.createElement('div');
+    optionDiv.className = 'modal-option';
+    optionDiv.innerHTML = `<span class="opt-name">${opt.name}</span><span class="opt-price">${opt.price}</span>`;
+    optionDiv.onclick = function() { sendWhatsApp(service.title, opt.name, opt.price); };
+    optionsContainer.appendChild(optionDiv);
+  });
+
+  openModal('serviceModal');
+}
+
+function sendWhatsApp(serviceTitle, optionName, price) {
+  const cleanTitle = serviceTitle.replace(' - Select Option', '').replace('Select Option', '');
+
+  const message = `Hello SKYNET DIGITAL CENTER,%0A%0A` +
+                  `*Service Details:*%0A` +
+                  `Service: *${cleanTitle}*%0A` +
+                  `Option: *${optionName}*%0A` +
+                  `Price: *${price}*%0A%0A` +
+                  `*Required Documents / Details:*%0A` +
+                  `Kripya is seva ke liye aavashyak dastavez (documents) aur poori jaankari bhejein.%0A%0A` +
+                  `*Please guide me.*`;
+
+  window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`, '_blank');
+  closeModal('serviceModal');
+}
+
+// ==========================================
+// 9. ELECTION MODAL
+// ==========================================
+function openElectionModal(serviceId) {
+  const links = electionServiceLinks[serviceId];
+  const title = serviceId.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+
+  document.getElementById('serviceModalTitle').innerText = title + " - राज्य चुनें";
+  const optionsContainer = document.getElementById('serviceModalOptions');
+  optionsContainer.innerHTML = '';
+
+  const states = [
+    { name: "हरियाणा (Haryana)", value: "Haryana" },
+    { name: "पंजाब (Punjab)", value: "Punjab" },
+    { name: "चंडीगढ़ (Chandigarh)", value: "Chandigarh" }
+  ];
+
+  states.forEach(state => {
+    const optionDiv = document.createElement('div');
+    optionDiv.className = 'modal-option';
+    optionDiv.innerHTML = `<span class="opt-name"><i class="fas fa-map-marker-alt" style="margin-right:8px;color:#3b82f6;"></i>${state.name}</span><span class="opt-price" style="color:#1e3a8a;">→</span>`;
+    optionDiv.onclick = function() {
+      if (links && links[state.value]) {
+        window.open(links[state.value], '_blank');
+        closeModal('serviceModal');
+      }
+    };
+    optionsContainer.appendChild(optionDiv);
+  });
+
+  openModal('serviceModal');
+}
+
+// ==========================================
+// 10. PAN LOGIC
 // ==========================================
 function showPanServices(company) {
   document.getElementById('providerSelection').style.display = 'none';
-  
   if (company === 'nsdl') {
     document.getElementById('panModalTitle').innerText = '💳 Protean (NSDL) पैन सेवाएं';
     document.getElementById('nsdlServices').style.display = 'block';
@@ -867,7 +1437,7 @@ function backToProviders() {
 }
 
 // ==========================================
-// 7. ADMISSION LOGIC
+// 11. ADMISSION LOGIC
 // ==========================================
 let currentAdmState = '';
 let currentAdmType = '';
@@ -893,7 +1463,6 @@ function admSelectState(state) {
   currentAdmState = state;
   let stateName = state.charAt(0).toUpperCase() + state.slice(1);
   document.getElementById('admissionModalTitle').innerText = `📝 ${stateName} - प्रकार चुनें`;
-  
   document.getElementById('admLevel1').style.display = 'none';
   document.getElementById('admLevel2').style.display = 'flex';
 }
@@ -911,26 +1480,17 @@ function admBackToLevel2() {
 function admSelectType(type) {
   currentAdmType = type;
   document.getElementById('admLevel2').style.display = 'none';
-  
-  if (type === 'school') {
-    showSchoolBoards();
-  } else if (type === 'college') {
-    showCollegeLinks();
-  } else if (type === 'iti') {
-    showITILinks();
-  } else if (type === 'polytechnic') {
-    showPolytechnicLinks();
-  }
+  if (type === 'school') showSchoolBoards();
+  else if (type === 'college') showCollegeLinks();
+  else if (type === 'iti') showITILinks();
+  else if (type === 'polytechnic') showPolytechnicLinks();
 }
 
-// --- SCHOOL FLOW ---
 function showSchoolBoards() {
   document.getElementById('admLevel3School').style.display = 'flex';
   document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} स्कूल बोर्ड चुनें`;
-  
   const container = document.getElementById('boardButtonsContainer');
   container.innerHTML = '';
-  
   let boards = [];
   if (currentAdmState === 'haryana') boards = ['HBSE'];
   else if (currentAdmState === 'punjab') boards = ['PSEB'];
@@ -949,10 +1509,8 @@ function showSchoolBoards() {
 function showBoardLinks(board) {
   document.getElementById('admLevel3School').style.display = 'none';
   document.getElementById('admissionModalTitle').innerText = `📝 ${board} - सेवाएं`;
-  
   const container = document.getElementById('admLevel4Links');
   container.style.display = 'block';
-  
   let links = [];
   if (board === 'HBSE') {
     links = [
@@ -973,14 +1531,10 @@ function showBoardLinks(board) {
       { name: "Rechecking / Reappear", url: "https://cbse.gov.in/", desc: "रिचेकिंग और रीअपीयर फॉर्म।" }
     ];
   }
-  
   let html = `<button class="back-btn" onclick="admBackToSchool()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> बोर्ड बदलें</button>`;
   links.forEach(link => {
-    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
-               <strong>${link.name}</strong><span>${link.desc}</span>
-             </a>`;
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link"><strong>${link.name}</strong><span>${link.desc}</span></a>`;
   });
-  
   container.innerHTML = html;
 }
 
@@ -990,14 +1544,11 @@ function admBackToSchool() {
   document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} स्कूल बोर्ड चुनें`;
 }
 
-// --- COLLEGE FLOW ---
 function showCollegeLinks() {
   document.getElementById('admLevel3College').style.display = 'block';
   document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} कॉलेज - सेवाएं`;
-  
   const container = document.getElementById('admLevel3College');
   let links = [];
-  
   if (currentAdmState === 'haryana') {
     links = [
       { name: "College Admission", url: "https://admissions.highereduhry.ac.in/", desc: "हरियाणा कॉलेज में ऑनलाइन एडमिशन।" },
@@ -1017,25 +1568,18 @@ function showCollegeLinks() {
       { name: "Result", url: "https://onlineadmissions.puchd.ac.in/", desc: "कॉलेज का रिजल्ट देखें।" }
     ];
   }
-
   let html = `<button class="back-btn" onclick="admBackToLevel2()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>`;
   links.forEach(link => {
-    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
-               <strong>${link.name}</strong><span>${link.desc}</span>
-             </a>`;
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link"><strong>${link.name}</strong><span>${link.desc}</span></a>`;
   });
-  
   container.innerHTML = html;
 }
 
-// --- ITI FLOW ---
 function showITILinks() {
   document.getElementById('admLevel3ITI').style.display = 'block';
   document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} ITI - सेवाएं`;
-  
   const container = document.getElementById('admLevel3ITI');
   let links = [];
-  
   if (currentAdmState === 'haryana') {
     links = [
       { name: "ITI Admission", url: "https://itiharyana.gov.in/", desc: "हरियाणा ITI में ऑनलाइन एडमिशन।" },
@@ -1055,25 +1599,18 @@ function showITILinks() {
       { name: "Result", url: "https://chandigarh.gov.in/", desc: "ITI का रिजल्ट देखें।" }
     ];
   }
-
   let html = `<button class="back-btn" onclick="admBackToLevel2()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>`;
   links.forEach(link => {
-    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
-               <strong>${link.name}</strong><span>${link.desc}</span>
-             </a>`;
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link"><strong>${link.name}</strong><span>${link.desc}</span></a>`;
   });
-  
   container.innerHTML = html;
 }
 
-// --- POLYTECHNIC FLOW ---
 function showPolytechnicLinks() {
   document.getElementById('admLevel3Poly').style.display = 'block';
   document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} Polytechnic - सेवाएं`;
-  
   const container = document.getElementById('admLevel3Poly');
   let links = [];
-  
   if (currentAdmState === 'haryana') {
     links = [
       { name: "Polytechnic Admission", url: "https://techadmissionshry.gov.in/", desc: "हरियाणा पॉलिटेक्निक में एडमिशन।" },
@@ -1093,19 +1630,15 @@ function showPolytechnicLinks() {
       { name: "Result", url: "https://www.ccet.ac.in/", desc: "पॉलिटेक्निक का रिजल्ट देखें।" }
     ];
   }
-
   let html = `<button class="back-btn" onclick="admBackToLevel2()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>`;
   links.forEach(link => {
-    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
-               <strong>${link.name}</strong><span>${link.desc}</span>
-             </a>`;
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link"><strong>${link.name}</strong><span>${link.desc}</span></a>`;
   });
-  
   container.innerHTML = html;
 }
 
 // ==========================================
-// 8. GUIDE MODAL LOGIC
+// 12. GUIDE MODAL LOGIC
 // ==========================================
 function openGuideModal() {
   backToGuideList();
@@ -1128,7 +1661,6 @@ function showGuide(serviceKey) {
 
   const container = document.getElementById('guideContent');
   container.innerHTML = `
-    <!-- Video Link -->
     <a href="${data.video}" target="_blank" class="guide-card gc-youtube">
       <div class="guide-icon"><i class="fab fa-youtube"></i></div>
       <div class="guide-text">
@@ -1136,8 +1668,6 @@ function showGuide(serviceKey) {
         <p>इस सेवा को कैसे करें, वीडियो में देखें।</p>
       </div>
     </a>
-
-    <!-- PDF Link -->
     <a href="${data.pdf}" target="_blank" class="guide-card gc-pdf">
       <div class="guide-icon"><i class="fas fa-file-pdf"></i></div>
       <div class="guide-text">
@@ -1145,8 +1675,6 @@ function showGuide(serviceKey) {
         <p>ऑफिशियल फॉर्म और गाइडलाइन डाउनलोड करें।</p>
       </div>
     </a>
-
-    <!-- Blog Link -->
     <a href="${data.blog}" target="_blank" class="guide-card gc-blog">
       <div class="guide-icon"><i class="fas fa-blog"></i></div>
       <div class="guide-text">
