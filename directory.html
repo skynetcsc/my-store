@@ -6,109 +6,158 @@
 <title>Ramgarh Panchkula Business Directory</title>
 <style>
   :root{
-    --bg:#f5f7fb; --card:#fff; --text:#172033; --muted:#657089;
-    --primary:#0b63ce; --primary-dark:#084b9c; --border:#dfe5ef;
+    --bg:#f4f7f6; --card:#fff; --text:#1e293b; --muted:#64748b;
+    --primary:#2563eb; --primary-dark:#1d4ed8; --border:#e2e8f0;
+    --success:#10b981; --success-dark:#059669;
   }
-  *{box-sizing:border-box}
+  *{box-sizing:border-box; transition: all 0.2s ease-in-out;}
   body{
     margin:0; font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
     background:var(--bg); color:var(--text);
   }
   header{
-    background:linear-gradient(135deg,#0b63ce,#073b75);
-    color:white; padding:26px 16px 20px; text-align:center;
+    background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+    color:white; padding:30px 16px 24px; text-align:center;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
   }
-  header h1{margin:0 0 6px; font-size:26px}
-  header p{margin:0; opacity:.9; font-size:14px}
-  .wrap{max-width:1100px; margin:0 auto; padding:16px}
+  header h1{margin:0 0 8px; font-size:26px; letter-spacing: 0.5px;}
+  header p{margin:0; opacity:.9; font-size:15px}
+  .wrap{max-width:1100px; margin:-20px auto 0; padding:16px; position:relative; z-index:10;}
+  
   .searchbox{
-    background:var(--card); border:1px solid var(--border); border-radius:14px;
-    padding:12px; box-shadow:0 4px 16px rgba(16,24,40,.06);
+    background:var(--card); border:1px solid var(--border); border-radius:16px;
+    padding:12px; box-shadow:0 10px 25px -5px rgba(0,0,0,0.05);
     display:flex; gap:10px; flex-wrap:wrap;
   }
   .searchbox input{
     flex:1; min-width:220px; border:1px solid var(--border); border-radius:10px;
-    padding:12px 14px; font-size:15px; outline:none;
+    padding:14px 16px; font-size:15px; outline:none; background:#f8fafc;
   }
-  .searchbox input:focus{border-color:var(--primary)}
+  .searchbox input:focus{border-color:var(--primary); background:white; box-shadow: 0 0 0 3px rgba(37,99,235,0.1);}
+  
   .cat-buttons{
-    display:flex; gap:8px; flex-wrap:wrap; margin:16px 0;
+    display:flex; gap:8px; flex-wrap:wrap; margin:20px 0;
   }
   .cat-btn{
     border:1px solid var(--border); background:white; color:var(--text);
-    padding:9px 13px; border-radius:999px; cursor:pointer; font-size:14px;
+    padding:10px 16px; border-radius:999px; cursor:pointer; font-size:14px; font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
   }
+  .cat-btn:hover { background: #f8fafc; transform: translateY(-1px); }
   .cat-btn.active{
     background:var(--primary); color:white; border-color:var(--primary);
+    box-shadow: 0 4px 10px rgba(37,99,235,0.3);
   }
+  
   .grid{
-    display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
-    gap:14px;
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:16px;
   }
   .card{
     background:var(--card); border:1px solid var(--border); border-radius:16px;
-    padding:16px; box-shadow:0 4px 14px rgba(16,24,40,.05);
-    display:flex; flex-direction:column; gap:10px;
+    padding:20px; box-shadow:0 2px 10px rgba(0,0,0,0.03);
+    display:flex; flex-direction:column; gap:12px;
+    animation: fadeIn 0.3s ease-out forwards;
   }
-  .card h3{margin:0; font-size:17px; line-height:1.3}
+  .card:hover { transform: translateY(-4px); box-shadow: 0 12px 20px -8px rgba(0,0,0,0.1); border-color: #cbd5e1; }
+  
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .card h3{margin:0; font-size:18px; line-height:1.3; font-weight:700;}
   .badge{
-    display:inline-block; background:#eaf2ff; color:#084b9c;
-    font-size:12px; font-weight:700; padding:4px 9px; border-radius:999px;
-    width:fit-content;
+    display:inline-block; background:#eff6ff; color:var(--primary);
+    font-size:12px; font-weight:600; padding:4px 10px; border-radius:999px;
+    width:fit-content; letter-spacing: 0.3px;
   }
-  .info{font-size:14px; color:var(--muted); line-height:1.5}
-  .actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:auto}
+  .info{font-size:14px; color:var(--muted); line-height:1.6}
+  .info strong { color: #475569; }
+  
+  .actions{display:flex; gap:8px; flex-wrap:wrap; margin-top:auto; padding-top: 10px; border-top: 1px solid var(--border);}
   .actions a{
     text-decoration:none; text-align:center; flex:1; min-width:90px;
-    padding:10px 12px; border-radius:10px; font-weight:700; font-size:14px;
+    padding:10px 12px; border-radius:10px; font-weight:600; font-size:14px;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
   }
-  .call{background:#0b63ce; color:white}
-  .wa{background:#25d366; color:#063b1b}
+  .call{background:#f1f5f9; color:var(--text);}
+  .call:hover { background: #e2e8f0; }
+  .wa{background:#dcfce7; color:var(--success-dark);}
+  .wa:hover { background: #bbf7d0; }
+  
+  /* Skeleton Loader */
+  .skeleton-card {
+    background: white; border-radius: 16px; padding: 20px; border: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .skeleton-line { background: #e2e8f0; border-radius: 4px; animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
+
   .empty{
-    text-align:center; padding:40px 16px; color:var(--muted);
+    text-align:center; padding:50px 20px; color:var(--muted);
     background:white; border:1px dashed var(--border); border-radius:16px;
   }
+  
   .add-box{
-    margin-top:26px; background:white; border:1px solid var(--border);
-    border-radius:16px; padding:18px;
+    margin-top:30px; background:white; border:1px solid var(--border);
+    border-radius:16px; padding:24px; box-shadow: 0 4px 6px rgba(0,0,0,0.02);
   }
-  .add-box h2{margin:0 0 14px; font-size:20px}
-  form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .add-box h2{margin:0 0 20px; font-size:22px; color: var(--text);}
+  form{display:grid; grid-template-columns:1fr 1fr; gap:16px}
   form .full{grid-column:1/-1}
-  label{display:block; font-size:13px; font-weight:700; margin-bottom:6px}
+  label{display:block; font-size:13px; font-weight:600; margin-bottom:6px; color:#475569;}
   input,select{
     width:100%; border:1px solid var(--border); border-radius:10px;
-    padding:11px 12px; font-size:14px; outline:none; background:white;
+    padding:12px 14px; font-size:15px; outline:none; background:#f8fafc;
+    font-family: inherit;
   }
-  input:focus,select:focus{border-color:var(--primary)}
+  input:focus,select:focus{border-color:var(--primary); background:white; box-shadow: 0 0 0 3px rgba(37,99,235,0.1);}
   form button{
     border:0; background:var(--primary); color:white; border-radius:10px;
-    padding:12px 16px; font-weight:800; cursor:pointer; font-size:15px;
+    padding:14px 20px; font-weight:700; cursor:pointer; font-size:16px;
+    display: flex; justify-content: center; align-items: center; gap: 10px;
   }
-  form button:hover{background:var(--primary-dark)}
-  .footer{text-align:center; color:var(--muted); font-size:13px; padding:24px 16px}
+  form button:hover{background:var(--primary-dark); box-shadow: 0 4px 12px rgba(37,99,235,0.3);}
+  form button:disabled { opacity: 0.7; cursor: not-allowed; }
+  
+  .footer{text-align:center; color:var(--muted); font-size:14px; padding:30px 16px}
+
+  /* Toast Notification */
+  #toast {
+    visibility: hidden; min-width: 250px; background-color: #333; color: #fff;
+    text-align: center; border-radius: 50px; padding: 16px; position: fixed;
+    z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%);
+    font-size: 15px; font-weight: 500; box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    opacity: 0; transition: opacity 0.3s, bottom 0.3s;
+  }
+  #toast.show { visibility: visible; opacity: 1; bottom: 50px; }
+  #toast.success { background-color: var(--success); }
+  #toast.error { background-color: #ef4444; }
+
   @media(max-width:640px){
     form{grid-template-columns:1fr}
     header h1{font-size:22px}
+    .wrap { margin-top: -10px; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <h1>📍 Ramgarh Panchkula Business Directory</h1>
-  <p>Muje Ramgarh ke aas-paas 50 km area ke business — category wise</p>
+  <h1>📍 Ramgarh Panchkula Directory</h1>
+  <p>Muje Ramgarh ke aas-paas ke business — category wise</p>
 </header>
 
 <div class="wrap">
   <div class="searchbox">
-    <input id="searchInput" type="search" placeholder="Naam, mobile, address ya kaam search karein...">
+    <input id="searchInput" type="search" placeholder="🔍 Naam, mobile, ya kaam search karein...">
   </div>
 
   <div id="categoryButtons" class="cat-buttons"></div>
   
+  <!-- Skeleton loader initially -->
   <div id="list" class="grid">
-    <div class="empty" style="grid-column:1/-1">Data load ho raha hai... ⏳</div>
+    <div class="skeleton-card"><div class="skeleton-line" style="width:30%; height:20px;"></div><div class="skeleton-line" style="width:70%; height:24px;"></div><div class="skeleton-line" style="width:100%; height:16px;"></div><div class="skeleton-line" style="width:100%; height:40px; margin-top:10px;"></div></div>
+    <div class="skeleton-card"><div class="skeleton-line" style="width:40%; height:20px;"></div><div class="skeleton-line" style="width:60%; height:24px;"></div><div class="skeleton-line" style="width:100%; height:16px;"></div><div class="skeleton-line" style="width:100%; height:40px; margin-top:10px;"></div></div>
+    <div class="skeleton-card"><div class="skeleton-line" style="width:35%; height:20px;"></div><div class="skeleton-line" style="width:80%; height:24px;"></div><div class="skeleton-line" style="width:100%; height:16px;"></div><div class="skeleton-line" style="width:100%; height:40px; margin-top:10px;"></div></div>
   </div>
 
   <section class="add-box">
@@ -124,7 +173,7 @@
       </div>
       <div>
         <label>Mobile Number</label>
-        <input name="Phone" required placeholder="98xxxxxxxx">
+        <input name="Phone" required placeholder="98xxxxxxxx" pattern="[0-9]{10}" title="10 digit mobile number likhein">
       </div>
       <div>
         <label>Address / Area</label>
@@ -149,9 +198,13 @@
   </div>
 </div>
 
+<!-- Toast Container -->
+<div id="toast">Success</div>
+
 <script>
-// आपका Google Apps Script URL यहाँ जोड़ दिया गया है
+// आपका Google Apps Script URL
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw75U8yw81OG8RB2Nyp9pJfgxQ9kR6VCsm44-8aDp7ADZIRrwHYJXlndaVaKMx1oZh4/exec'; 
+const CACHE_KEY = 'ramgarh_directory_cache';
 
 const CATEGORIES = [
   "🍽️ Food & Dining",
@@ -170,45 +223,48 @@ let businesses = [];
 let activeCategory = "All";
 let searchTerm = "";
 
-// डेटा लोड करने का फंक्शन (doGet से)
+// --- 1. Fast Loading & Caching Logic ---
+function init() {
+  renderCategoryButtons();
+  renderFormCategories();
+  
+  // Step A: Load from Local Cache instantly (0ms load time)
+  const cachedData = localStorage.getItem(CACHE_KEY);
+  if (cachedData) {
+    businesses = JSON.parse(cachedData);
+    renderList();
+  }
+  
+  // Step B: Fetch fresh data from Google Sheets in background
+  fetchData();
+}
+
 async function fetchData() {
   try {
     const response = await fetch(SCRIPT_URL);
     const data = await response.json();
-    // शीट से आने वाले डेटा को उल्टा करें ताकि नया बिज़नेस सबसे ऊपर दिखे
-    businesses = data.reverse(); 
-    renderList();
+    
+    // Check if data has changed to avoid unnecessary re-renders
+    if (JSON.stringify(data) !== JSON.stringify(businesses)) {
+        businesses = data.reverse(); 
+        localStorage.setItem(CACHE_KEY, JSON.stringify(businesses)); // Update cache
+        renderList();
+    }
   } catch (error) {
-    console.error("Error fetching data:", error);
-    document.getElementById("list").innerHTML = `<div class="empty" style="grid-column:1/-1">Data load nahi ho paya. Internet ya URL check karein.</div>`;
+    console.error("Fetch error:", error);
+    if (!businesses.length) {
+        document.getElementById("list").innerHTML = `<div class="empty" style="grid-column:1/-1">Data load nahi ho paya. Internet check karein.</div>`;
+    }
   }
 }
 
-function esc(value) {
-  return String(value || "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
-}
-
-function digitsOnly(phone) {
-  return String(phone || "").replace(/\D/g, "");
-}
-
-function waNumber(phone) {
-  const d = digitsOnly(phone);
-  if (!d) return "";
-  return d.length === 10 ? "91" + d : d;
-}
-
+// --- 2. UI Rendering Functions ---
 function renderCategoryButtons() {
   const box = document.getElementById("categoryButtons");
   const all = ["All", ...CATEGORIES];
   box.innerHTML = all.map(cat => {
     const label = cat === "All" ? "📋 All" : cat;
-    return `<button class="cat-btn ${activeCategory === cat ? "active" : ""}" data-cat="${esc(cat)}">${esc(label)}</button>`;
+    return `<button type="button" class="cat-btn ${activeCategory === cat ? "active" : ""}" data-cat="${esc(cat)}">${esc(label)}</button>`;
   }).join("");
 
   box.querySelectorAll(".cat-btn").forEach(btn => {
@@ -248,7 +304,6 @@ function cardHTML(b) {
         ${b.Work ? `<div><strong>Kaam:</strong> ${esc(b.Work)}</div>` : ""}
         ${b.Address ? `<div><strong>Address:</strong> ${esc(b.Address)}</div>` : ""}
         ${b.Phone ? `<div><strong>Mobile:</strong> ${esc(b.Phone)}</div>` : `<div><strong>Mobile:</strong> Not added</div>`}
-        ${b.Source ? `<div><strong>Source:</strong> ${esc(b.Source)}</div>` : ""}
       </div>
       <div class="actions">${callLink}${waLink}</div>
     </article>
@@ -265,38 +320,74 @@ function renderList() {
   list.innerHTML = items.map(cardHTML).join("");
 }
 
+// --- 3. Utilities ---
+function esc(value) {
+  return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+}
+function digitsOnly(phone) { return String(phone || "").replace(/\D/g, ""); }
+function waNumber(phone) {
+  const d = digitsOnly(phone);
+  if (!d) return "";
+  return d.length === 10 ? "91" + d : d;
+}
+
+function showToast(message, type = 'success') {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.className = `show ${type}`;
+  setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
+}
+
+// --- 4. Search Debounce (Makes typing super fast) ---
+let searchTimeout;
 document.getElementById("searchInput").addEventListener("input", e => {
-  searchTerm = e.target.value;
-  renderList();
+  clearTimeout(searchTimeout);
+  const val = e.target.value;
+  searchTimeout = setTimeout(() => {
+    searchTerm = val;
+    renderList();
+  }, 300); // Waits 300ms after you stop typing
 });
 
-// फॉर्म सबमिट करने का फंक्शन (doPost से)
+// --- 5. Form Submit (Optimistic UI) ---
 document.getElementById("addForm").addEventListener("submit", async (e) => {
   e.preventDefault();
   const btn = document.getElementById("submitBtn");
-  btn.innerText = "Saving...";
+  btn.innerText = "Saving... ⏳";
   btn.disabled = true;
 
   const formData = new FormData(e.target);
+  const formEntries = Object.fromEntries(formData.entries());
+  
+  // Instantly push to local array so user sees it immediately
+  const newBusiness = {
+    Name: formEntries.Name,
+    Category: formEntries.Category,
+    Phone: formEntries.Phone,
+    Address: formEntries.Address,
+    Work: formEntries.Work,
+    Source: formEntries.Source
+  };
+  businesses.unshift(newBusiness);
+  localStorage.setItem(CACHE_KEY, JSON.stringify(businesses));
+  renderList();
   
   try {
-    // Google Apps Script में डेटा भेजें
+    // Send data to Google Sheet in background
     await fetch(SCRIPT_URL, {
       method: 'POST',
-      mode: 'no-cors', // CORS एरर से बचने के लिए
+      mode: 'no-cors', 
       body: formData
     });
 
-    alert("Business save ho gaya ✅ (Sheet me check karein)");
+    showToast("✅ Business successfully save ho gaya!", "success");
     e.target.reset();
     
-    // नया डेटा लोड करने के लिए 2 सेकंड बाद पेज अपडेट करें
-    setTimeout(() => {
-        fetchData();
-    }, 2000); 
+    // Re-fetch in background just to ensure we have the exact sheet data (optional, but keeps it synced)
+    setTimeout(fetchData, 2000); 
     
   } catch (error) {
-    alert("Error: Data save nahi ho paya. Dobara koshish karein.");
+    showToast("❌ Data save nahi ho paya. Dobara koshish karein.", "error");
     console.error(error);
   } finally {
     btn.innerText = "Save Business";
@@ -304,10 +395,8 @@ document.getElementById("addForm").addEventListener("submit", async (e) => {
   }
 });
 
-// शुरुआत में डेटा लोड करें
-renderCategoryButtons();
-renderFormCategories();
-fetchData(); // सबसे पहले Google Sheet से डेटा लाएं
+// Start the App
+init();
 </script>
 </body>
 </html>
