@@ -98,7 +98,7 @@
   }
 
   /* =========================================
-     EXACT BUTTON STYLE (For all services)
+     EXACT BUTTON STYLE
      ========================================= */
   .exact-btn {
     display: flex;
@@ -113,6 +113,7 @@
     border-top: 1px solid #e2e8f0;
     border-right: 1px solid #e2e8f0;
     border-bottom: 1px solid #e2e8f0;
+    background: #fff;
   }
   .exact-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.08); }
 
@@ -131,23 +132,27 @@
   .chevron { color: #94a3b8; font-size: 1.2rem; }
 
   /* Color Variations */
-  .color-blue { background-color: #f4f8ff; border-left: 6px solid #3b82f6; }
+  .color-blue { border-left: 6px solid #3b82f6; }
   .color-blue .icon-box { background-color: #3b82f6; }
   
-  .color-green { background-color: #f2fcf7; border-left: 6px solid #10b981; }
+  .color-green { border-left: 6px solid #10b981; }
   .color-green .icon-box { background-color: #10b981; }
   
-  .color-yellow { background-color: #fffdf5; border-left: 6px solid #f59e0b; }
+  .color-yellow { border-left: 6px solid #f59e0b; }
   .color-yellow .icon-box { background-color: #f59e0b; }
   
-  .color-purple { background-color: #f8f5ff; border-left: 6px solid #8b5cf6; }
+  .color-purple { border-left: 6px solid #8b5cf6; }
   .color-purple .icon-box { background-color: #8b5cf6; }
   
-  .color-pink { background-color: #fff5f9; border-left: 6px solid #ec4899; }
+  .color-pink { border-left: 6px solid #ec4899; }
   .color-pink .icon-box { background-color: #ec4899; }
   
-  .color-teal { background-color: #f0fdfa; border-left: 6px solid #14b8a6; }
+  .color-teal { border-left: 6px solid #14b8a6; }
   .color-teal .icon-box { background-color: #14b8a6; }
+
+  /* NEW COLOR FOR GUIDE */
+  .color-orange { border-left: 6px solid #f97316; }
+  .color-orange .icon-box { background-color: #f97316; }
 
   /* ---------- MODAL (POPUP) STYLES ---------- */
   .modal-overlay {
@@ -184,7 +189,6 @@
   .modal-service-link strong { display: block; color: #1e40af; font-size: 1rem; margin-bottom: 4px; }
   .modal-service-link span { display: block; font-size: 0.85rem; color: #64748b; line-height: 1.4; }
 
-  /* Selection Buttons */
   .provider-btn {
     display: flex; align-items: center; justify-content: space-between;
     padding: 16px 20px; margin: 10px 15px; border-radius: 10px; text-decoration: none;
@@ -194,13 +198,39 @@
   .provider-btn:hover { background: #f8fafc; border-color: #3b82f6; transform: scale(1.01); }
   .provider-btn h4 { margin: 0; font-size: 1.05rem; color: #1e293b; display: flex; align-items: center; gap: 10px; }
   .provider-btn h4 i { color: #3b82f6; }
-  .provider-btn p { margin: 4px 0 0 0; font-size: 0.85rem; color: #64748b; }
 
   .back-btn {
     display: inline-flex; align-items: center; gap: 5px; background: none; border: none;
     color: #3b82f6; font-weight: 600; cursor: pointer; padding: 15px 20px 5px 20px; font-family: inherit;
   }
-  .back-btn:hover { text-decoration: underline; }
+
+  /* ---------- GUIDE SPECIFIC STYLES ---------- */
+  .guide-container { padding: 15px; display: flex; flex-direction: column; gap: 12px; }
+  
+  .guide-card {
+    display: flex; align-items: center; gap: 15px; padding: 15px;
+    border-radius: 10px; text-decoration: none; color: #1e293b;
+    transition: all 0.2s; border: 1px solid #e2e8f0;
+  }
+  .guide-card:hover { transform: translateX(5px); }
+  
+  .guide-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.2rem; color: white; flex-shrink: 0;
+  }
+  
+  .gc-youtube { background: #fee2e2; border-left: 4px solid #ef4444; }
+  .gc-youtube .guide-icon { background: #ef4444; }
+  
+  .gc-pdf { background: #eff6ff; border-left: 4px solid #3b82f6; }
+  .gc-pdf .guide-icon { background: #3b82f6; }
+  
+  .gc-blog { background: #ecfdf5; border-left: 4px solid #10b981; }
+  .gc-blog .guide-icon { background: #10b981; }
+
+  .guide-text h4 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+  .guide-text p { margin: 0; font-size: 0.8rem; color: #64748b; }
 
   /* ---------- FOOTER ---------- */
   footer {
@@ -232,7 +262,7 @@
 <div class="search-wrapper">
   <div class="search-box">
     <span class="icon-left">🔍</span>
-    <input type="text" id="searchInput" placeholder="Search services... (जैसे: Aadhaar, Ticket, PAN, Bill, Police)" autocomplete="off">
+    <input type="text" id="searchInput" placeholder="Search services... (जैसे: Aadhaar, Ticket, PAN, Guide)" autocomplete="off">
     <button class="clear-btn" id="clearBtn" title="Clear search">✕</button>
   </div>
 </div>
@@ -259,7 +289,16 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 3. Ticket Booking -->
+    <!-- 3. NEW: Service Guides Button -->
+    <button onclick="openGuideModal()" class="exact-btn color-orange searchable-item" data-search="Service Guides Video PDF Blog Tutorial Help सहायता गाइड">
+      <div class="btn-left">
+        <div class="icon-box"><i class="fas fa-book-open"></i></div>
+        <div class="text-box"><h4>Service Guides & Videos</h4><p>वीडियो, पीडीएफ और ब्लॉग गाइड</p></div>
+      </div>
+      <i class="fas fa-chevron-right chevron"></i>
+    </button>
+
+    <!-- 4. Ticket Booking -->
     <button onclick="openDynamicModal('ticketBooking')" class="exact-btn color-yellow searchable-item" data-search="Ticket Booking Train IRCTC Aeroplane Cinema Movie">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-ticket-alt"></i></div>
@@ -268,7 +307,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 4. Online Admission Forms -->
+    <!-- 5. Online Admission Forms -->
     <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result ITI Polytechnic">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-file-signature"></i></div>
@@ -277,7 +316,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 5. Community Center -->
+    <!-- 6. Community Center -->
     <button onclick="openDynamicModal('communityCenter')" class="exact-btn color-pink searchable-item" data-search="Community Center Booking HUDA MC">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-building"></i></div>
@@ -286,7 +325,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 6. Driving Licence -->
+    <!-- 7. Driving Licence -->
     <button onclick="openDynamicModal('drivingLicence')" class="exact-btn color-teal searchable-item" data-search="Driving Licence LTV HTV Heavy Light Motor Vehicle">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-car"></i></div>
@@ -295,7 +334,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 7. Passport Services -->
+    <!-- 8. Passport Services -->
     <button onclick="openDynamicModal('passport')" class="exact-btn color-blue searchable-item" data-search="Passport Services Apply Appointment Track Status">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-passport"></i></div>
@@ -304,7 +343,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 8. Link Aadhaar with Bank -->
+    <!-- 9. Link Aadhaar with Bank -->
     <button onclick="openDynamicModal('linkBank')" class="exact-btn color-green searchable-item" data-search="Link Aadhaar with Bank LIC SBI UBI HDFC Dena United PNB">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-university"></i></div>
@@ -313,7 +352,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 9. Other Bill Payments -->
+    <!-- 10. Other Bill Payments -->
     <button onclick="openDynamicModal('billPayments')" class="exact-btn color-yellow searchable-item" data-search="Other Bill Payments LIC Home Credit BSNL Bus Pass">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-file-invoice-dollar"></i></div>
@@ -322,7 +361,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 10. Police & E-DISHA -->
+    <!-- 11. Police & E-DISHA -->
     <button onclick="openDynamicModal('police')" class="exact-btn color-purple searchable-item" data-search="Police E-DISHA Haryana Login Certificate Print">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-shield-alt"></i></div>
@@ -331,7 +370,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 11. Tax & Permit Payment -->
+    <!-- 12. Tax & Permit Payment -->
     <button onclick="openDynamicModal('tax')" class="exact-btn color-pink searchable-item" data-search="Tax Permit Payment Haryana National Punjab Vehicle">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-file-invoice"></i></div>
@@ -340,7 +379,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 12. Farad / Intkal / Nakal -->
+    <!-- 13. Farad / Intkal / Nakal -->
     <button onclick="openDynamicModal('landRecords')" class="exact-btn color-teal searchable-item" data-search="Farad Intkal Nakal Haryana Jamabandi Punjab Land Records">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-file-contract"></i></div>
@@ -349,7 +388,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 13. Electricity & Water -->
+    <!-- 14. Electricity & Water -->
     <button onclick="openDynamicModal('electricity')" class="exact-btn color-blue searchable-item" data-search="Electricity Water Connection Haryana Bill">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-bolt"></i></div>
@@ -358,7 +397,7 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 14. Ration Card & SARAL -->
+    <!-- 15. Ration Card & SARAL -->
     <button onclick="openDynamicModal('ration')" class="exact-btn color-green searchable-item" data-search="Ration Card SARAL Haryana">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-utensils"></i></div>
@@ -530,7 +569,7 @@
         <div id="boardButtonsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
       </div>
 
-      <!-- Level 4: Board Specific Links (Admission, Result, Reappear) -->
+      <!-- Level 4: Board Specific Links -->
       <div id="admLevel4Links" style="display: none; padding: 0;"></div>
 
       <!-- Level 3: College Links -->
@@ -541,6 +580,48 @@
       
       <!-- Level 3: Polytechnic Links -->
       <div id="admLevel3Poly" style="display: none; padding: 0;"></div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== NEW: GUIDE MODAL ===== -->
+<div class="modal-overlay" id="guideModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="guideModalTitle">📚 Service Guides - सेवा चुनें</h3>
+      <button class="close-btn" onclick="closeModal('guideModal')">✕</button>
+    </div>
+    <div class="modal-body" id="guideModalBody">
+      
+      <!-- Level 1: Guide Service List -->
+      <div id="guideLevel1" style="padding: 15px; display: flex; flex-direction: column; gap: 10px;">
+        <p style="font-size: 0.85rem; color: #64748b; text-align: center; margin-bottom: 10px;">किसी भी सेवा को चुनें और उससे जुड़े वीडियो, पीडीएफ और ब्लॉग देखें।</p>
+        
+        <button onclick="showGuide('aadhaar')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-id-card" style="color: #3b82f6;"></i> Aadhaar Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
+        </button>
+        <button onclick="showGuide('pan')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-credit-card" style="color: #10b981;"></i> PAN Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
+        </button>
+        <button onclick="showGuide('voter')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-vote-yea" style="color: #f59e0b;"></i> Voter Card Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
+        </button>
+        <button onclick="showGuide('passport')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-passport" style="color: #8b5cf6;"></i> Passport Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
+        </button>
+        <button onclick="showGuide('ticket')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-ticket-alt" style="color: #ec4899;"></i> Ticket Booking Guide</h4><i class="fas fa-chevron-right" style="color:#94a3b8;"></i>
+        </button>
+      </div>
+
+      <!-- Level 2: Guides for Selected Service -->
+      <div id="guideLevel2" style="display: none; padding: 0;">
+        <button class="back-btn" onclick="backToGuideList()" style="padding: 15px 20px;"><i class="fas fa-arrow-left"></i> सेवा बदलें</button>
+        <div id="guideContent" class="guide-container">
+          <!-- Dynamic Content goes here -->
+        </div>
+      </div>
 
     </div>
   </div>
@@ -588,17 +669,13 @@ const dynamicServicesData = {
       { name: "Link with LIC Policy", url: "https://kyclink.licindia.in/UIDSeedingWebApp/", desc: "LIC पॉलिसी से आधार लिंक करें।" },
       { name: "SBI Aadhaar Link", url: "https://retail.onlinesbi.com/retops/aadhaarlinkinginitial.htm", desc: "SBI बैंक से आधार लिंक।" },
       { name: "UBI Aadhaar Link", url: "https://eremit.unionbankofindia.co.in/linkaadhaar/GUIs/unionaadhaar.aspx", desc: "UBI बैंक से आधार लिंक।" },
-      { name: "HDFC Aadhaar Link", url: "https://leads.hdfcbank.com/applications/webforms/apply/HDFC_Aadhaar_Adapt/HDFC_Aadhaar.aspx?Promocode=AadhaarFAQsPage", desc: "HDFC बैंक से आधार लिंक।" },
-      { name: "Dena Bank Link", url: "https://webserver1.denabank.co.in:3371/aadhar_sheeding/frm_online_request.aspx", desc: "देना बैंक से आधार लिंक।" },
-      { name: "United Bank Link", url: "https://ubionline.unitedbank.co.in/aadhaar/user_login.html", desc: "यूनाइटेड बैंक से आधार लिंक।" },
-      { name: "PNB Aadhaar Link", url: "https://gateway.netpnb.com/Aadhaar/default.aspx", desc: "PNB बैंक से आधार लिंक।" }
+      { name: "HDFC Aadhaar Link", url: "https://leads.hdfcbank.com/applications/webforms/apply/HDFC_Aadhaar_Adapt/HDFC_Aadhaar.aspx?Promocode=AadhaarFAQsPage", desc: "HDFC बैंक से आधार लिंक।" }
     ]
   },
   billPayments: {
     title: "💰 Other Bill Payments",
     links: [
       { name: "LIC Payment", url: "https://ebiz.licindia.in/D2CPM/#DirectPay", desc: "LIC का बीमा प्रीमियम भरें।" },
-      { name: "Home Credit Loan", url: "https://cpweb.homecredit.co.in/webpay/loanpayment", desc: "होम क्रेडिट का लोन भरें।" },
       { name: "BSNL Bill Payment", url: "https://portal2.bsnl.in/myportal/cfa.do", desc: "BSNL का बिल भरें।" },
       { name: "Bus Pass Fee", url: "http://epay.hrtransport.gov.in/", desc: "हरियाणा बस पास फीस भरें।" }
     ]
@@ -644,7 +721,43 @@ const dynamicServicesData = {
 };
 
 // ==========================================
-// 2. SEARCH FUNCTIONALITY
+// 2. DATA FOR GUIDE MODAL (Videos, PDFs, Blogs)
+// ==========================================
+const guideData = {
+  aadhaar: {
+    title: "Aadhaar Card Guides",
+    video: "https://www.youtube.com/results?search_query=how+to+download+aadhaar+card+2024",
+    pdf: "https://uidai.gov.in/images/commdoc/updated_aadhaar_enrolment_correction_form.pdf",
+    blog: "https://www.skynetcc.co.in/blog/aadhaar-card-update-guide" // Example blog link
+  },
+  pan: {
+    title: "PAN Card Guides",
+    video: "https://www.youtube.com/results?search_query=how+to+apply+pan+card+online+nsdl",
+    pdf: "https://www.protean-tinpan.com/services/pan/pan-download/pan-form-49A.pdf",
+    blog: "https://www.skynetcc.co.in/blog/pan-card-apply-online"
+  },
+  voter: {
+    title: "Voter Card Guides",
+    video: "https://www.youtube.com/results?search_query=how+to+apply+voter+id+card+online",
+    pdf: "https://voters.eci.gov.in/download-eroll",
+    blog: "https://www.skynetcc.co.in/blog/voter-id-registration"
+  },
+  passport: {
+    title: "Passport Guides",
+    video: "https://www.youtube.com/results?search_query=how+to+apply+passport+online+india",
+    pdf: "https://www.passportindia.gov.in/AppOnlineProject/pdf/Passport_Instruction_Booklet.pdf",
+    blog: "https://www.skynetcc.co.in/blog/passport-application-process"
+  },
+  ticket: {
+    title: "Ticket Booking Guides",
+    video: "https://www.youtube.com/results?search_query=how+to+book+train+ticket+irctc",
+    pdf: "https://contents.irctc.co.in/en/IRCTC_User_Guide.pdf",
+    blog: "https://www.skynetcc.co.in/blog/irctc-ticket-booking-tips"
+  }
+};
+
+// ==========================================
+// 3. SEARCH FUNCTIONALITY
 // ==========================================
 const searchInput = document.getElementById('searchInput');
 const clearBtn = document.getElementById('clearBtn');
@@ -671,7 +784,7 @@ clearBtn.addEventListener('click', () => {
 });
 
 // ==========================================
-// 3. MODAL FUNCTIONS
+// 4. MODAL FUNCTIONS
 // ==========================================
 function openModal(id) {
   document.getElementById(id).classList.add('active');
@@ -694,6 +807,12 @@ function closeModal(id) {
       admBackToLevel1();
     }, 300);
   }
+
+  if (id === 'guideModal') {
+    setTimeout(() => {
+      backToGuideList();
+    }, 300);
+  }
 }
 
 window.addEventListener('click', function(e) {
@@ -703,7 +822,7 @@ window.addEventListener('click', function(e) {
 });
 
 // ==========================================
-// 4. DYNAMIC MODAL LOGIC
+// 5. DYNAMIC MODAL LOGIC
 // ==========================================
 function openDynamicModal(serviceId) {
   const data = dynamicServicesData[serviceId];
@@ -726,7 +845,7 @@ function openDynamicModal(serviceId) {
 }
 
 // ==========================================
-// 5. PAN LOGIC (NSDL / UTI)
+// 6. PAN LOGIC
 // ==========================================
 function showPanServices(company) {
   document.getElementById('providerSelection').style.display = 'none';
@@ -748,7 +867,7 @@ function backToProviders() {
 }
 
 // ==========================================
-// 6. ADMISSION MODAL LOGIC (Multi-Level)
+// 7. ADMISSION LOGIC
 // ==========================================
 let currentAdmState = '';
 let currentAdmType = '';
@@ -983,6 +1102,59 @@ function showPolytechnicLinks() {
   });
   
   container.innerHTML = html;
+}
+
+// ==========================================
+// 8. GUIDE MODAL LOGIC
+// ==========================================
+function openGuideModal() {
+  backToGuideList();
+  openModal('guideModal');
+}
+
+function backToGuideList() {
+  document.getElementById('guideLevel1').style.display = 'flex';
+  document.getElementById('guideLevel2').style.display = 'none';
+  document.getElementById('guideModalTitle').innerText = '📚 Service Guides - सेवा चुनें';
+}
+
+function showGuide(serviceKey) {
+  const data = guideData[serviceKey];
+  if (!data) return;
+
+  document.getElementById('guideLevel1').style.display = 'none';
+  document.getElementById('guideLevel2').style.display = 'block';
+  document.getElementById('guideModalTitle').innerText = `📚 ${data.title}`;
+
+  const container = document.getElementById('guideContent');
+  container.innerHTML = `
+    <!-- Video Link -->
+    <a href="${data.video}" target="_blank" class="guide-card gc-youtube">
+      <div class="guide-icon"><i class="fab fa-youtube"></i></div>
+      <div class="guide-text">
+        <h4>Watch Video Guide</h4>
+        <p>इस सेवा को कैसे करें, वीडियो में देखें।</p>
+      </div>
+    </a>
+
+    <!-- PDF Link -->
+    <a href="${data.pdf}" target="_blank" class="guide-card gc-pdf">
+      <div class="guide-icon"><i class="fas fa-file-pdf"></i></div>
+      <div class="guide-text">
+        <h4>Download PDF Guide</h4>
+        <p>ऑफिशियल फॉर्म और गाइडलाइन डाउनलोड करें।</p>
+      </div>
+    </a>
+
+    <!-- Blog Link -->
+    <a href="${data.blog}" target="_blank" class="guide-card gc-blog">
+      <div class="guide-icon"><i class="fas fa-blog"></i></div>
+      <div class="guide-text">
+        <h4>Read Blog Article</h4>
+        <p>स्टेप-बाय-स्टेप लिखित जानकारी पढ़ें।</p>
+      </div>
+    </a>
+  `;
 }
 </script>
 
