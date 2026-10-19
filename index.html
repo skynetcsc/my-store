@@ -42,7 +42,7 @@
         .btn-login { background: #ffffff; color: var(--primary-dark); border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font); }
         .btn-login:hover { background: var(--bg); transform: translateY(-1px); }
 
-        /* नया डायरेक्टरी बटन स्टाइल (हरे रंग में ताकि साफ दिखे) */
+        /* नया डायरेक्टरी बटन स्टाइल */
         .header-contact a.btn-directory { 
             background: #10b981; 
             color: #ffffff !important; 
@@ -271,7 +271,7 @@
                 <a href="tel:8054061994"><i class="fas fa-phone-alt"></i> 8054061994</a>
                 <a href="https://wa.me/918054061994" class="btn-call" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
                 
-                <!-- LOCAL DIRECTORY BUTTON (अब हरे रंग में साफ दिखेगा) -->
+                <!-- LOCAL DIRECTORY BUTTON -->
                 <a href="directory.html" class="btn-directory"><i class="fas fa-address-book"></i> Local Directory</a>
                 
                 <!-- STAFF LOGIN BUTTON -->
@@ -463,70 +463,70 @@
                 </div>
             </div>
             <div class="service-grid">
-                <div class="service-item" onclick="window.open('https://tafcop.sancharsaathi.gov.in/telecomUser/', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('आपके नाम पर कितने सिम')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-sim-card"></i></div>
                         <div class="service-name hindi">आपके नाम पर कितने सिम <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹20</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://ceir.sancharsaathi.gov.in/', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('चोरी हुई मोबाइल ब्लॉक करें')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-mobile-alt"></i></div>
                         <div class="service-name hindi">चोरी हुई मोबाइल ब्लॉक करें <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹50</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://ceir.sancharsaathi.gov.in/Request/CeirUserUnblockRequestDirect.jsp', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('मिल जाने पर अनब्लॉक करें')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-lock-open"></i></div>
                         <div class="service-name hindi">मिल जाने पर अनब्लॉक करें <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹50</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://ceir.sancharsaathi.gov.in/', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('मोबाइल चोरी या डुप्लीकेट चेक')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-search"></i></div>
                         <div class="service-name hindi">मोबाइल चोरी या डुप्लीकेट चेक <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹30</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://pmuy.gov.in/mylpg.html', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('गैस सब्सिडी देखें')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-fire"></i></div>
                         <div class="service-name hindi">गैस सब्सिडी देखें <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹20</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://www.pmuy.gov.in/e-kyc.html', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('LPG Gas eKYC')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-gas-pump"></i></div>
                         <div class="service-name hindi">LPG Gas eKYC <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹30</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://pension.socialjusticehry.gov.in/Ben_Inf', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('हरियाणा पेंशन स्टेटस')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-users"></i></div>
                         <div class="service-name hindi">हरियाणा पेंशन स्टेटस <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹30</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://pension.socialjusticehry.gov.in/form_and_proc', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('हरियाणा पेंशन फॉर्म')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-file-alt"></i></div>
                         <div class="service-name hindi">हरियाणा पेंशन फॉर्म <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹100</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://www.npci.org.in/', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('बैंक से आधार लिंक करें (NPCI)')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-link"></i></div>
                         <div class="service-name hindi">बैंक से आधार लिंक करें (NPCI) <small>क्लिक करें</small></div>
                     </div>
                     <div class="service-price">₹30</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://www.npci.org.in/what-we-do/upi/dispute-redressal-mechanism', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('UPI से गलत पेमेंट पर कम्प्लेंट')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-comment-dots"></i></div>
                         <div class="service-name hindi">UPI से गलत पेमेंट पर कम्प्लेंट <small>क्लिक करें</small></div>
@@ -540,7 +540,7 @@
                     </div>
                     <div class="service-price">₹20</div>
                 </div>
-                <div class="service-item" onclick="window.open('https://scholarships.gov.in/', '_blank')">
+                <div class="service-item" onclick="sendWhatsAppEnquiry('NSP नेशनल स्कॉलरशिप OTR')">
                     <div class="service-info">
                         <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
                         <div class="service-name hindi">NSP नेशनल स्कॉलरशिप OTR <small>क्लिक करें</small></div>
@@ -567,7 +567,7 @@
                 <div class="service-item" onclick="openElectionModal('blo_verify')"><div class="service-info"><div class="service-icon"><i class="fas fa-question-circle"></i></div><div class="service-name hindi">BLO ने सक्ष्मित किया की नहीं जाने <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
                 <div class="service-item" onclick="openElectionModal('sarpanch_expense')"><div class="service-info"><div class="service-icon"><i class="fas fa-rupee-sign"></i></div><div class="service-name hindi">सरपंच/प्रधान/मुखिया किस काम का कितना पैसा <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
                 <div class="service-item" onclick="openElectionModal('voter_list_download')"><div class="service-info"><div class="service-icon"><i class="fas fa-download"></i></div><div class="service-name hindi">वोटर लिस्ट डाउनलोड करें <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
-                <div class="service-item" onclick="window.open('https://echallan.parivahan.nic.in/challan/challan-services', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">चालान चेक करें <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('चालान चेक करें')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">चालान चेक करें <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
             </div>
         </div>
     </section>
@@ -583,14 +583,14 @@
                 </div>
             </div>
             <div class="service-grid">
-                <div class="service-item" onclick="window.open('https://sarathi.parivahan.gov.in/', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><div class="service-name hindi">ड्राइविंग लाइसेंस में मोबाइल अपडेट <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
-                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-phone"></i></div><div class="service-name hindi">गाड़ी मालिक मोबाइल नंबर अपडेट <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
-                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">RC दुबारा प्रिंट करवाएं <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
-                <div class="service-item" onclick="window.open('https://echallan.parivahan.nic.in/challan/challan-services', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">चालान चेक करें <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
-                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-search"></i></div><div class="service-name hindi">Know Your Vehicle Status <small>क्लिक करें</small></div></div><div class="service-price">₹30</div></div>
-                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-user"></i></div><div class="service-name hindi">गाड़ी मालिक जाने <small>क्लिक करें</small></div></div><div class="service-price">₹30</div></div>
-                <div class="service-item" onclick="window.open('https://vahan.parivahan.gov.in/vahanservice/vahan/ui/homepagenew', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">इन्शुरेंस एक्सपायरी जाने <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
-                <div class="service-item" onclick="window.open('https://parivahan.gov.in/', '_blank')"><div class="service-info"><div class="service-icon"><i class="fas fa-globe"></i></div><div class="service-name hindi">Parivahan / Sarathi अधिकारिक साइट <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('ड्राइविंग लाइसेंस में मोबाइल अपडेट')"><div class="service-info"><div class="service-icon"><i class="fas fa-mobile-alt"></i></div><div class="service-name hindi">ड्राइविंग लाइसेंस में मोबाइल अपडेट <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('गाड़ी मालिक मोबाइल नंबर अपडेट')"><div class="service-info"><div class="service-icon"><i class="fas fa-phone"></i></div><div class="service-name hindi">गाड़ी मालिक मोबाइल नंबर अपडेट <small>क्लिक करें</small></div></div><div class="service-price">₹50</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('RC दुबारा प्रिंट करवाएं')"><div class="service-info"><div class="service-icon"><i class="fas fa-print"></i></div><div class="service-name hindi">RC दुबारा प्रिंट करवाएं <small>क्लिक करें</small></div></div><div class="service-price">₹100</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('चालान चेक करें')"><div class="service-info"><div class="service-icon"><i class="fas fa-file-invoice"></i></div><div class="service-name hindi">चालान चेक करें <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('Know Your Vehicle Status')"><div class="service-info"><div class="service-icon"><i class="fas fa-search"></i></div><div class="service-name hindi">Know Your Vehicle Status <small>क्लिक करें</small></div></div><div class="service-price">₹30</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('गाड़ी मालिक जाने')"><div class="service-info"><div class="service-icon"><i class="fas fa-user"></i></div><div class="service-name hindi">गाड़ी मालिक जाने <small>क्लिक करें</small></div></div><div class="service-price">₹30</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('इन्शुरेंस एक्सपायरी जाने')"><div class="service-info"><div class="service-icon"><i class="fas fa-shield-alt"></i></div><div class="service-name hindi">इन्शुरेंस एक्सपायरी जाने <small>क्लिक करें</small></div></div><div class="service-price">₹20</div></div>
+                <div class="service-item" onclick="sendWhatsAppEnquiry('Parivahan / Sarathi अधिकारिक साइट')"><div class="service-info"><div class="service-icon"><i class="fas fa-globe"></i></div><div class="service-name hindi">Parivahan / Sarathi अधिकारिक साइट <small>क्लिक करें</small></div></div><div class="service-price">Free</div></div>
             </div>
         </div>
     </section>
@@ -844,22 +844,30 @@
 
             // Username & Password Check
             if (user === 'skynet' && pass === 'skynet2024') {
-                // Login successful - Redirect to 2ndpage.html
                 window.location.href = '2ndpage.html';
             } else {
-                // Show Error
                 error.style.display = 'block';
                 setTimeout(() => { error.style.display = 'none'; }, 3000);
             }
         }
 
-        // Allow Enter key to submit login
         document.getElementById('loginPassword').addEventListener('keypress', function (e) {
             if (e.key === 'Enter') {
                 checkLogin();
             }
         });
         // ==================================
+
+        // Direct WhatsApp Enquiry Function (For Direct Links)
+        function sendWhatsAppEnquiry(serviceName) {
+            const message = `Hello SKYNET DIGITAL CENTER,%0A%0A` +
+                            `*Service Enquiry:*%0A` +
+                            `I want to apply for / get information about: *${serviceName}*%0A%0A` +
+                            `*Required Documents / Details:*%0A` +
+                            `Kripya is seva ke liye aavashyak dastavez (documents) aur fees ki jaankari bhejein.%0A%0A` +
+                            `*Please guide me.*`;
+            window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${message}`, '_blank');
+        }
 
         const servicesData = {
             aadhaar: { title: "Aadhaar Card - Select Option", options: [{ name: "Correction", price: "₹100" }, { name: "PVC Card Print", price: "₹70" }, { name: "Print + Lamination", price: "₹60" }] },
@@ -1010,31 +1018,11 @@
         };
 
         const electionServiceLinks = {
-            sir_draft: {
-                "Haryana": "https://ceoharyana.gov.in/",
-                "Punjab": "https://ceopunjab.gov.in/",
-                "Chandigarh": "https://ceochandigarh.gov.in/"
-            },
-            sir_form: {
-                "Haryana": "https://voters.eci.gov.in/",
-                "Punjab": "https://voters.eci.gov.in/",
-                "Chandigarh": "https://voters.eci.gov.in/"
-            },
-            blo_verify: {
-                "Haryana": "https://ceoharyana.gov.in/",
-                "Punjab": "https://ceopunjab.gov.in/",
-                "Chandigarh": "https://ceochandigarh.gov.in/"
-            },
-            sarpanch_expense: {
-                "Haryana": "https://ceoharyana.gov.in/",
-                "Punjab": "https://ceopunjab.gov.in/",
-                "Chandigarh": "https://ceochandigarh.gov.in/"
-            },
-            voter_list_download: {
-                "Haryana": "https://voters.eci.gov.in/download-eroll",
-                "Punjab": "https://voters.eci.gov.in/download-eroll",
-                "Chandigarh": "https://voters.eci.gov.in/download-eroll"
-            }
+            sir_draft: { "Haryana": "https://ceoharyana.gov.in/", "Punjab": "https://ceopunjab.gov.in/", "Chandigarh": "https://ceochandigarh.gov.in/" },
+            sir_form: { "Haryana": "https://voters.eci.gov.in/", "Punjab": "https://voters.eci.gov.in/", "Chandigarh": "https://voters.eci.gov.in/" },
+            blo_verify: { "Haryana": "https://ceoharyana.gov.in/", "Punjab": "https://ceopunjab.gov.in/", "Chandigarh": "https://ceochandigarh.gov.in/" },
+            sarpanch_expense: { "Haryana": "https://ceoharyana.gov.in/", "Punjab": "https://ceopunjab.gov.in/", "Chandigarh": "https://ceochandigarh.gov.in/" },
+            voter_list_download: { "Haryana": "https://voters.eci.gov.in/download-eroll", "Punjab": "https://voters.eci.gov.in/download-eroll", "Chandigarh": "https://voters.eci.gov.in/download-eroll" }
         };
 
         function openModal(serviceId) {
@@ -1054,7 +1042,6 @@
         }
 
         function openElectionModal(serviceId) {
-            const links = electionServiceLinks[serviceId];
             const title = servicesData[serviceId] ? servicesData[serviceId].title : "चुनाव सेवा";
             
             document.getElementById('modalTitle').innerText = title + " - राज्य चुनें";
@@ -1072,10 +1059,8 @@
                 optionDiv.className = 'modal-option';
                 optionDiv.innerHTML = `<span class="opt-name hindi"><i class="fas ${state.icon}" style="margin-right: 8px; color: var(--primary-light);"></i>${state.name}</span><span class="opt-price" style="color: var(--primary); font-weight: 700;">→</span>`;
                 optionDiv.onclick = function() { 
-                    if (links && links[state.value]) {
-                        window.open(links[state.value], '_blank');
-                        closeModal();
-                    }
+                    sendWhatsAppEnquiry(title + ' - ' + state.name);
+                    closeModal();
                 };
                 optionsContainer.appendChild(optionDiv);
             });
@@ -1104,7 +1089,6 @@
 
         document.getElementById('serviceModal').addEventListener('click', function(e) { if (e.target === this) { closeModal(); } });
         
-        // Close Login Modal when clicking outside
         document.getElementById('loginModal').addEventListener('click', function(e) { if (e.target === this) { closeLoginModal(); } });
 
         document.querySelectorAll('.nav-bar a').forEach(link => {
