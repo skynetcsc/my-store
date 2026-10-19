@@ -184,15 +184,16 @@
   .modal-service-link strong { display: block; color: #1e40af; font-size: 1rem; margin-bottom: 4px; }
   .modal-service-link span { display: block; font-size: 0.85rem; color: #64748b; line-height: 1.4; }
 
-  /* PAN & ADMISSION Provider Selection */
+  /* Selection Buttons */
   .provider-btn {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 20px; margin: 15px; border-radius: 10px; text-decoration: none;
+    padding: 16px 20px; margin: 10px 15px; border-radius: 10px; text-decoration: none;
     border: 1px solid #e2e8f0; transition: all 0.2s; cursor: pointer; background: #fff;
     width: calc(100% - 30px); text-align: left;
   }
   .provider-btn:hover { background: #f8fafc; border-color: #3b82f6; transform: scale(1.01); }
-  .provider-btn h4 { margin: 0; font-size: 1.1rem; color: #1e293b; }
+  .provider-btn h4 { margin: 0; font-size: 1.05rem; color: #1e293b; display: flex; align-items: center; gap: 10px; }
+  .provider-btn h4 i { color: #3b82f6; }
   .provider-btn p { margin: 4px 0 0 0; font-size: 0.85rem; color: #64748b; }
 
   .back-btn {
@@ -267,8 +268,8 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 4. Online Admission Forms (Updated to call Admission Modal) -->
-    <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result">
+    <!-- 4. Online Admission Forms -->
+    <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result ITI Polytechnic">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-file-signature"></i></div>
         <div class="text-box"><h4>Online Admission Forms</h4><p>ऑनलाइन एडमिशन फॉर्म</p></div>
@@ -502,14 +503,24 @@
         </button>
       </div>
 
-      <!-- Level 2: Type Selection (School/College) -->
+      <!-- Level 2: Type Selection (School/College/ITI/Polytechnic) -->
       <div id="admLevel2" style="display: none; padding: 15px; flex-direction: column; gap: 10px;">
         <button class="back-btn" onclick="admBackToLevel1()" style="align-self: flex-start; padding: 0 0 10px 0;"><i class="fas fa-arrow-left"></i> राज्य बदलें</button>
+        
         <button onclick="admSelectType('school')" class="provider-btn" style="margin: 0;">
-          <h4>School Admission (स्कूल)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+          <h4><i class="fas fa-school"></i> School Admission (स्कूल)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
         </button>
+        
         <button onclick="admSelectType('college')" class="provider-btn" style="margin: 0;">
-          <h4>College Admission (कॉलेज)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+          <h4><i class="fas fa-university"></i> College Admission (कॉलेज)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+        
+        <button onclick="admSelectType('iti')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-tools"></i> ITI Admission (आईटीआई)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+        
+        <button onclick="admSelectType('polytechnic')" class="provider-btn" style="margin: 0;">
+          <h4><i class="fas fa-cogs"></i> Polytechnic (पॉलिटेक्निक)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
         </button>
       </div>
 
@@ -522,8 +533,14 @@
       <!-- Level 4: Board Specific Links (Admission, Result, Reappear) -->
       <div id="admLevel4Links" style="display: none; padding: 0;"></div>
 
-      <!-- Level 3: College Links (Admission, Fee, Result) -->
+      <!-- Level 3: College Links -->
       <div id="admLevel3College" style="display: none; padding: 0;"></div>
+      
+      <!-- Level 3: ITI Links -->
+      <div id="admLevel3ITI" style="display: none; padding: 0;"></div>
+      
+      <!-- Level 3: Polytechnic Links -->
+      <div id="admLevel3Poly" style="display: none; padding: 0;"></div>
 
     </div>
   </div>
@@ -663,7 +680,6 @@ function openModal(id) {
 function closeModal(id) {
   document.getElementById(id).classList.remove('active');
   
-  // Reset PAN modal
   if (id === 'panModal') {
     setTimeout(() => {
       document.getElementById('panModalTitle').innerText = '💳 पैन कार्ड - कंपनी चुनें';
@@ -673,7 +689,6 @@ function closeModal(id) {
     }, 300);
   }
   
-  // Reset Admission Modal
   if (id === 'admissionModal') {
     setTimeout(() => {
       admBackToLevel1();
@@ -681,7 +696,6 @@ function closeModal(id) {
   }
 }
 
-// Close modals when clicking outside
 window.addEventListener('click', function(e) {
   if (e.target.classList.contains('modal-overlay')) {
     closeModal(e.target.id);
@@ -751,6 +765,8 @@ function admBackToLevel1() {
   document.getElementById('admLevel3School').style.display = 'none';
   document.getElementById('admLevel4Links').style.display = 'none';
   document.getElementById('admLevel3College').style.display = 'none';
+  document.getElementById('admLevel3ITI').style.display = 'none';
+  document.getElementById('admLevel3Poly').style.display = 'none';
   document.getElementById('admissionModalTitle').innerText = '📝 Online Admission - राज्य चुनें';
 }
 
@@ -768,6 +784,8 @@ function admBackToLevel2() {
   document.getElementById('admLevel3School').style.display = 'none';
   document.getElementById('admLevel4Links').style.display = 'none';
   document.getElementById('admLevel3College').style.display = 'none';
+  document.getElementById('admLevel3ITI').style.display = 'none';
+  document.getElementById('admLevel3Poly').style.display = 'none';
   document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} - प्रकार चुनें`;
 }
 
@@ -777,8 +795,12 @@ function admSelectType(type) {
   
   if (type === 'school') {
     showSchoolBoards();
-  } else {
+  } else if (type === 'college') {
     showCollegeLinks();
+  } else if (type === 'iti') {
+    showITILinks();
+  } else if (type === 'polytechnic') {
+    showPolytechnicLinks();
   }
 }
 
@@ -874,6 +896,82 @@ function showCollegeLinks() {
       { name: "College Admission", url: "https://onlineadmissions.puchd.ac.in/", desc: "चंडीगढ़ कॉलेज (PU) में एडमिशन।" },
       { name: "Fee Payment", url: "https://payonline.puchd.ac.in", desc: "कॉलेज की फीस का भुगतान करें।" },
       { name: "Result", url: "https://onlineadmissions.puchd.ac.in/", desc: "कॉलेज का रिजल्ट देखें।" }
+    ];
+  }
+
+  let html = `<button class="back-btn" onclick="admBackToLevel2()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>`;
+  links.forEach(link => {
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
+               <strong>${link.name}</strong><span>${link.desc}</span>
+             </a>`;
+  });
+  
+  container.innerHTML = html;
+}
+
+// --- ITI FLOW ---
+function showITILinks() {
+  document.getElementById('admLevel3ITI').style.display = 'block';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} ITI - सेवाएं`;
+  
+  const container = document.getElementById('admLevel3ITI');
+  let links = [];
+  
+  if (currentAdmState === 'haryana') {
+    links = [
+      { name: "ITI Admission", url: "https://itiharyana.gov.in/", desc: "हरियाणा ITI में ऑनलाइन एडमिशन।" },
+      { name: "Counselling / Fee", url: "https://admissions.hsbte.org.in/", desc: "ITI काउंसलिंग और फीस।" },
+      { name: "Result", url: "https://hsbte.org.in/", desc: "ITI का रिजल्ट देखें।" }
+    ];
+  } else if (currentAdmState === 'punjab') {
+    links = [
+      { name: "ITI Admission", url: "https://punjabiti.gov.in/", desc: "पंजाब ITI में एडमिशन।" },
+      { name: "Counselling / Fee", url: "https://admission.punjab.gov.in/", desc: "ITI काउंसलिंग और फीस।" },
+      { name: "Result", url: "https://punjabiti.gov.in/", desc: "ITI का रिजल्ट देखें।" }
+    ];
+  } else if (currentAdmState === 'chandigarh') {
+    links = [
+      { name: "ITI Admission", url: "https://nltchd.info/utcouns2026/", desc: "चंडीगढ़ ITI में एडमिशन।" },
+      { name: "Counselling / Fee", url: "https://nltchd.info/utcouns2026/", desc: "ITI काउंसलिंग और फीस।" },
+      { name: "Result", url: "https://chandigarh.gov.in/", desc: "ITI का रिजल्ट देखें।" }
+    ];
+  }
+
+  let html = `<button class="back-btn" onclick="admBackToLevel2()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>`;
+  links.forEach(link => {
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
+               <strong>${link.name}</strong><span>${link.desc}</span>
+             </a>`;
+  });
+  
+  container.innerHTML = html;
+}
+
+// --- POLYTECHNIC FLOW ---
+function showPolytechnicLinks() {
+  document.getElementById('admLevel3Poly').style.display = 'block';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} Polytechnic - सेवाएं`;
+  
+  const container = document.getElementById('admLevel3Poly');
+  let links = [];
+  
+  if (currentAdmState === 'haryana') {
+    links = [
+      { name: "Polytechnic Admission", url: "https://techadmissionshry.gov.in/", desc: "हरियाणा पॉलिटेक्निक में एडमिशन।" },
+      { name: "Counselling / Fee", url: "https://techadmissionshry.gov.in/", desc: "पॉलिटेक्निक काउंसलिंग और फीस।" },
+      { name: "Result", url: "https://hsbte.org.in/", desc: "पॉलिटेक्निक का रिजल्ट देखें।" }
+    ];
+  } else if (currentAdmState === 'punjab') {
+    links = [
+      { name: "Polytechnic Admission", url: "https://psbte.gov.in/", desc: "पंजाब पॉलिटेक्निक में एडमिशन।" },
+      { name: "Counselling / Fee", url: "https://admission.punjab.gov.in/", desc: "पॉलिटेक्निक काउंसलिंग और फीस।" },
+      { name: "Result", url: "https://psbte.gov.in/", desc: "पॉलिटेक्निक का रिजल्ट देखें।" }
+    ];
+  } else if (currentAdmState === 'chandigarh') {
+    links = [
+      { name: "Polytechnic Admission", url: "https://www.ccet.ac.in/", desc: "चंडीगढ़ पॉलिटेक्निक (CCET) में एडमिशन।" },
+      { name: "Counselling / Fee", url: "https://nltchd.info/utcouns2026/", desc: "पॉलिटेक्निक काउंसलिंग और फीस।" },
+      { name: "Result", url: "https://www.ccet.ac.in/", desc: "पॉलिटेक्निक का रिजल्ट देखें।" }
     ];
   }
 
