@@ -32,11 +32,16 @@
         .logo-icon { width: 48px; height: 48px; background: var(--accent); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: var(--primary-dark); font-weight: 800; }
         .logo-text h1 { font-size: 1.25rem; font-weight: 800; letter-spacing: 0.5px; }
         .logo-text span { font-size: 0.75rem; opacity: 0.85; display: block; }
-        .header-contact { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; }
+        .header-contact { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
         .header-contact a { color: #fff; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; font-weight: 500; }
         .header-contact a:hover { color: var(--accent); }
         .header-contact .btn-call { background: var(--accent); color: var(--primary-dark); padding: 8px 16px; border-radius: 8px; font-weight: 700; transition: all 0.2s; }
         .header-contact .btn-call:hover { background: #fff; transform: translateY(-1px); }
+        
+        /* नया स्टाफ लॉगिन बटन स्टाइल */
+        .btn-login { background: #ffffff; color: var(--primary-dark); border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: all 0.2s; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; font-family: var(--font); }
+        .btn-login:hover { background: var(--bg); transform: translateY(-1px); }
+        
         .nav-bar { background: #fff; border-bottom: 1px solid var(--border); position: sticky; top: 80px; z-index: 999; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
         .nav-bar .container { display: flex; gap: 4px; overflow-x: auto; padding: 0 16px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
         .nav-bar .container::-webkit-scrollbar { display: none; }
@@ -81,7 +86,6 @@
         .section-header p { font-size: 0.85rem; color: var(--text-light); }
         
         .service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-        
         .service-item { background: var(--card-bg); border-radius: var(--radius); padding: 16px; display: flex; justify-content: space-between; align-items: center; box-shadow: var(--shadow); border: 1px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; cursor: pointer; min-height: 70px; }
         .service-item:nth-child(6n+1) { background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color: #bfdbfe; }
         .service-item:nth-child(6n+1)::before { background: #3b82f6; }
@@ -134,6 +138,15 @@
         .modal-footer { padding: 12px 20px; background: #f8fafc; text-align: center; border-top: 1px solid var(--border); }
         .modal-footer button { background: none; border: none; color: var(--text-light); font-weight: 600; cursor: pointer; font-size: 0.9rem; }
         .modal-footer button:hover { color: var(--danger); }
+        
+        /* नया लॉगिन फॉर्म स्टाइल */
+        .login-form { padding: 20px; display: flex; flex-direction: column; gap: 15px; }
+        .login-form input { width: 100%; padding: 12px 15px; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; outline: none; font-family: var(--font); transition: 0.2s; }
+        .login-form input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(26, 58, 107, 0.1); }
+        .login-form button { background: var(--primary); color: #fff; border: none; padding: 12px; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: 0.2s; }
+        .login-form button:hover { background: var(--primary-dark); }
+        .login-error { color: var(--danger); font-size: 0.85rem; text-align: center; display: none; font-weight: 600; }
+
         .job-card { background: linear-gradient(135deg, #fff1f2 0%, #ffe4e6 100%); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); border: 1px solid #fecdd3; border-left: 5px solid var(--danger); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
         .job-card .job-info h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 4px; }
         .job-card .job-info p { font-size: 0.85rem; color: var(--text-light); }
@@ -235,6 +248,8 @@
             <div class="header-contact">
                 <a href="tel:8054061994"><i class="fas fa-phone-alt"></i> 8054061994</a>
                 <a href="https://wa.me/918054061994" class="btn-call" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <!-- STAFF LOGIN BUTTON -->
+                <button class="btn-login" onclick="openLoginModal()"><i class="fas fa-user-lock"></i> Staff Login</button>
             </div>
         </div>
     </header>
@@ -258,7 +273,6 @@
     <!-- HERO -->
     <section class="hero">
         <div class="container">
-            <!-- UPDATED HEADING HERE -->
             <h2 class="hindi">हर सरकारी सेवा, एक ही जगह | 500+ सेवा सबसे कम दामों पर</h2>
             <div class="marquee-container">
                 <div class="marquee-text hindi">
@@ -751,7 +765,7 @@
         </div>
     </footer>
 
-    <!-- ===== MODAL POPUP ===== -->
+    <!-- ===== SERVICE MODAL POPUP ===== -->
     <div class="modal-overlay" id="serviceModal">
         <div class="modal-box">
             <div class="modal-header">
@@ -765,9 +779,61 @@
         </div>
     </div>
 
+    <!-- ===== STAFF LOGIN MODAL POPUP ===== -->
+    <div class="modal-overlay" id="loginModal">
+        <div class="modal-box" style="max-width: 400px;">
+            <div class="modal-header">
+                <h4><i class="fas fa-user-lock" style="margin-right: 8px;"></i> Staff Login</h4>
+                <button class="close-btn" onclick="closeLoginModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="login-form">
+                <input type="text" id="loginUsername" placeholder="Username" autocomplete="off" required>
+                <input type="password" id="loginPassword" placeholder="Password" autocomplete="off" required>
+                <div class="login-error" id="loginError">Galat Username ya Password!</div>
+                <button onclick="checkLogin()">Login</button>
+            </div>
+        </div>
+    </div>
+
     <!-- ===== JAVASCRIPT ===== -->
     <script>
         const MY_WHATSAPP_NUMBER = "918054061994";
+
+        // ====== STAFF LOGIN FUNCTIONS ======
+        function openLoginModal() {
+            document.getElementById('loginModal').classList.add('active');
+            document.getElementById('loginUsername').value = '';
+            document.getElementById('loginPassword').value = '';
+            document.getElementById('loginError').style.display = 'none';
+        }
+
+        function closeLoginModal() {
+            document.getElementById('loginModal').classList.remove('active');
+        }
+
+        function checkLogin() {
+            const user = document.getElementById('loginUsername').value;
+            const pass = document.getElementById('loginPassword').value;
+            const error = document.getElementById('loginError');
+
+            // Username & Password Check
+            if (user === 'skynet' && pass === 'skynet2024') {
+                // Login successful - Redirect to 2ndpage.html
+                window.location.href = '2ndpage.html';
+            } else {
+                // Show Error
+                error.style.display = 'block';
+                setTimeout(() => { error.style.display = 'none'; }, 3000);
+            }
+        }
+
+        // Allow Enter key to submit login
+        document.getElementById('loginPassword').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                checkLogin();
+            }
+        });
+        // ==================================
 
         const servicesData = {
             aadhaar: { title: "Aadhaar Card - Select Option", options: [{ name: "Correction", price: "₹100" }, { name: "PVC Card Print", price: "₹70" }, { name: "Print + Lamination", price: "₹60" }] },
@@ -1011,6 +1077,9 @@
         }
 
         document.getElementById('serviceModal').addEventListener('click', function(e) { if (e.target === this) { closeModal(); } });
+        
+        // Close Login Modal when clicking outside
+        document.getElementById('loginModal').addEventListener('click', function(e) { if (e.target === this) { closeLoginModal(); } });
 
         document.querySelectorAll('.nav-bar a').forEach(link => {
             link.addEventListener('click', function(e) {
