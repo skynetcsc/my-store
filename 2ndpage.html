@@ -184,11 +184,12 @@
   .modal-service-link strong { display: block; color: #1e40af; font-size: 1rem; margin-bottom: 4px; }
   .modal-service-link span { display: block; font-size: 0.85rem; color: #64748b; line-height: 1.4; }
 
-  /* PAN Provider Selection */
+  /* PAN & ADMISSION Provider Selection */
   .provider-btn {
     display: flex; align-items: center; justify-content: space-between;
     padding: 20px; margin: 15px; border-radius: 10px; text-decoration: none;
     border: 1px solid #e2e8f0; transition: all 0.2s; cursor: pointer; background: #fff;
+    width: calc(100% - 30px); text-align: left;
   }
   .provider-btn:hover { background: #f8fafc; border-color: #3b82f6; transform: scale(1.01); }
   .provider-btn h4 { margin: 0; font-size: 1.1rem; color: #1e293b; }
@@ -266,8 +267,8 @@
       <i class="fas fa-chevron-right chevron"></i>
     </button>
 
-    <!-- 4. Online Admission Forms -->
-    <button onclick="openDynamicModal('admission')" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result">
+    <!-- 4. Online Admission Forms (Updated to call Admission Modal) -->
+    <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result">
       <div class="btn-left">
         <div class="icon-box"><i class="fas fa-file-signature"></i></div>
         <div class="text-box"><h4>Online Admission Forms</h4><p>ऑनलाइन एडमिशन फॉर्म</p></div>
@@ -479,6 +480,55 @@
   </div>
 </div>
 
+<!-- ===== ADMISSION MODAL (Multi-Level) ===== -->
+<div class="modal-overlay" id="admissionModal">
+  <div class="modal-box">
+    <div class="modal-header">
+      <h3 id="admissionModalTitle">📝 Online Admission - राज्य चुनें</h3>
+      <button class="close-btn" onclick="closeModal('admissionModal')">✕</button>
+    </div>
+    <div class="modal-body" id="admissionModalBody">
+      
+      <!-- Level 1: State Selection -->
+      <div id="admLevel1" style="padding: 15px; display: flex; flex-direction: column; gap: 10px;">
+        <button onclick="admSelectState('haryana')" class="provider-btn" style="margin: 0;">
+          <h4>Haryana (हरियाणा)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+        <button onclick="admSelectState('punjab')" class="provider-btn" style="margin: 0;">
+          <h4>Punjab (पंजाब)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+        <button onclick="admSelectState('chandigarh')" class="provider-btn" style="margin: 0;">
+          <h4>Chandigarh (चंडीगढ़)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+      </div>
+
+      <!-- Level 2: Type Selection (School/College) -->
+      <div id="admLevel2" style="display: none; padding: 15px; flex-direction: column; gap: 10px;">
+        <button class="back-btn" onclick="admBackToLevel1()" style="align-self: flex-start; padding: 0 0 10px 0;"><i class="fas fa-arrow-left"></i> राज्य बदलें</button>
+        <button onclick="admSelectType('school')" class="provider-btn" style="margin: 0;">
+          <h4>School Admission (स्कूल)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+        <button onclick="admSelectType('college')" class="provider-btn" style="margin: 0;">
+          <h4>College Admission (कॉलेज)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>
+        </button>
+      </div>
+
+      <!-- Level 3: School Boards -->
+      <div id="admLevel3School" style="display: none; padding: 15px; flex-direction: column; gap: 10px;">
+        <button class="back-btn" onclick="admBackToLevel2()" style="align-self: flex-start; padding: 0 0 10px 0;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>
+        <div id="boardButtonsContainer" style="display: flex; flex-direction: column; gap: 10px;"></div>
+      </div>
+
+      <!-- Level 4: Board Specific Links (Admission, Result, Reappear) -->
+      <div id="admLevel4Links" style="display: none; padding: 0;"></div>
+
+      <!-- Level 3: College Links (Admission, Fee, Result) -->
+      <div id="admLevel3College" style="display: none; padding: 0;"></div>
+
+    </div>
+  </div>
+</div>
+
 <script>
 // ==========================================
 // 1. DATA FOR OTHER SERVICES (Dynamic)
@@ -490,16 +540,6 @@ const dynamicServicesData = {
       { name: "Train Ticket (IRCTC)", url: "https://www.irctc.co.in/eticketing/loginHome.jsf", desc: "ट्रेन का टिकट बुक करें।" },
       { name: "Aeroplane Ticket", url: "https://www.air.irctc.co.in/", desc: "फ्लाइट का टिकट बुक करें।" },
       { name: "Cinema / Movie Booking", url: "https://in.bookmyshow.com/movies/", desc: "मूवी का टिकट बुक करें (BookMyShow)।" }
-    ]
-  },
-  admission: {
-    title: "📝 Online Admission Forms",
-    links: [
-      { name: "KVS Online Form 2020", url: "https://kvsonlineadmission.kvs.gov.in/", desc: "केंद्रीय विद्यालय एडमिशन फॉर्म।" },
-      { name: "134A Online Form", url: "http://3.6.154.194/haryana_school_mis/backend/web/student-primary-detail/student-registration", desc: "हरियाणा स्कूल 134A फॉर्म।" },
-      { name: "Chandigarh School Admission", url: "http://59.91.196.51/ut2020/createnewstudent.aspx", desc: "चंडीगढ़ स्कूल ऑनलाइन एडमिशन।" },
-      { name: "HBSE Rechecking", url: "http://bsehexam.org/", desc: "हरियाणा बोर्ड रीचेकिंग।" },
-      { name: "10th Result", url: "https://results.bseh.org.in/", desc: "हरियाणा बोर्ड 10वीं का रिजल्ट।" }
     ]
   },
   communityCenter: {
@@ -623,7 +663,7 @@ function openModal(id) {
 function closeModal(id) {
   document.getElementById(id).classList.remove('active');
   
-  // Reset PAN modal to default view when closed
+  // Reset PAN modal
   if (id === 'panModal') {
     setTimeout(() => {
       document.getElementById('panModalTitle').innerText = '💳 पैन कार्ड - कंपनी चुनें';
@@ -632,7 +672,21 @@ function closeModal(id) {
       document.getElementById('utiServices').style.display = 'none';
     }, 300);
   }
+  
+  // Reset Admission Modal
+  if (id === 'admissionModal') {
+    setTimeout(() => {
+      admBackToLevel1();
+    }, 300);
+  }
 }
+
+// Close modals when clicking outside
+window.addEventListener('click', function(e) {
+  if (e.target.classList.contains('modal-overlay')) {
+    closeModal(e.target.id);
+  }
+});
 
 // ==========================================
 // 4. DYNAMIC MODAL LOGIC
@@ -641,12 +695,9 @@ function openDynamicModal(serviceId) {
   const data = dynamicServicesData[serviceId];
   if (!data) return;
 
-  // Set Title
   document.getElementById('dynamicModalTitle').innerText = data.title;
-
-  // Build Links HTML
   const bodyContainer = document.getElementById('dynamicModalBody');
-  bodyContainer.innerHTML = ''; // Clear previous
+  bodyContainer.innerHTML = ''; 
 
   data.links.forEach(link => {
     const a = document.createElement('a');
@@ -657,16 +708,8 @@ function openDynamicModal(serviceId) {
     bodyContainer.appendChild(a);
   });
 
-  // Open Modal
   openModal('dynamicModal');
 }
-
-// Close modals when clicking outside
-window.addEventListener('click', function(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    closeModal(e.target.id);
-  }
-});
 
 // ==========================================
 // 5. PAN LOGIC (NSDL / UTI)
@@ -688,6 +731,160 @@ function backToProviders() {
   document.getElementById('providerSelection').style.display = 'block';
   document.getElementById('nsdlServices').style.display = 'none';
   document.getElementById('utiServices').style.display = 'none';
+}
+
+// ==========================================
+// 6. ADMISSION MODAL LOGIC (Multi-Level)
+// ==========================================
+let currentAdmState = '';
+let currentAdmType = '';
+
+function openAdmissionModal() {
+  admBackToLevel1();
+  openModal('admissionModal');
+}
+
+function admBackToLevel1() {
+  currentAdmState = '';
+  document.getElementById('admLevel1').style.display = 'flex';
+  document.getElementById('admLevel2').style.display = 'none';
+  document.getElementById('admLevel3School').style.display = 'none';
+  document.getElementById('admLevel4Links').style.display = 'none';
+  document.getElementById('admLevel3College').style.display = 'none';
+  document.getElementById('admissionModalTitle').innerText = '📝 Online Admission - राज्य चुनें';
+}
+
+function admSelectState(state) {
+  currentAdmState = state;
+  let stateName = state.charAt(0).toUpperCase() + state.slice(1);
+  document.getElementById('admissionModalTitle').innerText = `📝 ${stateName} - प्रकार चुनें`;
+  
+  document.getElementById('admLevel1').style.display = 'none';
+  document.getElementById('admLevel2').style.display = 'flex';
+}
+
+function admBackToLevel2() {
+  document.getElementById('admLevel2').style.display = 'flex';
+  document.getElementById('admLevel3School').style.display = 'none';
+  document.getElementById('admLevel4Links').style.display = 'none';
+  document.getElementById('admLevel3College').style.display = 'none';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} - प्रकार चुनें`;
+}
+
+function admSelectType(type) {
+  currentAdmType = type;
+  document.getElementById('admLevel2').style.display = 'none';
+  
+  if (type === 'school') {
+    showSchoolBoards();
+  } else {
+    showCollegeLinks();
+  }
+}
+
+// --- SCHOOL FLOW ---
+function showSchoolBoards() {
+  document.getElementById('admLevel3School').style.display = 'flex';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} स्कूल बोर्ड चुनें`;
+  
+  const container = document.getElementById('boardButtonsContainer');
+  container.innerHTML = '';
+  
+  let boards = [];
+  if (currentAdmState === 'haryana') boards = ['HBSE'];
+  else if (currentAdmState === 'punjab') boards = ['PSEB'];
+  else if (currentAdmState === 'chandigarh') boards = ['CBSE'];
+
+  boards.forEach(board => {
+    const btn = document.createElement('button');
+    btn.className = 'provider-btn';
+    btn.style.margin = '0';
+    btn.innerHTML = `<h4>${board}</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i>`;
+    btn.onclick = () => showBoardLinks(board);
+    container.appendChild(btn);
+  });
+}
+
+function showBoardLinks(board) {
+  document.getElementById('admLevel3School').style.display = 'none';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${board} - सेवाएं`;
+  
+  const container = document.getElementById('admLevel4Links');
+  container.style.display = 'block';
+  
+  let links = [];
+  if (board === 'HBSE') {
+    links = [
+      { name: "Admission Form", url: "https://bseh.org.in/", desc: "हरियाणा बोर्ड में एडमिशन फॉर्म।" },
+      { name: "Result", url: "https://results.bseh.org.in/", desc: "हरियाणा बोर्ड का रिजल्ट देखें।" },
+      { name: "Rechecking / Reappear", url: "https://bseh.org.in/", desc: "रिचेकिंग और रीअपीयर फॉर्म।" }
+    ];
+  } else if (board === 'PSEB') {
+    links = [
+      { name: "Admission Form", url: "https://www.pseb.ac.in/", desc: "पंजाब बोर्ड में एडमिशन फॉर्म।" },
+      { name: "Result", url: "https://www.pseb.ac.in/", desc: "पंजाब बोर्ड का रिजल्ट देखें।" },
+      { name: "Rechecking / Reappear", url: "https://www.pseb.ac.in/", desc: "रिचेकिंग और रीअपीयर फॉर्म।" }
+    ];
+  } else if (board === 'CBSE') {
+    links = [
+      { name: "School Admission (Chandigarh)", url: "https://nltchd.info/utcouns2026/", desc: "चंडीगढ़ स्कूल एडमिशन फॉर्म।" },
+      { name: "Result", url: "https://cbseresults.nic.in/", desc: "सीबीएसई का रिजल्ट देखें।" },
+      { name: "Rechecking / Reappear", url: "https://cbse.gov.in/", desc: "रिचेकिंग और रीअपीयर फॉर्म।" }
+    ];
+  }
+  
+  let html = `<button class="back-btn" onclick="admBackToSchool()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> बोर्ड बदलें</button>`;
+  links.forEach(link => {
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
+               <strong>${link.name}</strong><span>${link.desc}</span>
+             </a>`;
+  });
+  
+  container.innerHTML = html;
+}
+
+function admBackToSchool() {
+  document.getElementById('admLevel4Links').style.display = 'none';
+  document.getElementById('admLevel3School').style.display = 'flex';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} स्कूल बोर्ड चुनें`;
+}
+
+// --- COLLEGE FLOW ---
+function showCollegeLinks() {
+  document.getElementById('admLevel3College').style.display = 'block';
+  document.getElementById('admissionModalTitle').innerText = `📝 ${currentAdmState.charAt(0).toUpperCase() + currentAdmState.slice(1)} कॉलेज - सेवाएं`;
+  
+  const container = document.getElementById('admLevel3College');
+  let links = [];
+  
+  if (currentAdmState === 'haryana') {
+    links = [
+      { name: "College Admission", url: "https://admissions.highereduhry.ac.in/", desc: "हरियाणा कॉलेज में ऑनलाइन एडमिशन।" },
+      { name: "Fee Payment", url: "https://admissions.highereduhry.ac.in/", desc: "कॉलेज की फीस का भुगतान करें।" },
+      { name: "Result", url: "https://admissions.highereduhry.ac.in/", desc: "कॉलेज का रिजल्ट देखें।" }
+    ];
+  } else if (currentAdmState === 'punjab') {
+    links = [
+      { name: "College Admission", url: "https://admission.punjab.gov.in/", desc: "पंजाब कॉलेज में ऑनलाइन एडमिशन।" },
+      { name: "Fee Payment", url: "https://admission.punjab.gov.in/", desc: "कॉलेज की फीस का भुगतान करें।" },
+      { name: "Result", url: "https://admission.punjab.gov.in/", desc: "कॉलेज का रिजल्ट देखें।" }
+    ];
+  } else if (currentAdmState === 'chandigarh') {
+    links = [
+      { name: "College Admission", url: "https://onlineadmissions.puchd.ac.in/", desc: "चंडीगढ़ कॉलेज (PU) में एडमिशन।" },
+      { name: "Fee Payment", url: "https://payonline.puchd.ac.in", desc: "कॉलेज की फीस का भुगतान करें।" },
+      { name: "Result", url: "https://onlineadmissions.puchd.ac.in/", desc: "कॉलेज का रिजल्ट देखें।" }
+    ];
+  }
+
+  let html = `<button class="back-btn" onclick="admBackToLevel2()" style="padding: 10px 20px;"><i class="fas fa-arrow-left"></i> वापस जाएं</button>`;
+  links.forEach(link => {
+    html += `<a href="${link.url}" target="_blank" class="modal-service-link">
+               <strong>${link.name}</strong><span>${link.desc}</span>
+             </a>`;
+  });
+  
+  container.innerHTML = html;
 }
 </script>
 
