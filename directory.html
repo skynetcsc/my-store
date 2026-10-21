@@ -132,7 +132,7 @@
             header { padding: 30px 15px; }
             
             .main-wrapper { flex-direction: column; padding: 15px; gap: 15px; }
-            .sidebar { width: 100%; position: static; max-height: 300px; /* Mobile par sidebar ki height fix kar di */ }
+            .sidebar { width: 100%; position: static; max-height: 300px; }
             .category-list { display: flex; flex-wrap: wrap; gap: 8px; }
             .category-list li { margin-bottom: 0; padding: 8px 12px; font-size: 12px; border-left: none; border-bottom: 3px solid transparent; }
             .category-list li.active { border-left: none; border-bottom: 3px solid #1a252f; }
@@ -400,8 +400,9 @@
                 </div>
             </div>
 
-            <!-- 14. Almond Hotel (Newly Added) -->
+            <!-- 14. Almond Hotel (UPDATED LINK) -->
             <div class="card" data-category="Hotels & Guest Houses (होटल एवं गेस्ट हाउस)">
+                <!-- Hotel wali local photo lagane ke liye niche wale src mein 'almond-hotel.jpg' likh sakte hain -->
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" class="card-img" alt="Almond Hotel" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Hotels & Guest Houses (होटल एवं गेस्ट हाउस)</span>
@@ -411,7 +412,10 @@
                     <div class="button-group">
                         <a href="tel:8196027215" class="btn btn-call">📞 Call</a>
                         <a href="https://wa.me/918196027215" target="_blank" class="btn btn-insta" style="background:#25D366;">💬 WhatsApp</a>
-                        <a href="#" class="btn btn-web">🌐 Web</a>
+                        
+                        <!-- 🚀 YAHAN LINK UPDATE KIYA GAYA HAI 🚀 -->
+                        <!-- Agar aapne file ka naam almond-hotel.html rakha hai toh ye link chalega -->
+                        <a href="almond-hotel.html" target="_blank" class="btn btn-web">🌐 Web</a>
                     </div>
                 </div>
             </div>
@@ -712,8 +716,6 @@
             // Form reset karein aur popup band karein
             document.getElementById('addForm').reset();
             closeModal();
-            
-            // Sidebar update karne ki zaroorat nahi hai kyunki saari 60 categories pehle se hi dikh rahi hain
             
             // 🚀 WHATSAPP MESSAGE TAIYAR KAREIN (Aapke number 8901010994 par)
             let waText = `*NEW BUSINESS ADDED!*%0A%0A` +
