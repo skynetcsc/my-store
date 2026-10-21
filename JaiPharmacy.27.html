@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JaiPharmacy.27 – All Medicines Available | Sector 27</title>
+<meta name="description" content="JaiPharmacy.27, Sector 27 (Axis Bank ke paas) – Sabhi medicines, health supplements, baby care aur surgical items available. Call 7888619586.">
+<meta name="theme-color" content="#065f46">
+
+<style>
+  :root{
+    --green:#065f46;
+    --green-dark:#043b2c;
+    --emerald:#10b981;
+    --mint:#ecfdf5;
+    --mint-2:#d1fae5;
+    --gold:#f59e0b;
+    --dark:#1f2937;
+    --muted:#6b7280;
+    --line:#d1fae5;
+    --white:#fff;
+    --sans:system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--dark);background:#fafdfb;line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+  /* ===== HEADER ===== */
+  header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:18px 0;transition:padding .3s,background .3s;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent)}
+  header.scrolled{background:rgba(6,95,70,.97);padding:12px 0;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+  .nav{display:flex;justify-content:space-between;align-items:center}
+  .logo{display:flex;align-items:center;gap:10px;color:#fff;font-weight:800;font-size:1.3rem;letter-spacing:.3px}
+  .logo-icon{width:38px;height:38px;background:var(--emerald);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 3px 10px rgba(16,185,129,.4)}
+  .logo small{display:block;font-size:.6rem;letter-spacing:3px;color:#a7f3d0;font-weight:400;margin-top:-2px}
+  nav ul{display:flex;gap:26px;list-style:none;align-items:center}
+  nav a{color:#e5f5ef;font-size:.88rem;transition:color .25s}
+  nav a:hover{color:#a7f3d0}
+  .nav-call{background:var(--emerald);color:#fff;padding:9px 20px;border-radius:30px;font-size:.82rem;font-weight:600;transition:background .25s,transform .25s}
+  .nav-call:hover{background:var(--gold);transform:translateY(-2px)}
+  .menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.6rem;cursor:pointer}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;justify-content:center;
+    text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden;
+    background:
+      radial-gradient(circle at 25% 25%,rgba(16,185,129,.25),transparent 45%),
+      radial-gradient(circle at 78% 75%,rgba(245,158,11,.12),transparent 50%),
+      linear-gradient(135deg,#043b2c 0%,#065f46 55%,#0d8f6d 100%);
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      radial-gradient(circle at 15% 20%,rgba(255,255,255,.05) 1px,transparent 1px),
+      radial-gradient(circle at 85% 60%,rgba(255,255,255,.05) 1px,transparent 1px);
+    background-size:60px 60px;pointer-events:none;
+  }
+  .hero-content{position:relative;z-index:2;max-width:820px}
+  .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(167,243,208,.35);color:#a7f3d0;padding:8px 18px;border-radius:30px;font-size:.78rem;letter-spacing:1px;margin-bottom:24px}
+  .hero-badge .dot{width:8px;height:8px;background:#22c55e;border-radius:50%;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(34,197,94,.6)}50%{opacity:.8;box-shadow:0 0 0 8px rgba(34,197,94,0)}}
+  .hero h1{font-size:3.4rem;color:#fff;margin-bottom:16px;font-weight:800;line-height:1.2}
+  .hero h1 span{background:linear-gradient(90deg,#a7f3d0,#fbbf24);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{color:#d1fae5;font-size:1.05rem;max-width:620px;margin:0 auto 34px;opacity:.95}
+  .hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:15px 36px;border-radius:40px;font-weight:600;font-size:.9rem;transition:transform .25s,background .25s,box-shadow .25s;cursor:pointer;border:1px solid transparent}
+  .btn-green{background:var(--emerald);color:#fff;box-shadow:0 8px 24px rgba(16,185,129,.35)}
+  .btn-green:hover{background:#059669;transform:translateY(-3px);box-shadow:0 12px 30px rgba(16,185,129,.5)}
+  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--green)}
+
+  /* ===== FEATURE STRIP ===== */
+  .feature-strip{background:var(--green);color:#fff;padding:26px 0}
+  .feature-strip .container{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;text-align:center}
+  .feature-strip .item{display:flex;flex-direction:column;align-items:center;gap:6px}
+  .feature-strip .ic{font-size:1.6rem}
+  .feature-strip .txt{font-size:.85rem;font-weight:600}
+  .feature-strip .sub{font-size:.72rem;color:#a7f3d0;font-weight:400}
+
+  /* ===== SECTION BASE ===== */
+  section{padding:90px 0}
+  .section-title{text-align:center;margin-bottom:55px}
+  .eyebrow{font-size:.72rem;letter-spacing:5px;text-transform:uppercase;color:var(--emerald);display:block;margin-bottom:12px;font-weight:600}
+  .section-title h2{font-size:2.3rem;color:var(--dark);margin-bottom:12px;font-weight:800}
+  .section-title h2 em{color:var(--green);font-style:normal}
+  .section-title .ornament{width:70px;height:3px;background:linear-gradient(90deg,var(--emerald),var(--gold));margin:0 auto;border-radius:2px}
+  .section-title p{color:var(--muted);font-size:.95rem;margin-top:16px}
+
+  /* ===== FADE ===== */
+  .fade{animation:fadeUp .7s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+  /* ===== CATEGORIES ===== */
+  .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px}
+  .cat-card{background:#fff;border:1px solid var(--mint-2);border-radius:14px;padding:30px 22px;text-align:center;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .cat-card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(6,95,70,.12);border-color:var(--emerald)}
+  .cat-card .ic{width:64px;height:64px;margin:0 auto 16px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;background:linear-gradient(135deg,var(--mint),var(--mint-2));transition:background .3s}
+  .cat-card:hover .ic{background:linear-gradient(135deg,var(--emerald),var(--green))}
+  .cat-card h3{font-size:1.05rem;margin-bottom:8px;font-weight:700}
+  .cat-card p{font-size:.85rem;color:var(--muted);line-height:1.6}
+
+  /* ===== ABOUT ===== */
+  .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-img{position:relative;border-radius:20px;overflow:hidden;box-shadow:0 20px 50px rgba(6,95,70,.15)}
+  .about-img img{height:460px;width:100%;object-fit:cover;background:var(--mint)}
+  .about-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 60%,rgba(6,95,70,.35));pointer-events:none}
+  .about-text h2{font-size:2.2rem;margin-bottom:18px;font-weight:800;line-height:1.25}
+  .about-text h2 em{color:var(--emerald);font-style:normal}
+  .about-text p{color:var(--muted);margin-bottom:14px;font-size:.95rem}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+  .stat{background:var(--mint);border:1px solid var(--mint-2);padding:16px 10px;border-radius:12px;text-align:center}
+  .stat strong{display:block;font-size:1.4rem;color:var(--green);font-weight:800}
+  .stat small{font-size:.7rem;color:var(--muted);letter-spacing:.5px}
+
+  /* ===== SERVICES ===== */
+  .services{background:linear-gradient(180deg,#fff,var(--mint))}
+  .serv-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px}
+  .serv-card{background:#fff;border-radius:14px;padding:28px;border-left:4px solid var(--emerald);box-shadow:0 4px 20px rgba(6,95,70,.06);transition:transform .3s,box-shadow .3s}
+  .serv-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(6,95,70,.12)}
+  .serv-card .ic{font-size:1.7rem;margin-bottom:12px}
+  .serv-card h3{font-size:1.05rem;margin-bottom:6px;font-weight:700}
+  .serv-card p{font-size:.86rem;color:var(--muted);line-height:1.6}
+
+  /* ===== HOW IT WORKS ===== */
+  .how{background:var(--green);color:#fff}
+  .how .section-title h2{color:#fff}
+  .how .section-title h2 em{color:#a7f3d0}
+  .how .eyebrow{color:#a7f3d0}
+  .how .section-title p{color:#a7f3d0}
+  .how .ornament{background:linear-gradient(90deg,#a7f3d0,var(--gold))}
+  .how-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;text-align:center}
+  .how-step{position:relative}
+  .how-step .num{width:56px;height:56px;margin:0 auto 16px;background:rgba(255,255,255,.12);border:2px solid #a7f3d0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;font-weight:800;color:#a7f3d0}
+  .how-step h3{font-size:1.05rem;margin-bottom:8px}
+  .how-step p{font-size:.85rem;color:#c9f5df;line-height:1.6}
+
+  /* ===== WHY US ===== */
+  .why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;text-align:center}
+  .why-box{padding:26px 18px}
+  .why-box .ic{width:70px;height:70px;margin:0 auto 14px;background:var(--mint);border-radius:20px;display:flex;align-items:center;justify-content:center;font-size:1.9rem}
+  .why-box h3{font-size:1.02rem;margin-bottom:6px;font-weight:700}
+  .why-box p{font-size:.85rem;color:var(--muted)}
+
+  /* ===== REVIEWS ===== */
+  .reviews{background:var(--mint)}
+  .review-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
+  .review-card{background:#fff;padding:30px 26px;border-radius:14px;box-shadow:0 6px 24px rgba(6,95,70,.07);position:relative}
+  .review-card::before{content:'"';position:absolute;top:8px;left:18px;font-size:4rem;color:var(--mint-2);font-weight:800;line-height:1}
+  .stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-bottom:12px;position:relative}
+  .review-card p{font-size:.9rem;color:var(--muted);font-style:italic;margin-bottom:16px;position:relative}
+  .review-name{font-size:.85rem;font-weight:700;color:var(--green)}
+  .review-name small{display:block;color:var(--muted);font-weight:400;font-size:.74rem;margin-top:2px}
+
+  /* ===== CONTACT ===== */
+  .contact{background:linear-gradient(135deg,#043b2c,#065f46)}
+  .contact .section-title h2{color:#fff}
+  .contact .section-title h2 em{color:#a7f3d0}
+  .contact .eyebrow{color:#a7f3d0}
+  .contact .section-title p{color:#a7f3d0}
+  .contact .ornament{background:linear-gradient(90deg,#a7f3d0,var(--gold))}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start}
+  .info-item{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
+  .info-item .ic{width:46px;height:46px;flex-shrink:0;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(167,243,208,.14);border:1px solid rgba(167,243,208,.3);font-size:1.1rem}
+  .info-item h4{font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;color:#a7f3d0;margin-bottom:4px;font-weight:600}
+  .info-item p{color:#d1fae5;font-size:.92rem;line-height:1.7}
+  .info-item a{color:#fbbf24;transition:color .25s;font-weight:600}
+  .info-item a:hover{color:#fff}
+  .map{border-radius:14px;overflow:hidden;min-height:380px;border:1px solid rgba(167,243,208,.25)}
+  .map iframe{width:100%;height:100%;min-height:380px;border:0;display:block}
+
+  /* ===== CTA BANNER ===== */
+  .cta{background:linear-gradient(90deg,var(--emerald),var(--green));color:#fff;padding:50px 24px;text-align:center}
+  .cta h2{font-size:1.9rem;margin-bottom:10px;font-weight:800}
+  .cta p{color:#d1fae5;margin-bottom:24px;font-size:.95rem}
+  .cta .btn-gold{background:var(--gold);color:var(--dark);box-shadow:0 8px 24px rgba(245,158,11,.4)}
+  .cta .btn-gold:hover{background:#fbbf24;transform:translateY(-3px)}
+
+  /* ===== FOOTER ===== */
+  footer{background:#022c1f;color:#86b8a2;text-align:center;padding:36px 20px;font-size:.85rem}
+  footer .flogo{display:flex;align-items:center;justify-content:center;gap:10px;color:#fff;font-weight:800;font-size:1.2rem;margin-bottom:12px}
+  footer a{color:#fbbf24}
+  footer .copy{margin-top:16px;font-size:.76rem;opacity:.7}
+
+  /* ===== WHATSAPP FLOAT ===== */
+  .wa-float{position:fixed;bottom:24px;right:24px;background:#25D366;color:#fff;width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.85rem;box-shadow:0 6px 20px rgba(37,211,102,.45);z-index:900;transition:transform .25s}
+  .wa-float:hover{transform:scale(1.1)}
+
+  /* ===== MOBILE ===== */
+  @media(max-width:900px){
+    .about-wrap{grid-template-columns:1fr;gap:40px}
+    .about-img img{height:380px}
+    .contact-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:768px){
+    section{padding:65px 0}
+    header{padding:14px 0}
+    .menu-btn{display:block}
+    .nav-call{display:none}
+    nav ul{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(6,95,70,.99);flex-direction:column;padding:24px;gap:18px;border-top:1px solid rgba(167,243,208,.2)}
+    nav ul.show{display:flex}
+    .hero{min-height:90vh}
+    .hero h1{font-size:2.2rem}
+    .hero p{font-size:.92rem}
+    .section-title h2{font-size:1.8rem}
+    .about-text h2{font-size:1.7rem}
+    .cta h2{font-size:1.5rem}
+    .feature-strip .container{grid-template-columns:repeat(2,1fr);gap:18px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <div class="logo">
+      <div class="logo-icon">💊</div>
+      <div>JaiPharmacy.27<small>Sector 27</small></div>
+    </div>
+    <button class="menu-btn" onclick="document.getElementById('menu').classList.toggle('show')" aria-label="Menu">☰</button>
+    <nav>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="tel:+917888619586" class="nav-call">📞 78886 19586</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="hero-badge"><span class="dot"></span> Abhi Khula Hai • Sector 27</span>
+    <h1>Har Medicine, <span>Ek Hi Jagah</span></h1>
+    <p>JaiPharmacy.27 – Sector 27 (Axis Bank ke paas) me aapko milti hai har tarah ki medicines, health supplements, baby care aur daily health essentials. Prescription ho ya OTC — sab available.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/917888619586?text=Namaste%2C%20mujhe%20medicine%20chahiye" class="btn btn-green" target="_blank">💬 WhatsApp Order</a>
+      <a href="tel:+917888619586" class="btn btn-ghost">📞 Call Karein</a>
+    </div>
+  </div>
+</section>
+
+<div class="feature-strip">
+  <div class="container">
+    <div class="item"><div class="ic">✅</div><div class="txt">100% Genuine</div><div class="sub">Original medicines</div></div>
+    <div class="item"><div class="ic">🏪</div><div class="txt">All Medicines</div><div class="sub">Har brand available</div></div>
+    <div class="item"><div class="ic">🚚</div><div class="txt">Home Delivery</div><div class="sub">Aas-paas free</div></div>
+    <div class="item"><div class="ic">👨‍⚕️</div><div class="txt">Licensed Store</div><div class="sub">Registered pharmacist</div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container about-wrap">
+    <div class="about-img fade">
+      <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=500&q=65&auto=format&fit=crop" alt="JaiPharmacy.27" loading="lazy" width="500" height="460">
+    </div>
+    <div class="about-text fade">
+      <span class="eyebrow">Hamare Baare Me</span>
+      <h2>Aapki Sehat, <em>Hamari Priority</em></h2>
+      <p><strong>JaiPharmacy.27</strong> — Sector 27, Axis Bank ke bilkul paas sthit ek trusted medical store hai. Yahan aapko milti hain sabhi prescription medicines, OTC products, health supplements, aur daily health essentials.</p>
+      <p>Har medicine 100% genuine aur licensed source se laayi jaati hai. Stock ki kami nahi hoti — agar koi medicine available na ho, to hum turant arrange karwa dete hain. Aas-paas ke area me home delivery bhi available hai.</p>
+      <div class="stats">
+        <div class="stat"><strong>5+</strong><small>Saal Anubhav</small></div>
+        <div class="stat"><strong>10k+</strong><small>Customers</small></div>
+        <div class="stat"><strong>100%</strong><small>Genuine</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="categories">
+  <div class="container">
+    <div class="section-title fade">
+      <span class="eyebrow">Available Products</span>
+      <h2>Hamare <em>Categories</em></h2>
+      <div class="ornament"></div>
+      <p>Har zaroorat ke liye products available</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card fade"><div class="ic">💊</div><h3>Prescription Medicines</h3><p>Doctor ki likhi hui saari medicines — har brand available.</p></div>
+      <div class="cat-card fade"><div class="ic">🩹</div><h3>OTC Products</h3><p>Bina prescription wali dawaiyan — bukhar, sardi, khansi, dard.</p></div>
+      <div class="cat-card fade"><div class="ic">💪</div><h3>Health Supplements</h3><p>Vitamins, protein, calcium, omega-3 aur multivitamins.</p></div>
+      <div class="cat-card fade"><div class="ic">👶</div><h3>Baby Care</h3><p>Baby food, diapers, wipes aur baby skin care products.</p></div>
+      <div class="cat-card fade"><div class="ic">🩺</div><h3>Surgical Items</h3><p>Bandages, syringes, thermometer, BP monitor aur more.</p></div>
+      <div class="cat-card fade"><div class="ic">🌿</div><h3>Ayurvedic & Herbal</h3><p>Herbal medicines, churna, oils aur immunity boosters.</p></div>
+      <div class="cat-card fade"><div class="ic">🧴</div><h3>Personal Care</h3><p>Soap, shampoo, sanitizer, face wash aur skincare.</p></div>
+      <div class="cat-card fade"><div class="ic">🦷</div><h3>Oral Care</h3><p>Toothpaste, mouthwash, toothbrush aur dental care.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-title fade">
+      <span class="eyebrow">Our Services</span>
+      <h2>Kya-Kya <em>Milta Hai</em></h2>
+      <div class="ornament"></div>
+    </div>
+    <div class="serv-grid">
+      <div class="serv-card"><div class="ic">💊</div><h3>All Medicines Available</h3><p>Har company, har brand ki medicines — stock ki kami nahi.</p></div>
+      <div class="serv-card"><div class="ic">🚚</div><h3>Home Delivery</h3><p>Aas-paas ke area me medicines ghar par, WhatsApp order.</p></div>
+      <div class="serv-card"><div class="ic">📋</div><h3>Prescription Upload</h3><p>WhatsApp par prescription bhejein, medicine ready milegi.</p></div>
+      <div class="serv-card"><div class="ic">💳</div><h3>Payment Options</h3><p>Cash, UPI, card aur paytm — sab accepted.</p></div>
+      <div class="serv-card"><div class="ic">🩺</div><h3>Health Advice</h3><p>General health guidance aur medicine guidance free.</p></div>
+      <div class="serv-card"><div class="ic">🔎</div><h3>Medicine Search</h3><p>Koi medicine nahi mil rahi? Hum arrange karwa denge.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="how">
+  <div class="container">
+    <div class="section-title fade">
+      <span class="eyebrow">Simple Process</span>
+      <h2>Order Kaise <em>Karein</em></h2>
+      <div class="ornament"></div>
+      <p style="color:#a7f3d0">Sirf 3 easy steps</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-step"><div class="num">1</div><h3>WhatsApp karein</h3><p>Prescription ki photo bhejein ya medicine ka naam likhein.</p></div>
+      <div class="how-step"><div class="num">2</div><h3>Confirm</h3><p>Hum availability aur price confirm karenge.</p></div>
+      <div class="how-step"><div class="num">3</div><h3>Delivery / Pickup</h3><p>Ghar par delivery ya dukan se pickup — aapki choice.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-title fade">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2>Kyun <em>JaiPharmacy</em>?</h2>
+      <div class="ornament"></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-box"><div class="ic">✅</div><h3>100% Genuine</h3><p>Sirf original aur licensed medicines.</p></div>
+      <div class="why-box"><div class="ic">⚡</div><h3>Fast Service</h3><p>Order turant ready, delivery jaldi.</p></div>
+      <div class="why-box"><div class="ic">💰</div><h3>Fair Price</h3><p>MRP par sahi daam, koi extra charge nahi.</p></div>
+      <div class="why-box"><div class="ic">🤝</div><h3>Trusted</h3><p>Hazaaron customers ka bharosa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <div class="container">
+    <div class="section-title fade">
+      <span class="eyebrow">Customer Reviews</span>
+      <h2>Log Kya <em>Kehte Hain</em></h2>
+      <div class="ornament"></div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Har medicine mil jati hai yahan. Kai baar emergency me raat ko bhi help ki hai. Bahut acchi dukan hai.</p>
+        <div class="review-name">Rohit Kumar<small>Sector 27</small></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>WhatsApp par prescription bheji, 30 minute me delivery aa gayi. Bahut convenient service hai.</p>
+        <div class="review-name">Anjali Sharma<small>Sector 27</small></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Staff bahut helpful hai. Sahi guidance dete hain aur jo medicine chahiye wo arrange karwa dete hain.</p>
+        <div class="review-name">Vikram Singh<small>Sector 27</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta">
+  <h2>Medicine Chahiye? Abhi Order Karein!</h2>
+  <p>WhatsApp par prescription bhejein ya call karein — turant service</p>
+  <a href="https://wa.me/917888619586?text=Namaste%2C%20mujhe%20medicine%20chahiye" class="btn btn-gold" target="_blank">💬 WhatsApp: 78886 19586</a>
+</div>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-title fade">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Contact <em>Karein</em></h2>
+      <div class="ornament"></div>
+      <p style="color:#a7f3d0">Dukan par aayein ya phone karein</p>
+    </div>
+    <div class="contact-grid">
+      <div>
+        <div class="info-item">
+          <div class="ic">📍</div>
+          <div><h4>Address</h4><p>JaiPharmacy.27<br>Sector 27, Axis Bank ke paas,<br>Near by Axis Bank</p></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">📞</div>
+          <div><h4>Phone / WhatsApp</h4><p><a href="tel:+917888619586">+91 78886 19586</a></p></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">🕒</div>
+          <div><h4>Samay</h4><p>Somvaar – Ravivaar: Subah 8:00 – Raat 10:00</p></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">💬</div>
+          <div><h4>WhatsApp</h4><p><a href="https://wa.me/917888619586" target="_blank">Order karein – turant reply</a></p></div>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src="https://www.google.com/maps?q=Sector+27+Axis+Bank&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Location"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">💊 JaiPharmacy.27</div>
+  <div>All Medicines Available • Sector 27</div>
+  <div style="margin-top:8px">Sector 27, Near by Axis Bank</div>
+  <div style="margin-top:4px">📞 <a href="tel:+917888619586">78886 19586</a></div>
+  <div class="copy">© 2025 JaiPharmacy.27. Sabhi adhikar surakshit.</div>
+</footer>
+
+<a href="https://wa.me/917888619586?text=Namaste%2C%20mujhe%20medicine%20chahiye" class="wa-float" target="_blank" title="WhatsApp">💬</a>
+
+<script>
+  const header = document.getElementById('header');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if(!ticking){
+      requestAnimationFrame(()=>{
+        header.classList.toggle('scrolled', window.scrollY > 60);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, {passive:true});
+
+  document.querySelectorAll('#menu a').forEach(a=>{
+    a.addEventListener('click', ()=> document.getElementById('menu').classList.remove('show'));
+  });
+</script>
+
+</body>
+</html>
