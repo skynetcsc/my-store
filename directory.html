@@ -1,297 +1,449 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Ramgarh Panchkula Directory</title>
-<style>
-  /* CSS SAME RAHEGA, ISE CHANGE NAHI KARNA */
-  :root{
-    --bg:#f4f7f6; --card:#fff; --text:#1e293b; --muted:#64748b;
-    --primary:#2563eb; --primary-dark:#1d4ed8; --border:#e2e8f0;
-    --success:#10b981; --success-dark:#059669;
-  }
-  *{box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color: transparent;}
-  body{ font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; background:var(--bg); color:var(--text); overflow-x: hidden; }
-  header{ background:linear-gradient(135deg,var(--primary),var(--primary-dark)); color:white; padding:24px 16px 20px; text-align:center; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-  header h1{font-size:22px; margin-bottom: 6px;}
-  header p{opacity:.9; font-size:13px}
-  .wrap{max-width:1100px; margin:-15px auto 0; padding:16px; position:relative; z-index:10;}
-  .searchbox{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:10px; box-shadow:0 8px 20px -5px rgba(0,0,0,0.05); display:flex; gap:8px; }
-  .searchbox input{ flex:1; border:1px solid var(--border); border-radius:10px; padding:14px; font-size:16px; outline:none; background:#f8fafc; width: 100%; }
-  .searchbox input:focus{border-color:var(--primary); background:white;}
-  .cat-buttons{ display:flex; gap:8px; margin:16px 0; overflow-x: auto; padding-bottom: 5px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .cat-buttons::-webkit-scrollbar { display: none; }
-  .cat-btn{ border:1px solid var(--border); background:white; color:var(--text); padding:10px 16px; border-radius:999px; cursor:pointer; font-size:14px; font-weight: 500; white-space: nowrap; flex-shrink: 0; box-shadow: 0 1px 2px rgba(0,0,0,0.05); }
-  .cat-btn.active{ background:var(--primary); color:white; border-color:var(--primary); box-shadow: 0 4px 10px rgba(37,99,235,0.3); }
-  .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(290px,1fr)); gap:16px; }
-  .card{ background:var(--card); border:1px solid var(--border); border-radius:16px; padding:16px; box-shadow:0 2px 10px rgba(0,0,0,0.03); display:flex; flex-direction:column; gap:10px; content-visibility: auto; contain-intrinsic-size: 180px; animation: fadeIn 0.2s ease-out; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  .card h3{font-size:17px; line-height:1.3; font-weight:700;}
-  .badge{ display:inline-block; background:#eff6ff; color:var(--primary); font-size:11px; font-weight:700; padding:4px 8px; border-radius:6px; width:fit-content; text-transform: uppercase; }
-  .info{font-size:14px; color:var(--muted); line-height:1.5}
-  .info strong { color: #475569; }
-  .actions{display:flex; gap:8px; margin-top:auto; padding-top: 12px; border-top: 1px solid var(--border);}
-  .actions a{ text-decoration:none; text-align:center; flex:1; padding:12px; border-radius:10px; font-weight:700; font-size:14px; display: flex; align-items: center; justify-content: center; gap: 6px; }
-  .call{background:#f1f5f9; color:var(--text);}
-  .wa{background:#dcfce7; color:var(--success-dark);}
-  .skeleton-card { background: white; border-radius: 16px; padding: 16px; border: 1px solid var(--border); display: flex; flex-direction: column; gap: 12px; }
-  .skeleton-line { background: #e2e8f0; border-radius: 4px; animation: pulse 1.5s infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: .5; } }
-  .empty{ text-align:center; padding:40px 20px; color:var(--muted); background:white; border:1px dashed var(--border); border-radius:16px; font-size: 15px; }
-  .add-box{ margin-top:24px; background:white; border:1px solid var(--border); border-radius:16px; padding:20px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-  .add-box h2{font-size:20px; margin-bottom:16px;}
-  form{display:grid; grid-template-columns:1fr 1fr; gap:12px}
-  .full{grid-column:1/-1}
-  label{display:block; font-size:13px; font-weight:600; margin-bottom:6px; color:#475569;}
-  input,select{ width:100%; border:1px solid var(--border); border-radius:10px; padding:14px; font-size:16px; outline:none; background:#f8fafc; font-family: inherit; }
-  input:focus,select:focus{border-color:var(--primary); background:white;}
-  form button{ border:0; background:var(--primary); color:white; border-radius:10px; padding:16px; font-weight:700; cursor:pointer; font-size:16px; display: flex; justify-content: center; align-items: center; gap: 10px; width: 100%; }
-  form button:disabled { opacity: 0.7; cursor: not-allowed; }
-  .footer{text-align:center; color:var(--muted); font-size:13px; padding:30px 16px}
-  #toast { visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 50px; padding: 14px 20px; position: fixed; z-index: 1000; left: 50%; bottom: 20px; transform: translateX(-50%); font-size: 14px; font-weight: 500; box-shadow: 0 10px 30px rgba(0,0,0,0.2); opacity: 0; transition: opacity 0.3s, bottom 0.3s; }
-  #toast.show { visibility: visible; opacity: 1; bottom: 40px; }
-  #toast.success { background-color: var(--success); }
-  #toast.error { background-color: #ef4444; }
-  @media(max-width:640px){ form{grid-template-columns:1fr} .wrap { margin-top: -10px; padding: 12px; } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 🚀 SEO META TAGS -->
+    <title>Ramgarh Panchkula Digital Business Directory | Skynet Cyber Cafe</title>
+    <meta name="description" content="Find the best local shops, services, and businesses in Ramgarh, Panchkula. Directory of pharmacies, car washes, repair shops, grocery stores, and more.">
+    <meta name="keywords" content="Ramgarh Panchkula directory, local business Ramgarh, Jai Pharmacy Ramgarh, Skynet Cyber Cafe, shops in Panchkula">
+    <meta name="author" content="Skynet Cyber Cafe">
+
+    <!-- 🚀 GOOGLE SCHEMA MARKUP -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "name": "Ramgarh Business Directory",
+      "description": "Directory of local businesses and services in Ramgarh, Panchkula.",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "LocalBusiness",
+            "name": "Skynet Cyber Cafe",
+            "address": "Main market, near SS Public School, Ramgarh, Panchkula",
+            "telephone": "+91-8901010994"
+          }
+        }
+      ]
+    }
+    </script>
+
+    <style>
+        /* Modern & Fast CSS with Hindi Font */
+        @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Poppins', sans-serif; }
+        body { background: #f0f4f8; color: #333; }
+        
+        /* 🚀 NEW ATTRACTIVE HEADER */
+        header { 
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Premium Dark Gradient */
+            color: white; 
+            text-align: center; 
+            padding: 45px 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            border-bottom: 4px solid #f1c40f; /* Yellow Border */
+        }
+        
+        header h1 { 
+            font-size: 34px; 
+            font-weight: 700; 
+            letter-spacing: 1px; 
+            margin-bottom: 10px; 
+            color: #f1c40f; /* Attractive Gold Color */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
+        }
+        
+        header h2 { 
+            font-family: 'Mukta', sans-serif; /* Hindi Font */
+            font-size: 22px; 
+            font-weight: 600; 
+            color: #ecf0f1;
+            margin-bottom: 15px;
+        }
+        
+        header p { 
+            font-family: 'Mukta', sans-serif; /* Hindi Font */
+            font-size: 16px; 
+            line-height: 1.6; 
+            color: #bdc3c7; 
+            max-width: 900px; 
+            margin: 0 auto; 
+        }
+        
+        /* Search Bar */
+        .search-container { text-align: center; padding: 25px 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        #searchBar { width: 100%; max-width: 600px; padding: 15px 25px; border: 2px solid #3498db; border-radius: 30px; font-size: 16px; outline: none; transition: 0.3s; }
+        #searchBar:focus { box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); }
+
+        /* Main Layout (Sidebar + Grid) */
+        .main-wrapper { display: flex; max-width: 1300px; margin: 30px auto; padding: 0 20px; gap: 25px; align-items: flex-start; }
+
+        /* Sidebar Styling */
+        .sidebar { width: 260px; background: white; padding: 20px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.08); position: sticky; top: 20px; }
+        .sidebar h3 { font-size: 18px; color: #1a252f; margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid #3498db; }
+        .category-list { list-style: none; }
+        .category-list li { padding: 10px 15px; margin-bottom: 8px; background: #f8f9fa; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 500; color: #555; transition: all 0.2s; border-left: 3px solid transparent; }
+        .category-list li:hover { background: #e3f2fd; color: #2980b9; }
+        .category-list li.active { background: #2980b9; color: white; border-left: 3px solid #1a252f; }
+
+        /* Grid Layout */
+        .container { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        
+        /* Business Card */
+        .card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.08); transition: transform 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 12px 20px rgba(0,0,0,0.15); }
+        
+        .card-img { width: 100%; height: 160px; object-fit: cover; background: #e0e0e0; }
+        
+        .card-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
+        .category-badge { background: #e74c3c; color: white; padding: 4px 10px; border-radius: 20px; font-size: 10px; font-weight: 600; text-transform: uppercase; display: inline-block; margin-bottom: 10px; align-self: flex-start; letter-spacing: 0.5px; }
+        
+        .card h2 { font-size: 18px; color: #1a252f; margin-bottom: 8px; font-weight: 600; }
+        .card p { font-size: 13px; color: #666; margin-bottom: 6px; line-height: 1.4; }
+        .card p b { color: #333; }
+        
+        /* Buttons */
+        .button-group { display: flex; gap: 8px; margin-top: auto; padding-top: 15px; }
+        .btn { flex: 1; text-align: center; color: white; text-decoration: none; padding: 10px 5px; border-radius: 6px; font-weight: 600; font-size: 13px; transition: 0.2s; border: none; cursor: pointer; }
+        
+        .btn-call { background: #27ae60; }
+        .btn-call:hover { background: #219150; }
+        
+        .btn-insta { background: #E1306C; }
+        .btn-insta:hover { background: #C13584; }
+        
+        .btn-web { background: #2980b9; }
+        .btn-web:hover { background: #21618c; }
+        
+        /* Footer */
+        footer { text-align: center; padding: 25px; background: #1a252f; color: #bdc3c7; margin-top: 40px; font-size: 14px; }
+        footer a { color: #3498db; text-decoration: none; }
+        
+        /* Responsive (Mobile) */
+        @media (max-width: 768px) {
+            header h1 { font-size: 24px; }
+            header h2 { font-size: 18px; }
+            header p { font-size: 14px; }
+            header { padding: 30px 15px; }
+            
+            .main-wrapper { flex-direction: column; padding: 15px; gap: 15px; }
+            .sidebar { width: 100%; position: static; }
+            .category-list { display: flex; flex-wrap: wrap; gap: 8px; }
+            .category-list li { margin-bottom: 0; padding: 8px 12px; font-size: 13px; border-left: none; border-bottom: 3px solid transparent; }
+            .category-list li.active { border-left: none; border-bottom: 3px solid #1a252f; }
+            .container { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-  <h1>Ramgarh Panchkula Digital Business Directory </h1>
-  <h3>रामगढ़ के आसपास सभी बिजनेस, दुकानें और सेवाएं — अब एक ही जगह</h3>
-  <h6>रामगढ़, पंचकूला और आसपास के लगभग 50 किमी क्षेत्र के स्थानीय लोगों के लिए एक भरोसेमंद डिजिटल बिजनेस डायरेक्टरी — जहाँ रोजमर्रा की हर जरूरी सेवा, जैसे डॉक्टर, अस्पताल, स्कूल, कोचिंग, होटल, रेस्टोरेंट, किराना स्टोर, मोबाइल शॉप, CSC सेंटर, प्रॉपर्टी डीलर और वाहन रिपेयर, आसानी से मिल सके।</h6>
-</header>
+    <!-- 🚀 NAYA ATTRACTIVE HEADER -->
+    <header>
+        <h1>Ramgarh Panchkula Digital Business Directory</h1>
+        <h2>रामगढ़ के आसपास सभी बिजनेस, दुकानें और सेवाएं — अब एक ही जगह</h2>
+        <p>रामगढ़, पंचकूला और आसपास के लगभग 50 किमी क्षेत्र के स्थानीय लोगों के लिए एक भरोसेमंद डिजिटल बिजनेस डायरेक्टरी — जहाँ रोजमर्रा की हर जरूरी सेवा, जैसे डॉक्टर, अस्पताल, स्कूल, कोचिंग, होटल, रेस्टोरेंट, किराना स्टोर, मोबाइल शॉप, CSC सेंटर, प्रॉपर्टी डीलर और वाहन रिपेयर, आसानी से मिल सके।</p>
+    </header>
 
-<div class="wrap">
-  <div class="searchbox">
-    <input id="searchInput" type="search" placeholder="🔍 Naam, mobile, ya kaam search karein...">
-  </div>
+    <div class="search-container">
+        <input type="text" id="searchBar" onkeyup="searchBusiness()" placeholder="Search shop, service, or category...">
+    </div>
 
-  <div id="categoryButtons" class="cat-buttons"></div>
-  
-  <div id="list" class="grid">
-    <!-- Skeleton Loaders -->
-    <div class="skeleton-card"><div class="skeleton-line" style="width:30%; height:20px;"></div><div class="skeleton-line" style="width:70%; height:24px;"></div><div class="skeleton-line" style="width:100%; height:16px;"></div><div class="skeleton-line" style="width:100%; height:40px; margin-top:10px;"></div></div>
-    <div class="skeleton-card"><div class="skeleton-line" style="width:40%; height:20px;"></div><div class="skeleton-line" style="width:60%; height:24px;"></div><div class="skeleton-line" style="width:100%; height:16px;"></div><div class="skeleton-line" style="width:100%; height:40px; margin-top:10px;"></div></div>
-  </div>
-
-  <section class="add-box">
-    <h2>➕ Naya Business Add Karein</h2>
-    <form id="addForm">
-      <div class="full">
-        <label>Business / Person Name</label>
-        <input name="Name" required placeholder="Example: Sharma Electricals">
-      </div>
-      <div>
-        <label>Category</label>
-        <select name="Category" id="formCategory" required></select>
-      </div>
-      <div>
-        <label>Mobile Number</label>
-        <input name="Phone" type="tel" required placeholder="98xxxxxxxx" pattern="[0-9]{10}" title="10 digit mobile number likhein">
-      </div>
-      <div class="full">
-        <label>Address / Area</label>
-        <input name="Address" required placeholder="Ramgarh, Panchkula">
-      </div>
-      <div class="full">
-        <label>Work / Service</label>
-        <input name="Work" placeholder="Example: Electrician, AC repair, Kirana">
-      </div>
-      <div class="full">
-        <label>Source (optional)</label>
-        <input name="Source" placeholder="Instagram / Facebook / Reference">
-      </div>
-      <div class="full">
-        <button type="submit" id="submitBtn">Save Business</button>
-      </div>
-    </form>
-  </section>
-
-  <div class="footer">
-    Data Google Sheets me save hota hai. Sabhi log live dekh sakte hain.
-  </div>
-</div>
-
-<div id="toast">Success</div>
-
-<script>
-// Aapka URL bilkul sahi hai
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwoD1I_EZufFFcHND8c8E08tqDZ7aglJ8TwaBrlpkHn5uRxHjokLNsxwOut_ZNS2o/exec'; 
-const CACHE_KEY = 'ramgarh_directory_v3';
-
-// Note: Maine yahan se emojis hata diye hain taaki aapki Excel Sheet se match ho sake.
-// Agar aap emojis chahte hain, toh Excel Sheet mein bhi emojis lagane padenge.
-const CATEGORIES = [
-  "Food & Dining", "Shopping & Retail", "Health & Medical", 
-  "Home & Services", "Hospitality & Tourism", "Banking & Finance", 
-  "Repair & Electrician", "Salon & Beauty", "Transport & Delivery", "Education & Tuition"
-];
-
-let businesses = [];
-let activeCategory = "All";
-let searchTerm = "";
-
-function init() {
-  renderCategoryButtons();
-  renderFormCategories();
-  
-  const cachedData = localStorage.getItem(CACHE_KEY);
-  if (cachedData) {
-    businesses = JSON.parse(cachedData);
-    renderList(); 
-  }
-  fetchData(); 
-}
-
-async function fetchData() {
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 8000); // 8 sec timeout
-
-  try {
-    const response = await fetch(SCRIPT_URL, { signal: controller.signal });
-    clearTimeout(timeoutId);
-    const data = await response.json();
-    
-    // Check karein ki data array hai ya error object
-    if (!Array.isArray(data)) {
-        throw new Error("Data format galat hai. Sheet se array nahi aa raha.");
-    }
-    
-    if (JSON.stringify(data) !== JSON.stringify(businesses)) {
-        businesses = data.reverse(); 
-        localStorage.setItem(CACHE_KEY, JSON.stringify(businesses));
-        renderList();
-    }
-  } catch (error) {
-    console.error("Fetch error:", error);
-    // Agar data load nahi hua, toh skeleton hata kar error dikhayein
-    if (businesses.length === 0) {
-        document.getElementById("list").innerHTML = `
-            <div class="empty" style="grid-column:1/-1; color: #ef4444;">
-                ⚠️ Data load nahi ho paya. Kripya check karein ki Apps Script "Anyone" access ke liye deploy hai ya nahi.
-            </div>
-        `;
-    }
-  }
-}
-
-function renderCategoryButtons() {
-  const box = document.getElementById("categoryButtons");
-  const all = ["All", ...CATEGORIES];
-  box.innerHTML = all.map(cat => {
-    const label = cat === "All" ? "📋 All" : cat;
-    return `<button type="button" class="cat-btn ${activeCategory === cat ? "active" : ""}" data-cat="${esc(cat)}">${esc(label)}</button>`;
-  }).join("");
-
-  box.onclick = (e) => {
-    if(e.target.classList.contains('cat-btn')) {
-      activeCategory = e.target.dataset.cat;
-      renderCategoryButtons();
-      renderList();
-    }
-  };
-}
-
-function renderFormCategories() {
-  document.getElementById("formCategory").innerHTML = CATEGORIES.map(cat => `<option value="${esc(cat)}">${esc(cat)}</option>`).join("");
-}
-
-function getFiltered() {
-  const q = searchTerm.trim().toLowerCase();
-  return businesses.filter(b => {
-    const catOk = activeCategory === "All" || b.Category === activeCategory;
-    const text = [b.Name, b.Phone, b.Address, b.Work, b.Source].map(String).join(" ").toLowerCase();
-    return catOk && (!q || text.includes(q));
-  });
-}
-
-function renderList() {
-  const list = document.getElementById("list");
-  const items = getFiltered();
-  
-  if (!items.length) {
-    list.innerHTML = `<div class="empty" style="grid-column:1/-1">Koi business nahi mila.</div>`;
-    return;
-  }
-  
-  const fragment = items.map(b => {
-    // Yahan main bug fix kiya gaya hai (String() add kiya hai)
-    const phone = String(b.Phone || "").replace(/\D/g, "");
-    const wa = phone.length === 10 ? "91" + phone : phone;
-    const callLink = phone ? `<a class="call" href="tel:${phone}">📞 Call</a>` : "";
-    const waLink = wa ? `<a class="wa" target="_blank" rel="noopener" href="https://wa.me/${wa}">💬 WhatsApp</a>` : "";
-
-    return `
-      <article class="card">
-        <span class="badge">${esc(b.Category)}</span>
-        <h3>${esc(b.Name)}</h3>
-        <div class="info">
-          ${b.Work ? `<div><strong>Kaam:</strong> ${esc(b.Work)}</div>` : ""}
-          ${b.Address ? `<div><strong>Address:</strong> ${esc(b.Address)}</div>` : ""}
-          ${b.Phone ? `<div><strong>Mobile:</strong> ${esc(b.Phone)}</div>` : ""}
+    <div class="main-wrapper">
+        
+        <!-- LEFT SIDEBAR: CATEGORY MENU -->
+        <div class="sidebar">
+            <h3>All Categories</h3>
+            <ul class="category-list" id="categoryList">
+                <!-- Categories will be loaded here automatically via JavaScript -->
+            </ul>
         </div>
-        <div class="actions">${callLink}${waLink}</div>
-      </article>
-    `;
-  }).join("");
-  
-  list.innerHTML = fragment;
-}
 
-function esc(value) { return String(value || "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;"); }
+        <!-- RIGHT SIDE: BUSINESS CARDS -->
+        <div class="container" id="businessList">
 
-function showToast(message, type = 'success') {
-  const toast = document.getElementById("toast");
-  toast.innerText = message;
-  toast.className = `show ${type}`;
-  setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 3000);
-}
+            <!-- 1. Malkeet Singh -->
+            <div class="card" data-category="Banking & Finance">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500&q=80" class="card-img" alt="Banking">
+                <div class="card-content">
+                    <span class="category-badge">Banking & Finance</span>
+                    <h2>Malkeet Singh</h2>
+                    <p><b>📍 Location:</b> Ramgarh Panchkula</p>
+                    <p><b>ℹ️ Service:</b> PU RPLI</p>
+                    <div class="button-group">
+                        <a href="tel:8158379920" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
 
-let searchTimeout;
-document.getElementById("searchInput").addEventListener("input", e => {
-  clearTimeout(searchTimeout);
-  const val = e.target.value;
-  searchTimeout = setTimeout(() => {
-    searchTerm = val;
-    renderList();
-  }, 250); 
-});
+            <!-- 2. Urban Shine -->
+            <div class="card" data-category="Home & Services">
+                <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=500&q=80" class="card-img" alt="Car Wash">
+                <div class="card-content">
+                    <span class="category-badge">Home & Services</span>
+                    <h2>Urban Shine car wash & Detailing</h2>
+                    <p><b>📍 Location:</b> Guru Nanak Colony</p>
+                    <p><b>ℹ️ Service:</b> Car washing and detailing</p>
+                    <div class="button-group">
+                        <a href="tel:9780780688" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
 
-document.getElementById("addForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const btn = document.getElementById("submitBtn");
-  btn.innerText = "Saving... ⏳";
-  btn.disabled = true;
+            <!-- 3. Jai Pharmacy -->
+            <div class="card" data-category="Health & Medical">
+                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=500&q=80" class="card-img" alt="Pharmacy">
+                <div class="card-content">
+                    <span class="category-badge">Health & Medical</span>
+                    <h2>Jai Pharmacy</h2>
+                    <p><b>📍 Location:</b> Sector 27 near by Axis Bank</p>
+                    <p><b>ℹ️ Service:</b> Dispense all medicines</p>
+                    <div class="button-group">
+                        <a href="tel:7888619586" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
 
-  const formData = new FormData(e.target);
-  const formEntries = Object.fromEntries(formData.entries());
-  
-  const newBusiness = {
-    Name: formEntries.Name, Category: formEntries.Category,
-    Phone: formEntries.Phone, Address: formEntries.Address,
-    Work: formEntries.Work, Source: formEntries.Source
-  };
-  businesses.unshift(newBusiness);
-  localStorage.setItem(CACHE_KEY, JSON.stringify(businesses));
-  renderList();
-  
-  try {
-    await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', body: formData });
-    showToast("✅ Business successfully save ho gaya!", "success");
-    e.target.reset();
-    setTimeout(fetchData, 2000); 
-  } catch (error) {
-    showToast("❌ Save failed. Network check karein.", "error");
-  } finally {
-    btn.innerText = "Save Business";
-    btn.disabled = false;
-  }
-});
+            <!-- 4. Shivya Beauty Hub -->
+            <div class="card" data-category="Salon & Beauty">
+                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80" class="card-img" alt="Beauty Hub">
+                <div class="card-content">
+                    <span class="category-badge">Salon & Beauty</span>
+                    <h2>Shivya Beauty Hub</h2>
+                    <p><b>📍 Location:</b> Guru Nanak Punjab Colony, Daffarpur</p>
+                    <p><b>ℹ️ Service:</b> Special Bangles & cosmetic products</p>
+                    <div class="button-group">
+                        <a href="tel:9468089792" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
 
-init();
-</script>
+            <!-- 5. Dashmesh Cycle Work -->
+            <div class="card" data-category="Repair & Electrician">
+                <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=500&q=80" class="card-img" alt="Cycle">
+                <div class="card-content">
+                    <span class="category-badge">Repair & Electrician</span>
+                    <h2>Dashmesh Cycle Work</h2>
+                    <p><b>📍 Location:</b> Dera Basi Daffarpur Guru Nanak Colone</p>
+                    <p><b>ℹ️ Service:</b> Gear cycle, cycles, electronic cycle</p>
+                    <div class="button-group">
+                        <a href="tel:9465585527" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. LIC Agent -->
+            <div class="card" data-category="Education & Recruitment">
+                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80" class="card-img" alt="Education">
+                <div class="card-content">
+                    <span class="category-badge">Education & Recruitment</span>
+                    <h2>LIC AGENT RECRUITMENT</h2>
+                    <p><b>📍 Location:</b> Chandigarh</p>
+                    <p><b>ℹ️ Service:</b> Become LIC AGENT, BIMA SAKHI</p>
+                    <div class="button-group">
+                        <a href="tel:9197802878" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. Skynet Cyber Cafe -->
+            <div class="card" data-category="Tech & Internet Services" style="border: 2px solid #2980b9;">
+                <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&q=80" class="card-img" alt="Cyber Cafe">
+                <div class="card-content">
+                    <span class="category-badge" style="background: #2980b9;">Tech & Internet Services</span>
+                    <h2>Skynet Cyber Cafe</h2>
+                    <p><b>📍 Location:</b> Main market, near SS Public School, Ramgarh</p>
+                    <p><b>ℹ️ Service:</b> CSC center, online forms, typing, Xerox</p>
+                    <div class="button-group">
+                        <a href="tel:8901010994" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="https://www.skynetcc.co.in" target="_blank" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. Bhagat Ram Motors -->
+            <div class="card" data-category="Automobile Accessories">
+                <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=500&q=80" class="card-img" alt="Motors">
+                <div class="card-content">
+                    <span class="category-badge">Automobile Accessories</span>
+                    <h2>BHAGAT RAM MOTORS</h2>
+                    <p><b>📍 Location:</b> Shop no 4, near THE FORT RAMGARH</p>
+                    <p><b>ℹ️ Service:</b> Car modifiers, seat covers, audio systems</p>
+                    <div class="button-group">
+                        <a href="tel:8708625953" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. JARSY Footwear -->
+            <div class="card" data-category="Clothing & Footwear">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" class="card-img" alt="Footwear">
+                <div class="card-content">
+                    <span class="category-badge">Clothing & Footwear</span>
+                    <h2>JARSY - Footwear Shoes Outlet</h2>
+                    <p><b>📍 Location:</b> Shop no 7, Prem Chaudhary Market, Ramgarh</p>
+                    <p><b>ℹ️ Service:</b> Retail footwear, sportswear, everyday shoes</p>
+                    <div class="button-group">
+                        <a href="tel:9872078281" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. Pal Laptop's Solutions -->
+            <div class="card" data-category="Repair & Services">
+                <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80" class="card-img" alt="Laptop Repair">
+                <div class="card-content">
+                    <span class="category-badge">Repair & Services</span>
+                    <h2>Pal Laptop's Solutions</h2>
+                    <p><b>📍 Location:</b> Shop No 3, Prem Chand Market, Ramgarh</p>
+                    <p><b>ℹ️ Service:</b> Laptop repair, troubleshooting, software installation</p>
+                    <div class="button-group">
+                        <a href="tel:8509870007" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. Heera Caterer -->
+            <div class="card" data-category="Food & Catering">
+                <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=500&q=80" class="card-img" alt="Catering">
+                <div class="card-content">
+                    <span class="category-badge">Food & Catering</span>
+                    <h2>Heera Caterer & Event Planners</h2>
+                    <p><b>📍 Location:</b> Main Chowk, Ramgarh, Panchkula</p>
+                    <p><b>ℹ️ Service:</b> Catering services, tent booking, wedding planning</p>
+                    <div class="button-group">
+                        <a href="tel:9815036134" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Atul General Store -->
+            <div class="card" data-category="Kirana & Grocery">
+                <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80" class="card-img" alt="Grocery">
+                <div class="card-content">
+                    <span class="category-badge">Kirana & Grocery</span>
+                    <h2>Atul General Store</h2>
+                    <p><b>📍 Location:</b> Near P.N.B., Ramgarh, Panchkula</p>
+                    <p><b>ℹ️ Service:</b> Daily household grocery items, FMCG products</p>
+                    <div class="button-group">
+                        <a href="tel:8881177770" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13. A One Departmental Store -->
+            <div class="card" data-category="Kirana & Grocery">
+                <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=500&q=80" class="card-img" alt="Departmental Store">
+                <div class="card-content">
+                    <span class="category-badge">Kirana & Grocery</span>
+                    <h2>A One Departmental Store</h2>
+                    <p><b>📍 Location:</b> Shop No.4, Ramgarh, Panchkula</p>
+                    <p><b>ℹ️ Service:</b> Daily utility items, packed dairy products</p>
+                    <div class="button-group">
+                        <a href="tel:9876568908" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 <strong>SKYNET Directory</strong> | Made for Ramgarh Businesses</p>
+        <p>Powered by <a href="https://www.skynetcc.co.in">Skynet Cyber Cafe</a></p>
+    </footer>
+
+    <!-- 🚀 JAVASCRIPT: CATEGORY FILTER & SEARCH -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let categories = new Set();
+            let cards = document.querySelectorAll('.card');
+            
+            cards.forEach(card => {
+                let cat = card.getAttribute('data-category');
+                categories.add(cat);
+            });
+
+            let categoryList = document.getElementById('categoryList');
+            
+            let allLi = document.createElement('li');
+            allLi.innerText = "Show All";
+            allLi.className = "active";
+            allLi.onclick = function() { filterCategory('all', this); };
+            categoryList.appendChild(allLi);
+
+            categories.forEach(cat => {
+                let li = document.createElement('li');
+                li.innerText = cat;
+                li.onclick = function() { filterCategory(cat, this); };
+                categoryList.appendChild(li);
+            });
+        });
+
+        function filterCategory(categoryName, element) {
+            let items = document.querySelectorAll('.category-list li');
+            items.forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+
+            document.getElementById('searchBar').value = '';
+
+            let cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                let cardCategory = card.getAttribute('data-category');
+                if (categoryName === 'all' || cardCategory === categoryName) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        function searchBusiness() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+            
+            let items = document.querySelectorAll('.category-list li');
+            items.forEach(item => item.classList.remove('active'));
+            items[0].classList.add('active');
+
+            cards.forEach(card => {
+                let text = card.innerText.toLowerCase();
+                if (text.includes(input)) {
+                    card.style.display = "flex";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
 </body>
 </html>
