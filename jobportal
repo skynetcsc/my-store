@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramgarh Job Portal | Find Jobs & Hire Staff</title>
+    <meta name="description" content="Find local jobs in Ramgarh Panchkula. Shopkeepers can hire staff, and employees can find jobs.">
+    
+    <style>
+        /* Ultra Fast CSS - System Fonts (No external requests) */
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+        body { background: #f0f4f8; color: #333; }
+        
+        /* Header */
+        header { background: #1e3c72; color: white; text-align: center; padding: 30px 15px; border-bottom: 4px solid #ff7e5f; }
+        header h1 { font-size: 28px; font-weight: bold; margin-bottom: 5px; }
+        header p { font-size: 15px; color: #e0e0e0; }
+        
+        /* Navigation Tabs */
+        .nav-tabs { display: flex; justify-content: center; background: white; padding: 12px; gap: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        .tab-btn { padding: 10px 20px; font-size: 15px; font-weight: bold; border: none; border-radius: 25px; cursor: pointer; transition: 0.2s; background: #e0e0e0; color: #555; }
+        .tab-btn.active { background: #1e3c72; color: white; }
+        
+        /* Search Bar */
+        .search-container { text-align: center; padding: 20px 15px; }
+        #searchBar { width: 100%; max-width: 600px; padding: 12px 20px; border: 2px solid #1e3c72; border-radius: 25px; font-size: 15px; outline: none; }
+        
+        /* Grid Layout */
+        .container { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 15px; padding: 15px; max-width: 1200px; margin: auto; }
+        
+        /* Card Styles */
+        .card { background: white; border-radius: 10px; padding: 18px; box-shadow: 0 3px 10px rgba(0,0,0,0.08); display: flex; flex-direction: column; border-top: 4px solid #2a5298; }
+        
+        .card h2 { font-size: 18px; color: #1a252f; margin-bottom: 4px; }
+        .card h3 { font-size: 14px; color: #d35400; margin-bottom: 12px; font-weight: 600; }
+        .card p { font-size: 14px; color: #555; margin-bottom: 6px; line-height: 1.4; }
+        .card p b { color: #333; }
+        
+        /* Badges */
+        .badge { background: #e8f4fd; color: #2980b9; padding: 4px 10px; border-radius: 15px; font-size: 11px; font-weight: bold; display: inline-block; margin-bottom: 8px; align-self: flex-start; text-transform: uppercase; }
+        
+        /* Buttons inside Cards */
+        .btn-wa { display: block; text-align: center; background: #25D366; color: white; text-decoration: none; padding: 12px; border-radius: 6px; font-weight: bold; margin-top: auto; font-size: 14px; }
+        
+        /* Floating Action Buttons */
+        .action-buttons { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1000; }
+        .fab { padding: 14px 20px; border: none; border-radius: 30px; font-size: 15px; font-weight: bold; cursor: pointer; color: white; box-shadow: 0 4px 8px rgba(0,0,0,0.2); display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .fab-job { background: #e74c3c; }
+        .fab-emp { background: #27ae60; }
+
+        /* Modal / Forms */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
+        .modal-content { background: white; padding: 20px; border-radius: 10px; width: 100%; max-width: 450px; max-height: 90vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 10px; right: 15px; font-size: 26px; cursor: pointer; color: #666; border: none; background: none; font-weight: bold; }
+        .modal h2 { margin-bottom: 15px; color: #1a252f; font-size: 20px; text-align: center; }
+        
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; margin-bottom: 4px; font-size: 13px; font-weight: bold; color: #444; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 14px; outline: none; }
+        .form-group textarea { resize: vertical; height: 70px; }
+        .form-group input:focus, .form-group textarea:focus { border-color: #1e3c72; }
+        
+        .save-btn { width: 100%; padding: 12px; color: white; border: none; border-radius: 5px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 5px; }
+        
+        /* Hide/Show classes */
+        .hidden { display: none !important; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            header h1 { font-size: 24px; }
+            .nav-tabs { flex-direction: row; padding: 10px; }
+            .tab-btn { flex: 1; padding: 8px; font-size: 13px; }
+            .action-buttons { bottom: 15px; right: 15px; left: 15px; flex-direction: row; }
+            .fab { flex: 1; font-size: 13px; padding: 12px 5px; }
+            .container { grid-template-columns: 1fr; padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ramgarh Job Portal</h1>
+        <p>Dukandaron ke liye Staff, Naukri dhoondne walon ke liye Jobs!</p>
+    </header>
+
+    <!-- TABS TO SWITCH VIEWS -->
+    <div class="nav-tabs">
+        <button class="tab-btn active" onclick="switchTab('jobs')" id="tabJobs">💼 View Jobs</button>
+        <button class="tab-btn" onclick="switchTab('candidates')" id="tabCandidates">🧑‍💼 View Candidates</button>
+    </div>
+
+    <div class="search-container">
+        <input type="text" id="searchBar" oninput="searchData()" placeholder="Search skills, shop name, or location...">
+    </div>
+
+    <!-- JOBS SECTION -->
+    <div class="container" id="jobsContainer">
+        
+        <!-- Dummy Job 1 -->
+        <div class="card job-card">
+            <span class="badge">Full Time</span>
+            <h2>Shop Assistant (Salesman)</h2>
+            <h3>Shivya Beauty Hub</h3>
+            <p><b>📍 Location:</b> Guru Nanak Colony, Daffarpur</p>
+            <p><b>💰 Salary:</b> ₹8,000 - ₹12,000</p>
+            <p><b>📝 Requirement:</b> Cosmetic products bechne ka experience ho toh accha hai.</p>
+            <a href="https://wa.me/919468089792?text=Hello,%20I%20am%20interested%20in%20the%20Shop%20Assistant%20job." target="_blank" class="btn-wa">Apply on WhatsApp</a>
+        </div>
+
+        <!-- Dummy Job 2 -->
+        <div class="card job-card">
+            <span class="badge">Part Time</span>
+            <h2>Computer Operator / Typist</h2>
+            <h3>Skynet Cyber Cafe</h3>
+            <p><b>📍 Location:</b> Main Market, Ramgarh</p>
+            <p><b>💰 Salary:</b> Negotiable</p>
+            <p><b>📝 Requirement:</b> English & Hindi typing aani chahiye. Online forms bharna aata ho.</p>
+            <a href="https://wa.me/918901010994?text=Hello,%20I%20am%20interested%20in%20the%20Computer%20Operator%20job." target="_blank" class="btn-wa">Apply on WhatsApp</a>
+        </div>
+    </div>
+
+    <!-- CANDIDATES SECTION -->
+    <div class="container hidden" id="candidatesContainer">
+        
+        <!-- Dummy Candidate 1 -->
+        <div class="card candidate-card">
+            <span class="badge" style="background:#e8f4fd; color:#2980b9;">Looking for Job</span>
+            <h2>Rahul Sharma</h2>
+            <h3>10th Pass | 2 Years Experience</h3>
+            <p><b>📍 Location:</b> Ramgarh</p>
+            <p><b>🎯 Skills:</b> Dukhan Sambhalna, Billing, Customer Service</p>
+            <a href="https://wa.me/919876543210?text=Hello%20Rahul,%20I%20saw%20your%20profile%20on%20Job%20Portal." target="_blank" class="btn-wa" style="background:#2980b9;">Contact Candidate</a>
+        </div>
+
+    </div>
+
+    <!-- FLOATING ACTION BUTTONS -->
+    <div class="action-buttons">
+        <button class="fab fab-job" onclick="openModal('jobModal')">➕ Post Job</button>
+        <button class="fab fab-emp" onclick="openModal('candidateModal')">➕ Register Profile</button>
+    </div>
+
+    <!-- MODAL 1: POST A JOB (Shopkeepers) -->
+    <div id="jobModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('jobModal')">×</button>
+            <h2>Post a New Job</h2>
+            <form onsubmit="addJob(event)">
+                <div class="form-group">
+                    <label>Job Title *</label>
+                    <input type="text" id="jTitle" required placeholder="e.g. Salesman, Helper">
+                </div>
+                <div class="form-group">
+                    <label>Shop/Company Name *</label>
+                    <input type="text" id="jShop" required placeholder="e.g. Sharma Kirana Store">
+                </div>
+                <div class="form-group">
+                    <label>Location *</label>
+                    <input type="text" id="jLocation" required>
+                </div>
+                <div class="form-group">
+                    <label>Salary</label>
+                    <input type="text" id="jSalary" placeholder="e.g. ₹10,000 / month">
+                </div>
+                <div class="form-group">
+                    <label>Requirement</label>
+                    <textarea id="jDesc" placeholder="Kya kaam karna hai..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number *</label>
+                    <input type="tel" id="jPhone" required placeholder="10 digit number">
+                </div>
+                <button type="submit" class="save-btn" style="background: #e74c3c;">Post Job</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL 2: REGISTER PROFILE (Employees) -->
+    <div id="candidateModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal('candidateModal')">×</button>
+            <h2>Register Profile</h2>
+            <form onsubmit="addCandidate(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="cName" required>
+                </div>
+                <div class="form-group">
+                    <label>Experience *</label>
+                    <input type="text" id="cExp" required placeholder="e.g. 12th Pass, 1 Year Exp">
+                </div>
+                <div class="form-group">
+                    <label>Skills</label>
+                    <input type="text" id="cSkills" placeholder="e.g. Computer, Billing">
+                </div>
+                <div class="form-group">
+                    <label>Location *</label>
+                    <input type="text" id="cLocation" required>
+                </div>
+                <div class="form-group">
+                    <label>WhatsApp Number *</label>
+                    <input type="tel" id="cPhone" required placeholder="10 digit number">
+                </div>
+                <button type="submit" class="save-btn" style="background: #27ae60;">Register Profile</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // TAB SWITCHING
+        function switchTab(tab) {
+            const jobsContainer = document.getElementById('jobsContainer');
+            const candidatesContainer = document.getElementById('candidatesContainer');
+            const tabJobs = document.getElementById('tabJobs');
+            const tabCandidates = document.getElementById('tabCandidates');
+            const searchBar = document.getElementById('searchBar');
+
+            searchBar.value = ''; 
+
+            if (tab === 'jobs') {
+                jobsContainer.classList.remove('hidden');
+                candidatesContainer.classList.add('hidden');
+                tabJobs.classList.add('active');
+                tabCandidates.classList.remove('active');
+                searchBar.placeholder = "Search job, shop, or location...";
+            } else {
+                jobsContainer.classList.add('hidden');
+                candidatesContainer.classList.remove('hidden');
+                tabCandidates.classList.add('active');
+                tabJobs.classList.remove('active');
+                searchBar.placeholder = "Search candidate skills or location...";
+            }
+        }
+
+        // MODAL
+        function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+        function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+        // ADD JOB
+        function addJob(event) {
+            event.preventDefault();
+            let title = document.getElementById('jTitle').value;
+            let shop = document.getElementById('jShop').value;
+            let location = document.getElementById('jLocation').value;
+            let salary = document.getElementById('jSalary').value || "Negotiable";
+            let desc = document.getElementById('jDesc').value || "No specific details.";
+            let phone = document.getElementById('jPhone').value;
+            let waNumber = phone.startsWith('91') ? phone : '91' + phone;
+
+            let cardHTML = `
+            <div class="card job-card">
+                <span class="badge">New</span>
+                <h2>${title}</h2>
+                <h3>${shop}</h3>
+                <p><b>📍 Location:</b> ${location}</p>
+                <p><b>💰 Salary:</b> ${salary}</p>
+                <p><b>📝 Requirement:</b> ${desc}</p>
+                <a href="https://wa.me/${waNumber}?text=Hello,%20I%20am%20interested%20in%20the%20${title}%20job." target="_blank" class="btn-wa">Apply on WhatsApp</a>
+            </div>`;
+
+            document.getElementById('jobsContainer').innerHTML += cardHTML;
+            closeModal('jobModal');
+            event.target.reset();
+            switchTab('jobs'); 
+        }
+
+        // ADD CANDIDATE
+        function addCandidate(event) {
+            event.preventDefault();
+            let name = document.getElementById('cName').value;
+            let exp = document.getElementById('cExp').value;
+            let skills = document.getElementById('cSkills').value || "General Work";
+            let location = document.getElementById('cLocation').value;
+            let phone = document.getElementById('cPhone').value;
+            let waNumber = phone.startsWith('91') ? phone : '91' + phone;
+
+            let cardHTML = `
+            <div class="card candidate-card">
+                <span class="badge" style="background:#e8f4fd; color:#2980b9;">Looking</span>
+                <h2>${name}</h2>
+                <h3>${exp}</h3>
+                <p><b>📍 Location:</b> ${location}</p>
+                <p><b>🎯 Skills:</b> ${skills}</p>
+                <a href="https://wa.me/${waNumber}?text=Hello%20${name},%20I%20saw%20your%20profile%20on%20Job%20Portal." target="_blank" class="btn-wa" style="background:#2980b9;">Contact</a>
+            </div>`;
+
+            document.getElementById('candidatesContainer').innerHTML += cardHTML;
+            closeModal('candidateModal');
+            event.target.reset();
+            switchTab('candidates'); 
+        }
+
+        // SEARCH
+        function searchData() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let activeContainer = document.getElementById('jobsContainer').classList.contains('hidden') ? 'candidates' : 'jobs';
+            
+            if (activeContainer === 'jobs') {
+                document.querySelectorAll('.job-card').forEach(card => {
+                    card.style.display = card.innerText.toLowerCase().includes(input) ? "flex" : "none";
+                });
+            } else {
+                document.querySelectorAll('.candidate-card').forEach(card => {
+                    card.style.display = card.innerText.toLowerCase().includes(input) ? "flex" : "none";
+                });
+            }
+        }
+    </script>
+</body>
+</html>
