@@ -138,6 +138,21 @@
             .category-list li.active { border-left: none; border-bottom: 3px solid #1a252f; }
             .container { grid-template-columns: 1fr; }
         }
+
+        /* 🚀 ADDED CSS FOR BUTTON & MODAL (Only added this part) */
+        .add-btn { position: fixed; bottom: 30px; right: 30px; padding: 15px 25px; background: #e74c3c; color: white; border: none; border-radius: 50px; font-size: 16px; font-weight: bold; cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 1000; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .add-btn:hover { background: #c0392b; transform: scale(1.05); }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: white; padding: 25px; border-radius: 12px; width: 100%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; }
+        .close-btn { position: absolute; top: 15px; right: 20px; font-size: 24px; cursor: pointer; color: #666; border: none; background: none; }
+        .modal h2 { margin-bottom: 20px; color: #1a252f; font-size: 22px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-size: 14px; font-weight: 500; color: #444; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; outline: none; }
+        .form-group input:focus { border-color: #2980b9; }
+        .save-btn { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .save-btn:hover { background: #219150; }
+        @media (max-width: 768px) { .add-btn { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 14px; } }
     </style>
 </head>
 <body>
@@ -377,6 +392,44 @@
         </div>
     </div>
 
+    <!-- 🚀 ADDED BUTTON & POPUP FORM -->
+    <button class="add-btn" onclick="openModal()">➕ Add Business</button>
+
+    <div id="addModal" class="modal">
+        <div class="modal-content">
+            <button class="close-btn" onclick="closeModal()">×</button>
+            <h2>Add New Business</h2>
+            <form id="addForm" onsubmit="addNewBusiness(event)">
+                <div class="form-group">
+                    <label>Business Name *</label>
+                    <input type="text" id="bName" required>
+                </div>
+                <div class="form-group">
+                    <label>Category * (e.g. Doctor, Kirana, Repair)</label>
+                    <input type="text" id="bCategory" required>
+                </div>
+                <div class="form-group">
+                    <label>Location/Address *</label>
+                    <input type="text" id="bLocation" required>
+                </div>
+                <div class="form-group">
+                    <label>Service Details</label>
+                    <input type="text" id="bService">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="bPhone" required>
+                </div>
+                <div class="form-group">
+                    <label>Image URL (Optional)</label>
+                    <input type="url" id="bImage" placeholder="https://...">
+                </div>
+                <button type="submit" class="save-btn">Save Business</button>
+            </form>
+        </div>
+    </div>
+    <!-- 🚀 END OF ADDED BUTTON -->
+
     <footer>
         <p>© 2026 <strong>SKYNET Directory</strong> | Made for Ramgarh Businesses</p>
         <p>Powered by <a href="https://www.skynetcc.co.in">Skynet Cyber Cafe</a></p>
@@ -385,15 +438,21 @@
     <!-- 🚀 JAVASCRIPT: CATEGORY FILTER & SEARCH -->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
+            loadCategories(); // Call the function to load categories
+        });
+
+        // Function to load categories (Modified slightly to be reusable)
+        function loadCategories() {
             let categories = new Set();
             let cards = document.querySelectorAll('.card');
             
             cards.forEach(card => {
                 let cat = card.getAttribute('data-category');
-                categories.add(cat);
+                if(cat) categories.add(cat); // Added safety check
             });
 
             let categoryList = document.getElementById('categoryList');
+            categoryList.innerHTML = ''; // Clear before loading
             
             let allLi = document.createElement('li');
             allLi.innerText = "Show All";
@@ -407,7 +466,7 @@
                 li.onclick = function() { filterCategory(cat, this); };
                 categoryList.appendChild(li);
             });
-        });
+        }
 
         function filterCategory(categoryName, element) {
             let items = document.querySelectorAll('.category-list li');
@@ -433,7 +492,7 @@
             
             let items = document.querySelectorAll('.category-list li');
             items.forEach(item => item.classList.remove('active'));
-            items[0].classList.add('active');
+            if(items[0]) items[0].classList.add('active');
 
             cards.forEach(card => {
                 let text = card.innerText.toLowerCase();
@@ -443,6 +502,56 @@
                     card.style.display = "none";
                 }
             });
+        }
+
+        // 🚀 NEW FUNCTIONS FOR ADDING BUSINESS
+        function openModal() { 
+            document.getElementById('addModal').style.display = 'flex'; 
+        }
+        
+        function closeModal() { 
+            document.getElementById('addModal').style.display = 'none'; 
+        }
+
+        function addNewBusiness(event) {
+            event.preventDefault(); // Page refresh rokne ke liye
+
+            // Form se data uthayein
+            let name = document.getElementById('bName').value;
+            let category = document.getElementById('bCategory').value;
+            let location = document.getElementById('bLocation').value;
+            let service = document.getElementById('bService').value || "Not specified";
+            let phone = document.getElementById('bPhone').value;
+            let image = document.getElementById('bImage').value || "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80";
+
+            // Naya Card banayein
+            let newCardHTML = `
+            <div class="card" data-category="${category}">
+                <img src="${image}" class="card-img" alt="${name}">
+                <div class="card-content">
+                    <span class="category-badge">${category}</span>
+                    <h2>${name}</h2>
+                    <p><b>📍 Location:</b> ${location}</p>
+                    <p><b>ℹ️ Service:</b> ${service}</p>
+                    <div class="button-group">
+                        <a href="tel:${phone}" class="btn btn-call">📞 Call</a>
+                        <a href="#" class="btn btn-insta">📸 Insta</a>
+                        <a href="#" class="btn btn-web">🌐 Web</a>
+                    </div>
+                </div>
+            </div>`;
+
+            // Container mein naya card add karein
+            document.getElementById('businessList').innerHTML += newCardHTML;
+            
+            // Form reset karein aur popup band karein
+            document.getElementById('addForm').reset();
+            closeModal();
+            
+            // Sidebar categories ko update karein taaki nayi category bhi dikhe
+            loadCategories(); 
+            
+            alert(name + " successfully added!");
         }
     </script>
 </body>
