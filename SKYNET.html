@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKYNET COMPUTER | Desktop, Laptop & Printer Repair & Servicing</title>
+<meta name="description" content="SKYNET COMPUTER - Complete repair and servicing for desktop computers, laptops and all major printer brands (HP, Canon, Epson, Xerox, Brother, Ricoh, Samsung). Hardware faults, paper jams, printhead cleaning, cartridge issues.">
+<style>
+  :root{
+    --bg:#0b1220;
+    --bg-2:#111c30;
+    --card:#16233a;
+    --line:#24354f;
+    --txt:#e8eef8;
+    --muted:#9bb0cc;
+    --brand:#22c3ff;
+    --brand-2:#0e8fd6;
+    --accent:#ffb020;
+    --ok:#25d07a;
+    --radius:16px;
+    --shadow:0 18px 40px rgba(0,0,0,.45);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--txt);
+    line-height:1.65;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .wrap{width:min(1180px,92%);margin-inline:auto}
+
+  /* ---------- TOP BAR ---------- */
+  .topbar{
+    background:linear-gradient(90deg,var(--brand-2),var(--brand));
+    color:#04121f;
+    font-size:.86rem;
+    font-weight:600;
+  }
+  .topbar .wrap{
+    display:flex;flex-wrap:wrap;gap:10px 26px;
+    align-items:center;justify-content:space-between;
+    padding:8px 0;
+  }
+  .topbar .tag{display:flex;gap:8px;align-items:center}
+  .topbar a{white-space:nowrap}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(11,18,32,.88);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:18px;padding:14px 0;
+  }
+  .logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.5px}
+  .logo-badge{
+    width:44px;height:44px;border-radius:12px;
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    display:grid;place-items:center;
+    color:#04121f;font-size:1.15rem;font-weight:900;
+    box-shadow:0 0 0 4px rgba(34,195,255,.12);
+  }
+  .logo span small{display:block;font-size:.68rem;font-weight:600;color:var(--muted);letter-spacing:2px}
+  .logo span b{font-size:1.12rem}
+
+  nav ul{display:flex;gap:26px;list-style:none;font-size:.95rem;font-weight:600}
+  nav a{color:var(--muted);transition:.2s}
+  nav a:hover{color:var(--brand)}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:12px 22px;border-radius:999px;
+    font-weight:700;font-size:.95rem;
+    border:1px solid transparent;cursor:pointer;
+    transition:transform .18s ease, box-shadow .18s ease, background .2s;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    color:#04121f;
+    box-shadow:0 10px 24px rgba(34,195,255,.28);
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 30px rgba(34,195,255,.4)}
+  .btn-ghost{
+    background:transparent;color:var(--txt);border-color:var(--line);
+  }
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand)}
+
+  .menu-toggle{
+    display:none;background:none;border:1px solid var(--line);
+    color:var(--txt);border-radius:10px;padding:8px 12px;font-size:1.2rem;cursor:pointer;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    padding:80px 0 90px;
+    background:
+      radial-gradient(900px 420px at 82% 8%, rgba(34,195,255,.18), transparent 60%),
+      radial-gradient(700px 400px at 8% 90%, rgba(255,176,32,.12), transparent 60%),
+      linear-gradient(180deg,var(--bg),var(--bg-2));
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;
+  }
+  .pill{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(34,195,255,.1);
+    border:1px solid rgba(34,195,255,.35);
+    color:var(--brand);
+    padding:7px 16px;border-radius:999px;
+    font-size:.8rem;font-weight:700;letter-spacing:.6px;text-transform:uppercase;
+    margin-bottom:20px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(37,208,122,.18)}
+  h1{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.15;letter-spacing:-.8px;font-weight:800}
+  h1 em{font-style:normal;color:var(--brand)}
+  .hero p.lead{color:var(--muted);font-size:1.08rem;margin:20px 0 30px;max-width:60ch}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+  .hero-stats{
+    display:flex;flex-wrap:wrap;gap:34px;margin-top:44px;
+    padding-top:26px;border-top:1px solid var(--line);
+  }
+  .hero-stats div b{display:block;font-size:1.55rem;color:var(--brand);font-weight:800}
+  .hero-stats div span{font-size:.85rem;color:var(--muted)}
+
+  /* hero card */
+  .hero-card{
+    background:linear-gradient(160deg,var(--card),#0e1729);
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:28px;
+    box-shadow:var(--shadow);
+    position:relative;
+  }
+  .hero-card::before{
+    content:"";position:absolute;inset:-1px;border-radius:22px;
+    background:linear-gradient(140deg,rgba(34,195,255,.5),transparent 45%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    pointer-events:none;padding:1px;
+  }
+  .hero-card h3{font-size:1.05rem;margin-bottom:6px}
+  .hero-card p{font-size:.86rem;color:var(--muted);margin-bottom:20px}
+  .quick-item{
+    display:flex;gap:13px;align-items:flex-start;
+    padding:13px;border-radius:12px;
+    background:rgba(255,255,255,.03);
+    border:1px solid var(--line);
+    margin-bottom:11px;
+  }
+  .quick-item i{
+    flex:none;width:34px;height:34px;border-radius:9px;
+    display:grid;place-items:center;font-style:normal;font-size:1rem;
+    background:rgba(34,195,255,.14);color:var(--brand);
+  }
+  .quick-item b{font-size:.92rem;display:block}
+  .quick-item small{color:var(--muted);font-size:.8rem}
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:84px 0}
+  .sec-head{max-width:720px;margin:0 auto 52px;text-align:center}
+  .sec-head .pill{margin-bottom:14px}
+  h2{font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.5px;font-weight:800}
+  h2 em{font-style:normal;color:var(--brand)}
+  .sec-head p{color:var(--muted);margin-top:14px}
+
+  /* services */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:30px 26px;
+    transition:.25s ease;
+    position:relative;overflow:hidden;
+  }
+  .card:hover{transform:translateY(-6px);border-color:rgba(34,195,255,.55);box-shadow:var(--shadow)}
+  .card .icon{
+    width:56px;height:56px;border-radius:14px;
+    display:grid;place-items:center;font-size:1.6rem;
+    background:linear-gradient(135deg,rgba(34,195,255,.18),rgba(14,143,214,.06));
+    border:1px solid rgba(34,195,255,.3);
+    margin-bottom:20px;
+  }
+  .card h3{font-size:1.15rem;margin-bottom:10px}
+  .card p{color:var(--muted);font-size:.93rem;margin-bottom:16px}
+  .card ul{list-style:none;display:grid;gap:9px;font-size:.89rem;color:#c6d6ea}
+  .card ul li{display:flex;gap:9px;align-items:flex-start}
+  .card ul li::before{
+    content:"✓";color:var(--ok);font-weight:800;flex:none;
+  }
+
+  /* brands */
+  .brands{background:var(--bg-2);border-block:1px solid var(--line)}
+  .brand-grid{
+    display:grid;grid-template-columns:repeat(7,1fr);gap:16px;
+  }
+  .brand{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:22px 10px;text-align:center;
+    font-weight:800;letter-spacing:.4px;font-size:.95rem;color:#cdddf0;
+    transition:.22s;
+  }
+  .brand:hover{border-color:var(--brand);color:var(--brand);transform:translateY(-4px);background:#0f1b2e}
+  .brand small{display:block;font-size:.66rem;font-weight:600;letter-spacing:1.4px;color:var(--muted);margin-top:5px}
+
+  /* why us */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+  .why-list{display:grid;gap:16px}
+  .why-item{
+    display:flex;gap:16px;padding:18px 20px;
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    transition:.22s;
+  }
+  .why-item:hover{border-color:rgba(34,195,255,.5);transform:translateX(5px)}
+  .why-item i{
+    flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    font-style:normal;font-size:1.1rem;background:rgba(255,176,32,.14);color:var(--accent);
+  }
+  .why-item b{display:block;font-size:.98rem;margin-bottom:3px}
+  .why-item small{color:var(--muted);font-size:.86rem;line-height:1.55;display:block}
+
+  .price-box{
+    background:linear-gradient(160deg,var(--card),#0d1728);
+    border:1px solid var(--line);border-radius:20px;padding:34px;box-shadow:var(--shadow);
+  }
+  .price-box h3{font-size:1.25rem;margin-bottom:8px}
+  .price-box > p{color:var(--muted);font-size:.9rem;margin-bottom:24px}
+  .price-row{
+    display:flex;justify-content:space-between;gap:14px;
+    padding:14px 0;border-bottom:1px dashed var(--line);font-size:.93rem;
+  }
+  .price-row:last-of-type{border-bottom:0}
+  .price-row span{color:var(--muted)}
+  .price-row b{color:var(--brand);white-space:nowrap}
+  .price-note{
+    margin-top:22px;font-size:.8rem;color:var(--muted);
+    background:rgba(34,195,255,.07);border:1px solid rgba(34,195,255,.22);
+    padding:12px 16px;border-radius:10px;
+  }
+
+  /* contact */
+  .contact{background:var(--bg-2);border-top:1px solid var(--line)}
+  .contact-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:48px}
+  .contact-info{display:grid;gap:16px;align-content:start}
+  .info-item{
+    display:flex;gap:16px;align-items:flex-start;
+    background:var(--card);border:1px solid var(--line);
+    padding:18px 20px;border-radius:14px;
+  }
+  .info-item i{
+    flex:none;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;
+    font-style:normal;font-size:1.05rem;background:rgba(34,195,255,.14);color:var(--brand);
+  }
+  .info-item b{display:block;font-size:.78rem;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+  .info-item span{font-size:.96rem;font-weight:600;word-break:break-word}
+
+  form{
+    background:var(--card);border:1px solid var(--line);
+    border-radius:20px;padding:32px;box-shadow:var(--shadow);
+  }
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.82rem;font-weight:700;letter-spacing:.4px;margin-bottom:7px;color:#c8d8ec}
+  .field input,.field select,.field textarea{
+    width:100%;padding:12px 14px;border-radius:10px;
+    background:#0e1929;border:1px solid var(--line);
+    color:var(--txt);font-family:inherit;font-size:.93rem;outline:none;
+    transition:.2s;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    border-color:var(--brand);box-shadow:0 0 0 3px rgba(34,195,255,.15);
+  }
+  .field textarea{resize:vertical;min-height:96px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  form .btn{width:100%;justify-content:center;margin-top:6px}
+  .form-note{font-size:.78rem;color:var(--muted);text-align:center;margin-top:14px}
+
+  /* footer */
+  footer{
+    background:#080e19;border-top:1px solid var(--line);
+    padding:52px 0 26px;font-size:.9rem;
+  }
+  .foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:38px;margin-bottom:40px}
+  .foot-grid h4{font-size:.82rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--brand);margin-bottom:16px}
+  .foot-grid ul{list-style:none;display:grid;gap:9px}
+  .foot-grid a{color:var(--muted);transition:.2s}
+  .foot-grid a:hover{color:var(--brand)}
+  .foot-grid p{color:var(--muted);font-size:.88rem;max-width:34ch}
+  .foot-bottom{
+    border-top:1px solid var(--line);padding-top:22px;
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;
+    color:var(--muted);font-size:.83rem;
+  }
+
+  /* float call */
+  .float-call{
+    position:fixed;right:20px;bottom:20px;z-index:80;
+    width:58px;height:58px;border-radius:50%;
+    background:linear-gradient(135deg,var(--brand),var(--brand-2));
+    display:grid;place-items:center;font-size:1.5rem;color:#04121f;
+    box-shadow:0 12px 28px rgba(34,195,255,.42);
+    animation:pulse 2.4s infinite;
+  }
+  @keyframes pulse{
+    0%,100%{box-shadow:0 12px 28px rgba(34,195,255,.42)}
+    50%{box-shadow:0 12px 28px rgba(34,195,255,.42),0 0 0 14px rgba(34,195,255,.08)}
+  }
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.show{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1000px){
+    .hero-grid,.why-grid,.contact-grid{grid-template-columns:1fr}
+    .cards{grid-template-columns:1fr 1fr}
+    .brand-grid{grid-template-columns:repeat(4,1fr)}
+    .foot-grid{grid-template-columns:1fr 1fr}
+    .hero-card{order:-1}
+  }
+  @media(max-width:760px){
+    nav ul{
+      display:none;position:absolute;top:100%;left:0;right:0;
+      flex-direction:column;gap:0;background:var(--bg-2);
+      border-bottom:1px solid var(--line);padding:8px 0;
+    }
+    nav ul.open{display:flex}
+    nav ul li a{display:block;padding:13px 22px;color:var(--txt)}
+    .menu-toggle{display:block}
+    .nav .btn{display:none}
+    .cards,.field-row{grid-template-columns:1fr}
+    .brand-grid{grid-template-columns:repeat(2,1fr)}
+    .hero{padding:56px 0 64px}
+    .hero-stats{gap:24px}
+    section{padding:60px 0}
+    .foot-grid{grid-template-columns:1fr}
+    form{padding:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= TOP BAR ================= -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="tag">🛠️ Complete Repair &amp; Servicing — Desktop • Laptop • Printer</div>
+    <div class="tag">
+      <a href="tel:+910000000000">📞 Call: +91 00000 00000</a>
+      <a href="https://wa.me/910000000000" target="_blank" rel="noopener">💬 WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <div class="wrap nav">
+    <a href="#home" class="logo">
+      <div class="logo-badge">SC</div>
+      <span><b>SKYNET COMPUTER</b><small>REPAIR &amp; SERVICE</small></span>
+    </a>
+
+    <nav>
+      <button class="menu-toggle" id="menuBtn" aria-label="Toggle menu">☰</button>
+      <ul id="menu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#brands">Brands</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="#contact" class="btn btn-primary">Book a Repair</a>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill"><span class="dot"></span> Service Available — Call or WhatsApp</div>
+      <h1>Complete <em>Repair &amp; Servicing</em> for Desktops, Laptops &amp; Printers</h1>
+      <p class="lead">
+        SKYNET COMPUTER handles hardware faults, paper jams, printhead cleaning and cartridge issues
+        for all major printer brands — HP, Canon, Epson, Xerox, Brother, Ricoh and Samsung.
+        Fast diagnosis, genuine parts and honest pricing.
+      </p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary">📋 Book a Service</a>
+        <a href="https://wa.me/910000000000" target="_blank" rel="noopener" class="btn btn-ghost">💬 WhatsApp Us</a>
+      </div>
+      <div class="hero-stats">
+        <div><b>7+</b><span>Printer Brands</span></div>
+        <div><b>Same Day</b><span>Diagnosis</span></div>
+        <div><b>100%</b><span>Service Support</span></div>
+      </div>
+    </div>
+
+    <aside class="hero-card">
+      <h3>Quick Service Options</h3>
+      <p>Choose what you need — we do the rest.</p>
+
+      <div class="quick-item">
+        <i>🖥️</i>
+        <div><b>Desktop Repair</b><small>Hardware faults, no display, slow PC, upgrades</small></div>
+      </div>
+      <div class="quick-item">
+        <i>💻</i>
+        <div><b>Laptop Servicing</b><small>Overheating, keyboard, battery, screen, chip-level</small></div>
+      </div>
+      <div class="quick-item">
+        <i>🖨️</i>
+        <div><b>Printer Repair</b><small>Paper jams, printhead cleaning, cartridge issues</small></div>
+      </div>
+      <div class="quick-item">
+        <i>🧰</i>
+        <div><b>On-Site / Pickup</b><small>Doorstep service available on request</small></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="pill">Our Services</div>
+      <h2>Repair &amp; Servicing for <em>Every Device</em></h2>
+      <p>From hardware faults to printhead cleaning — complete servicing under one roof.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card reveal">
+        <div class="icon">🖥️</div>
+        <h3>Desktop Computer Repair</h3>
+        <p>Complete hardware and software servicing for home and office desktops.</p>
+        <ul>
+          <li>Hardware fault diagnosis &amp; repair</li>
+          <li>No display / boot failure</li>
+          <li>SMPS, motherboard &amp; RAM issues</li>
+          <li>Hard disk / SSD upgrade</li>
+          <li>OS installation &amp; virus removal</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">💻</div>
+        <h3>Laptop Repair &amp; Servicing</h3>
+        <p>Full servicing for all laptop brands — cleaning, repairs and part replacement.</p>
+        <ul>
+          <li>Overheating &amp; fan cleaning</li>
+          <li>Thermal paste replacement</li>
+          <li>Keyboard, battery &amp; screen repair</li>
+          <li>Charging / power jack issues</li>
+          <li>Hardware faults &amp; chip-level repair</li>
+        </ul>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">🖨️</div>
+        <h3>Printer Repair &amp; Servicing</h3>
+        <p>Expert servicing for inkjet, laser, and multifunction printers.</p>
+        <ul>
+          <li>Paper jam removal &amp; fixing</li>
+          <li>Printhead cleaning</li>
+          <li>Cartridge &amp; toner issues</li>
+          <li>Refilling &amp; cartridge reset</li>
+          <li>Print quality &amp; alignment problems</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= BRANDS ================= -->
+<section class="brands" id="brands">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="pill">Supported Brands</div>
+      <h2>All Major <em>Printer Brands</em> Supported</h2>
+      <p>We service and repair printers from every leading manufacturer.</p>
+    </div>
+
+    <div class="brand-grid reveal">
+      <div class="brand">HP<small>INKJET &amp; LASER</small></div>
+      <div class="brand">Canon<small>PIXMA / LBP</small></div>
+      <div class="brand">Epson<small>L-SERIES / ECOTANK</small></div>
+      <div class="brand">Xerox<small>WORKCENTRE</small></div>
+      <div class="brand">Brother<small>MFC / DCP</small></div>
+      <div class="brand">Ricoh<small>SP / MP</small></div>
+      <div class="brand">Samsung<small>XPRESS</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="pill">Why SKYNET COMPUTER</div>
+      <h2>Reliable Service, <em>Honest Pricing</em></h2>
+      <p>We focus on fixing the actual problem — not replacing parts unnecessarily.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-list reveal">
+        <div class="why-item">
+          <i>🔍</i>
+          <div><b>Proper Diagnosis First</b><small>We check the device, identify the real fault and explain it before any work starts.</small></div>
+        </div>
+        <div class="why-item">
+          <i>⚙️</i>
+          <div><b>Complete Repair &amp; Servicing</b><small>Desktop, laptop and printer — hardware faults, cleaning and part replacement all handled in-house.</small></div>
+        </div>
+        <div class="why-item">
+          <i>🖨️</i>
+          <div><b>Printer Specialists</b><small>Paper jams, printhead cleaning and cartridge issues fixed for all major brands.</small></div>
+        </div>
+        <div class="why-item">
+          <i>💰</i>
+          <div><b>Transparent Pricing</b><small>Clear estimate before service. No hidden charges, no unnecessary parts.</small></div>
+        </div>
+        <div class="why-item">
+          <i>⏱️</i>
+          <div><b>Fast Turnaround</b><small>Most common faults resolved the same day, subject to part availability.</small></div>
+        </div>
+      </div>
+
+      <div class="price-box reveal">
+        <h3>Service Coverage</h3>
+        <p>What's included when you bring your device to us.</p>
+
+        <div class="price-row"><span>Desktop hardware fault check</span><b>Included</b></div>
+        <div class="price-row"><span>Laptop full servicing &amp; cleaning</span><b>Included</b></div>
+        <div class="price-row"><span>Printer paper jam fixing</span><b>Included</b></div>
+        <div class="price-row"><span>Printhead cleaning</span><b>Included</b></div>
+        <div class="price-row"><span>Cartridge &amp; toner issue support</span><b>Included</b></div>
+        <div class="price-row"><span>Software / OS installation</span><b>Available</b></div>
+
+        <div class="price-note">
+          💡 Final cost depends on the fault and parts required. You get a clear estimate
+          before we begin any repair work.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="pill">Get In Touch</div>
+      <h2>Book Your <em>Repair Today</em></h2>
+      <p>Send us your device details and we'll get back to you with the next step.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="info-item">
+          <i>📞</i>
+          <div><b>Call Us</b><span><a href="tel:+910000000000">+91 00000 00000</a></span></div>
+        </div>
+        <div class="info-item">
+          <i>💬</i>
+          <div><b>WhatsApp</b><span><a href="https://wa.me/910000000000" target="_blank" rel="noopener">Chat with us</a></span></div>
+        </div>
+        <div class="info-item">
+          <i>✉️</i>
+          <div><b>Email</b><span><a href="mailto:info@skynetcomputer.com">info@skynetcomputer.com</a></span></div>
+        </div>
+        <div class="info-item">
+          <i>📍</i>
+          <div><b>Address</b><span>SKYNET COMPUTER, Your Street / Market, Your City, Your State – PIN</span></div>
+        </div>
+        <div class="info-item">
+          <i>🕒</i>
+          <div><b>Working Hours</b><span>Mon – Sat: 10:00 AM – 8:00 PM<br>Sunday: Closed</span></div>
+        </div>
+      </div>
+
+      <form class="reveal" id="serviceForm">
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Enter full name" required>
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="10-digit mobile" pattern="[0-9]{10}" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="device">Device Type</label>
+          <select id="device" name="device" required>
+            <option value="">Select device</option>
+            <option>Desktop Computer</option>
+            <option>Laptop</option>
+            <option>Printer — HP</option>
+            <option>Printer — Canon</option>
+            <option>Printer — Epson</option>
+            <option>Printer — Xerox</option>
+            <option>Printer — Brother</option>
+            <option>Printer — Ricoh</option>
+            <option>Printer — Samsung</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="issue">Describe the Problem</label>
+          <textarea id="issue" name="issue" placeholder="e.g. Printer showing paper jam / laptop overheating / desktop not booting" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">📩 Send Service Request</button>
+        <p class="form-note">We usually reply within working hours. Your details stay private.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo" style="margin-bottom:16px">
+          <div class="logo-badge">SC</div>
+          <span><b>SKYNET COMPUTER</b><small>REPAIR &amp; SERVICE</small></span>
+        </div>
+        <p>Complete repair and servicing for desktop computers, laptops and all major printer brands. Hardware faults, paper jams, printhead cleaning and cartridge issues handled professionally.</p>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Desktop Repair</a></li>
+          <li><a href="#services">Laptop Servicing</a></li>
+          <li><a href="#services">Printer Repair</a></li>
+          <li><a href="#services">Printhead Cleaning</a></li>
+          <li><a href="#services">Cartridge Issues</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Brands</h4>
+        <ul>
+          <li><a href="#brands">HP</a></li>
+          <li><a href="#brands">Canon</a></li>
+          <li><a href="#brands">Epson</a></li>
+          <li><a href="#brands">Xerox</a></li>
+          <li><a href="#brands">Brother / Ricoh / Samsung</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+910000000000">📞 +91 00000 00000</a></li>
+          <li><a href="https://wa.me/910000000000" target="_blank" rel="noopener">💬 WhatsApp</a></li>
+          <li><a href="mailto:info@skynetcomputer.com">✉️ info@skynetcomputer.com</a></li>
+          <li>🕒 Mon – Sat, 10 AM – 8 PM</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> SKYNET COMPUTER. All rights reserved.</span>
+      <span>Desktop • Laptop • Printer Repair &amp; Servicing</span>
+    </div>
+  </div>
+</footer>
+
+<a href="tel:+910000000000" class="float-call" aria-label="Call SKYNET COMPUTER">📞</a>
+
+<script>
+  /* mobile menu */
+  const menuBtn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  menuBtn.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => menu.classList.remove('open'))
+  );
+
+  /* scroll reveal */
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('show'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* year */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* form -> WhatsApp */
+  document.getElementById('serviceForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name   = document.getElementById('name').value.trim();
+    const phone  = document.getElementById('phone').value.trim();
+    const device = document.getElementById('device').value;
+    const issue  = document.getElementById('issue').value.trim();
+
+    const msg =
+      "*New Service Request — SKYNET COMPUTER*%0A" +
+      "Name: " + encodeURIComponent(name) + "%0A" +
+      "Phone: " + encodeURIComponent(phone) + "%0A" +
+      "Device: " + encodeURIComponent(device) + "%0A" +
+      "Problem: " + encodeURIComponent(issue);
+
+    window.open("https://wa.me/910000000000?text=" + msg, "_blank");
+    this.reset();
+  });
+</script>
+</body>
+</html>
