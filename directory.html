@@ -1110,8 +1110,8 @@
                 li.innerText = cat;
                 li.onclick = function() { filterCategory(cat, this); };
                 
-                // 🚀 Hide categories after the first 15
-                if (index >= 15) {
+                // 🚀 Hide categories after the first 10 (Updated condition)
+                if (index >= 10) {
                     li.classList.add('hidden-cat');
                 }
                 
