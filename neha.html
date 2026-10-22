@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neha Coaching Center | Classes 5–12 | CBSE • HBSE • ICSE</title>
+<meta name="description" content="Neha Coaching Center, Near UCO Bank, VPO Ramgarh, Distt Panchkula. Quality coaching for Class 5 to 12 (CBSE, HBSE, ICSE). Timings: 4 PM – 7 PM. Call 85589 80549.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal:#0f766e;
+    --teal-dark:#0b5e57;
+    --teal-light:#ccfbf1;
+    --orange:#f97316;
+    --orange-dark:#ea580c;
+    --bg:#f8fafc;
+    --text:#1e293b;
+    --muted:#64748b;
+    --white:#ffffff;
+    --radius:22px;
+    --shadow:0 20px 50px -20px rgba(15,118,110,.25);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:90px}
+  body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.7;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4{font-family:'DM Serif Display',serif;line-height:1.2;font-weight:400}
+  a{text-decoration:none;color:inherit}
+  img,svg{display:block}
+  .container{width:min(1180px,92%);margin:0 auto}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:14px 30px;border-radius:50px;font-weight:600;font-size:.94rem;
+    border:none;cursor:pointer;transition:.3s;font-family:'Poppins',sans-serif;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    color:#fff;box-shadow:0 12px 26px -10px rgba(249,115,22,.6);
+  }
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 32px -12px rgba(249,115,22,.75)}
+  .btn-outline{
+    background:transparent;color:#fff;border:1.8px solid rgba(255,255,255,.4);
+  }
+  .btn-outline:hover{background:rgba(255,255,255,.12);border-color:#fff;transform:translateY(-3px)}
+  .btn-teal{background:var(--teal);color:#fff}
+  .btn-teal:hover{background:var(--teal-dark);transform:translateY(-3px)}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:fixed;top:0;left:0;width:100%;z-index:1000;
+    padding:16px 0;transition:.35s;
+  }
+  header.scrolled{
+    background:rgba(15,118,110,.97);
+    backdrop-filter:blur(12px);
+    box-shadow:0 12px 30px -18px rgba(0,0,0,.4);
+    padding:9px 0;
+  }
+  .nav-wrap{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:12px;color:#fff}
+  .logo-mark{
+    width:48px;height:48px;border-radius:15px;flex:0 0 auto;
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    display:grid;place-items:center;
+    font-family:'DM Serif Display',serif;font-size:1.5rem;color:#fff;
+    box-shadow:0 10px 22px -10px rgba(249,115,22,.8);
+  }
+  .logo-text b{display:block;font-family:'DM Serif Display',serif;font-size:1.12rem;letter-spacing:.3px}
+  .logo-text span{
+    display:block;font-size:.63rem;letter-spacing:2.6px;text-transform:uppercase;
+    color:var(--teal-light);font-weight:500;margin-top:1px;
+  }
+  nav ul{display:flex;align-items:center;gap:30px;list-style:none}
+  nav ul a{color:#e2e8f0;font-size:.9rem;font-weight:500;position:relative;transition:.25s}
+  nav ul a::after{
+    content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;
+    background:var(--orange);border-radius:2px;transition:.3s;
+  }
+  nav ul a:hover{color:#fff}
+  nav ul a:hover::after{width:100%}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    color:#fff;font-weight:600;font-size:.86rem;
+    padding:11px 20px;border-radius:50px;transition:.3s;
+  }
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(249,115,22,.7)}
+  .menu-btn{
+    display:none;width:46px;height:46px;border-radius:13px;
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+    place-items:center;cursor:pointer;
+  }
+  .menu-btn span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;transition:.3s;position:relative}
+  .menu-btn span::before,.menu-btn span::after{
+    content:'';position:absolute;left:0;width:20px;height:2px;background:#fff;border-radius:2px;transition:.3s;
+  }
+  .menu-btn span::before{top:-6px}
+  .menu-btn span::after{top:6px}
+  .menu-btn.active span{background:transparent}
+  .menu-btn.active span::before{top:0;transform:rotate(45deg)}
+  .menu-btn.active span::after{top:0;transform:rotate(-45deg)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;
+    padding:140px 0 90px;color:#fff;overflow:hidden;
+    background:
+      linear-gradient(120deg, rgba(15,118,110,.92) 0%, rgba(15,118,110,.85) 40%, rgba(15,118,110,.65) 100%),
+      url('https://images.pexels.com/photos/18650478/pexels-photo-18650478.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+  }
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center;
+  }
+  .hero-badge{
+    display:inline-flex;align-items:center;gap:9px;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+    padding:8px 18px;border-radius:50px;font-size:.76rem;letter-spacing:1.6px;
+    text-transform:uppercase;font-weight:500;color:#fff;margin-bottom:24px;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 0 4px rgba(74,222,128,.25);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(74,222,128,.25)}50%{box-shadow:0 0 0 9px rgba(74,222,128,0)}}
+
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);letter-spacing:-.5px;margin-bottom:20px;text-shadow:0 4px 20px rgba(0,0,0,.2)}
+  .hero h1 .gold{color:#fdba74;font-style:italic}
+  .hero p.sub{color:#d1fae5;font-size:1.05rem;max-width:520px;margin-bottom:32px;text-shadow:0 2px 10px rgba(0,0,0,.15)}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:38px}
+
+  .hero-stats{display:flex;flex-wrap:wrap;gap:14px}
+  .stat{
+    background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);
+    border-radius:14px;padding:12px 20px;backdrop-filter:blur(6px);
+  }
+  .stat b{display:block;font-family:'DM Serif Display',serif;font-size:1.3rem;color:#fdba74}
+  .stat span{font-size:.74rem;letter-spacing:1.2px;text-transform:uppercase;color:#d1fae5}
+
+  /* Hero timing card */
+  .time-card{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    border-radius:26px;padding:36px 32px;backdrop-filter:blur(18px);
+    box-shadow:0 30px 60px -30px rgba(0,0,0,.6);
+  }
+  .time-card .tc-label{
+    font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:#fdba74;
+    font-weight:600;margin-bottom:14px;
+  }
+  .time-card .clock{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+  .clock-ico{
+    width:52px;height:52px;border-radius:16px;flex:0 0 auto;
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+    display:grid;place-items:center;
+  }
+  .time-card .big{font-family:'DM Serif Display',serif;font-size:1.65rem;line-height:1.1}
+  .time-card .small{font-size:.8rem;color:#d1fae5;letter-spacing:.5px}
+  .tc-divider{height:1px;background:rgba(255,255,255,.2);margin:22px 0}
+  .tc-row{display:flex;justify-content:space-between;align-items:center;font-size:.87rem;padding:7px 0;color:#e2e8f0}
+  .tc-row b{color:#fff;font-weight:600}
+  .boards{display:flex;gap:8px;margin-top:20px;flex-wrap:wrap}
+  .board-pill{
+    background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.3);
+    padding:6px 14px;border-radius:50px;font-size:.74rem;font-weight:600;letter-spacing:1px;
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:92px 0}
+  .eyebrow{
+    font-size:.74rem;letter-spacing:3.4px;text-transform:uppercase;
+    color:var(--teal);font-weight:600;margin-bottom:12px;display:block;
+  }
+  .section-title{font-size:clamp(1.8rem,3.6vw,2.6rem);margin-bottom:16px;letter-spacing:-.4px;color:var(--text)}
+  .lead{color:var(--muted);max-width:660px;font-size:.98rem}
+  .center{text-align:center}
+  .center .lead{margin-left:auto;margin-right:auto}
+
+  /* ---------- ABOUT ---------- */
+  #about{background:var(--white)}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .about-img{
+    border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
+    position:relative;
+  }
+  .about-img img{width:100%;height:100%;object-fit:cover;min-height:400px;transition:.5s}
+  .about-img:hover img{transform:scale(1.04)}
+  .about-text p{color:var(--muted);margin-bottom:16px;font-size:.97rem}
+  .about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:28px}
+  .hl{
+    display:flex;align-items:flex-start;gap:12px;
+    background:var(--bg);border:1px solid #e2e8f0;border-radius:14px;padding:16px;
+  }
+  .hl svg{flex:0 0 auto;margin-top:3px}
+  .hl b{display:block;font-size:.9rem;font-weight:600}
+  .hl span{font-size:.78rem;color:var(--muted);line-height:1.5}
+
+  /* ---------- CLASSES ---------- */
+  #classes{background:var(--bg)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px}
+  .card{
+    background:#fff;border-radius:22px;overflow:hidden;
+    border:1px solid #e2e8f0;transition:.35s;position:relative;
+  }
+  .card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:transparent}
+  .card-img{height:200px;overflow:hidden}
+  .card-img img{width:100%;height:100%;object-fit:cover;transition:.5s}
+  .card:hover .card-img img{transform:scale(1.06)}
+  .card-body{padding:28px 26px}
+  .card h3{font-size:1.24rem;margin-bottom:6px}
+  .card .tag{
+    font-size:.74rem;letter-spacing:1.6px;text-transform:uppercase;
+    color:var(--orange);font-weight:600;margin-bottom:16px;display:block;
+  }
+  .card p{font-size:.89rem;color:var(--muted);margin-bottom:18px}
+  .card ul{list-style:none}
+  .card li{font-size:.85rem;color:#475569;padding:6px 0 6px 24px;position:relative}
+  .card li::before{
+    content:'';position:absolute;left:0;top:14px;width:8px;height:8px;border-radius:50%;
+    background:linear-gradient(135deg,var(--orange),var(--orange-dark));
+  }
+
+  /* ---------- WHY US ---------- */
+  #why{background:var(--white)}
+  .features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px}
+  .feature{
+    padding:32px 26px;border-radius:20px;background:var(--bg);
+    border:1px solid #e2e8f0;transition:.35s;
+  }
+  .feature:hover{background:#fff;box-shadow:var(--shadow);transform:translateY(-6px);border-color:transparent}
+  .f-ico{
+    width:52px;height:52px;border-radius:15px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--teal),var(--teal-dark));margin-bottom:18px;
+  }
+  .feature h4{font-size:1.05rem;margin-bottom:8px;font-family:'Poppins',sans-serif;font-weight:600}
+  .feature p{font-size:.86rem;color:var(--muted);line-height:1.65}
+
+  /* ---------- TIMING BAND ---------- */
+  .timing-band{
+    background:
+      linear-gradient(120deg, rgba(15,118,110,.95), rgba(15,118,110,.85)),
+      url('https://images.pexels.com/photos/31864390/pexels-photo-31864390.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover no-repeat;
+    color:#fff;padding:74px 0;position:relative;overflow:hidden;
+  }
+  .timing-inner{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:36px;
+    position:relative;z-index:2;
+  }
+  .timing-text h2{font-size:clamp(1.6rem,3.4vw,2.3rem);margin-bottom:8px}
+  .timing-text p{color:#ccfbf1;font-size:.94rem;max-width:480px}
+  .timing-clock{
+    display:flex;align-items:center;gap:20px;
+    background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+    border-radius:22px;padding:24px 34px;backdrop-filter:blur(10px);
+  }
+  .timing-clock .t{
+    font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,3vw,2rem);
+    letter-spacing:.5px;color:#fdba74;white-space:nowrap;
+  }
+  .timing-clock .d{font-size:.74rem;letter-spacing:2.4px;text-transform:uppercase;color:#ccfbf1;margin-top:2px}
+
+  /* ---------- CONTACT ---------- */
+  #contact{background:var(--bg)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:52px;align-items:start}
+  .info-list{display:grid;gap:16px}
+  .info{
+    display:flex;gap:18px;align-items:flex-start;background:#fff;
+    border:1px solid #e2e8f0;border-radius:18px;padding:22px 24px;transition:.3s;
+  }
+  .info:hover{box-shadow:var(--shadow);transform:translateY(-3px);border-color:transparent}
+  .i-ico{
+    width:48px;height:48px;border-radius:14px;flex:0 0 auto;display:grid;place-items:center;
+    background:var(--teal-light);
+  }
+  .info h4{font-size:.95rem;font-family:'Poppins',sans-serif;font-weight:600;margin-bottom:4px}
+  .info p,.info a{font-size:.88rem;color:var(--muted);line-height:1.6}
+  .info a:hover{color:var(--teal);font-weight:500}
+
+  .msg-form{
+    background:#fff;border:1px solid #e2e8f0;border-radius:24px;
+    padding:36px 32px;box-shadow:0 20px 50px -35px rgba(15,118,110,.2);
+  }
+  .msg-form h3{font-size:1.3rem;margin-bottom:6px}
+  .msg-form > p{font-size:.85rem;color:var(--muted);margin-bottom:24px}
+  .field{margin-bottom:16px}
+  .field label{display:block;font-size:.78rem;font-weight:600;letter-spacing:.6px;margin-bottom:7px;color:#334155}
+  .field input,.field select,.field textarea{
+    width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid #e2e8f0;
+    font-family:'Poppins',sans-serif;font-size:.9rem;color:var(--text);
+    background:#f8fafc;transition:.25s;outline:none;resize:vertical;
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{
+    border-color:var(--teal);background:#fff;box-shadow:0 0 0 4px rgba(15,118,110,.12);
+  }
+  .msg-form .btn-primary{width:100%;justify-content:center;margin-top:8px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:#0f172a;color:#cbd5e1;padding:64px 0 0}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:44px;padding-bottom:44px}
+  .foot-brand p{font-size:.86rem;color:#94a3b8;margin-top:18px;max-width:320px;line-height:1.7}
+  footer h4{color:#fff;font-size:.95rem;font-family:'Poppins',sans-serif;font-weight:600;margin-bottom:18px;letter-spacing:.4px}
+  .foot-links{list-style:none}
+  .foot-links li{margin-bottom:10px}
+  .foot-links a{font-size:.87rem;color:#94a3b8;transition:.25s}
+  .foot-links a:hover{color:#fdba74;padding-left:5px}
+  .foot-bottom{
+    border-top:1px solid rgba(255,255,255,.09);padding:22px 0;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+    font-size:.8rem;color:#64748b;
+  }
+
+  /* ---------- FLOATING BUTTONS ---------- */
+  .float-btns{position:fixed;right:20px;bottom:22px;z-index:900;display:flex;flex-direction:column;gap:12px}
+  .fab{
+    width:56px;height:56px;border-radius:50%;display:grid;place-items:center;
+    color:#fff;box-shadow:0 12px 26px -10px rgba(0,0,0,.45);transition:.3s;
+  }
+  .fab:hover{transform:scale(1.1)}
+  .fab.call{background:linear-gradient(135deg,var(--teal),var(--teal-dark))}
+  .fab.wa{background:linear-gradient(135deg,#25d366,#128c7e);position:relative}
+  .fab.wa::after{
+    content:'';position:absolute;inset:0;border-radius:50%;
+    border:2px solid #25d366;animation:ring 2.2s infinite;
+  }
+  @keyframes ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.6);opacity:0}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(32px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:1000px){
+    .hero-grid{grid-template-columns:1fr;gap:48px}
+    .time-card{max-width:460px}
+    .about-grid{grid-template-columns:1fr;gap:44px}
+    .cards,.features{grid-template-columns:repeat(2,1fr)}
+    .contact-grid{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:860px){
+    .menu-btn{display:grid}
+    nav ul{
+      position:fixed;top:0;right:-100%;height:100vh;width:min(300px,82%);
+      background:var(--teal-dark);flex-direction:column;align-items:flex-start;
+      padding:110px 34px 40px;gap:26px;transition:.4s cubic-bezier(.4,0,.2,1);
+      box-shadow:-25px 0 60px rgba(0,0,0,.3);
+    }
+    nav ul.open{right:0}
+    nav ul a{font-size:1rem}
+    .nav-cta{display:none}
+    .hero{padding:120px 0 70px;min-height:auto}
+  }
+  @media(max-width:700px){
+    section{padding:70px 0}
+    .cards,.features{grid-template-columns:1fr}
+    .about-highlights{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr;gap:34px}
+    .timing-inner{flex-direction:column;align-items:flex-start}
+    .timing-clock{width:100%;justify-content:center}
+    .hero-stats{gap:10px}
+    .stat{padding:10px 16px}
+  }
+  @media(max-width:420px){
+    .msg-form{padding:28px 22px}
+    .time-card{padding:28px 22px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="container nav-wrap">
+    <a href="#home" class="logo">
+      <div class="logo-mark">N</div>
+      <div class="logo-text">
+        <b>Neha Coaching Center</b>
+        <span>Ramgarh • Panchkula</span>
+      </div>
+    </a>
+
+    <nav>
+      <ul id="navMenu">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#classes">Classes</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <a href="tel:+918558980549" class="nav-cta">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      85589 80549
+    </a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu"><span></span></button>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="hero-badge"><span class="dot"></span> Admissions Open</div>
+
+      <h1>Building Strong<br>Foundations for <span class="gold">Class 5–12</span></h1>
+
+      <p class="sub">
+        Personal‑attention coaching for CBSE, HBSE &amp; ICSE students at
+        Neha Coaching Center, Ramgarh — where every student learns with
+        clarity, confidence and care.
+      </p>
+
+      <div class="hero-actions">
+        <a href="tel:+918558980549" class="btn btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Call Now
+        </a>
+        <a href="https://wa.me/918558980549?text=Hello%20Neha%20Coaching%20Center%2C%20I%20want%20to%20know%20about%20admission." target="_blank" rel="noopener" class="btn btn-outline">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15h-.01c-1.5 0-2.97-.4-4.25-1.16l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.37c0-4.54 3.7-8.23 8.24-8.23 2.2 0 4.27.86 5.82 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.16 8.23zm4.52-6.16c-.25-.12-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+          WhatsApp
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat"><b>5 – 12</b><span>Classes</span></div>
+        <div class="stat"><b>3</b><span>Boards</span></div>
+        <div class="stat"><b>4 – 7 PM</b><span>Daily Batch</span></div>
+      </div>
+    </div>
+
+    <!-- Timing card -->
+    <div class="time-card">
+      <div class="tc-label">Class Timings</div>
+      <div class="clock">
+        <div class="clock-ico">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div>
+          <div class="big">4:00 PM – 7:00 PM</div>
+          <div class="small">Monday to Saturday</div>
+        </div>
+      </div>
+
+      <div class="tc-divider"></div>
+
+      <div class="tc-row"><span>Classes</span><b>5th to 12th</b></div>
+      <div class="tc-row"><span>Boards Covered</span><b>CBSE / HBSE / ICSE</b></div>
+      <div class="tc-row"><span>Batch Type</span><b>Small &amp; Focused</b></div>
+
+      <div class="boards">
+        <span class="board-pill">CBSE</span>
+        <span class="board-pill">HBSE</span>
+        <span class="board-pill">ICSE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-img reveal">
+      <img src="https://images.pexels.com/photos/18650478/pexels-photo-18650478.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Indian students studying together in a classroom">
+    </div>
+
+    <div class="about-text reveal">
+      <span class="eyebrow">About Us</span>
+      <h2 class="section-title">A place where learning<br>feels simple &amp; supportive</h2>
+      <p>
+        <strong>Neha Coaching Center</strong> is a neighbourhood coaching institute located
+        near UCO Bank, VPO Ramgarh, District Panchkula. We teach students from
+        <strong>Class 5 to Class 12</strong> following the <strong>CBSE, HBSE and ICSE</strong>
+        syllabi.
+      </p>
+      <p>
+        Our approach is simple — small batches, clear explanations and regular practice.
+        Every student gets personal attention so that doubts are solved the same day
+        and concepts are built step by step, not by rote learning.
+      </p>
+
+      <div class="about-highlights">
+        <div class="hl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          <div><b>Board‑Focused</b><span>CBSE, HBSE &amp; ICSE syllabus covered in full</span></div>
+        </div>
+        <div class="hl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+          <div><b>Small Batches</b><span>Personal attention for every student</span></div>
+        </div>
+        <div class="hl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          <div><b>Regular Tests</b><span>Weekly practice &amp; progress feedback</span></div>
+        </div>
+        <div class="hl">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></svg>
+          <div><b>Doubt Clearing</b><span>Ask freely — no question is small</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CLASSES ================= -->
+<section id="classes">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Our Classes</span>
+      <h2 class="section-title">Coaching for every stage</h2>
+      <p class="lead">From building basics in middle school to scoring well in board exams —
+        we guide students through every level.</p>
+    </div>
+
+    <div class="cards">
+      <!-- Class 5–8 -->
+      <div class="card reveal">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/28389291/pexels-photo-28389291.jpeg?auto=compress&cs=tinysrgb&w=600" alt="School boys in uniform">
+        </div>
+        <div class="card-body">
+          <h3>Class 5 – 8</h3>
+          <span class="tag">Foundation</span>
+          <p>Strong basics in every subject so that higher classes feel easy and stress‑free.</p>
+          <ul>
+            <li>Maths &amp; Science</li>
+            <li>English &amp; Hindi</li>
+            <li>Social Science</li>
+            <li>Regular practice worksheets</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Class 9–10 -->
+      <div class="card reveal">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/18650478/pexels-photo-18650478.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Students reading together">
+        </div>
+        <div class="card-body">
+          <h3>Class 9 – 10</h3>
+          <span class="tag">Board Focus</span>
+          <p>Complete board preparation with concept clarity, notes and test series.</p>
+          <ul>
+            <li>Maths &amp; Science</li>
+            <li>English &amp; Social Science</li>
+            <li>Chapter‑wise tests</li>
+            <li>Previous year papers</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Class 11–12 -->
+      <div class="card reveal">
+        <div class="card-img">
+          <img src="https://images.pexels.com/photos/31864390/pexels-photo-31864390.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Girl studying in class">
+        </div>
+        <div class="card-body">
+          <h3>Class 11 – 12</h3>
+          <span class="tag">Senior Secondary</span>
+          <p>Subject‑wise coaching with focus on scoring and understanding deep concepts.</p>
+          <ul>
+            <li>Subject‑wise coaching</li>
+            <li>Board exam preparation</li>
+            <li>Concept clarity sessions</li>
+            <li>Doubt clearing support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= WHY US ================= -->
+<section id="why">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Why Choose Us</span>
+      <h2 class="section-title">Reasons parents &amp; students trust us</h2>
+      <p class="lead">We keep things simple, honest and focused on the student's real progress.</p>
+    </div>
+
+    <div class="features">
+      <div class="feature reveal">
+        <div class="f-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h4>Experienced Teaching</h4>
+        <p>Concepts explained in a simple, step‑by‑step way that students actually understand.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg>
+        </div>
+        <h4>Small Batch Size</h4>
+        <p>Limited students per batch so that nobody gets left behind or goes unnoticed.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <h4>Regular Tests</h4>
+        <p>Frequent class tests and revision rounds keep students exam‑ready all year.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        </div>
+        <h4>Doubt Clearing</h4>
+        <p>Students can ask any question without hesitation — doubts are cleared the same day.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg>
+        </div>
+        <h4>Personal Attention</h4>
+        <p>Each student's weak areas are identified and worked on individually.</p>
+      </div>
+
+      <div class="feature reveal">
+        <div class="f-ico">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg>
+        </div>
+        <h4>Affordable Fees</h4>
+        <p>Quality coaching at reasonable fees, with easy monthly payment options.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TIMING BAND ================= -->
+<section class="timing-band">
+  <div class="container timing-inner">
+    <div class="timing-text">
+      <h2>Classes run only from 4:00 PM to 7:00 PM</h2>
+      <p>Please note our batch timings — Monday to Saturday. Call before visiting to confirm seat availability.</p>
+    </div>
+    <div class="timing-clock">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#fdba74" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+      <div>
+        <div class="t">4:00 PM – 7:00 PM</div>
+        <div class="d">Monday – Saturday</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="container">
+    <div class="center reveal">
+      <span class="eyebrow">Get In Touch</span>
+      <h2 class="section-title">Visit us or give a call</h2>
+      <p class="lead">Have a question about admissions, fees or timings? We're happy to help.</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="info-list reveal">
+        <div class="info">
+          <div class="i-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <h4>Our Address</h4>
+            <p>Near UCO Bank, VPO Ramgarh,<br>District Panchkula, Haryana</p>
+            <a href="https://www.google.com/maps/search/?api=1&query=UCO+Bank+Ramgarh+Panchkula" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600;font-size:.83rem;">Get Directions →</a>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="i-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          </div>
+          <div>
+            <h4>Phone / WhatsApp</h4>
+            <a href="tel:+918558980549">+91 85589 80549</a>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="i-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          </div>
+          <div>
+            <h4>Class Timings</h4>
+            <p>4:00 PM – 7:00 PM<br>Monday to Saturday</p>
+          </div>
+        </div>
+
+        <div class="info">
+          <div class="i-ico">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#0f766e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+          </div>
+          <div>
+            <h4>Boards Covered</h4>
+            <p>CBSE • HBSE • ICSE<br>Classes 5th to 12th</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="msg-form reveal" id="msgForm">
+        <h3>Send us a message</h3>
+        <p>Fill this form and it will open WhatsApp with your message ready to send.</p>
+
+        <div class="field">
+          <label for="name">Student / Parent Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="field">
+          <label for="cls">Class</label>
+          <select id="cls">
+            <option>Class 5</option>
+            <option>Class 6</option>
+            <option>Class 7</option>
+            <option>Class 8</option>
+            <option>Class 9</option>
+            <option>Class 10</option>
+            <option>Class 11</option>
+            <option>Class 12</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="msg">Your Message</label>
+          <textarea id="msg" rows="3" placeholder="I would like to know about fees and admission..."></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.52 12.15c-.25-.12-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+          Send on WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#home" class="logo">
+          <div class="logo-mark">N</div>
+          <div class="logo-text">
+            <b>Neha Coaching Center</b>
+            <span>Ramgarh • Panchkula</span>
+          </div>
+        </a>
+        <p>Quality coaching for Class 5 to 12 students of CBSE, HBSE and ICSE boards. Learn with clarity, confidence and care.</p>
+      </div>
+
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="foot-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#classes">Classes</a></li>
+          <li><a href="#why">Why Choose Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <ul class="foot-links">
+          <li><a href="tel:+918558980549">+91 85589 80549</a></li>
+          <li><a href="https://wa.me/918558980549" target="_blank" rel="noopener">WhatsApp Us</a></li>
+          <li>Near UCO Bank, VPO Ramgarh,</li>
+          <li>Distt. Panchkula, Haryana</li>
+          <li>Timings: 4 PM – 7 PM (Mon–Sat)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-bottom">
+      <span>© <span id="year"></span> Neha Coaching Center. All rights reserved.</span>
+      <span>Classes 5–12 • CBSE • HBSE • ICSE</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING BUTTONS ================= -->
+<div class="float-btns">
+  <a href="tel:+918558980549" class="fab call" aria-label="Call Now">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+  </a>
+  <a href="https://wa.me/918558980549" target="_blank" rel="noopener" class="fab wa" aria-label="WhatsApp">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm4.52 12.15c-.25-.12-1.47-.72-1.69-.8-.23-.08-.39-.12-.56.12-.16.25-.64.8-.78.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.16.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.42h-.47c-.16 0-.43.06-.65.31-.23.25-.85.83-.85 2.03s.87 2.35.99 2.51c.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.18 1.11.16 1.53.1.47-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.1-.22-.16-.47-.28z"/></svg>
+  </a>
+</div>
+
+<script>
+  /* ---------- Sticky header ---------- */
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  /* ---------- Mobile menu ---------- */
+  const menuBtn = document.getElementById('menuBtn');
+  const navMenu = document.getElementById('navMenu');
+  menuBtn.addEventListener('click', () => {
+    menuBtn.classList.toggle('active');
+    navMenu.classList.toggle('open');
+  });
+  navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menuBtn.classList.remove('active');
+      navMenu.classList.remove('open');
+    });
+  });
+
+  /* ---------- Scroll reveal ---------- */
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 90);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  /* ---------- WhatsApp form ---------- */
+  const form = document.getElementById('msgForm');
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('name').value.trim();
+    const cls  = document.getElementById('cls').value;
+    const msg  = document.getElementById('msg').value.trim() || 'I would like to know more about admission.';
+
+    const text =
+      `Hello Neha Coaching Center,%0A%0A` +
+      `Name: ${encodeURIComponent(name)}%0A` +
+      `Class: ${encodeURIComponent(cls)}%0A` +
+      `Message: ${encodeURIComponent(msg)}`;
+
+    window.open(`https://wa.me/918558980549?text=${text}`, '_blank');
+  });
+
+  /* ---------- Footer year ---------- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
