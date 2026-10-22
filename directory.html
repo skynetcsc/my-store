@@ -91,6 +91,27 @@
         .category-list li:hover { background: #e3f2fd; color: #2980b9; }
         .category-list li.active { background: #2980b9; color: white; border-left: 3px solid #1a252f; }
 
+        /* 🚀 CSS FOR SHOW MORE BUTTON & HIDDEN ITEMS */
+        .hidden-cat { display: none !important; }
+        .show-cat { display: block !important; }
+        .toggle-cat-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #e3f2fd;
+            color: #2980b9;
+            border: 1px solid #2980b9;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .toggle-cat-btn:hover {
+            background: #2980b9;
+            color: white;
+        }
+
         /* Grid Layout */
         .container { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
         
@@ -132,11 +153,14 @@
             header { padding: 30px 15px; }
             
             .main-wrapper { flex-direction: column; padding: 15px; gap: 15px; }
-            .sidebar { width: 100%; position: static; max-height: 300px; }
+            .sidebar { width: 100%; position: static; max-height: none; }
             .category-list { display: flex; flex-wrap: wrap; gap: 8px; }
             .category-list li { margin-bottom: 0; padding: 8px 12px; font-size: 12px; border-left: none; border-bottom: 3px solid transparent; }
             .category-list li.active { border-left: none; border-bottom: 3px solid #1a252f; }
             .container { grid-template-columns: 1fr; }
+            
+            /* Mobile button style */
+            .toggle-cat-btn { width: auto; margin-top: 5px; padding: 8px 15px; }
         }
 
         /* 🚀 ADDED CSS FOR BUTTON & MODAL */
@@ -187,6 +211,8 @@
             <ul class="category-list" id="categoryList">
                 <!-- Categories will be loaded here automatically via JavaScript -->
             </ul>
+            <!-- 🚀 SHOW MORE BUTTON -->
+            <button id="toggleCatBtn" class="toggle-cat-btn" onclick="toggleCategories()">➕ Show More (और दिखाएं)</button>
         </div>
 
         <!-- RIGHT SIDE: BUSINESS CARDS -->
@@ -1066,7 +1092,7 @@
             loadCategories(); // Call the function to load categories
         });
 
-        // Function to load all 60 categories in Sidebar
+        // Function to load categories in Sidebar
         function loadCategories() {
             let categoryList = document.getElementById('categoryList');
             categoryList.innerHTML = ''; // Clear before loading
@@ -1078,13 +1104,41 @@
             allLi.onclick = function() { filterCategory('all', this); };
             categoryList.appendChild(allLi);
 
-            // Loop through all 60 categories and add to sidebar
-            masterCategories.forEach(cat => {
+            // Loop through all categories and add to sidebar
+            masterCategories.forEach((cat, index) => {
                 let li = document.createElement('li');
                 li.innerText = cat;
                 li.onclick = function() { filterCategory(cat, this); };
+                
+                // 🚀 Hide categories after the first 15
+                if (index >= 15) {
+                    li.classList.add('hidden-cat');
+                }
+                
                 categoryList.appendChild(li);
             });
+        }
+
+        // 🚀 Function to toggle "Show More / Show Less"
+        function toggleCategories() {
+            let hiddenItems = document.querySelectorAll('.hidden-cat');
+            let btn = document.getElementById('toggleCatBtn');
+            let isShowing = hiddenItems.length > 0 && hiddenItems[0].classList.contains('show-cat');
+
+            hiddenItems.forEach(item => {
+                if (isShowing) {
+                    item.classList.remove('show-cat');
+                } else {
+                    item.classList.add('show-cat');
+                }
+            });
+
+            // Change Button Text
+            if (isShowing) {
+                btn.innerHTML = "➕ Show More (और दिखाएं)";
+            } else {
+                btn.innerHTML = "➖ Show Less (कम दिखाएं)";
+            }
         }
 
         function filterCategory(categoryName, element) {
