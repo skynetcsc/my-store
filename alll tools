@@ -19,11 +19,70 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             text-align: center;
             padding: 20px;
         }
 
+        /* ===== TOP SUMMARY TABLE ===== */
+        .top-summary {
+            width: 100%;
+            max-width: 1100px;
+            margin-bottom: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .top-summary table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        .top-summary th {
+            background: rgba(0, 210, 255, 0.15);
+            color: #00d2ff;
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-summary td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #d0d0e0;
+        }
+
+        .top-summary tr:last-child td {
+            border-bottom: none;
+        }
+
+        .top-summary tr:hover td {
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .color-dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 6px;
+            vertical-align: middle;
+        }
+
+        .dot-blue { background: #0066ff; }
+        .dot-cyan { background: #00d2ff; }
+        .dot-orange { background: #ff6a00; }
+        .dot-green { background: #38ef7d; }
+        .dot-purple { background: #8e2de2; }
+        .dot-yellow { background: #ffd200; }
+
+        /* ===== LOGO & MAIN BUTTONS ===== */
         .logo {
             font-size: 4rem;
             font-weight: 800;
@@ -64,7 +123,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* Button 1: Anuprint Services */
         .btn-primary {
             background: linear-gradient(135deg, #00d2ff, #0066ff);
             color: #ffffff;
@@ -76,7 +134,6 @@
             background: linear-gradient(135deg, #00e0ff, #0077ff);
         }
 
-        /* Button 2: Anuprint Free Tools */
         .btn-secondary {
             background: transparent;
             color: #00d2ff;
@@ -88,7 +145,6 @@
             box-shadow: 0 8px 25px rgba(0, 210, 255, 0.2);
         }
 
-        /* Button 3: APK Guy */
         .btn-apk {
             background: linear-gradient(135deg, #ff6a00, #ee0979);
             color: #ffffff;
@@ -100,7 +156,6 @@
             background: linear-gradient(135deg, #ff7b1a, #ff1a8c);
         }
 
-        /* Button 4: Welib Public Library */
         .btn-library {
             background: linear-gradient(135deg, #11998e, #38ef7d);
             color: #ffffff;
@@ -112,7 +167,6 @@
             background: linear-gradient(135deg, #14b8a6, #4ade80);
         }
 
-        /* Button 5: Filee.sh */
         .btn-file {
             background: linear-gradient(135deg, #8e2de2, #4a00e0);
             color: #ffffff;
@@ -124,7 +178,6 @@
             background: linear-gradient(135deg, #a03ff5, #5a1aff);
         }
 
-        /* Button 6: Poe AI Chat (New) */
         .btn-ai {
             background: linear-gradient(135deg, #f7971e, #ffd200);
             color: #1a1a2e;
@@ -142,7 +195,7 @@
             color: #6c6c8a;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 700px) {
             .logo {
                 font-size: 2.8rem;
             }
@@ -154,42 +207,96 @@
                 font-size: 1rem;
                 width: 100%;
             }
+            .top-summary table {
+                font-size: 0.75rem;
+            }
+            .top-summary th,
+            .top-summary td {
+                padding: 8px 6px;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- ===== TOP SUMMARY TABLE ===== -->
+    <div class="top-summary">
+        <table>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Button</th>
+                    <th>Link</th>
+                    <th>Color</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>🚀 All Tools (Services)</td>
+                    <td>anuprint.com/#services</td>
+                    <td><span class="color-dot dot-blue"></span> Blue</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>🛠️ Free Tools</td>
+                    <td>anuprint.com/free-tools/</td>
+                    <td><span class="color-dot dot-cyan"></span> Cyan (outline)</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>📱 Download APK Apps</td>
+                    <td>apkguy.io</td>
+                    <td><span class="color-dot dot-orange"></span> Orange-Pink</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>📚 Free Ebooks Library</td>
+                    <td>welib-public.org</td>
+                    <td><span class="color-dot dot-green"></span> Green</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>📁 File Sharing</td>
+                    <td>filee.sh</td>
+                    <td><span class="color-dot dot-purple"></span> Purple</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>🤖 AI Chat (Poe)</td>
+                    <td>poe.com/login</td>
+                    <td><span class="color-dot dot-yellow"></span> Golden-Yellow</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ===== MAIN LOGO & BUTTONS ===== -->
     <div class="logo">SKYNET</div>
     <p class="tagline">Your Gateway to Tools, Apps, Ebooks, Files & AI</p>
 
     <div class="button-container">
 
-        <!-- Button 1: Anuprint Services Page -->
         <a href="https://anuprint.com/#services" class="btn btn-primary" target="_blank">
             🚀 All Tools (Services)
         </a>
 
-        <!-- Button 2: Anuprint Free Tools Page -->
         <a href="https://anuprint.com/free-tools/" class="btn btn-secondary" target="_blank">
             🛠️ Free Tools
         </a>
 
-        <!-- Button 3: APK Guy -->
         <a href="https://apkguy.io/" class="btn btn-apk" target="_blank">
             📱 Download APK Apps
         </a>
 
-        <!-- Button 4: Welib Public Library -->
         <a href="https://welib-public.org/" class="btn btn-library" target="_blank">
             📚 Free Ebooks Library
         </a>
 
-        <!-- Button 5: Filee.sh -->
         <a href="https://filee.sh/" class="btn btn-file" target="_blank">
             📁 File Sharing
         </a>
 
-        <!-- Button 6: Poe AI Chat (NEW) -->
         <a href="https://poe.com/login?redirect_url=%2F" class="btn btn-ai" target="_blank">
             🤖 AI Chat (Poe)
         </a>
