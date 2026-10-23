@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skynet - All Tools, Apps, Ebooks & Files</title>
+    <title>Skynet - All Tools, Apps, Ebooks, Files & AI</title>
     <style>
         * {
             margin: 0;
@@ -48,7 +48,7 @@
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
-            max-width: 1000px;
+            max-width: 1100px;
         }
 
         .btn {
@@ -112,7 +112,7 @@
             background: linear-gradient(135deg, #14b8a6, #4ade80);
         }
 
-        /* Button 5: Filee.sh (New) */
+        /* Button 5: Filee.sh */
         .btn-file {
             background: linear-gradient(135deg, #8e2de2, #4a00e0);
             color: #ffffff;
@@ -122,6 +122,18 @@
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(142, 45, 226, 0.6);
             background: linear-gradient(135deg, #a03ff5, #5a1aff);
+        }
+
+        /* Button 6: Poe AI Chat (New) */
+        .btn-ai {
+            background: linear-gradient(135deg, #f7971e, #ffd200);
+            color: #1a1a2e;
+            box-shadow: 0 8px 25px rgba(247, 151, 30, 0.4);
+        }
+        .btn-ai:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(247, 151, 30, 0.6);
+            background: linear-gradient(135deg, #ffa733, #ffdd33);
         }
 
         .footer {
@@ -148,7 +160,7 @@
 <body>
 
     <div class="logo">SKYNET</div>
-    <p class="tagline">Your Gateway to Tools, Apps, Ebooks & Files</p>
+    <p class="tagline">Your Gateway to Tools, Apps, Ebooks, Files & AI</p>
 
     <div class="button-container">
 
@@ -172,9 +184,14 @@
             📚 Free Ebooks Library
         </a>
 
-        <!-- Button 5: Filee.sh (NEW) -->
+        <!-- Button 5: Filee.sh -->
         <a href="https://filee.sh/" class="btn btn-file" target="_blank">
             📁 File Sharing
+        </a>
+
+        <!-- Button 6: Poe AI Chat (NEW) -->
+        <a href="https://poe.com/login?redirect_url=%2F" class="btn btn-ai" target="_blank">
+            🤖 AI Chat (Poe)
         </a>
 
     </div>
