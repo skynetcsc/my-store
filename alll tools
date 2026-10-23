@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skynet - All Tools, Apps, Ebooks, Files & AI</title>
+    <title>Skynet - All Tools, Apps, Ebooks, Files, AI & APIs</title>
     <style>
         * {
             margin: 0;
@@ -81,6 +81,7 @@
         .dot-green { background: #38ef7d; }
         .dot-purple { background: #8e2de2; }
         .dot-yellow { background: #ffd200; }
+        .dot-teal { background: #20b2aa; }
 
         /* ===== LOGO & MAIN BUTTONS ===== */
         .logo {
@@ -189,6 +190,18 @@
             background: linear-gradient(135deg, #ffa733, #ffdd33);
         }
 
+        /* Button 7: Free APIs List (New) */
+        .btn-api {
+            background: linear-gradient(135deg, #20b2aa, #008b8b);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
+        }
+        .btn-api:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(32, 178, 170, 0.6);
+            background: linear-gradient(135deg, #2cc9c0, #00a0a0);
+        }
+
         .footer {
             margin-top: 80px;
             font-size: 0.85rem;
@@ -267,13 +280,19 @@
                     <td>poe.com/login</td>
                     <td><span class="color-dot dot-yellow"></span> Golden-Yellow</td>
                 </tr>
+                <tr>
+                    <td>7</td>
+                    <td>🔌 Free APIs List</td>
+                    <td>github.com/public-apis/public-apis</td>
+                    <td><span class="color-dot dot-teal"></span> Teal</td>
+                </tr>
             </tbody>
         </table>
     </div>
 
     <!-- ===== MAIN LOGO & BUTTONS ===== -->
     <div class="logo">SKYNET</div>
-    <p class="tagline">Your Gateway to Tools, Apps, Ebooks, Files & AI</p>
+    <p class="tagline">Your Gateway to Tools, Apps, Ebooks, Files, AI & APIs</p>
 
     <div class="button-container">
 
@@ -299,6 +318,11 @@
 
         <a href="https://poe.com/login?redirect_url=%2F" class="btn btn-ai" target="_blank">
             🤖 AI Chat (Poe)
+        </a>
+
+        <!-- Button 7: Free APIs List (NEW) -->
+        <a href="https://github.com/public-apis/public-apis" class="btn btn-api" target="_blank">
+            🔌 Free APIs List
         </a>
 
     </div>
