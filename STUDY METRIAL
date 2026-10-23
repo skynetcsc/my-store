@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKYNETSTUDYHUB – NCERT Solutions, Books, Syllabus & More</title>
+<meta name="description" content="Free study material for Class 1 to 12. NCERT Solutions, Books, Syllabus, Sample Papers for CBSE, ICSE, NIOS and State Boards.">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--blue:#1565c0;--blue-dark:#0d47a1;--bg:#f5f7fb;--text:#1f2937;--muted:#6b7280;--border:#e5e7eb;--accent:#ff9800}
+body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.55}
+a{text-decoration:none;color:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 16px}
+
+/* Top bar */
+.topbar{background:var(--blue-dark);color:#cfe0ff;font-size:13px}
+.topbar .container{display:flex;justify-content:space-between;padding:6px 16px;flex-wrap:wrap;gap:6px}
+
+/* Header */
+header{background:#fff;border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:16px;padding:10px 16px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
+.logo{display:flex;align-items:center;flex-shrink:0}
+.logo svg{height:44px;width:auto;display:block}
+.search{flex:1;min-width:200px;display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.search input{flex:1;border:none;padding:10px 12px;font-size:14px;outline:none}
+.search button{background:var(--blue);color:#fff;border:none;padding:0 18px;cursor:pointer;font-size:14px}
+.search button:hover{background:var(--blue-dark)}
+
+/* Nav */
+nav{background:var(--blue)}
+.nav-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;padding:0 16px}
+.nav-inner>a,.dropdown>a{padding:12px 14px;color:#fff;font-size:14px;font-weight:500;display:block}
+.nav-inner>a:hover,.dropdown>a:hover{background:var(--blue-dark)}
+.dropdown{position:relative}
+.dropdown>a::after{content:" ▾"}
+.dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,.15);border-radius:0 0 8px 8px;z-index:50;max-height:400px;overflow-y:auto}
+.dropdown-menu a{color:var(--text);padding:10px 14px;font-size:14px;display:block}
+.dropdown-menu a:hover{background:var(--bg);color:var(--blue)}
+.dropdown:hover .dropdown-menu{display:block}
+.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:20px;padding:8px 14px;cursor:pointer}
+
+/* Hero */
+.hero{background:linear-gradient(rgba(13,71,161,.85),rgba(21,101,192,.85)),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80') center/cover;color:#fff;padding:60px 16px;text-align:center}
+.hero h1{font-size:32px;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
+.hero p{opacity:.95;margin-bottom:22px;font-size:16px}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chips a{background:rgba(255,255,255,.22);padding:8px 18px;border-radius:20px;font-size:13px}
+.chips a:hover{background:rgba(255,255,255,.4)}
+
+/* Sections */
+section{padding:36px 0}
+.section-title{font-size:22px;font-weight:700;margin-bottom:20px;color:var(--blue-dark)}
+.section-title small{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:4px}
+
+.grid{display:grid;gap:14px}
+.class-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.board-grid,.res-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
+.subj-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+
+/* Card */
+.card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:.2s;display:block}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(21,101,192,.15);border-color:var(--blue)}
+.card .thumb{width:100%;height:110px;object-fit:cover;display:block;background:#e0e7ff}
+.card .body{padding:14px;text-align:center}
+.card .icon{font-size:22px;margin-bottom:6px}
+.card h3{font-size:15px;margin-bottom:4px}
+.card p{font-size:12px;color:var(--muted)}
+
+/* Breadcrumb */
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:16px}
+.crumbs a{color:var(--blue)}
+.crumbs a:hover{text-decoration:underline}
+.crumbs span{color:var(--text)}
+.crumbs .sep{margin:0 6px;color:var(--border)}
+
+/* Page header */
+.page-head{background:#fff;border-bottom:1px solid var(--border);padding:24px 0}
+.page-head h1{font-size:26px;color:var(--blue-dark);margin-bottom:6px}
+.page-head p{font-size:14px;color:var(--muted)}
+.page-head .meta{display:inline-block;background:#e0f2fe;color:#075985;font-size:12px;padding:4px 12px;border-radius:12px;margin-top:10px;font-weight:600}
+
+/* Chapter list */
+.chapter-list{display:flex;flex-direction:column;gap:10px}
+.chapter-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;transition:.2s;gap:12px}
+.chapter-item:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(21,101,192,.08);transform:translateX(4px)}
+.chapter-item .left{display:flex;align-items:center;gap:14px;min-width:0}
+.chapter-item .num{background:var(--blue);color:#fff;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
+.chapter-item h3{font-size:15px;font-weight:600;margin:0}
+.chapter-item .arrow{color:var(--muted);flex-shrink:0}
+
+/* Chapter content page */
+.content-box{background:#fff;border:1px solid var(--border);border-radius:12px;padding:32px}
+.content-box h1{font-size:26px;margin-bottom:20px;color:var(--blue-dark);padding-bottom:16px;border-bottom:2px solid var(--bg)}
+.content-body{font-size:15px;color:var(--text);line-height:1.75}
+.content-body p{margin-bottom:14px}
+.content-body ul{margin:12px 0 16px 24px}
+.content-body li{margin-bottom:6px}
+.content-body h2{font-size:18px;color:var(--blue-dark);margin:22px 0 10px}
+.content-body strong{color:var(--blue-dark)}
+
+.info-banner{background:linear-gradient(90deg,#e0f2fe,#f0f9ff);border-left:4px solid var(--blue);padding:14px 18px;border-radius:8px;margin-bottom:24px;font-size:14px;color:#0c4a6e}
+
+.prev-next{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
+.prev-next a{flex:1;min-width:180px;padding:14px 18px;background:#fff;border:1px solid var(--border);border-radius:10px;transition:.2s}
+.prev-next a:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(21,101,192,.08)}
+.prev-next a small{display:block;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;font-weight:600}
+.prev-next a strong{display:block;font-size:14px;color:var(--blue-dark);margin-top:4px}
+.prev-next a.disabled{opacity:.4;pointer-events:none}
+
+/* Search results */
+.search-results{display:flex;flex-direction:column;gap:24px}
+.result-group h3{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;font-weight:700}
+.result-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;margin-bottom:8px;display:block;transition:.2s}
+.result-item:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(21,101,192,.08)}
+.result-item strong{color:var(--blue-dark);display:block;margin-bottom:4px}
+.result-item small{color:var(--muted);font-size:12px}
+
+/* Empty / Coming soon */
+.empty{text-align:center;padding:60px 20px;color:var(--muted);background:#fff;border-radius:12px;border:1px dashed var(--border)}
+.empty .icon{font-size:48px;margin-bottom:12px;opacity:.6}
+.empty h2{color:var(--blue-dark);margin-bottom:8px}
+.empty p{margin-bottom:16px}
+.btn{display:inline-block;background:var(--blue);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--blue-dark)}
+
+/* Footer */
+footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
+.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;padding-bottom:28px}
+.foot-grid h4{color:#fff;margin-bottom:12px;font-size:15px}
+.foot-grid a{display:block;color:#94a3b8;font-size:13px;padding:4px 0}
+.foot-grid a:hover{color:#fff}
+.copyright{border-top:1px solid #1e293b;padding:16px;text-align:center;font-size:13px;color:#64748b}
+
+@media(max-width:768px){
+  .menu-toggle{display:block}
+  .nav-inner{display:none;flex-direction:column;width:100%}
+  .nav-inner.open{display:flex}
+  .dropdown-menu{position:static;display:block;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0;max-height:none}
+  .dropdown-menu a{color:#dbeafe;padding-left:28px}
+  .dropdown>a::after{content:""}
+  .hero h1{font-size:24px}
+  .logo svg{height:36px}
+  .card .thumb{height:90px}
+  .content-box{padding:20px}
+  .chapter-item{padding:12px 14px}
+  .page-head h1{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="container">
+    <span>📢 Welcome to SKYNETSTUDYHUB — Free Study Material</span>
+    <span>CBSE | ICSE | NIOS | State Boards</span>
+  </div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <a href="#/" class="logo" aria-label="SKYNETSTUDYHUB Home">
+      <svg viewBox="0 0 290 64" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#1565c0"/>
+            <stop offset="100%" stop-color="#0d47a1"/>
+          </linearGradient>
+        </defs>
+        <rect x="4" y="6" width="52" height="52" rx="14" fill="url(#lg)"/>
+        <polygon points="30,16 12,24 30,32 48,24" fill="#ffb74d"/>
+        <path d="M20 27 v8 c0 3 20 3 20 0 v-8" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/>
+        <line x1="46" y1="24" x2="46" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="46" cy="38" r="2.5" fill="#ffb74d"/>
+        <text x="70" y="30" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="17" fill="#1565c0" letter-spacing="0.5">SKYNET</text>
+        <text x="70" y="52" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="15" fill="#ff9800" letter-spacing="1.5">STUDYHUB</text>
+      </svg>
+    </a>
+    <form class="search" id="searchForm" onsubmit="event.preventDefault(); doSearch(this.q.value)">
+      <input name="q" id="searchInput" placeholder="Search chapters, subjects, classes..." autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner" id="navMenu">
+    <div class="dropdown">
+      <a href="#/">Classes</a>
+      <div class="dropdown-menu" id="classMenu"></div>
+    </div>
+    <div class="dropdown">
+      <a href="#/">Boards</a>
+      <div class="dropdown-menu">
+        <a href="#">CBSE</a><a href="#">ICSE / ISC</a><a href="#">NIOS</a>
+        <a href="#">HBSE</a><a href="#">Maharashtra Board</a><a href="#">Karnataka Board</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <a href="#/">Resources</a>
+      <div class="dropdown-menu">
+        <a href="#">NCERT Solutions</a><a href="#">NCERT Books</a>
+        <a href="#">Syllabus</a><a href="#">Sample Papers</a>
+        <a href="#">Previous Year Papers</a><a href="#">Notes</a>
+      </div>
+    </div>
+    <a href="#">Scholarships</a>
+    <a href="#">Olympiads</a>
+    <a href="#">Results</a>
+    <a href="#">Contact</a>
+  </div>
+</nav>
+
+<main id="app"></main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <h4>SKYNETSTUDYHUB</h4>
+        <a href="#/">Home</a><a href="#">About Us</a><a href="#">Contact</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a>
+      </div>
+      <div>
+        <h4>Classes</h4>
+        <a href="#/class/10">Class 10</a><a href="#/class/11">Class 11</a><a href="#/class/12">Class 12</a><a href="#/">All Classes</a>
+      </div>
+      <div>
+        <h4>Boards</h4>
+        <a href="#">CBSE</a><a href="#">ICSE</a><a href="#">NIOS</a><a href="#">State Boards</a>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <a href="#">NCERT Solutions</a><a href="#">NCERT Books</a><a href="#">Syllabus</a><a href="#">Sample Papers</a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">© 2026 SKYNETSTUDYHUB. All rights reserved.</div>
+</footer>
+
+<script>
+/* ============================================================
+   DATA
+============================================================ */
+const CLASS_IMAGES = [
+  "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=400&h=220&fit=crop",
+  "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=400&h=220&fit=crop"
+];
+
+const BOARDS = [
+  {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop"},
+  {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop"},
+  {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop"},
+  {name:"HBSE", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"},
+  {name:"Maharashtra", desc:"MSBSHSE", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"},
+  {name:"Karnataka", desc:"KSEEB / SSLC", img:"https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=220&fit=crop"}
+];
+
+const RESOURCES = [
+  {name:"NCERT Solutions", desc:"Chapter-wise answers", img:"https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop"},
+  {name:"NCERT Books", desc:"Free PDF download", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"},
+  {name:"Syllabus", desc:"Latest curriculum", img:"https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop"},
+  {name:"Sample Papers", desc:"Model question papers", img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop"},
+  {name:"Previous Year Papers", desc:"PYQ with solutions", img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop"},
+  {name:"Revision Notes", desc:"Quick revision", img:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=220&fit=crop"}
+];
+
+// Subjects per class
+const SUBJECTS = {
+  1:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"evs",name:"EVS",icon:"🌿"}],
+  2:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"evs",name:"EVS",icon:"🌿"}],
+  3:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"evs",name:"EVS",icon:"🌿"}],
+  4:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"evs",name:"EVS",icon:"🌿"}],
+  5:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"evs",name:"EVS",icon:"🌿"}],
+  6:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"sst",name:"Social Science",icon:"🌍"}],
+  7:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"sst",name:"Social Science",icon:"🌍"}],
+  8:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"sst",name:"Social Science",icon:"🌍"}],
+  9:  [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"},{slug:"english",name:"English",icon:"📖"},{slug:"hindi",name:"Hindi",icon:"📕"},{slug:"sst",name:"Social Science",icon:"🌍"}],
+  10: [
+    {slug:"maths",name:"Mathematics",icon:"🔢",chapters:[
+      {slug:"real-numbers",name:"Real Numbers",desc:"Euclid's Division Lemma, Fundamental Theorem of Arithmetic, irrational numbers, HCF and LCM. Understand how every composite number can be expressed as a product of primes."},
+      {slug:"polynomials",name:"Polynomials",desc:"Zeroes of a polynomial, relationship between zeroes and coefficients, division algorithm for polynomials. Covers linear, quadratic and cubic polynomials."},
+      {slug:"linear-equations",name:"Pair of Linear Equations in Two Variables",desc:"Graphical and algebraic methods — substitution, elimination and cross-multiplication. Conditions for consistency and inconsistency of linear equations."},
+      {slug:"quadratic-equations",name:"Quadratic Equations",desc:"Standard form ax² + bx + c = 0, roots via factorisation and quadratic formula, discriminant and nature of roots. Real-life word problems included."},
+      {slug:"arithmetic-progressions",name:"Arithmetic Progressions",desc:"nth term, sum of first n terms, and applications of AP. Includes finding common difference and solving real-world sequence problems."},
+      {slug:"triangles",name:"Triangles",desc:"Similarity criteria (AA, SSS, SAS), Basic Proportionality Theorem (Thales), and Pythagoras Theorem with proofs and applications."},
+      {slug:"coordinate-geometry",name:"Coordinate Geometry",desc:"Distance formula, section formula, and area of triangle using coordinates. Covers collinearity and midpoint calculations."},
+      {slug:"trigonometry",name:"Introduction to Trigonometry",desc:"Trigonometric ratios (sin, cos, tan, cot, sec, cosec), values at specific angles (0°, 30°, 45°, 60°, 90°), and trigonometric identities."},
+      {slug:"trigonometry-applications",name:"Some Applications of Trigonometry",desc:"Heights and distances problems using angles of elevation and depression. Practical word problems based on real-life scenarios."},
+      {slug:"circles",name:"Circles",desc:"Tangent to a circle, number of tangents from a point, and theorems based on tangents. Includes proof of tangent being perpendicular to radius."},
+      {slug:"areas-circles",name:"Areas Related to Circles",desc:"Area of sectors and segments, length of arc of a sector, and area of combinations of plane figures. Includes real-world geometric problems."},
+      {slug:"surface-areas-volumes",name:"Surface Areas and Volumes",desc:"Surface area and volume of combinations of solids — cylinder, cone, sphere, hemisphere and frustum. Real-life based problems."},
+      {slug:"statistics",name:"Statistics",desc:"Mean, median and mode of grouped data. Cumulative frequency curves (ogive) and their applications in finding median and other statistics."},
+      {slug:"probability",name:"Probability",desc:"Classical (theoretical) probability, sample space, events, and simple problems based on cards, dice, coins and real-life scenarios."}
+    ]},
+    {slug:"science",name:"Science",icon:"🔬",chapters:[
+      {slug:"chemical-reactions",name:"Chemical Reactions and Equations",desc:"Balanced chemical equations, types of reactions — combination, decomposition, displacement, double displacement, oxidation and reduction. Corrosion and rancidity."},
+      {slug:"acids-bases-salts",name:"Acids, Bases and Salts",desc:"Properties of acids and bases, pH scale, salts and their uses, preparation of common salt, bleaching powder, baking soda, washing soda and plaster of Paris."},
+      {slug:"metals-nonmetals",name:"Metals and Non-metals",desc:"Physical and chemical properties, reactivity series, ionic compounds, extraction of metals, corrosion and alloys."},
+      {slug:"carbon-compounds",name:"Carbon and its Compounds",desc:"Covalent bonding, allotropes of carbon, homologous series, nomenclature, chemical properties (combustion, oxidation, addition, substitution), and important carbon compounds — ethanol and ethanoic acid."},
+      {slug:"life-processes",name:"Life Processes",desc:"Nutrition, respiration, transportation and excretion in plants and animals. Detailed coverage of photosynthesis, human digestive system, and respiratory system."},
+      {slug:"control-coordination",name:"Control and Coordination",desc:"Nervous system and reflex action, human brain, coordination in plants (tropism), and hormones in animals including thyroxine, insulin and adrenaline."},
+      {slug:"reproduction",name:"How do Organisms Reproduce?",desc:"Asexual reproduction (fission, budding, fragmentation), sexual reproduction in plants and humans, reproductive health and contraception."},
+      {slug:"heredity",name:"Heredity and Evolution",desc:"Mendel's laws of inheritance, monohybrid and dihybrid crosses, sex determination, and introduction to evolution and speciation."},
+      {slug:"light",name:"Light – Reflection and Refraction",desc:"Laws of reflection, spherical mirrors, mirror formula, refraction through glass slab and spherical lenses, lens formula and magnification."},
+      {slug:"human-eye",name:"The Human Eye and the Colourful World",desc:"Structure of human eye, defects of vision and their correction, refraction through prism, dispersion of light, rainbow, atmospheric refraction, and scattering of light."},
+      {slug:"electricity",name:"Electricity",desc:"Ohm's law, resistance, factors affecting resistance, series and parallel combination of resistors, heating effect of electric current, and electric power."},
+      {slug:"magnetic-effects",name:"Magnetic Effects of Electric Current",desc:"Magnetic field of a current-carrying conductor, right-hand thumb rule, force on current-carrying conductor, electric motor, electromagnetic induction, and electric generator."},
+      {slug:"our-environment",name:"Our Environment",desc:"Ecosystem and its components, food chains and food webs, trophic levels, ozone depletion, and waste management."}
+    ]},
+    {slug:"english",name:"English",icon:"📖",chapters:[
+      {slug:"letter-to-god",name:"A Letter to God",desc:"Chapter summary, theme of faith and belief, character analysis of Lencho, and important questions for board exams."},
+      {slug:"nelson-mandela",name:"Nelson Mandela: Long Walk to Freedom",desc:"Autobiographical account of Mandela's inauguration, apartheid struggle, and themes of freedom and equality."},
+      {slug:"two-stories-flying",name:"Two Stories about Flying",desc:"His First Flight and Black Aeroplane — themes of courage, trust and self-belief."},
+      {slug:"anne-frank",name:"From the Diary of Anne Frank",desc:"Extracts from Anne Frank's diary, themes of adolescence, isolation, and hope during the Holocaust."},
+      {slug:"glimpses-of-india",name:"Glimpses of India",desc:"A Baker from Goa, Coorg, and Tea from Assam — glimpses of diverse Indian cultures and traditions."},
+      {slug:"proposal",name:"The Proposal",desc:"Dramatic comedy by Anton Chekhov based on marriage, class and human folly in 19th century Russia."}
+    ]},
+    {slug:"hindi",name:"Hindi",icon:"📕",chapters:[
+      {slug:"surdas-pad",name:"सूरदास के पद",desc:"कृष्ण भक्ति और वात्सल्य रस पर आधारित पदों का विस्तृत अर्थ, व्याख्या और प्रश्न-उत्तर।"},
+      {slug:"ram-lakshman",name:"राम-लक्ष्मण-परशुराम संवाद",desc:"तुलसीदास कृत रामचरितमानस से बालकांड का प्रसिद्ध प्रसंग — वीर रस और धर्म की विजय।"},
+      {slug:"atmakatha",name:"आत्मकथ्य",desc:"जयशंकर प्रसाद की प्रसिद्ध कविता — जीवन के अनुभव और संघर्ष का चित्रण।"},
+      {slug:"sangatkar",name:"संगतकार",desc:"कुंवर नारायण की कविता — मुख्य कलाकार और सहायक कलाकार के संबंधों का चित्रण।"}
+    ]},
+    {slug:"sst",name:"Social Science",icon:"🌍",chapters:[
+      {slug:"nationalism-europe",name:"The Rise of Nationalism in Europe",desc:"French Revolution, nationalism, unification of Germany and Italy, and the making of modern Europe."},
+      {slug:"nationalism-india",name:"Nationalism in India",desc:"Non-Cooperation, Civil Disobedience and Quit India movements, rise of Gandhi, and the path to independence."},
+      {slug:"resources",name:"Resources and Development",desc:"Types of resources, resource conservation, land degradation, and soil types in India."},
+      {slug:"water-resources",name:"Water Resources",desc:"Water scarcity, multipurpose river projects, rainwater harvesting and traditional water conservation methods."},
+      {slug:"power-sharing",name:"Power Sharing",desc:"Belgium and Sri Lanka case studies, forms of power sharing in democracy — horizontal, vertical and social."},
+      {slug:"federalism",name:"Federalism",desc:"What is federalism, features, types, and the Indian federal system with Centre-State relations."},
+      {slug:"development",name:"Development",desc:"Different notions of development, national income, per capita income, and sustainable development."},
+      {slug:"sectors-economy",name:"Sectors of Indian Economy",desc:"Primary, secondary and tertiary sectors, organised and unorganised sectors, and employment trends in India."}
+    ]}
+  ],
+  11: [
+    {slug:"physics",name:"Physics",icon:"⚛️"},
+    {slug:"chemistry",name:"Chemistry",icon:"🧪"},
+    {slug:"maths",name:"Mathematics",icon:"🔢"},
+    {slug:"biology",name:"Biology",icon:"🧬"},
+    {slug:"english",name:"English",icon:"📖"}
+  ],
+  12: [
+    {slug:"physics",name:"Physics",icon:"⚛️",chapters:[
+      {slug:"electric-charges",name:"Electric Charges and Fields",desc:"Coulomb's law, electric field, electric dipole, continuous charge distribution, and Gauss's law with applications."},
+      {slug:"potential-capacitance",name:"Electrostatic Potential and Capacitance",desc:"Electric potential, potential due to point charge and dipole, equipotential surfaces, capacitors, and dielectrics."},
+      {slug:"current-electricity",name:"Current Electricity",desc:"Ohm's law, drift velocity, resistivity, series and parallel combination of resistors, Kirchhoff's laws, and Wheatstone bridge."},
+      {slug:"moving-charges",name:"Moving Charges and Magnetism",desc:"Biot-Savart law, Ampere's circuital law, solenoid, force on a moving charge, cyclotron, and moving coil galvanometer."},
+      {slug:"magnetism-matter",name:"Magnetism and Matter",desc:"Bar magnet as solenoid, magnetic field lines, earth's magnetism, magnetisation, and magnetic properties of materials."},
+      {slug:"emi",name:"Electromagnetic Induction",desc:"Faraday's laws, Lenz's law, motional emf, self and mutual induction, and AC generator."},
+      {slug:"alternating-current",name:"Alternating Current",desc:"AC through resistor, inductor and capacitor, LCR series circuit, resonance, and transformers."},
+      {slug:"em-waves",name:"Electromagnetic Waves",desc:"Displacement current, Maxwell's equations, electromagnetic spectrum, and its uses."},
+      {slug:"ray-optics",name:"Ray Optics and Optical Instruments",desc:"Reflection, refraction, total internal reflection, lenses, prisms, microscope, and telescope."},
+      {slug:"wave-optics",name:"Wave Optics",desc:"Huygens' principle, interference, Young's double slit experiment, diffraction, and polarisation."},
+      {slug:"dual-nature",name:"Dual Nature of Radiation and Matter",desc:"Photoelectric effect, Einstein's photoelectric equation, de Broglie hypothesis, and Davisson-Germer experiment."},
+      {slug:"atoms",name:"Atoms",desc:"Rutherford's model, Bohr's model of hydrogen atom, energy levels, and hydrogen spectrum."},
+      {slug:"nuclei",name:"Nuclei",desc:"Nuclear composition, mass defect, binding energy, nuclear fission and fusion, and radioactivity."},
+      {slug:"semiconductors",name:"Semiconductor Electronics",desc:"Intrinsic and extrinsic semiconductors, p-n junction, diode, rectifier, and transistors."}
+    ]},
+    {slug:"chemistry",name:"Chemistry",icon:"🧪",chapters:[
+      {slug:"solutions",name:"Solutions",desc:"Types of solutions, concentration terms, Raoult's law, ideal and non-ideal solutions, colligative properties."},
+      {slug:"electrochemistry",name:"Electrochemistry",desc:"Electrochemical cells, Nernst equation, conductance, Kohlrausch's law, batteries, and corrosion."},
+      {slug:"chemical-kinetics",name:"Chemical Kinetics",desc:"Rate of reaction, factors affecting rate, order and molecularity, integrated rate equations, and Arrhenius equation."},
+      {slug:"d-f-block",name:"The d- and f-Block Elements",desc:"Transition elements, general properties, oxidation states, lanthanoids and actinoids, and important compounds."},
+      {slug:"coordination",name:"Coordination Compounds",desc:"Werner's theory, nomenclature, isomerism, VBT, CFT, and importance of coordination compounds."},
+      {slug:"haloalkanes",name:"Haloalkanes and Haloarenes",desc:"Nomenclature, methods of preparation, physical and chemical properties, and uses."},
+      {slug:"alcohols-phenols",name:"Alcohols, Phenols and Ethers",desc:"Classification, nomenclature, preparation methods, properties, and important reactions."},
+      {slug:"aldehydes-ketones",name:"Aldehydes, Ketones and Carboxylic Acids",desc:"Nomenclature, preparation, properties, chemical tests, and important reactions like aldol and Cannizzaro."},
+      {slug:"amines",name:"Amines",desc:"Classification, preparation, basicity, chemical reactions, and diazonium salts."},
+      {slug:"biomolecules",name:"Biomolecules",desc:"Carbohydrates, proteins, enzymes, vitamins, nucleic acids, and hormones."}
+    ]},
+    {slug:"maths",name:"Mathematics",icon:"🔢",chapters:[
+      {slug:"relations-functions",name:"Relations and Functions",desc:"Types of relations, types of functions, composition, inverse functions, and binary operations."},
+      {slug:"inverse-trig",name:"Inverse Trigonometric Functions",desc:"Definition, range, principal values, properties and important formulas of inverse trig functions."},
+      {slug:"matrices",name:"Matrices",desc:"Types of matrices, operations, transpose, symmetric and skew-symmetric matrices, and elementary operations."},
+      {slug:"determinants",name:"Determinants",desc:"Determinant of a matrix, properties, area of triangle, adjoint and inverse of a matrix, and applications."},
+      {slug:"continuity",name:"Continuity and Differentiability",desc:"Continuity, differentiability, chain rule, derivatives of inverse trig functions, and logarithmic differentiation."},
+      {slug:"application-derivatives",name:"Application of Derivatives",desc:"Rate of change, increasing/decreasing functions, maxima and minima, and tangents/normals."},
+      {slug:"integrals",name:"Integrals",desc:"Indefinite integrals, integration by substitution, by parts, partial fractions, and definite integrals with properties."},
+      {slug:"application-integrals",name:"Application of Integrals",desc:"Area under simple curves, area between two curves, and area of circle, parabola, ellipse and line."},
+      {slug:"differential-equations",name:"Differential Equations",desc:"Order and degree, general and particular solutions, methods to solve linear and homogeneous differential equations."},
+      {slug:"vector-algebra",name:"Vector Algebra",desc:"Types of vectors, addition, scalar and vector products, and applications in geometry and physics."},
+      {slug:"3d-geometry",name:"Three Dimensional Geometry",desc:"Direction cosines, lines in space, shortest distance, and plane equations."},
+      {slug:"linear-programming",name:"Linear Programming",desc:"Graphical method, feasible region, and solving optimisation problems."},
+      {slug:"probability",name:"Probability",desc:"Conditional probability, multiplication theorem, Bayes' theorem, random variables, and binomial distribution."}
+    ]},
+    {slug:"biology",name:"Biology",icon:"🧬",chapters:[
+      {slug:"sexual-reproduction-plants",name:"Sexual Reproduction in Flowering Plants",desc:"Flower structure, microsporogenesis, megasporogenesis, pollination, fertilisation, and embryo development."},
+      {slug:"human-reproduction",name:"Human Reproduction",desc:"Male and female reproductive systems, gametogenesis, menstrual cycle, fertilisation, and pregnancy."},
+      {slug:"reproductive-health",name:"Reproductive Health",desc:"Reproductive health issues, contraception, STDs, infertility, and assisted reproductive technologies."},
+      {slug:"inheritance",name:"Principles of Inheritance and Variation",desc:"Mendel's laws, incomplete dominance, codominance, blood groups, sex determination, and genetic disorders."},
+      {slug:"molecular-inheritance",name:"Molecular Basis of Inheritance",desc:"DNA structure, replication, transcription, translation, lac operon, and human genome project."},
+      {slug:"evolution",name:"Evolution",desc:"Origin of life, evidences, Darwin's theory, modern synthetic theory, and human evolution."},
+      {slug:"human-health",name:"Human Health and Disease",desc:"Pathogens, immunity, AIDS, cancer, drugs and alcohol abuse."},
+      {slug:"microbes",name:"Microbes in Human Welfare",desc:"Microbes in household products, industrial products, sewage treatment, biogas, and biocontrol."},
+      {slug:"biotechnology-principles",name:"Biotechnology – Principles and Processes",desc:"Principles, tools, techniques, and processes of recombinant DNA technology."},
+      {slug:"ecosystem",name:"Ecosystem",desc:"Productivity, decomposition, energy flow, ecological pyramids, and ecological succession."}
+    ]},
+    {slug:"english",name:"English",icon:"📖",chapters:[
+      {slug:"last-lesson",name:"The Last Lesson",desc:"Alphonse Daudet's story about language, identity and the pain of losing one's mother tongue."},
+      {slug:"lost-spring",name:"Lost Spring",desc:"Anees Jung's account of child labour, poverty and lost childhood in India."},
+      {slug:"deep-water",name:"Deep Water",desc:"William Douglas's account of overcoming his fear of water through determination."},
+      {slug:"my-mother-66",name:"My Mother at Sixty-Six",desc:"Kamala Das's poignant poem about ageing, love and fear of separation."},
+      {slug:"keeping-quiet",name:"Keeping Quiet",desc:"Pablo Neruda's poem urging self-reflection and peace."}
+    ]}
+  ]
+};
+
+/* ============================================================
+   HELPERS
+============================================================ */
+function getSubject(classNum, slug){
+  const list = SUBJECTS[classNum] || [];
+  return list.find(s => s.slug === slug);
+}
+
+function getChapter(classNum, subjSlug, chSlug){
+  const subj = getSubject(classNum, subjSlug);
+  if (!subj || !subj.chapters) return null;
+  return subj.chapters.find(c => c.slug === chSlug);
+}
+
+function crumbsHTML(items){
+  return `<div class="crumbs">${items.map((it,i)=>{
+    const isLast = i === items.length - 1;
+    return isLast ? `<span>${it.label}</span>`
+                  : `<a href="${it.href}">${it.label}</a><span class="sep">/</span>`;
+  }).join("")}</div>`;
+}
+
+function escapeHTML(s){
+  return String(s).replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+}
+
+/* ============================================================
+   PAGE RENDERERS
+============================================================ */
+function renderHome(){
+  const classCards = Array.from({length:12},(_,i)=>{
+    const n = i+1;
+    return `<a class="card" href="#/class/${n}">
+      <img class="thumb" src="${CLASS_IMAGES[i]}" alt="Class ${n}" loading="lazy">
+      <div class="body"><div class="icon">📚</div><h3>Class ${n}</h3><p>Notes • Books • Solutions</p></div>
+    </a>`;
+  }).join("");
+
+  const boardCards = BOARDS.map(b => `
+    <a class="card" href="#/">
+      <img class="thumb" src="${b.img}" alt="${escapeHTML(b.name)}" loading="lazy">
+      <div class="body"><div class="icon">🏫</div><h3>${escapeHTML(b.name)}</h3><p>${escapeHTML(b.desc)}</p></div>
+    </a>`).join("");
+
+  const resCards = RESOURCES.map(r => `
+    <a class="card" href="#/">
+      <img class="thumb" src="${r.img}" alt="${escapeHTML(r.name)}" loading="lazy">
+      <div class="body"><div class="icon">📘</div><h3>${escapeHTML(r.name)}</h3><p>${escapeHTML(r.desc)}</p></div>
+    </a>`).join("");
+
+  return `
+    <section class="hero">
+      <h1>SKYNETSTUDYHUB — Free Study Material for Class 1–12</h1>
+      <p>NCERT Solutions, Books, Syllabus, Sample Papers & Notes — सब एक जगह</p>
+      <div class="chips">
+        <a href="#/class/10">Class 10</a>
+        <a href="#/class/12">Class 12</a>
+        <a href="#/class/10/maths">Maths Solutions</a>
+        <a href="#/class/10/science">Science Solutions</a>
+      </div>
+    </section>
+    <section><div class="container">
+      <h2 class="section-title">Browse by Class <small>Class 1 से 12 तक सभी विषयों की सामग्री</small></h2>
+      <div class="grid class-grid">${classCards}</div>
+    </div></section>
+    <section><div class="container">
+      <h2 class="section-title">Browse by Board <small>अपना बोर्ड चुनें</small></h2>
+      <div class="grid board-grid">${boardCards}</div>
+    </div></section>
+    <section><div class="container">
+      <h2 class="section-title">Popular Resources <small>सबसे ज़्यादा देखी जाने वाली सामग्री</small></h2>
+      <div class="grid res-grid">${resCards}</div>
+    </div></section>`;
+}
+
+function renderClass(num){
+  const subjects = SUBJECTS[num] || [];
+  const hasContent = subjects.some(s => s.chapters && s.chapters.length);
+  const subjectCards = subjects.map(s => {
+    const chCount = (s.chapters || []).length;
+    return `<a class="card" href="#/class/${num}/${s.slug}">
+      <div class="body" style="padding:24px 18px">
+        <div class="icon" style="font-size:34px">${s.icon}</div>
+        <h3>${escapeHTML(s.name)}</h3>
+        <p>${chCount ? chCount + " chapters" : "Coming soon"}</p>
+      </div>
+    </a>`;
+  }).join("");
+
+  const comingSoon = !hasContent ? `
+    <div class="info-banner" style="margin-top:20px">
+      📌 Class ${num} की detailed chapter-wise content जल्द आ रही है। अभी Class 10 और 12 पूरी तरह उपलब्ध हैं।
+    </div>` : "";
+
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:`Class ${num}`}])}
+      <h1>Class ${num} — Subjects</h1>
+      <p>अपना विषय चुनें और chapter-wise content पढ़ें</p>
+    </div></div>
+    <section><div class="container">
+      <div class="grid subj-grid">${subjectCards || '<div class="empty"><h2>Subjects coming soon</h2></div>'}</div>
+      ${comingSoon}
+    </div></section>`;
+}
+
+function renderSubject(num, subjSlug){
+  const subj = getSubject(num, subjSlug);
+  if (!subj) return render404();
+  const chapters = subj.chapters || [];
+  const list = chapters.length
+    ? chapters.map((c,i) => `
+        <a class="chapter-item" href="#/class/${num}/${subjSlug}/${c.slug}">
+          <div class="left"><span class="num">${i+1}</span><h3>${escapeHTML(c.name)}</h3></div>
+          <span class="arrow">→</span>
+        </a>`).join("")
+    : `<div class="empty">
+        <div class="icon">📖</div>
+        <h2>Chapters coming soon</h2>
+        <p>Class ${num} ${escapeHTML(subj.name)} के chapters जल्द जोड़े जाएँगे।</p>
+        <a class="btn" href="#/class/${num}">← वापस Class ${num}</a>
+      </div>`;
+
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:`Class ${num}`,href:`#/class/${num}`},{label:subj.name}])}
+      <h1>${subj.icon} ${escapeHTML(subj.name)} — Class ${num}</h1>
+      <p>${chapters.length ? chapters.length + " chapters उपलब्ध" : "Content जल्द आ रहा है"}</p>
+    </div></div>
+    <section><div class="container">
+      <div class="chapter-list">${list}</div>
+    </div></section>`;
+}
+
+function renderChapter(num, subjSlug, chSlug){
+  const subj = getSubject(num, subjSlug);
+  const ch = getChapter(num, subjSlug, chSlug);
+  if (!subj || !ch) return render404();
+
+  const chapters = subj.chapters || [];
+  const idx = chapters.findIndex(c => c.slug === chSlug);
+  const prev = idx > 0 ? chapters[idx-1] : null;
+  const next = idx < chapters.length-1 ? chapters[idx+1] : null;
+
+  const prevNext = `
+    <div class="prev-next">
+      ${prev
+        ? `<a href="#/class/${num}/${subjSlug}/${prev.slug}"><small>← Previous</small><strong>${escapeHTML(prev.name)}</strong></a>`
+        : `<a class="disabled"><small>← Previous</small><strong>—</strong></a>`}
+      ${next
+        ? `<a href="#/class/${num}/${subjSlug}/${next.slug}"><small>Next →</small><strong>${escapeHTML(next.name)}</strong></a>`
+        : `<a class="disabled"><small>Next →</small><strong>—</strong></a>`}
+    </div>`;
+
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([
+        {label:"Home",href:"#/"},
+        {label:`Class ${num}`,href:`#/class/${num}`},
+        {label:subj.name,href:`#/class/${num}/${subjSlug}`},
+        {label:ch.name}
+      ])}
+      <h1>${escapeHTML(ch.name)}</h1>
+      <p>${subj.icon} ${escapeHTML(subj.name)} • Class ${num} • Chapter ${idx+1}</p>
+      <span class="meta">📖 NCERT</span>
+    </div></div>
+    <section><div class="container">
+      <div class="content-box">
+        <div class="info-banner">
+          📝 Detailed NCERT solutions, notes और practice questions इस chapter के जल्द उपलब्ध होंगे। अभी overview पढ़ें।
+        </div>
+        <div class="content-body">
+          <h2>Chapter Overview</h2>
+          <p>${escapeHTML(ch.desc || "Content coming soon.")}</p>
+          <h2>What you'll learn</h2>
+          <ul>
+            <li>Complete chapter explanation in simple language</li>
+            <li>All NCERT exercise solutions with step-by-step answers</li>
+            <li>Important formulas, definitions and key points</li>
+            <li>Previous year questions and sample paper practice</li>
+            <li>Quick revision notes for exam preparation</li>
+          </ul>
+          <p><strong>Tip:</strong> इस chapter को पहले NCERT textbook से पढ़ें, फिर solutions देखें, और अंत में sample papers से practice करें।</p>
+        </div>
+        ${prevNext}
+      </div>
+    </div></section>`;
+}
+
+function renderSearch(query){
+  const q = query.toLowerCase().trim();
+  const results = { classes:[], subjects:[], chapters:[] };
+
+  Object.keys(SUBJECTS).forEach(num => {
+    if (`class ${num}`.includes(q) || String(num) === q) {
+      results.classes.push({ num });
+    }
+    SUBJECTS[num].forEach(s => {
+      if (s.name.toLowerCase().includes(q) || s.slug.includes(q)) {
+        results.subjects.push({ num, subject:s });
+      }
+      (s.chapters || []).forEach(c => {
+        if (c.name.toLowerCase().includes(q) || (c.desc||"").toLowerCase().includes(q) || c.slug.includes(q)) {
+          results.chapters.push({ num, subject:s, chapter:c });
+        }
+      });
+    });
+  });
+
+  const total = results.classes.length + results.subjects.length + results.chapters.length;
+
+  if (!total) {
+    return `
+      <div class="page-head"><div class="container">
+        ${crumbsHTML([{label:"Home",href:"#/"},{label:"Search"}])}
+        <h1>Search: "${escapeHTML(query)}"</h1>
+      </div></div>
+      <section><div class="container">
+        <div class="empty">
+          <div class="icon">🔍</div>
+          <h2>कोई result नहीं मिला</h2>
+          <p>"${escapeHTML(query)}" के लिए कुछ नहीं मिला। दूसरा keyword try करें — जैसे "trigonometry", "class 10", "physics"</p>
+          <a class="btn" href="#/">Home जाएँ</a>
+        </div>
+      </div></section>`;
+  }
+
+  let html = `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"Search"}])}
+      <h1>Search: "${escapeHTML(query)}"</h1>
+      <p>${total} result${total>1?"s":""} मिले</p>
+    </div></div>
+    <section><div class="container"><div class="search-results">`;
+
+  if (results.classes.length) {
+    html += `<div class="result-group"><h3>Classes (${results.classes.length})</h3>`;
+    results.classes.forEach(r => {
+      html += `<a class="result-item" href="#/class/${r.num}">
+        <strong>Class ${r.num}</strong>
+        <small>All subjects and chapters</small>
+      </a>`;
+    });
+    html += `</div>`;
+  }
+
+  if (results.subjects.length) {
+    html += `<div class="result-group"><h3>Subjects (${results.subjects.length})</h3>`;
+    results.subjects.forEach(r => {
+      html += `<a class="result-item" href="#/class/${r.num}/${r.subject.slug}">
+        <strong>${r.subject.icon} ${escapeHTML(r.subject.name)}</strong>
+        <small>Class ${r.num} • ${(r.subject.chapters||[]).length} chapters</small>
+      </a>`;
+    });
+    html += `</div>`;
+  }
+
+  if (results.chapters.length) {
+    html += `<div class="result-group"><h3>Chapters (${results.chapters.length})</h3>`;
+    results.chapters.forEach(r => {
+      html += `<a class="result-item" href="#/class/${r.num}/${r.subject.slug}/${r.chapter.slug}">
+        <strong>${escapeHTML(r.chapter.name)}</strong>
+        <small>Class ${r.num} • ${escapeHTML(r.subject.name)}</small>
+      </a>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `</div></div></section>`;
+  return html;
+}
+
+function render404(){
+  return `<section><div class="container">
+    <div class="empty">
+      <div class="icon">🚫</div>
+      <h2>Page not found (404)</h2>
+      <p>यह page मौजूद नहीं है।</p>
+      <a class="btn" href="#/">Home जाएँ</a>
+    </div>
+  </div></section>`;
+}
+
+/* ============================================================
+   ROUTER
+============================================================ */
+function getRoute(){
+  const hash = location.hash.replace(/^#/, "") || "/";
+  return hash.split("/").filter(Boolean);
+}
+
+function render(){
+  const parts = getRoute();
+  const app = document.getElementById("app");
+  let html = "";
+
+  if (parts.length === 0) html = renderHome();
+  else if (parts[0] === "class" && parts[1] && parts[2] && parts[3]) html = renderChapter(+parts[1], parts[2], parts[3]);
+  else if (parts[0] === "class" && parts[1] && parts[2]) html = renderSubject(+parts[1], parts[2]);
+  else if (parts[0] === "class" && parts[1]) html = renderClass(+parts[1]);
+  else if (parts[0] === "search" && parts[1]) html = renderSearch(decodeURIComponent(parts[1]));
+  else html = render404();
+
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+
+  // Sync search input
+  const si = document.getElementById("searchInput");
+  if (si && parts[0] === "search" && parts[1]) {
+    si.value = decodeURIComponent(parts[1]);
+  }
+}
+
+function doSearch(q){
+  q = (q||"").trim();
+  if (!q) return;
+  location.hash = "#/search/" + encodeURIComponent(q);
+}
+
+/* ============================================================
+   INIT
+============================================================ */
+document.addEventListener("DOMContentLoaded", () => {
+  // Class dropdown
+  const cm = document.getElementById("classMenu");
+  for (let i = 1; i <= 12; i++) {
+    cm.innerHTML += `<a href="#/class/${i}">Class ${i}</a>`;
+  }
+
+  // Mobile menu
+  const navInner = document.querySelector(".nav-inner");
+  const toggle = document.createElement("button");
+  toggle.className = "menu-toggle";
+  toggle.innerHTML = "☰ Menu";
+  toggle.onclick = () => navInner.classList.toggle("open");
+  document.querySelector("nav").prepend(toggle);
+
+  // Route
+  window.addEventListener("hashchange", render);
+  render();
+});
+</script>
+</body>
+</html>
