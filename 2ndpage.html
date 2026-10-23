@@ -23,7 +23,40 @@
     padding: 30px 20px 25px;
     text-align: center;
     box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    position: relative;
   }
+
+  /* 🚀 NEW: ALL TOOLS BUTTON */
+  .top-nav {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 10;
+  }
+  .all-tools-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #38bdf8, #3b82f6);
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+  .all-tools-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(59, 130, 246, 0.6);
+    background: linear-gradient(135deg, #0ea5e9, #2563eb);
+  }
+  .all-tools-btn i {
+    font-size: 1.1rem;
+  }
+
   header h1 { font-size: 2rem; letter-spacing: 1px; margin-bottom: 8px; font-weight: 800; }
   header h1 span { color: #38bdf8; }
   header p.tagline { font-size: 0.95rem; color: #cbd5e1; margin-bottom: 15px; }
@@ -287,6 +320,7 @@
 
   @media (max-width: 768px) {
     header h1 { font-size: 1.5rem; }
+    .top-nav { position: static; margin-bottom: 15px; display: flex; justify-content: center; }
     .top-services { grid-template-columns: 1fr; }
   }
 </style>
@@ -294,6 +328,13 @@
 <body>
 
 <header>
+  <!-- 🚀 NEW: ALL TOOLS BUTTON -->
+  <div class="top-nav">
+    <a href="https://www.toolfk.com/" target="_blank" class="all-tools-btn">
+      <i class="fas fa-toolbox"></i> All Tools
+    </a>
+  </div>
+
   <h1>SKYNET <span>CYBER CAFE</span></h1>
   <p class="tagline">Ramgarh — Aapki Har Digital Seva, Ek Hi Jagah</p>
   <div class="contact-bar">
