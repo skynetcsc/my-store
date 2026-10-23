@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skynet - All Tools</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            background: linear-gradient(to right, #00d2ff, #928dab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 30px rgba(0, 210, 255, 0.3);
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #b8b8d1;
+            margin-bottom: 50px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .button-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 18px 45px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            letter-spacing: 1px;
+        }
+
+        /* Button 1: Services Page */
+        .btn-primary {
+            background: linear-gradient(135deg, #00d2ff, #0066ff);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(0, 210, 255, 0.6);
+            background: linear-gradient(135deg, #00e0ff, #0077ff);
+        }
+
+        /* Button 2: Free Tools Page */
+        .btn-secondary {
+            background: transparent;
+            color: #00d2ff;
+            border: 2px solid #00d2ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 210, 255, 0.1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.2);
+        }
+
+        /* Button 3: APK Guy (New) */
+        .btn-apk {
+            background: linear-gradient(135deg, #ff6a00, #ee0979);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(255, 106, 0, 0.4);
+        }
+
+        .btn-apk:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(255, 106, 0, 0.6);
+            background: linear-gradient(135deg, #ff7b1a, #ff1a8c);
+        }
+
+        .footer {
+            margin-top: 80px;
+            font-size: 0.85rem;
+            color: #6c6c8a;
+        }
+
+        @media (max-width: 600px) {
+            .logo {
+                font-size: 2.8rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .btn {
+                padding: 15px 35px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo">SKYNET</div>
+    <p class="tagline">Your Gateway to All Tools & Apps</p>
+
+    <div class="button-container">
+        <!-- Button 1: Anuprint Services Page -->
+        <a href="https://anuprint.com/#services" class="btn btn-primary" target="_blank">
+            🚀 All Tools (Services)
+        </a>
+
+        <!-- Button 2: Anuprint Free Tools Page -->
+        <a href="https://anuprint.com/free-tools/" class="btn btn-secondary" target="_blank">
+            🛠️ Free Tools
+        </a>
+
+        <!-- Button 3: APK Guy (New Button) -->
+        <a href="https://apkguy.io/" class="btn btn-apk" target="_blank">
+            📱 Download APK Apps
+        </a>
+    </div>
+
+    <div class="footer">
+        &copy; 2026 Skynet. All rights reserved.
+    </div>
+
+</body>
+</html>
