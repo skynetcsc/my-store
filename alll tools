@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skynet - All Tools, Apps, Ebooks, Files, AI & APIs</title>
+    <title>Skynet - Your Ultimate Digital Gateway</title>
     <style>
         * {
             margin: 0;
@@ -27,11 +27,11 @@
         /* ===== TOP SUMMARY TABLE ===== */
         .top-summary {
             width: 100%;
-            max-width: 1100px;
+            max-width: 1200px;
             margin-bottom: 40px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 16px;
-            overflow: hidden;
+            overflow-x: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
         }
@@ -39,7 +39,8 @@
         .top-summary table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            min-width: 800px;
         }
 
         .top-summary th {
@@ -75,6 +76,7 @@
             vertical-align: middle;
         }
 
+        /* Existing Colors */
         .dot-blue { background: #0066ff; }
         .dot-cyan { background: #00d2ff; }
         .dot-orange { background: #ff6a00; }
@@ -82,6 +84,12 @@
         .dot-purple { background: #8e2de2; }
         .dot-yellow { background: #ffd200; }
         .dot-teal { background: #20b2aa; }
+        .dot-red { background: #e53935; }
+        .dot-pink { background: #d81b60; }
+        .dot-lime { background: #aeea00; }
+        .dot-indigo { background: #3949ab; }
+        /* New Color */
+        .dot-brown { background: #8d6e63; }
 
         /* ===== LOGO & MAIN BUTTONS ===== */
         .logo {
@@ -96,7 +104,7 @@
         }
 
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #b8b8d1;
             margin-bottom: 50px;
             font-weight: 300;
@@ -108,13 +116,13 @@
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
-            max-width: 1100px;
+            max-width: 1200px;
         }
 
         .btn {
             display: inline-block;
-            padding: 18px 40px;
-            font-size: 1.1rem;
+            padding: 16px 32px;
+            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
@@ -124,82 +132,50 @@
             letter-spacing: 0.5px;
         }
 
-        .btn-primary {
-            background: linear-gradient(135deg, #00d2ff, #0066ff);
+        /* Existing Button Styles */
+        .btn-primary { background: linear-gradient(135deg, #00d2ff, #0066ff); color: #fff; box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(0, 210, 255, 0.6); background: linear-gradient(135deg, #00e0ff, #0077ff); }
+
+        .btn-secondary { background: transparent; color: #00d2ff; border: 2px solid #00d2ff; }
+        .btn-secondary:hover { background: rgba(0, 210, 255, 0.1); transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 210, 255, 0.2); }
+
+        .btn-apk { background: linear-gradient(135deg, #ff6a00, #ee0979); color: #fff; box-shadow: 0 8px 25px rgba(255, 106, 0, 0.4); }
+        .btn-apk:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(255, 106, 0, 0.6); background: linear-gradient(135deg, #ff7b1a, #ff1a8c); }
+
+        .btn-library { background: linear-gradient(135deg, #11998e, #38ef7d); color: #fff; box-shadow: 0 8px 25px rgba(56, 239, 125, 0.4); }
+        .btn-library:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(56, 239, 125, 0.6); background: linear-gradient(135deg, #14b8a6, #4ade80); }
+
+        .btn-file { background: linear-gradient(135deg, #8e2de2, #4a00e0); color: #fff; box-shadow: 0 8px 25px rgba(142, 45, 226, 0.4); }
+        .btn-file:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(142, 45, 226, 0.6); background: linear-gradient(135deg, #a03ff5, #5a1aff); }
+
+        .btn-ai { background: linear-gradient(135deg, #f7971e, #ffd200); color: #1a1a2e; box-shadow: 0 8px 25px rgba(247, 151, 30, 0.4); }
+        .btn-ai:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(247, 151, 30, 0.6); background: linear-gradient(135deg, #ffa733, #ffdd33); }
+
+        .btn-api { background: linear-gradient(135deg, #20b2aa, #008b8b); color: #fff; box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4); }
+        .btn-api:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(32, 178, 170, 0.6); background: linear-gradient(135deg, #2cc9c0, #00a0a0); }
+
+        .btn-darkgpt { background: linear-gradient(135deg, #e53935, #b71c1c); color: #fff; box-shadow: 0 8px 25px rgba(229, 57, 53, 0.4); }
+        .btn-darkgpt:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(229, 57, 53, 0.6); background: linear-gradient(135deg, #ff5252, #c62828); }
+
+        .btn-sim { background: linear-gradient(135deg, #d81b60, #880e4f); color: #fff; box-shadow: 0 8px 25px rgba(216, 27, 96, 0.4); }
+        .btn-sim:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(216, 27, 96, 0.6); background: linear-gradient(135deg, #f06292, #ad1457); }
+
+        .btn-wifi { background: linear-gradient(135deg, #aeea00, #64dd17); color: #1a1a2e; box-shadow: 0 8px 25px rgba(174, 234, 0, 0.4); }
+        .btn-wifi:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(174, 234, 0, 0.6); background: linear-gradient(135deg, #c6ff00, #76ff03); }
+
+        .btn-course { background: linear-gradient(135deg, #3949ab, #1a237e); color: #fff; box-shadow: 0 8px 25px rgba(57, 73, 171, 0.4); }
+        .btn-course:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(57, 73, 171, 0.6); background: linear-gradient(135deg, #5c6bc0, #283593); }
+
+        /* Button 12: AglaSem (New) */
+        .btn-aglasem {
+            background: linear-gradient(135deg, #8d6e63, #5d4037);
             color: #ffffff;
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4);
+            box-shadow: 0 8px 25px rgba(141, 110, 99, 0.4);
         }
-        .btn-primary:hover {
+        .btn-aglasem:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(0, 210, 255, 0.6);
-            background: linear-gradient(135deg, #00e0ff, #0077ff);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #00d2ff;
-            border: 2px solid #00d2ff;
-        }
-        .btn-secondary:hover {
-            background: rgba(0, 210, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 210, 255, 0.2);
-        }
-
-        .btn-apk {
-            background: linear-gradient(135deg, #ff6a00, #ee0979);
-            color: #ffffff;
-            box-shadow: 0 8px 25px rgba(255, 106, 0, 0.4);
-        }
-        .btn-apk:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(255, 106, 0, 0.6);
-            background: linear-gradient(135deg, #ff7b1a, #ff1a8c);
-        }
-
-        .btn-library {
-            background: linear-gradient(135deg, #11998e, #38ef7d);
-            color: #ffffff;
-            box-shadow: 0 8px 25px rgba(56, 239, 125, 0.4);
-        }
-        .btn-library:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(56, 239, 125, 0.6);
-            background: linear-gradient(135deg, #14b8a6, #4ade80);
-        }
-
-        .btn-file {
-            background: linear-gradient(135deg, #8e2de2, #4a00e0);
-            color: #ffffff;
-            box-shadow: 0 8px 25px rgba(142, 45, 226, 0.4);
-        }
-        .btn-file:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(142, 45, 226, 0.6);
-            background: linear-gradient(135deg, #a03ff5, #5a1aff);
-        }
-
-        .btn-ai {
-            background: linear-gradient(135deg, #f7971e, #ffd200);
-            color: #1a1a2e;
-            box-shadow: 0 8px 25px rgba(247, 151, 30, 0.4);
-        }
-        .btn-ai:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(247, 151, 30, 0.6);
-            background: linear-gradient(135deg, #ffa733, #ffdd33);
-        }
-
-        /* Button 7: Free APIs List (New) */
-        .btn-api {
-            background: linear-gradient(135deg, #20b2aa, #008b8b);
-            color: #ffffff;
-            box-shadow: 0 8px 25px rgba(32, 178, 170, 0.4);
-        }
-        .btn-api:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 35px rgba(32, 178, 170, 0.6);
-            background: linear-gradient(135deg, #2cc9c0, #00a0a0);
+            box-shadow: 0 12px 35px rgba(141, 110, 99, 0.6);
+            background: linear-gradient(135deg, #a1887f, #6d4c41);
         }
 
         .footer {
@@ -209,24 +185,9 @@
         }
 
         @media (max-width: 700px) {
-            .logo {
-                font-size: 2.8rem;
-            }
-            .tagline {
-                font-size: 1rem;
-            }
-            .btn {
-                padding: 15px 30px;
-                font-size: 1rem;
-                width: 100%;
-            }
-            .top-summary table {
-                font-size: 0.75rem;
-            }
-            .top-summary th,
-            .top-summary td {
-                padding: 8px 6px;
-            }
+            .logo { font-size: 2.8rem; }
+            .tagline { font-size: 0.95rem; }
+            .btn { padding: 14px 25px; font-size: 0.9rem; width: 100%; }
         }
     </style>
 </head>
@@ -286,44 +247,61 @@
                     <td>github.com/public-apis/public-apis</td>
                     <td><span class="color-dot dot-teal"></span> Teal</td>
                 </tr>
+                <tr>
+                    <td>8</td>
+                    <td>🔍 Dark GPT (AI Search)</td>
+                    <td>theresanaiforthat.com/s/dark+gpt/</td>
+                    <td><span class="color-dot dot-red"></span> Red</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>📞 Virtual Phone Numbers</td>
+                    <td>onlinesim.io</td>
+                    <td><span class="color-dot dot-pink"></span> Pink</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>📶 Free WiFi Map</td>
+                    <td>wifimap.io</td>
+                    <td><span class="color-dot dot-lime"></span> Lime</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>🎓 Free Online Courses</td>
+                    <td>mindluster.com</td>
+                    <td><span class="color-dot dot-indigo"></span> Indigo</td>
+                </tr>
+                <!-- NEW ROW: AglaSem -->
+                <tr>
+                    <td>12</td>
+                    <td>📖 Free Study Materials</td>
+                    <td>aglasem.com</td>
+                    <td><span class="color-dot dot-brown"></span> Brown</td>
+                </tr>
             </tbody>
         </table>
     </div>
 
     <!-- ===== MAIN LOGO & BUTTONS ===== -->
     <div class="logo">SKYNET</div>
-    <p class="tagline">Your Gateway to Tools, Apps, Ebooks, Files, AI & APIs</p>
+    <p class="tagline">Your Ultimate Digital Gateway</p>
 
     <div class="button-container">
 
-        <a href="https://anuprint.com/#services" class="btn btn-primary" target="_blank">
-            🚀 All Tools (Services)
-        </a>
-
-        <a href="https://anuprint.com/free-tools/" class="btn btn-secondary" target="_blank">
-            🛠️ Free Tools
-        </a>
-
-        <a href="https://apkguy.io/" class="btn btn-apk" target="_blank">
-            📱 Download APK Apps
-        </a>
-
-        <a href="https://welib-public.org/" class="btn btn-library" target="_blank">
-            📚 Free Ebooks Library
-        </a>
-
-        <a href="https://filee.sh/" class="btn btn-file" target="_blank">
-            📁 File Sharing
-        </a>
-
-        <a href="https://poe.com/login?redirect_url=%2F" class="btn btn-ai" target="_blank">
-            🤖 AI Chat (Poe)
-        </a>
-
-        <!-- Button 7: Free APIs List (NEW) -->
-        <a href="https://github.com/public-apis/public-apis" class="btn btn-api" target="_blank">
-            🔌 Free APIs List
-        </a>
+        <a href="https://anuprint.com/#services" class="btn btn-primary" target="_blank">🚀 All Tools (Services)</a>
+        <a href="https://anuprint.com/free-tools/" class="btn btn-secondary" target="_blank">🛠️ Free Tools</a>
+        <a href="https://apkguy.io/" class="btn btn-apk" target="_blank">📱 Download APK Apps</a>
+        <a href="https://welib-public.org/" class="btn btn-library" target="_blank">📚 Free Ebooks Library</a>
+        <a href="https://filee.sh/" class="btn btn-file" target="_blank">📁 File Sharing</a>
+        <a href="https://poe.com/login?redirect_url=%2F" class="btn btn-ai" target="_blank">🤖 AI Chat (Poe)</a>
+        <a href="https://github.com/public-apis/public-apis" class="btn btn-api" target="_blank">🔌 Free APIs List</a>
+        <a href="https://theresanaiforthat.com/s/dark+gpt/" class="btn btn-darkgpt" target="_blank">🔍 Dark GPT (AI Search)</a>
+        <a href="https://onlinesim.io/" class="btn btn-sim" target="_blank">📞 Virtual Phone Numbers</a>
+        <a href="https://www.wifimap.io/" class="btn btn-wifi" target="_blank">📶 Free WiFi Map</a>
+        <a href="https://www.mindluster.com/#google_vignette" class="btn btn-course" target="_blank">🎓 Free Online Courses</a>
+        
+        <!-- NEW BUTTON: AglaSem -->
+        <a href="https://aglasem.com/" class="btn btn-aglasem" target="_blank">📖 Free Study Materials</a>
 
     </div>
 
