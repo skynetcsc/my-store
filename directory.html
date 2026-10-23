@@ -49,34 +49,20 @@
             border-bottom: 4px solid #f1c40f;
         }
         
-        header h1 { 
-            font-size: 34px; 
-            font-weight: 700; 
-            letter-spacing: 1px; 
-            margin-bottom: 10px; 
-            color: #f1c40f;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5); 
-        }
+        header h1 { font-size: 34px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        header h2 { font-family: 'Mukta', sans-serif; font-size: 22px; font-weight: 600; color: #ecf0f1; margin-bottom: 15px; }
+        header p { font-family: 'Mukta', sans-serif; font-size: 16px; line-height: 1.6; color: #bdc3c7; max-width: 900px; margin: 0 auto; }
         
-        header h2 { 
-            font-family: 'Mukta', sans-serif;
-            font-size: 22px; 
-            font-weight: 600; 
-            color: #ecf0f1;
-            margin-bottom: 15px;
-        }
-        
-        header p { 
-            font-family: 'Mukta', sans-serif;
-            font-size: 16px; 
-            line-height: 1.6; 
-            color: #bdc3c7; 
-            max-width: 900px; 
-            margin: 0 auto; 
-        }
-        
+        /* 🚀 NEW: LOCATION SELECTOR SECTION */
+        .location-container { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-bottom: 1px solid #e0e0e0; }
+        .location-container h3 { font-size: 18px; color: #1a252f; margin-bottom: 15px; }
+        .location-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto; }
+        .loc-chip { padding: 8px 18px; background: #f8f9fa; border: 2px solid #d0d0d0; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; color: #555; transition: all 0.2s; }
+        .loc-chip:hover { background: #e3f2fd; border-color: #3498db; color: #2980b9; }
+        .loc-chip.active { background: #2980b9; color: white; border-color: #2980b9; box-shadow: 0 2px 8px rgba(41, 128, 185, 0.4); }
+
         /* Search Bar */
-        .search-container { text-align: center; padding: 25px 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .search-container { text-align: center; padding: 20px; background: white; }
         #searchBar { width: 100%; max-width: 600px; padding: 15px 25px; border: 2px solid #3498db; border-radius: 30px; font-size: 16px; outline: none; transition: 0.3s; }
         #searchBar:focus { box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); }
 
@@ -94,23 +80,8 @@
         /* 🚀 CSS FOR SHOW MORE BUTTON & HIDDEN ITEMS */
         .hidden-cat { display: none !important; }
         .show-cat { display: block !important; }
-        .toggle-cat-btn {
-            width: 100%;
-            padding: 10px;
-            margin-top: 10px;
-            background: #e3f2fd;
-            color: #2980b9;
-            border: 1px solid #2980b9;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: 0.2s;
-        }
-        .toggle-cat-btn:hover {
-            background: #2980b9;
-            color: white;
-        }
+        .toggle-cat-btn { width: 100%; padding: 10px; margin-top: 10px; background: #e3f2fd; color: #2980b9; border: 1px solid #2980b9; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 13px; transition: 0.2s; }
+        .toggle-cat-btn:hover { background: #2980b9; color: white; }
 
         /* Grid Layout */
         .container { flex: 1; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
@@ -134,10 +105,8 @@
         
         .btn-call { background: #27ae60; }
         .btn-call:hover { background: #219150; }
-        
         .btn-insta { background: #E1306C; }
         .btn-insta:hover { background: #C13584; }
-        
         .btn-web { background: #2980b9; }
         .btn-web:hover { background: #21618c; }
         
@@ -151,6 +120,8 @@
             header h2 { font-size: 18px; }
             header p { font-size: 14px; }
             header { padding: 30px 15px; }
+            .location-chips { gap: 8px; }
+            .loc-chip { padding: 6px 12px; font-size: 12px; }
             
             .main-wrapper { flex-direction: column; padding: 15px; gap: 15px; }
             .sidebar { width: 100%; position: static; max-height: none; }
@@ -158,8 +129,6 @@
             .category-list li { margin-bottom: 0; padding: 8px 12px; font-size: 12px; border-left: none; border-bottom: 3px solid transparent; }
             .category-list li.active { border-left: none; border-bottom: 3px solid #1a252f; }
             .container { grid-template-columns: 1fr; }
-            
-            /* Mobile button style */
             .toggle-cat-btn { width: auto; margin-top: 5px; padding: 8px 15px; }
         }
 
@@ -172,19 +141,8 @@
         .modal h2 { margin-bottom: 20px; color: #1a252f; font-size: 22px; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 5px; font-size: 14px; font-weight: 500; color: #444; }
-        
-        /* Input & Select Styling */
-        .form-group input, .form-group select { 
-            width: 100%; 
-            padding: 10px; 
-            border: 1px solid #ccc; 
-            border-radius: 6px; 
-            font-size: 14px; 
-            outline: none; 
-            background: white;
-        }
+        .form-group input, .form-group select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; outline: none; background: white; }
         .form-group input:focus, .form-group select:focus { border-color: #2980b9; }
-        
         .save-btn { width: 100%; padding: 12px; background: #27ae60; color: white; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; margin-top: 10px; }
         .save-btn:hover { background: #219150; }
         @media (max-width: 768px) { .add-btn { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 14px; } }
@@ -196,18 +154,48 @@
     <header>
         <h1>Ramgarh Panchkula Digital Business Directory</h1>
         <h2>रामगढ़ के आसपास सभी बिजनेस, दुकानें और सेवाएं — अब एक ही जगह</h2>
-        <p>रSector 25, 26, 27, 28 (सेक्टर 25, 26, 27, 28), Jaisingpur (जयसिंहपुर), Moginand (मोगीनंद), Ramgarh (रामगढ़), Mankiyan (मनकियां), Bhanu (भानू), Kot (कोट), Billa (बिल्ला), Alipur (अलीपुर), Barwala (बरवाला), Daffarpur (दफ़्फ़रपुर), Kakrali (ककराली), Morthikari (मोरथीकरी), Mubarikpur (मुबारिकपुर) और आसपास के लगभग 30 किमी क्षेत्र के स्थानीय लोगों के लिए एक भरोसेमंद डिजिटल बिजनेस डायरेक्टरी — जहाँ रोजमर्रा की हर जरूरी सेवा, जैसे डॉक्टर, अस्पताल, स्कूल, कोचिंग, होटल, रेस्टोरेंट, किराना स्टोर, मोबाइल शॉप, CSC सेंटर, प्रॉपर्टी डीलर और वाहन रिपेयर, आसानी से मिल सके।</p>
+        <p>Sector 25, 26, 27, 28, Jaisingpur, Moginand, Ramgarh, Mankiyan, Bhanu, Kot, Billa, Alipur, Barwala, Jaswantgarh, Rattewali, Bunga, Daffarpur, Kakrali, Morthikari, Mubarikpur, Derabassi और आसपास के क्षेत्र के स्थानीय लोगों के लिए एक भरोसेमंद डिजिटल बिजनेस डायरेक्टरी।</p>
     </header>
 
+    <!-- 🚀 NEW: STEP 1 - SELECT AREA -->
+    <div class="location-container">
+        <h3>📍 Step 1: Apna Area Chunein (अपना एरिया चुनें)</h3>
+        <div class="location-chips" id="locationChips">
+            <button class="loc-chip active" onclick="filterLocation('all', this)">All Areas (सभी)</button>
+            <button class="loc-chip" onclick="filterLocation('Sector 25', this)">Sector 25</button>
+            <button class="loc-chip" onclick="filterLocation('Sector 26', this)">Sector 26</button>
+            <button class="loc-chip" onclick="filterLocation('Sector 27', this)">Sector 27</button>
+            <button class="loc-chip" onclick="filterLocation('Sector 28', this)">Sector 28</button>
+            <button class="loc-chip" onclick="filterLocation('Jaisingpur', this)">Jaisingpur</button>
+            <button class="loc-chip" onclick="filterLocation('Moginand', this)">Moginand</button>
+            <button class="loc-chip" onclick="filterLocation('Ramgarh', this)">Ramgarh</button>
+            <button class="loc-chip" onclick="filterLocation('Mankiyan', this)">Mankiyan</button>
+            <button class="loc-chip" onclick="filterLocation('Bhanu', this)">Bhanu</button>
+            <button class="loc-chip" onclick="filterLocation('Kot', this)">Kot</button>
+            <button class="loc-chip" onclick="filterLocation('Billa', this)">Billa</button>
+            <button class="loc-chip" onclick="filterLocation('Alipur', this)">Alipur</button>
+            <button class="loc-chip" onclick="filterLocation('Barwala', this)">Barwala</button>
+            <button class="loc-chip" onclick="filterLocation('Jaswantgarh', this)">Jaswantgarh</button>
+            <button class="loc-chip" onclick="filterLocation('Rattewali', this)">Rattewali</button>
+            <button class="loc-chip" onclick="filterLocation('Bunga', this)">Bunga</button>
+            <button class="loc-chip" onclick="filterLocation('Daffarpur', this)">Daffarpur</button>
+            <button class="loc-chip" onclick="filterLocation('Kakrali', this)">Kakrali</button>
+            <button class="loc-chip" onclick="filterLocation('Morthikari', this)">Morthikari</button>
+            <button class="loc-chip" onclick="filterLocation('Mubarikpur', this)">Mubarikpur</button>
+            <button class="loc-chip" onclick="filterLocation('Derabassi', this)">Derabassi</button>
+            <button class="loc-chip" onclick="filterLocation('Other', this)">Other (अन्य)</button>
+        </div>
+    </div>
+
     <div class="search-container">
-        <input type="text" id="searchBar" onkeyup="searchBusiness()" placeholder="Search shop, service, or category...">
+        <input type="text" id="searchBar" onkeyup="searchBusiness()" placeholder="🔍 Search shop, service, or category...">
     </div>
 
     <div class="main-wrapper">
         
         <!-- LEFT SIDEBAR: CATEGORY MENU -->
         <div class="sidebar">
-            <h3>All Categories (सभी श्रेणियां)</h3>
+            <h3>Step 2: Categories (श्रेणियां)</h3>
             <ul class="category-list" id="categoryList">
                 <!-- Categories will be loaded here automatically via JavaScript -->
             </ul>
@@ -219,7 +207,7 @@
         <div class="container" id="businessList">
 
             <!-- 1. Malkeet Singh -->
-            <div class="card" data-category="Banks & Finance (बैंक एवं फाइनेंस)">
+            <div class="card" data-category="Banks & Finance (बैंक एवं फाइनेंस)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=500&q=80" class="card-img" alt="Banking" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Banks & Finance (बैंक एवं फाइनेंस)</span>
@@ -234,14 +222,14 @@
                 </div>
             </div>
 
-            <!-- 2. Skynet Computer (Repair & Service) -->
-            <div class="card" data-category="Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)">
+            <!-- 2. Skynet Computer -->
+            <div class="card" data-category="Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1593640495253-23196b27a87f?w=500&q=80" class="card-img" alt="Skynet Computer Repair" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)</span>
                     <h2>Skynet Computer</h2>
                     <p><b>📍 Location:</b> Main Market, Near SS Public School, Ramgarh</p>
-                    <p><b>ℹ️ Service:</b> Complete repair & servicing for Desktops, Laptops, and all major Printer brands (HP, Canon, Epson, Xerox, Brother, Ricoh, Samsung). We handle hardware faults, paper jams, printhead cleaning, and cartridge issues.</p>
+                    <p><b>ℹ️ Service:</b> Complete repair & servicing for Desktops, Laptops, and all major Printer brands.</p>
                     <div class="button-group" style="flex-wrap: wrap; gap: 6px;">
                         <a href="tel:8901010994" class="btn btn-call" style="flex: 1 1 45%;">📞 Call</a>
                         <a href="https://wa.me/918901010994?text=Hi%20Skynet%20Computer,%20I%20need%20a%20device%20repaired." target="_blank" class="btn" style="background:#25D366; flex: 1 1 45%;">💬 WhatsApp</a>
@@ -251,7 +239,7 @@
             </div>
 
             <!-- 3. Urban Shine -->
-            <div class="card" data-category="Home Services & Cleaning (होम सर्विस एवं सफाई)">
+            <div class="card" data-category="Home Services & Cleaning (होम सर्विस एवं सफाई)" data-location="Daffarpur">
                 <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=500&q=80" class="card-img" alt="Car Wash" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Home Services & Cleaning (होम सर्विस एवं सफाई)</span>
@@ -267,7 +255,7 @@
             </div>
 
             <!-- 4. Jai Pharmacy -->
-            <div class="card" data-category="Medical Stores & Pharmacy (मेडिकल स्टोर)">
+            <div class="card" data-category="Medical Stores & Pharmacy (मेडिकल स्टोर)" data-location="Sector 27">
                 <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=500&q=80" class="card-img" alt="Pharmacy" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Medical Stores & Pharmacy (मेडिकल स्टोर)</span>
@@ -283,7 +271,7 @@
             </div>
 
             <!-- 5. Shivya Beauty Hub -->
-            <div class="card" data-category="Beauty Parlour & Salon (ब्यूटी पार्लर एवं सैलून)">
+            <div class="card" data-category="Beauty Parlour & Salon (ब्यूटी पार्लर एवं सैलून)" data-location="Daffarpur">
                 <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=500&q=80" class="card-img" alt="Beauty Hub" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Beauty Parlour & Salon (ब्यूटी पार्लर एवं सैलून)</span>
@@ -299,7 +287,7 @@
             </div>
 
             <!-- 6. Dashmesh Cycle Work -->
-            <div class="card" data-category="Automobile Repair & Service (वाहन रिपेयर एवं सर्विस)">
+            <div class="card" data-category="Automobile Repair & Service (वाहन रिपेयर एवं सर्विस)" data-location="Daffarpur">
                 <img src="https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?w=500&q=80" class="card-img" alt="Cycle" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Automobile Repair & Service (वाहन रिपेयर एवं सर्विस)</span>
@@ -315,7 +303,7 @@
             </div>
 
             <!-- 7. LIC Agent -->
-            <div class="card" data-category="Insurance Services (बीमा सेवाएँ)">
+            <div class="card" data-category="Insurance Services (बीमा सेवाएँ)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=500&q=80" class="card-img" alt="Education" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Insurance Services (बीमा सेवाएँ)</span>
@@ -331,7 +319,7 @@
             </div>
 
             <!-- 8. Skynet Cyber Cafe -->
-            <div class="card" data-category="Cyber Cafe & CSC Centres (साइबर कैफे एवं CSC सेंटर)" style="border: 2px solid #2980b9;">
+            <div class="card" data-category="Cyber Cafe & CSC Centres (साइबर कैफे एवं CSC सेंटर)" data-location="Ramgarh" style="border: 2px solid #2980b9;">
                 <img src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=500&q=80" class="card-img" alt="Cyber Cafe" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge" style="background: #2980b9;">Cyber Cafe & CSC Centres (साइबर कैफे एवं CSC सेंटर)</span>
@@ -347,7 +335,7 @@
             </div>
 
             <!-- 9. Bhagat Ram Motors -->
-            <div class="card" data-category="Automobile Repair & Service (वाहन रिपेयर एवं सर्विस)">
+            <div class="card" data-category="Automobile Repair & Service (वाहन रिपेयर एवं सर्विस)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1493238792000-8113da705763?w=500&q=80" class="card-img" alt="Motors" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Automobile Repair & Service (वाहन रिपेयर एवं सर्विस)</span>
@@ -363,7 +351,7 @@
             </div>
 
             <!-- 10. JARSY Footwear -->
-            <div class="card" data-category="Shoes & Footwear (जूते एवं चप्पल)">
+            <div class="card" data-category="Shoes & Footwear (जूते एवं चप्पल)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80" class="card-img" alt="Footwear" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Shoes & Footwear (जूते एवं चप्पल)</span>
@@ -379,7 +367,7 @@
             </div>
 
             <!-- 11. Pal Laptop's Solutions -->
-            <div class="card" data-category="Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)">
+            <div class="card" data-category="Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80" class="card-img" alt="Laptop Repair" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)</span>
@@ -395,7 +383,7 @@
             </div>
 
             <!-- 12. Heera Caterer -->
-            <div class="card" data-category="Restaurants & Dhabas (रेस्टोरेंट एवं ढाबे)">
+            <div class="card" data-category="Restaurants & Dhabas (रेस्टोरेंट एवं ढाबे)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=500&q=80" class="card-img" alt="Catering" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Restaurants & Dhabas (रेस्टोरेंट एवं ढाबे)</span>
@@ -411,7 +399,7 @@
             </div>
 
             <!-- 13. Atul General Store -->
-            <div class="card" data-category="General Stores (किराना स्टोर)">
+            <div class="card" data-category="General Stores (किराना स्टोर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=500&q=80" class="card-img" alt="Grocery" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">General Stores (किराना स्टोर)</span>
@@ -427,7 +415,7 @@
             </div>
 
             <!-- 14. A One Departmental Store -->
-            <div class="card" data-category="General Stores (किराना स्टोर)">
+            <div class="card" data-category="General Stores (किराना स्टोर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=500&q=80" class="card-img" alt="Departmental Store" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">General Stores (किराना स्टोर)</span>
@@ -443,12 +431,12 @@
             </div>
 
             <!-- 15. Almond Hotel -->
-            <div class="card" data-category="Hotels & Guest Houses (होटल एवं गेस्ट हाउस)">
+            <div class="card" data-category="Hotels & Guest Houses (होटल एवं गेस्ट हाउस)" data-location="Morthikari">
                 <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" class="card-img" alt="Almond Hotel" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Hotels & Guest Houses (होटल एवं गेस्ट हाउस)</span>
                     <h2>Almond Hotel</h2>
-                    <p><b>📍 Location:</b> Ramgarh-Derabassi Road, Morthikri (Adjoining The Place) Tehsil Derabassi, Punjab-140201</p>
+                    <p><b>📍 Location:</b> Ramgarh-Derabassi Road, Morthikari (Adjoining The Place)</p>
                     <p><b>📞 Phone:</b> 8196027215, 9658330007</p>
                     <div class="button-group">
                         <a href="tel:8196027215" class="btn btn-call">📞 Call</a>
@@ -459,7 +447,7 @@
             </div>
             
             <!-- 16. Vasudev Garments -->
-            <div class="card" data-category="Clothing & Garments (कपड़ों की दुकान)">
+            <div class="card" data-category="Clothing & Garments (कपड़ों की दुकान)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=500&q=80" class="card-img" alt="Vasudev Garments" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Clothing & Garments (कपड़ों की दुकान)</span>
@@ -468,14 +456,14 @@
                     <p><b>ℹ️ Service:</b> All types of Clothing & Garments</p>
                     <div class="button-group">
                         <a href="tel:9817087592" class="btn btn-call">📞 Call</a>
-                        <a href="https://wa.me/919817087592?text=Hi%20Vasudev%20Garments,%20I%20found%20you%20on%20Skynet%20Directory" target="_blank" class="btn btn-insta" style="background:#25D366;">💬 WhatsApp</a>
+                        <a href="https://wa.me/919817087592?text=Hi%20Vasudev%20Garments" target="_blank" class="btn btn-insta" style="background:#25D366;">💬 WhatsApp</a>
                         <a href="vashudev.html" target="_blank" class="btn btn-web">🌐 Web</a>
                     </div>
                 </div>
             </div>
 
             <!-- 17. Shri Krishna Infotec -->
-            <div class="card" data-category="Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)">
+            <div class="card" data-category="Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=500&q=80" class="card-img" alt="Shri Krishna Infotec" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Computer Sales & Repair (कंप्यूटर बिक्री एवं रिपेयर)</span>
@@ -484,14 +472,14 @@
                     <p><b>ℹ️ Service:</b> Printer, Computer & Laptop Repair, All kinds of Cartridge Refilling</p>
                     <div class="button-group">
                         <a href="tel:9050115053" class="btn btn-call">📞 Call</a>
-                        <a href="https://wa.me/919050115053?text=Hi%20Shri%20Krishna%20Infotec,%20I%20found%20you%20on%20Skynet%20Directory" target="_blank" class="btn btn-insta" style="background:#25D366;">💬 WhatsApp</a>
+                        <a href="https://wa.me/919050115053" target="_blank" class="btn btn-insta" style="background:#25D366;">💬 WhatsApp</a>
                         <a href="shrikrishna.html" target="_blank" class="btn btn-web">🌐 Web</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 18. Skynet Computer Center (Institute) -->
-            <div class="card" data-category="Computer Institutes (कंप्यूटर संस्थान)" style="border: 2px solid #2980b9;">
+            <!-- 18. Skynet Computer Center -->
+            <div class="card" data-category="Computer Institutes (कंप्यूटर संस्थान)" data-location="Ramgarh" style="border: 2px solid #2980b9;">
                 <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=500&q=80" class="card-img" alt="Computer Institute" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge" style="background: #2980b9;">Computer Institutes (कंप्यूटर संस्थान)</span>
@@ -500,7 +488,7 @@
                     <p><b>ℹ️ Service:</b> Computer Course DCA, ADCA, CCA, CCC, Tally, Typing etc</p>
                     <div class="button-group" style="flex-wrap: wrap;">
                         <a href="tel:8901010994" class="btn btn-call">📞 Call</a>
-                        <a href="https://wa.me/918901010994?text=Hi%20Skynet%20Cyber%20Cafe,%20I%20found%20you%20on%20the%20directory" target="_blank" class="btn" style="background:#25D366;">💬 WhatsApp</a>
+                        <a href="https://wa.me/918901010994" target="_blank" class="btn" style="background:#25D366;">💬 WhatsApp</a>
                         <a href="https://www.instagram.com/skynet_ramgarh/" target="_blank" class="btn btn-insta">📸 Insta</a>
                         <a href="https://skynetcc.in/" target="_blank" class="btn btn-web">🌐 Web</a>
                     </div>
@@ -508,24 +496,24 @@
             </div>
 
             <!-- 19. Sigma Coaching Classes -->
-            <div class="card" data-category="Coaching Centres (कोचिंग सेंटर)">
+            <div class="card" data-category="Coaching Centres (कोचिंग सेंटर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" class="card-img" alt="Sigma Coaching Classes" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Coaching Centres (कोचिंग सेंटर)</span>
                     <h2>Sigma Coaching Classes</h2>
                     <p><b>📍 Location:</b> #524 Guru Nanak Colony Ramgarh</p>
-                    <p><b>ℹ️ Service:</b> Class 9th & 10th (Science & Maths), Class 11th & 12th (Physics & Chemistry). CBSE & IIT-JEE / NEET Foundation.</p>
+                    <p><b>ℹ️ Service:</b> Class 9th & 10th (Science & Maths), Class 11th & 12th (Physics & Chemistry).</p>
                     <div class="button-group" style="flex-wrap: wrap; gap: 6px;">
                         <a href="tel:9034123934" class="btn btn-call" style="flex: 1 1 45%;">📞 Call 1</a>
                         <a href="tel:7986785075" class="btn btn-call" style="flex: 1 1 45%;">📞 Call 2</a>
-                        <a href="https://wa.me/919034123934?text=Hi%20Sigma%20Coaching%20Classes,%20I%20found%20you%20on%20Skynet%20Directory" target="_blank" class="btn" style="background:#25D366; flex: 1 1 45%;">💬 WhatsApp</a>
-                        <a href="https://www.instagram.com/sigma.coachingclasses?srtk=MWx4MGZxcHZxMzFmMw%3D%3D" target="_blank" class="btn btn-insta" style="flex: 1 1 45%;">📸 Insta</a>
+                        <a href="https://wa.me/919034123934" target="_blank" class="btn" style="background:#25D366; flex: 1 1 45%;">💬 WhatsApp</a>
+                        <a href="https://www.instagram.com/sigma.coachingclasses" target="_blank" class="btn btn-insta" style="flex: 1 1 45%;">📸 Insta</a>
                     </div>
                 </div>
             </div>
 
-            <!-- 🚀 NEW: Neha Coaching Center -->
-            <div class="card" data-category="Coaching Centres (कोचिंग सेंटर)">
+            <!-- Neha Coaching Center -->
+            <div class="card" data-category="Coaching Centres (कोचिंग सेंटर)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=500&q=80" class="card-img" alt="Neha Coaching Center" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Coaching Centres (कोचिंग सेंटर)</span>
@@ -534,17 +522,14 @@
                     <p><b>ℹ️ Service:</b> Coaching for Class 5 to 12 (CBSE, HBSE, ICSE). Timings: 4 PM – 7 PM.</p>
                     <div class="button-group" style="flex-wrap: wrap; gap: 6px;">
                         <a href="tel:8558980549" class="btn btn-call" style="flex: 1 1 45%;">📞 Call</a>
-                        <a href="https://wa.me/918558980549?text=Hi%20Neha%20Coaching%20Center,%20I%20found%20you%20on%20Skynet%20Directory" target="_blank" class="btn" style="background:#25D366; flex: 1 1 45%;">💬 WhatsApp</a>
+                        <a href="https://wa.me/918558980549" target="_blank" class="btn" style="background:#25D366; flex: 1 1 45%;">💬 WhatsApp</a>
                         <a href="neha.html" target="_blank" class="btn btn-web" style="flex: 1 1 100%;">🌐 View Website</a>
                     </div>
                 </div>
             </div>
-            <!-- END Neha Coaching Center -->
 
-            <!-- 🚀 SCHOOLS & COLLEGES SECTION START 🚀 -->
-
-            <!-- GSSS Ramgarh (Sanskriti) -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <!-- GSSS Ramgarh -->
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="GSSS Ramgarh" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -560,7 +545,7 @@
             </div>
 
             <!-- Gayatri Model School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Gayatri Model School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -576,7 +561,7 @@
             </div>
 
             <!-- Roots Country School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Ramgarh">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Roots Country School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -591,8 +576,8 @@
                 </div>
             </div>
 
-            <!-- GPS Alipur / Alipur Town -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <!-- GPS Alipur -->
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Alipur">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="GPS Alipur" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -608,7 +593,7 @@
             </div>
 
             <!-- GSSS Kot -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Kot">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="GSSS Kot" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -624,7 +609,7 @@
             </div>
 
             <!-- Mount Litera Heritage School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Kot">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Mount Litera Heritage School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -640,7 +625,7 @@
             </div>
 
             <!-- ASHPG Jyoti School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Kot">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="ASHPG Jyoti School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -656,7 +641,7 @@
             </div>
 
             <!-- Jawahar Navodaya Vidyalaya -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Jawahar Navodaya Vidyalaya" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -666,13 +651,13 @@
                     <div class="button-group">
                         <a href="tel:01734258450" class="btn btn-call">📞 Call</a>
                         <a href="#" class="btn btn-insta">📸 Insta</a>
-                        <a href="https://navodaya.gov.in/nvs/nvs-school/PANCHKULA/en/home/" target="_blank" class="btn btn-web">🌐 Web</a>
+                        <a href="https://navodaya.gov.in" target="_blank" class="btn btn-web">🌐 Web</a>
                     </div>
                 </div>
             </div>
 
             <!-- The Scholars Public School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="The Scholars Public School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -688,7 +673,7 @@
             </div>
 
             <!-- PM Shri GGSSS Barwala -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="PM Shri GGSSS Barwala" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -704,7 +689,7 @@
             </div>
 
             <!-- GSSS Barwala -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="GSSS Barwala" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -720,7 +705,7 @@
             </div>
 
             <!-- Kimberley International School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Kimberley International School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -736,7 +721,7 @@
             </div>
 
             <!-- Karan Public School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Karan Public School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -752,7 +737,7 @@
             </div>
 
             <!-- New Standard High School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="New Standard High School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -768,7 +753,7 @@
             </div>
 
             <!-- Nav Bhartiya Vidya Mandir -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Nav Bhartiya Vidya Mandir" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -784,7 +769,7 @@
             </div>
 
             <!-- The Rising Gurukul -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Barwala">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="The Rising Gurukul" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -800,7 +785,7 @@
             </div>
 
             <!-- Govt. Model Sanskriti School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Govt. Model Sanskriti School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -816,7 +801,7 @@
             </div>
 
             <!-- Aggarsen Sr. Sec. School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Aggarsen Sr. Sec. School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -832,7 +817,7 @@
             </div>
 
             <!-- K.V.M. Sr. Sec. Smart School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="K.V.M. Sr. Sec. Smart School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -848,7 +833,7 @@
             </div>
 
             <!-- Akal Academy -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Akal Academy" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -864,7 +849,7 @@
             </div>
 
             <!-- Guru Nanak High School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Guru Nanak High School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -880,7 +865,7 @@
             </div>
 
             <!-- M.G. High School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="M.G. High School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -896,7 +881,7 @@
             </div>
 
             <!-- Saraswati National School -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="Saraswati National School" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -911,8 +896,8 @@
                 </div>
             </div>
 
-            <!-- GSSS Bhood / Hangola / Toda -->
-            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)">
+            <!-- GSSS Bhood -->
+            <div class="card" data-category="Schools & Colleges (स्कूल एवं कॉलेज)" data-location="Other">
                 <img src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=500&q=80" class="card-img" alt="GSSS Bhood" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">Schools & Colleges (स्कूल एवं कॉलेज)</span>
@@ -943,6 +928,36 @@
                     <input type="text" id="bName" required>
                 </div>
                 
+                <!-- 🚀 Location Dropdown in Form -->
+                <div class="form-group">
+                    <label>Area / Location *</label>
+                    <select id="bArea" required>
+                        <option value="" disabled selected>Select Area...</option>
+                        <option value="Sector 25">Sector 25</option>
+                        <option value="Sector 26">Sector 26</option>
+                        <option value="Sector 27">Sector 27</option>
+                        <option value="Sector 28">Sector 28</option>
+                        <option value="Jaisingpur">Jaisingpur</option>
+                        <option value="Moginand">Moginand</option>
+                        <option value="Ramgarh">Ramgarh</option>
+                        <option value="Mankiyan">Mankiyan</option>
+                        <option value="Bhanu">Bhanu</option>
+                        <option value="Kot">Kot</option>
+                        <option value="Billa">Billa</option>
+                        <option value="Alipur">Alipur</option>
+                        <option value="Barwala">Barwala</option>
+                        <option value="Jaswantgarh">Jaswantgarh</option>
+                        <option value="Rattewali">Rattewali</option>
+                        <option value="Bunga">Bunga</option>
+                        <option value="Daffarpur">Daffarpur</option>
+                        <option value="Kakrali">Kakrali</option>
+                        <option value="Morthikari">Morthikari</option>
+                        <option value="Mubarikpur">Mubarikpur</option>
+                        <option value="Derabassi">Derabassi</option>
+                        <option value="Other">Other (अन्य)</option>
+                    </select>
+                </div>
+
                 <!-- 🚀 Category Dropdown (All 60 Categories) -->
                 <div class="form-group">
                     <label>Category *</label>
@@ -1105,89 +1120,95 @@
             "Other Businesses (अन्य व्यवसाय)"
         ];
 
+        // 🚀 Variables to track active filters
+        let activeLocation = 'all';
+        let activeCategory = 'all';
+
         document.addEventListener("DOMContentLoaded", function() {
-            loadCategories(); // Call the function to load categories
+            loadCategories(); 
         });
 
         // Function to load categories in Sidebar
         function loadCategories() {
             let categoryList = document.getElementById('categoryList');
-            categoryList.innerHTML = ''; // Clear before loading
+            categoryList.innerHTML = ''; 
             
             // "Show All" Button
             let allLi = document.createElement('li');
-            allLi.innerText = "Show All (सभी दिखाएं)";
+            allLi.innerText = "All Categories (सभी)";
             allLi.className = "active";
             allLi.onclick = function() { filterCategory('all', this); };
             categoryList.appendChild(allLi);
 
-            // Loop through all categories and add to sidebar
             masterCategories.forEach((cat, index) => {
                 let li = document.createElement('li');
                 li.innerText = cat;
                 li.onclick = function() { filterCategory(cat, this); };
-                
-                // 🚀 Hide categories after the first 10 (Updated condition)
-                if (index >= 10) {
-                    li.classList.add('hidden-cat');
-                }
-                
+                if (index >= 10) { li.classList.add('hidden-cat'); }
                 categoryList.appendChild(li);
             });
         }
 
-        // 🚀 Function to toggle "Show More / Show Less"
         function toggleCategories() {
             let hiddenItems = document.querySelectorAll('.hidden-cat');
             let btn = document.getElementById('toggleCatBtn');
             let isShowing = hiddenItems.length > 0 && hiddenItems[0].classList.contains('show-cat');
 
             hiddenItems.forEach(item => {
-                if (isShowing) {
-                    item.classList.remove('show-cat');
-                } else {
-                    item.classList.add('show-cat');
-                }
+                if (isShowing) { item.classList.remove('show-cat'); } 
+                else { item.classList.add('show-cat'); }
             });
 
-            // Change Button Text
-            if (isShowing) {
-                btn.innerHTML = "➕ Show More (और दिखाएं)";
-            } else {
-                btn.innerHTML = "➖ Show Less (कम दिखाएं)";
-            }
+            if (isShowing) { btn.innerHTML = "➕ Show More (और दिखाएं)"; } 
+            else { btn.innerHTML = "➖ Show Less (कम दिखाएं)"; }
+        }
+
+        // 🚀 Filter by Location
+        function filterLocation(location, btn) {
+            activeLocation = location;
+            // Update active button styling
+            document.querySelectorAll('.loc-chip').forEach(chip => chip.classList.remove('active'));
+            btn.classList.add('active');
+            
+            applyAllFilters();
         }
 
         function filterCategory(categoryName, element) {
+            activeCategory = categoryName;
             let items = document.querySelectorAll('.category-list li');
             items.forEach(item => item.classList.remove('active'));
             element.classList.add('active');
-
-            document.getElementById('searchBar').value = '';
-
-            let cards = document.querySelectorAll('.card');
-            cards.forEach(card => {
-                let cardCategory = card.getAttribute('data-category');
-                // Agar "Show All" click hua hai ya card ki category match karti hai
-                if (categoryName === 'all' || cardCategory === categoryName) {
-                    card.style.display = "flex";
-                } else {
-                    card.style.display = "none";
-                }
-            });
+            
+            document.getElementById('searchBar').value = ''; // Clear search when category changes
+            applyAllFilters();
         }
 
         function searchBusiness() {
-            let input = document.getElementById('searchBar').value.toLowerCase();
-            let cards = document.querySelectorAll('.card');
+            applyAllFilters();
             
+            // Set category to 'all' visually since search is active
             let items = document.querySelectorAll('.category-list li');
             items.forEach(item => item.classList.remove('active'));
-            if(items[0]) items[0].classList.add('active'); // "Show All" ko active rakho
+            if(items[0]) items[0].classList.add('active');
+            activeCategory = 'all';
+        }
 
+        // 🚀 MAIN LOGIC: Apply Location + Category + Search together
+        function applyAllFilters() {
+            let searchInput = document.getElementById('searchBar').value.toLowerCase();
+            let cards = document.querySelectorAll('.card');
+            
             cards.forEach(card => {
-                let text = card.innerText.toLowerCase();
-                if (text.includes(input)) {
+                let cardLocation = card.getAttribute('data-location') || '';
+                let cardCategory = card.getAttribute('data-category') || '';
+                let cardText = card.innerText.toLowerCase();
+
+                // Check conditions
+                let matchLocation = (activeLocation === 'all' || cardLocation === activeLocation);
+                let matchCategory = (activeCategory === 'all' || cardCategory === activeCategory);
+                let matchSearch = cardText.includes(searchInput);
+
+                if (matchLocation && matchCategory && matchSearch) {
                     card.style.display = "flex";
                 } else {
                     card.style.display = "none";
@@ -1196,41 +1217,31 @@
         }
 
         // 🚀 FUNCTIONS FOR ADDING BUSINESS
-        function openModal() { 
-            document.getElementById('addModal').style.display = 'flex'; 
-        }
-        
-        function closeModal() { 
-            document.getElementById('addModal').style.display = 'none'; 
-        }
+        function openModal() { document.getElementById('addModal').style.display = 'flex'; }
+        function closeModal() { document.getElementById('addModal').style.display = 'none'; }
 
         function addNewBusiness(event) {
-            event.preventDefault(); // Page refresh rokne ke liye
+            event.preventDefault();
 
-            // Form se data uthayein
             let name = document.getElementById('bName').value;
+            let area = document.getElementById('bArea').value; 
             let category = document.getElementById('bCategory').value; 
             let location = document.getElementById('bLocation').value;
             let service = document.getElementById('bService').value || "Not specified";
             let phone = document.getElementById('bPhone').value;
             let social = document.getElementById('bSocial').value;
 
-            // Social ID se Link banayein
             let socialLink = "#";
             if (social) {
-                if (social.startsWith('http')) {
-                    socialLink = social;
-                } else {
-                    socialLink = "https://instagram.com/" + social.replace('@', '');
-                }
+                if (social.startsWith('http')) { socialLink = social; } 
+                else { socialLink = "https://instagram.com/" + social.replace('@', ''); }
             }
 
-            // Default Image (Kyunki form mein image nahi hai)
             let defaultImage = "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=500&q=80";
 
-            // Naya Card banayein
+            // Naya Card banayein (Note: data-location added here)
             let newCardHTML = `
-            <div class="card" data-category="${category}">
+            <div class="card" data-category="${category}" data-location="${area}">
                 <img src="${defaultImage}" class="card-img" alt="${name}" loading="lazy">
                 <div class="card-content">
                     <span class="category-badge">${category}</span>
@@ -1245,16 +1256,15 @@
                 </div>
             </div>`;
 
-            // Container mein naya card add karein
             document.getElementById('businessList').innerHTML += newCardHTML;
             
-            // Form reset karein aur popup band karein
             document.getElementById('addForm').reset();
             closeModal();
             
-            // 🚀 WHATSAPP MESSAGE TAIYAR KAREIN (Aapke number 8901010994 par)
+            // WhatsApp Message
             let waText = `*NEW BUSINESS ADDED!*%0A%0A` +
                          `*Name:* ${name}%0A` +
+                         `*Area:* ${area}%0A` +
                          `*Category:* ${category}%0A` +
                          `*Location:* ${location}%0A` +
                          `*Service:* ${service}%0A` +
@@ -1263,11 +1273,8 @@
                          `_Sent from SKYNET Directory_`;
 
             let waUrl = `https://wa.me/918901010994?text=${waText}`;
-
-            // Naye tab mein WhatsApp open karein
             window.open(waUrl, '_blank');
             
-            // Alert dikhayein user ko
             alert(name + " added successfully! Please send the WhatsApp message to notify admin.");
         }
     </script>
