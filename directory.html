@@ -44,25 +44,54 @@
             background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             color: white; 
             text-align: center; 
-            padding: 45px 20px; 
+            padding: 45px 20px 30px; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
             border-bottom: 4px solid #f1c40f;
         }
         
         header h1 { font-size: 34px; font-weight: 700; letter-spacing: 1px; margin-bottom: 10px; color: #f1c40f; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        header h2 { font-family: 'Mukta', sans-serif; font-size: 22px; font-weight: 600; color: #ecf0f1; margin-bottom: 15px; }
-        header p { font-family: 'Mukta', sans-serif; font-size: 16px; line-height: 1.6; color: #bdc3c7; max-width: 900px; margin: 0 auto; }
+        header h2 { font-family: 'Mukta', sans-serif; font-size: 22px; font-weight: 600; color: #ecf0f1; margin-bottom: 25px; }
         
-        /* 🚀 NEW: LOCATION SELECTOR SECTION */
-        .location-container { background: white; padding: 20px; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-bottom: 1px solid #e0e0e0; }
-        .location-container h3 { font-size: 18px; color: #1a252f; margin-bottom: 15px; }
+        /* 🚀 HEADER LOCATION CHIPS */
+        .location-container-header { margin-top: 10px; }
+        .location-container-header h3 { font-size: 18px; color: #f1c40f; margin-bottom: 15px; font-weight: 600; }
+        
         .location-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; max-width: 1000px; margin: 0 auto; }
-        .loc-chip { padding: 8px 18px; background: #f8f9fa; border: 2px solid #d0d0d0; border-radius: 25px; cursor: pointer; font-size: 14px; font-weight: 600; color: #555; transition: all 0.2s; }
-        .loc-chip:hover { background: #e3f2fd; border-color: #3498db; color: #2980b9; }
+        
+        .loc-chip { 
+            padding: 8px 18px; 
+            background: rgba(255, 255, 255, 0.1); 
+            border: 2px solid rgba(255, 255, 255, 0.3); 
+            border-radius: 25px; 
+            cursor: pointer; 
+            font-size: 14px; 
+            font-weight: 600; 
+            color: #ecf0f1; 
+            transition: all 0.2s; 
+        }
+        .loc-chip:hover { background: rgba(255, 255, 255, 0.2); border-color: #fff; color: #fff; }
         .loc-chip.active { background: #2980b9; color: white; border-color: #2980b9; box-shadow: 0 2px 8px rgba(41, 128, 185, 0.4); }
+        
+        /* 🚀 CSS FOR HIDDEN LOCATIONS */
+        .hidden-loc { display: none !important; }
+        .show-loc { display: inline-block !important; }
+        
+        .toggle-loc-btn {
+            margin-top: 15px;
+            padding: 8px 20px;
+            background: transparent;
+            color: #f1c40f;
+            border: 2px solid #f1c40f;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+        .toggle-loc-btn:hover { background: #f1c40f; color: #1a252f; }
 
         /* Search Bar */
-        .search-container { text-align: center; padding: 20px; background: white; }
+        .search-container { text-align: center; padding: 20px; background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         #searchBar { width: 100%; max-width: 600px; padding: 15px 25px; border: 2px solid #3498db; border-radius: 30px; font-size: 16px; outline: none; transition: 0.3s; }
         #searchBar:focus { box-shadow: 0 0 10px rgba(52, 152, 219, 0.3); }
 
@@ -118,8 +147,8 @@
         @media (max-width: 768px) {
             header h1 { font-size: 24px; }
             header h2 { font-size: 18px; }
-            header p { font-size: 14px; }
-            header { padding: 30px 15px; }
+            header { padding: 30px 15px 20px; }
+            .location-container-header h3 { font-size: 16px; }
             .location-chips { gap: 8px; }
             .loc-chip { padding: 6px 12px; font-size: 12px; }
             
@@ -150,42 +179,49 @@
 </head>
 <body>
 
-    <!-- 🚀 NAYA ATTRACTIVE HEADER -->
+    <!-- 🚀 NAYA ATTRACTIVE HEADER WITH LOCATION CHIPS -->
     <header>
         <h1>Ramgarh Panchkula Digital Business Directory</h1>
         <h2>रामगढ़ के आसपास सभी बिजनेस, दुकानें और सेवाएं — अब एक ही जगह</h2>
-        <p>Sector 25, 26, 27, 28, Jaisingpur, Moginand, Ramgarh, Mankiyan, Bhanu, Kot, Billa, Alipur, Barwala, Jaswantgarh, Rattewali, Bunga, Daffarpur, Kakrali, Morthikari, Mubarikpur, Derabassi और आसपास के क्षेत्र के स्थानीय लोगों के लिए एक भरोसेमंद डिजिटल बिजनेस डायरेक्टरी।</p>
-    </header>
-
-    <!-- 🚀 NEW: STEP 1 - SELECT AREA -->
-    <div class="location-container">
-        <h3>📍 Step 1: Apna Area Chunein (अपना एरिया चुनें)</h3>
-        <div class="location-chips" id="locationChips">
-            <button class="loc-chip active" onclick="filterLocation('all', this)">All Areas (सभी)</button>
-            <button class="loc-chip" onclick="filterLocation('Sector 25', this)">Sector 25</button>
-            <button class="loc-chip" onclick="filterLocation('Sector 26', this)">Sector 26</button>
-            <button class="loc-chip" onclick="filterLocation('Sector 27', this)">Sector 27</button>
-            <button class="loc-chip" onclick="filterLocation('Sector 28', this)">Sector 28</button>
-            <button class="loc-chip" onclick="filterLocation('Jaisingpur', this)">Jaisingpur</button>
-            <button class="loc-chip" onclick="filterLocation('Moginand', this)">Moginand</button>
-            <button class="loc-chip" onclick="filterLocation('Ramgarh', this)">Ramgarh</button>
-            <button class="loc-chip" onclick="filterLocation('Mankiyan', this)">Mankiyan</button>
-            <button class="loc-chip" onclick="filterLocation('Bhanu', this)">Bhanu</button>
-            <button class="loc-chip" onclick="filterLocation('Kot', this)">Kot</button>
-            <button class="loc-chip" onclick="filterLocation('Billa', this)">Billa</button>
-            <button class="loc-chip" onclick="filterLocation('Alipur', this)">Alipur</button>
-            <button class="loc-chip" onclick="filterLocation('Barwala', this)">Barwala</button>
-            <button class="loc-chip" onclick="filterLocation('Jaswantgarh', this)">Jaswantgarh</button>
-            <button class="loc-chip" onclick="filterLocation('Rattewali', this)">Rattewali</button>
-            <button class="loc-chip" onclick="filterLocation('Bunga', this)">Bunga</button>
-            <button class="loc-chip" onclick="filterLocation('Daffarpur', this)">Daffarpur</button>
-            <button class="loc-chip" onclick="filterLocation('Kakrali', this)">Kakrali</button>
-            <button class="loc-chip" onclick="filterLocation('Morthikari', this)">Morthikari</button>
-            <button class="loc-chip" onclick="filterLocation('Mubarikpur', this)">Mubarikpur</button>
-            <button class="loc-chip" onclick="filterLocation('Derabassi', this)">Derabassi</button>
-            <button class="loc-chip" onclick="filterLocation('Other', this)">Other (अन्य)</button>
+        
+        <!-- Location Chips Inside Header -->
+        <div class="location-container-header">
+            <h3>📍 Step 1: Apna Area Chunein (अपना एरिया चुनें)</h3>
+            <div class="location-chips" id="locationChips">
+                <!-- First 10 visible -->
+                <button class="loc-chip active" onclick="filterLocation('all', this)">All Areas (सभी)</button>
+                <button class="loc-chip" onclick="filterLocation('Sector 25', this)">Sector 25</button>
+                <button class="loc-chip" onclick="filterLocation('Sector 26', this)">Sector 26</button>
+                <button class="loc-chip" onclick="filterLocation('Sector 27', this)">Sector 27</button>
+                <button class="loc-chip" onclick="filterLocation('Sector 28', this)">Sector 28</button>
+                <button class="loc-chip" onclick="filterLocation('Jaisingpur', this)">Jaisingpur</button>
+                <button class="loc-chip" onclick="filterLocation('Moginand', this)">Moginand</button>
+                <button class="loc-chip" onclick="filterLocation('Ramgarh', this)">Ramgarh</button>
+                <button class="loc-chip" onclick="filterLocation('Mankiyan', this)">Mankiyan</button>
+                <button class="loc-chip" onclick="filterLocation('Bhanu', this)">Bhanu</button>
+                
+                <!-- Hidden by default -->
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Kot', this)">Kot</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Billa', this)">Billa</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Alipur', this)">Alipur</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Barwala', this)">Barwala</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Jaswantgarh', this)">Jaswantgarh</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Rattewali', this)">Rattewali</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Bunga', this)">Bunga</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Daffarpur', this)">Daffarpur</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Kakrali', this)">Kakrali</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Morthikari', this)">Morthikari</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Mubarikpur', this)">Mubarikpur</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Derabassi', this)">Derabassi</button>
+                <button class="loc-chip hidden-loc" onclick="filterLocation('Other', this)">Other (अन्य)</button>
+            </div>
+            
+            <!-- Show More Button for Locations -->
+            <div>
+                <button id="toggleLocBtn" class="toggle-loc-btn" onclick="toggleLocations()">➕ Show More Areas (और दिखाएं)</button>
+            </div>
         </div>
-    </div>
+    </header>
 
     <div class="search-container">
         <input type="text" id="searchBar" onkeyup="searchBusiness()" placeholder="🔍 Search shop, service, or category...">
@@ -199,7 +235,7 @@
             <ul class="category-list" id="categoryList">
                 <!-- Categories will be loaded here automatically via JavaScript -->
             </ul>
-            <!-- 🚀 SHOW MORE BUTTON -->
+            <!-- 🚀 SHOW MORE BUTTON FOR CATEGORIES -->
             <button id="toggleCatBtn" class="toggle-cat-btn" onclick="toggleCategories()">➕ Show More (और दिखाएं)</button>
         </div>
 
@@ -1147,6 +1183,21 @@
                 if (index >= 10) { li.classList.add('hidden-cat'); }
                 categoryList.appendChild(li);
             });
+        }
+
+        // 🚀 Toggle Locations (Show More/Less)
+        function toggleLocations() {
+            let hiddenItems = document.querySelectorAll('.hidden-loc');
+            let btn = document.getElementById('toggleLocBtn');
+            let isShowing = hiddenItems.length > 0 && hiddenItems[0].classList.contains('show-loc');
+
+            hiddenItems.forEach(item => {
+                if (isShowing) { item.classList.remove('show-loc'); } 
+                else { item.classList.add('show-loc'); }
+            });
+
+            if (isShowing) { btn.innerHTML = "➕ Show More Areas (और दिखाएं)"; } 
+            else { btn.innerHTML = "➖ Show Less (कम दिखाएं)"; }
         }
 
         function toggleCategories() {
