@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Skynet - All Tools</title>
+    <title>Skynet - All Tools, Apps, Ebooks & Files</title>
     <style>
         * {
             margin: 0;
@@ -48,58 +48,80 @@
             gap: 20px;
             flex-wrap: wrap;
             justify-content: center;
+            max-width: 1000px;
         }
 
         .btn {
             display: inline-block;
-            padding: 18px 45px;
-            font-size: 1.2rem;
+            padding: 18px 40px;
+            font-size: 1.1rem;
             font-weight: 600;
             text-decoration: none;
             border-radius: 50px;
             transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
-        /* Button 1: Services Page */
+        /* Button 1: Anuprint Services */
         .btn-primary {
             background: linear-gradient(135deg, #00d2ff, #0066ff);
             color: #ffffff;
             box-shadow: 0 8px 25px rgba(0, 210, 255, 0.4);
         }
-
         .btn-primary:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(0, 210, 255, 0.6);
             background: linear-gradient(135deg, #00e0ff, #0077ff);
         }
 
-        /* Button 2: Free Tools Page */
+        /* Button 2: Anuprint Free Tools */
         .btn-secondary {
             background: transparent;
             color: #00d2ff;
             border: 2px solid #00d2ff;
         }
-
         .btn-secondary:hover {
             background: rgba(0, 210, 255, 0.1);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(0, 210, 255, 0.2);
         }
 
-        /* Button 3: APK Guy (New) */
+        /* Button 3: APK Guy */
         .btn-apk {
             background: linear-gradient(135deg, #ff6a00, #ee0979);
             color: #ffffff;
             box-shadow: 0 8px 25px rgba(255, 106, 0, 0.4);
         }
-
         .btn-apk:hover {
             transform: translateY(-3px);
             box-shadow: 0 12px 35px rgba(255, 106, 0, 0.6);
             background: linear-gradient(135deg, #ff7b1a, #ff1a8c);
+        }
+
+        /* Button 4: Welib Public Library */
+        .btn-library {
+            background: linear-gradient(135deg, #11998e, #38ef7d);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(56, 239, 125, 0.4);
+        }
+        .btn-library:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(56, 239, 125, 0.6);
+            background: linear-gradient(135deg, #14b8a6, #4ade80);
+        }
+
+        /* Button 5: Filee.sh (New) */
+        .btn-file {
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(142, 45, 226, 0.4);
+        }
+        .btn-file:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(142, 45, 226, 0.6);
+            background: linear-gradient(135deg, #a03ff5, #5a1aff);
         }
 
         .footer {
@@ -116,8 +138,9 @@
                 font-size: 1rem;
             }
             .btn {
-                padding: 15px 35px;
+                padding: 15px 30px;
                 font-size: 1rem;
+                width: 100%;
             }
         }
     </style>
@@ -125,9 +148,10 @@
 <body>
 
     <div class="logo">SKYNET</div>
-    <p class="tagline">Your Gateway to All Tools & Apps</p>
+    <p class="tagline">Your Gateway to Tools, Apps, Ebooks & Files</p>
 
     <div class="button-container">
+
         <!-- Button 1: Anuprint Services Page -->
         <a href="https://anuprint.com/#services" class="btn btn-primary" target="_blank">
             🚀 All Tools (Services)
@@ -138,10 +162,21 @@
             🛠️ Free Tools
         </a>
 
-        <!-- Button 3: APK Guy (New Button) -->
+        <!-- Button 3: APK Guy -->
         <a href="https://apkguy.io/" class="btn btn-apk" target="_blank">
             📱 Download APK Apps
         </a>
+
+        <!-- Button 4: Welib Public Library -->
+        <a href="https://welib-public.org/" class="btn btn-library" target="_blank">
+            📚 Free Ebooks Library
+        </a>
+
+        <!-- Button 5: Filee.sh (NEW) -->
+        <a href="https://filee.sh/" class="btn btn-file" target="_blank">
+            📁 File Sharing
+        </a>
+
     </div>
 
     <div class="footer">
