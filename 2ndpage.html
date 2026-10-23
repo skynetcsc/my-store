@@ -397,7 +397,7 @@
         <i class="fas fa-chevron-right chevron"></i>
       </button>
 
-      <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms KVS 134A Chandigarh HBSE 10th Result ITI Polytechnic">
+      <button onclick="openAdmissionModal()" class="exact-btn color-purple searchable-item" data-search="Online Admission Forms NTA NEET UGC JEE CUET KVS 134A Chandigarh HBSE 10th Result ITI Polytechnic">
         <div class="btn-left">
           <div class="icon-box"><i class="fas fa-file-signature"></i></div>
           <div class="text-box"><h4>Online Admission Forms</h4><p>ऑनलाइन एडमिशन फॉर्म</p></div>
@@ -1017,7 +1017,11 @@
         <button onclick="admSelectState('haryana')" class="provider-btn" style="margin: 0;"><h4>Haryana (हरियाणा)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
         <button onclick="admSelectState('punjab')" class="provider-btn" style="margin: 0;"><h4>Punjab (पंजाब)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
         <button onclick="admSelectState('chandigarh')" class="provider-btn" style="margin: 0;"><h4>Chandigarh (चंडीगढ़)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
+        
+        <!-- NEW NTA BUTTON ADDED HERE -->
+        <button onclick="openNTAExams()" class="provider-btn" style="margin: 0; background: #fdf4ff; border-color: #d946ef;"><h4><i class="fas fa-university" style="color: #d946ef;"></i> NTA Exams (All India)</h4><i class="fas fa-chevron-right" style="color:#d946ef;"></i></button>
       </div>
+      
       <div id="admLevel2" style="display: none; padding: 15px; flex-direction: column; gap: 10px;">
         <button class="back-btn" onclick="admBackToLevel1()" style="align-self: flex-start; padding: 0 0 10px 0;"><i class="fas fa-arrow-left"></i> राज्य बदलें</button>
         <button onclick="admSelectType('school')" class="provider-btn" style="margin: 0;"><h4><i class="fas fa-school"></i> School Admission (स्कूल)</h4><i class="fas fa-chevron-right" style="color:#3b82f6;"></i></button>
@@ -1080,6 +1084,28 @@
 // 1. DATA FOR OTHER SERVICES (Dynamic)
 // ==========================================
 const dynamicServicesData = {
+  // NTA EXAMS ADDED HERE
+  ntaExams: {
+    title: "🏛️ NTA Exams (National Testing Agency)",
+    links: [
+      { name: "NTA Official Website", url: "https://exams.nta.nic.in/", desc: "All exams, results, and admit cards." },
+      { name: "NEET UG", url: "https://exams.nta.nic.in/", desc: "National Eligibility cum Entrance Test (Undergraduate)" },
+      { name: "UGC-NET", url: "https://exams.nta.nic.in/", desc: "University Grants Commission - National Eligibility Test" },
+      { name: "CSIR UGC-NET", url: "https://exams.nta.nic.in/", desc: "Council of Scientific & Industrial Research - University Grants Commission National Eligibility Test" },
+      { name: "AIAPGET", url: "https://exams.nta.nic.in/", desc: "All India Ayush Post Graduate Entrance Test" },
+      { name: "CUET (UG)", url: "https://exams.nta.nic.in/", desc: "Common University Entrance Test (Undergraduate)" },
+      { name: "CUET (PG)", url: "https://exams.nta.nic.in/", desc: "Common University Entrance Test (Postgraduate)" },
+      { name: "JEE (Main)", url: "https://exams.nta.nic.in/", desc: "Joint Entrance Examination (Main)" },
+      { name: "JIPMAT", url: "https://exams.nta.nic.in/", desc: "Joint Integrated Programme in Management Admission Test" },
+      { name: "CMAT", url: "https://exams.nta.nic.in/", desc: "Common Management Admission Test" },
+      { name: "NIFT", url: "https://exams.nta.nic.in/", desc: "National Institute of Fashion Technology" },
+      { name: "AISSEE", url: "https://exams.nta.nic.in/", desc: "All India Sainik Schools Entrance Examination" },
+      { name: "RIMC", url: "https://exams.nta.nic.in/", desc: "Rashtriya Indian Military College" },
+      { name: "RMS", url: "https://exams.nta.nic.in/", desc: "Rashtriya Military School" },
+      { name: "SWAYAM", url: "https://exams.nta.nic.in/", desc: "Study Webs of Active Learning for Young Aspiring Minds" }
+    ]
+  },
+
   ticketBooking: {
     title: "🎫 Ticket Booking",
     links: [
@@ -1383,6 +1409,16 @@ function openDynamicModal(serviceId) {
   });
 
   openModal('dynamicModal');
+}
+
+// ==========================================
+// NEW: OPEN NTA EXAMS FROM ADMISSION MODAL
+// ==========================================
+function openNTAExams() {
+  closeModal('admissionModal');
+  setTimeout(() => {
+    openDynamicModal('ntaExams');
+  }, 300); // Small delay so the admission modal closes smoothly first
 }
 
 // ==========================================
