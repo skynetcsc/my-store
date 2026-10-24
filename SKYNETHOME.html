@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SKYNET — TOP PROJECT ONE</title>
+<style>
+  :root{
+    --bg:#05070d;
+    --cyan:#00e5ff;
+    --magenta:#ff2bd6;
+    --lime:#b6ff00;
+    --amber:#ffc400;
+    --violet:#8a5cff;
+    --text:#e8f6ff;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(circle at 15% 10%, rgba(0,229,255,.16), transparent 45%),
+      radial-gradient(circle at 85% 85%, rgba(255,43,214,.16), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:"Segoe UI", system-ui, -apple-system, sans-serif;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding:28px 16px 60px;
+    gap:34px;
+    overflow-x:hidden;
+  }
+
+  /* animated grid backdrop */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background-image:
+      linear-gradient(rgba(0,229,255,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,255,.07) 1px, transparent 1px);
+    background-size:52px 52px;
+    pointer-events:none;
+    z-index:-1;
+    animation:gridMove 14s linear infinite;
+  }
+  @keyframes gridMove{
+    from{ background-position:0 0, 0 0; }
+    to  { background-position:52px 52px, 52px 52px; }
+  }
+
+  /* ---------- TOP HIGHLIGHT BUTTON ---------- */
+  .top-wrap{
+    width:100%;
+    max-width:900px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+    margin-top:8px;
+  }
+
+  .top-label{
+    font-size:clamp(.75rem, 2.2vw, 1rem);
+    letter-spacing:.5em;
+    text-transform:uppercase;
+    color:var(--cyan);
+    text-shadow:0 0 14px var(--cyan);
+    font-weight:700;
+    text-align:center;
+  }
+
+  .top-btn{
+    position:relative;
+    width:100%;
+    border:none;
+    cursor:pointer;
+    border-radius:26px;
+    padding:clamp(24px, 5vw, 46px) 20px;
+    font-family:inherit;
+    font-weight:900;
+    font-size:clamp(2rem, 9vw, 4.8rem);
+    letter-spacing:clamp(2px, 1.2vw, 10px);
+    color:#001318;
+    background:linear-gradient(100deg, var(--cyan), #7af9ff 40%, var(--magenta));
+    box-shadow:
+      0 0 0 4px rgba(0,229,255,.35),
+      0 0 45px rgba(0,229,255,.75),
+      0 0 110px rgba(255,43,214,.45),
+      inset 0 -10px 30px rgba(0,0,0,.25);
+    text-shadow:0 2px 0 rgba(255,255,255,.35);
+    animation:pulseTop 2.6s ease-in-out infinite;
+    transition:transform .18s ease, box-shadow .25s ease;
+    overflow:hidden;
+  }
+
+  .top-btn span{
+    position:relative;
+    z-index:2;
+  }
+
+  /* sweeping shine */
+  .top-btn::after{
+    content:"";
+    position:absolute;
+    top:0; left:-60%;
+    width:45%; height:100%;
+    background:linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent);
+    transform:skewX(-22deg);
+    animation:sweep 3.4s ease-in-out infinite;
+  }
+
+  @keyframes sweep{
+    0%   { left:-60%; }
+    55%  { left:130%; }
+    100% { left:130%; }
+  }
+
+  @keyframes pulseTop{
+    0%,100%{ box-shadow:0 0 0 4px rgba(0,229,255,.35), 0 0 45px rgba(0,229,255,.75), 0 0 110px rgba(255,43,214,.45), inset 0 -10px 30px rgba(0,0,0,.25); }
+    50%    { box-shadow:0 0 0 8px rgba(0,229,255,.18), 0 0 70px rgba(0,229,255,.95), 0 0 150px rgba(255,43,214,.65), inset 0 -10px 30px rgba(0,0,0,.25); }
+  }
+
+  .top-btn:hover{ transform:translateY(-4px) scale(1.015); }
+  .top-btn:active{ transform:scale(.985); }
+
+  /* ---------- BUTTON GRID ---------- */
+  .grid{
+    width:100%;
+    max-width:900px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+    gap:20px;
+  }
+
+  .big-btn{
+    position:relative;
+    cursor:pointer;
+    border:2px solid var(--c);
+    border-radius:22px;
+    padding:clamp(26px, 4.4vw, 40px) 22px;
+    min-height:clamp(120px, 20vw, 160px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    text-align:center;
+    font-family:inherit;
+    font-weight:900;
+    font-size:clamp(1.15rem, 3.4vw, 1.65rem);
+    letter-spacing:1.5px;
+    line-height:1.25;
+    color:#fff;
+    background:linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
+    backdrop-filter:blur(6px);
+    box-shadow:0 0 22px -6px var(--c), inset 0 0 24px -12px var(--c);
+    transition:transform .18s ease, box-shadow .25s ease, background .25s ease;
+    overflow:hidden;
+    text-decoration:none; /* for anchor buttons */
+  }
+
+  .big-btn .ico{
+    font-size:1.7em;
+    line-height:1;
+    filter:drop-shadow(0 0 10px var(--c));
+  }
+
+  .big-btn .tag{
+    font-size:.58em;
+    font-weight:600;
+    letter-spacing:.22em;
+    color:var(--c);
+    text-transform:uppercase;
+  }
+
+  .big-btn:hover{
+    transform:translateY(-6px);
+    background:linear-gradient(160deg, color-mix(in srgb, var(--c) 26%, transparent), rgba(255,255,255,.03));
+    box-shadow:0 0 42px -4px var(--c), inset 0 0 34px -10px var(--c);
+  }
+
+  .big-btn:active{ transform:translateY(-1px) scale(.98); }
+
+  /* full-width buttons */
+  .span-2{ grid-column:1 / -1; }
+
+  /* colour themes */
+  .c-cyan   { --c:var(--cyan); }
+  .c-lime   { --c:var(--lime); }
+  .c-amber  { --c:var(--amber); }
+  .c-violet { --c:var(--violet); }
+  .c-magenta{ --c:var(--magenta); }
+
+  /* ---------- TOAST ---------- */
+  #toast{
+    position:fixed;
+    left:50%;
+    bottom:26px;
+    transform:translate(-50%, 140%);
+    background:linear-gradient(100deg, var(--cyan), var(--magenta));
+    color:#00131a;
+    font-weight:800;
+    letter-spacing:.06em;
+    padding:14px 26px;
+    border-radius:999px;
+    box-shadow:0 0 34px rgba(0,229,255,.7);
+    transition:transform .35s cubic-bezier(.2,.9,.2,1.3);
+    z-index:99;
+    max-width:90vw;
+    text-align:center;
+  }
+  #toast.show{ transform:translate(-50%, 0); }
+
+  footer{
+    font-size:.75rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:#4d7a8c;
+    text-align:center;
+  }
+
+  @media (max-width:420px){
+    body{ padding:20px 12px 48px; gap:26px; }
+    .grid{ gap:16px; grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ TOP BIG HIGHLIGHT BUTTON ============ -->
+  <div class="top-wrap">
+    <div class="top-label">★ Top Project One ★</div>
+    <button class="top-btn" data-name="SKYNET — TOP PROJECT ONE">
+      <span>SKYNET</span>
+    </button>
+    <!-- "Cyber Café • Ramgarh" line removed as requested -->
+  </div>
+
+  <!-- ============ BIG BUTTON GRID ============ -->
+  <main class="grid">
+
+    <!-- Linked to https://www.skynetcc.co.in/ -->
+    <a class="big-btn c-cyan" href="https://www.skynetcc.co.in/" target="_blank" rel="noopener">
+      <span class="ico">🖥️</span>
+      <span>SKYNET CYBER CAFE</span>
+      <span class="tag">Browse • Print • Scan</span>
+    </a>
+
+    <!-- Linked to https://www.skynetcc.co.in/directory.html -->
+    <a class="big-btn c-lime" href="https://www.skynetcc.co.in/directory.html" target="_blank" rel="noopener">
+      <span class="ico">🏬</span>
+      <span>ALL SHOP IN<br>RAMGARH AREA</span>
+      <span class="tag">Local Directory</span>
+    </a>
+
+    <button class="big-btn c-amber" data-name="SKYNET STUDY HUB">
+      <span class="ico">📚</span>
+      <span>SKYNET STUDY HUB</span>
+      <span class="tag">Notes • Tests • Help</span>
+    </button>
+
+    <button class="big-btn c-violet" data-name="MAKE">
+      <span class="ico">🛠️</span>
+      <span>MAKE</span>
+      <span class="tag">Create • Build • Design</span>
+    </button>
+
+    <button class="big-btn c-magenta span-2" data-name="SKYNET GAME">
+      <span class="ico">🎮</span>
+      <span>SKYNET GAME</span>
+      <span class="tag">Play Zone</span>
+    </button>
+
+  </main>
+
+  <footer>Skynet • Ramgarh</footer>
+
+  <div id="toast">Hello</div>
+
+<script>
+  const toast = document.getElementById('toast');
+  let timer;
+
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(timer);
+    timer = setTimeout(() => toast.classList.remove('show'), 1800);
+  }
+
+  document.querySelectorAll('[data-name]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      showToast('▶ ' + btn.dataset.name);
+    });
+  });
+</script>
+</body>
+</html>
