@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Newspaper Hub - HR, PB, CH & Jobs</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hind:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --primary: #2563eb;
+            --border-color: #e2e8f0;
+            
+            /* Card Themes */
+            --c-blue-bg: #eff6ff; --c-blue-border: #3b82f6;
+            --c-green-bg: #f0fdf4; --c-green-border: #22c55e;
+            --c-yellow-bg: #fefce8; --c-yellow-border: #eab308;
+            --c-purple-bg: #faf5ff; --c-purple-border: #a855f7;
+            --c-pink-bg: #fdf2f8; --c-pink-border: #ec4899;
+            --c-orange-bg: #fff7ed; --c-orange-border: #f97316;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Hind', sans-serif; background-color: var(--bg-color); color: var(--text-main); line-height: 1.5; }
+        h1, h2, h3, h4, .poppins { font-family: 'Poppins', sans-serif; }
+
+        /* Premium Hero Header */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            padding: 50px 20px 80px;
+            text-align: center;
+            color: white;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .hero-icon {
+            width: 80px; height: 80px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 45px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .hero h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 10px; letter-spacing: -1px; }
+        .hero p { color: #cbd5e1; font-size: 1.1rem; font-weight: 400; max-width: 600px; margin: 0 auto; }
+
+        /* Main Container */
+        .container {
+            max-width: 1280px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Filter Section */
+        .filter-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+            border: 1px solid var(--border-color);
+            margin-bottom: 35px;
+        }
+
+        .filter-group { margin-bottom: 20px; }
+        .filter-group:last-child { margin-bottom: 0; }
+        .filter-title { font-size: 0.9rem; font-weight: 700; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+
+        .pills { display: flex; flex-wrap: wrap; gap: 10px; }
+        .pill {
+            padding: 10px 22px;
+            border-radius: 50px;
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .pill:hover { background: #e2e8f0; color: var(--text-main); }
+        .pill.active { background: var(--text-main); color: white; border-color: var(--text-main); box-shadow: 0 4px 12px rgba(30, 41, 59, 0.25); }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        /* Card Design */
+        .card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            border-radius: 16px;
+            text-decoration: none;
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-left: 6px solid var(--accent);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            border-color: var(--accent);
+        }
+
+        .card-left { display: flex; align-items: center; gap: 16px; z-index: 1; }
+        
+        /* BADA ICON */
+        .icon-box {
+            width: 60px; height: 60px;
+            border-radius: 14px;
+            background: #fff;
+            padding: 8px;
+            display: flex; align-items: center; justify-content: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+        .icon-box img { width: 100%; height: 100%; object-fit: contain; border-radius: 6px; }
+
+        .card-text h3 { font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; line-height: 1.3; }
+        .card-text p { font-size: 0.8rem; color: var(--text-sub); font-weight: 600; background: #f1f5f9; padding: 3px 10px; border-radius: 6px; display: inline-block; }
+
+        .action-arrow { color: var(--text-sub); font-size: 1.4rem; transition: transform 0.2s; z-index: 1; }
+        .card:hover .action-arrow { transform: translateX(5px); color: var(--accent); }
+
+        /* Accent Colors */
+        .card-blue { --accent: var(--c-blue-border); background: var(--c-blue-bg); }
+        .card-green { --accent: var(--c-green-border); background: var(--c-green-bg); }
+        .card-yellow { --accent: var(--c-yellow-border); background: var(--c-yellow-bg); }
+        .card-purple { --accent: var(--c-purple-border); background: var(--c-purple-bg); }
+        .card-pink { --accent: var(--c-pink-border); background: var(--c-pink-bg); }
+        .card-orange { --accent: var(--c-orange-border); background: var(--c-orange-bg); }
+
+        /* Empty State */
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-sub); }
+        .empty-state h3 { font-size: 1.4rem; color: var(--text-main); margin-bottom: 8px; }
+
+        /* Modal Styling */
+        .modal-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.7); backdrop-filter: blur(6px); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+        .modal-overlay.active { display: flex; }
+        .modal-content { background: #fff; width: 100%; max-width: 440px; border-radius: 24px; padding: 30px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+        .modal-header { display: flex; align-items: center; gap: 20px; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px solid var(--border-color); }
+        .modal-header img { width: 64px; height: 64px; border-radius: 16px; object-fit: contain; border: 1px solid var(--border-color); padding: 6px; background: #fff; }
+        .modal-header h2 { font-size: 1.4rem; color: var(--text-main); margin-bottom: 4px; }
+        .modal-header p { font-size: 0.9rem; color: var(--text-sub); font-weight: 600; }
+        
+        .action-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .modal-btn { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 18px; border-radius: 14px; border: 1px solid var(--border-color); background: #f8fafc; color: var(--text-main); font-weight: 600; font-size: 0.95rem; text-decoration: none; transition: all 0.2s; cursor: pointer; gap: 10px; }
+        .modal-btn:hover { background: #e2e8f0; transform: translateY(-3px); }
+        .modal-btn svg { width: 26px; height: 26px; fill: var(--text-sub); }
+        
+        .modal-btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .modal-btn.primary:hover { background: #1d4ed8; }
+        .modal-btn.primary svg { fill: #fff; }
+        
+        .modal-btn.purple { background: #f3e8ff; color: #9333ea; border-color: #e9d5ff; }
+        .modal-btn.purple:hover { background: #e9d5ff; }
+        .modal-btn.purple svg { fill: #9333ea; }
+        
+        .close-modal { width: 100%; text-align: center; margin-top: 20px; padding: 14px; background: none; border: none; color: var(--text-sub); font-weight: 600; cursor: pointer; font-size: 1rem; transition: color 0.2s; border-radius: 10px; }
+        .close-modal:hover { color: #ef4444; background: #fee2e2; }
+
+        /* TTS Status */
+        .tts-status { font-size: 0.9rem; color: var(--primary); text-align: center; margin-top: 15px; display: none; background: #eff6ff; padding: 10px; border-radius: 10px; font-weight: 600; }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .hero { padding: 40px 15px 70px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero-icon { width: 70px; height: 70px; font-size: 35px; }
+            .container { margin-top: -30px; padding: 0 15px; }
+            .filter-card { padding: 20px; }
+            .grid { grid-template-columns: 1fr; }
+            .action-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Premium Header -->
+<div class="hero">
+    <div class="hero-icon">📰</div>
+    <h1>Local & Employment News Hub</h1>
+    <p>पंजाब, हरियाणा, चंडीगढ़ के सभी लोकल अखबार और सरकारी नौकरियों की खबरें एक ही जगह</p>
+</div>
+
+<div class="container">
+    
+    <!-- Filters -->
+    <div class="filter-card">
+        <div class="filter-group">
+            <div class="filter-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                राज्य/कैटेगरी (State/Category)
+            </div>
+            <div class="pills">
+                <button class="pill state-btn active" onclick="setStateFilter('all', this)">सभी</button>
+                <button class="pill state-btn" onclick="setStateFilter('punjab', this)">पंजाब</button>
+                <button class="pill state-btn" onclick="setStateFilter('haryana', this)">हरियाणा</button>
+                <button class="pill state-btn" onclick="setStateFilter('chandigarh', this)">चंडीगढ़</button>
+                <button class="pill state-btn" onclick="setStateFilter('jobs', this)">💼 नौकरी (Jobs)</button>
+            </div>
+        </div>
+        
+        <div class="filter-group" style="margin-top: 20px;">
+            <div class="filter-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 8l6 6"></path><path d="M4 14l6-6 2-3"></path><path d="M2 5h12"></path><path d="M7 2h1"></path><path d="M22 22l-5-10-5 10"></path><path d="M14 18h6"></path></svg>
+                भाषा (Language)
+            </div>
+            <div class="pills">
+                <button class="pill lang-btn active" onclick="setLangFilter('all', this)">सभी</button>
+                <button class="pill lang-btn" onclick="setLangFilter('Punjabi', this)">पंजाबी</button>
+                <button class="pill lang-btn" onclick="setLangFilter('Hindi', this)">हिंदी</button>
+                <button class="pill lang-btn" onclick="setLangFilter('English', this)">English</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="grid" id="newspaperGrid">
+        <!-- Cards will be generated by JS -->
+    </div>
+
+</div>
+
+<!-- Action Modal -->
+<div class="modal-overlay" id="actionModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img id="modalLogo" src="" alt="Logo">
+            <div>
+                <h2 id="modalTitle">Newspaper Name</h2>
+                <p id="modalLang">Language</p>
+            </div>
+        </div>
+        
+        <div class="action-grid">
+            <a href="#" id="btnNew" target="_blank" class="modal-btn primary">
+                <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+                आज का अखबार
+            </a>
+            
+            <a href="#" id="btnOld" target="_blank" class="modal-btn purple">
+                <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                पुराने अखबार
+            </a>
+            
+            <button id="btnListen" class="modal-btn">
+                <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+                सुनकर पढ़ें
+            </button>
+            
+            <button id="btnShare" class="modal-btn">
+                <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92-1.31-2.92-2.92-2.92z"/></svg>
+                शेयर करें
+            </button>
+        </div>
+        
+        <p class="tts-status" id="ttsStatus">कृपया प्रतीक्षा करें...</p>
+        <button class="close-modal" onclick="closeModal()">बंद करें</button>
+    </div>
+</div>
+
+<!-- Load PDF.js for TTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+    if (window.pdfjsLib) {
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    }
+</script>
+
+<script>
+    // संपूर्ण डेटा (Local + Employment)
+    const newspapers = [
+        // --- PUNJAB (Local) ---
+        { state: 'punjab', name: 'Ajit', lang: 'Punjabi', domain: 'ajitjalandhar.com', epaper: 'https://epaper.ajitjalandhar.com/' },
+        { state: 'punjab', name: 'Jag Bani', lang: 'Punjabi', domain: 'jagbani.com', epaper: 'https://epaper.jagbani.com/' },
+        { state: 'punjab', name: 'Rozana Spokesman', lang: 'Punjabi', domain: 'rozanaspokesman.com', epaper: 'https://epaper.rozanaspokesman.com/' },
+        { state: 'punjab', name: 'Punjabi Jagran', lang: 'Punjabi', domain: 'punjabijagran.com', epaper: 'https://epaper.punjabijagran.com/' },
+        { state: 'punjab', name: 'Punjabi Tribune', lang: 'Punjabi', domain: 'punjabitribuneonline.com', epaper: 'https://epaper.punjabitribuneonline.com/' },
+        { state: 'punjab', name: 'Punjab Kesari', lang: 'Hindi', domain: 'punjabkesari.com', epaper: 'https://epaper.punjabkesari.in/' },
+        { state: 'punjab', name: 'Amar Ujala', lang: 'Hindi', domain: 'amarujala.com', epaper: 'https://epaper.amarujala.com/' },
+        { state: 'punjab', name: 'The Tribune', lang: 'English', domain: 'tribuneindia.com', epaper: 'https://epaper.tribuneindia.com/' },
+        { state: 'punjab', name: 'Hindustan Times', lang: 'English', domain: 'hindustantimes.com', epaper: 'https://epaper.hindustantimes.com/' },
+        
+        // --- HARYANA (Local) ---
+        { state: 'haryana', name: 'Hari Bhoomi', lang: 'Hindi', domain: 'haribhoomi.com', epaper: 'https://epaper.haribhoomi.com/' },
+        { state: 'haryana', name: 'Dainik Bhaskar', lang: 'Hindi', domain: 'bhaskar.com', epaper: 'https://epaper.bhaskar.com/' },
+        { state: 'haryana', name: 'Amar Ujala', lang: 'Hindi', domain: 'amarujala.com', epaper: 'https://epaper.amarujala.com/' },
+        { state: 'haryana', name: 'Dainik Jagran', lang: 'Hindi', domain: 'jagran.com', epaper: 'https://epaper.jagran.com/' },
+        { state: 'haryana', name: 'Aaj Samaj', lang: 'Hindi', domain: 'aajsamaaj.com', epaper: 'http://epaper.aajsamaaj.com/' },
+        { state: 'haryana', name: 'The Tribune', lang: 'English', domain: 'tribuneindia.com', epaper: 'https://epaper.tribuneindia.com/' },
+        { state: 'haryana', name: 'The Times of India', lang: 'English', domain: 'timesofindia.indiatimes.com', epaper: 'https://epaper.timesgroup.com/' },
+
+        // --- CHANDIGARH (Local) ---
+        { state: 'chandigarh', name: 'The Tribune', lang: 'English', domain: 'tribuneindia.com', epaper: 'https://epaper.tribuneindia.com/' },
+        { state: 'chandigarh', name: 'Dainik Tribune', lang: 'Hindi', domain: 'tribuneindia.com', epaper: 'https://epaper.dainiktribuneonline.com/' },
+        { state: 'chandigarh', name: 'Dainik Savera Times', lang: 'Hindi', domain: 'saveratimes.com', epaper: 'https://epaper.dainiksaveratimes.com/' },
+        { state: 'chandigarh', name: 'Loksatya', lang: 'Hindi', domain: 'loksatya.com', epaper: 'https://epaper.loksatya.com/' },
+        { state: 'chandigarh', name: 'The Times of India', lang: 'English', domain: 'timesofindia.indiatimes.com', epaper: 'https://epaper.timesgroup.com/' },
+        { state: 'chandigarh', name: 'The Indian Express', lang: 'English', domain: 'indianexpress.com', epaper: 'https://epaper.indianexpress.com/' },
+
+        // --- EMPLOYMENT / JOBS ---
+        { state: 'jobs', name: 'Employment News (Eng)', lang: 'English', domain: 'employmentnews.gov.in', epaper: 'https://employmentnews.gov.in/' },
+        { state: 'jobs', name: 'Rozgar Samachar (Hin)', lang: 'Hindi', domain: 'employmentnews.gov.in', epaper: 'https://employmentnews.gov.in/' },
+        { state: 'jobs', name: 'Free Job Alert (HR/PB)', lang: 'Hindi', domain: 'freejobalert.com', epaper: 'https://www.freejobalert.com/' }
+    ];
+
+    const themes = ['card-blue', 'card-green', 'card-yellow', 'card-purple', 'card-pink', 'card-orange'];
+    let currentNewspaper = null;
+    let ttsUtterance = null;
+
+    let activeState = 'all';
+    let activeLang = 'all';
+
+    // रेंडर कार्ड्स
+    function renderCards() {
+        const grid = document.getElementById('newspaperGrid');
+        grid.innerHTML = '';
+        
+        const filtered = newspapers.filter(np => {
+            const matchState = activeState === 'all' || np.state === activeState;
+            const matchLang = activeLang === 'all' || np.lang === activeLang;
+            return matchState && matchLang;
+        });
+
+        if(filtered.length === 0) {
+            grid.innerHTML = `
+                <div class="empty-state" style="grid-column: 1/-1;">
+                    <h3>कोई अखबार नहीं मिला</h3>
+                    <p>कृपया दूसरी भाषा या राज्य चुनें</p>
+                </div>`;
+            return;
+        }
+
+        filtered.forEach((np, index) => {
+            const themeClass = themes[index % themes.length];
+            const logoUrl = `https://www.google.com/s2/favicons?domain=${np.domain}&sz=128`;
+            
+            const card = document.createElement('div');
+            card.className = `card ${themeClass}`;
+            card.onclick = () => openModal(np, logoUrl);
+            
+            card.innerHTML = `
+                <div class="card-left">
+                    <div class="icon-box">
+                        <img src="${logoUrl}" alt="${np.name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 24 24\\' fill=\\'%2364748b\\'><path d=\\'M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z\\'/></svg>'">
+                    </div>
+                    <div class="card-text">
+                        <h3>${np.name}</h3>
+                        <p>${np.lang}</p>
+                    </div>
+                </div>
+                <div class="action-arrow">➔</div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    function setStateFilter(state, btn) {
+        document.querySelectorAll('.state-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeState = state;
+        renderCards();
+    }
+
+    function setLangFilter(lang, btn) {
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeLang = lang;
+        renderCards();
+    }
+
+    function openModal(np, logoUrl) {
+        currentNewspaper = np;
+        document.getElementById('modalLogo').src = logoUrl;
+        document.getElementById('modalTitle').textContent = np.name;
+        document.getElementById('modalLang').textContent = np.lang + " Edition";
+        
+        document.getElementById('btnNew').href = np.epaper;
+        
+        const btnOld = document.getElementById('btnOld');
+        if (np.archive) {
+            btnOld.href = np.archive;
+            btnOld.style.opacity = '1';
+            btnOld.style.pointerEvents = 'auto';
+        } else {
+            btnOld.href = '#';
+            btnOld.style.opacity = '0.5';
+            btnOld.style.pointerEvents = 'none';
+        }
+
+        document.getElementById('ttsStatus').style.display = 'none';
+        document.getElementById('actionModal').classList.add('active');
+    }
+
+    function closeModal() {
+        document.getElementById('actionModal').classList.remove('active');
+        if (window.speechSynthesis) window.speechSynthesis.cancel(); 
+        currentNewspaper = null;
+    }
+
+    document.getElementById('actionModal').addEventListener('click', (e) => {
+        if(e.target === document.getElementById('actionModal')) closeModal();
+    });
+
+    document.getElementById('btnShare').addEventListener('click', async () => {
+        if (!currentNewspaper) return;
+        const shareData = {
+            title: currentNewspaper.name,
+            text: `Read ${currentNewspaper.name} ePaper here:`,
+            url: currentNewspaper.epaper
+        };
+        try {
+            if (navigator.share) {
+                await navigator.share(shareData);
+            } else {
+                await navigator.clipboard.writeText(currentNewspaper.epaper);
+                alert('लिंक कॉपी हो गया है!');
+            }
+        } catch (err) { console.log('Error sharing', err); }
+    });
+
+    document.getElementById('btnListen').addEventListener('click', async () => {
+        if (!currentNewspaper) return;
+        const status = document.getElementById('ttsStatus');
+        
+        if (!window.speechSynthesis) {
+            alert("आपका ब्राउज़र टेक्स्ट-टू-स्पीच सपोर्ट नहीं करता।");
+            return;
+        }
+
+        if (window.speechSynthesis.speaking) {
+            window.speechSynthesis.cancel();
+            status.style.display = 'none';
+            document.getElementById('btnListen').innerHTML = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg> सुनकर पढ़ें`;
+            return;
+        }
+
+        status.style.display = 'block';
+        status.textContent = "PDF से टेक्स्ट निकाला जा रहा है...";
+        document.getElementById('btnListen').innerHTML = `⏹️ रोकें`;
+
+        try {
+            let textToRead = "";
+            if (window.pdfjsLib) {
+                const loadingTask = pdfjsLib.getDocument({ url: currentNewspaper.epaper, withCredentials: false });
+                const pdf = await loadingTask.promise;
+                
+                for (let i = 1; i <= Math.min(2, pdf.numPages); i++) {
+                    const page = await pdf.getPage(i);
+                    const textContent = await page.getTextContent();
+                    textToRead += textContent.items.map(item => item.str).join(' ') + "\n";
+                }
+            } else { throw new Error("PDF.js लोड नहीं हुआ"); }
+
+            if(!textToRead.trim()) throw new Error("टेक्स्ट नहीं मिला");
+
+            status.textContent = "ऑडियो चल रहा है...";
+            
+            ttsUtterance = new SpeechSynthesisUtterance(textToRead.substring(0, 3000));
+            const langMap = { 'Hindi': 'hi-IN', 'Punjabi': 'pa-IN', 'English': 'en-IN' };
+            ttsUtterance.lang = langMap[currentNewspaper.lang] || 'hi-IN';
+            
+            ttsUtterance.onend = () => {
+                status.style.display = 'none';
+                document.getElementById('btnListen').innerHTML = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg> सुनकर पढ़ें`;
+            };
+            
+            window.speechSynthesis.speak(ttsUtterance);
+
+        } catch (error) {
+            console.error(error);
+            status.textContent = "PDF सुरक्षित है, सामान्य जानकारी सुन रहे हैं...";
+            ttsUtterance = new SpeechSynthesisUtterance(`${currentNewspaper.name} एक ${currentNewspaper.lang} अखबार है।`);
+            ttsUtterance.lang = 'hi-IN';
+            ttsUtterance.onend = () => {
+                status.style.display = 'none';
+                document.getElementById('btnListen').innerHTML = `<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg> सुनकर पढ़ें`;
+            };
+            window.speechSynthesis.speak(ttsUtterance);
+        }
+    });
+
+    // इनिशियल लोड
+    renderCards();
+</script>
+</body>
+</html>
