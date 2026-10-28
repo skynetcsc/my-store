@@ -20,7 +20,7 @@
         
         /* View 1: Language Grid */
         .lang-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; }
-        .lang-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.2s ease; text-align: center; }
+        .lang-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; display: flex; flex-direction: column; align-items: center; cursor: pointer; transition: all 0.2s ease; text-align: center; text-decoration: none; color: inherit; }
         .lang-card:hover { box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); border-color: #cbd5e1; transform: translateY(-3px); }
         .lang-icon { width: 56px; height: 56px; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; font-weight: 700; margin-bottom: 16px; }
         .lang-name { font-size: 16px; font-weight: 700; margin-bottom: 4px; color: #0f172a; }
@@ -32,25 +32,17 @@
         .np-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 24px; }
         .badge-updated { background: #eff6ff; color: #2563eb; padding: 6px 12px; border-radius: 20px; font-size: 13px; font-weight: 600; display: flex; align-items: center; gap: 6px; border: 1px solid #dbeafe; }
         .np-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 16px; }
-        .np-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s; }
-        .np-card:hover { border-color: #3b82f6; box-shadow: 0 4px 15px rgba(59,130,246,0.1); }
+        
+        /* Direct Link Cards */
+        .np-card { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 16px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: 0.2s; text-decoration: none; color: inherit; }
+        .np-card:hover { border-color: #3b82f6; box-shadow: 0 4px 15px rgba(59,130,246,0.1); transform: translateY(-2px); }
         .np-info { display: flex; align-items: center; gap: 12px; }
         .np-logo { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 14px; flex-shrink: 0; }
         .np-name { font-size: 15px; font-weight: 600; color: #1e293b; }
         .btn-download { background: #22c55e; color: white; padding: 8px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; display: flex; align-items: center; gap: 6px; text-decoration: none; transition: 0.2s; }
-        .btn-download:hover { background: #16a34a; }
+        .np-card:hover .btn-download { background: #16a34a; }
         
-        /* View 3: Archive List (Sub-links) */
-        .archive-list { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
-        .archive-item { display: flex; align-items: center; justify-content: space-between; padding: 14px 20px; border-bottom: 1px solid #e2e8f0; text-decoration: none; color: #1e293b; transition: 0.2s; }
-        .archive-item:last-child { border-bottom: none; }
-        .archive-item:hover:not(.disabled) { background: #f8fafc; }
-        .archive-item.disabled { cursor: default; background: #f8fafc; opacity: 0.7; }
-        .archive-date { font-weight: 700; font-size: 14px; }
-        .archive-action { color: #2563eb; font-size: 14px; font-weight: 600; display: flex; align-items: center; gap: 8px; }
-        .archive-action.holiday { color: #94a3b8; }
-        
-        /* New: Today's Updates Section */
+        /* Today's Updates Section */
         .today-section { background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 24px; margin-bottom: 40px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
         .today-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; border-bottom: 1px solid #f1f5f9; padding-bottom: 16px; }
         .today-title { font-size: 20px; font-weight: 800; color: #0f172a; display: flex; align-items: center; gap: 10px; }
@@ -71,7 +63,6 @@
             .lang-icon { width: 48px; height: 48px; font-size: 24px; }
             .np-card { flex-direction: column; align-items: flex-start; gap: 12px; }
             .btn-download { width: 100%; justify-content: center; }
-            .archive-item { flex-direction: column; align-items: flex-start; gap: 4px; }
             .today-header { flex-direction: column; align-items: flex-start; gap: 10px; }
             .update-grid { grid-template-columns: 1fr; }
         }
@@ -81,157 +72,151 @@
     <div id="app"></div>
     
     <script>
-        // डेटा स्ट्रक्चर (Newspapers Data)
+        // सभी अखबारों के सीधे ओरिजिनल लिंक (जो सीधे आज का ई-पेपर खोलेंगे)
         const newspaperData = {
             "English": {
                 icon: "A", color: "#3b82f6",
                 papers: [
-                    { name: "The Hindu", short: "TH", color: "#ef4444", epaper: "https://epaper.thehindu.com/", archive: "https://dailyepaper.in/the-hindu-epaper/" },
-                    { name: "Times of India", short: "TOI", color: "#ef4444", epaper: "https://epaper.timesgroup.com/", archive: "https://dailyepaper.in/times-of-india-epaper-pdf-free-download-2026/" },
-                    { name: "Hindustan Times", short: "HT", color: "#ef4444", epaper: "https://epaper.hindustantimes.com/", archive: "https://dailyepaper.in/hindustan-times-epaper-download-2026/" },
-                    { name: "Economic Times", short: "ET", color: "#f97316", epaper: "https://epaper.timesgroup.com/", archive: "https://dailyepaper.in/economic-times-newspaper-today-2026/" },
-                    { name: "Financial Express", short: "FE", color: "#ef4444", epaper: "https://epaper.financialexpress.com/", archive: "https://dailyepaper.in/the-free-press-journal-epaper-download/" },
-                    { name: "The Telegraph", short: "TT", color: "#0f172a", epaper: "https://epaper.telegraphindia.com/", archive: "https://dailyepaper.in/the-telegraph-newspaper-free-download-2026/" },
-                    { name: "Deccan Chronicle", short: "DC", color: "#8b5cf6", epaper: "https://epaper.deccanchronicle.com/", archive: "https://dailyepaper.in/deccan-chronicle-epaper-download-2026/" },
-                    { name: "The Statesman", short: "TS", color: "#0f172a", epaper: "https://epaper.thestatesman.com/", archive: "https://dailyepaper.in/statesman-newspaper-today-free-download-2026/" },
-                    { name: "The Tribune", short: "TR", color: "#ef4444", epaper: "https://epaper.tribuneindia.com/", archive: "https://dailyepaper.in/the-tribune-epaper-free-download-2026/" },
-                    { name: "The Asian Age", short: "AA", color: "#b45309", epaper: "https://dailyepaper.in/", archive: "https://dailyepaper.in/the-asian-age-epaper-free-download-2026/" },
-                    { name: "The Pioneer", short: "PI", color: "#1e293b", epaper: "https://epaper.dailypioneer.com/", archive: "https://dailyepaper.in/the-pioneer-epaper-free-download-2026/" },
-                    { name: "Free Press Journal", short: "FPJ", color: "#ef4444", epaper: "https://epaper.freepressjournal.in/", archive: "https://dailyepaper.in/the-free-press-journal-epaper-download/" },
-                    { name: "Business Standard", short: "BS", color: "#b91c1c", epaper: "https://epaper.business-standard.com/", archive: "https://dailyepaper.in/business-standard-epaper-feb-2026/" },
-                    { name: "Live Mint", short: "LM", color: "#22c55e", epaper: "https://epaper.livemint.com/", archive: "https://dailyepaper.in/live-mint-epaper-feb-2026/" },
-                    { name: "Hans India", short: "HI", color: "#ef4444", epaper: "https://epaper.thehansindia.com/", archive: "https://dailyepaper.in/hans-india-epaper-today-pdf-download-feb-2026/" },
-                    { name: "Deccan Herald", short: "DH", color: "#8b5cf6", epaper: "https://epaper.deccanherald.com/", archive: "https://dailyepaper.in/deccan-herald-epaper-feb-2026/" },
-                    { name: "Lokmat Times", short: "LT", color: "#ef4444", epaper: "https://epaper.lokmattimes.com/", archive: "https://dailyepaper.in/lokmat-times-epaper-download-2026/" },
-                    { name: "Mirror", short: "MR", color: "#0f172a", epaper: "https://epaper.mirror.com/", archive: "https://dailyepaper.in/ahmedabad-mirror-epaper-download-2026/" },
-                    { name: "Telangana Today", short: "TT", color: "#ef4444", epaper: "https://epaper.telanganatoday.com/", archive: "https://dailyepaper.in/telangana-today-epaper-download-2026/" }
+                    { name: "The Hindu", short: "TH", color: "#ef4444", epaper: "https://epaper.thehindu.com/" },
+                    { name: "Times of India", short: "TOI", color: "#ef4444", epaper: "https://epaper.timesgroup.com/" },
+                    { name: "Hindustan Times", short: "HT", color: "#ef4444", epaper: "https://epaper.hindustantimes.com/" },
+                    { name: "Economic Times", short: "ET", color: "#f97316", epaper: "https://epaper.timesgroup.com/" },
+                    { name: "Financial Express", short: "FE", color: "#ef4444", epaper: "https://epaper.financialexpress.com/" },
+                    { name: "The Telegraph", short: "TT", color: "#0f172a", epaper: "https://epaper.telegraphindia.com/" },
+                    { name: "Deccan Chronicle", short: "DC", color: "#8b5cf6", epaper: "https://epaper.deccanchronicle.com/" },
+                    { name: "The Statesman", short: "TS", color: "#0f172a", epaper: "https://epaper.thestatesman.com/" },
+                    { name: "The Tribune", short: "TR", color: "#ef4444", epaper: "https://epaper.tribuneindia.com/" },
+                    { name: "The Pioneer", short: "PI", color: "#1e293b", epaper: "https://epaper.dailypioneer.com/" },
+                    { name: "Free Press Journal", short: "FPJ", color: "#ef4444", epaper: "https://epaper.freepressjournal.in/" },
+                    { name: "Business Standard", short: "BS", color: "#b91c1c", epaper: "https://epaper.business-standard.com/" },
+                    { name: "Live Mint", short: "LM", color: "#22c55e", epaper: "https://epaper.livemint.com/" },
+                    { name: "Hans India", short: "HI", color: "#ef4444", epaper: "https://epaper.thehansindia.com/" },
+                    { name: "Deccan Herald", short: "DH", color: "#8b5cf6", epaper: "https://epaper.deccanherald.com/" },
+                    { name: "Lokmat Times", short: "LT", color: "#ef4444", epaper: "https://epaper.lokmattimes.com/" },
+                    { name: "Mirror", short: "MR", color: "#0f172a", epaper: "https://epaper.mirror.com/" },
+                    { name: "Telangana Today", short: "TT", color: "#ef4444", epaper: "https://epaper.telanganatoday.com/" }
                 ]
             },
             "Hindi": {
                 icon: "अ", color: "#f97316",
                 papers: [
-                    { name: "दैनिक जागरण", short: "दै", color: "#ef4444", epaper: "https://epaper.jagran.com/", archive: "https://dailyepaper.in/dainik-jagran-newspaper-pdf/" },
-                    { name: "जनसत्ता", short: "ज", color: "#f97316", epaper: "https://epaper.jansatta.com/", archive: "https://dailyepaper.in/jansatta-epaper/" },
-                    { name: "राजस्थान पत्रिका", short: "रा", color: "#ef4444", epaper: "https://epaper.patrika.com/", archive: "https://dailyepaper.in/rajasthan-patrika-epaper/" },
-                    { name: "नवभारत टाइम्स", short: "NBT", color: "#ef4444", epaper: "https://epaper.navbharattimes.com/", archive: "https://dailyepaper.in/navbharat-times-epaper/" },
-                    { name: "प्रभात खबर", short: "प्र", color: "#ef4444", epaper: "https://epaper.prabhatkhabar.com/", archive: "https://dailyepaper.in/prabhat-khabar-epaper/" },
-                    { name: "अमर उजाला", short: "अ", color: "#1e3a8a", epaper: "https://epaper.amarujala.com/", archive: "https://dailyepaper.in/amar-ujala-epaper/" },
-                    { name: "हरी भूमि", short: "ह", color: "#22c55e", epaper: "https://epaper.haribhoomi.com/", archive: "https://dailyepaper.in/hari-bhoomi-epaper/" },
-                    { name: "आज तक", short: "आज", color: "#ef4444", epaper: "https://epaper.aajtak.in/", archive: "https://dailyepaper.in/aaj-tak-epaper/" },
-                    { name: "हिन्दुस्तान", short: "हि", color: "#ef4444", epaper: "https://epaper.livehindustan.com/", archive: "https://dailyepaper.in/hindustan-epaper/" },
-                    { name: "दैनिक भास्कर", short: "भा", color: "#f97316", epaper: "https://epaper.bhaskar.com/", archive: "https://dailyepaper.in/dainik-bhaskar-epaper/" },
-                    { name: "लोकसत्ता", short: "लो", color: "#ef4444", epaper: "https://epaper.loksatta.com/", archive: "https://dailyepaper.in/loksatta-epaper/" },
-                    { name: "पंजाब केसरी", short: "पं", color: "#ef4444", epaper: "https://epaper.punjabkesari.in/", archive: "https://dailyepaper.in/punjab-kesari-epaper/" },
-                    { name: "बिजनेस स्टैंडर्ड", short: "BS", color: "#b91c1c", epaper: "https://epaper.business-standard.com/", archive: "https://dailyepaper.in/business-standard-epaper/" },
-                    { name: "दैनिक नवज्योति", short: "न", color: "#eab308", epaper: "https://dailyepaper.in/", archive: "https://dailyepaper.in/" },
-                    { name: "आईनेक्स्ट साइड", short: "आ", color: "#ef4444", epaper: "https://epaper.inextlive.com/", archive: "https://dailyepaper.in/inext-epaper/" },
-                    { name: "लोकमत", short: "लो", color: "#ef4444", epaper: "https://epaper.lokmat.com/", archive: "https://dailyepaper.in/lokmat-epaper/" },
-                    { name: "लोकतेज", short: "लो", color: "#ec4899", epaper: "https://dailyepaper.in/", archive: "https://dailyepaper.in/" },
-                    { name: "नव भारत", short: "न", color: "#ef4444", epaper: "https://epaper.navbharat.com/", archive: "https://dailyepaper.in/nav-bharat-epaper/" },
-                    { name: "नई दुनिया", short: "न", color: "#0f172a", epaper: "https://epaper.naidunia.com/", archive: "https://dailyepaper.in/nai-dunia-epaper/" }
+                    { name: "दैनिक जागरण", short: "दै", color: "#ef4444", epaper: "https://epaper.jagran.com/" },
+                    { name: "जनसत्ता", short: "ज", color: "#f97316", epaper: "https://epaper.jansatta.com/" },
+                    { name: "राजस्थान पत्रिका", short: "रा", color: "#ef4444", epaper: "https://epaper.patrika.com/" },
+                    { name: "नवभारत टाइम्स", short: "NBT", color: "#ef4444", epaper: "https://epaper.navbharattimes.com/" },
+                    { name: "प्रभात खबर", short: "प्र", color: "#ef4444", epaper: "https://epaper.prabhatkhabar.com/" },
+                    { name: "अमर उजाला", short: "अ", color: "#1e3a8a", epaper: "https://epaper.amarujala.com/" },
+                    { name: "हरी भूमि", short: "ह", color: "#22c55e", epaper: "https://epaper.haribhoomi.com/" },
+                    { name: "आज तक", short: "आज", color: "#ef4444", epaper: "https://www.aajtak.in/epaper/" },
+                    { name: "हिन्दुस्तान", short: "हि", color: "#ef4444", epaper: "https://epaper.livehindustan.com/" },
+                    { name: "दैनिक भास्कर", short: "भा", color: "#f97316", epaper: "https://epaper.bhaskar.com/" },
+                    { name: "लोकसत्ता", short: "लो", color: "#ef4444", epaper: "https://epaper.loksatta.com/" },
+                    { name: "पंजाब केसरी", short: "पं", color: "#ef4444", epaper: "https://epaper.punjabkesari.in/" },
+                    { name: "बिजनेस स्टैंडर्ड", short: "BS", color: "#b91c1c", epaper: "https://epaper.business-standard.com/" },
+                    { name: "दैनिक नवज्योति", short: "न", color: "#eab308", epaper: "https://epaper.dainiknavajyoti.com/" },
+                    { name: "आईनेक्स्ट साइड", short: "आ", color: "#ef4444", epaper: "https://epaper.inextlive.com/" },
+                    { name: "लोकमत", short: "लो", color: "#ef4444", epaper: "https://epaper.lokmat.com/" },
+                    { name: "लोकतेज", short: "लो", color: "#ec4899", epaper: "https://epaper.loktej.com/" },
+                    { name: "नव भारत", short: "न", color: "#ef4444", epaper: "https://epaper.navbharat.com/" },
+                    { name: "नई दुनिया", short: "न", color: "#0f172a", epaper: "https://epaper.naidunia.com/" }
                 ]
             },
             "Punjabi": {
                 icon: "ਪ", color: "#ea580c",
                 papers: [
-                    { name: "Ajit", short: "AJ", color: "#ef4444", epaper: "https://epaper.ajitjalandhar.com/", archive: "https://dailyepaper.in/ajit-epaper/" },
-                    { name: "Jag Bani", short: "JB", color: "#22c55e", epaper: "https://epaper.jagbani.com/", archive: "https://dailyepaper.in/jag-bani-epaper/" },
-                    { name: "Rozana Spokesman", short: "RS", color: "#3b82f6", epaper: "https://epaper.rozanaspokesman.com/", archive: "https://dailyepaper.in/rozana-spokesman-epaper/" },
-                    { name: "Punjabi Jagran", short: "PJ", color: "#f97316", epaper: "https://epaper.punjabijagran.com/", archive: "https://dailyepaper.in/punjabi-jagran-epaper/" },
-                    { name: "Punjabi Tribune", short: "PT", color: "#ef4444", epaper: "https://epaper.punjabitribuneonline.com/", archive: "https://dailyepaper.in/punjabi-tribune-epaper/" }
+                    { name: "Ajit", short: "AJ", color: "#ef4444", epaper: "https://epaper.ajitjalandhar.com/" },
+                    { name: "Jag Bani", short: "JB", color: "#22c55e", epaper: "https://epaper.jagbani.com/" },
+                    { name: "Rozana Spokesman", short: "RS", color: "#3b82f6", epaper: "https://epaper.rozanaspokesman.com/" },
+                    { name: "Punjabi Jagran", short: "PJ", color: "#f97316", epaper: "https://epaper.punjabijagran.com/" },
+                    { name: "Punjabi Tribune", short: "PT", color: "#ef4444", epaper: "https://epaper.punjabitribuneonline.com/" }
                 ]
             },
             "Bengali": {
                 icon: "অ", color: "#22c55e",
                 papers: [
-                    { name: "Anandabazar Patrika", short: "AB", color: "#ef4444", epaper: "https://epaper.anandabazar.com/", archive: "https://dailyepaper.in/anandabazar-patrika-epaper-free-download-2026/" },
-                    { name: "Bartaman", short: "BA", color: "#3b82f6", epaper: "https://epaper.bartamanpatrika.com/", archive: "https://dailyepaper.in/bartaman-epaper/" },
-                    { name: "Ei Samay", short: "ES", color: "#ef4444", epaper: "https://epaper.eisamay.com/", archive: "https://dailyepaper.in/ei-samay-epaper-free-download-2026/" }
+                    { name: "Anandabazar Patrika", short: "AB", color: "#ef4444", epaper: "https://epaper.anandabazar.com/" },
+                    { name: "Bartaman", short: "BA", color: "#3b82f6", epaper: "https://epaper.bartamanpatrika.com/" },
+                    { name: "Ei Samay", short: "ES", color: "#ef4444", epaper: "https://epaper.eisamay.com/" }
                 ]
             },
             "Marathi": {
                 icon: "म", color: "#eab308",
                 papers: [
-                    { name: "Lokmat", short: "LM", color: "#ef4444", epaper: "https://epaper.lokmat.com/", archive: "https://dailyepaper.in/lokmat-epaper/" },
-                    { name: "Maharashtra Times", short: "MT", color: "#ef4444", epaper: "https://epaper.maharashtratimes.com/", archive: "https://dailyepaper.in/maharashtra-times-epaper/" },
-                    { name: "Sakal", short: "SK", color: "#ef4444", epaper: "https://epaper.esakal.com/", archive: "https://dailyepaper.in/sakal-epaper/" }
+                    { name: "Lokmat", short: "LM", color: "#ef4444", epaper: "https://epaper.lokmat.com/" },
+                    { name: "Maharashtra Times", short: "MT", color: "#ef4444", epaper: "https://epaper.maharashtratimes.com/" },
+                    { name: "Sakal", short: "SK", color: "#ef4444", epaper: "https://epaper.esakal.com/" }
                 ]
             },
             "Tamil": {
                 icon: "த", color: "#ef4444",
                 papers: [
-                    { name: "Daily Thanthi", short: "DT", color: "#ef4444", epaper: "https://epaper.dailythanthi.com/", archive: "https://dailyepaper.in/daily-thanthi-epaper/" },
-                    { name: "Dinamalar", short: "DM", color: "#3b82f6", epaper: "https://epaper.dinamalar.com/", archive: "https://dailyepaper.in/dinamalar-epaper/" },
-                    { name: "The Hindu (Tamil)", short: "TH", color: "#ef4444", epaper: "https://epaper.thehindu.com/", archive: "https://dailyepaper.in/the-hindu-tamil-epaper/" }
+                    { name: "Daily Thanthi", short: "DT", color: "#ef4444", epaper: "https://epaper.dailythanthi.com/" },
+                    { name: "Dinamalar", short: "DM", color: "#3b82f6", epaper: "https://epaper.dinamalar.com/" },
+                    { name: "The Hindu (Tamil)", short: "TH", color: "#ef4444", epaper: "https://epaper.thehindu.com/" }
                 ]
             },
             "Telugu": {
                 icon: "తె", color: "#8b5cf6",
                 papers: [
-                    { name: "Eenadu", short: "EE", color: "#ef4444", epaper: "https://epaper.eenadu.net/", archive: "https://dailyepaper.in/eenadu-epaper-free-download-2026/" },
-                    { name: "Sakshi", short: "SA", color: "#ef4444", epaper: "https://epaper.sakshi.com/", archive: "https://dailyepaper.in/sakshi-epaper-free-download-2026/" }
+                    { name: "Eenadu", short: "EE", color: "#ef4444", epaper: "https://epaper.eenadu.net/" },
+                    { name: "Sakshi", short: "SA", color: "#ef4444", epaper: "https://epaper.sakshi.com/" }
                 ]
             },
             "Kannada": {
                 icon: "ಕ", color: "#6366f1",
                 papers: [
-                    { name: "Prajavani", short: "PJ", color: "#ef4444", epaper: "https://epaper.prajavani.net/", archive: "https://dailyepaper.in/prajavani-epaper/" },
-                    { name: "Udayavani", short: "UV", color: "#ef4444", epaper: "https://epaper.udayavani.com/", archive: "https://dailyepaper.in/udayavani-epaper/" }
+                    { name: "Prajavani", short: "PJ", color: "#ef4444", epaper: "https://epaper.prajavani.net/" },
+                    { name: "Udayavani", short: "UV", color: "#ef4444", epaper: "https://epaper.udayavani.com/" }
                 ]
             },
             "Malayalam": {
                 icon: "മ", color: "#ec4899",
                 papers: [
-                    { name: "Malayala Manorama", short: "MM", color: "#ef4444", epaper: "https://epaper.manoramaonline.com/", archive: "https://dailyepaper.in/malayala-manorama-epaper-today-download-2026/" },
-                    { name: "Mathrubhumi", short: "MB", color: "#ef4444", epaper: "https://epaper.mathrubhumi.com/", archive: "https://dailyepaper.in/mathrubhumi-epaper/" }
+                    { name: "Malayala Manorama", short: "MM", color: "#ef4444", epaper: "https://epaper.manoramaonline.com/" },
+                    { name: "Mathrubhumi", short: "MB", color: "#ef4444", epaper: "https://epaper.mathrubhumi.com/" }
                 ]
             },
             "Gujarati": {
                 icon: "ગ", color: "#14b8a6",
                 papers: [
-                    { name: "Divya Bhaskar", short: "DB", color: "#ef4444", epaper: "https://epaper.divyabhaskar.co.in/", archive: "https://dailyepaper.in/divya-bhaskar-epaper-today-download-2026/" },
-                    { name: "Sandesh", short: "SN", color: "#ef4444", epaper: "https://epaper.sandesh.com/", archive: "https://dailyepaper.in/sandesh-epaper-free-download-2026/" }
+                    { name: "Divya Bhaskar", short: "DB", color: "#ef4444", epaper: "https://epaper.divyabhaskar.co.in/" },
+                    { name: "Sandesh", short: "SN", color: "#ef4444", epaper: "https://epaper.sandesh.com/" }
                 ]
             },
             "Odia": {
                 icon: "ଓ", color: "#0ea5e9",
                 papers: [
-                    { name: "Dharitri", short: "DH", color: "#ef4444", epaper: "https://epaper.dharitri.com/", archive: "https://dailyepaper.in/dharitri-epaper/" },
-                    { name: "Samaja", short: "SM", color: "#ef4444", epaper: "https://epaper.thesamaja.com/", archive: "https://dailyepaper.in/samaja-epaper/" }
+                    { name: "Dharitri", short: "DH", color: "#ef4444", epaper: "https://epaper.dharitri.com/" },
+                    { name: "Samaja", short: "SM", color: "#ef4444", epaper: "https://epaper.thesamaja.com/" }
                 ]
             },
             "Assamese": {
                 icon: "অ", color: "#8b5cf6",
                 papers: [
-                    { name: "Amar Asom", short: "AA", color: "#ef4444", epaper: "https://epaper.amarAsom.com/", archive: "https://dailyepaper.in/amar-asom-epaper/" },
-                    { name: "Asomiya Pratidin", short: "AP", color: "#ef4444", epaper: "https://epaper.asomiyapratidin.in/", archive: "https://dailyepaper.in/asomiya-pratidin-epaper-free-download-2026/" }
+                    { name: "Amar Asom", short: "AA", color: "#ef4444", epaper: "https://epaper.amarAsom.com/" },
+                    { name: "Asomiya Pratidin", short: "AP", color: "#ef4444", epaper: "https://epaper.asomiyapratidin.in/" }
                 ]
             },
             "Urdu": {
                 icon: "ا", color: "#64748b",
                 papers: [
-                    { name: "Inquilab", short: "IN", color: "#ef4444", epaper: "https://epaper.inquilab.com/", archive: "https://dailyepaper.in/inquilab-epaper-free-download-2026/" },
-                    { name: "Aftab-e-Mashriq", short: "AM", color: "#3b82f6", epaper: "https://dailyepaper.in/", archive: "https://dailyepaper.in/" }
+                    { name: "Inquilab", short: "IN", color: "#ef4444", epaper: "https://epaper.inquilab.com/" },
+                    { name: "Aftab-e-Mashriq", short: "AM", color: "#3b82f6", epaper: "https://dailyepaper.in/" }
                 ]
             }
         };
 
         let currentState = {
             view: 'home',
-            language: null,
-            newspaper: null
+            language: null
         };
 
         function render() {
             const app = document.getElementById('app');
             if (currentState.view === 'home') {
                 app.innerHTML = renderHome();
-            } else if (currentState.view === 'languages') {
-                app.innerHTML = renderLanguages();
             } else if (currentState.view === 'newspapers') {
                 app.innerHTML = renderNewspapers();
-            } else if (currentState.view === 'archives') {
-                app.innerHTML = renderArchives();
             }
         }
 
@@ -252,7 +237,7 @@
                 const np = newspaperData[item.lang].papers[item.index];
                 if (np) {
                     updatesHtml += `
-                        <a href="${np.archive}" target="_blank" class="update-card">
+                        <a href="${np.epaper}" target="_blank" class="update-card">
                             <div class="update-info">
                                 <div class="update-logo" style="background-color: ${np.color};">${np.short}</div>
                                 <div class="update-name">${np.name}</div>
@@ -305,34 +290,6 @@
             `;
         }
 
-        // --- View 1: Languages Grid ---
-        function renderLanguages() {
-            let html = `
-                <div class="container">
-                    <button class="back-btn" onclick="goBack()">← Back to Home</button>
-                    <div class="header-section">
-                        <h1>Browse by Language</h1>
-                        <p>Choose your preferred language to explore newspapers</p>
-                    </div>
-                    <div class="lang-grid">
-            `;
-            
-            for (const [lang, data] of Object.entries(newspaperData)) {
-                const count = data.papers.length;
-                html += `
-                    <div class="lang-card" onclick="selectLanguage('${lang}')">
-                        <div class="lang-icon" style="background-color: ${data.color};">${data.icon}</div>
-                        <div class="lang-name">${lang} Epaper</div>
-                        <div class="lang-count">${count} Newspapers</div>
-                        <button class="btn-green">Download Now</button>
-                    </div>
-                `;
-            }
-            
-            html += `</div></div>`;
-            return html;
-        }
-
         // --- View 2: Newspapers List ---
         function renderNewspapers() {
             const lang = currentState.language;
@@ -344,7 +301,7 @@
                     <div class="np-header">
                         <div class="header-section" style="margin-bottom:0;">
                             <h1>${lang} ePaper in PDF</h1>
-                            <p>Click on your favourite newspaper to download the latest ePaper</p>
+                            <p>Click on your favourite newspaper to read the latest ePaper</p>
                         </div>
                         <div class="badge-updated">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -354,88 +311,24 @@
                     <div class="np-grid">
             `;
             
-            data.papers.forEach((np, index) => {
+            data.papers.forEach((np) => {
+                // सीधे ओरिजिनल साइट पर जाने के लिए <a> टैग का उपयोग
                 html += `
-                    <div class="np-card" onclick="selectNewspaper('${lang}', ${index})">
+                    <a href="${np.epaper}" target="_blank" class="np-card">
                         <div class="np-info">
                             <div class="np-logo" style="background-color: ${np.color};">${np.short}</div>
                             <div class="np-name">${np.name}</div>
                         </div>
-                        <button class="btn-download">
+                        <div class="btn-download">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
                             Download PDF
-                        </button>
-                    </div>
+                        </div>
+                    </a>
                 `;
             });
             
             html += `</div></div>`;
             return html;
-        }
-
-        // --- View 3: Sub-links (Archives - Date wise) ---
-        function renderArchives() {
-            const np = currentState.newspaper;
-            const dates = generateDates();
-            
-            let html = `
-                <div class="container">
-                    <button class="back-btn" onclick="goBack()">← Back to ${currentState.language} Newspapers</button>
-                    <div class="header-section">
-                        <h1>${np.name} epaper</h1>
-                        <p>Select a date to download or read the epaper</p>
-                    </div>
-                    <div class="archive-list">
-            `;
-            
-            dates.forEach(d => {
-                // अगर रविवार है (Holiday), तो लिंक ब्लैंक रहेगा
-                if (d.isHoliday) {
-                    html += `
-                        <div class="archive-item disabled">
-                            <div class="archive-date">${d.date}:</div>
-                            <div class="archive-action holiday">Sunday Holiday</div>
-                        </div>
-                    `;
-                } else {
-                    // तारीख और अखबार के नाम से सटीक URL बनाना
-                    let cleanName = np.name.replace(/\s+/g, '+');
-                    let cleanDate = d.date.replace(/\s+/g, '+');
-                    let searchLink = `https://dailyepaper.in/?s=${cleanName}+${cleanDate}`;
-
-                    html += `
-                        <a href="${searchLink}" target="_blank" class="archive-item">
-                            <div class="archive-date">${d.date}:</div>
-                            <div class="archive-action">
-                                Download PDF
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            </div>
-                        </a>
-                    `;
-                }
-            });
-            
-            html += `</div></div>`;
-            return html;
-        }
-
-        // Generate last 30 days
-        function generateDates() {
-            const dates = [];
-            const today = new Date();
-            for (let i = 0; i < 30; i++) {
-                const d = new Date(today);
-                d.setDate(today.getDate() - i);
-                const options = { day: '2-digit', month: 'short', year: 'numeric' };
-                const dateStr = d.toLocaleDateString('en-GB', options);
-                const isSunday = d.getDay() === 0;
-                
-                dates.push({
-                    date: dateStr,
-                    isHoliday: isSunday
-                });
-            }
-            return dates;
         }
 
         // Navigation functions
@@ -446,22 +339,10 @@
             window.scrollTo(0, 0);
         }
 
-        function selectNewspaper(lang, index) {
-            currentState.newspaper = newspaperData[lang].papers[index];
-            currentState.view = 'archives';
-            render();
-            window.scrollTo(0, 0);
-        }
-
         function goBack() {
-            if (currentState.view === 'archives') {
-                currentState.view = 'newspapers';
-                currentState.newspaper = null;
-            } else if (currentState.view === 'newspapers') {
-                currentState.view = 'languages';
-                currentState.language = null;
-            } else if (currentState.view === 'languages') {
+            if (currentState.view === 'newspapers') {
                 currentState.view = 'home';
+                currentState.language = null;
             }
             render();
             window.scrollTo(0, 0);
