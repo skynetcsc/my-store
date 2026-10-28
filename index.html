@@ -94,6 +94,9 @@
     animation:pulseTop 2.6s ease-in-out infinite;
     transition:transform .18s ease, box-shadow .25s ease;
     overflow:hidden;
+    text-decoration:none;
+    display:block;
+    text-align:center;
   }
 
   .top-btn span{
@@ -159,7 +162,7 @@
     box-shadow:0 0 22px -6px var(--c), inset 0 0 24px -12px var(--c);
     transition:transform .18s ease, box-shadow .25s ease, background .25s ease;
     overflow:hidden;
-    text-decoration:none; /* for anchor buttons */
+    text-decoration:none;
   }
 
   .big-btn .ico{
@@ -194,6 +197,110 @@
   .c-violet { --c:var(--violet); }
   .c-magenta{ --c:var(--magenta); }
 
+  /* ---------- SUB-PAGE: LIVE TV, MOVIES & MUSIC ---------- */
+  .sub-page{
+    width:100%;
+    max-width:900px;
+    display:none; /* Hidden by default */
+    flex-direction:column;
+    gap:20px;
+    animation:fadeIn 0.3s ease;
+  }
+  
+  @keyframes fadeIn { from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:translateY(0); } }
+
+  .back-btn{
+    background:rgba(255,255,255,0.1);
+    border:1px solid rgba(255,255,255,0.2);
+    color:#fff;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:14px;
+    font-weight:600;
+    align-self:flex-start;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:0.2s;
+  }
+  .back-btn:hover { background:rgba(255,255,255,0.2); }
+
+  /* Tabs for Sub-page */
+  .tv-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .tv-tab {
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.05);
+    border: 2px solid transparent;
+    border-radius: 12px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.2s;
+    flex: 1;
+    text-align: center;
+    max-width: 200px;
+  }
+  .tv-tab:hover {
+    background: rgba(255,255,255,0.1);
+  }
+  .tv-tab.active {
+    border-color: var(--c);
+    background: rgba(255,255,255,0.1);
+    box-shadow: 0 0 15px rgba(255,255,255,0.1);
+  }
+
+  .tv-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+  .tv-content.active {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .movie-item{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.1);
+    padding:16px 20px;
+    border-radius:12px;
+    color:#fff;
+    text-decoration:none;
+    font-size:1.2rem;
+    font-weight:700;
+    transition:0.2s;
+    box-shadow:0 4px 15px rgba(0,0,0,0.2);
+  }
+  .movie-item:hover {
+    background:rgba(255,43,214,0.15);
+    border-color:var(--magenta);
+    transform:translateX(5px);
+    box-shadow:0 0 20px rgba(255,43,214,0.3);
+  }
+
+  .movie-item span.num {
+    color:var(--amber);
+    font-size:1.4rem;
+    font-weight:900;
+    min-width:30px;
+  }
+
+  .movie-item span.icon {
+    font-size:1.4rem;
+    margin-right:4px;
+  }
+
   /* ---------- TOAST ---------- */
   #toast{
     position:fixed;
@@ -225,95 +332,175 @@
   @media (max-width:420px){
     body{ padding:20px 12px 48px; gap:26px; }
     .grid{ gap:16px; grid-template-columns:1fr; }
+    .movie-item { font-size:1rem; padding:12px 16px; }
+    .tv-tab { padding: 10px 15px; font-size: 14px; }
   }
 </style>
 </head>
 <body>
 
-  <!-- ============ TOP BIG HIGHLIGHT BUTTON ============ -->
-  <div class="top-wrap">
-    <div class="top-label">★ Top Project One ★</div>
-    <button class="top-btn" data-name="SKYNET — TOP PROJECT ONE">
-      <span>SKYNET</span>
-    </button>
+  <!-- ============ MAIN PAGE CONTENT ============ -->
+  <div id="main-page" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:34px;">
+    
+    <!-- ============ TOP BIG HIGHLIGHT BUTTON ============ -->
+    <div class="top-wrap">
+      <div class="top-label">★ Top Project One ★</div>
+      <a href="https://www.skynetcc.co.in/" class="top-btn">
+        <span>SKYNET</span>
+      </a>
+    </div>
+
+    <!-- ============ BIG BUTTON GRID ============ -->
+    <main class="grid">
+
+      <!-- 1. SKYNET CYBER CAFE AND CSC CENTER -->
+      <a class="big-btn c-cyan" href="https://www.skynetcc.co.in/index-2.html">
+        <span class="ico">🖥️</span>
+        <span>SKYNET CYBER CAFE AND CSC CENTER</span>
+        <span class="tag">Browse • Print • Scan</span>
+      </a>
+
+      <!-- 2. ALL SHOP IN RAMGARH AREA -->
+      <a class="big-btn c-lime" href="https://www.skynetcc.co.in/directory.html" target="_blank" rel="noopener">
+        <span class="ico">🏬</span>
+        <span>ALL SHOP IN<br>RAMGARH AREA</span>
+        <span class="tag">Local Directory</span>
+      </a>
+
+      <!-- 3. NEWSPAPER -->
+      <a class="big-btn c-amber" href="https://www.skynetcc.co.in/newspaper.html" target="_blank" rel="noopener">
+        <span class="ico">📰</span>
+        <span>NEWSPAPER</span>
+        <span class="tag">Daily • News</span>
+      </a>
+
+      <!-- 4. JOB PORTAL -->
+      <a class="big-btn c-violet" href="https://www.skynetcc.co.in/jobportal.html">
+        <span class="ico">💼</span>
+        <span>JOB PORTAL</span>
+        <span class="tag">Search • Apply</span>
+      </a>
+
+      <!-- 5. ALL SECRET CODES -->
+      <a class="big-btn c-magenta" href="https://www.skynetcc.co.in/AllSecretCodes.html" target="_blank" rel="noopener">
+        <span class="ico">🔑</span>
+        <span>ALL SECRET CODES</span>
+        <span class="tag">Tips • Tricks</span>
+      </a>
+
+      <!-- SKYNET STUDY HUB -->
+      <a class="big-btn c-amber" href="https://www.skynetcc.co.in/study.html">
+        <span class="ico">📚</span>
+        <span>SKYNET STUDY HUB</span>
+        <span class="tag">Notes • Tests • Help</span>
+      </a>
+
+      <!-- ✅ LIVE TV (Opens Sub-page) -->
+      <button class="big-btn c-cyan" onclick="openLiveTV()">
+        <span class="ico">📺</span>
+        <span>LIVE TV<br>लाइव टीवी</span>
+        <span class="tag">Movies & Music</span>
+      </button>
+
+      <!-- DESI RADIO -->
+      <a class="big-btn c-amber" href="https://www.skynetcc.co.in/Desi%20Radio.html" target="_blank" rel="noopener">
+        <span class="ico">📻</span>
+        <span>DESI RADIO</span>
+        <span class="tag">Listen • Music</span>
+      </a>
+
+      <!-- EMERGENCY INDIA -->
+      <a class="big-btn c-magenta" href="https://www.skynetcc.co.in/EmergencyIndia.html" target="_blank" rel="noopener">
+        <span class="ico">🚨</span>
+        <span>EMERGENCY INDIA</span>
+        <span class="tag">Helpline • Alerts</span>
+      </a>
+
+      <!-- SKYNET GAME -->
+      <button class="big-btn c-magenta span-2" data-name="SKYNET GAME">
+        <span class="ico">🎮</span>
+        <span>SKYNET GAME</span>
+        <span class="tag">Play Zone</span>
+      </button>
+
+    </main>
   </div>
 
-  <!-- ============ BIG BUTTON GRID ============ -->
-  <main class="grid">
-
-    <!-- 1. SKYNET CYBER CAFE AND CSC CENTER (LINKED TO index-2.html) -->
-    <a class="big-btn c-cyan" href="https://www.skynetcc.co.in/index-2.html">
-      <span class="ico">🖥️</span>
-      <span>SKYNET CYBER CAFE AND CSC CENTER</span>
-      <span class="tag">Browse • Print • Scan</span>
-    </a>
-
-    <!-- 2. ALL SHOP IN RAMGARH AREA -->
-    <a class="big-btn c-lime" href="https://www.skynetcc.co.in/directory.html" target="_blank" rel="noopener">
-      <span class="ico">🏬</span>
-      <span>ALL SHOP IN<br>RAMGARH AREA</span>
-      <span class="tag">Local Directory</span>
-    </a>
-
-    <!-- 3. NEWSPAPER -->
-    <a class="big-btn c-amber" href="https://www.skynetcc.co.in/newspaper.html" target="_blank" rel="noopener">
-      <span class="ico">📰</span>
-      <span>NEWSPAPER</span>
-      <span class="tag">Daily • News</span>
-    </a>
-
-    <!-- 4. JOB PORTAL (LINKED TO jobportal.html) -->
-    <a class="big-btn c-violet" href="https://www.skynetcc.co.in/jobportal.html">
-      <span class="ico">💼</span>
-      <span>JOB PORTAL</span>
-      <span class="tag">Search • Apply</span>
-    </a>
-
-    <!-- 5. ALL SECRET CODES -->
-    <a class="big-btn c-magenta" href="https://www.skynetcc.co.in/AllSecretCodes.html" target="_blank" rel="noopener">
-      <span class="ico">🔑</span>
-      <span>ALL SECRET CODES</span>
-      <span class="tag">Tips • Tricks</span>
-    </a>
-
-    <!-- ===== BAAKI BUTTONS ===== -->
-
-    <!-- SKYNET STUDY HUB (LINKED TO study.html) -->
-    <a class="big-btn c-amber" href="https://www.skynetcc.co.in/study.html">
-      <span class="ico">📚</span>
-      <span>SKYNET STUDY HUB</span>
-      <span class="tag">Notes • Tests • Help</span>
-    </a>
-
-    <!-- LIVE TV -->
-    <a class="big-btn c-cyan" href="https://famelack.com/tv/in" target="_blank" rel="noopener">
-      <span class="ico">📺</span>
-      <span>LIVE TV<br>लाइव टीवी</span>
-      <span class="tag">Famelack • India</span>
-    </a>
-
-    <!-- DESI RADIO -->
-    <a class="big-btn c-amber" href="https://www.skynetcc.co.in/Desi%20Radio.html" target="_blank" rel="noopener">
-      <span class="ico">📻</span>
-      <span>DESI RADIO</span>
-      <span class="tag">Listen • Music</span>
-    </a>
-
-    <!-- EMERGENCY INDIA -->
-    <a class="big-btn c-magenta" href="https://www.skynetcc.co.in/EmergencyIndia.html" target="_blank" rel="noopener">
-      <span class="ico">🚨</span>
-      <span>EMERGENCY INDIA</span>
-      <span class="tag">Helpline • Alerts</span>
-    </a>
-
-    <!-- SKYNET GAME -->
-    <button class="big-btn c-magenta span-2" data-name="SKYNET GAME">
-      <span class="ico">🎮</span>
-      <span>SKYNET GAME</span>
-      <span class="tag">Play Zone</span>
+  <!-- ============ SUB-PAGE: LIVE TV, MOVIES & MUSIC ============ -->
+  <div id="live-tv-page" class="sub-page">
+    
+    <button class="back-btn" onclick="closeLiveTV()">
+      ← Back to Main Menu
     </button>
 
-  </main>
+    <!-- Tabs Navigation -->
+    <div class="tv-tabs">
+      <button class="tv-tab active c-cyan" onclick="switchLiveTab('tv', this)">📺 Live TV</button>
+      <button class="tv-tab c-magenta" onclick="switchLiveTab('movies', this)">🎬 Movies</button>
+      <button class="tv-tab c-amber" onclick="switchLiveTab('music', this)">🎵 Music</button>
+    </div>
+
+    <!-- 1. LIVE TV SECTION -->
+    <div id="tab-tv" class="tv-content active">
+      <a href="https://famelack.com/tv/in" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">1.</span> <span class="icon">📡</span> Famelack India
+      </a>
+      <a href="https://www.jiotv.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">2.</span> <span class="icon">📺</span> JioTV
+      </a>
+      <a href="https://www.youtube.com/@DDNational/live" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">3.</span> <span class="icon">🇮🇳</span> DD National Live
+      </a>
+      <a href="https://www.youtube.com/@aajtak/live" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">4.</span> <span class="icon">📰</span> Aaj Tak Live
+      </a>
+      <a href="https://www.sonyliv.com/live-tv" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">5.</span> <span class="icon">▶️</span> SonyLIV Live TV
+      </a>
+    </div>
+
+    <!-- 2. MOVIES SECTION -->
+    <div id="tab-movies" class="tv-content">
+      <a href="https://www.jiocinema.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">1.</span> <span class="icon">🎬</span> JioCinema
+      </a>
+      <a href="https://www.mxplayer.in/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">2.</span> <span class="icon">▶️</span> MX Player
+      </a>
+      <a href="https://www.youtube.com/feed/storefront" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">3.</span> <span class="icon">📺</span> YouTube Free Movies
+      </a>
+      <a href="https://www.zee5.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">4.</span> <span class="icon">🎭</span> ZEE5
+      </a>
+      <a href="https://www.aha.video/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">5.</span> <span class="icon">🌟</span> Aha
+      </a>
+    </div>
+
+    <!-- 3. MUSIC SECTION -->
+    <div id="tab-music" class="tv-content">
+      <a href="https://music.youtube.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">1.</span> <span class="icon">🎵</span> YouTube Music
+      </a>
+      <a href="https://www.jiosaavn.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">2.</span> <span class="icon">🎧</span> JioSaavn
+      </a>
+      <a href="https://open.spotify.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">3.</span> <span class="icon">🟢</span> Spotify
+      </a>
+      <a href="https://gaana.com/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">4.</span> <span class="icon">🔴</span> Gaana
+      </a>
+      <a href="https://www.wynk.in/music" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">5.</span> <span class="icon">📻</span> Wynk Music
+      </a>
+    </div>
+    
+    <p style="text-align:center; color:#555; font-size:12px; margin-top:20px; line-height:1.5;">
+      Disclaimer: We do not host any files on our server. All links redirect to safe, legal, and official streaming platforms.
+    </p>
+  </div>
 
   <footer>Skynet • Ramgarh</footer>
 
@@ -335,6 +522,35 @@
       showToast('▶ ' + btn.dataset.name);
     });
   });
+
+  // --- Sub-Page Navigation Logic ---
+  function openLiveTV() {
+    document.getElementById('main-page').style.display = 'none';
+    document.getElementById('live-tv-page').style.display = 'flex';
+    window.scrollTo(0, 0);
+    
+    // Default to TV tab when opened
+    const firstTab = document.querySelector('.tv-tab');
+    if(firstTab) switchLiveTab('tv', firstTab);
+  }
+
+  function closeLiveTV() {
+    document.getElementById('live-tv-page').style.display = 'none';
+    document.getElementById('main-page').style.display = 'flex';
+    window.scrollTo(0, 0);
+  }
+
+  // --- Tab Switching Logic ---
+  function switchLiveTab(tabId, btn) {
+    // Hide all contents
+    document.querySelectorAll('.tv-content').forEach(el => el.classList.remove('active'));
+    // Remove active state from all tabs
+    document.querySelectorAll('.tv-tab').forEach(el => el.classList.remove('active'));
+
+    // Show selected content and activate tab
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+  }
 </script>
 </body>
 </html>
