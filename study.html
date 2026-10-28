@@ -39,20 +39,21 @@ nav{background:var(--blue)}
 .dropdown:hover .dropdown-menu{display:block}
 .menu-toggle{display:none;background:none;border:none;color:#fff;font-size:20px;padding:8px 14px;cursor:pointer}
 
-/* Hero */
+/* ✅ Hero Section Styling */
 .hero{background:linear-gradient(rgba(13,71,161,.85),rgba(21,101,192,.85)),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80') center/cover;color:#fff;padding:60px 16px;text-align:center}
 .hero h1{font-size:32px;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
 .hero p{opacity:.95;margin-bottom:22px;font-size:16px}
 
 /* Sections */
 section{padding:36px 0}
-.section-title{font-size:22px;font-weight:700;margin-bottom:20px;color:var(--blue-dark)}
-.section-title small{display:block;font-size:13px;color:var(--muted);font-weight:400;margin-top:4px}
+.section-title{font-size:22px;font-weight:700;margin-bottom:20px;color:#111827}
+.section-title small{display:block;font-size:14px;color:var(--muted);font-weight:400;margin-top:4px}
 
 .grid{display:grid;gap:14px}
 .class-grid{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 .board-grid,.res-grid{grid-template-columns:repeat(auto-fill,minmax(220px,1fr))}
 .subj-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
+.category-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
 
 /* Card */
 .card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:.2s;display:block}
@@ -62,6 +63,15 @@ section{padding:36px 0}
 .card .icon{font-size:22px;margin-bottom:6px}
 .card h3{font-size:15px;margin-bottom:4px}
 .card p{font-size:12px;color:var(--muted)}
+
+/* ✅ Category Card Style */
+.category-card {background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;transition:0.2s;min-height:180px;position:relative;}
+.category-card:hover {transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.08);border-color:var(--blue);}
+.cat-icon {width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;margin-bottom:16px;}
+.category-card h3 {font-size:17px;color:#111827;margin-bottom:6px;font-weight:600;}
+.category-card p {font-size:13px;color:var(--muted);margin-bottom:24px;flex-grow:1;line-height:1.5;}
+.cat-footer {display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#9ca3af;margin-top:auto;}
+.explore-btn {color:#dc2626;font-weight:600;display:flex;align-items:center;gap:4px;}
 
 /* Breadcrumb */
 .crumbs{font-size:13px;color:var(--muted);margin-bottom:16px}
@@ -120,12 +130,6 @@ section{padding:36px 0}
 .btn{display:inline-block;background:var(--blue);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:.2s}
 .btn:hover{background:var(--blue-dark)}
 
-/* ✅ Tabs Styling for Class Page */
-.tabs-container{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;border-bottom:2px solid var(--border);padding-bottom:10px}
-.tab-btn{background:#fff;border:1px solid var(--border);padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;transition:.2s;font-family:inherit}
-.tab-btn:hover{background:var(--bg);color:var(--blue)}
-.tab-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 4px 10px rgba(21,101,192,.2)}
-
 /* Footer */
 footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
 .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;padding-bottom:28px}
@@ -141,7 +145,6 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
   .dropdown-menu{position:static;display:block;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0;max-height:none}
   .dropdown-menu a{color:#dbeafe;padding-left:28px}
   .dropdown>a::after{content:""}
-  .hero h1{font-size:24px}
   .logo svg{height:36px}
   .card .thumb{height:90px}
   .content-box{padding:20px}
@@ -194,8 +197,8 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
     <div class="dropdown">
       <a href="#/">Boards</a>
       <div class="dropdown-menu">
-        <a href="#/">BSEH (हरियाणा बोर्ड)</a><a href="#/">CBSE</a><a href="#/">ICSE / ISC</a>
-        <a href="#/">NIOS</a><a href="#/">Other State Boards</a>
+        <a href="#/school">BSEH (हरियाणा बोर्ड)</a><a href="#/school">CBSE</a><a href="#/school">ICSE / ISC</a>
+        <a href="#/school">NIOS</a><a href="#/school">Other State Boards</a>
       </div>
     </div>
     <div class="dropdown">
@@ -209,7 +212,6 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
     <a href="https://scholarships.gov.in/" target="_blank">Scholarships</a>
     <a href="https://olympiads.hbcse.tifr.res.in/" target="_blank">Olympiads</a>
     
-    <!-- ✅ अपडेटेड Results ड्रॉपडाउन -->
     <div class="dropdown">
       <a href="javascript:void(0)">Results</a>
       <div class="dropdown-menu">
@@ -236,11 +238,11 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
       </div>
       <div>
         <h4>Classes</h4>
-        <a href="#/class/10">Class 10</a><a href="#/class/11">Class 11</a><a href="#/class/12">Class 12</a><a href="#/">All Classes</a>
+        <a href="#/school/CBSE/10">Class 10</a><a href="#/school/CBSE/11">Class 11</a><a href="#/school/CBSE/12">Class 12</a><a href="#/school">All Classes</a>
       </div>
       <div>
         <h4>Boards</h4>
-        <a href="#">BSEH</a><a href="#">CBSE</a><a href="#">ICSE</a><a href="#">NIOS</a>
+        <a href="#/school">BSEH</a><a href="#/school">CBSE</a><a href="#/school">ICSE</a><a href="#/school">NIOS</a>
       </div>
       <div>
         <h4>Resources</h4>
@@ -275,16 +277,7 @@ const BOARDS = [
   {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop"},
   {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop"},
   {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"},
-  {name:"अन्य (Other)", desc:"State & International", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"}
-];
-
-const RESOURCES = [
-  {name:"NCERT Solutions", desc:"Chapter-wise answers", img:"https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop"},
-  {name:"NCERT Books", desc:"Free PDF download", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"},
-  {name:"Syllabus", desc:"Latest curriculum", img:"https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop"},
-  {name:"Sample Papers", desc:"Model question papers", img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop"},
-  {name:"Previous Year Papers", desc:"PYQ with solutions", img:"https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop"},
-  {name:"Revision Notes", desc:"Quick revision", img:"https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=400&h=220&fit=crop"}
+  {name:"Other Board", desc:"State & International", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"}
 ];
 
 // Subjects per class
@@ -461,251 +454,211 @@ function showContactInfo() {
 /* ============================================================
    PAGE RENDERERS
 ============================================================ */
+
+// 1. Home Page (Categories + Donation Highlight)
 function renderHome(){
-  const classCards = Array.from({length:12},(_,i)=>{
-    const n = i+1;
-    return `<a class="card" href="#/class/${n}">
-      <img class="thumb" src="${CLASS_IMAGES[i]}" alt="Class ${n}" loading="lazy">
-      <div class="body"><div class="icon">📚</div><h3>Class ${n}</h3><p>Notes • Books • Solutions</p></div>
-    </a>`;
-  }).join("");
-
-  const boardCards = BOARDS.map(b => `
-    <a class="card" href="#/">
-      <img class="thumb" src="${b.img}" alt="${escapeHTML(b.name)}" loading="lazy">
-      <div class="body"><div class="icon">🏫</div><h3>${escapeHTML(b.name)}</h3><p>${escapeHTML(b.desc)}</p></div>
-    </a>`).join("");
-
-  const resCards = RESOURCES.map(r => `
-    <a class="card" href="#/">
-      <img class="thumb" src="${r.img}" alt="${escapeHTML(r.name)}" loading="lazy">
-      <div class="body"><div class="icon">📘</div><h3>${escapeHTML(r.name)}</h3><p>${escapeHTML(r.desc)}</p></div>
-    </a>`).join("");
-
   return `
     <section class="hero">
       <h1>SKYNET STUDY HUB</h1>
       <p>Free Study Material for Class 1–12</p>
       
-      <!-- ✅ यहाँ डोनेशन का मैसेज जोड़ दिया गया है -->
-      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
-          <h3 style="margin-bottom: 10px; font-size: 18px;">💖 Support Our Work</h3>
-          <p style="font-size: 14px; line-height: 1.6;">If you find our hard work helpful, you can support us by making a small donation. Your contribution helps us keep this platform free for everyone.</p>
+      <!-- ✅ हिंदी में हाईलाइटेड डोनेशन मैसेज -->
+      <div style="background: rgba(255,255,255,0.15); padding: 24px; border-radius: 12px; max-width: 650px; margin: 0 auto; backdrop-filter: blur(8px); border: 2px solid #ffeb3b; box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);">
+          <h3 style="margin-bottom: 12px; font-size: 20px; color: #ffeb3b; text-shadow: 0 0 10px rgba(255,235,59,0.8); font-weight: 800;">💖 हमारी मेहनत का साथ दें</h3>
+          <p style="font-size: 16px; line-height: 1.6; color: #ffffff; font-weight: 500;">अगर आपको हमारी मेहनत अच्छी लगी और आप इस फ्री प्लेटफॉर्म में मदद करना चाहते हैं, तो आप एक छोटा सा डोनेशन दे सकते हैं। आपका योगदान हमें इसे सभी के लिए फ्री रखने में मदद करेगा।</p>
       </div>
     </section>
-    <section><div class="container">
-      <h2 class="section-title">Browse by Class <small>Class 1 से 12 तक सभी विषयों की सामग्री</small></h2>
-      <div class="grid class-grid">${classCards}</div>
-    </div></section>
-    <section><div class="container">
-      <h2 class="section-title">Browse by Board <small>अपना बोर्ड चुनें</small></h2>
-      <div class="grid board-grid">${boardCards}</div>
-    </div></section>
-    <section><div class="container">
-      <h2 class="section-title">Popular Resources <small>सबसे ज़्यादा देखी जाने वाली सामग्री</small></h2>
-      <div class="grid res-grid">${resCards}</div>
+
+    <section style="padding-top: 40px;"><div class="container">
+      <h2 class="section-title">Browse by Category <small>Find papers organised by exam type</small></h2>
+      
+      <div class="grid category-grid">
+        <!-- School (Active) -->
+        <a class="category-card" href="#/school">
+          <div class="cat-icon" style="background:#ff9800;">📖</div>
+          <h3>School</h3>
+          <p>CBSE, ICSE, and State Board previous papers</p>
+          <div class="cat-footer">
+            <span>891 papers</span>
+            <span class="explore-btn">Explore →</span>
+          </div>
+        </a>
+        
+        <!-- Others (Coming soon) -->
+        <a class="category-card" href="#/college">
+          <div class="cat-icon" style="background:#4f46e5;">🎓</div>
+          <h3>College</h3>
+          <p>University exams, semester papers</p>
+          <div class="cat-footer">
+            <span>762 papers</span>
+            <span class="explore-btn">Explore →</span>
+          </div>
+        </a>
+        
+        <a class="category-card" href="#/entrance">
+          <div class="cat-icon" style="background:#10b981;">✍️</div>
+          <h3>Entrance</h3>
+          <p>JEE, NEET, CLAT, CAT & more</p>
+          <div class="cat-footer">
+            <span>171 papers</span>
+            <span class="explore-btn">Explore →</span>
+          </div>
+        </a>
+        
+        <a class="category-card" href="#/competitive">
+          <div class="cat-icon" style="background:#ef4444;">🏦</div>
+          <h3>Competitive Exams</h3>
+          <p>SSC, Banking, Railway, UPSC & more</p>
+          <div class="cat-footer">
+            <span>914 papers</span>
+            <span class="explore-btn">Explore →</span>
+          </div>
+        </a>
+        
+        <a class="category-card" href="#/vocational">
+          <div class="cat-icon" style="background:#ec4899;">📄</div>
+          <h3>Vocational / Skill Development</h3>
+          <p>Browse papers</p>
+          <div class="cat-footer">
+            <span>1 paper</span>
+            <span class="explore-btn">Explore →</span>
+          </div>
+        </a>
+      </div>
     </div></section>`;
 }
 
-// ✅ State variables for Step-by-Step Flow
-let currentBoard = null;
-let currentSubject = null;
-
-function selectBoard(num, boardName) {
-  currentBoard = boardName;
-  currentSubject = null;
-  const subjectsBtn = document.querySelectorAll('.tab-btn')[1];
-  if (subjectsBtn) switchClassTab(num, 'subjects', subjectsBtn);
-}
-
-function clearBoard(num) {
-  currentBoard = null;
-  currentSubject = null;
-  const boardBtn = document.querySelectorAll('.tab-btn')[0];
-  if (boardBtn) switchClassTab(num, 'board', boardBtn);
-}
-
-function selectSubject(num, subjectName, subjectSlug) {
-  currentSubject = { name: subjectName, slug: subjectSlug };
-  const resBtn = document.querySelectorAll('.tab-btn')[2];
-  if (resBtn) switchClassTab(num, 'resources', resBtn);
-}
-
-function clearSubject(num) {
-  currentSubject = null;
-  const subjBtn = document.querySelectorAll('.tab-btn')[1];
-  if (subjBtn) switchClassTab(num, 'subjects', subjBtn);
-}
-
-function renderClass(num){
-  // Reset state on class change
-  currentBoard = null;
-  currentSubject = null;
+// 2. Boards Page
+function renderBoardsPage(){
+  const boardCards = BOARDS.map(b => `
+    <a class="card" href="#/school/${encodeURIComponent(b.name)}">
+      <img class="thumb" src="${b.img}" alt="${escapeHTML(b.name)}" loading="lazy">
+      <div class="body"><div class="icon">🏫</div><h3>${escapeHTML(b.name)}</h3><p>${escapeHTML(b.desc)}</p></div>
+    </a>`).join("");
 
   return `
     <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:`Class ${num}`}])}
-      <h1>Class ${num} — Study Hub</h1>
-      <p>Board, Subjects और Syllabus/Books के लिए टैब चुनें</p>
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School"}])}
+      <h1>Select Your Board</h1>
+      <p>Choose your board to see classes</p>
     </div></div>
     <section><div class="container">
-      
-      <!-- Tabs Buttons -->
-      <div class="tabs-container">
-        <button class="tab-btn active" onclick="switchClassTab(${num}, 'board', this)">🏫 Board</button>
-        <button class="tab-btn" onclick="switchClassTab(${num}, 'subjects', this)">📚 Subjects</button>
-        <button class="tab-btn" onclick="switchClassTab(${num}, 'resources', this)">📄 Syllabus, Books & Audio</button>
-      </div>
-
-      <!-- Tabs Content Container -->
-      <div id="class-tab-content" class="grid board-grid">
-        <!-- JS द्वारा लोड किया जाएगा -->
-      </div>
-
-    </div></section>`;
+      <div class="grid board-grid">${boardCards}</div>
+    </div></section>
+  `;
 }
 
-// ✅ टैब स्विच करने का लॉजिक
-function switchClassTab(num, tabType, btn) {
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
+// 3. Classes Page
+function renderClassesPage(board){
+  const classCards = Array.from({length:12},(_,i)=>{
+    const n = i+1;
+    return `<a class="card" href="#/school/${encodeURIComponent(board)}/${n}">
+      <img class="thumb" src="${CLASS_IMAGES[i]}" alt="Class ${n}" loading="lazy">
+      <div class="body"><div class="icon">📚</div><h3>Class ${n}</h3><p>Notes • Books • Solutions</p></div>
+    </a>`;
+  }).join("");
 
-  const contentDiv = document.getElementById('class-tab-content');
-  
-  if (tabType === 'board') {
-    contentDiv.className = 'grid board-grid';
-    contentDiv.innerHTML = renderBoardsTab(num);
-  } else if (tabType === 'subjects') {
-    contentDiv.className = 'grid subj-grid';
-    contentDiv.innerHTML = renderSubjectsTab(num);
-  } else if (tabType === 'resources') {
-    contentDiv.className = 'grid res-grid';
-    contentDiv.innerHTML = renderResourcesTab(num);
-  }
-}
-
-// ✅ Boards टैब का कंटेंट
-function renderBoardsTab(num) {
   return `
-    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'BSEH (हरियाणा बोर्ड)')">
-      <img class="thumb" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop" alt="BSEH">
-      <div class="body"><div class="icon">🏫</div><h3>BSEH (हरियाणा बोर्ड)</h3><p>Click to view subjects</p></div>
-    </a>
-    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'CBSE')">
-      <img class="thumb" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop" alt="CBSE">
-      <div class="body"><div class="icon">🏫</div><h3>CBSE</h3><p>Click to view subjects</p></div>
-    </a>
-    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'ICSE / ISC')">
-      <img class="thumb" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop" alt="ICSE">
-      <div class="body"><div class="icon">🏫</div><h3>ICSE / ISC</h3><p>Click to view subjects</p></div>
-    </a>
-    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'NIOS')">
-      <img class="thumb" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop" alt="NIOS">
-      <div class="body"><div class="icon">🏫</div><h3>NIOS</h3><p>Click to view subjects</p></div>
-    </a>
-    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'Other Board')">
-      <img class="thumb" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop" alt="Other">
-      <div class="body"><div class="icon">🏫</div><h3>अन्य (Other)</h3><p>Click to view subjects</p></div>
-    </a>
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board}])}
+      <h1>${board} — Classes</h1>
+      <p>Select your class</p>
+    </div></div>
+    <section><div class="container">
+      <div class="grid class-grid">${classCards}</div>
+    </div></section>
   `;
 }
 
-// ✅ Subjects टैब का कंटेंट
-function renderSubjectsTab(num) {
-  let boardBanner = currentBoard ? `
-    <div class="info-banner" style="grid-column: 1 / -1; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-        <span>Board Selected: <strong>${currentBoard}</strong></span>
-        <button class="btn" style="padding: 6px 12px; font-size: 12px; background:#6b7280;" onclick="clearBoard(${num})">Change Board</button>
-    </div>
-  ` : '';
-
+// 4. Subjects Page
+function renderSubjectsPage(board, num){
   const subjects = SUBJECTS[num] || [];
-  let cards = '';
-  
-  if (subjects.length === 0) {
-    cards = `<div class="empty"><h2>Subjects coming soon</h2></div>`;
-  } else {
-    cards = subjects.map(s => `
-      <a class="card" href="javascript:void(0)" onclick="selectSubject(${num}, '${escapeHTML(s.name)}', '${s.slug}')">
-        <div class="body" style="padding:24px 18px">
-          <div class="icon" style="font-size:34px">${s.icon}</div>
-          <h3>${escapeHTML(s.name)}</h3>
-          <p>Click to view resources</p>
-        </div>
-      </a>
-    `).join("");
-  }
-  return boardBanner + cards;
-}
+  const subjectCards = subjects.map(s => `
+    <a class="card" href="#/school/${encodeURIComponent(board)}/${num}/${s.slug}">
+      <div class="body" style="padding:24px 18px">
+        <div class="icon" style="font-size:34px">${s.icon}</div>
+        <h3>${escapeHTML(s.name)}</h3>
+        <p>Click to view resources</p>
+      </div>
+    </a>`).join("");
 
-// ✅ Resources टैब का कंटेंट
-function renderResourcesTab(num) {
-  let banner = '';
-  if (currentBoard || currentSubject) {
-      banner = `
-          <div class="info-banner" style="grid-column: 1 / -1; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
-              <span>
-                  ${currentBoard ? `Board: <strong>${currentBoard}</strong>` : ''}
-                  ${currentSubject ? ` | Subject: <strong>${currentSubject.name}</strong>` : ''}
-              </span>
-              <button class="btn" style="padding: 6px 12px; font-size: 12px; background:#6b7280;" onclick="clearSubject(${num})">Change Subject</button>
-          </div>
-      `;
-  }
-
-  let chapterCard = '';
-  if (currentSubject) {
-      chapterCard = `
-          <a class="card" href="#/class/${num}/${currentSubject.slug}">
-            <img class="thumb" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop" alt="Chapters">
-            <div class="body"><div class="icon">📖</div><h3>Go to Chapters</h3><p>Read ${escapeHTML(currentSubject.name)} chapters</p></div>
-          </a>
-      `;
-  }
-
-  // Dynamic Google Maps Search Link based on Board
-  let schoolLink = "https://www.google.com/maps/search/schools+near+me";
-  if (currentBoard) {
-      let cleanBoardName = currentBoard.replace(/[()]/g, '').replace('हरियाणा बोर्ड', '').trim();
-      if (cleanBoardName === 'BSEH') cleanBoardName = 'Haryana Board';
-      schoolLink = `https://www.google.com/maps/search/${encodeURIComponent(cleanBoardName)}+schools+near+me`;
-  }
-
-  return banner + chapterCard + `
-    <a class="card" href="https://ncert.nic.in/syllabus.php" target="_blank" rel="noopener">
-      <img class="thumb" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop" alt="Syllabus">
-      <div class="body"><div class="icon">📄</div><h3>Class ${num} Syllabus</h3><p>Latest Curriculum & Marking Scheme</p></div>
-    </a>
-    <a class="card" href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener">
-      <img class="thumb" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop" alt="Books">
-      <div class="body"><div class="icon">📚</div><h3>NCERT Books (PDF)</h3><p>Free Downloadable Textbooks</p></div>
-    </a>
-    <a class="card" href="https://epathshala.nic.in/" target="_blank" rel="noopener">
-      <img class="thumb" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop" alt="Audio Books">
-      <div class="body"><div class="icon">🎧</div><h3>Audio Books & Videos</h3><p>ePathshala & DIKSHA Resources</p></div>
-    </a>
-    <a class="card" href="https://www.cbse.gov.in/cbsenew/questionpaper.html" target="_blank" rel="noopener">
-      <img class="thumb" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop" alt="Old Papers">
-      <div class="body"><div class="icon">📝</div><h3>Old Year Question Papers</h3><p>Previous Year Papers for Class ${num}</p></div>
-    </a>
-    <a class="card" href="${schoolLink}" target="_blank" rel="noopener">
-      <img class="thumb" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop" alt="Near School">
-      <div class="body"><div class="icon">📍</div><h3>Near School</h3><p>Find ${currentBoard ? currentBoard.split('(')[0] : ''} Schools Near You</p></div>
-    </a>
-    <a class="card" href="https://www.google.com/maps/search/study+center+near+me" target="_blank" rel="noopener">
-      <img class="thumb" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop" alt="Near Study Center">
-      <div class="body"><div class="icon">🗺️</div><h3>Near Study Center</h3><p>Find Study Centers Near You</p></div>
-    </a>
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`}])}
+      <h1>Class ${num} Subjects</h1>
+      <p>Board: ${board}</p>
+    </div></div>
+    <section><div class="container">
+      <div class="grid subj-grid">${subjectCards || '<div class="empty"><h2>Subjects coming soon</h2></div>'}</div>
+    </div></section>
   `;
 }
 
-function renderSubject(num, subjSlug){
+// 5. Resources Page (Syllabus, Books, Papers)
+function renderResourcesPage(board, num, subjSlug){
+  const subj = getSubject(num, subjSlug);
+  
+  let cleanBoardName = board.replace(/[()]/g, '').replace('हरियाणा बोर्ड', '').trim();
+  if (cleanBoardName === 'BSEH') cleanBoardName = 'Haryana Board';
+  const schoolLink = `https://www.google.com/maps/search/${encodeURIComponent(cleanBoardName)}+schools+near+me`;
+
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`, href:`#/school/${encodeURIComponent(board)}/${num}`},{label:subj ? subj.name : subjSlug}])}
+      <h1>${subj ? subj.icon + ' ' + escapeHTML(subj.name) : 'Resources'} — Class ${num}</h1>
+      <p>Board: ${board}</p>
+    </div></div>
+    <section><div class="container">
+      <div class="grid res-grid">
+        
+        <a class="card" href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters">
+          <img class="thumb" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop" alt="Chapters">
+          <div class="body"><div class="icon">📖</div><h3>Go to Chapters</h3><p>Read ${subj ? escapeHTML(subj.name) : ''} chapters</p></div>
+        </a>
+
+        <a class="card" href="https://ncert.nic.in/syllabus.php" target="_blank" rel="noopener">
+          <img class="thumb" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop" alt="Syllabus">
+          <div class="body"><div class="icon">📄</div><h3>Class ${num} Syllabus</h3><p>Latest Curriculum & Marking Scheme</p></div>
+        </a>
+
+        <a class="card" href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener">
+          <img class="thumb" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop" alt="Books">
+          <div class="body"><div class="icon">📚</div><h3>NCERT Books (PDF)</h3><p>Free Downloadable Textbooks</p></div>
+        </a>
+
+        <a class="card" href="https://epathshala.nic.in/" target="_blank" rel="noopener">
+          <img class="thumb" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop" alt="Audio Books">
+          <div class="body"><div class="icon">🎧</div><h3>Audio Books & Videos</h3><p>ePathshala & DIKSHA Resources</p></div>
+        </a>
+
+        <a class="card" href="https://www.cbse.gov.in/cbsenew/questionpaper.html" target="_blank" rel="noopener">
+          <img class="thumb" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop" alt="Old Papers">
+          <div class="body"><div class="icon">📝</div><h3>Old Year Question Papers</h3><p>Previous Year Papers for Class ${num}</p></div>
+        </a>
+
+        <a class="card" href="${schoolLink}" target="_blank" rel="noopener">
+          <img class="thumb" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop" alt="Near School">
+          <div class="body"><div class="icon">📍</div><h3>Near School</h3><p>Find ${escapeHTML(cleanBoardName)} Schools Near You</p></div>
+        </a>
+
+        <a class="card" href="https://www.google.com/maps/search/study+center+near+me" target="_blank" rel="noopener">
+          <img class="thumb" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop" alt="Near Study Center">
+          <div class="body"><div class="icon">🗺️</div><h3>Near Study Center</h3><p>Find Study Centers Near You</p></div>
+        </a>
+
+      </div>
+    </div></section>
+  `;
+}
+
+// 6. Chapters List
+function renderChaptersPage(board, num, subjSlug){
   const subj = getSubject(num, subjSlug);
   if (!subj) return render404();
   const chapters = subj.chapters || [];
   const list = chapters.length
     ? chapters.map((c,i) => `
-        <a class="chapter-item" href="#/class/${num}/${subjSlug}/${c.slug}">
+        <a class="chapter-item" href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters/${c.slug}">
           <div class="left"><span class="num">${i+1}</span><h3>${escapeHTML(c.name)}</h3></div>
           <span class="arrow">→</span>
         </a>`).join("")
@@ -713,21 +666,23 @@ function renderSubject(num, subjSlug){
         <div class="icon">📖</div>
         <h2>Chapters coming soon</h2>
         <p>Class ${num} ${escapeHTML(subj.name)} के chapters जल्द जोड़े जाएँगे।</p>
-        <a class="btn" href="#/class/${num}">← वापस Class ${num}</a>
+        <a class="btn" href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}">← Back to Resources</a>
       </div>`;
 
   return `
     <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:`Class ${num}`,href:`#/class/${num}`},{label:subj.name}])}
-      <h1>${subj.icon} ${escapeHTML(subj.name)} — Class ${num}</h1>
-      <p>${chapters.length ? chapters.length + " chapters उपलब्ध" : "Content जल्द आ रहा है"}</p>
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`, href:`#/school/${encodeURIComponent(board)}/${num}`},{label:subj.name, href:`#/school/${encodeURIComponent(board)}/${num}/${subjSlug}`},{label:"Chapters"}])}
+      <h1>${subj.icon} ${escapeHTML(subj.name)} — Chapters</h1>
+      <p>Class ${num} • ${chapters.length} chapters</p>
     </div></div>
     <section><div class="container">
       <div class="chapter-list">${list}</div>
-    </div></section>`;
+    </div></section>
+  `;
 }
 
-function renderChapter(num, subjSlug, chSlug){
+// 7. Chapter Content
+function renderChapterContentPage(board, num, subjSlug, chSlug){
   const subj = getSubject(num, subjSlug);
   const ch = getChapter(num, subjSlug, chSlug);
   if (!subj || !ch) return render404();
@@ -740,10 +695,10 @@ function renderChapter(num, subjSlug, chSlug){
   const prevNext = `
     <div class="prev-next">
       ${prev
-        ? `<a href="#/class/${num}/${subjSlug}/${prev.slug}"><small>← Previous</small><strong>${escapeHTML(prev.name)}</strong></a>`
+        ? `<a href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters/${prev.slug}"><small>← Previous</small><strong>${escapeHTML(prev.name)}</strong></a>`
         : `<a class="disabled"><small>← Previous</small><strong>—</strong></a>`}
       ${next
-        ? `<a href="#/class/${num}/${subjSlug}/${next.slug}"><small>Next →</small><strong>${escapeHTML(next.name)}</strong></a>`
+        ? `<a href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters/${next.slug}"><small>Next →</small><strong>${escapeHTML(next.name)}</strong></a>`
         : `<a class="disabled"><small>Next →</small><strong>—</strong></a>`}
     </div>`;
 
@@ -751,8 +706,10 @@ function renderChapter(num, subjSlug, chSlug){
     <div class="page-head"><div class="container">
       ${crumbsHTML([
         {label:"Home",href:"#/"},
-        {label:`Class ${num}`,href:`#/class/${num}`},
-        {label:subj.name,href:`#/class/${num}/${subjSlug}`},
+        {label:"School",href:"#/school"},
+        {label:board,href:`#/school/${encodeURIComponent(board)}`},
+        {label:`Class ${num}`,href:`#/school/${encodeURIComponent(board)}/${num}`},
+        {label:subj.name,href:`#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters`},
         {label:ch.name}
       ])}
       <h1>${escapeHTML(ch.name)}</h1>
@@ -780,6 +737,24 @@ function renderChapter(num, subjSlug, chSlug){
         ${prevNext}
       </div>
     </div></section>`;
+}
+
+// Coming Soon for other categories
+function renderComingSoon(category) {
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:category}])}
+      <h1>${category} — Coming Soon</h1>
+    </div></div>
+    <section><div class="container">
+      <div class="empty">
+        <div class="icon">🚧</div>
+        <h2>We are working on it!</h2>
+        <p>Content for ${category} will be available soon.</p>
+        <a class="btn" href="#/">Go Back</a>
+      </div>
+    </div></section>
+  `;
 }
 
 function renderSearch(query){
@@ -831,7 +806,7 @@ function renderSearch(query){
   if (results.classes.length) {
     html += `<div class="result-group"><h3>Classes (${results.classes.length})</h3>`;
     results.classes.forEach(r => {
-      html += `<a class="result-item" href="#/class/${r.num}">
+      html += `<a class="result-item" href="#/school/CBSE/${r.num}">
         <strong>Class ${r.num}</strong>
         <small>All subjects and chapters</small>
       </a>`;
@@ -842,7 +817,7 @@ function renderSearch(query){
   if (results.subjects.length) {
     html += `<div class="result-group"><h3>Subjects (${results.subjects.length})</h3>`;
     results.subjects.forEach(r => {
-      html += `<a class="result-item" href="#/class/${r.num}/${r.subject.slug}">
+      html += `<a class="result-item" href="#/school/CBSE/${r.num}/${r.subject.slug}">
         <strong>${r.subject.icon} ${escapeHTML(r.subject.name)}</strong>
         <small>Class ${r.num} • ${(r.subject.chapters||[]).length} chapters</small>
       </a>`;
@@ -853,7 +828,7 @@ function renderSearch(query){
   if (results.chapters.length) {
     html += `<div class="result-group"><h3>Chapters (${results.chapters.length})</h3>`;
     results.chapters.forEach(r => {
-      html += `<a class="result-item" href="#/class/${r.num}/${r.subject.slug}/${r.chapter.slug}">
+      html += `<a class="result-item" href="#/school/CBSE/${r.num}/${r.subject.slug}/chapters/${r.chapter.slug}">
         <strong>${escapeHTML(r.chapter.name)}</strong>
         <small>Class ${r.num} • ${escapeHTML(r.subject.name)}</small>
       </a>`;
@@ -890,9 +865,13 @@ function render(){
   let html = "";
 
   if (parts.length === 0) html = renderHome();
-  else if (parts[0] === "class" && parts[1] && parts[2] && parts[3]) html = renderChapter(+parts[1], parts[2], parts[3]);
-  else if (parts[0] === "class" && parts[1] && parts[2]) html = renderSubject(+parts[1], parts[2]);
-  else if (parts[0] === "class" && parts[1]) html = renderClass(+parts[1]);
+  else if (parts[0] === "school" && parts.length === 1) html = renderBoardsPage();
+  else if (parts[0] === "school" && parts.length === 2) html = renderClassesPage(decodeURIComponent(parts[1]));
+  else if (parts[0] === "school" && parts.length === 3) html = renderSubjectsPage(decodeURIComponent(parts[1]), +parts[2]);
+  else if (parts[0] === "school" && parts.length === 4) html = renderResourcesPage(decodeURIComponent(parts[1]), +parts[2], parts[3]);
+  else if (parts[0] === "school" && parts.length === 5 && parts[4] === "chapters") html = renderChaptersPage(decodeURIComponent(parts[1]), +parts[2], parts[3]);
+  else if (parts[0] === "school" && parts.length === 6) html = renderChapterContentPage(decodeURIComponent(parts[1]), +parts[2], parts[3], parts[5]);
+  else if (["college", "entrance", "competitive", "vocational"].includes(parts[0])) html = renderComingSoon(parts[0].charAt(0).toUpperCase() + parts[0].slice(1));
   else if (parts[0] === "search" && parts[1]) html = renderSearch(decodeURIComponent(parts[1]));
   else html = render404();
 
@@ -904,14 +883,6 @@ function render(){
   if (si && parts[0] === "search" && parts[1]) {
     si.value = decodeURIComponent(parts[1]);
   }
-
-  // Load default tab when entering Class page
-  if (parts[0] === "class" && parts[1] && !parts[2]) {
-    const defaultBtn = document.querySelector('.tab-btn');
-    if (defaultBtn) {
-      switchClassTab(+parts[1], 'board', defaultBtn);
-    }
-  }
 }
 
 function doSearch(q){
@@ -922,12 +893,12 @@ function doSearch(q){
 
 /* ============================================================
    INIT
-============================================================ */
+   ============================================================ */
 document.addEventListener("DOMContentLoaded", () => {
   // Class dropdown
   const cm = document.getElementById("classMenu");
   for (let i = 1; i <= 12; i++) {
-    cm.innerHTML += `<a href="#/class/${i}">Class ${i}</a>`;
+    cm.innerHTML += `<a href="#/school/CBSE/${i}">Class ${i}</a>`;
   }
 
   // Mobile menu
