@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SKYNETSTUDYHUB – NCERT Solutions, Books, Syllabus & More</title>
+<title>SKYNET STUDY HUB – Free Study Material for Class 1–12</title>
 <meta name="description" content="Free study material for Class 1 to 12. NCERT Solutions, Books, Syllabus, Sample Papers for CBSE, ICSE, NIOS and State Boards.">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -29,7 +29,7 @@ header{background:#fff;border-bottom:1px solid var(--border)}
 /* Nav */
 nav{background:var(--blue)}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;padding:0 16px}
-.nav-inner>a,.dropdown>a{padding:12px 14px;color:#fff;font-size:14px;font-weight:500;display:block}
+.nav-inner>a,.dropdown>a{padding:12px 14px;color:#fff;font-size:14px;font-weight:500;display:block; cursor:pointer;}
 .nav-inner>a:hover,.dropdown>a:hover{background:var(--blue-dark)}
 .dropdown{position:relative}
 .dropdown>a::after{content:" ▾"}
@@ -43,9 +43,6 @@ nav{background:var(--blue)}
 .hero{background:linear-gradient(rgba(13,71,161,.85),rgba(21,101,192,.85)),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80') center/cover;color:#fff;padding:60px 16px;text-align:center}
 .hero h1{font-size:32px;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
 .hero p{opacity:.95;margin-bottom:22px;font-size:16px}
-.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.chips a{background:rgba(255,255,255,.22);padding:8px 18px;border-radius:20px;font-size:13px}
-.chips a:hover{background:rgba(255,255,255,.4)}
 
 /* Sections */
 section{padding:36px 0}
@@ -123,6 +120,12 @@ section{padding:36px 0}
 .btn{display:inline-block;background:var(--blue);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:.2s}
 .btn:hover{background:var(--blue-dark)}
 
+/* ✅ Tabs Styling for Class Page */
+.tabs-container{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:24px;border-bottom:2px solid var(--border);padding-bottom:10px}
+.tab-btn{background:#fff;border:1px solid var(--border);padding:10px 24px;border-radius:8px;font-size:15px;font-weight:600;color:var(--muted);cursor:pointer;transition:.2s;font-family:inherit}
+.tab-btn:hover{background:var(--bg);color:var(--blue)}
+.tab-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);box-shadow:0 4px 10px rgba(21,101,192,.2)}
+
 /* Footer */
 footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
 .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;padding-bottom:28px}
@@ -151,14 +154,14 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
 
 <div class="topbar">
   <div class="container">
-    <span>📢 Welcome to SKYNETSTUDYHUB — Free Study Material</span>
-    <span>CBSE | ICSE | NIOS | State Boards</span>
+    <span>📢 Welcome to SKYNET STUDY HUB — Free Study Material</span>
+    <span>BSEH | CBSE | ICSE | NIOS</span>
   </div>
 </div>
 
 <header>
   <div class="header-inner">
-    <a href="#/" class="logo" aria-label="SKYNETSTUDYHUB Home">
+    <a href="#/" class="logo" aria-label="SKYNET STUDY HUB Home">
       <svg viewBox="0 0 290 64" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
@@ -172,7 +175,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
         <line x1="46" y1="24" x2="46" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
         <circle cx="46" cy="38" r="2.5" fill="#ffb74d"/>
         <text x="70" y="30" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="17" fill="#1565c0" letter-spacing="0.5">SKYNET</text>
-        <text x="70" y="52" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="15" fill="#ff9800" letter-spacing="1.5">STUDYHUB</text>
+        <text x="70" y="52" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="15" fill="#ff9800" letter-spacing="1.5">STUDY HUB</text>
       </svg>
     </a>
     <form class="search" id="searchForm" onsubmit="event.preventDefault(); doSearch(this.q.value)">
@@ -191,22 +194,34 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
     <div class="dropdown">
       <a href="#/">Boards</a>
       <div class="dropdown-menu">
-        <a href="#">CBSE</a><a href="#">ICSE / ISC</a><a href="#">NIOS</a>
-        <a href="#">HBSE</a><a href="#">Maharashtra Board</a><a href="#">Karnataka Board</a>
+        <a href="#/">BSEH (हरियाणा बोर्ड)</a><a href="#/">CBSE</a><a href="#/">ICSE / ISC</a>
+        <a href="#/">NIOS</a><a href="#/">Other State Boards</a>
       </div>
     </div>
     <div class="dropdown">
       <a href="#/">Resources</a>
       <div class="dropdown-menu">
-        <a href="#">NCERT Solutions</a><a href="#">NCERT Books</a>
-        <a href="#">Syllabus</a><a href="#">Sample Papers</a>
-        <a href="#">Previous Year Papers</a><a href="#">Notes</a>
+        <a href="#/">NCERT Solutions</a><a href="#/">NCERT Books</a>
+        <a href="#/">Syllabus</a><a href="#/">Sample Papers</a>
+        <a href="#/">Previous Year Papers</a><a href="#/">Notes</a>
       </div>
     </div>
-    <a href="#">Scholarships</a>
-    <a href="#">Olympiads</a>
-    <a href="#">Results</a>
-    <a href="#">Contact</a>
+    <a href="https://scholarships.gov.in/" target="_blank">Scholarships</a>
+    <a href="https://olympiads.hbcse.tifr.res.in/" target="_blank">Olympiads</a>
+    
+    <!-- ✅ अपडेटेड Results ड्रॉपडाउन -->
+    <div class="dropdown">
+      <a href="javascript:void(0)">Results</a>
+      <div class="dropdown-menu">
+        <a href="https://bseh.org.in/" target="_blank">BSEH (Haryana) Result</a>
+        <a href="https://results.cbse.nic.in/" target="_blank">CBSE Result</a>
+        <a href="https://results.cisce.org/" target="_blank">ICSE / ISC Result</a>
+        <a href="https://results.nios.ac.in/" target="_blank">NIOS Result</a>
+        <a href="https://www.indiaresults.com/" target="_blank">Other Boards Result</a>
+      </div>
+    </div>
+
+    <a href="javascript:void(0)" onclick="showContactInfo()">Contact</a>
   </div>
 </nav>
 
@@ -216,7 +231,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
   <div class="container">
     <div class="foot-grid">
       <div>
-        <h4>SKYNETSTUDYHUB</h4>
+        <h4>SKYNET STUDY HUB</h4>
         <a href="#/">Home</a><a href="#">About Us</a><a href="#">Contact</a><a href="#">Privacy Policy</a><a href="#">Disclaimer</a>
       </div>
       <div>
@@ -225,7 +240,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
       </div>
       <div>
         <h4>Boards</h4>
-        <a href="#">CBSE</a><a href="#">ICSE</a><a href="#">NIOS</a><a href="#">State Boards</a>
+        <a href="#">BSEH</a><a href="#">CBSE</a><a href="#">ICSE</a><a href="#">NIOS</a>
       </div>
       <div>
         <h4>Resources</h4>
@@ -233,7 +248,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
       </div>
     </div>
   </div>
-  <div class="copyright">© 2026 SKYNETSTUDYHUB. All rights reserved.</div>
+  <div class="copyright">© 2026 SKYNET STUDY HUB. All rights reserved.</div>
 </footer>
 
 <script>
@@ -256,12 +271,11 @@ const CLASS_IMAGES = [
 ];
 
 const BOARDS = [
-  {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop"},
-  {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop"},
-  {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop"},
-  {name:"HBSE", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"},
-  {name:"Maharashtra", desc:"MSBSHSE", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"},
-  {name:"Karnataka", desc:"KSEEB / SSLC", img:"https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=400&h=220&fit=crop"}
+  {name:"BSEH (हरियाणा बोर्ड)", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop"},
+  {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop"},
+  {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop"},
+  {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"},
+  {name:"अन्य (Other)", desc:"State & International", img:"https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop"}
 ];
 
 const RESOURCES = [
@@ -440,6 +454,10 @@ function escapeHTML(s){
   return String(s).replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 }
 
+function showContactInfo() {
+  alert("📞 Board Contact Numbers:\n\nBSEH (Haryana Board): 1800-180-4171\nCBSE: 1800-11-8002\nCISCE (ICSE): 011-29564831\nNIOS: 1800-180-9393\n\n📍 Addresses are available on their official websites.");
+}
+
 /* ============================================================
    PAGE RENDERERS
 ============================================================ */
@@ -466,13 +484,13 @@ function renderHome(){
 
   return `
     <section class="hero">
-      <h1>SKYNETSTUDYHUB — Free Study Material for Class 1–12</h1>
-      <p>NCERT Solutions, Books, Syllabus, Sample Papers & Notes — सब एक जगह</p>
-      <div class="chips">
-        <a href="#/class/10">Class 10</a>
-        <a href="#/class/12">Class 12</a>
-        <a href="#/class/10/maths">Maths Solutions</a>
-        <a href="#/class/10/science">Science Solutions</a>
+      <h1>SKYNET STUDY HUB</h1>
+      <p>Free Study Material for Class 1–12</p>
+      
+      <!-- ✅ यहाँ डोनेशन का मैसेज जोड़ दिया गया है -->
+      <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 10px; max-width: 600px; margin: 0 auto; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+          <h3 style="margin-bottom: 10px; font-size: 18px;">💖 Support Our Work</h3>
+          <p style="font-size: 14px; line-height: 1.6;">If you find our hard work helpful, you can support us by making a small donation. Your contribution helps us keep this platform free for everyone.</p>
       </div>
     </section>
     <section><div class="container">
@@ -489,35 +507,196 @@ function renderHome(){
     </div></section>`;
 }
 
-function renderClass(num){
-  const subjects = SUBJECTS[num] || [];
-  const hasContent = subjects.some(s => s.chapters && s.chapters.length);
-  const subjectCards = subjects.map(s => {
-    const chCount = (s.chapters || []).length;
-    return `<a class="card" href="#/class/${num}/${s.slug}">
-      <div class="body" style="padding:24px 18px">
-        <div class="icon" style="font-size:34px">${s.icon}</div>
-        <h3>${escapeHTML(s.name)}</h3>
-        <p>${chCount ? chCount + " chapters" : "Coming soon"}</p>
-      </div>
-    </a>`;
-  }).join("");
+// ✅ State variables for Step-by-Step Flow
+let currentBoard = null;
+let currentSubject = null;
 
-  const comingSoon = !hasContent ? `
-    <div class="info-banner" style="margin-top:20px">
-      📌 Class ${num} की detailed chapter-wise content जल्द आ रही है। अभी Class 10 और 12 पूरी तरह उपलब्ध हैं।
-    </div>` : "";
+function selectBoard(num, boardName) {
+  currentBoard = boardName;
+  currentSubject = null;
+  const subjectsBtn = document.querySelectorAll('.tab-btn')[1];
+  if (subjectsBtn) switchClassTab(num, 'subjects', subjectsBtn);
+}
+
+function clearBoard(num) {
+  currentBoard = null;
+  currentSubject = null;
+  const boardBtn = document.querySelectorAll('.tab-btn')[0];
+  if (boardBtn) switchClassTab(num, 'board', boardBtn);
+}
+
+function selectSubject(num, subjectName, subjectSlug) {
+  currentSubject = { name: subjectName, slug: subjectSlug };
+  const resBtn = document.querySelectorAll('.tab-btn')[2];
+  if (resBtn) switchClassTab(num, 'resources', resBtn);
+}
+
+function clearSubject(num) {
+  currentSubject = null;
+  const subjBtn = document.querySelectorAll('.tab-btn')[1];
+  if (subjBtn) switchClassTab(num, 'subjects', subjBtn);
+}
+
+function renderClass(num){
+  // Reset state on class change
+  currentBoard = null;
+  currentSubject = null;
 
   return `
     <div class="page-head"><div class="container">
       ${crumbsHTML([{label:"Home",href:"#/"},{label:`Class ${num}`}])}
-      <h1>Class ${num} — Subjects</h1>
-      <p>अपना विषय चुनें और chapter-wise content पढ़ें</p>
+      <h1>Class ${num} — Study Hub</h1>
+      <p>Board, Subjects और Syllabus/Books के लिए टैब चुनें</p>
     </div></div>
     <section><div class="container">
-      <div class="grid subj-grid">${subjectCards || '<div class="empty"><h2>Subjects coming soon</h2></div>'}</div>
-      ${comingSoon}
+      
+      <!-- Tabs Buttons -->
+      <div class="tabs-container">
+        <button class="tab-btn active" onclick="switchClassTab(${num}, 'board', this)">🏫 Board</button>
+        <button class="tab-btn" onclick="switchClassTab(${num}, 'subjects', this)">📚 Subjects</button>
+        <button class="tab-btn" onclick="switchClassTab(${num}, 'resources', this)">📄 Syllabus, Books & Audio</button>
+      </div>
+
+      <!-- Tabs Content Container -->
+      <div id="class-tab-content" class="grid board-grid">
+        <!-- JS द्वारा लोड किया जाएगा -->
+      </div>
+
     </div></section>`;
+}
+
+// ✅ टैब स्विच करने का लॉजिक
+function switchClassTab(num, tabType, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+
+  const contentDiv = document.getElementById('class-tab-content');
+  
+  if (tabType === 'board') {
+    contentDiv.className = 'grid board-grid';
+    contentDiv.innerHTML = renderBoardsTab(num);
+  } else if (tabType === 'subjects') {
+    contentDiv.className = 'grid subj-grid';
+    contentDiv.innerHTML = renderSubjectsTab(num);
+  } else if (tabType === 'resources') {
+    contentDiv.className = 'grid res-grid';
+    contentDiv.innerHTML = renderResourcesTab(num);
+  }
+}
+
+// ✅ Boards टैब का कंटेंट
+function renderBoardsTab(num) {
+  return `
+    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'BSEH (हरियाणा बोर्ड)')">
+      <img class="thumb" src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop" alt="BSEH">
+      <div class="body"><div class="icon">🏫</div><h3>BSEH (हरियाणा बोर्ड)</h3><p>Click to view subjects</p></div>
+    </a>
+    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'CBSE')">
+      <img class="thumb" src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop" alt="CBSE">
+      <div class="body"><div class="icon">🏫</div><h3>CBSE</h3><p>Click to view subjects</p></div>
+    </a>
+    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'ICSE / ISC')">
+      <img class="thumb" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop" alt="ICSE">
+      <div class="body"><div class="icon">🏫</div><h3>ICSE / ISC</h3><p>Click to view subjects</p></div>
+    </a>
+    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'NIOS')">
+      <img class="thumb" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop" alt="NIOS">
+      <div class="body"><div class="icon">🏫</div><h3>NIOS</h3><p>Click to view subjects</p></div>
+    </a>
+    <a class="card" href="javascript:void(0)" onclick="selectBoard(${num}, 'Other Board')">
+      <img class="thumb" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop" alt="Other">
+      <div class="body"><div class="icon">🏫</div><h3>अन्य (Other)</h3><p>Click to view subjects</p></div>
+    </a>
+  `;
+}
+
+// ✅ Subjects टैब का कंटेंट
+function renderSubjectsTab(num) {
+  let boardBanner = currentBoard ? `
+    <div class="info-banner" style="grid-column: 1 / -1; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span>Board Selected: <strong>${currentBoard}</strong></span>
+        <button class="btn" style="padding: 6px 12px; font-size: 12px; background:#6b7280;" onclick="clearBoard(${num})">Change Board</button>
+    </div>
+  ` : '';
+
+  const subjects = SUBJECTS[num] || [];
+  let cards = '';
+  
+  if (subjects.length === 0) {
+    cards = `<div class="empty"><h2>Subjects coming soon</h2></div>`;
+  } else {
+    cards = subjects.map(s => `
+      <a class="card" href="javascript:void(0)" onclick="selectSubject(${num}, '${escapeHTML(s.name)}', '${s.slug}')">
+        <div class="body" style="padding:24px 18px">
+          <div class="icon" style="font-size:34px">${s.icon}</div>
+          <h3>${escapeHTML(s.name)}</h3>
+          <p>Click to view resources</p>
+        </div>
+      </a>
+    `).join("");
+  }
+  return boardBanner + cards;
+}
+
+// ✅ Resources टैब का कंटेंट
+function renderResourcesTab(num) {
+  let banner = '';
+  if (currentBoard || currentSubject) {
+      banner = `
+          <div class="info-banner" style="grid-column: 1 / -1; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+              <span>
+                  ${currentBoard ? `Board: <strong>${currentBoard}</strong>` : ''}
+                  ${currentSubject ? ` | Subject: <strong>${currentSubject.name}</strong>` : ''}
+              </span>
+              <button class="btn" style="padding: 6px 12px; font-size: 12px; background:#6b7280;" onclick="clearSubject(${num})">Change Subject</button>
+          </div>
+      `;
+  }
+
+  let chapterCard = '';
+  if (currentSubject) {
+      chapterCard = `
+          <a class="card" href="#/class/${num}/${currentSubject.slug}">
+            <img class="thumb" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop" alt="Chapters">
+            <div class="body"><div class="icon">📖</div><h3>Go to Chapters</h3><p>Read ${escapeHTML(currentSubject.name)} chapters</p></div>
+          </a>
+      `;
+  }
+
+  // Dynamic Google Maps Search Link based on Board
+  let schoolLink = "https://www.google.com/maps/search/schools+near+me";
+  if (currentBoard) {
+      let cleanBoardName = currentBoard.replace(/[()]/g, '').replace('हरियाणा बोर्ड', '').trim();
+      if (cleanBoardName === 'BSEH') cleanBoardName = 'Haryana Board';
+      schoolLink = `https://www.google.com/maps/search/${encodeURIComponent(cleanBoardName)}+schools+near+me`;
+  }
+
+  return banner + chapterCard + `
+    <a class="card" href="https://ncert.nic.in/syllabus.php" target="_blank" rel="noopener">
+      <img class="thumb" src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=220&fit=crop" alt="Syllabus">
+      <div class="body"><div class="icon">📄</div><h3>Class ${num} Syllabus</h3><p>Latest Curriculum & Marking Scheme</p></div>
+    </a>
+    <a class="card" href="https://ncert.nic.in/textbook.php" target="_blank" rel="noopener">
+      <img class="thumb" src="https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=400&h=220&fit=crop" alt="Books">
+      <div class="body"><div class="icon">📚</div><h3>NCERT Books (PDF)</h3><p>Free Downloadable Textbooks</p></div>
+    </a>
+    <a class="card" href="https://epathshala.nic.in/" target="_blank" rel="noopener">
+      <img class="thumb" src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=220&fit=crop" alt="Audio Books">
+      <div class="body"><div class="icon">🎧</div><h3>Audio Books & Videos</h3><p>ePathshala & DIKSHA Resources</p></div>
+    </a>
+    <a class="card" href="https://www.cbse.gov.in/cbsenew/questionpaper.html" target="_blank" rel="noopener">
+      <img class="thumb" src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=400&h=220&fit=crop" alt="Old Papers">
+      <div class="body"><div class="icon">📝</div><h3>Old Year Question Papers</h3><p>Previous Year Papers for Class ${num}</p></div>
+    </a>
+    <a class="card" href="${schoolLink}" target="_blank" rel="noopener">
+      <img class="thumb" src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop" alt="Near School">
+      <div class="body"><div class="icon">📍</div><h3>Near School</h3><p>Find ${currentBoard ? currentBoard.split('(')[0] : ''} Schools Near You</p></div>
+    </a>
+    <a class="card" href="https://www.google.com/maps/search/study+center+near+me" target="_blank" rel="noopener">
+      <img class="thumb" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop" alt="Near Study Center">
+      <div class="body"><div class="icon">🗺️</div><h3>Near Study Center</h3><p>Find Study Centers Near You</p></div>
+    </a>
+  `;
 }
 
 function renderSubject(num, subjSlug){
@@ -724,6 +903,14 @@ function render(){
   const si = document.getElementById("searchInput");
   if (si && parts[0] === "search" && parts[1]) {
     si.value = decodeURIComponent(parts[1]);
+  }
+
+  // Load default tab when entering Class page
+  if (parts[0] === "class" && parts[1] && !parts[2]) {
+    const defaultBtn = document.querySelector('.tab-btn');
+    if (defaultBtn) {
+      switchClassTab(+parts[1], 'board', defaultBtn);
+    }
   }
 }
 
