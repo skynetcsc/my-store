@@ -301,6 +301,32 @@
     margin-right:4px;
   }
 
+  /* ✅ BADA AUR HIGHLIGHTED Warning Message Style */
+  .warning-box {
+    grid-column: 1 / -1;
+    background: rgba(255, 87, 34, 0.15); /* गहरा नारंगी/लाल बैकग्राउंड */
+    border: 2px solid #ff5722;
+    border-left: 8px solid #ff5722;
+    padding: 20px 24px;
+    border-radius: 12px;
+    color: #ffcc80;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255, 87, 34, 0.5);
+    text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    letter-spacing: 0.5px;
+    animation: pulseWarning 2s infinite;
+  }
+
+  @keyframes pulseWarning {
+    0% { box-shadow: 0 0 15px rgba(255, 87, 34, 0.4); }
+    50% { box-shadow: 0 0 35px rgba(255, 87, 34, 0.8); }
+    100% { box-shadow: 0 0 15px rgba(255, 87, 34, 0.4); }
+  }
+
   /* ---------- TOAST ---------- */
   #toast{
     position:fixed;
@@ -334,6 +360,7 @@
     .grid{ gap:16px; grid-template-columns:1fr; }
     .movie-item { font-size:1rem; padding:12px 16px; }
     .tv-tab { padding: 10px 15px; font-size: 14px; }
+    .warning-box { font-size: 15px; padding: 15px; border-left: 5px solid #ff5722; }
   }
 </style>
 </head>
@@ -442,6 +469,12 @@
 
     <!-- 1. LIVE TV SECTION -->
     <div id="tab-tv" class="tv-content active">
+      
+      <!-- ⚠️ Bada Highlighted Warning Message -->
+      <div class="warning-box">
+        ⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अगर किसी अज्ञात (unknown) लिंक पर क्लिक करने से आपको कोई नुकसान होता है, तो हम जिम्मेदार नहीं होंगे।
+      </div>
+
       <a href="https://famelack.com/tv/in" target="_blank" rel="noopener" class="movie-item">
         <span class="num">1.</span> <span class="icon">📡</span> Famelack India
       </a>
@@ -461,13 +494,34 @@
 
     <!-- 2. MOVIES SECTION -->
     <div id="tab-movies" class="tv-content">
-      <a href="https://bolly4uv.lol/" target="_blank" rel="noopener" class="movie-item" style="justify-content:center; font-size: 1.4rem; border-color: var(--magenta); background: rgba(255,43,214,0.1); padding: 30px;">
-        <span class="icon">🍿</span> MOVIES SERVER-1
+      
+      <!-- ⚠️ Bada Highlighted Warning Message -->
+      <div class="warning-box">
+        ⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अगर किसी अज्ञात (unknown) लिंक पर क्लिक करने से आपको कोई नुकसान होता है, तो हम जिम्मेदार नहीं होंगे।
+      </div>
+
+      <a href="https://bolly4uv.lol/" target="_blank" rel="noopener" class="movie-item" style="justify-content:center; font-size: 1.2rem; border-color: var(--magenta); background: rgba(255,43,214,0.1); padding: 20px;">
+        <span class="icon">🍿</span> SERVER-1 (Bolly4u)
+      </a>
+      <a href="https://vegamoviess.actor/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">2.</span> <span class="icon">🍿</span> SERVER-2 (Vegamovies)
+      </a>
+      <a href="https://moviesflixx.in/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">3.</span> <span class="icon">🎬</span> SERVER-3 (Moviesflix)
+      </a>
+      <a href="https://moviesnation.forum/" target="_blank" rel="noopener" class="movie-item">
+        <span class="num">4.</span> <span class="icon">📽️</span> SERVER-4 (MoviesNation)
       </a>
     </div>
 
     <!-- 3. MUSIC SECTION -->
     <div id="tab-music" class="tv-content">
+      
+      <!-- ⚠️ Bada Highlighted Warning Message -->
+      <div class="warning-box">
+        ⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अगर किसी अज्ञात (unknown) लिंक पर क्लिक करने से आपको कोई नुकसान होता है, तो हम जिम्मेदार नहीं होंगे।
+      </div>
+
       <a href="https://music.youtube.com/" target="_blank" rel="noopener" class="movie-item">
         <span class="num">1.</span> <span class="icon">🎵</span> YouTube Music
       </a>
