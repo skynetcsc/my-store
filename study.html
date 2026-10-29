@@ -62,7 +62,7 @@ section{padding:36px 0}
 .cat-footer {display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#9ca3af;margin-top:auto;}
 .explore-btn {color:#dc2626;font-weight:600;display:flex;align-items:center;gap:4px;}
 
-/* Updated Class Card for Big Cartoons */
+/* Class Card Cartoons */
 .card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:.2s;display:block;cursor:pointer;}
 .card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(21,101,192,.15);border-color:var(--blue)}
 .card .thumb{width:100%;height:110px;object-fit:cover;display:block;background:#e0e7ff}
@@ -240,20 +240,19 @@ const BOARDS = [
   {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"}
 ];
 
-// अलग-अलग लड़के और लड़कियों के कार्टून अवतार (DiceBear API)
 const CARTOON_AVATARS = [
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Mia&backgroundColor=ffd5dc",     // Class 1 (Girl)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Leo&backgroundColor=c0aede",     // Class 2 (Boy)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Zoe&backgroundColor=b6e3f4",     // Class 3 (Girl)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Max&backgroundColor=ffdfbf",     // Class 4 (Boy)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Luna&backgroundColor=d1d4f9",    // Class 5 (Girl)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Jack&backgroundColor=ffd5dc",    // Class 6 (Boy)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Aria&backgroundColor=c0aede",    // Class 7 (Girl)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Oscar&backgroundColor=b6e3f4",   // Class 8 (Boy)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Maya&backgroundColor=ffdfbf",    // Class 9 (Girl)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Sam&backgroundColor=d1d4f9",     // Class 10 (Boy)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Chloe&backgroundColor=ffd5dc",   // Class 11 (Girl)
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Ryan&backgroundColor=c0aede"     // Class 12 (Boy)
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Mia&backgroundColor=ffd5dc",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Leo&backgroundColor=c0aede",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Zoe&backgroundColor=b6e3f4",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Max&backgroundColor=ffdfbf",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Luna&backgroundColor=d1d4f9",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Jack&backgroundColor=ffd5dc",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Aria&backgroundColor=c0aede",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Oscar&backgroundColor=b6e3f4",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Maya&backgroundColor=ffdfbf",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Sam&backgroundColor=d1d4f9",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Chloe&backgroundColor=ffd5dc",
+  "https://api.dicebear.com/9.x/adventurer/svg?seed=Ryan&backgroundColor=c0aede"
 ];
 
 const SUBJECTS = {
@@ -269,26 +268,48 @@ const SUBJECTS = {
     ]}
   ]
 };
-// Default empty subjects for other classes to avoid errors
 for(let i=1; i<=12; i++){ if(!SUBJECTS[i]) SUBJECTS[i] = [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"}]; }
 
 /* ============================================================
-   DATA FOR ENTRANCE EXAMS
+   DATA FOR ENTRANCE EXAMS (Updated with ALL categories)
 ============================================================ */
 const examData = {
     "Agricultural": ["AP AGRICET", "ICAR JRF / SRF", "JCECE", "GBPUAT", "MHT CET", "HORTICET", "AIEEA UG", "AIEEA PG", "MP PAT", "OUAT", "Rajasthan JET", "IGKV CET", "CG PAT", "TG EAPCET", "MCAER PG CET", "TBJEE", "AP EAPCET", "BCECE", "CG PET", "GATE", "Karnataka DCET", "TS AGRICET", "UPCATET"],
     "Architecture": ["LPUNEST", "OJEE", "AMUEEE", "CEETA PG", "COMEDK UGET", "DASA", "DASA PG", "GATE", "JEE Advanced", "JEE Main", "Karnataka PGCET", "KEAM", "NATA", "WBJEE", "TG PGECET", "TNSF Consortium CET", "TANCET"],
+    "Arts and Humanities": ["PWC BA B.Sc Entrance", "TISSNET", "DUET", "HSEE", "BVP CET", "CUSAT CAT", "IPU CET"],
     "Banking": ["IBPS RRB Office Assistant", "IBPS SO", "IBPS Clerk", "SBI Clerk", "SBI PO", "IBPS RRB Officer", "IBPS PO"],
+    "Commerce": ["ICSI CS", "ACET", "CFA", "ICAI CA", "ICMAI CMA", "PWC B.Com Entrance", "NPAT", "KLEEE", "DUET", "UGAT", "LPUNEST", "BVP CET", "CUSAT CAT", "IPU CET"],
+    "Common": ["TG EAPCET", "UGAT", "JEMAS PG", "LPUNEST", "TBJEE", "OJEE", "AP EAPCET", "BCECE", "CIFNET", "COMEDK UGET", "CUSAT CAT", "HPCET", "IMU CET", "IPU CET", "Karnataka PGCET", "KCET", "NPAT", "AP RCET", "AUCET", "AP PGCET", "KIITEE", "DSAT", "GITAM GAT", "GUJCET", "Jain JET", "JUET", "JNEE", "JNUEE", "TG CPGET", "CUET PG", "CUET", "Symbiosis SET", "SLIET SET", "PU CET PG", "BHU UET", "BHU PET", "AFCAT", "KLEEE", "MHT CET", "TNSF Consortium CET", "TG ICET", "TANCET", "SAAT", "AUAT", "DUET"],
+    "Computer Application": ["MP-CPCT", "CG Pre MCA", "MAH MCA CET", "KLEEE", "TNSF Consortium CET", "TG ICET", "TANCET", "HARTRON SETC", "UGAT", "VITMEE", "NIMCET", "OJEE", "AP ICET", "Assam JMEE", "CDAC CAT", "BVP CET", "HPCET", "IPU CET", "Karnataka PGCET"],
+    "Defence": ["AFCAT", "NDA", "Agniveer CEE", "CDS", "CAPF AC", "CISF AC LDCE"],
+    "Design": ["NPAT", "UPES DAT", "UCEED", "CEED", "NID", "IIAD", "Pearl Academy", "GLSID", "UID", "MIT ID", "SOFT Pune", "AIEED", "IICD", "NIFT Tea", "FDDI AIST", "TDV", "NIIFT Mohali", "SEAT", "IFTK", "NIFT", "LPUNEST", "AIFD", "IPU CET"],
+    "Diploma & Polytechnic": ["ITICAT", "Assam Polytechnic", "TG POLYCET", "LPUNEST", "APJEE", "JEXPO", "VOCLET", "Karnataka DCET", "AP POLYCET"],
+    "Education": ["RIE CEE", "CG Pre B.Ed", "MP B.Ed", "CG Pre D.El.Ed", "IGNOU B.Ed", "JK B.Ed", "Maharashtra B.Ed", "Maharashtra M.Ed", "Punjab B.Ed", "UP B.Ed", "UPRTOU B.Ed", "USU B.Ed", "Meghalaya D.El.Ed", "MP D.EL.Ed", "HP D.El.Ed CET", "Uttarakhand D.El.Ed", "AP LPCET", "LU M.Ed", "AP DEECET", "TG DEECET", "Rajasthan PTET", "Rajasthan PMET", "AP EdCET", "DUET", "TG EdCET", "Rajasthan BSTC", "SCERT Odisha", "Bihar D.El.Ed", "WB D.El.Ed", "Assam D.El.Ed PET", "Chandigarh B.Ed CET", "Bihar B.Ed", "IPU CET", "HP B.Ed", "CG Pre BA B.Sc B.Ed", "IITE", "Jharkhand B.Ed", "Karnataka D.El.Ed", "MAH BA B.Sc B.Ed CET", "Maharashtra B.Ed M.Ed", "Odisha B.Ed", "REET", "Bihar Integrated B.Ed", "VMOU B.Ed"],
     "Engineering": ["TG EAPCET", "VITEEE", "VITMEE", "LPUNEST", "TBJEE", "MAKAUT PGET", "TG ECET", "AEEE", "AMUEEE", "AP EAPCET", "AP ECET", "AP PGECET", "Assam CEE", "BCECE", "BITSAT", "BVP CET", "CEETA PG", "CG PET", "CIFNET", "COMEDK UGET", "CUEE", "CUSAT CAT", "DASA", "DASA PG", "GATE", "GEEE", "HITSEEE", "HPCET", "IMU CET", "IPU CET", "JEE Advanced", "JEE Main", "JKCET", "Karnataka DCET", "Karnataka PGCET", "KCET", "KEAM", "HP LEET", "JELET", "Jharkhand EECE LE", "Maharashtra M.Tech", "PULEET", "PUMEET", "NPAT", "UPESEAT", "WBJEE", "SRMJEEE", "TG PGECET", "KLEEE", "KEE", "MZUEEE", "TMISAT", "Uni-GAUGE", "VSAT", "VTUEEE", "MHT CET", "WIT CAT", "UKSEE", "TNSF Consortium CET", "NERIST NEE"],
-    "Law": ["MAH CET LLB", "CEE Kerala LLM", "LPUNEST", "CLAT", "AILET", "RULET", "CUSAT CAT", "PU LAW PG", "PU LAW UG", "ULSAT", "KLEEE", "ULET", "AIBE", "AIL LET", "GLAT", "ILSAT", "Lloyd LET", "LSAT India", "MH CET Law", "TG LAWCET", "TG PGLCET"],
+    "Hotel Management": ["NCHMCT JEE", "MAH BHMCT CET", "WBJEE JEHOM", "AIHMCT", "PUTHAT", "e-CHAT", "UGAT", "LPUNEST"],
+    "Law": ["MAH CET LLB", "CEE Kerala LLM", "LPUNEST", "CLAT", "AILET", "RULET", "CUSAT CAT", "PU LAW PG", "PU LAW UG", "ULSAT", "KLEEE", "ULET", "AIBE", "AIL LET", "GLAT", "ILSAT", "Lloyd LET", "LSAT India", "MH CET Law", "TG LAWCET", "TG PGLCET", "CEE Kerala LLB 3 Year", "CEE Kerala LLB 5 Year", "AMU Law Entrance", "TISSNET", "AP LAWCET", "AP PGLCET", "DUET"],
     "Management": ["IGNOU OPENMAT", "KLEEE", "TNSF Consortium CET", "JIPMAT", "SNAP", "PIM MAT", "PU MET", "MICAT", "GMAT", "IPMAT", "UOU MBA", "MAT", "RMAT", "ATMA", "AMU MBA", "TISSNET", "UPESMET", "TG ICET", "TANCET", "IIFT MBA", "CMAT", "NMAT", "XAT", "CAT", "PU-MBA (CDOE)", "MAH MBA / MMS CET", "UGAT", "LPUNEST", "KMAT Karnataka", "OJEE", "JEMAT", "AP ICET", "BVP CET", "HPCET", "IMU CET", "IPU CET", "Karnataka PGCET", "IBSAT", "HPU MAT", "KMAT Kerala"],
+    "Media and Journalism": ["IPU CET", "AISFM", "FTII", "IIMC", "NIMCJ", "SRFTI", "XIC OET", "ACJ Entrance Exam"],
     "Medical": ["NEET PG", "NEET MDS", "NEET SS", "PGIMER", "AIAPGET", "RUHS Paramedical", "RUHS BPT", "NEET UG", "TBJEE", "Rajasthan Pre PG", "INI CET", "Jharkhand Paramedical", "RUHS CUET", "JKBOPEE Paramedical Diploma"],
-    "Teaching": ["Bihar TET", "KTET", "CSIR NET", "UPTET", "KSET", "MAHA SET", "Meghalaya TET", "UTET", "Tripura TET", "TG TET", "TN TET", "Sikkim TET", "OTET", "N-TET", "Mizoram TET", "Manipur TET", "Jharkhand TET", "HTET", "Gujarat TET", "GTET", "UGC NET", "AP TET", "Assam TET", "CG TET", "CTET", "Karnataka TET", "MAHA TET", "MP TET", "PSTET"]
+    "Nursing": ["Jharkhand Post Basic Nursing", "AIIMS B.Sc Nursing", "CG Post Basic Nursing", "NIMHANS", "Jharkhand ANM GNM", "WB ANM GNM", "CG M.Sc Nursing", "MGM CET", "MP PNST", "CG B.Sc Nursing", "AIN Guwahati", "Indian Army B.Sc Nursing", "ACN Jalandhar", "Jharkhand B.Sc Nursing", "PPMET", "PPBNET", "PMNET", "RUHS B.Sc Nursing", "RUHS Post Basic B.Sc Nursing", "RUHS M.Sc Nursing", "JKBOPEE B.Sc Nursing", "HP B.Sc. Nursing", "BCECE", "IPU CET", "HP M.Sc Nursing", "AIIMS M.Sc", "HP Post Basic B.Sc Nursing", "IGNOU OPENNET", "JEMScN", "JENPAUH / JENPAS (UG)", "JEPBN", "Kerala PG Nursing"],
+    "Pharmacy": ["RUHS Pharma", "LPUNEST", "OJEE", "MAKAUT PGET", "AP PGECET", "BCECE", "HPCET", "IPU CET", "KCET", "Maharashtra M.Pharm", "AP EAPCET", "NIPER JEE", "TG EAPCET", "GPAT", "CG PPHT", "PUCET", "WBJEE", "TG PGECET", "MHT CET"],
+    "Police": ["MP Police Constable", "Bihar Police Constable", "Rajasthan Police Constable", "UP Police SI", "UP Police Constable"],
+    "Railway": ["RRB Stenographer", "RPF SI", "RPF Constable", "RRB Technician", "RRB ALP", "RRB JE", "RRB SSE", "Group D", "RRB NTPC", "RRB Paramedical", "RRB Ministerial"],
+    "Science": ["PWC BA B.Sc Entrance", "NPAT", "PUCET", "KLEEE", "NERIST NEE", "TISSNET", "JAM", "NEST", "DUET", "GAT-B / BET", "CIFNET", "CUSAT CAT", "IPU CET", "JEST", "CMI Entrance Exam"],
+    "SSC": ["SSC JE", "SSC CGL", "SSC GD", "SSC CHSL", "SSC CPO", "SSC JHT", "SSC MTS", "SSC Selection Post", "SSC Stenographer"],
+    "Teaching": ["Bihar TET", "KTET", "CSIR NET", "UPTET", "KSET", "MAHA SET", "Meghalaya TET", "UTET", "Tripura TET", "TG TET", "TN TET", "Sikkim TET", "OTET", "N-TET", "Mizoram TET", "Manipur TET", "Jharkhand TET", "HTET", "Gujarat TET", "GTET", "UGC NET", "AP TET", "Assam TET", "CG TET", "CTET", "Karnataka TET", "MAHA TET", "MP TET", "PSTET"],
+    "University": ["SUAT", "SNUSAT", "Symbiosis SET", "RGUCET", "PUCET", "BHU UET", "BHU PET", "SRMJEEE", "KLEEE", "KEE", "VTUEEE", "Amity JEE", "WIT CAT", "MRNAT", "MUSAT", "MAHE", "SAAT", "AUAT", "AUEET", "DUET", "VITEEE", "VITREE", "VITMEE", "PDPU", "MAKAUT PGET", "AEEE", "BVP CET", "CUEE", "CUSAT CAT", "GEEE", "HITSEEE", "CMI Entrance Exam", "DU SOL", "IGNOU Ph.D", "MAKAUT CET", "Odisha CPET", "PU PhD", "PUBDET", "PUMDET", "Semester Exams"],
+    "UPSC": ["NDA", "CAPF AC", "CDS", "CMS", "IAS", "IFS", "IES / ISS", "CISF AC LDCE", "ESE", "Combined Geo-Scientist"],
+    "Veterinary": ["MP ADDET (DAHET)", "TBJEE", "RPVT", "MP PVFT", "UP Veterinary Entrance"]
 };
 
 const categoryIcons = {
-    "Agricultural": "🌱", "Architecture": "🏛️", "Banking": "🏦", "Engineering": "⚙️", 
-    "Law": "⚖️", "Management": "💼", "Medical": "🩺", "Teaching": "🍎"
+    "Agricultural": "🌱", "Architecture": "🏛️", "Arts and Humanities": "🎨", "Banking": "🏦", 
+    "Commerce": "📊", "Common": "📋", "Computer Application": "💻", "Defence": "🛡️", 
+    "Design": "✏️", "Diploma & Polytechnic": "📜", "Education": "📚", "Engineering": "⚙️", 
+    "Hotel Management": "🏨", "Law": "⚖️", "Management": "💼", "Media and Journalism": "📰", 
+    "Medical": "🩺", "Nursing": "👩‍⚕️", "Pharmacy": "💊", "Police": "👮", "Railway": "🚂", 
+    "Science": "🔬", "SSC": "🏛️", "Teaching": "🍎", "University": "🏫", "UPSC": "🇮🇳", "Veterinary": "🐾"
 };
 
 /* ============================================================
@@ -311,14 +332,13 @@ function escapeHTML(s){ return String(s).replace(/[&<>"']/g, m => ({"&":"&amp;",
    PAGE RENDERERS
 ============================================================ */
 
-// 1. Home Page (Slider Removed)
+// 1. Home Page
 function renderHome(){
   return `
     <section class="hero">
       <h1>SKYNET STUDY HUB</h1>
       <p>Free Study Material for Class 1–12</p>
       
-      <!-- हिंदी में हाईलाइटेड डोनेशन मैसेज -->
       <div style="background: rgba(255,255,255,0.15); padding: 24px; border-radius: 12px; max-width: 650px; margin: 0 auto; backdrop-filter: blur(8px); border: 2px solid #ffeb3b; box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);">
           <h3 style="margin-bottom: 12px; font-size: 20px; color: #ffeb3b; text-shadow: 0 0 10px rgba(255,235,59,0.8); font-weight: 800;">💖 हमारी मेहनत का साथ दें</h3>
           <p style="font-size: 16px; line-height: 1.6; color: #ffffff; font-weight: 500;">अगर आपको हमारी मेहनत अच्छी लगी और आप इस फ्री प्लेटफॉर्म में मदद करना चाहते हैं, तो आप एक छोटा सा डोनेशन दे सकते हैं। आपका योगदान हमें इसे सभी के लिए फ्री रखने में मदद करेगा।</p>
@@ -396,11 +416,9 @@ function renderBoardsPage(){
   `;
 }
 
-// Updated Classes Page with BIG Cartoons
 function renderClassesPage(board){
   const classCards = Array.from({length:12},(_,i)=>{
     const n = i+1;
-    // Big size cartoon avatar
     return `<a class="card" href="#/school/${encodeURIComponent(board)}/${n}">
       <img class="class-card-img" src="${CARTOON_AVATARS[i]}" alt="Class ${n} Cartoon" loading="lazy">
       <div class="body"><div class="icon">📚</div><h3>Class ${n}</h3><p>Notes • Books • Solutions</p></div>
@@ -530,9 +548,13 @@ function renderEntranceHome() {
         <div class="page-head"><div class="container">
             ${crumbsHTML([{label:"Home",href:"#/"},{label:"Entrance Exams"}])}
             <h1>All Entrance & Competitive Exams</h1>
-            <p>Browse exam dates, eligibility, syllabus, and preparation resources for every major exam.</p>
+            <p>Syllabus, previous year papers and free mock tests for top engineering, medical, law, management and design entrance exams.</p>
         </div></div>
         <section><div class="container">
+            <div class="section-title" style="margin-bottom:20px;">
+                Browse Categories
+                <a href="#/entrance">View all</a>
+            </div>
             <div class="grid category-grid">${catCards}</div>
         </div></section>
     `;
