@@ -422,6 +422,13 @@
         <span class="tag">Notes • Tests • Help</span>
       </a>
 
+      <!-- ✅ NEW: ATTENDANCE & FEE (Protected) -->
+      <button class="big-btn c-lime" onclick="checkAttendanceAuth()">
+        <span class="ico">🎓</span>
+        <span>ATTENDANCE & FEE</span>
+        <span class="tag">ERP Login</span>
+      </button>
+
       <!-- ✅ LIVE TV (Opens Sub-page) -->
       <button class="big-btn c-cyan" onclick="openLiveTV()">
         <span class="ico">📺</span>
@@ -564,6 +571,26 @@
       showToast('▶ ' + btn.dataset.name);
     });
   });
+
+  // --- Attendance & Fee Authentication Logic ---
+  function checkAttendanceAuth() {
+    // 1. Get ID
+    const id = prompt("कृपया अपनी ID दर्ज करें (Enter ID):");
+    if (id === null) return; // User clicked cancel
+
+    // 2. Get Password
+    const password = prompt("कृपया अपना पासवर्ड दर्ज करें (Enter Password):");
+    if (password === null) return; // User clicked cancel
+
+    // 3. Validate Credentials
+    if (id === "skynet" && password === "1234") {
+      // Redirect to ERP file
+      window.location.href = "SKYNET_Computer_Premium_ERP.html";
+    } else {
+      // Show error
+      showToast("❌ गलत ID या पासवर्ड! कृपया पुनः प्रयास करें।");
+    }
+  }
 
   // --- Sub-Page Navigation Logic ---
   function openLiveTV() {
