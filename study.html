@@ -151,7 +151,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
 <div class="topbar">
   <div class="container">
     <span>📢 Welcome to SKYNET STUDY HUB — Free Study Material</span>
-    <span>BSEH | CBSE | ICSE | NIOS | Entrance Exams</span>
+    <span>BSEH | CBSE | PSEB | ICSE | NIOS | Entrance Exams</span>
   </div>
 </div>
 
@@ -190,8 +190,12 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
     <div class="dropdown">
       <a href="#/">Boards</a>
       <div class="dropdown-menu">
-        <a href="#/school">BSEH (हरियाणा बोर्ड)</a><a href="#/school">CBSE</a><a href="#/school">ICSE / ISC</a>
-        <a href="#/school">NIOS</a><a href="#/school">Other State Boards</a>
+        <a href="#/school/BSEH%20(%E0%A4%B9%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE%E0%A4%A3%E0%A4%BE%20%E0%A4%AC%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%A1)">BSEH (हरियाणा बोर्ड)</a>
+        <a href="#/school/CBSE">CBSE</a>
+        <a href="#/school/PSEB">PSEB (Punjab Board)</a>
+        <a href="#/school/ICSE%20%2F%20ISC">ICSE / ISC</a>
+        <a href="#/school/NIOS">NIOS</a>
+        <a href="#/school">Other State Boards</a>
       </div>
     </div>
     <a href="#/entrance">Entrance Exams</a>
@@ -201,6 +205,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
       <a href="javascript:void(0)">Results</a>
       <div class="dropdown-menu">
         <a href="https://bseh.org.in/" target="_blank">BSEH (Haryana) Result</a>
+        <a href="https://www.pseb.ac.in/" target="_blank">PSEB (Punjab) Result</a>
         <a href="https://results.cbse.nic.in/" target="_blank">CBSE Result</a>
       </div>
     </div>
@@ -236,6 +241,7 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
 const BOARDS = [
   {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop"},
   {name:"BSEH (हरियाणा बोर्ड)", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop"},
+  {name:"PSEB", desc:"Punjab Board", img:"https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=220&fit=crop"},
   {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop"},
   {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"}
 ];
@@ -362,7 +368,7 @@ function renderHome(){
       <h2 class="section-title">Browse by Category <small>Find papers organised by exam type</small></h2>
       
       <div class="grid category-grid">
-        <!-- Pre School (New Section) -->
+        <!-- Pre School -->
         <a class="category-card" href="#/preschool">
           <div class="cat-icon" style="background:#ec4899;">🧸</div>
           <h3>Pre School (1-4)</h3>
@@ -377,7 +383,7 @@ function renderHome(){
         <a class="category-card" href="#/school">
           <div class="cat-icon" style="background:#ff9800;">📖</div>
           <h3>School</h3>
-          <p>CBSE, ICSE, and State Board previous papers</p>
+          <p>CBSE, PSEB, ICSE, and State Board previous papers</p>
           <div class="cat-footer">
             <span>891 papers</span>
             <span class="explore-btn">Explore →</span>
@@ -510,6 +516,27 @@ function renderSubjectsPage(board, num){
 
 function renderResourcesPage(board, num, subjSlug){
   const subj = getSubject(num, subjSlug);
+  
+  // Set default links (CBSE/NCERT)
+  let booksUrl = "https://ncert.nic.in/textbook.php";
+  let booksTitle = "NCERT Books (PDF)";
+  let booksDesc = "Free Downloadable Textbooks";
+  
+  let papersUrl = "https://www.cbse.gov.in/cbsenew/questionpaper.html";
+  let papersTitle = "Old Year Papers";
+  let papersDesc = "Previous Year Papers";
+
+  // Change links if Board is PSEB (Punjab Board)
+  if (board === "PSEB") {
+      booksUrl = "https://www.pseb.ac.in/";
+      booksTitle = "PSEB Books (Punjab Board)";
+      booksDesc = "Download Punjab Board Textbooks";
+      
+      papersUrl = "https://www.pseb.ac.in/";
+      papersTitle = "PSEB Question Papers";
+      papersDesc = "Punjab Board Previous Year Papers";
+  }
+
   return `
     <div class="page-head"><div class="container">
       ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`, href:`#/school/${encodeURIComponent(board)}/${num}`},{label:subj ? subj.name : subjSlug}])}
@@ -520,11 +547,11 @@ function renderResourcesPage(board, num, subjSlug){
         <a class="card" href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters">
           <div class="body"><div class="icon">📖</div><h3>Go to Chapters</h3><p>Read ${subj ? escapeHTML(subj.name) : ''} chapters</p></div>
         </a>
-        <a class="card" href="https://ncert.nic.in/textbook.php" target="_blank">
-          <div class="body"><div class="icon">📚</div><h3>NCERT Books (PDF)</h3><p>Free Downloadable Textbooks</p></div>
+        <a class="card" href="${booksUrl}" target="_blank">
+          <div class="body"><div class="icon">📚</div><h3>${booksTitle}</h3><p>${booksDesc}</p></div>
         </a>
-        <a class="card" href="https://www.cbse.gov.in/cbsenew/questionpaper.html" target="_blank">
-          <div class="body"><div class="icon">📝</div><h3>Old Year Papers</h3><p>Previous Year Papers</p></div>
+        <a class="card" href="${papersUrl}" target="_blank">
+          <div class="body"><div class="icon">📝</div><h3>${papersTitle}</h3><p>${papersDesc}</p></div>
         </a>
       </div>
     </div></section>
