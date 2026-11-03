@@ -236,14 +236,14 @@ footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
 
 <script>
 /* ============================================================
-   DATA FOR SCHOOL SECTION
+   DATA FOR SCHOOL SECTION (Added Contact Numbers)
 ============================================================ */
 const BOARDS = [
-  {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop"},
-  {name:"BSEH (हरियाणा बोर्ड)", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop"},
-  {name:"PSEB", desc:"Punjab Board", img:"https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=220&fit=crop"},
-  {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop"},
-  {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop"}
+  {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop", contact:"011-22509256 / 011-22509257", website:"https://www.cbse.gov.in"},
+  {name:"BSEH (हरियाणा बोर्ड)", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop", contact:"01662-250060 / 01662-250044", website:"https://bseh.org.in"},
+  {name:"PSEB", desc:"Punjab Board", img:"https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=220&fit=crop", contact:"0172-5227100 / 0172-5227101", website:"https://www.pseb.ac.in"},
+  {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop", contact:"033-22872190 / 033-22872191", website:"https://www.cisce.org"},
+  {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop", contact:"011-24356901 / 011-24356902", website:"https://www.nios.ac.in"}
 ];
 
 const CARTOON_AVATARS = [
@@ -471,6 +471,25 @@ function renderBoardsPage(){
 }
 
 function renderClassesPage(board){
+  // Find board data to show contact info
+  const boardInfo = BOARDS.find(b => b.name === board);
+  
+  let contactHTML = "";
+  if(boardInfo) {
+    contactHTML = `
+      <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:20px; margin-bottom:24px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div style="background:#0284c7; color:#fff; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px;">📞</div>
+          <div>
+            <h3 style="margin:0; font-size:16px; color:#0369a1;">${escapeHTML(board)} Contact Info</h3>
+            <p style="margin:0; font-size:14px; color:#0c4a6e; font-weight:600;">${boardInfo.contact}</p>
+          </div>
+        </div>
+        <a href="${boardInfo.website}" target="_blank" class="btn" style="background:#0284c7; font-size:13px; padding:8px 16px;">Visit Website 🌐</a>
+      </div>
+    `;
+  }
+
   const classCards = Array.from({length:12},(_,i)=>{
     const n = i+1;
     return `<a class="card" href="#/school/${encodeURIComponent(board)}/${n}">
@@ -486,6 +505,7 @@ function renderClassesPage(board){
       <p>Select your class</p>
     </div></div>
     <section><div class="container">
+      ${contactHTML}
       <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))">${classCards}</div>
     </div></section>
   `;
