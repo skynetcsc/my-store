@@ -271,6 +271,19 @@ const SUBJECTS = {
 for(let i=1; i<=12; i++){ if(!SUBJECTS[i]) SUBJECTS[i] = [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"}]; }
 
 /* ============================================================
+   DATA FOR PRE SCHOOL SECTION
+============================================================ */
+const PRESCHOOL_CATEGORIES = [
+    { name: "Nursery", icon: "🧸", desc: "Pre-nursery and Nursery learning materials, worksheets, and activities." },
+    { name: "LKG", icon: "🎨", desc: "Lower Kindergarten activities, tracing worksheets, and basic learning." },
+    { name: "UKG", icon: "✏️", desc: "Upper Kindergarten learning resources, writing practice, and numbers." },
+    { name: "Kids Learning Material", icon: "🧩", desc: "Flashcards, puzzles, and fun educational activities for kids." },
+    { name: "Poem", icon: "📜", desc: "English and Hindi poems for kids to recite and enjoy." },
+    { name: "Rhyme", icon: "🎵", desc: "Classic nursery rhymes with actions and lyrics." },
+    { name: "Cartoon Learning", icon: "📺", desc: "Educational cartoons and animated videos for visual learning." }
+];
+
+/* ============================================================
    DATA FOR ENTRANCE EXAMS (Updated with ALL categories)
 ============================================================ */
 const examData = {
@@ -349,6 +362,17 @@ function renderHome(){
       <h2 class="section-title">Browse by Category <small>Find papers organised by exam type</small></h2>
       
       <div class="grid category-grid">
+        <!-- Pre School (New Section) -->
+        <a class="category-card" href="#/preschool">
+          <div class="cat-icon" style="background:#ec4899;">🧸</div>
+          <h3>Pre School (1-4)</h3>
+          <p>Nursery, LKG, UKG, Kids Learning Material</p>
+          <div class="cat-footer">
+            <span>150+ papers</span>
+            <span class="explore-btn">Explore →</span>
+          </div>
+        </a>
+
         <!-- School -->
         <a class="category-card" href="#/school">
           <div class="cat-icon" style="background:#ff9800;">📖</div>
@@ -394,6 +418,30 @@ function renderHome(){
         </a>
       </div>
     </div></section>`;
+}
+
+// 1.1 Pre School Page
+function renderPreSchoolPage() {
+  const cards = PRESCHOOL_CATEGORIES.map(cat => `
+    <a class="card" href="#/preschool/${encodeURIComponent(cat.name)}">
+      <div class="body" style="padding:30px 20px">
+        <div class="icon" style="font-size:44px; margin-bottom:15px;">${cat.icon}</div>
+        <h3 style="font-size:18px; margin-bottom:8px; color:var(--blue-dark);">${escapeHTML(cat.name)}</h3>
+        <p style="color:var(--muted); font-size:14px; line-height:1.4;">${escapeHTML(cat.desc)}</p>
+      </div>
+    </a>
+  `).join("");
+
+  return `
+    <div class="page-head"><div class="container">
+      ${crumbsHTML([{label:"Home",href:"#/"},{label:"Pre School (1-4)"}])}
+      <h1>Pre School Learning Hub</h1>
+      <p>Fun and interactive learning materials for young kids.</p>
+    </div></div>
+    <section><div class="container">
+      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px;">${cards}</div>
+    </div></section>
+  `;
 }
 
 // 2. School Pages
@@ -716,6 +764,10 @@ function render(){
   let html = "";
 
   if (parts.length === 0) html = renderHome();
+  
+  // Pre School Routes
+  else if (parts[0] === "preschool" && parts.length === 1) html = renderPreSchoolPage();
+  else if (parts[0] === "preschool" && parts.length === 2) html = renderComingSoon(decodeURIComponent(parts[1]));
   
   // School Routes
   else if (parts[0] === "school" && parts.length === 1) html = renderBoardsPage();
