@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKYNET COMPUTER CENTER – Institute Management System</title>
+<script src="https://cdn.jsdelivr.net/npm/@vladmandic/face-api/dist/face-api.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+:root{
+  --navy:#0f2942;--navy-light:#1e4a76;--gold:#f5a623;--gold-light:#fbbf24;
+  --green:#10b981;--green-dark:#059669;--orange:#f97316;--orange-dark:#ea580c;
+  --red:#ef4444;--red-dark:#dc2626;--blue:#0ea5e9;--bg:#eef3f9;
+  --text:#1f2937;--muted:#6b7280;--border:#e5e7eb;
+}
+*{box-sizing:border-box;}
+body{margin:0;padding:0;font-family:'Segoe UI',Tahoma,sans-serif;background-color:var(--bg);
+  background-image:radial-gradient(circle at 1px 1px,rgba(15,41,66,.06) 1px,transparent 0);
+  background-size:22px 22px;color:var(--text);min-height:100vh;}
+.top-bar{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);color:#fff;
+  padding:14px 24px;box-shadow:0 4px 18px rgba(15,41,66,.25);position:sticky;top:0;z-index:100;}
+.top-bar-inner{max-width:1080px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.brand{display:flex;align-items:center;gap:14px;}
+.brand-logo{width:48px;height:48px;border-radius:12px;
+  background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 14px rgba(245,166,35,.45);flex-shrink:0;}
+.brand-logo svg{width:26px;height:26px;stroke:#fff;stroke-width:2;fill:none;}
+.brand-text h1{margin:0;font-size:19px;font-weight:800;letter-spacing:1.5px;color:#fff;line-height:1.15;}
+.brand-text .tagline{display:block;font-size:11px;font-weight:500;color:var(--gold-light);
+  letter-spacing:2px;text-transform:uppercase;margin-top:2px;}
+.top-right{display:flex;align-items:center;gap:10px;}
+.contact-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);padding:8px 16px;border-radius:40px;
+  font-weight:600;font-size:14px;}
+/* Admin lock button */
+.lock-btn{background:rgba(255,255,255,.12)!important;border:1px solid rgba(255,255,255,.22)!important;
+  color:#fff!important;width:42px!important;height:42px!important;min-width:42px!important;
+  border-radius:50%!important;font-size:18px!important;cursor:pointer;padding:0!important;
+  display:flex!important;align-items:center;justify-content:center;transition:all .2s;
+  font-family:inherit;}
+.lock-btn:hover{background:rgba(255,255,255,.22)!important;box-shadow:none!important;filter:none!important;}
+.lock-btn:active{transform:scale(.95)!important;}
+.lock-btn.unlocked{background:rgba(16,185,129,.35)!important;border-color:rgba(16,185,129,.7)!important;}
+main{max-width:1080px;margin:24px auto 40px;padding:0 16px;}
+.container{background:#fff;border-radius:18px;box-shadow:0 10px 34px rgba(15,41,66,.10);
+  padding:26px;margin-bottom:20px;}
+.hidden{display:none!important;}
+.tabs{display:flex;gap:6px;background:#f8fafc;padding:6px;border-radius:14px;
+  margin-bottom:22px;overflow-x:auto;border:1.5px solid var(--border);}
+.tab-btn{flex:1;padding:12px 18px;border:none;background:transparent;color:var(--muted);
+  font-weight:700;font-size:14px;border-radius:10px;cursor:pointer;transition:all .2s;
+  white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  font-family:inherit;}
+.tab-btn:hover{background:#e2e8f0;color:var(--navy);}
+.tab-btn.active{background:var(--navy);color:#fff;box-shadow:0 4px 12px rgba(15,41,66,.25);}
+.status-banner{padding:12px 16px;border-radius:12px;font-size:14px;font-weight:600;
+  margin-bottom:18px;display:flex;align-items:center;gap:10px;}
+.status-banner.loading{background:#fef3c7;color:#92400e;border:1.5px solid #fde68a;}
+.status-banner.ready{background:#d1fae5;color:var(--green-dark);border:1.5px solid #a7f3d0;}
+.status-banner.error{background:#fee2e2;color:var(--red-dark);border:1.5px solid #fecaca;}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:14px;margin-bottom:20px;}
+.stat-card{background:linear-gradient(135deg,#f8fafc 0%,#f0f4f8 100%);
+  border:1.5px solid var(--border);border-radius:14px;padding:18px;text-align:center;}
+.stat-card .num{font-size:36px;font-weight:800;color:var(--navy);line-height:1;margin-bottom:4px;}
+.stat-card .label{font-size:12px;font-weight:600;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.5px;}
+.stat-card.green{border-color:#86efac;background:linear-gradient(135deg,#f0fdf4 0%,#dcfce7 100%);}
+.stat-card.green .num{color:var(--green-dark);}
+.stat-card.blue{border-color:#bae6fd;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);}
+.stat-card.blue .num{color:#0284c7;}
+.stat-card.gold{border-color:#fde68a;background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);}
+.stat-card.gold .num{color:var(--gold);}
+.stat-card.orange{border-color:#fed7aa;background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 100%);}
+.stat-card.orange .num{color:var(--orange-dark);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px;}
+@media(max-width:640px){.form-row{grid-template-columns:1fr;}}
+label{display:block;font-weight:600;font-size:13.5px;color:var(--navy);
+  margin-bottom:6px;letter-spacing:.3px;}
+input[type="text"],input[type="date"],input[type="password"],select{width:100%;padding:12px 14px;
+  border:2px solid var(--border);border-radius:10px;font-size:15px;
+  font-family:inherit;background:#f9fbfd;transition:all .2s;}
+input:focus,select:focus{outline:none;border-color:var(--blue);background:#fff;
+  box-shadow:0 0 0 4px rgba(14,165,233,.12);}
+button{font-family:inherit;padding:13px 20px;border:none;border-radius:10px;
+  cursor:pointer;font-size:15px;font-weight:700;background:var(--navy);color:#fff;
+  transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px;}
+button:hover{filter:brightness(1.1);box-shadow:0 6px 16px rgba(15,41,66,.2);}
+button:active{transform:scale(.98);}
+button:disabled{opacity:.5;cursor:not-allowed;filter:none!important;box-shadow:none!important;}
+.btn-block{width:100%;margin-top:10px;}
+.btn-green{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);}
+.btn-orange{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-dark) 100%);}
+.btn-red{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);}
+.btn-blue{background:linear-gradient(135deg,var(--blue) 0%,#0284c7 100%);}
+.btn-gold{background:linear-gradient(135deg,var(--gold) 0%,var(--gold-light) 100%);color:#1f2937;}
+.btn-gray{background:linear-gradient(135deg,#6b7280 0%,#4b5563 100%);}
+.camera-wrap{background:#000;border-radius:14px;overflow:hidden;position:relative;
+  aspect-ratio:4/3;max-width:500px;margin-bottom:14px;}
+.camera-wrap video,.camera-wrap canvas{width:100%;height:100%;object-fit:cover;
+  display:block;position:absolute;top:0;left:0;}
+.camera-wrap canvas{pointer-events:none;z-index:2;}
+.btn-group{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;}
+.btn-group button{flex:1;min-width:120px;}
+.photo-preview{display:flex;align-items:center;gap:14px;padding:14px;
+  background:#f0fdf4;border:1.5px solid #86efac;border-radius:12px;margin-bottom:14px;}
+.photo-preview img{width:70px;height:70px;border-radius:50%;object-fit:cover;
+  border:3px solid var(--green);}
+.photo-preview .info{flex:1;}
+.photo-preview .info strong{display:block;font-size:15px;color:var(--navy);}
+.photo-preview .info small{color:var(--green-dark);font-weight:600;}
+.student-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+  gap:12px;margin-top:16px;}
+.student-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;
+  padding:14px;text-align:center;position:relative;transition:all .2s;}
+.student-card:hover{border-color:var(--blue);box-shadow:0 6px 16px rgba(14,165,233,.15);}
+.student-card .photo{width:68px;height:68px;border-radius:50%;background:#f0f4f8;
+  margin:0 auto 8px;object-fit:cover;display:block;border:3px solid #e5e7eb;}
+.student-card .no-photo{width:68px;height:68px;border-radius:50%;background:#e2e8f0;
+  margin:0 auto 8px;display:flex;align-items:center;justify-content:center;
+  color:#94a3b8;font-size:28px;font-weight:800;border:3px solid #e5e7eb;}
+.student-card .name{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:2px;}
+.student-card .roll{font-size:12px;color:var(--muted);font-weight:600;}
+.student-card .badge{display:inline-block;margin-top:6px;padding:3px 8px;
+  border-radius:20px;font-size:10px;font-weight:700;background:#d1fae5;color:var(--green-dark);}
+.student-card .del-btn{position:absolute;top:6px;right:6px;width:22px;height:22px;
+  border-radius:50%;background:#fee2e2;color:var(--red-dark);border:none;padding:0;
+  font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  line-height:1;}
+.student-card .qr-btn{margin-top:8px;padding:4px 10px;font-size:11px;border-radius:6px;
+  background:#e0f2fe;color:#0369a1;border:none;cursor:pointer;font-weight:700;}
+.method-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px;}
+@media(max-width:640px){.method-tabs{grid-template-columns:repeat(2,1fr);}}
+.method-btn{padding:18px 12px;border:2px solid var(--border);background:#fff;
+  border-radius:14px;cursor:pointer;text-align:center;transition:all .2s;
+  font-family:inherit;display:block;color:var(--text);}
+.method-btn:hover{border-color:var(--blue);transform:translateY(-2px);}
+.method-btn.active{border-color:var(--navy);background:#f0f9ff;
+  box-shadow:0 6px 18px rgba(15,41,66,.15);}
+.method-btn .icon{font-size:28px;margin-bottom:6px;display:block;}
+.method-btn .label{font-size:13px;font-weight:700;color:var(--navy);display:block;}
+.method-btn .sub{font-size:11px;color:var(--muted);display:block;margin-top:2px;}
+.mode-toggle{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;
+  background:#f8fafc;padding:8px;border-radius:14px;margin-bottom:16px;
+  border:1.5px solid var(--border);}
+.mode-btn{padding:14px 10px;border:2px solid transparent;background:transparent;
+  color:var(--muted);font-weight:700;cursor:pointer;border-radius:10px;
+  transition:all .2s;font-size:13.5px;display:flex;flex-direction:column;
+  align-items:center;gap:4px;font-family:inherit;}
+.mode-btn:hover{background:#e2e8f0;}
+.mode-btn .mb-icon{font-size:20px;}
+.mode-btn.active[data-action="auto"]{background:linear-gradient(135deg,#0ea5e9 0%,#0284c7 100%);
+  color:#fff;box-shadow:0 4px 12px rgba(14,165,233,.4);}
+.mode-btn.active[data-action="in"]{background:linear-gradient(135deg,#10b981 0%,#059669 100%);
+  color:#fff;box-shadow:0 4px 12px rgba(16,185,129,.4);}
+.mode-btn.active[data-action="out"]{background:linear-gradient(135deg,#ef4444 0%,#dc2626 100%);
+  color:#fff;box-shadow:0 4px 12px rgba(239,68,68,.4);}
+.mode-hint{font-size:12px;color:var(--muted);margin:-8px 0 14px;font-weight:500;
+  padding:0 4px;}
+.panel-box{background:#f8fafc;border:1.5px solid var(--border);border-radius:14px;
+  padding:20px;margin-bottom:16px;}
+.panel-box h3{margin:0 0 14px;font-size:16px;color:var(--navy);
+  display:flex;align-items:center;gap:8px;}
+.panel-box p.hint{margin:0 0 14px;font-size:13.5px;color:var(--muted);line-height:1.6;}
+.result-banner{padding:16px 18px;border-radius:12px;margin-bottom:14px;
+  display:flex;align-items:center;gap:12px;animation:slideDown .3s ease-out;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-10px);}to{opacity:1;transform:translateY(0);}}
+.result-banner.success{background:#d1fae5;border:2px solid #86efac;color:var(--green-dark);}
+.result-banner.warning{background:#fef3c7;border:2px solid #fde68a;color:#92400e;}
+.result-banner.error{background:#fee2e2;border:2px solid #fecaca;color:var(--red-dark);}
+.result-banner .icon{font-size:24px;}
+.result-banner .text{flex:1;}
+.result-banner .text strong{display:block;font-size:15px;}
+.result-banner .text small{font-size:12.5px;opacity:.85;}
+.att-table{width:100%;border-collapse:collapse;}
+.att-table th,.att-table td{padding:10px 10px;text-align:left;
+  border-bottom:1px solid var(--border);font-size:13px;}
+.att-table th{background:#f8fafc;font-weight:700;color:var(--navy);
+  text-transform:uppercase;letter-spacing:.5px;font-size:11px;}
+.att-table tr:hover{background:#f8fafc;}
+.att-table td.mono{font-family:monospace;font-size:12.5px;}
+.time-in{color:var(--green-dark);font-weight:700;font-family:monospace;font-size:12.5px;}
+.time-out{color:var(--red-dark);font-weight:700;font-family:monospace;font-size:12.5px;}
+.time-empty{color:#94a3b8;font-family:monospace;font-size:12.5px;}
+.status-tag{display:inline-block;padding:3px 9px;border-radius:20px;
+  font-size:11px;font-weight:700;white-space:nowrap;}
+.status-tag.complete{background:#d1fae5;color:var(--green-dark);}
+.status-tag.present{background:#dbeafe;color:#1e40af;}
+.status-tag.absent{background:#f1f5f9;color:#64748b;}
+.method-tag{display:inline-block;padding:2px 6px;border-radius:10px;
+  font-size:10px;font-weight:700;margin-right:2px;}
+.method-tag.qr{background:#dbeafe;color:#1e40af;}
+.method-tag.rollno{background:#fef3c7;color:#92400e;}
+.method-tag.face{background:#fce7f3;color:#9d174d;}
+.method-tag.photo{background:#e0e7ff;color:#4338ca;}
+.empty-state{text-align:center;padding:40px 20px;color:var(--muted);font-size:14px;}
+.empty-state .big{font-size:48px;margin-bottom:8px;opacity:.5;}
+#toastBox{position:fixed;bottom:25px;left:50%;transform:translateX(-50%);
+  z-index:9999;display:flex;flex-direction:column;gap:8px;align-items:center;}
+.toast{padding:12px 24px;border-radius:30px;font-weight:700;font-size:14px;
+  box-shadow:0 8px 22px rgba(0,0,0,.3);animation:toastIn .22s ease-out;}
+.toast.success{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);color:#fff;}
+.toast.error{background:linear-gradient(135deg,var(--red) 0%,var(--red-dark) 100%);color:#fff;}
+.toast.warning{background:linear-gradient(135deg,var(--orange) 0%,var(--orange-dark) 100%);color:#fff;}
+.toast.info{background:linear-gradient(135deg,var(--blue) 0%,#0284c7 100%);color:#fff;}
+@keyframes toastIn{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
+@media print{
+  .top-bar,.tabs,.btn-group,button,#toastBox,#modalRoot,.site-footer,
+  #tab-dashboard,#tab-register,#tab-attendance,.panel-box{display:none!important;}
+  body{background:#fff!important;}
+  main{max-width:none;margin:0;padding:0;}
+  .container{box-shadow:none;border:0;padding:0;}
+  #tab-records{display:block!important;}
+  #recordsContent{display:block!important;}
+  .att-table{font-size:11px;}
+}
+.modal-backdrop{position:fixed;inset:0;background:rgba(15,41,66,.7);
+  display:flex;align-items:center;justify-content:center;z-index:200;padding:20px;
+  animation:fadeIn .2s;}
+@keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+.modal{background:#fff;border-radius:16px;padding:24px;max-width:340px;width:100%;
+  text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+.modal h3{margin:0 0 4px;color:var(--navy);font-size:17px;}
+.modal p{margin:0 0 16px;font-size:13px;color:var(--muted);}
+.modal .qr-box{background:#fff;border:2px solid var(--border);border-radius:12px;
+  padding:14px;display:inline-block;margin-bottom:16px;}
+.modal button{width:100%;margin-top:6px;}
+.site-footer{text-align:center;padding:20px 16px 34px;color:var(--muted);font-size:13px;}
+.site-footer .fbrand{font-weight:800;color:var(--navy);letter-spacing:1.2px;}
+
+/* Institute management additions */
+input[type="number"],input[type="tel"],input[type="month"],input[type="email"],textarea{
+  width:100%;padding:12px 14px;border:2px solid var(--border);border-radius:10px;
+  font-size:15px;font-family:inherit;background:#f9fbfd;transition:all .2s;
+}
+input[type="number"]:focus,input[type="tel"]:focus,input[type="month"]:focus,textarea:focus{
+  outline:none;border-color:var(--blue);background:#fff;box-shadow:0 0 0 4px rgba(14,165,233,.12);
+}
+textarea{min-height:76px;resize:vertical;}
+.form-row.three{grid-template-columns:repeat(3,1fr);}
+@media(max-width:760px){.form-row.three{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.form-row.three{grid-template-columns:1fr;}}
+.student-actions{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px;}
+.student-actions button{margin:0;padding:6px 9px;font-size:11px;border-radius:7px;}
+.student-meta{font-size:11px;color:var(--muted);line-height:1.55;margin-top:5px;}
+.fee-summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px;margin:14px 0;}
+.fee-summary .stat-card{padding:14px;}
+.fee-summary .num{font-size:25px!important;}
+.small-muted{font-size:12px;color:var(--muted);}
+.pill{display:inline-block;padding:4px 9px;border-radius:30px;font-size:11px;font-weight:800;}
+.pill.paid{background:#dcfce7;color:#166534;}.pill.due{background:#ffedd5;color:#9a3412;}
+.action-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0;}
+.action-row button{flex:1;min-width:135px;}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin:8px 0 12px;}
+.receipt-paper{border:1px dashed #94a3b8;border-radius:12px;padding:18px;text-align:left;background:#fff;}
+.receipt-paper h2{text-align:center;margin:0;color:var(--navy);}
+.receipt-paper .receipt-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px dashed #cbd5e1;padding:8px 0;font-size:13px;}
+@media print{
+  body.print-receipt *{visibility:hidden!important;}
+  body.print-receipt #printReceiptArea,body.print-receipt #printReceiptArea *{visibility:visible!important;}
+  body.print-receipt #printReceiptArea{position:absolute;left:0;top:0;width:100%;}
+}
+
+
+/* SKYNET PREMIUM UI refresh */
+:root{--navy:#101b35;--navy-light:#243b68;--gold:#f4b740;--gold-light:#ffda7b;--bg:#eef2fb;--text:#18243b;--muted:#64748b;--border:#e3e8f2;--blue:#3977e8;--green:#0d9b72;}
+body{font-family:Inter,'Segoe UI',Tahoma,sans-serif;background:radial-gradient(ellipse at 12% 0%,#e4edff 0%,transparent 34%),linear-gradient(135deg,#f6f8fc,#edf2fa);background-attachment:fixed;color:#18243b;}
+.top-bar{background:linear-gradient(115deg,#0c1730 0%,#162b50 58%,#274777 100%);padding:17px 24px;box-shadow:0 12px 32px rgba(14,28,55,.22);border-bottom:1px solid rgba(255,255,255,.1);}
+.top-bar-inner{max-width:1320px}.brand-logo{width:54px;height:54px;border-radius:17px;background:linear-gradient(145deg,#ffd56a,#e99a1b);box-shadow:0 8px 22px rgba(244,183,64,.3)}
+.brand-text h1{font-size:21px;letter-spacing:1.7px}.brand-text .tagline{letter-spacing:2.6px;font-size:10px}
+main{max-width:1320px;margin:26px auto 48px}.container{border:1px solid rgba(255,255,255,.8);border-radius:24px;padding:24px;box-shadow:0 18px 55px rgba(22,43,80,.09);background:rgba(255,255,255,.96)}
+.tabs{gap:8px;padding:7px;background:#f1f4fa;border:1px solid #e1e7f2;border-radius:16px;position:sticky;top:88px;z-index:50;backdrop-filter:blur(14px)}
+.tab-btn{padding:13px 15px;border-radius:12px;font-size:13px}.tab-btn.active{background:linear-gradient(135deg,#122344,#294a7c);box-shadow:0 7px 17px rgba(24,50,91,.2)}
+.panel-box{background:linear-gradient(145deg,#fff,#f8faff);border:1px solid #e5eaf4;border-radius:18px;padding:22px;box-shadow:0 5px 18px rgba(30,55,95,.035)}
+.stat-card{border-radius:18px;padding:20px 16px;box-shadow:0 7px 20px rgba(24,45,82,.045);transition:transform .18s,box-shadow .18s}.stat-card:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(24,45,82,.09)}
+.student-card{border:1px solid #e3e9f3;border-radius:18px;box-shadow:0 6px 18px rgba(24,45,82,.045);padding:17px}.student-card:hover{transform:translateY(-3px);border-color:#94b8f4;box-shadow:0 12px 26px rgba(55,119,232,.12)}
+input[type=text],input[type=date],input[type=password],input[type=tel],input[type=number],input[type=month],select,textarea{border:1.5px solid #dce4f0;border-radius:12px;background:#fbfcff;padding:13px 14px}
+input:focus,select:focus,textarea:focus{border-color:#6c9df0;box-shadow:0 0 0 4px rgba(57,119,232,.11)}
+button{border-radius:12px;font-weight:700;letter-spacing:.1px;box-shadow:0 2px 6px rgba(20,42,78,.06)}
+button:hover{transform:translateY(-1px);filter:brightness(1.04);box-shadow:0 8px 18px rgba(20,42,78,.13)}
+button:active{transform:translateY(0) scale(.985)}
+.status-banner{border-radius:14px;padding:13px 16px}.att-table{border-collapse:separate;border-spacing:0;min-width:680px;overflow:hidden;border:1px solid #e3e9f2;border-radius:13px}.att-table th{background:#eef3fb;color:#243b68}.att-table td,.att-table th{padding:12px 13px}.att-table tbody tr:last-child td{border-bottom:0}
+.section-heading h3{font-size:18px}.fee-summary .stat-card{border-radius:16px}.site-footer{color:#66758d}
+.premium-kicker{font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:800;color:#6c83aa}.report-hero{background:linear-gradient(120deg,#101d3b,#274a7b);color:#fff;border-radius:18px;padding:22px;margin-bottom:16px;box-shadow:0 12px 26px rgba(18,39,75,.18)}.report-hero h3{color:#fff;margin:0 0 5px}.report-hero p{color:#dbe7fb;margin:0;font-size:13px}.sync-dot{display:inline-block;width:9px;height:9px;background:#f59e0b;border-radius:50%;margin-right:7px}.sync-dot.online{background:#10b981;box-shadow:0 0 0 4px rgba(16,185,129,.12)}.sync-dot.offline{background:#ef4444}
+@media(max-width:720px){.top-bar{padding:13px 14px}.brand-text h1{font-size:16px}.contact-badge{font-size:11px;padding:7px 10px}.tabs{top:72px}.tab-btn{flex:0 0 auto}.container{padding:15px;border-radius:18px}.report-hero{padding:18px}}
+
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="top-bar-inner">
+    <div class="brand">
+      <div class="brand-logo">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="brand-text">
+        <h1>SKYNET COMPUTER CENTER</h1>
+        <span class="tagline">Premium Institute ERP &amp; Smart Attendance</span>
+      </div>
+    </div>
+    <div class="top-right">
+      <div class="contact-badge">📞 8901010994 · 8054061994</div>
+      <button class="lock-btn" id="adminLockBtn" title="Admin: Locked (click to unlock)">🔒</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="status-banner loading" style="background:#eff6ff;color:#1e40af;border-color:#bfdbfe;">
+      <span>ℹ️</span><span>Local data is saved on this device. Connect Google Sheets in Settings to enable cloud save &amp; fetch. Keep a backup too.</span>
+    </div>
+    <div id="storageBanner" class="status-banner hidden"></div>
+
+    <div id="faceStatus" class="status-banner loading">
+      <span>⏳</span>
+      <span>Biometric Face Attendance engine load ho raha hai...</span>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="dashboard">📊 Dashboard</button>
+      <button class="tab-btn" data-tab="register">📝 Register</button>
+      <button class="tab-btn" data-tab="attendance">✅ Attendance</button>
+      <button class="tab-btn" data-tab="records">📋 Records</button>
+      <button class="tab-btn" data-tab="fees">💰 Fees</button>
+      <button class="tab-btn" data-tab="reports">📈 Reports</button>
+      <button class="tab-btn" data-tab="settings">⚙️ Settings</button>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div id="tab-dashboard">
+      <div class="stats-grid">
+        <div class="stat-card blue">
+          <div class="num" id="statStudents">0</div>
+          <div class="label">Registered</div>
+        </div>
+        <div class="stat-card green">
+          <div class="num" id="statToday">0</div>
+          <div class="label">Checked-In Today</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="num" id="statCurrentlyIn">0</div>
+          <div class="label">Currently In</div>
+        </div>
+        <div class="stat-card gold">
+          <div class="num" id="statTotal">0</div>
+          <div class="label">Total Records</div>
+        </div>
+        <div class="stat-card orange">
+          <div class="num" id="statPendingFees">₹0</div>
+          <div class="label">Pending Fees</div>
+        </div>
+      </div>
+
+      <h3 style="color:var(--navy);margin-bottom:12px;">Today's Attendance (In / Out)</h3>
+      <div id="todayList"></div>
+    </div>
+
+    <!-- REGISTER -->
+    <div id="tab-register" class="hidden">
+      <div class="panel-box">
+        <h3>👤 New Student Registration</h3>
+        <div class="form-row">
+          <div><label>Student Name *</label><input type="text" id="regName" placeholder="e.g. Rahul Kumar" autocomplete="name"></div>
+          <div><label>Roll Number *</label><input type="text" id="regRoll" placeholder="e.g. 101"></div>
+        </div>
+        <div class="form-row three">
+          <div><label>Father / Guardian Name</label><input type="text" id="regFather" placeholder="Father name"></div>
+          <div><label>Mobile Number</label><input type="tel" id="regMobile" inputmode="numeric" maxlength="10" placeholder="10-digit mobile"></div>
+          <div><label>Course *</label><select id="regCourse"><option value="">Select Course</option><option value="CCC">CCC Course · ₹2,500</option><option value="BCA">BCA Course · ₹5,500</option><option value="DCA">DCA Course · ₹8,500</option><option value="ADCA">ADCA Course · ₹10,000</option></select></div>
+        </div>
+        <div class="form-row three">
+          <div><label>Batch / Timing</label><input type="text" id="regBatch" placeholder="e.g. Morning 9-10"></div>
+          <div><label>Admission Date</label><input type="date" id="regAdmissionDate"></div>
+          <div><label>Total Course Fee (₹)</label><input type="number" id="regTotalFee" min="0" step="1" value="0" placeholder="Select course first" readonly></div>
+        </div>
+
+        <label style="margin-top:6px;">Biometric Face Registration (Optional)</label>
+        <p class="hint">Student ki permission lekar camera on karein, chehra screen ke beech mein rakhein aur "Capture Face" dabayein. Face template isi browser/device mein rahega.</p>
+
+        <div class="camera-wrap" id="regCameraWrap">
+          <video id="regVideo" autoplay muted playsinline></video>
+          <canvas id="regCanvas"></canvas>
+        </div>
+
+        <div class="btn-group">
+          <button id="regOpenCam" class="btn-blue">📷 Open Camera</button>
+          <button id="regCapture" class="btn-green" disabled>📸 Capture Face</button>
+          <button id="regCloseCam" class="btn-gray" disabled>✖ Close</button>
+        </div>
+
+        <div id="regPreview"></div>
+        <button class="btn-block btn-green" id="regSave">💾 Save Student</button>
+      </div>
+
+      <div class="form-row" style="align-items:end;margin-top:20px;">
+        <div>
+          <h3 style="color:var(--navy);margin:0 0 8px;">Registered Students</h3>
+          <input type="text" id="studentSearch" placeholder="Search name, roll, mobile, course or batch...">
+        </div>
+        <div style="display:flex;align-items:end;">
+          <button class="btn-gray" id="clearStudentSearch" style="width:100%;">Clear Search</button>
+        </div>
+      </div>
+      <div class="student-grid" id="studentList"></div>
+    </div>
+
+    <!-- ATTENDANCE -->
+    <div id="tab-attendance" class="hidden">
+      <div class="mode-toggle">
+        <button class="mode-btn active" data-action="auto">
+          <span class="mb-icon">🔄</span>
+          <span>Auto</span>
+        </button>
+        <button class="mode-btn" data-action="in">
+          <span class="mb-icon">🟢</span>
+          <span>Check-In</span>
+        </button>
+        <button class="mode-btn" data-action="out">
+          <span class="mb-icon">🔴</span>
+          <span>Check-Out</span>
+        </button>
+      </div>
+      <p class="mode-hint" id="modeHint">Auto: pehli baar In hogi, dusri baar Out. Ya phir upar se specific mode chunein.</p>
+
+      <div class="method-tabs">
+        <button class="method-btn active" data-method="rollno">
+          <span class="icon">🔢</span>
+          <span class="label">Roll No</span>
+          <span class="sub">Manual entry</span>
+        </button>
+        <button class="method-btn" data-method="qr">
+          <span class="icon">📱</span>
+          <span class="label">QR Scan</span>
+          <span class="sub">Scan ID card</span>
+        </button>
+        <button class="method-btn" data-method="face">
+          <span class="icon">😊</span>
+          <span class="label">Face Biometric</span>
+          <span class="sub">Camera recognition</span>
+        </button>
+        <button class="method-btn" data-method="photo">
+          <span class="icon">📸</span>
+          <span class="label">Photo</span>
+          <span class="sub">Capture &amp; mark</span>
+        </button>
+      </div>
+
+      <div id="methodContent"></div>
+
+      <div class="action-row" style="margin-top:20px;align-items:center;">
+        <button class="btn-blue" id="markTodayWorking">📅 Mark Today as Working Day</button>
+        <span class="small-muted">Attendance check-in hone par day automatically working mark ho jata hai. Pura batch absent ho to yahan se mark karein.</span>
+      </div>
+      <h3 style="color:var(--navy);margin-bottom:12px;margin-top:24px;">Today's Log</h3>
+      <div id="todayAttendance"></div>
+    </div>
+
+    <!-- RECORDS -->
+    <div id="tab-records" class="hidden">
+      <div class="panel-box">
+        <div class="form-row">
+          <div>
+            <label>Select Date</label>
+            <input type="date" id="recordsDate">
+          </div>
+          <div>
+            <label>Search Student</label>
+            <input type="text" id="recordSearch" placeholder="Name or roll number...">
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:8px;">
+            <button class="btn-blue" id="exportCsv" style="flex:1;">📥 Export CSV</button>
+            <button class="btn-gray" id="printRecords" style="flex:1;">🖨 Print</button>
+            <button class="btn-blue" id="markSelectedWorking" style="flex:1;">📅 Working Day</button>
+            <button class="btn-red" id="clearDay" style="flex:1;">🗑 Clear Day</button>
+          </div>
+        </div>
+      </div>
+      <div id="recordsContent"></div>
+
+      <!-- ADMIN PANEL -->
+      <div class="panel-box" style="margin-top:20px;border-color:#fde68a;background:#fffbf0;">
+        <h3>🔒 Admin Panel</h3>
+        <p class="hint">Is browser par sensitive actions ke liye PIN gate hai. Default PIN 1234 ko change karein. Ye cloud/server login ka replacement nahi hai.</p>
+        <div class="btn-group">
+          <button class="btn-blue" id="changePinBtn">🔑 Change PIN</button>
+          <button class="btn-green" id="backupAll">💾 Backup All</button>
+          <button class="btn-orange" id="restoreAll">📂 Restore</button>
+        </div>
+        <input type="file" id="restoreFile" accept=".json,application/json" style="display:none;">
+        <div id="defaultPinWarning" style="margin-top:12px;padding:10px 14px;background:#fef3c7;border:1.5px solid #fde68a;border-radius:10px;font-size:13px;font-weight:600;color:#92400e;display:flex;align-items:center;gap:8px;">
+          <span>⚠️</span>
+          <span>Default PIN <b>1234</b> active hai — abhi change karein.</span>
+        </div>
+        <button class="btn-red" id="clearAllData" style="width:100%;margin-top:12px;">🗑 Clear ALL Data (Students + Attendance + Fees)</button>
+      </div>
+    </div>
+
+    <!-- FEES -->
+    <div id="tab-fees" class="hidden">
+      <div class="panel-box">
+        <h3>💰 Fee Collection / Installment Entry</h3>
+        <p class="hint">Student select karke har installment ya payment record karein. Har payment ki receipt banegi.</p>
+        <div class="form-row">
+          <div><label>Student *</label><select id="feeStudent"><option value="">Select student</option></select></div>
+          <div><label>Payment Date *</label><input type="date" id="feeDate"></div>
+        </div>
+        <div class="fee-summary" id="feeStudentSummary">
+          <div class="stat-card blue"><div class="num" id="feeTotal">₹0</div><div class="label">Course Fee</div></div>
+          <div class="stat-card green"><div class="num" id="feePaid">₹0</div><div class="label">Paid So Far</div></div>
+          <div class="stat-card orange"><div class="num" id="feeDue">₹0</div><div class="label">Balance Due</div></div>
+        </div>
+        <div class="form-row three">
+          <div><label>Installment</label><select id="feeInstallment"><option value="auto">Auto · Oldest pending installment</option></select></div>
+          <div><label>Amount Received (₹) *</label><input type="number" id="feeAmount" min="1" step="1" placeholder="Amount"></div>
+          <div><label>Payment Mode</label><select id="feeMode"><option>Cash</option><option>UPI</option><option>Bank Transfer</option><option>Card</option><option>Other</option></select></div>
+        </div>
+        <div class="form-row">
+          <div><label>Transaction ID / Reference (Optional)</label><input type="text" id="feeReference" placeholder="UPI reference / receipt ref"></div>
+          <div><label>Remarks (Optional)</label><input type="text" id="feeNote" placeholder="Any note"></div>
+        </div>
+        <button class="btn-green btn-block" id="saveFee">➕ Save Payment &amp; Generate Receipt</button>
+      </div>
+      <div class="section-heading"><h3 style="color:var(--navy);margin:0;">Fee Ledger</h3><div class="action-row" style="margin:0;"><button class="btn-blue" id="exportFeesCsv">📥 Export Fee CSV</button></div></div>
+      <div class="form-row">
+        <div><label>Filter by Student</label><select id="feeFilterStudent"><option value="">All Students</option></select></div>
+        <div><label>Filter by Month</label><input type="month" id="feeFilterMonth"></div>
+      </div>
+      <div id="feeLedger"></div>
+      <div class="panel-box" style="margin-top:18px;">
+        <h3>⚠️ Pending Fees</h3>
+        <p class="hint">Registered students jinki total course fee abhi poori receive nahi hui hai.</p>
+        <div id="pendingFeesList"></div>
+      </div>
+    </div>
+
+    <!-- REPORTS -->
+    <div id="tab-reports" class="hidden">
+      <div class="report-hero">
+        <div class="premium-kicker" style="color:#c7dcff">INDIVIDUAL STUDENT ANALYTICS</div>
+        <h3>Student Complete Report</h3>
+        <p>Roll Number enter karte hi fees, installment history aur attendance summary dekhein.</p>
+      </div>
+      <div class="panel-box">
+        <div class="form-row" style="align-items:end;">
+          <div><label>Student Roll Number</label><input type="text" id="reportRollInput" placeholder="Enter roll number" autocomplete="off"></div>
+          <div class="action-row" style="margin:0;"><button class="btn-blue" id="findStudentReport">🔍 View Student Report</button><button class="btn-gray" id="printStudentReport">🖨 Print</button></div>
+        </div>
+        <div id="studentReportContent"><div class="empty-state"><div class="big">🎓</div><p>Student ka Roll Number enter karein.</p></div></div>
+      </div>
+      <div class="panel-box">
+        <div class="section-heading"><h3 style="margin:0;">📈 Monthly Institute Report</h3><div style="min-width:180px;"><label>Choose Month</label><input type="month" id="reportMonth"></div></div>
+        <p class="hint">Attendance percentage institute ke manually marked Working Days aur kisi bhi student ke check-in wale dinon ke base par calculate hota hai. Pura batch absent ho to Working Day mark karna zaroori hai; holidays/closed days absent nahi gine jayenge.</p>
+        <div class="fee-summary">
+          <div class="stat-card blue"><div class="num" id="reportActiveStudents">0</div><div class="label">Students</div></div>
+          <div class="stat-card green"><div class="num" id="reportPresentCount">0</div><div class="label">Present Entries</div></div>
+          <div class="stat-card gold"><div class="num" id="reportMarkedDays">0</div><div class="label">Days Attendance Marked</div></div>
+          <div class="stat-card orange"><div class="num" id="reportFeeCollection">₹0</div><div class="label">Fee Collection</div></div>
+        </div>
+        <div class="action-row"><button class="btn-blue" id="exportMonthlyCsv">📥 Export Monthly Report CSV</button><button class="btn-gray" id="printMonthlyReport">🖨 Print Report</button></div>
+      </div>
+      <div id="monthlyReportContent"></div>
+    </div>
+
+    <!-- STUDENT REPORT + GOOGLE SHEETS SETTINGS -->
+    <div id="tab-settings" class="hidden">
+      <div class="report-hero">
+        <div class="premium-kicker" style="color:#c7dcff">SKYNET CLOUD CONNECT</div>
+        <h3>Google Sheets Live Database</h3>
+        <p>Student, attendance aur fee records ko Google Sheet mein save aur wahi se fetch karne ke liye connect karein.</p>
+      </div>
+      <div class="panel-box">
+        <h3>🔗 Google Sheets Connection</h3>
+        <p class="hint">Apps Script Web App URL aur wahi API token enter karein jo Google Apps Script file mein set kiya hai. Setup guide aur Code.gs is download package ke saath diya gaya hai.</p>
+        <div class="form-row">
+          <div><label>Google Apps Script Web App URL</label><input type="text" id="sheetsUrl" placeholder="https://script.google.com/macros/s/.../exec" autocomplete="off"></div>
+          <div><label>API Token</label><input type="password" id="sheetsToken" placeholder="Same token as in Code.gs" autocomplete="off"></div>
+        </div>
+        <div class="action-row">
+          <button class="btn-green" id="saveSheetsConfig">💾 Save &amp; Connect</button>
+          <button class="btn-blue" id="pullSheetsNow">⬇ Fetch from Sheet</button>
+          <button class="btn-orange" id="pushSheetsNow">⬆ Upload to Sheet</button>
+        </div>
+        <div id="sheetsStatus" class="status-banner loading"><span class="sync-dot"></span><span>Google Sheets not connected.</span></div>
+        <p class="small-muted">Privacy: face templates aur captured face photos browser/device mein hi rahenge; Sheets mein student profile, attendance, Working Days aur payment data sync hoga. Auto-fetch/auto-save Admin PIN unlock rehne par chalta hai. Naye admin computer/browser par URL aur token dobara set karein. Shared web-app token production-level security nahi hai.</p>
+      </div>
+      <div class="panel-box">
+        <h3>🛡️ Biometric Attendance Information</h3>
+        <p class="hint">Face recognition ke liye camera permission aur HTTPS website zaroori hai. Fingerprint scanner ko connect karne ke liye uske exact model ka SDK/API ya local bridge software chahiye.</p>
+        <div class="action-row">
+          <button class="btn-blue" id="openBiometricTab">😊 Open Face Biometric Attendance</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p><span class="fbrand">SKYNET COMPUTER CENTER</span> · 📞 8901010994 · skynetcc.in</p>
+  <p style="margin-top:6px;">Premium Institute ERP © <span id="yearSpan"></span></p>
+</footer>
+
+<div id="toastBox"></div>
+<div id="modalRoot"></div>
+
+<script>
+/* ================================================================
+   CONFIG & STATE
+================================================================ */
+const MODELS_URL='https://cdn.jsdelivr.net/npm/@vladmandic/face-api/model/';
+const FACE_MATCH_THRESHOLD=0.55;
+const STORAGE_STUDENTS='skynet_attendance_students_v2';
+const STORAGE_ATTENDANCE='skynet_attendance_records_v2';
+const STORAGE_SETTINGS='skynet_settings_v1';
+const STORAGE_FEES='skynet_fee_payments_v1';
+const STORAGE_DELETIONS='skynet_cloud_deletions_v1';
+const STORAGE_WORKING_DAYS='skynet_working_days_v1';
+const DEFAULT_PIN='1234';
+const ADMIN_SESSION_MS=5*60*1000; // 5 minutes
+const LOCALSTORAGE_LIMIT_BYTES=5*1024*1024; // ~5MB typical
+
+let students=[];
+let attendance=[];
+let fees=[];
+let cloudDeletions=[];
+let workingDays=[];
+let settings={adminPin:DEFAULT_PIN};
+let adminUnlockedAt=0;
+let faceApiReady=false;
+let currentAction='auto';
+
+let regVideoStream=null;
+let regCapturedFace=null;
+let scanCooldownUntil=0;
+
+let camera={active:false,stream:null,loopId:null,mode:null,matcher:null};
+
+document.getElementById('yearSpan').textContent=new Date().getFullYear();
+
+const COURSE_FEES=Object.freeze({CCC:2500,BCA:5500,DCA:8500,ADCA:10000});
+const INSTALLMENT_NAMES=['1st Installment','2nd Installment','3rd Installment'];
+let cloudSyncTimer=null,cloudPullBusy=false,cloudPushBusy=false,cloudApplying=false,cloudReady=false;
+let cloudLastPulledAt=0,cloudLastPushedAt=0,cloudPollingStarted=false;
+function courseFeeFor(course){
+  const key=String(course||'').trim().toUpperCase().replace(/\s+COURSE$/,'').replace(/\s+/g,'');
+  return COURSE_FEES[key]||0;
+}
+function addMonthsISO(iso,months){
+  const p=String(iso||todayStr()).split('-').map(Number);const d=new Date(p[0],p[1]-1,p[2]||1);
+  const day=d.getDate();d.setDate(1);d.setMonth(d.getMonth()+months);
+  const last=new Date(d.getFullYear(),d.getMonth()+1,0).getDate();d.setDate(Math.min(day,last));
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function createInstallmentPlan(totalFee,admissionDate){
+  const total=Math.max(0,Math.round(Number(totalFee)||0));const base=Math.floor(total/3),remainder=total-(base*3);
+  return INSTALLMENT_NAMES.map((name,i)=>({id:uid('inst'),name,amount:base+(i<remainder?1:0),dueDate:addMonthsISO(admissionDate||todayStr(),i),sequence:i+1}));
+}
+function dateDiffDays(from,to){
+  if(!from||!to)return 0;const a=new Date(from+'T00:00:00Z'),b=new Date(to+'T00:00:00Z');
+  return Math.max(0,Math.floor((b-a)/86400000));
+}
+function installmentPaid(st,item){
+  return fees.reduce((sum,p)=>sum+(Array.isArray(p.allocations)?p.allocations.filter(a=>a.installmentId===item.id).reduce((n,a)=>n+(Number(a.amount)||0),0):0),0);
+}
+function getInstallmentStatus(st){
+  if(!Array.isArray(st.installmentPlan)||!st.installmentPlan.length){st.installmentPlan=createInstallmentPlan(st.totalFee,st.admissionDate||todayStr());}
+  return st.installmentPlan.map(item=>{const paid=installmentPaid(st,item);return {...item,paid,remaining:Math.max(0,Number(item.amount||0)-paid),overdueDays:dateDiffDays(item.dueDate,todayStr())};});
+}
+function allocateInstallmentPayment(st,amount,preferredId){
+  const status=getInstallmentStatus(st);let remaining=Math.round(Number(amount)*100)/100;const allocations=[];
+  const order=preferredId&&preferredId!=='auto'?[...status.filter(x=>x.id===preferredId),...status.filter(x=>x.id!==preferredId)]:status;
+  for(const item of order){if(remaining<=0.009)break;const use=Math.min(remaining,item.remaining);if(use>0.009){allocations.push({installmentId:item.id,name:item.name,amount:Math.round(use*100)/100});remaining=Math.round((remaining-use)*100)/100;}}
+  return {allocations,unallocated:Math.max(0,remaining)};
+}
+function migrateLegacyInstallments(){
+  let studentsChanged=false,feesChanged=false;
+  students.forEach(st=>{if(!Array.isArray(st.installmentPlan)||!st.installmentPlan.length){st.installmentPlan=createInstallmentPlan(st.totalFee,st.admissionDate||todayStr());studentsChanged=true;}});
+  students.forEach(st=>{
+    const plan=st.installmentPlan||[];const paidById={};plan.forEach(x=>paidById[x.id]=0);
+    const list=fees.filter(f=>f.studentId===st.id).sort((a,b)=>String(a.date||'').localeCompare(String(b.date||''))||String(a.receivedAt||'').localeCompare(String(b.receivedAt||'')));
+    list.forEach(payment=>{
+      if(Array.isArray(payment.allocations)&&payment.allocations.length){payment.allocations.forEach(a=>{if(paidById[a.installmentId]!==undefined)paidById[a.installmentId]+=Number(a.amount)||0;});return;}
+      let left=Number(payment.amount)||0;const allocations=[];
+      plan.forEach(item=>{if(left<=0.009)return;const remain=Math.max(0,Number(item.amount||0)-(paidById[item.id]||0));const take=Math.min(left,remain);if(take>0.009){allocations.push({installmentId:item.id,name:item.name,amount:Math.round(take*100)/100});paidById[item.id]=(paidById[item.id]||0)+take;left=Math.round((left-take)*100)/100;}});
+      payment.allocations=allocations;payment.installment=allocations.map(a=>a.name).join(' + ')||payment.installment||'Previous payment';feesChanged=true;
+    });
+  });
+  if(studentsChanged)saveStudents();if(feesChanged)saveFees();
+}
+
+/* ================================================================
+   HELPERS
+================================================================ */
+function showToast(msg,type){
+  const box=document.getElementById('toastBox');
+  const el=document.createElement('div');
+  el.className='toast '+(type||'info');
+  el.innerText=msg;
+  box.appendChild(el);
+  setTimeout(()=>el.remove(),2200);
+}
+function uid(p){return p+'_'+Date.now()+'_'+Math.random().toString(36).substr(2,6);}
+function todayStr(){
+  const d=new Date();
+  return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function nowTimeStr(){
+  const d=new Date();
+  return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+':'+String(d.getSeconds()).padStart(2,'0');
+}
+function durationText(inTime,outTime){
+  if(!inTime||!outTime)return '—';
+  const toMinutes=t=>{
+    const p=String(t).split(':').map(Number);
+    return p[0]*60+p[1];
+  };
+  const mins=Math.max(0,toMinutes(outTime)-toMinutes(inTime));
+  return Math.floor(mins/60)+'h '+(mins%60)+'m';
+}
+function csvCell(value){
+  let v=String(value??'');
+  // Prevent spreadsheet formula execution in exported CSV files.
+  if(/^[=+\-@\t\r]/.test(v))v="'"+v;
+  return '"'+v.replace(/"/g,'""')+'"';
+}
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+function loadStorage(){
+  try{students=JSON.parse(localStorage.getItem(STORAGE_STUDENTS)||'[]');}catch(e){students=[];}
+  try{attendance=JSON.parse(localStorage.getItem(STORAGE_ATTENDANCE)||'[]');}catch(e){attendance=[];}
+  try{fees=JSON.parse(localStorage.getItem(STORAGE_FEES)||'[]');}catch(e){fees=[];}
+  try{cloudDeletions=JSON.parse(localStorage.getItem(STORAGE_DELETIONS)||'[]');}catch(e){cloudDeletions=[];}
+  try{workingDays=JSON.parse(localStorage.getItem(STORAGE_WORKING_DAYS)||'[]');}catch(e){workingDays=[];}
+  try{
+    const s=JSON.parse(localStorage.getItem(STORAGE_SETTINGS)||'{}');
+    settings={...(s||{}),adminPin:(s&&s.adminPin)?s.adminPin:DEFAULT_PIN};
+  }catch(e){settings={adminPin:DEFAULT_PIN};}
+}
+function saveSettings(){
+  try{localStorage.setItem(STORAGE_SETTINGS,JSON.stringify(settings));}catch(e){}
+}
+function saveStudents(){
+  try{
+    localStorage.setItem(STORAGE_STUDENTS,JSON.stringify(students));
+    checkStorageQuota();
+    scheduleCloudSync();
+  }catch(e){
+    showToast('Storage full! Backup lein ya purane records delete karein.','error');
+    checkStorageQuota();
+  }
+}
+function saveAttendance(){
+  try{localStorage.setItem(STORAGE_ATTENDANCE,JSON.stringify(attendance));checkStorageQuota();scheduleCloudSync();}
+  catch(e){showToast('Storage full! Backup lein ya purane records delete karein.','error');checkStorageQuota();}
+}
+function saveFees(){
+  try{localStorage.setItem(STORAGE_FEES,JSON.stringify(fees));checkStorageQuota();scheduleCloudSync();}
+  catch(e){showToast('Fee storage full! Pehle Backup download karein.','error');checkStorageQuota();}
+}
+function saveWorkingDays(){
+  try{localStorage.setItem(STORAGE_WORKING_DAYS,JSON.stringify(workingDays));scheduleCloudSync();}
+  catch(e){showToast('Working-day data save nahi hua. Backup check karein.','error');}
+}
+function markWorkingDay(date,quiet){
+  const day=date||todayStr();if(!workingDays.some(x=>x.date===day)){workingDays.push({id:'day_'+day,date:day,markedAt:new Date().toISOString()});saveWorkingDays();}
+  if(!quiet)showToast(day+' working day mark ho gaya.','success');
+}
+function money(value){return '₹'+(Number(value)||0).toLocaleString('en-IN',{maximumFractionDigits:2});}
+function studentPaid(studentId){return fees.filter(f=>f.studentId===studentId).reduce((sum,f)=>sum+(Number(f.amount)||0),0);}
+function studentDue(student){return Math.max(0,(Number(student.totalFee)||0)-studentPaid(student.id));}
+
+function recordCloudDeletion(entity,id){
+  if(!id)return;
+  if(!cloudDeletions.some(x=>x.entity===entity&&String(x.recordId)===String(id)))cloudDeletions.push({id:entity+'_'+id,entity,recordId:String(id),deletedAt:new Date().toISOString()});
+  try{localStorage.setItem(STORAGE_DELETIONS,JSON.stringify(cloudDeletions));}catch(e){}
+  scheduleCloudSync();
+}
+function deletionSet(entity){return new Set(cloudDeletions.filter(x=>x.entity===entity).map(x=>String(x.recordId)));}
+
+/* ================================================================
+   ADMIN PIN SYSTEM
+================================================================ */
+function isAdminUnlocked(){return Date.now()-adminUnlockedAt<ADMIN_SESSION_MS;}
+function lockAdmin(){adminUnlockedAt=0;updateLockUI();}
+function unlockAdmin(){adminUnlockedAt=Date.now();updateLockUI();if(cloudConfigured())initCloudSync(true);}
+
+function updateLockUI(){
+  const btn=document.getElementById('adminLockBtn');
+  if(!btn)return;
+  if(isAdminUnlocked()){
+    btn.textContent='🔓';
+    btn.classList.add('unlocked');
+    btn.title='Admin: Unlocked (click to lock)';
+  }else{
+    btn.textContent='🔒';
+    btn.classList.remove('unlocked');
+    btn.title='Admin: Locked (click to unlock)';
+  }
+}
+
+function isModalOpen(){
+  return document.getElementById('modalRoot').innerHTML.trim()!=='';
+}
+
+function requireAdmin(actionName,cb){
+  if(isAdminUnlocked()){cb();return;}
+  showPinModal('🔒 Admin Access','Unlock to '+actionName,(ok)=>{if(ok)cb();});
+}
+
+function showPinModal(title,subtitle,callback){
+  if(isModalOpen())return;
+  const root=document.getElementById('modalRoot');
+  root.innerHTML=
+    '<div class="modal-backdrop" onclick="if(event.target===this)closeModal()">'+
+    '<div class="modal">'+
+    '<h3>'+escapeHtml(title)+'</h3>'+
+    '<p>'+escapeHtml(subtitle||'Admin PIN required')+'</p>'+
+    '<input type="password" id="pinInput" inputmode="numeric" maxlength="8" autocomplete="off" '+
+    'style="width:100%;padding:14px;text-align:center;font-size:22px;letter-spacing:8px;'+
+    'border:2px solid #e5e7eb;border-radius:10px;margin-bottom:8px;font-family:monospace;" placeholder="••••">'+
+    '<div id="pinError" style="color:#dc2626;font-size:13px;font-weight:600;min-height:20px;margin-bottom:8px;"></div>'+
+    '<button class="btn-green" id="pinOkBtn">🔓 Unlock</button>'+
+    '<button class="btn-gray" id="pinCancelBtn" style="margin-top:6px;">Cancel</button>'+
+    '</div></div>';
+  const input=document.getElementById('pinInput');
+  setTimeout(()=>input.focus(),100);
+  const tryPin=()=>{
+    if(input.value===settings.adminPin){
+      unlockAdmin();
+      closeModal();
+      showToast('🔓 Admin unlocked','success');
+      callback(true);
+    }else{
+      document.getElementById('pinError').textContent='❌ Galat PIN';
+      input.value='';
+      input.focus();
+    }
+  };
+  document.getElementById('pinOkBtn').addEventListener('click',tryPin);
+  document.getElementById('pinCancelBtn').addEventListener('click',()=>{closeModal();callback(false);});
+  input.addEventListener('keydown',e=>{if(e.key==='Enter')tryPin();});
+}
+
+function showChangePinModal(){
+  if(isModalOpen())return;
+  const root=document.getElementById('modalRoot');
+  root.innerHTML=
+    '<div class="modal-backdrop" onclick="if(event.target===this)closeModal()">'+
+    '<div class="modal">'+
+    '<h3>🔑 Change Admin PIN</h3>'+
+    '<p>Naya 4-8 digit PIN set karein</p>'+
+    '<input type="password" id="newPin" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="New PIN" '+
+    'style="width:100%;padding:12px;text-align:center;font-size:18px;letter-spacing:6px;border:2px solid #e5e7eb;border-radius:10px;margin-bottom:10px;font-family:monospace;">'+
+    '<input type="password" id="newPinConfirm" inputmode="numeric" maxlength="8" autocomplete="off" placeholder="Confirm PIN" '+
+    'style="width:100%;padding:12px;text-align:center;font-size:18px;letter-spacing:6px;border:2px solid #e5e7eb;border-radius:10px;margin-bottom:8px;font-family:monospace;">'+
+    '<div id="pinChangeError" style="color:#dc2626;font-size:13px;font-weight:600;min-height:20px;margin-bottom:8px;"></div>'+
+    '<button class="btn-green" id="pinChangeOk">Save PIN</button>'+
+    '<button class="btn-gray" onclick="closeModal()" style="margin-top:6px;">Cancel</button>'+
+    '</div></div>';
+  document.getElementById('pinChangeOk').addEventListener('click',()=>{
+    const np=document.getElementById('newPin').value;
+    const nc=document.getElementById('newPinConfirm').value;
+    const err=document.getElementById('pinChangeError');
+    if(!/^\d{4,8}$/.test(np)){err.textContent='❌ PIN 4-8 digits ka hona chahiye';return;}
+    if(np!==nc){err.textContent='❌ PIN match nahi kar rahe';return;}
+    settings.adminPin=np;
+    saveSettings();
+    updatePinWarning();
+    closeModal();
+    showToast('✅ PIN change ho gaya','success');
+  });
+  setTimeout(()=>document.getElementById('newPin').focus(),100);
+}
+
+function updatePinWarning(){
+  const el=document.getElementById('defaultPinWarning');
+  if(!el)return;
+  el.style.display=(settings.adminPin===DEFAULT_PIN)?'flex':'none';
+}
+
+document.getElementById('adminLockBtn').addEventListener('click',()=>{
+  if(isAdminUnlocked()){
+    lockAdmin();
+    showToast('🔒 Admin locked','info');
+  }else{
+    showPinModal('🔒 Admin Access','PIN daalein to unlock',()=>{});
+  }
+});
+
+// Auto-refresh lock UI every 30 sec (session expiry)
+setInterval(()=>{
+  const wasUnlocked=document.getElementById('adminLockBtn').classList.contains('unlocked');
+  const nowUnlocked=isAdminUnlocked();
+  if(wasUnlocked!==nowUnlocked)updateLockUI();
+},30000);
+
+/* ================================================================
+   STORAGE QUOTA WARNING
+================================================================ */
+function getLocalStorageBytes(){
+  let bytes=0;
+  try{
+    for(let i=0;i<localStorage.length;i++){
+      const k=localStorage.key(i);
+      if(!k)continue;
+      const v=localStorage.getItem(k);
+      bytes+=(k.length+(v?v.length:0))*2; // UTF-16 approx
+    }
+  }catch(e){}
+  return bytes;
+}
+function checkStorageQuota(){
+  const used=getLocalStorageBytes();
+  const percent=Math.min(100,(used/LOCALSTORAGE_LIMIT_BYTES)*100);
+  const banner=document.getElementById('storageBanner');
+  if(!banner)return;
+  const mbUsed=(used/1048576).toFixed(2);
+  if(percent>=80){
+    banner.className='status-banner error';
+    banner.innerHTML='<span>⚠️</span><span>Storage <b>'+percent.toFixed(0)+'%</b> bhar gaya ('+mbUsed+' MB / ~5 MB). Backup lein ya purane records delete karein!</span>';
+  }else if(percent>=60){
+    banner.className='status-banner loading';
+    banner.innerHTML='<span>💡</span><span>Storage '+percent.toFixed(0)+'% used ('+mbUsed+' MB / ~5 MB). Backup lena accha rahega.</span>';
+  }else{
+    banner.classList.add('hidden');
+    banner.innerHTML='';
+  }
+}
+
+/* ================================================================
+   BACKUP / RESTORE
+================================================================ */
+function doBackup(){
+  const backup={
+    app:'SKYNET Attendance',
+    version:4,
+    exportedAt:new Date().toISOString(),
+    students:students,
+    attendance:attendance,
+    fees:fees,
+    deletions:cloudDeletions,
+    workingDays:workingDays,
+    settings:{adminPin:settings.adminPin}
+  };
+  const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='SKYNET_Backup_'+todayStr()+'.json';
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  showToast('💾 Backup download ho gaya','success');
+}
+
+document.getElementById('backupAll').addEventListener('click',()=>{
+  requireAdmin('backup',doBackup);
+});
+
+document.getElementById('restoreAll').addEventListener('click',()=>{
+  requireAdmin('restore backup',()=>{
+    document.getElementById('restoreFile').click();
+  });
+});
+
+document.getElementById('restoreFile').addEventListener('change',async(e)=>{
+  const file=e.target.files[0];
+  if(!file)return;
+  try{
+    const text=await file.text();
+    const data=JSON.parse(text);
+    if(!data||!Array.isArray(data.students)||!Array.isArray(data.attendance)){
+      throw new Error('Invalid backup file (students/attendance arrays missing).');
+    }
+    const sc=data.students.length, ac=data.attendance.length, fc=Array.isArray(data.fees)?data.fees.length:0;
+    if(!confirm('Restore karein?\n\nBackup mein: '+sc+' students, '+ac+' attendance records, '+fc+' fee payments.\n\nCurrent data REPLACE ho jayega!')){e.target.value='';return;}
+    students=data.students;
+    attendance=data.attendance;
+    fees=Array.isArray(data.fees)?data.fees:[];
+    cloudDeletions=Array.isArray(data.deletions)?data.deletions:[];
+    workingDays=Array.isArray(data.workingDays)?data.workingDays:[];
+    try{localStorage.setItem(STORAGE_DELETIONS,JSON.stringify(cloudDeletions));localStorage.setItem(STORAGE_WORKING_DAYS,JSON.stringify(workingDays));}catch(e){}
+    if(data.settings&&data.settings.adminPin&&/^\d{4,8}$/.test(data.settings.adminPin)){
+      settings.adminPin=data.settings.adminPin;
+      saveSettings();
+      updatePinWarning();
+    }
+    saveStudents();
+    saveAttendance();
+    saveFees();
+    renderStudentList();
+    refreshDashboard();
+    refreshRecords();
+    renderTodayAttendance();
+    refreshFeesView();
+    refreshMonthlyReport();
+    checkStorageQuota();
+    showToast('✅ Restore complete: '+sc+' students, '+fc+' fee payments','success');
+  }catch(err){
+    showToast('❌ Restore failed: '+err.message,'error');
+  }
+  e.target.value='';
+});
+
+document.getElementById('changePinBtn').addEventListener('click',()=>{
+  requireAdmin('change PIN',showChangePinModal);
+});
+
+document.getElementById('clearAllData').addEventListener('click',()=>{
+  requireAdmin('clear all data',()=>{
+    if(!confirm('⚠️ SAB DATA delete ho jayega!\n\n'+students.length+' students, '+attendance.length+' attendance records, '+fees.length+' fee payments.\n\nPakka?'))return;
+    if(!confirm('Sochlo — ye undo nahi hoga. Confirm karein?'))return;
+    students.forEach(x=>recordCloudDeletion('students',x.id));
+    attendance.forEach(x=>recordCloudDeletion('attendance',x.id));
+    fees.forEach(x=>recordCloudDeletion('fees',x.id));
+    workingDays.forEach(x=>recordCloudDeletion('workingDays',x.id));
+    students=[];
+    attendance=[];
+    fees=[];
+    workingDays=[];
+    saveStudents();
+    saveAttendance();
+    saveFees();
+    saveWorkingDays();
+    renderStudentList();
+    refreshDashboard();
+    refreshRecords();
+    renderTodayAttendance();
+    refreshFeesView();
+    refreshMonthlyReport();
+    checkStorageQuota();
+    showToast('Sab data clear ho gaya.','info');
+  });
+});
+
+/* ================================================================
+   FACE API INIT
+================================================================ */
+async function initFaceApi(){
+  const banner=document.getElementById('faceStatus');
+  if(typeof faceapi==='undefined'){banner.className='status-banner error';banner.innerHTML='<span>⚠️</span><span>Face recognition library load nahi hui. Internet/CDN check karein; baaki ERP features kaam karenge.</span>';return;}
+  try{
+    await faceapi.nets.tinyFaceDetector.loadFromUri(MODELS_URL);
+    await faceapi.nets.faceLandmark68Net.loadFromUri(MODELS_URL);
+    await faceapi.nets.faceRecognitionNet.loadFromUri(MODELS_URL);
+    faceApiReady=true;
+    banner.className='status-banner ready';
+    banner.innerHTML='<span>✅</span><span>Face recognition ready.</span>';
+    setTimeout(()=>banner.classList.add('hidden'),4000);
+  }catch(err){
+    console.error(err);
+    banner.className='status-banner error';
+    banner.innerHTML='<span>⚠️</span><span>Face models load nahi hue (internet check karein). Baaki features kaam karenge.</span>';
+  }
+}
+
+/* ================================================================
+   CAMERA HELPERS
+================================================================ */
+async function startCamera(videoEl,facingMode='user'){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)
+    throw new Error('Camera is browser mein support nahi hai.');
+  const stream=await navigator.mediaDevices.getUserMedia({
+    video:{facingMode:{ideal:facingMode},width:{ideal:640},height:{ideal:480}},audio:false});
+  videoEl.srcObject=stream;
+  await new Promise(res=>{
+    if(videoEl.readyState>=2)return res();
+    videoEl.onloadedmetadata=()=>res();
+  });
+  await videoEl.play();
+  return stream;
+}
+function stopStream(stream){
+  if(stream)stream.getTracks().forEach(t=>t.stop());
+}
+
+/* ================================================================
+   TAB NAVIGATION
+================================================================ */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab=btn.dataset.tab;
+    ['dashboard','register','attendance','records','fees','reports','settings'].forEach(t=>{
+      document.getElementById('tab-'+t).classList.toggle('hidden',t!==tab);
+    });
+    if(tab!=='attendance')stopAttendanceCamera();
+    if(tab!=='register')stopRegCamera();
+    if(tab==='dashboard')refreshDashboard();
+    if(tab==='records')refreshRecords();
+    if(tab==='fees')refreshFeesView();
+    if(tab==='reports'){refreshMonthlyReport();renderStudentReport();}
+    if(tab==='settings')loadSheetsSettingsUI();
+  });
+});
+
+/* ================================================================
+   MODE TOGGLE
+================================================================ */
+document.querySelectorAll('.mode-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.mode-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    currentAction=btn.dataset.action;
+    const hint=document.getElementById('modeHint');
+    if(currentAction==='auto')hint.textContent='Auto: pehli baar In hogi, dusri baar Out. Ya phir upar se specific mode chunein.';
+    else if(currentAction==='in')hint.textContent='Check-In mode: sirf aana record hoga. Already checked-in students error denge.';
+    else hint.textContent='Check-Out mode: sirf jaana record hoga. Jinho ne check-in nahi kiya, unhe pehle check-in karna hoga.';
+  });
+});
+
+/* ================================================================
+   DASHBOARD
+================================================================ */
+function refreshDashboard(){
+  document.getElementById('statStudents').textContent=students.length;
+  const today=todayStr();
+  const todayRecs=attendance.filter(a=>a.date===today);
+  const inCount=todayRecs.filter(r=>r.checkInTime).length;
+  const currentlyIn=todayRecs.filter(r=>r.checkInTime&&!r.checkOutTime).length;
+  document.getElementById('statToday').textContent=inCount;
+  document.getElementById('statCurrentlyIn').textContent=currentlyIn;
+  document.getElementById('statTotal').textContent=attendance.length;
+  document.getElementById('statPendingFees').textContent=money(students.reduce((sum,st)=>sum+studentDue(st),0));
+
+  const container=document.getElementById('todayList');
+  if(todayRecs.length===0){
+    container.innerHTML='<div class="empty-state"><div class="big">📭</div><p>Aaj tak koi attendance mark nahi hui.</p></div>';
+    return;
+  }
+  let html='<table class="att-table"><thead><tr><th>Roll</th><th>Name</th><th>In Time</th><th>Out Time</th><th>Status</th></tr></thead><tbody>';
+  todayRecs.slice().reverse().forEach(r=>{
+    const status=r.checkOutTime?'<span class="status-tag complete">✅ Complete</span>'
+      :r.checkInTime?'<span class="status-tag present">🟢 Present</span>'
+      :'<span class="status-tag absent">—</span>';
+    html+='<tr>'+
+      '<td class="mono"><strong>'+escapeHtml(r.rollNo)+'</strong></td>'+
+      '<td>'+escapeHtml(r.name)+'</td>'+
+      '<td>'+(r.checkInTime?'<span class="time-in">'+r.checkInTime+'</span>':'<span class="time-empty">—</span>')+'</td>'+
+      '<td>'+(r.checkOutTime?'<span class="time-out">'+r.checkOutTime+'</span>':'<span class="time-empty">—</span>')+'</td>'+
+      '<td>'+status+'</td></tr>';
+  });
+  html+='</tbody></table>';
+  container.innerHTML=html;
+}
+
+/* ================================================================
+   REGISTER STUDENT
+================================================================ */
+const regVideo=document.getElementById('regVideo');
+const regOpenCam=document.getElementById('regOpenCam');
+const regCaptureBtn=document.getElementById('regCapture');
+const regCloseCam=document.getElementById('regCloseCam');
+const regSaveBtn=document.getElementById('regSave');
+const regPreviewEl=document.getElementById('regPreview');
+
+regOpenCam.addEventListener('click',async()=>{
+  try{
+    regVideoStream=await startCamera(regVideo);
+    regCaptureBtn.disabled=false;
+    regCloseCam.disabled=false;
+    regOpenCam.disabled=true;
+  }catch(e){showToast('Camera open nahi hua: '+e.message,'error');}
+});
+regCloseCam.addEventListener('click',stopRegCamera);
+function stopRegCamera(){
+  if(regVideoStream){stopStream(regVideoStream);regVideoStream=null;}
+  regVideo.srcObject=null;
+  regCaptureBtn.disabled=true;
+  regCloseCam.disabled=true;
+  regOpenCam.disabled=false;
+}
+
+regCaptureBtn.addEventListener('click',async()=>{
+  if(!faceApiReady){showToast('Face models abhi ready nahi hain.','error');return;}
+  if(!regVideoStream)return;
+  regCaptureBtn.disabled=true;
+  regCaptureBtn.textContent='⏳ Detecting...';
+  try{
+    const detection=await faceapi
+      .detectSingleFace(regVideo,new faceapi.TinyFaceDetectorOptions())
+      .withFaceLandmarks().withFaceDescriptor();
+    if(!detection){
+      showToast('Chehra detect nahi hua. Achhi roshni mein try karein.','error');
+      regCaptureBtn.disabled=false;
+      regCaptureBtn.innerHTML='📸 Capture Face';
+      return;
+    }
+    const box=detection.detection.box;
+    const size=Math.max(box.width,box.height)*1.5;
+    const cx=box.x+box.width/2, cy=box.y+box.height/2;
+    const thumb=document.createElement('canvas');
+    thumb.width=200;thumb.height=200;
+    const tctx=thumb.getContext('2d');
+    tctx.drawImage(regVideo,cx-size/2,cy-size/2,size,size,0,0,200,200);
+
+    regCapturedFace={
+      descriptor:Array.from(detection.descriptor),
+      thumbnail:thumb.toDataURL('image/jpeg',0.75)
+    };
+    regPreviewEl.innerHTML=
+      '<div class="photo-preview">'+
+      '<img src="'+regCapturedFace.thumbnail+'" alt="Face">'+
+      '<div class="info"><strong>✅ Face Captured</strong>'+
+      '<small>Face recognition ready</small></div></div>';
+    showToast('Face capture ho gaya!','success');
+    regCaptureBtn.innerHTML='📸 Retake Face';
+  }catch(e){
+    console.error(e);
+    showToast('Face detect error: '+e.message,'error');
+    regCaptureBtn.innerHTML='📸 Capture Face';
+  }
+  regCaptureBtn.disabled=false;
+});
+
+document.getElementById('studentSearch').addEventListener('input',renderStudentList);
+document.getElementById('clearStudentSearch').addEventListener('click',()=>{
+  document.getElementById('studentSearch').value='';
+  renderStudentList();
+});
+
+document.getElementById('regCourse').addEventListener('change',()=>{
+  document.getElementById('regTotalFee').value=courseFeeFor(document.getElementById('regCourse').value);
+});
+
+regSaveBtn.addEventListener('click',()=>{
+  const name=document.getElementById('regName').value.trim();
+  const roll=document.getElementById('regRoll').value.trim();
+  const mobile=document.getElementById('regMobile').value.trim();
+  if(!name){showToast('Student name daalein.','error');return;}
+  if(!roll){showToast('Roll number daalein.','error');return;}
+  if(mobile&&!/^\d{10}$/.test(mobile)){showToast('Mobile number 10 digits ka hona chahiye.','error');return;}
+  if(students.some(s=>String(s.rollNo).toLowerCase()===roll.toLowerCase())){showToast('Yeh roll number pehle se register hai.','error');return;}
+  const student={
+    id:uid('s'),name,rollNo:roll,
+    fatherName:document.getElementById('regFather').value.trim(),
+    mobile,course:document.getElementById('regCourse').value.trim(),
+    batch:document.getElementById('regBatch').value.trim(),
+    admissionDate:document.getElementById('regAdmissionDate').value||todayStr(),
+    totalFee:courseFeeFor(document.getElementById('regCourse').value),
+    installmentPlan:createInstallmentPlan(courseFeeFor(document.getElementById('regCourse').value),document.getElementById('regAdmissionDate').value||todayStr()),
+    faceDescriptor:regCapturedFace?regCapturedFace.descriptor:null,
+    thumbnail:regCapturedFace?regCapturedFace.thumbnail:null,
+    registeredAt:new Date().toISOString(),updatedAt:new Date().toISOString()
+  };
+  students.push(student);saveStudents();
+  ['regName','regRoll','regFather','regMobile','regBatch'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('regCourse').value='';
+  document.getElementById('regAdmissionDate').value=todayStr();
+  document.getElementById('regTotalFee').value='0';
+  regPreviewEl.innerHTML='';regCapturedFace=null;stopRegCamera();
+  regCaptureBtn.innerHTML='📸 Capture Face';
+  showToast(name+' register ho gaya!','success');
+  renderStudentList();refreshDashboard();refreshFeeStudentOptions();renderStudentReport();
+});
+
+function renderStudentList(){
+  const el=document.getElementById('studentList');
+  const search=(document.getElementById('studentSearch')?.value||'').trim().toLowerCase();
+  const fields=['name','rollNo','fatherName','mobile','course','batch'];
+  const visibleStudents=students.filter(st=>fields.some(k=>String(st[k]||'').toLowerCase().includes(search)));
+  if(students.length===0){el.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="big">👥</div><p>Abhi koi student register nahi hai.</p></div>';return;}
+  if(visibleStudents.length===0){el.innerHTML='<div class="empty-state" style="grid-column:1/-1"><div class="big">🔎</div><p>Koi matching student nahi mila.</p></div>';return;}
+  el.innerHTML=visibleStudents.slice().reverse().map(st=>{
+    const paid=studentPaid(st.id),due=studentDue(st);
+    return '<div class="student-card">'+
+      '<button class="del-btn" data-delete-student="'+escapeHtml(st.id)+'" title="Delete">✕</button>'+
+      (st.thumbnail?'<img class="photo" src="'+st.thumbnail+'" alt="">':'<div class="no-photo">'+escapeHtml((st.name||'?').charAt(0).toUpperCase())+'</div>')+
+      '<div class="name">'+escapeHtml(st.name)+'</div><div class="roll">Roll: '+escapeHtml(st.rollNo)+'</div>'+
+      '<div class="student-meta">'+(st.course?escapeHtml(st.course):'Course not set')+(st.batch?' · '+escapeHtml(st.batch):'')+'<br>'+(st.mobile?'📞 '+escapeHtml(st.mobile):'Mobile not set')+'<br>Fee: '+money(paid)+' / '+money(st.totalFee||0)+'</div>'+
+      '<span class="pill '+(due<=0?'paid':'due')+'">'+(due<=0?'Fee Clear':'Due '+money(due))+'</span>'+
+      (st.faceDescriptor?'<br><span class="badge">😊 Face saved</span>':'')+
+      '<div class="student-actions"><button class="btn-blue" data-edit-student="'+escapeHtml(st.id)+'">✏️ Edit</button><button class="qr-btn" data-qr-roll="'+escapeHtml(st.rollNo)+'" data-qr-name="'+escapeHtml(st.name)+'">📱 QR</button></div></div>';
+  }).join('');
+  el.querySelectorAll('[data-delete-student]').forEach(btn=>btn.addEventListener('click',()=>deleteStudent(btn.dataset.deleteStudent)));
+  el.querySelectorAll('[data-edit-student]').forEach(btn=>btn.addEventListener('click',()=>editStudent(btn.dataset.editStudent)));
+  el.querySelectorAll('[data-qr-roll]').forEach(btn=>btn.addEventListener('click',()=>showQR(btn.dataset.qrRoll,btn.dataset.qrName)));
+}
+
+function editStudent(id){
+  requireAdmin('edit student',()=>{
+    const st=students.find(x=>x.id===id);if(!st)return;
+    const root=document.getElementById('modalRoot');
+    root.innerHTML='<div class="modal-backdrop" id="editStudentBackdrop"><div class="modal" style="max-width:560px;text-align:left;max-height:90vh;overflow:auto">'+
+      '<h3>✏️ Edit Student</h3><p>Student profile update karein.</p>'+
+      '<label>Student Name *</label><input id="editName" type="text" value="'+escapeHtml(st.name||'')+'">'+
+      '<label style="margin-top:10px">Roll Number *</label><input id="editRoll" type="text" value="'+escapeHtml(st.rollNo||'')+'">'+
+      '<label style="margin-top:10px">Father / Guardian</label><input id="editFather" type="text" value="'+escapeHtml(st.fatherName||'')+'">'+
+      '<label style="margin-top:10px">Mobile</label><input id="editMobile" type="tel" maxlength="10" value="'+escapeHtml(st.mobile||'')+'">'+
+      '<label style="margin-top:10px">Course</label><select id="editCourse"><option value="CCC" '+(st.course==='CCC'?'selected':'')+'>CCC · ₹2,500</option><option value="BCA" '+(st.course==='BCA'?'selected':'')+'>BCA · ₹5,500</option><option value="DCA" '+(st.course==='DCA'?'selected':'')+'>DCA · ₹8,500</option><option value="ADCA" '+(st.course==='ADCA'?'selected':'')+'>ADCA · ₹10,000</option></select>'+
+      '<label style="margin-top:10px">Batch / Timing</label><input id="editBatch" type="text" value="'+escapeHtml(st.batch||'')+'">'+
+      '<label style="margin-top:10px">Admission Date</label><input id="editAdmission" type="date" value="'+escapeHtml(st.admissionDate||'')+'">'+
+      '<label style="margin-top:10px">Total Course Fee (₹)</label><input id="editTotalFee" type="number" min="0" value="'+Number(st.totalFee||0)+'">'+
+      '<div class="action-row"><button class="btn-green" id="saveStudentEdit">Save Changes</button><button class="btn-gray" id="cancelStudentEdit">Cancel</button></div></div></div>';
+    document.getElementById('editCourse').addEventListener('change',()=>{const fee=courseFeeFor(document.getElementById('editCourse').value);if(fee)document.getElementById('editTotalFee').value=fee;});
+    document.getElementById('cancelStudentEdit').addEventListener('click',closeModal);
+    document.getElementById('editStudentBackdrop').addEventListener('click',e=>{if(e.target.id==='editStudentBackdrop')closeModal();});
+    document.getElementById('saveStudentEdit').addEventListener('click',()=>{
+      const name=document.getElementById('editName').value.trim(),roll=document.getElementById('editRoll').value.trim(),mobile=document.getElementById('editMobile').value.trim();
+      if(!name||!roll){showToast('Name aur roll number required hain.','error');return;}
+      if(mobile&&!/^\d{10}$/.test(mobile)){showToast('Mobile 10 digits ka hona chahiye.','error');return;}
+      if(students.some(x=>x.id!==id&&String(x.rollNo).toLowerCase()===roll.toLowerCase())){showToast('Yeh roll number kisi aur student ka hai.','error');return;}
+      const oldRoll=st.rollNo,oldFee=Number(st.totalFee)||0;st.name=name;st.rollNo=roll;st.fatherName=document.getElementById('editFather').value.trim();st.mobile=mobile;
+      st.course=document.getElementById('editCourse').value.trim();st.batch=document.getElementById('editBatch').value.trim();st.updatedAt=new Date().toISOString();
+      st.admissionDate=document.getElementById('editAdmission').value||st.admissionDate||todayStr();st.totalFee=Math.max(0,Number(document.getElementById('editTotalFee').value)||0);
+      if(oldFee!==st.totalFee){st.installmentPlan=createInstallmentPlan(st.totalFee,st.admissionDate);fees.filter(f=>f.studentId===id).forEach(f=>{delete f.allocations;});migrateLegacyInstallments();}
+      attendance.forEach(a=>{if(a.rollNo===oldRoll){a.rollNo=roll;a.name=name;}});
+      fees.forEach(f=>{if(f.studentId===id){f.rollNo=roll;f.studentName=name;}});
+      saveStudents();saveAttendance();saveFees();closeModal();renderStudentList();refreshDashboard();refreshRecords();refreshFeeStudentOptions();refreshFeesView();refreshMonthlyReport();renderStudentReport();
+      showToast('Student profile update ho gaya.','success');
+    });
+  });
+}
+
+function deleteStudent(id){
+  requireAdmin('delete student',()=>{
+    const s=students.find(x=>x.id===id);
+    if(!s)return;
+    if(!confirm('Delete '+s.name+' (Roll '+s.rollNo+')?\n\nPurane attendance aur fee transactions history mein rahenge.'))return;
+    recordCloudDeletion('students',id);
+    students=students.filter(x=>x.id!==id);
+    saveStudents();
+    renderStudentList();
+    refreshDashboard();refreshFeeStudentOptions();refreshFeesView();refreshMonthlyReport();
+    showToast('Student delete ho gaya. Purani payment history safe hai.','info');
+  });
+}
+
+function showQR(rollNo,name){
+  if(isModalOpen())return;
+  const root=document.getElementById('modalRoot');
+  root.innerHTML=
+    '<div class="modal-backdrop" onclick="if(event.target===this)closeModal()">'+
+    '<div class="modal">'+
+    '<h3>Student QR Code</h3>'+
+    '<p>'+escapeHtml(name)+' · Roll '+escapeHtml(rollNo)+'</p>'+
+    '<div class="qr-box" id="qrBox"></div>'+
+    '<p style="font-size:12px;">QR ko ID card par print karein. Same QR se Check-In bhi hoga aur Check-Out bhi.</p>'+
+    '<button class="btn-gray" onclick="closeModal()">Close</button>'+
+    '</div></div>';
+  new QRCode(document.getElementById('qrBox'),{
+    text:'SKYNET:'+rollNo,width:200,height:200,
+    colorDark:'#0f2942',colorLight:'#ffffff'});
+}
+function closeModal(){document.getElementById('modalRoot').innerHTML='';}
+
+/* ================================================================
+   ATTENDANCE METHODS
+================================================================ */
+document.querySelectorAll('.method-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.method-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    stopAttendanceCamera();
+    renderMethod(btn.dataset.method);
+  });
+});
+
+function renderMethod(method){
+  const container=document.getElementById('methodContent');
+  if(method==='rollno'){
+    container.innerHTML=
+      '<div class="panel-box">'+
+      '<h3>🔢 Manual Roll Number Entry</h3>'+
+      '<p class="hint">Roll number type karein aur "Mark" dabayein. Mode (Auto/In/Out) upar se control hota hai.</p>'+
+      '<div class="form-row">'+
+      '<div><label>Roll Number</label><input type="text" id="manualRoll" placeholder="e.g. 101" autofocus></div>'+
+      '<div style="display:flex;align-items:flex-end;"><button class="btn-green" id="manualMark" style="width:100%;">✅ Mark</button></div>'+
+      '</div>'+
+      '<div id="manualResult"></div>'+
+      '</div>';
+    const doMark=()=>{
+      const roll=document.getElementById('manualRoll').value.trim();
+      if(!roll){showToast('Roll number daalein.','error');return;}
+      const result=markAttendance(roll,'rollno');
+      document.getElementById('manualResult').innerHTML=resultBanner(result);
+      if(result.ok){
+        document.getElementById('manualRoll').value='';
+        document.getElementById('manualRoll').focus();
+        refreshAttendanceViews();
+      }
+    };
+    document.getElementById('manualMark').addEventListener('click',doMark);
+    document.getElementById('manualRoll').addEventListener('keydown',e=>{if(e.key==='Enter')doMark();});
+  }
+  else if(method==='qr')renderQRPanel();
+  else if(method==='face')renderFacePanel();
+  else if(method==='photo')renderPhotoPanel();
+}
+
+function resultBanner(result){
+  if(!result.ok){
+    return '<div class="result-banner error">'+
+      '<div class="icon">❌</div>'+
+      '<div class="text"><strong>'+escapeHtml(result.reason)+'</strong></div></div>';
+  }
+  const isIn=result.action==='in';
+  return '<div class="result-banner '+(isIn?'success':'warning')+'">'+
+    '<div class="icon">'+(isIn?'🟢':'👋')+'</div>'+
+    '<div class="text">'+
+    '<strong>'+(isIn?'✅ Check-In: ':'👋 Check-Out: ')+escapeHtml(result.student.name)+'</strong>'+
+    '<small>Roll '+escapeHtml(result.student.rollNo)+' · '+result.time+'</small></div></div>';
+}
+
+function refreshAttendanceViews(){
+  renderTodayAttendance();
+  refreshDashboard();
+}
+
+/* ================================================================
+   CORE MARK ATTENDANCE (IN/OUT)
+================================================================ */
+function markAttendance(rollNo,method,extra){
+  const student=students.find(s=>s.rollNo===rollNo);
+  if(!student)return{ok:false,reason:'Roll '+rollNo+' register nahi hai.'};
+
+  const today=todayStr();
+  const time=nowTimeStr();
+
+  let existing=attendance.find(a=>a.date===today&&a.rollNo===rollNo);
+
+  let action=currentAction;
+  if(action==='auto'){
+    if(!existing||!existing.checkInTime)action='in';
+    else if(!existing.checkOutTime)action='out';
+    else return{ok:false,reason:student.name+' ki aaj In aur Out dono ho chuki hain.'};
+  }
+
+  if(action==='in'){
+    if(existing&&existing.checkInTime)
+      return{ok:false,reason:student.name+' ka Check-In pehle hi ho chuka hai ('+existing.checkInTime+').'};
+    if(!existing){
+      existing={
+        id:uid('a'),rollNo:student.rollNo,name:student.name,date:today,
+        checkInTime:null,checkInMethod:null,checkInPhoto:null,checkInConfidence:null,
+        checkOutTime:null,checkOutMethod:null,checkOutPhoto:null,checkOutConfidence:null,updatedAt:new Date().toISOString()
+      };
+      attendance.push(existing);
+    }
+    existing.checkInTime=time;
+    existing.checkInMethod=method;existing.updatedAt=new Date().toISOString();
+    existing.checkInPhoto=(extra&&extra.photo)||null;
+    existing.checkInConfidence=(extra&&extra.confidence)||null;
+    markWorkingDay(today,true);
+    saveAttendance();
+    showToast('🟢 '+student.name+' Check-In ✓ '+time,'success');
+    return{ok:true,student,time,action:'in'};
+  }
+
+  if(!existing||!existing.checkInTime)
+    return{ok:false,reason:student.name+' ne aaj Check-In nahi kiya. Pehle Check-In karein.'};
+  if(existing.checkOutTime)
+    return{ok:false,reason:student.name+' ka Check-Out pehle hi ho chuka hai ('+existing.checkOutTime+').'};
+  existing.checkOutTime=time;
+  existing.checkOutMethod=method;existing.updatedAt=new Date().toISOString();
+  existing.checkOutPhoto=(extra&&extra.photo)||null;
+  existing.checkOutConfidence=(extra&&extra.confidence)||null;
+  saveAttendance();
+  showToast('👋 '+student.name+' Check-Out ✓ '+time,'warning');
+  return{ok:true,student,time,action:'out'};
+}
+
+/* ================================================================
+   QR SCANNER
+================================================================ */
+function renderQRPanel(){
+  document.getElementById('methodContent').innerHTML=
+    '<div class="panel-box">'+
+    '<h3>📱 QR Code Scanner</h3>'+
+    '<p class="hint">Camera on karein. Student ID card par QR dikhayein — auto detect hoga. Mode upar se control hota hai (Auto/In/Out).</p>'+
+    '<div class="camera-wrap"><video id="qrVideo" autoplay muted playsinline></video></div>'+
+    '<div class="btn-group">'+
+    '<button class="btn-blue" id="qrStart">📷 Start Scanner</button>'+
+    '<button class="btn-red" id="qrStop" disabled>✖ Stop</button>'+
+    '</div><div id="qrResult"></div></div>';
+  document.getElementById('qrStart').addEventListener('click',startQRScanner);
+  document.getElementById('qrStop').addEventListener('click',()=>{
+    stopAttendanceCamera();
+    document.getElementById('qrStart').disabled=false;
+    document.getElementById('qrStop').disabled=true;
+  });
+}
+
+async function startQRScanner(){
+  const video=document.getElementById('qrVideo');
+  try{
+    const stream=await startCamera(video);
+    camera.active=true;camera.stream=stream;camera.mode='qr';
+    document.getElementById('qrStart').disabled=true;
+    document.getElementById('qrStop').disabled=false;
+
+    const scratch=document.createElement('canvas');
+    const ctx=scratch.getContext('2d');
+    let lastScan=0;
+
+    const loop=()=>{
+      if(!camera.active||camera.mode!=='qr')return;
+      const now=Date.now();
+      if(now-scanCooldownUntil<0){
+      }else if(now-lastScan>=250&&video.readyState===4){
+        lastScan=now;
+        scratch.width=video.videoWidth;scratch.height=video.videoHeight;
+        ctx.drawImage(video,0,0);
+        const img=ctx.getImageData(0,0,scratch.width,scratch.height);
+        const code=jsQR(img.data,img.width,img.height);
+        if(code&&code.data){
+          const r=handleQRCode(code.data);
+          if(r)scanCooldownUntil=Date.now()+2500;
+        }
+      }
+      camera.loopId=requestAnimationFrame(loop);
+    };
+    loop();
+  }catch(e){showToast('Camera open nahi hua: '+e.message,'error');}
+}
+
+function handleQRCode(data){
+  let roll=data.trim();
+  const idx=roll.indexOf(':');
+  if(idx!==-1)roll=roll.substring(idx+1).trim();
+  const result=markAttendance(roll,'qr');
+  document.getElementById('qrResult').innerHTML=resultBanner(result);
+  if(result.ok){refreshAttendanceViews();return true;}
+  return false;
+}
+
+/* ================================================================
+   FACE SCANNER
+================================================================ */
+function renderFacePanel(){
+  const container=document.getElementById('methodContent');
+  if(!faceApiReady){
+    container.innerHTML='<div class="panel-box"><h3>🧬 Biometric Face Attendance</h3><p class="hint" style="color:var(--red-dark);">⚠ Face models load nahi hue. Internet check karke refresh karein.</p></div>';
+    return;
+  }
+  const regFaces=students.filter(s=>s.faceDescriptor);
+  if(regFaces.length===0){
+    container.innerHTML='<div class="panel-box"><h3>🧬 Biometric Face Attendance</h3><p class="hint" style="color:var(--red-dark);">⚠ Abhi koi student face ke saath register nahi hai. Pehle Register tab mein jaakar face capture karein.</p></div>';
+    return;
+  }
+  container.innerHTML=
+    '<div class="panel-box">'+
+    '<h3>🧬 Biometric Face Attendance</h3>'+
+    '<p class="hint">Registered student ka face camera se match karke attendance mark hogi. Registered: <b>'+regFaces.length+'</b> students. Photo-only spoofing rokne wali certified liveness detection is version mein nahi hai; zaroorat par QR/manual verification bhi use karein.</p>'+
+    '<div class="camera-wrap"><video id="faceVideo" autoplay muted playsinline></video><canvas id="faceOverlay"></canvas></div>'+
+    '<div class="btn-group">'+
+    '<button class="btn-blue" id="faceStart">📷 Start Camera</button>'+
+    '<button class="btn-red" id="faceStop" disabled>✖ Stop</button>'+
+    '</div><div id="faceResult"></div></div>';
+  document.getElementById('faceStart').addEventListener('click',startFaceScanner);
+  document.getElementById('faceStop').addEventListener('click',()=>{
+    stopAttendanceCamera();
+    document.getElementById('faceStart').disabled=false;
+    document.getElementById('faceStop').disabled=true;
+  });
+}
+
+async function startFaceScanner(){
+  if(!faceApiReady)return;
+  const video=document.getElementById('faceVideo');
+  const overlay=document.getElementById('faceOverlay');
+  try{
+    const stream=await startCamera(video);
+    camera.active=true;camera.stream=stream;camera.mode='face';
+    document.getElementById('faceStart').disabled=true;
+    document.getElementById('faceStop').disabled=false;
+
+    const labeled=students.filter(s=>s.faceDescriptor)
+      .map(s=>new faceapi.LabeledFaceDescriptors(s.rollNo,[new Float32Array(s.faceDescriptor)]));
+    camera.matcher=new faceapi.FaceMatcher(labeled,FACE_MATCH_THRESHOLD);
+
+    const loop=async()=>{
+      if(!camera.active||camera.mode!=='face')return;
+      const inCooldown=Date.now()<scanCooldownUntil;
+      if(video.readyState===4&&!inCooldown){
+        try{
+          const dets=await faceapi
+            .detectAllFaces(video,new faceapi.TinyFaceDetectorOptions({inputSize:320,scoreThreshold:0.5}))
+            .withFaceLandmarks().withFaceDescriptors();
+          const dims=faceapi.matchDimensions(overlay,video,true);
+          const rs=faceapi.resizeResults(dets,dims);
+          const ctx=overlay.getContext('2d');
+          ctx.clearRect(0,0,overlay.width,overlay.height);
+          faceapi.draw.drawDetections(overlay,rs);
+
+          for(let i=0;i<dets.length;i++){
+            const det=dets[i];
+            const match=camera.matcher.findBestMatch(det.descriptor);
+            const box=rs[i].detection.box;
+            const label=match.label!=='unknown'
+              ?match.label+' ('+Math.round((1-match.distance)*100)+'%)'
+              :'Unknown';
+            new faceapi.draw.DrawBox(box,{label:label,lineWidth:2}).draw(overlay);
+
+            if(match.label!=='unknown'){
+              const result=markAttendance(match.label,'face',{
+                confidence:Math.round((1-match.distance)*100)/100
+              });
+              const rbox=document.getElementById('faceResult');
+              rbox.innerHTML=resultBanner(result);
+              scanCooldownUntil=Date.now()+2500;
+              if(result.ok)refreshAttendanceViews();
+              break;
+            }
+          }
+        }catch(err){}
+      }
+      if(camera.active&&camera.mode==='face')setTimeout(loop,350);
+    };
+    loop();
+  }catch(e){showToast('Camera open nahi hua: '+e.message,'error');}
+}
+
+/* ================================================================
+   PHOTO ATTENDANCE
+================================================================ */
+function renderPhotoPanel(){
+  document.getElementById('methodContent').innerHTML=
+    '<div class="panel-box">'+
+    '<h3>📸 Photo Capture</h3>'+
+    '<p class="hint">Camera on karein, student ka chehra saamne aaye, phir "Capture & Mark" dabayein. Photo record ke saath save hogi.</p>'+
+    '<div class="camera-wrap"><video id="photoVideo" autoplay muted playsinline></video></div>'+
+    '<div class="form-row" style="margin-top:14px;">'+
+    '<div><label>Roll Number</label><input type="text" id="photoRoll" placeholder="e.g. 101"></div>'+
+    '<div style="display:flex;align-items:flex-end;"><button class="btn-green" id="photoCapture" style="width:100%;">📸 Capture &amp; Mark</button></div>'+
+    '</div>'+
+    '<div class="btn-group" style="margin-top:10px;">'+
+    '<button class="btn-blue" id="photoStart">📷 Open Camera</button>'+
+    '<button class="btn-red" id="photoStop" disabled>✖ Close</button>'+
+    '</div><div id="photoResult"></div></div>';
+
+  document.getElementById('photoStart').addEventListener('click',async()=>{
+    try{
+      const stream=await startCamera(document.getElementById('photoVideo'));
+      camera.active=true;camera.stream=stream;camera.mode='photo';
+      document.getElementById('photoStart').disabled=true;
+      document.getElementById('photoStop').disabled=false;
+    }catch(e){showToast('Camera open nahi hua: '+e.message,'error');}
+  });
+  document.getElementById('photoStop').addEventListener('click',()=>{
+    stopAttendanceCamera();
+    document.getElementById('photoStart').disabled=false;
+    document.getElementById('photoStop').disabled=true;
+  });
+  document.getElementById('photoCapture').addEventListener('click',()=>{
+    const roll=document.getElementById('photoRoll').value.trim();
+    if(!roll){showToast('Roll number daalein.','error');return;}
+    const video=document.getElementById('photoVideo');
+    if(!video.videoWidth){showToast('Pehle camera open karein.','error');return;}
+    const thumb=document.createElement('canvas');
+    thumb.width=240;thumb.height=240;
+    const ctx=thumb.getContext('2d');
+    const size=Math.min(video.videoWidth,video.videoHeight);
+    const sx=(video.videoWidth-size)/2, sy=(video.videoHeight-size)/2;
+    ctx.drawImage(video,sx,sy,size,size,0,0,240,240);
+    const photo=thumb.toDataURL('image/jpeg',0.7);
+    const result=markAttendance(roll,'photo',{photo:photo});
+    document.getElementById('photoResult').innerHTML=resultBanner(result);
+    if(result.ok){
+      document.getElementById('photoRoll').value='';
+      refreshAttendanceViews();
+    }
+  });
+}
+
+/* ================================================================
+   STOP ATTENDANCE CAMERA
+================================================================ */
+function stopAttendanceCamera(){
+  camera.active=false;
+  if(camera.loopId){cancelAnimationFrame(camera.loopId);camera.loopId=null;}
+  if(camera.stream){stopStream(camera.stream);camera.stream=null;}
+  camera.mode=null;camera.matcher=null;
+  ['qrVideo','faceVideo','photoVideo'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(el)el.srcObject=null;
+  });
+}
+
+/* ================================================================
+   TODAY'S LOG
+================================================================ */
+function renderTodayAttendance(){
+  const today=todayStr();
+  const recs=attendance.filter(a=>a.date===today);
+  const container=document.getElementById('todayAttendance');
+  if(recs.length===0){
+    container.innerHTML='<div class="empty-state"><div class="big">📭</div><p>Aaj tak koi attendance nahi mark hui.</p></div>';
+    return;
+  }
+  let html='<table class="att-table"><thead><tr><th>Roll</th><th>Name</th><th>In</th><th>Out</th><th>Methods</th><th>Photo</th></tr></thead><tbody>';
+  recs.slice().reverse().forEach(r=>{
+    const inMethod=r.checkInMethod?'<span class="method-tag '+r.checkInMethod+'">'+r.checkInMethod.toUpperCase()+'</span>':'';
+    const outMethod=r.checkOutMethod?'<span class="method-tag '+r.checkOutMethod+'">'+r.checkOutMethod.toUpperCase()+'</span>':'';
+    const photo=r.checkInPhoto||r.checkOutPhoto;
+    html+='<tr>'+
+      '<td class="mono"><strong>'+escapeHtml(r.rollNo)+'</strong></td>'+
+      '<td>'+escapeHtml(r.name)+'</td>'+
+      '<td>'+(r.checkInTime?'<span class="time-in">'+r.checkInTime+'</span>':'<span class="time-empty">—</span>')+'</td>'+
+      '<td>'+(r.checkOutTime?'<span class="time-out">'+r.checkOutTime+'</span>':'<span class="time-empty">—</span>')+'</td>'+
+      '<td>'+(inMethod||'—')+'<br>'+(outMethod||'')+'</td>'+
+      '<td>'+(photo?'<img src="'+photo+'" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid #10b981;">':'—')+'</td>'+
+      '</tr>';
+  });
+  html+='</tbody></table>';
+  container.innerHTML=html;
+}
+
+/* ================================================================
+   RECORDS
+================================================================ */
+document.getElementById('recordsDate').addEventListener('change',refreshRecords);
+document.getElementById('recordSearch').addEventListener('input',refreshRecords);
+document.getElementById('printRecords').addEventListener('click',()=>window.print());
+document.getElementById('exportCsv').addEventListener('click',exportCSV);
+document.getElementById('clearDay').addEventListener('click',clearDay);
+document.getElementById('markTodayWorking').addEventListener('click',()=>requireAdmin('mark today as working day',()=>markWorkingDay(todayStr(),false)));
+document.getElementById('markSelectedWorking').addEventListener('click',()=>requireAdmin('mark selected date as working day',()=>markWorkingDay(document.getElementById('recordsDate').value||todayStr(),false)));
+
+function refreshRecords(){
+  const di=document.getElementById('recordsDate');
+  if(!di.value)di.value=todayStr();
+  const date=di.value;
+  const search=(document.getElementById('recordSearch')?.value||'').trim().toLowerCase();
+  const dayRecords=attendance.filter(a=>a.date===date);
+  const recs=dayRecords.filter(a=>
+    String(a.name||'').toLowerCase().includes(search) ||
+    String(a.rollNo||'').toLowerCase().includes(search)
+  );
+  const absentStudents=students.filter(s=>!dayRecords.some(a=>a.rollNo===s.rollNo&&a.checkInTime));
+  const container=document.getElementById('recordsContent');
+  if(recs.length===0){
+    if(workingDays.some(x=>x.date===date)){
+      container.innerHTML='<div class="panel-box"><h3>📅 '+escapeHtml(date)+' · Working Day</h3><p class="hint">Aaj kisi student ka check-in record nahi hai. Total Present: 0 · Total Absent: '+students.length+'</p><div>'+students.map(st=>'<span class="pill due" style="margin:3px">'+escapeHtml(st.rollNo)+' · '+escapeHtml(st.name)+'</span>').join('')+'</div></div>';
+    }else{
+      container.innerHTML='<div class="empty-state"><div class="big">📭</div><p>'+date+' par koi record nahi hai. Is date ko working day mark karna ho to “Working Day” button use karein.</p></div>';
+    }
+    return;
+  }
+  const inCount=recs.filter(r=>r.checkInTime).length;
+  const outCount=recs.filter(r=>r.checkOutTime).length;
+  let html='<div style="margin-bottom:12px;font-weight:700;color:var(--navy);font-size:14px;">'+
+    date+' · Showing: '+recs.length+' · In: '+inCount+' · Out: '+outCount+
+    ' · Absent (all registered): '+absentStudents.length+'</div>';
+  html+='<table class="att-table"><thead><tr><th>Roll</th><th>Name</th><th>In</th><th>Out</th><th>Duration</th><th>Status</th><th>Photo</th></tr></thead><tbody>';
+  recs.forEach(r=>{
+    const status=r.checkOutTime?'<span class="status-tag complete">✅ Complete</span>'
+      :r.checkInTime?'<span class="status-tag present">🟢 In</span>'
+      :'<span class="status-tag absent">—</span>';
+    const photo=r.checkInPhoto||r.checkOutPhoto;
+    html+='<tr>'+
+      '<td class="mono"><strong>'+escapeHtml(r.rollNo)+'</strong></td>'+
+      '<td>'+escapeHtml(r.name)+'</td>'+
+      '<td>'+(r.checkInTime?'<span class="time-in">'+r.checkInTime+'</span>':'<span class="time-empty">—</span>')+'</td>'+
+      '<td>'+(r.checkOutTime?'<span class="time-out">'+r.checkOutTime+'</span>':'<span class="time-empty">—</span>')+'</td>'+
+      '<td>'+durationText(r.checkInTime,r.checkOutTime)+'</td>'+
+      '<td>'+status+'</td>'+
+      '<td>'+(photo?'<img src="'+photo+'" style="width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid #10b981;">':'—')+'</td>'+
+      '</tr>';
+  });
+  html+='</tbody></table>';
+  container.innerHTML=html;
+}
+
+function exportCSV(){
+  const date=document.getElementById('recordsDate').value||todayStr();
+  const recs=attendance.filter(a=>a.date===date);
+  if(recs.length===0){showToast('Is date par koi record nahi hai.','error');return;}
+  const rows=[['Date','Roll No','Name','Check-In','In-Method','Check-Out','Out-Method','Duration']];
+  recs.forEach(r=>rows.push([r.date,r.rollNo,r.name,r.checkInTime||'',r.checkInMethod||'',r.checkOutTime||'',r.checkOutMethod||'',durationText(r.checkInTime,r.checkOutTime)]));
+  downloadCSV(rows,'SKYNET_Attendance_'+date+'.csv');showToast('Attendance CSV export ho gayi!','success');
+}
+
+function clearDay(){
+  requireAdmin('clear day records',()=>{
+    const date=document.getElementById('recordsDate').value||todayStr();
+    const recs=attendance.filter(a=>a.date===date);
+    if(recs.length===0){showToast('Is date par koi record nahi hai.','error');return;}
+    if(!confirm(date+' ke '+recs.length+' records delete karne hain?'))return;
+    recs.forEach(a=>recordCloudDeletion('attendance',a.id));
+    attendance=attendance.filter(a=>a.date!==date);
+    saveAttendance();
+    refreshRecords();
+    refreshDashboard();
+    renderTodayAttendance();
+    showToast('Records delete ho gaye.','info');
+  });
+}
+
+/* ================================================================
+   FEES MANAGEMENT
+================================================================ */
+function refreshFeeStudentOptions(){
+  const sel=document.getElementById('feeStudent'),filter=document.getElementById('feeFilterStudent');
+  if(!sel||!filter)return;
+  const old=sel.value,oldFilter=filter.value;
+  sel.innerHTML='<option value="">Select student</option>'+students.slice().sort((a,b)=>String(a.name).localeCompare(String(b.name))).map(st=>'<option value="'+escapeHtml(st.id)+'">'+escapeHtml(st.name)+' · '+escapeHtml(st.rollNo)+'</option>').join('');
+  filter.innerHTML='<option value="">All Students</option>'+students.slice().sort((a,b)=>String(a.name).localeCompare(String(b.name))).map(st=>'<option value="'+escapeHtml(st.id)+'">'+escapeHtml(st.name)+' · '+escapeHtml(st.rollNo)+'</option>').join('');
+  if(students.some(st=>st.id===old))sel.value=old;
+  if(students.some(st=>st.id===oldFilter))filter.value=oldFilter;
+  updateFeeStudentSummary();
+}
+function updateFeeStudentSummary(){
+  const st=students.find(x=>x.id===document.getElementById('feeStudent')?.value);
+  document.getElementById('feeTotal').textContent=money(st?.totalFee||0);
+  document.getElementById('feePaid').textContent=money(st?studentPaid(st.id):0);
+  document.getElementById('feeDue').textContent=money(st?studentDue(st):0);
+  const sel=document.getElementById('feeInstallment');if(!sel)return;
+  if(!st){sel.innerHTML='<option value="auto">Auto · Oldest pending installment</option>';return;}
+  const rows=getInstallmentStatus(st);sel.innerHTML='<option value="auto">Auto · Oldest pending</option>'+rows.filter(x=>x.remaining>0.009).map(x=>'<option value="'+escapeHtml(x.id)+'">'+escapeHtml(x.name)+' · Due '+money(x.remaining)+'</option>').join('');
+  const first=rows.find(x=>x.remaining>0.009);if(first){sel.value=sel.value!=='auto'&&rows.some(x=>x.id===sel.value&&x.remaining>0.009)?sel.value:'auto';const chosen=sel.value==='auto'?first:rows.find(x=>x.id===sel.value);if(chosen&&(!document.getElementById('feeAmount').value||Number(document.getElementById('feeAmount').value)<=0))document.getElementById('feeAmount').value=chosen.remaining;}
+  else {document.getElementById('feeAmount').value='';}
+}
+document.getElementById('feeStudent').addEventListener('change',()=>{document.getElementById('feeAmount').value='';updateFeeStudentSummary();});
+document.getElementById('feeInstallment').addEventListener('change',()=>{const st=students.find(x=>x.id===document.getElementById('feeStudent').value);if(!st)return;const rows=getInstallmentStatus(st);const chosen=document.getElementById('feeInstallment').value==='auto'?rows.find(x=>x.remaining>0.009):rows.find(x=>x.id===document.getElementById('feeInstallment').value);document.getElementById('feeAmount').value=chosen?chosen.remaining:'';});
+document.getElementById('feeFilterStudent').addEventListener('change',renderFeeLedger);
+document.getElementById('feeFilterMonth').addEventListener('change',renderFeeLedger);
+document.getElementById('feeDate').value=todayStr();
+document.getElementById('feeFilterMonth').value=todayStr().slice(0,7);
+document.getElementById('feeDate').addEventListener('change',()=>{});
+document.getElementById('saveFee').addEventListener('click',()=>{
+  requireAdmin('collect fee',()=>{
+    const student=students.find(st=>st.id===document.getElementById('feeStudent').value);
+    const amount=Number(document.getElementById('feeAmount').value);
+    const date=document.getElementById('feeDate').value||todayStr();
+    if(!student){showToast('Pehle student select karein.','error');return;}
+    if(!Number.isFinite(amount)||amount<=0){showToast('Valid payment amount daalein.','error');return;}
+    if(amount>studentDue(student)+0.009){showToast('Payment pending balance se zyada nahi ho sakti.','error');return;}
+    const preferred=document.getElementById('feeInstallment').value||'auto';
+    const allocation=allocateInstallmentPayment(student,Math.round(amount*100)/100,preferred);
+    if(allocation.unallocated>0.009){showToast('Installment balance se zyada amount hai. Amount check karein.','error');return;}
+    const payment={id:uid('fee'),studentId:student.id,rollNo:student.rollNo,studentName:student.name,amount:Math.round(amount*100)/100,date,
+      installment:allocation.allocations.map(a=>a.name).join(' + '),allocations:allocation.allocations,mode:document.getElementById('feeMode').value,
+      reference:document.getElementById('feeReference').value.trim(),note:document.getElementById('feeNote').value.trim(),receivedAt:new Date().toISOString()};
+    fees.push(payment);saveFees();
+    ['feeAmount','feeInstallment','feeReference','feeNote'].forEach(id=>document.getElementById(id).value='');
+    updateFeeStudentSummary();renderFeeLedger();renderPendingFees();refreshDashboard();refreshMonthlyReport();renderStudentReport();
+    showToast('Payment save ho gayi. Receipt ready hai.','success');showFeeReceipt(payment.id);
+  });
+});
+document.getElementById('exportFeesCsv').addEventListener('click',exportFeesCSV);
+function refreshFeesView(){refreshFeeStudentOptions();renderFeeLedger();renderPendingFees();}
+function renderFeeLedger(){
+  const id=document.getElementById('feeFilterStudent')?.value||'',month=document.getElementById('feeFilterMonth')?.value||'';
+  const rows=fees.filter(f=>(!id||f.studentId===id)&&(!month||String(f.date||'').startsWith(month))).sort((a,b)=>String(b.date).localeCompare(String(a.date))||String(b.receivedAt).localeCompare(String(a.receivedAt)));
+  const total=rows.reduce((n,f)=>n+(Number(f.amount)||0),0),el=document.getElementById('feeLedger');
+  if(!rows.length){el.innerHTML='<div class="empty-state"><div class="big">💳</div><p>Is filter mein koi payment record nahi hai.</p></div>';return;}
+  let html='<div style="font-weight:800;color:var(--navy);margin:8px 0 12px;">Payments: '+rows.length+' · Total Received: '+money(total)+'</div>';
+  html+='<div style="overflow-x:auto"><table class="att-table"><thead><tr><th>Date</th><th>Student</th><th>Installment</th><th>Amount</th><th>Mode</th><th>Reference</th><th>Receipt</th><th>Action</th></tr></thead><tbody>';
+  rows.forEach(f=>{html+='<tr><td>'+escapeHtml(f.date||'')+'</td><td><b>'+escapeHtml(f.studentName||'')+'</b><br><small>'+escapeHtml(f.rollNo||'')+'</small></td><td>'+escapeHtml(f.installment||'—')+'</td><td><b>'+money(f.amount)+'</b></td><td>'+escapeHtml(f.mode||'')+'</td><td>'+escapeHtml(f.reference||'—')+'</td><td><button class="btn-blue" style="padding:6px 9px;font-size:11px" data-receipt="'+escapeHtml(f.id)+'">🧾 Print</button></td><td><button class="btn-red" style="padding:6px 9px;font-size:11px" data-delete-fee="'+escapeHtml(f.id)+'">Delete</button></td></tr>';});
+  html+='</tbody></table></div>';el.innerHTML=html;
+  el.querySelectorAll('[data-receipt]').forEach(b=>b.addEventListener('click',()=>showFeeReceipt(b.dataset.receipt)));
+  el.querySelectorAll('[data-delete-fee]').forEach(b=>b.addEventListener('click',()=>deleteFeePayment(b.dataset.deleteFee)));
+}
+function renderPendingFees(){
+  const pending=students.map(st=>({st,due:studentDue(st)})).filter(x=>x.due>0).sort((a,b)=>b.due-a.due);
+  const el=document.getElementById('pendingFeesList');
+  if(!pending.length){el.innerHTML='<div class="empty-state"><div class="big">✅</div><p>Koi pending fee nahi hai, ya course fee set nahi ki gayi.</p></div>';return;}
+  el.innerHTML='<div style="overflow-x:auto"><table class="att-table"><thead><tr><th>Student</th><th>Course</th><th>Total Fee</th><th>Paid</th><th>Due</th><th>Mobile</th></tr></thead><tbody>'+pending.map(x=>'<tr><td><b>'+escapeHtml(x.st.name)+'</b><br><small>'+escapeHtml(x.st.rollNo)+'</small></td><td>'+escapeHtml(x.st.course||'—')+'</td><td>'+money(x.st.totalFee)+'</td><td>'+money(studentPaid(x.st.id))+'</td><td><b style="color:#c2410c">'+money(x.due)+'</b></td><td>'+escapeHtml(x.st.mobile||'—')+'</td></tr>').join('')+'</tbody></table></div>';
+}
+function deleteFeePayment(id){
+  requireAdmin('delete payment',()=>{
+    const f=fees.find(x=>x.id===id);if(!f)return;
+    if(!confirm('Payment '+money(f.amount)+' ('+(f.studentName||'Student')+') delete karni hai?'))return;
+    recordCloudDeletion('fees',id);fees=fees.filter(x=>x.id!==id);saveFees();refreshFeesView();refreshDashboard();refreshMonthlyReport();showToast('Payment record delete ho gaya.','info');
+  });
+}
+function showFeeReceipt(id){
+  const f=fees.find(x=>x.id===id);if(!f)return;
+  const st=students.find(x=>x.id===f.studentId);const paid=studentPaid(f.studentId),due=st?studentDue(st):null;
+  const root=document.getElementById('modalRoot');
+  root.innerHTML='<div class="modal-backdrop" id="receiptBackdrop"><div class="modal" style="max-width:520px;text-align:left"><div id="printReceiptArea" class="receipt-paper">'+
+    '<h2>SKYNET COMPUTER CENTER</h2><p style="text-align:center;margin:3px 0 14px;font-size:12px">VPO RAMGARH, DISTT PANCHKULA, HARYANA<br>Fee Payment Receipt</p><div class="receipt-line"><b>Receipt No.</b><span>'+escapeHtml(f.id)+'</span></div><div class="receipt-line"><b>Date</b><span>'+escapeHtml(f.date||'')+'</span></div><div class="receipt-line"><b>Student</b><span>'+escapeHtml(f.studentName||'')+'</span></div><div class="receipt-line"><b>Roll No.</b><span>'+escapeHtml(f.rollNo||'')+'</span></div><div class="receipt-line"><b>Course</b><span>'+escapeHtml(st?.course||'—')+'</span></div><div class="receipt-line"><b>Installment</b><span>'+escapeHtml(f.installment||'—')+'</span></div><div class="receipt-line"><b>Payment Mode</b><span>'+escapeHtml(f.mode||'')+'</span></div><div class="receipt-line"><b>Amount Received</b><strong>'+money(f.amount)+'</strong></div><div class="receipt-line"><b>Total Paid So Far</b><span>'+money(paid)+'</span></div>'+(st?'<div class="receipt-line"><b>Balance Due</b><span>'+money(due)+'</span></div>':'')+'<div class="receipt-line"><b>Reference</b><span>'+escapeHtml(f.reference||'—')+'</span></div><p style="margin:20px 0 0;text-align:right;font-size:12px">Authorized Signature: ______________</p><p style="text-align:center;font-size:11px;color:#64748b;margin:12px 0 0">Thank you for your payment.</p></div><div class="action-row"><button class="btn-green" id="printFeeReceipt">🖨 Print Receipt</button><button class="btn-gray" id="closeFeeReceipt">Close</button></div></div></div>';
+  document.getElementById('closeFeeReceipt').addEventListener('click',closeModal);
+  document.getElementById('receiptBackdrop').addEventListener('click',e=>{if(e.target.id==='receiptBackdrop')closeModal();});
+  document.getElementById('printFeeReceipt').addEventListener('click',()=>{
+    const area=document.getElementById('printReceiptArea');const win=window.open('','_blank','width=700,height=800');
+    if(!win){showToast('Print window blocked. Browser popup allow karein.','error');return;}
+    win.document.write('<!doctype html><html><head><title>SKYNET Fee Receipt</title><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;padding:24px;color:#111}.receipt-paper{max-width:650px;margin:auto;border:1px dashed #777;padding:22px}.receipt-paper h2{text-align:center;margin:0}.receipt-line{display:flex;justify-content:space-between;border-bottom:1px dashed #bbb;padding:9px 0;font-size:13px}p{text-align:center}</style></head><body>'+area.outerHTML+'</body></html>');
+    win.document.close();win.focus();setTimeout(()=>win.print(),300);
+  });
+}
+function exportFeesCSV(){
+  if(!fees.length){showToast('Koi fee payment record nahi hai.','error');return;}
+  const rows=[['Date','Receipt ID','Roll No','Student','Installment','Amount','Mode','Reference','Remarks'],...fees.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(f=>[f.date,f.id,f.rollNo,f.studentName,f.installment,f.amount,f.mode,f.reference,f.note])];
+  downloadCSV(rows,'SKYNET_Fee_Ledger_'+todayStr()+'.csv');showToast('Fee CSV export ho gayi.','success');
+}
+function downloadCSV(rows,filename){
+  const csv='\ufeff'+rows.map(row=>row.map(csvCell).join(',')).join('\r\n');
+  const blob=new Blob([csv],{type:'text/csv;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');
+  a.href=url;a.download=filename;document.body.appendChild(a);a.click();a.remove();URL.revokeObjectURL(url);
+}
+
+/* ================================================================
+   INDIVIDUAL STUDENT REPORT
+================================================================ */
+function renderStudentReport(){
+  const roll=(document.getElementById('reportRollInput')?.value||'').trim().toLowerCase();
+  const el=document.getElementById('studentReportContent');if(!el)return;
+  if(!roll){el.innerHTML='<div class="empty-state"><div class="big">🎓</div><p>Student ka Roll Number enter karein.</p></div>';return;}
+  const st=students.find(x=>String(x.rollNo||'').trim().toLowerCase()===roll);
+  if(!st){el.innerHTML='<div class="empty-state"><div class="big">🔎</div><p>Is Roll Number ka student nahi mila.</p></div>';return;}
+  const presentDates=[...new Set(attendance.filter(a=>String(a.rollNo)===String(st.rollNo)&&a.checkInTime&&a.date>=(st.admissionDate||'0000-00-00')&&a.date<=todayStr()).map(a=>a.date))];
+  const instituteDates=[...new Set([...workingDays.map(x=>x.date),...attendance.filter(a=>a.checkInTime).map(a=>a.date)].filter(day=>day>=(st.admissionDate||'0000-00-00')&&day<=todayStr()))];
+  const eligibleDays=instituteDates.length;const present=presentDates.length;const absent=Math.max(0,eligibleDays-present);
+  const paid=studentPaid(st.id),due=studentDue(st),schedule=getInstallmentStatus(st);
+  const studentPayments=fees.filter(f=>f.studentId===st.id).sort((a,b)=>String(a.date).localeCompare(String(b.date)));
+  const overdue=schedule.filter(x=>x.remaining>0.009&&x.overdueDays>0).reduce((n,x)=>n+x.overdueDays,0);
+  let html='<div class="fee-summary">'+
+    '<div class="stat-card blue"><div class="num">'+money(st.totalFee)+'</div><div class="label">Total Course Fee</div></div>'+
+    '<div class="stat-card green"><div class="num">'+money(paid)+'</div><div class="label">Total Paid</div></div>'+
+    '<div class="stat-card orange"><div class="num">'+money(due)+'</div><div class="label">Pending Fee</div></div>'+
+    '<div class="stat-card green"><div class="num">'+present+'</div><div class="label">Total Present Days</div></div>'+
+    '<div class="stat-card orange"><div class="num">'+absent+'</div><div class="label">Total Absent Days</div></div></div>';
+  html+='<div class="panel-box"><div class="section-heading"><h3>👤 '+escapeHtml(st.name)+' · '+escapeHtml(st.rollNo)+'</h3><span class="pill '+(due<=0?'paid':'due')+'">'+(due<=0?'Fee Clear':'Fee Pending')+'</span></div><p class="small-muted">Father/Guardian: '+escapeHtml(st.fatherName||'—')+' · Mobile: '+escapeHtml(st.mobile||'—')+' · Course: '+escapeHtml(st.course||'—')+' · Batch: '+escapeHtml(st.batch||'—')+' · Admission: '+escapeHtml(st.admissionDate||'—')+'</p><p class="small-muted">Attendance counted on marked institute working days plus any date when a student check-in was recorded after this student&#39;s admission. Marked institute days: '+eligibleDays+'. Overdue days shown below are days past each installment due date.</p></div>';
+  html+='<div class="panel-box"><h3>📅 Installment Schedule &amp; Pending Days</h3><div style="overflow-x:auto"><table class="att-table"><thead><tr><th>Installment</th><th>Due Date</th><th>Installment Fee</th><th>Paid</th><th>Pending</th><th>Status / Pending Days</th></tr></thead><tbody>';
+  html+=schedule.map(x=>{const status=x.remaining<=0.009?'Paid':x.overdueDays>0?'Overdue':'Upcoming';const days=x.remaining<=0.009?'—':x.overdueDays>0?(x.overdueDays+' days overdue'):(dateDiffDays(todayStr(),x.dueDate)+' days left');return '<tr><td><b>'+escapeHtml(x.name)+'</b></td><td>'+escapeHtml(x.dueDate)+'</td><td>'+money(x.amount)+'</td><td>'+money(x.paid)+'</td><td><b>'+money(x.remaining)+'</b></td><td><span class="pill '+(status==='Paid'?'paid':'due')+'">'+status+'</span><br><small>'+days+'</small></td></tr>';}).join('');
+  html+='</tbody></table></div><p class="small-muted">Total overdue installment days (sum of overdue days for unpaid installments): '+overdue+' days.</p></div>';
+  html+='<div class="panel-box"><h3>💳 Paid Installments · Payment Dates</h3><div style="overflow-x:auto"><table class="att-table"><thead><tr><th>Payment Date</th><th>Installment</th><th>Paid Amount</th><th>Mode</th><th>Receipt No.</th></tr></thead><tbody>'+(studentPayments.length?studentPayments.map(f=>'<tr><td>'+escapeHtml(f.date||'')+'</td><td>'+escapeHtml(f.installment||'—')+'</td><td><b>'+money(f.amount)+'</b></td><td>'+escapeHtml(f.mode||'')+'</td><td>'+escapeHtml(f.id||'')+'</td></tr>').join(''):'<tr><td colspan="5">No payment recorded.</td></tr>')+'</tbody></table></div></div>';
+  el.innerHTML=html;
+}
+document.getElementById('reportRollInput').addEventListener('input',renderStudentReport);
+document.getElementById('reportRollInput').addEventListener('keydown',e=>{if(e.key==='Enter')renderStudentReport();});
+document.getElementById('findStudentReport').addEventListener('click',renderStudentReport);
+document.getElementById('printStudentReport').addEventListener('click',()=>{
+  const el=document.getElementById('studentReportContent');if(!el||!el.innerHTML.trim()){showToast('Pehle Student Report kholein.','error');return;}
+  const win=window.open('','_blank','width=1100,height=850');if(!win){showToast('Print window blocked. Browser popup allow karein.','error');return;}
+  win.document.write('<!doctype html><html><head><meta charset="utf-8"><title>SKYNET Student Report</title><style>body{font-family:Arial;padding:20px;color:#17243c}h3{color:#17345f}.fee-summary{display:flex;gap:8px;flex-wrap:wrap}.stat-card{border:1px solid #ccd5e4;padding:12px;min-width:120px;border-radius:8px}.num{font-size:20px;font-weight:bold}table{width:100%;border-collapse:collapse}td,th{border:1px solid #ddd;padding:8px;font-size:11px;text-align:left}.panel-box{border:1px solid #ddd;border-radius:8px;padding:12px;margin:12px 0}.small-muted{font-size:11px;color:#555}</style></head><body><h2>SKYNET COMPUTER CENTER · Student Report</h2>'+el.innerHTML+'</body></html>');
+  win.document.close();win.focus();setTimeout(()=>win.print(),300);
+});
+
+/* ================================================================
+   MONTHLY REPORTS
+================================================================ */
+document.getElementById('reportMonth').value=todayStr().slice(0,7);
+document.getElementById('reportMonth').addEventListener('change',refreshMonthlyReport);
+document.getElementById('exportMonthlyCsv').addEventListener('click',exportMonthlyCSV);
+document.getElementById('printMonthlyReport').addEventListener('click',printMonthlyReportWindow);
+function getMonthlyReportData(){
+  const month=document.getElementById('reportMonth').value||todayStr().slice(0,7);
+  const monthRecords=attendance.filter(a=>String(a.date||'').startsWith(month));
+  const markedDays=[...new Set([...workingDays.filter(x=>String(x.date||'').startsWith(month)).map(x=>x.date),...monthRecords.filter(a=>a.checkInTime).map(a=>a.date)])].sort();
+  const monthFees=fees.filter(f=>String(f.date||'').startsWith(month));
+  const reportStudents=students.filter(st=>!st.admissionDate||st.admissionDate.slice(0,7)<=month);
+  const items=reportStudents.map(st=>{
+    const presentDays=new Set(monthRecords.filter(a=>a.rollNo===st.rollNo&&a.checkInTime).map(a=>a.date)).size;
+    const eligibleMarkedDays=markedDays.filter(day=>!st.admissionDate||day>=st.admissionDate);
+    const pct=eligibleMarkedDays.length?Math.round((presentDays/eligibleMarkedDays.length)*100):0;
+    return {student:st,presentDays,markedDays:eligibleMarkedDays.length,pct};
+  });
+  return {month,monthRecords,markedDays,monthFees,items,feeTotal:monthFees.reduce((a,f)=>a+(Number(f.amount)||0),0)};
+}
+function refreshMonthlyReport(){
+  const {month,monthRecords,markedDays,monthFees,items,feeTotal}=getMonthlyReportData();
+  document.getElementById('reportActiveStudents').textContent=items.length;
+  document.getElementById('reportPresentCount').textContent=monthRecords.filter(a=>a.checkInTime).length;
+  document.getElementById('reportMarkedDays').textContent=markedDays.length;
+  document.getElementById('reportFeeCollection').textContent=money(feeTotal);
+  const el=document.getElementById('monthlyReportContent');
+  if(!items.length){el.innerHTML='<div class="empty-state"><div class="big">📊</div><p>Is month ke liye student data nahi hai.</p></div>';return;}
+  el.innerHTML='<div class="panel-box"><h3>Student-wise Attendance · '+escapeHtml(month)+'</h3><div style="overflow-x:auto"><table class="att-table"><thead><tr><th>Roll</th><th>Student</th><th>Course</th><th>Present Days</th><th>Working Days</th><th>Attendance %</th><th>Fee Collected</th></tr></thead><tbody>'+items.map(x=>{
+    const collected=monthFees.filter(f=>f.studentId===x.student.id).reduce((a,f)=>a+(Number(f.amount)||0),0);
+    return '<tr><td>'+escapeHtml(x.student.rollNo)+'</td><td><b>'+escapeHtml(x.student.name)+'</b></td><td>'+escapeHtml(x.student.course||'—')+'</td><td>'+x.presentDays+'</td><td>'+x.markedDays+'</td><td><b>'+x.pct+'%</b></td><td>'+money(collected)+'</td></tr>';
+  }).join('')+'</tbody></table></div><p class="small-muted" style="margin-top:10px">Note: Marked Days mein manually marked institute Working Days aur kisi bhi student ke check-in wale din shamil hain. Pura batch absent ho to us date ko Attendance/Records tab se Working Day mark karein.</p></div>'+
+  '<div class="panel-box"><h3>Monthly Fee Transactions</h3><div style="overflow-x:auto"><table class="att-table"><thead><tr><th>Date</th><th>Student</th><th>Installment</th><th>Amount</th><th>Mode</th></tr></thead><tbody>'+(monthFees.length?monthFees.slice().sort((a,b)=>String(a.date).localeCompare(String(b.date))).map(f=>'<tr><td>'+escapeHtml(f.date)+'</td><td>'+escapeHtml(f.studentName)+'</td><td>'+escapeHtml(f.installment||'—')+'</td><td>'+money(f.amount)+'</td><td>'+escapeHtml(f.mode||'')+'</td></tr>').join(''):'<tr><td colspan="5">No fee collection this month.</td></tr>')+'</tbody></table></div><p style="font-weight:800;text-align:right">Total: '+money(feeTotal)+'</p></div>';
+}
+function printMonthlyReportWindow(){
+  const month=document.getElementById('reportMonth').value||todayStr().slice(0,7);
+  const content=document.getElementById('monthlyReportContent').innerHTML;
+  const win=window.open('','_blank','width=1000,height=800');
+  if(!win){showToast('Print window blocked. Browser popup allow karein.','error');return;}
+  win.document.write('<!doctype html><html><head><title>SKYNET Monthly Report '+escapeHtml(month)+'</title><meta charset="utf-8"><style>body{font-family:Arial,sans-serif;padding:22px;color:#172033}h2{text-align:center;color:#0f2942}.panel-box{border:1px solid #ddd;padding:14px;margin:14px 0;border-radius:8px}table{width:100%;border-collapse:collapse}th,td{border:1px solid #ddd;padding:7px;text-align:left;font-size:11px}th{background:#eef3f9}p{font-size:11px;color:#555}</style></head><body><h2>SKYNET COMPUTER CENTER<br>Monthly Report · '+escapeHtml(month)+'</h2>'+content+'</body></html>');
+  win.document.close();win.focus();setTimeout(()=>win.print(),300);
+}
+function exportMonthlyCSV(){
+  const {month,monthRecords,markedDays,monthFees,items}=getMonthlyReportData();
+  const rows=[['Month','Roll No','Student','Course','Present Days','Marked Days','Attendance %','Fee Collected']];
+  items.forEach(x=>rows.push([month,x.student.rollNo,x.student.name,x.student.course||'',x.presentDays,x.markedDays,x.pct+'%',monthFees.filter(f=>f.studentId===x.student.id).reduce((a,f)=>a+(Number(f.amount)||0),0)]));
+  if(!items.length){showToast('Export ke liye students nahi hain.','error');return;}
+  downloadCSV(rows,'SKYNET_Monthly_Report_'+month+'.csv');showToast('Monthly report export ho gayi.','success');
+}
+
+/* ================================================================
+   GOOGLE SHEETS CLOUD SYNC
+================================================================ */
+function cleanStudentsForCloud(){return students.map(st=>{const copy={...st};delete copy.faceDescriptor;delete copy.thumbnail;return copy;});}
+function cloudRecordTime(item,fields){for(const f of fields){const t=Date.parse(item&&item[f]||'');if(!Number.isNaN(t))return t;}return 0;}
+function mergeBrowserAndCloud(localRows,cloudRows,dateFields){
+  const map=new Map((cloudRows||[]).filter(x=>x&&x.id).map(x=>[String(x.id),x]));
+  (localRows||[]).forEach(x=>{if(!x||!x.id)return;const k=String(x.id),remote=map.get(k);if(!remote||cloudRecordTime(x,dateFields)>=cloudRecordTime(remote,dateFields))map.set(k,x);});
+  return Array.from(map.values());
+}
+function cloudConfigured(){return /^https:\/\/script\.google\.com\/macros\/s\/[^\s]+\/exec(?:[?#].*)?$/.test(String(settings.sheetsUrl||''))&&String(settings.sheetsToken||'').length>=12;}
+function setSheetsStatus(message,state){const el=document.getElementById('sheetsStatus');if(!el)return;el.className='status-banner '+(state==='ok'?'ready':state==='error'?'error':'loading');el.innerHTML='<span class="sync-dot '+(state==='ok'?'online':state==='error'?'offline':'')+'"></span><span>'+escapeHtml(message)+'</span>';}
+function loadSheetsSettingsUI(){const u=document.getElementById('sheetsUrl'),t=document.getElementById('sheetsToken');if(u)u.value=settings.sheetsUrl||'';if(t)t.value=settings.sheetsToken||'';setSheetsStatus(cloudConfigured()?'Google Sheets configured. Last fetch: '+(cloudLastPulledAt?new Date(cloudLastPulledAt).toLocaleString():'not yet'):'Google Sheets not connected.',cloudConfigured()?'ok':'loading');}
+function scheduleCloudSync(){if(cloudApplying||!cloudReady||!cloudConfigured()||!isAdminUnlocked())return;clearTimeout(cloudSyncTimer);cloudSyncTimer=setTimeout(()=>{cloudSyncTimer=null;pushCloudSnapshot('auto');},1200);}
+function cloudJsonp(action){return new Promise((resolve,reject)=>{
+  if(!cloudConfigured()){reject(new Error('Google Sheets URL / token missing.'));return;}
+  const callback='skynetCloudCb_'+Date.now()+'_'+Math.floor(Math.random()*100000);
+  const script=document.createElement('script');let finished=false;
+  const cleanup=()=>{if(finished)return;finished=true;delete window[callback];script.remove();clearTimeout(timer);};
+  const timer=setTimeout(()=>{cleanup();reject(new Error('Google Sheets response timeout. URL, deployment permission ya token check karein.'));},18000);
+  window[callback]=data=>{cleanup();if(!data||data.ok!==true){reject(new Error(data&&data.error?data.error:'Google Sheets se valid response nahi mila.'));return;}resolve(data);};
+  script.onerror=()=>{cleanup();reject(new Error('Google Sheets endpoint load nahi hua. Web App URL check karein.'));};
+  const sep=settings.sheetsUrl.includes('?')?'&':'?';
+  script.src=settings.sheetsUrl+sep+'action=load&token='+encodeURIComponent(settings.sheetsToken)+'&callback='+encodeURIComponent(callback)+'&_='+Date.now();
+  document.head.appendChild(script);
+});}
+async function pullCloudSnapshot(silent){
+  if(!isAdminUnlocked()){if(!silent)setSheetsStatus('Cloud data dekhne/sync karne ke liye Admin PIN unlock karein.','error');return false;}
+  if(!cloudConfigured()){if(!silent)setSheetsStatus('Google Sheets URL aur token set karein.','error');return false;}
+  if(cloudPullBusy)return false;cloudPullBusy=true;
+  try{
+    setSheetsStatus('Google Sheet se data fetch ho raha hai...','loading');
+    const data=await cloudJsonp('load');
+    if(data.initialized){
+      const localStudents=students.slice(),localAttendance=attendance.slice(),localFees=fees.slice(),localWorkingDays=workingDays.slice(),localDeletes=cloudDeletions.slice();
+      const remoteStudents=Array.isArray(data.students)?data.students:[];
+      const remoteAttendance=Array.isArray(data.attendance)?data.attendance:[];
+      const remoteFees=Array.isArray(data.fees)?data.fees:[];
+      const remoteWorkingDays=Array.isArray(data.workingDays)?data.workingDays:[];
+      const delMap=new Map();[...(Array.isArray(data.deletions)?data.deletions:[]),...localDeletes].forEach(x=>{if(x&&x.entity&&x.recordId)delMap.set(x.entity+':'+x.recordId,x);});
+      cloudDeletions=Array.from(delMap.values());
+      const deletedStudents=deletionSet('students'),deletedAttendance=deletionSet('attendance'),deletedFees=deletionSet('fees'),deletedWorkingDays=deletionSet('workingDays');
+      const oldById=new Map(localStudents.map(x=>[x.id,x]));
+      students=mergeBrowserAndCloud(localStudents,remoteStudents,['updatedAt','registeredAt']).filter(st=>!deletedStudents.has(String(st.id))).map(st=>{const old=oldById.get(st.id)||{};return {...st,faceDescriptor:old.faceDescriptor||null,thumbnail:old.thumbnail||null};});
+      attendance=mergeBrowserAndCloud(localAttendance,remoteAttendance,['updatedAt','date']).filter(a=>!deletedAttendance.has(String(a.id)));
+      fees=mergeBrowserAndCloud(localFees,remoteFees,['receivedAt','date']).filter(f=>!deletedFees.has(String(f.id)));
+      workingDays=mergeBrowserAndCloud(localWorkingDays,remoteWorkingDays,['markedAt','date']).filter(d=>!deletedWorkingDays.has(String(d.id)));
+      const localAhead=localStudents.some(x=>{const r=remoteStudents.find(y=>y.id===x.id);return !r||cloudRecordTime(x,['updatedAt','registeredAt'])>cloudRecordTime(r,['updatedAt','registeredAt']);})||localAttendance.some(x=>{const r=remoteAttendance.find(y=>y.id===x.id);return !r||cloudRecordTime(x,['updatedAt','date'])>cloudRecordTime(r,['updatedAt','date']);})||localFees.some(x=>!remoteFees.some(y=>y.id===x.id))||localWorkingDays.some(x=>!remoteWorkingDays.some(y=>y.id===x.id))||localDeletes.some(x=>!(data.deletions||[]).some(y=>y.entity===x.entity&&String(y.recordId)===String(x.recordId)));
+      cloudApplying=true;
+      localStorage.setItem(STORAGE_STUDENTS,JSON.stringify(students));
+      localStorage.setItem(STORAGE_ATTENDANCE,JSON.stringify(attendance));
+      localStorage.setItem(STORAGE_FEES,JSON.stringify(fees));
+      localStorage.setItem(STORAGE_DELETIONS,JSON.stringify(cloudDeletions));
+      localStorage.setItem(STORAGE_WORKING_DAYS,JSON.stringify(workingDays));
+      cloudApplying=false;
+      migrateLegacyInstallments();
+      refreshStudentInstituteViews();
+      cloudLastPulledAt=Date.now();cloudReady=true;setSheetsStatus('Connected · Data Google Sheet se fetch ho gaya ('+students.length+' students, '+attendance.length+' attendance, '+fees.length+' payments).','ok');
+      if(localAhead)setTimeout(()=>pushCloudSnapshot('auto'),250);
+      if(!silent)showToast('Google Sheets se data fetch ho gaya.','success');
+    }else{
+      if(students.length||attendance.length||fees.length){await pushCloudSnapshot('first upload');cloudReady=true;setSheetsStatus('First sync sent · Local records Google Sheet par upload request ho gayi. Sheet verify karein.','ok');}
+      else {cloudReady=true;setSheetsStatus('Google Sheet connected · Abhi koi data nahi hai.','ok');}
+    }
+    return true;
+  }catch(err){cloudApplying=false;setSheetsStatus(err.message,'error');if(!silent)showToast('Cloud fetch error: '+err.message,'error');return false;}
+  finally{cloudPullBusy=false;}
+}
+function refreshStudentInstituteViews(){renderStudentList();refreshDashboard();renderTodayAttendance();refreshRecords();refreshFeeStudentOptions();refreshFeesView();refreshMonthlyReport();renderStudentReport();checkStorageQuota();}
+async function pushCloudSnapshot(reason){
+  if(!isAdminUnlocked()){if(reason!=='auto')setSheetsStatus('Upload ke liye Admin PIN unlock karein.','error');return false;}
+  if(!cloudConfigured())return false;if(cloudPushBusy)return false;cloudPushBusy=true;
+  try{
+    setSheetsStatus('Google Sheet par data save request bheji ja rahi hai...','loading');
+    const payload={token:settings.sheetsToken,action:'save',students:cleanStudentsForCloud(),attendance:attendance.map(a=>{const x={...a};delete x.checkInPhoto;delete x.checkOutPhoto;return x;}),fees:fees,workingDays:workingDays,deletions:cloudDeletions};
+    const response=await fetch(settings.sheetsUrl,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(payload)});
+    // no-cors intentionally yields an opaque response; browser cannot confirm Apps Script's write result.
+    cloudLastPushedAt=Date.now();cloudReady=true;setSheetsStatus('Save request sent to Google Sheets · '+new Date(cloudLastPushedAt).toLocaleTimeString()+'. Re-fetch to verify.', 'ok');
+    if(reason!=='auto')showToast('Google Sheets ko upload request bhej di. Fetch karke verify karein.','success');
+    return true;
+  }catch(err){setSheetsStatus('Upload request failed: '+err.message,'error');if(reason!=='auto')showToast('Google Sheets upload failed.','error');return false;}
+  finally{cloudPushBusy=false;}
+}
+function initCloudSync(silent){
+  if(!cloudConfigured()){setSheetsStatus('Google Sheets not connected. Settings mein URL aur token add karein.','loading');return Promise.resolve(false);}
+  if(!isAdminUnlocked()){setSheetsStatus('Google Sheet sync ke liye Admin PIN unlock karein.','loading');return Promise.resolve(false);}
+  if(!cloudPollingStarted){
+    setInterval(()=>{if(isAdminUnlocked()&&!document.hidden&&!cloudSyncTimer&&!cloudPushBusy)pullCloudSnapshot(true);},90000);
+    window.addEventListener('focus',()=>{if(isAdminUnlocked()&&!cloudSyncTimer&&!cloudPushBusy)pullCloudSnapshot(true);});
+    cloudPollingStarted=true;
+  }
+  return pullCloudSnapshot(silent!==false);
+}
+document.getElementById('saveSheetsConfig').addEventListener('click',()=>requireAdmin('save Google Sheets settings',()=>{
+  settings.sheetsUrl=document.getElementById('sheetsUrl').value.trim();settings.sheetsToken=document.getElementById('sheetsToken').value.trim();
+  if(!cloudConfigured()){showToast('Valid Apps Script /exec URL aur kam se kam 12 character token enter karein.','error');return;}
+  saveSettings();initCloudSync(false);
+}));
+document.getElementById('pullSheetsNow').addEventListener('click',()=>requireAdmin('fetch Google Sheets data',()=>pullCloudSnapshot(false)));
+document.getElementById('pushSheetsNow').addEventListener('click',()=>requireAdmin('upload data to Google Sheets',()=>pushCloudSnapshot('manual')));
+document.getElementById('openBiometricTab').addEventListener('click',()=>document.querySelector('[data-tab="attendance"]').click());
+
+/* ================================================================
+   SAME-BROWSER TAB SYNC
+================================================================ */
+window.addEventListener('storage',event=>{
+  if([STORAGE_STUDENTS,STORAGE_ATTENDANCE,STORAGE_SETTINGS,STORAGE_FEES,STORAGE_DELETIONS,STORAGE_WORKING_DAYS].includes(event.key)){
+    loadStorage();
+    renderStudentList();
+    refreshDashboard();
+    renderTodayAttendance();
+    refreshRecords();
+    updatePinWarning();
+    refreshFeeStudentOptions();refreshFeesView();refreshMonthlyReport();renderStudentReport();
+  }
+});
+
+/* ================================================================
+   INIT
+================================================================ */
+(function init(){
+  loadStorage();
+  migrateLegacyInstallments();
+  updateLockUI();
+  updatePinWarning();
+  renderStudentList();
+  refreshDashboard();
+  renderMethod('rollno');
+  renderTodayAttendance();
+  document.getElementById('recordsDate').value=todayStr();
+  document.getElementById('regAdmissionDate').value=todayStr();
+  document.getElementById('feeDate').value=todayStr();
+  document.getElementById('reportMonth').value=todayStr().slice(0,7);
+  refreshRecords();
+  refreshFeesView();
+  refreshMonthlyReport();
+  checkStorageQuota();
+  initFaceApi();
+  loadSheetsSettingsUI();
+  initCloudSync();
+})();
+</script>
+</body>
+</html>
