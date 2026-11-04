@@ -192,9 +192,158 @@ function renderSubjects(boardId,n){const b=byId(boardId);if(!b||!Number.isIntege
  } else {body=`<div class="grid subject-grid">${subjects.map(s=>subjectCard(boardId,n,s)).join('')}</div>`;}
  return pageHead(`${b.name} — Class ${n} Subjects`,`Choose a subject to see learning topics and official board resources.`,[{label:'Boards',href:'#/school'},{label:b.name,href:`#/school/${boardId}`}])+`<section><div class="container"><div class="panel"><h2>${esc(b.name)} · Class ${n}</h2><p>${esc(b.note)}</p><p class="pill">Subject availability depends on school / board / medium</p></div>${body}</div></section>`;
 }
-function subjectCard(boardId,n,s){const [name,icon]=s;return `<a class="card" href="#/school/${boardId}/${n}/${enc(subjectSlug(name))}"><div class="icon">${icon}</div><h3>${esc(name)}</h3><p>${esc(SUBJECT_NOTES[name.toLowerCase().split(' /')[0]]||'Study notes, practice questions and board resources.')}</p><span class="more">Open Subject →</span></a>`;}
+function subjectCard(boardId,n,s){const [name,icon]=s;return `<a class="card" href="#/school/${boardId}/${n}/${enc(subjectSlug(name))}"><div class="icon">${icon}</div><h3>${esc(name)}</h3><p>${esc(SUBJECT_NOTES[name.toLowerCase().split(' /')[0]]||'Study notes, practice questions and board resources.')}<br> Syllabus · Papers · Books · Videos</p><span class="more">Open Study Material →</span></a>`;}
 function practiceFor(subject,n){const key=subject.toLowerCase();if(key.includes('math'))return n<=5?['Counting and number names','Addition and subtraction','Shapes and patterns','Measurement and time']:n<=8?['Whole numbers and integers','Fractions and decimals','Algebra and geometry','Data handling']:['Number systems and algebra','Equations and functions','Geometry and mensuration','Statistics and probability'];if(key.includes('english'))return ['Reading and comprehension','Vocabulary and word meanings','Grammar practice','Paragraph and letter writing'];if(key.includes('hindi'))return ['पठन और शब्द-ज्ञान','वर्तनी और मात्राएँ','व्याकरण अभ्यास','अनुच्छेद लेखन'];if(key.includes('science')||key.includes('physics')||key.includes('chemistry')||key.includes('biology'))return ['Key terms and definitions','Diagrams and labelling','Concept questions','Application-based questions'];if(key.includes('social')||key.includes('history')||key.includes('geography')||key.includes('political'))return ['Important terms and dates','Maps and diagrams','Short and long answers','Case/source-based questions'];if(key.includes('computer'))return ['Computer fundamentals','Input/output devices','Operating system and files','Internet and cyber safety'];return ['Read the chapter or topic','Make short notes','Practise textbook questions','Attempt a self-test'];}
-function renderSubject(boardId,n,slug){const b=byId(boardId);if(!b)return render404();const options=stageSubjects(boardId,n);const chosen=options.find(s=>subjectSlug(s[0])===slug);if(!chosen)return render404();const subject=chosen[0];const topics=practiceFor(subject,n);return pageHead(`${subject} — Class ${n}`,`${b.name} study section · use the board’s current syllabus and school-prescribed textbook.`,[{label:'Boards',href:'#/school'},{label:b.name,href:`#/school/${boardId}`},{label:`Class ${n}`,href:`#/school/${boardId}/${n}`}])+`<section><div class="container"><div class="panel"><h2>${chosen[1]} ${esc(b.name)} · Class ${n} · ${esc(subject)}</h2><p>${esc(SUBJECT_NOTES[subject.toLowerCase().split(' /')[0]]||'Use this page to organise your study and open your board resources.')}</p><div class="tag-row"><span class="tag">Class-wise</span><span class="tag">Board-wise</span><span class="tag">Study planning</span></div></div><h2 class="section-title">Official ${esc(b.name)} Resources</h2><div class="resource-grid">${linkCard('📑','Official Syllabus','Check the latest subject-wise syllabus and session updates',b.syllabus)}${linkCard('📚','Books / Study Material','Open official board textbooks or study material',b.books)}${linkCard('📝','Question Papers / Model Papers','Find official sample papers, old papers or marking schemes',b.papers)}${linkCard('🌐','Board Official Website','Notices, circulars, results and academic updates',b.official)}</div><div class="panel" style="margin-top:20px"><h2>SKYNET Practice Checklist</h2><p>ये general practice topics हैं, official board chapter-list नहीं। अपनी current textbook और syllabus के अनुसार इनमें से relevant topics चुनें।</p><ol style="margin:12px 0 0 20px;line-height:2">${topics.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><button class="btn light" type="button" onclick="window.print()" style="margin-top:15px">🖨️ Print Study Checklist</button></div><div class="notice">Copyright note: SKYNET Study Hub provides links to official resources. We do not copy or host board/NCERT PDFs here. Please follow each publisher’s terms for downloads and reuse.</div></div></section>`;}
+function subjectResourceLinks(boardId,n,subject,b){
+ const cls=`Class ${n}`;
+ const q=`${b.name} ${cls} ${subject}`;
+ let syllabus=b.syllabus, books=b.books, papers=b.papers, practice=b.official;
+ let syllabusDesc=`Open ${b.name}'s official syllabus / curriculum page; choose ${cls} and ${subject} where listed.`;
+ let bookDesc=`Open the official textbook library; choose ${cls}, medium and ${subject} where available.`;
+ let paperDesc=`Latest available previous-year / model-paper archive. Select ${cls} and ${subject} on the board page.`;
+ let practiceDesc=`Official board portal for question banks, model papers and academic notices.`;
+ let note='For classes where the board does not publish a public annual paper or a separate subject syllabus, the school-prescribed syllabus and school examination papers take priority.';
+
+ if(boardId==='cbse'){
+  syllabus='https://cbseacademic.nic.in/curriculum_2027.html';
+  books='https://ncert.nic.in/textbook.php';
+  papers='https://www.cbse.gov.in/cbsenew/question-paper.html';
+  practice='https://cbseacademic.nic.in/';
+  syllabusDesc=n>=9?`CBSE Academic 2026–27 curriculum; open ${cls} and find ${subject}.`:`CBSE/NCERT curriculum guidance; for Classes 1–8 confirm the school's subject and book list.`;
+  paperDesc='CBSE official previous-year question papers; Class X/XII papers are listed subject-wise where published.';
+  practiceDesc='CBSE Academic: sample question papers, marking schemes, question banks and curriculum resources.';
+  note=n<9?'For Classes 1–8, CBSE does not publish a public board-exam paper archive for every class. Use the school’s annual exam papers and the current NCERT/DIKSHA content.':'Use the exact subject code and current session when selecting papers; older papers may follow a different syllabus.';
+ }
+ if(boardId==='hbse'){
+  syllabus=n===9?'https://bseh.org.in/syllabus-qpd-9th-2026':n===10?'https://bseh.org.in/syllabusqpd10th2026':n===12?'https://bseh.org.in/syllabusclass12thforsession2026':'https://bseh.org.in/question-paper-design-202627';
+  books='https://bseh.org.in/student-corner-base';
+  papers=n===10?'https://bseh.org.in/secondary-old-question-paper-2026':n===12?'https://bseh.org.in/srsec-old-question-paper-march-2026':'https://bseh.org.in/model-paper-stepwise-marking-scheme-classwise-202627';
+  practice='https://bseh.org.in/model-paper-stepwise-marking-scheme-classwise-202627';
+  syllabusDesc=`HBSE/BSEH official syllabus and question-paper design 2026–27; ${n>=9?`open ${cls} and select ${subject}.`:'for primary/middle classes, confirm the school-prescribed syllabus.'}`;
+  paperDesc=n===10||n===12?`HBSE ${n===10?'Class 10':'Class 12'} March 2026 old question papers; choose ${subject} and set.`:'HBSE class-wise 2026–27 model papers and marking schemes; select the applicable class/subject.';
+  practiceDesc='HBSE 2026–27 model papers and stepwise marking schemes.';
+  note=n<9?'For Classes 1–8, follow the school’s prescribed Haryana curriculum and use the BSEH student corner for e-books and learning links.':'The HBSE old-paper archive has separate subject rows and paper sets for board examination classes.';
+ }
+ if(boardId==='pseb'){
+  syllabus='https://pseb.ac.in/syllabus';
+  books='https://pseb.ac.in/books';
+  papers='https://pseb.ac.in/modeltestpaper?catid=9';
+  practice='https://pseb.ac.in/';
+  syllabusDesc='PSEB session-wise syllabus; choose 2026–27 and find the class/subject.';
+  bookDesc='PSEB official 2026–27 books library; select class, medium and subject.';
+  paperDesc='PSEB 2026–27 model test papers / sample question papers; choose class and subject.';
+  practiceDesc='PSEB Academics Wing: question bank, paper structure, e-books and notices.';
+  note='PSEB provides separate session-wise syllabus, e-books, question bank and model test paper sections. Actual previous-year paper availability varies by class and subject.';
+ }
+ if(boardId==='cisce'){
+  syllabus='https://cisce.org/';
+  books='https://cisce.org/';
+  papers='https://cisce.org/wp-content/uploads/2025/09/Circular-Release-of-Speimen-Question-papers-and-Question-Papers-of-the-Year-2025-Main-and-Improvement-Examinations.pdf';
+  practice='https://cisce.org/';
+  syllabusDesc='CISCE official portal: locate the current ICSE (Class X) or ISC (Class XII) regulations and syllabus.';
+  bookDesc='CISCE does not prescribe one universal PDF textbook for every school; confirm your school’s prescribed text list.';
+  paperDesc=`CISCE official portal for specimen / previous examination papers. Search for ${cls} ${subject}.`;
+  practiceDesc='CISCE official notices, regulations, specimen papers and examination updates.';
+  note='ICSE board examination is at Class X and ISC at Class XII. For Classes 1–9 and 11, use the school’s curriculum and internal examination papers. Prescribed books can vary by school.';
+ }
+ if(boardId==='nios'){
+  syllabus='https://nios.ac.in/';
+  books='https://rcjammu.nios.ac.in/study-material-pdfs.html';
+  papers=n===12?'https://rcallahabad.nios.ac.in/senior-secondary-courses-material.html':'https://rchyderabad.nios.ac.in/secondary-courses-materials.html';
+  practice='https://nios.ac.in/';
+  syllabusDesc='NIOS official site: check the current Secondary/Senior Secondary course and subject syllabus.';
+  bookDesc='NIOS study material PDFs; choose course, subject code and medium.';
+  paperDesc=`NIOS ${n===12?'Senior Secondary':'Secondary'} regional-centre resource page includes previous-examination question-paper links where published. Check the session and subject code.`;
+  practiceDesc='NIOS official portal for sample papers, learner notices and examination information.';
+  note='NIOS uses OBE Levels A/B/C, Secondary and Senior Secondary—not a regular Class 1–12 structure. For OBE levels, use the relevant NIOS learning material rather than assuming a school-board paper archive.';
+ }
+ if(boardId==='upmsp'){
+  syllabus='https://upmsp.edu.in/Board_Syllabus.aspx';
+  books='https://upmsp.edu.in/';
+  papers='https://upmsp.edu.in/';
+  practice='https://upmsp.edu.in/';
+  syllabusDesc='UPMSP official syllabus page; current student section also lists 2026–27 syllabus and monthly syllabus.';
+  bookDesc='UPMSP student resources; use the official “Book 2026” section where available.';
+  paperDesc='UPMSP official model papers and question bank; previous-year paper availability depends on class/subject.';
+  practiceDesc='UPMSP official student links: syllabus, monthly syllabus, model paper, question bank and books.';
+  note='UPMSP’s public student resource section focuses on High School and Intermediate. For Classes 1–8, follow the school and Uttar Pradesh Basic Education Department syllabus.';
+ }
+ if(boardId==='rbse'){
+  syllabus='https://rajeduboard.rajasthan.gov.in/anudeshika-etc/anudeshika-syllabus.htm';
+  books='https://rajeduboard.rajasthan.gov.in/books/left.htm';
+  papers='https://rajeduboard.rajasthan.gov.in/books/left.htm';
+  practice='https://rajeduboard.rajasthan.gov.in/';
+  syllabusDesc='RBSE official syllabus / anudeshika page; choose the current session and subject.';
+  bookDesc='RBSE official page lists 2026–27 books; select the relevant class and subject.';
+  paperDesc='RBSE official archive lists model papers and old papers by year, including 2026.';
+  practiceDesc='RBSE academic notices, syllabus, model papers and examination resources.';
+  note='The RBSE archive separates model papers, books and old question papers by year. Confirm class, subject and session before downloading.';
+ }
+ if(boardId==='bseb'){
+  syllabus='https://www.biharboardonline.org/';
+  books='https://bstbpc.bihar.gov.in/';
+  papers='https://www.biharboardonline.org/';
+  practice='https://www.biharboardonline.org/';
+  syllabusDesc='BSEB official site for current examination and syllabus notices; select the relevant class/course.';
+  bookDesc='Bihar State Textbook Publishing Corporation: official online textbooks for Classes 1–12.';
+  paperDesc='BSEB official examination portal for available model / previous-year papers and notices.';
+  practiceDesc='BSEB official notices, examination updates and academic resources.';
+  note='Bihar State Textbook Publishing Corporation provides textbooks for Classes 1–12. Public previous-year question-paper availability may vary; verify the examination year.';
+ }
+ if(boardId==='mpbse'){
+  syllabus='https://www.mpbse.nic.in/syllabus.htm';
+  books='https://www.mpbse.nic.in/';
+  papers='https://mpbse.nic.in/ModelPaper.HTML';
+  practice='https://mpbse.nic.in/';
+  syllabusDesc='MPBSE official syllabus page for secondary and higher-secondary subjects.';
+  bookDesc='MP Board official portal; confirm state textbook / school-prescribed book and medium.';
+  paperDesc='MPBSE official 2026–27 model question paper page; Class X/XII subjects are listed.';
+  practiceDesc='MPBSE academic and examination notices.';
+  note='The current MPBSE model-paper page provides Class X and XII subjects. For Classes 1–8 and 9/11, check the state/school curriculum and current exam notices.';
+ }
+ if(boardId==='msbshse'){
+  syllabus='https://www.mahahsscboard.in/en/studentAndSyllabus/hscGeneral';
+  books='https://ebooks.ebalbharati.in/ebook.aspx';
+  papers='https://www.mahahsscboard.in/';
+  practice='https://www.mahahsscboard.in/';
+  syllabusDesc='Maharashtra Board student and syllabus portal; select SSC/HSC and subject.';
+  bookDesc='eBalbharati official e-book library; filter by year, class, medium and subject.';
+  paperDesc='Maharashtra Board official examination portal for available question-paper / model-paper notices.';
+  practiceDesc='MSBSHSE official notices, timetable, syllabus and examination information.';
+  note='eBalbharati offers textbooks with filters for class, medium and subject. SSC/HSC examination resources are maintained separately by the Board.';
+ }
+ const videoQuery=`${b.name} ${cls} ${subject} chapter wise lesson Hindi`; 
+ const ncertQuery=`NCERT official ${cls} ${subject} lesson`;
+ return {syllabus,books,papers,practice,syllabusDesc,bookDesc,paperDesc,practiceDesc,note,
+  diksha:'https://diksha.gov.in/index.html',
+  video:`https://www.youtube.com/results?search_query=${enc(videoQuery)}`,
+  ncertVideo:`https://www.youtube.com/results?search_query=${enc(ncertQuery)}`};
+}
+function renderSubject(boardId,n,slug){
+ const b=byId(boardId);if(!b||!Number.isInteger(n)||n<1||n>12)return render404();
+ const options=stageSubjects(boardId,n);const chosen=options.find(s=>subjectSlug(s[0])===slug);if(!chosen)return render404();
+ const subject=chosen[0],cls=`Class ${n}`,topics=practiceFor(subject,n),r=subjectResourceLinks(boardId,n,subject,b);
+ const title=`${b.name} · Class ${n} · ${subject}`;
+ const resources=`<div class="resource-grid">
+  ${linkCard('📑','Syllabus / Curriculum',r.syllabusDesc,r.syllabus)}
+  ${linkCard('📝','Last Year Question Papers',r.paperDesc,r.papers)}
+  ${linkCard('📚','Books / Textbooks',r.bookDesc,r.books)}
+  ${linkCard('📋','Model Papers / Question Bank',r.practiceDesc,r.practice)}
+ </div>`;
+ const videos=`<h2 class="section-title" style="margin-top:26px">🎬 Video Lessons</h2><p style="font-size:13px;color:var(--muted);margin:-10px 0 14px">Board, class and subject are included in the video search. DIKSHA lets you filter by board, grade, subject and content type.</p><div class="resource-grid">
+  ${linkCard('▶️','Find Chapter-wise Videos',`YouTube results for ${title}; choose a trusted teacher/channel and the matching chapter.`,r.video)}
+  ${linkCard('🇮🇳','Official DIKSHA Videos','Government learning portal: select board, grade, subject and Videos.',r.diksha)}
+  ${linkCard('🎓','NCERT Lesson Search on YouTube',`Search NCERT Official lessons for ${cls} ${subject}; verify the channel name before viewing.`,r.ncertVideo)}
+ </div>`;
+ return pageHead(`${subject} — Class ${n}`,`${b.name} subject-wise study material · syllabus, question papers, books and video lessons.`,[{label:'Boards',href:'#/school'},{label:b.name,href:`#/school/${boardId}`},{label:`Class ${n}`,href:`#/school/${boardId}/${n}`}])+
+ `<section><div class="container">
+  <div class="panel"><h2>${chosen[1]} ${esc(title)}</h2><p>${esc(SUBJECT_NOTES[subject.toLowerCase().split(' /')[0]]||'Use this page to organise your study and open board-specific subject resources.')}</p><div class="tag-row"><span class="tag">Board-wise</span><span class="tag">Class-wise</span><span class="tag">Subject-wise</span><span class="tag">Session 2026–27 where published</span></div></div>
+  <h2 class="section-title">📘 Study Material & Exam Resources <small>Open official board resources for the selected class and subject.</small></h2>
+  ${resources}${videos}
+  <div class="panel" style="margin-top:22px"><h2>SKYNET Practice Checklist</h2><p>ये सामान्य revision prompts हैं, official chapter list नहीं। Current board syllabus और textbook से मिलान करें।</p><ol style="margin:12px 0 0 20px;line-height:2">${topics.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><button class="btn light" type="button" onclick="window.print()" style="margin-top:15px">🖨️ Print Study Checklist</button></div>
+  <div class="notice">${esc(r.note)} Copyright note: SKYNET Study Hub links to official / authorized learning resources and does not re-host copyrighted books or question papers. Please follow each publisher’s usage terms.</div>
+ </div></section>`;
+}
 function renderCollege(){
  const cards = [
   {icon:'🎓',title:'University Entrance Exams',desc:'CUET and university admission exam resources.',href:'#/entrance/University'},
