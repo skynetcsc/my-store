@@ -3,295 +3,110 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SKYNET STUDY HUB – Free Study Material for Class 1–12 & Entrance Exams</title>
-<meta name="description" content="Free study material for Class 1 to 12. NCERT Solutions, Books, Syllabus, Sample Papers, and Entrance Exam Resources.">
+<title>SKYNET STUDY HUB | Board-wise & Class-wise Study Material</title>
+<meta name="description" content="SKYNET Study Hub: board-wise and class-wise official syllabus, textbooks, sample papers and study resources for CBSE, HBSE, PSEB, ICSE, NIOS and state boards.">
+<meta name="theme-color" content="#0d47a1">
 <style>
-/* ================= BASE & VARIABLES ================= */
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--blue:#1565c0;--blue-dark:#0d47a1;--bg:#f5f7fb;--text:#1f2937;--muted:#6b7280;--border:#e5e7eb;--accent:#ff9800}
-body{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:var(--text);background:var(--bg);line-height:1.55}
-a{text-decoration:none;color:inherit}
-.container{max-width:1200px;margin:0 auto;padding:0 16px}
-
-/* ================= HEADER & NAV ================= */
-.topbar{background:var(--blue-dark);color:#cfe0ff;font-size:13px}
-.topbar .container{display:flex;justify-content:space-between;padding:6px 16px;flex-wrap:wrap;gap:6px}
-header{background:#fff;border-bottom:1px solid var(--border)}
-.header-inner{display:flex;align-items:center;gap:16px;padding:10px 16px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
-.logo{display:flex;align-items:center;flex-shrink:0}
-.logo svg{height:44px;width:auto;display:block}
-.search{flex:1;min-width:200px;display:flex;border:1px solid var(--border);border-radius:8px;overflow:hidden}
-.search input{flex:1;border:none;padding:10px 12px;font-size:14px;outline:none}
-.search button{background:var(--blue);color:#fff;border:none;padding:0 18px;cursor:pointer;font-size:14px}
-.search button:hover{background:var(--blue-dark)}
-
-nav{background:var(--blue)}
-.nav-inner{max-width:1200px;margin:0 auto;display:flex;flex-wrap:wrap;padding:0 16px}
-.nav-inner>a,.dropdown>a{padding:12px 14px;color:#fff;font-size:14px;font-weight:500;display:block; cursor:pointer;}
-.nav-inner>a:hover,.dropdown>a:hover{background:var(--blue-dark)}
-.dropdown{position:relative}
-.dropdown>a::after{content:" ▾"}
-.dropdown-menu{display:none;position:absolute;top:100%;left:0;background:#fff;min-width:220px;box-shadow:0 8px 24px rgba(0,0,0,.15);border-radius:0 0 8px 8px;z-index:50;max-height:400px;overflow-y:auto}
-.dropdown-menu a{color:var(--text);padding:10px 14px;font-size:14px;display:block}
-.dropdown-menu a:hover{background:var(--bg);color:var(--blue)}
-.dropdown:hover .dropdown-menu{display:block}
-.menu-toggle{display:none;background:none;border:none;color:#fff;font-size:20px;padding:8px 14px;cursor:pointer}
-
-/* ================= HERO & SECTIONS ================= */
-.hero{background:linear-gradient(rgba(13,71,161,.85),rgba(21,101,192,.85)),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80') center/cover;color:#fff;padding:60px 16px;text-align:center}
-.hero h1{font-size:32px;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.25)}
-.hero p{opacity:.95;margin-bottom:22px;font-size:16px}
-
-section{padding:36px 0}
-.section-title{font-size:22px;font-weight:700;margin-bottom:20px;color:#111827;display:flex;align-items:center;gap:8px;}
-.section-title a{font-size:14px;color:var(--blue);margin-left:auto;font-weight:500;}
-.section-title a:hover{text-decoration:underline;}
-.section-title small{display:block;font-size:14px;color:var(--muted);font-weight:400;margin-top:4px}
-
-/* ================= GRID & CARDS ================= */
-.grid{display:grid;gap:14px}
+:root{--blue:#1565c0;--dark:#0d47a1;--navy:#10213e;--bg:#f4f7fb;--text:#1f2937;--muted:#64748b;--border:#e2e8f0;--accent:#ff9800;--green:#15803d}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}a{color:inherit;text-decoration:none}button,input,select{font:inherit}.container{max-width:1200px;margin:auto;padding:0 16px}
+.topbar{background:var(--dark);color:#dbeafe;font-size:12px}.topbar .container{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;padding:7px 16px}
+header{background:#fff;border-bottom:1px solid var(--border)}.header-inner{max-width:1200px;margin:auto;padding:12px 16px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}.logo{display:flex;align-items:center;gap:9px;min-width:225px}.logo-mark{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#1976d2,#0d47a1);display:grid;place-items:center;color:#fff;font-size:25px}.logo strong{display:block;color:var(--blue);font-size:18px;letter-spacing:.5px;line-height:1.1}.logo small{display:block;color:var(--accent);font-weight:800;letter-spacing:1.7px;font-size:12px}.search{display:flex;flex:1;min-width:220px;border:1px solid var(--border);border-radius:10px;overflow:hidden;background:#fff}.search input{width:100%;min-width:0;padding:11px 13px;border:0;outline:none}.search button{border:0;background:var(--blue);color:#fff;font-weight:700;padding:0 20px;cursor:pointer}.search button:hover,.btn:hover{background:var(--dark)}
+nav{background:var(--blue)}.nav-inner{max-width:1200px;margin:auto;padding:0 16px;display:flex;align-items:stretch;flex-wrap:wrap}.nav-inner>a,.dropdown>a{display:block;padding:12px 14px;color:#fff;font-size:14px;font-weight:650}.nav-inner>a:hover,.dropdown>a:hover{background:var(--dark)}.dropdown{position:relative}.dropdown>a:after{content:" ▾"}.dropdown-menu{display:none;position:absolute;z-index:40;top:100%;left:0;min-width:230px;max-height:420px;overflow:auto;background:#fff;box-shadow:0 10px 25px #0f172a24;border-radius:0 0 10px 10px}.dropdown:hover .dropdown-menu,.dropdown:focus-within .dropdown-menu{display:block}.dropdown-menu a{display:block;padding:10px 14px;color:var(--text);font-size:14px}.dropdown-menu a:hover{background:#eff6ff;color:var(--blue)}.menu-toggle{display:none;border:0;background:var(--dark);color:white;padding:10px 14px;font-weight:700}
+.hero{background:linear-gradient(120deg,#0d47a1ee,#1565c0e8),url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=75') center/cover;color:#fff;padding:52px 16px;text-align:center}.hero h1{font-size:clamp(26px,4vw,38px);margin-bottom:8px}.hero p{max-width:760px;margin:0 auto 20px;color:#eaf2ff}.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.hero .btn{background:#ff9800;color:#172033}.hero .btn.secondary{background:#fff;color:var(--dark)}
+section{padding:32px 0}.section-title{font-size:22px;font-weight:800;margin-bottom:18px;color:#111827}.section-title small{display:block;color:var(--muted);font-size:13px;font-weight:450;margin-top:3px}.grid{display:grid;gap:16px}
+/* Home category cards: kept close to the supplied SKYNET screenshot */
+.home-category-section{padding:18px 0 36px}
+.home-category-title{display:flex;align-items:center;gap:8px;font-size:22px;font-weight:800;margin:0 0 20px;color:#111827;flex-wrap:wrap}
+.home-category-title small{display:inline;font-size:13px;font-weight:400;color:#64748b}
 .category-grid{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:20px}
-.subj-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}
-.exam-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 16px; }
-
-.category-card {background:#fff;border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;flex-direction:column;transition:0.2s;min-height:180px;position:relative;cursor:pointer;}
-.category-card:hover {transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,0.08);border-color:var(--blue);}
-.cat-icon {width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;margin-bottom:16px;}
-.category-card h3 {font-size:17px;color:#111827;margin-bottom:6px;font-weight:600;}
-.category-card p {font-size:13px;color:var(--muted);margin-bottom:24px;flex-grow:1;line-height:1.5;}
-.cat-footer {display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#9ca3af;margin-top:auto;}
-.explore-btn {color:#dc2626;font-weight:600;display:flex;align-items:center;gap:4px;}
-
-/* Class Card Cartoons */
-.card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;transition:.2s;display:block;cursor:pointer;}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(21,101,192,.15);border-color:var(--blue)}
-.card .thumb{width:100%;height:110px;object-fit:cover;display:block;background:#e0e7ff}
-.class-card-img {width:100%; height:180px; object-fit:contain; background:#f8fafc; padding:10px; display:block;}
-.card .body{padding:14px;text-align:center}
-.card .icon{font-size:22px;margin-bottom:6px}
-.card h3{font-size:15px;margin-bottom:4px;color:var(--text);}
-.card p{font-size:12px;color:var(--muted)}
-
-/* Exam Item Cards */
-.exam-item-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 16px; text-align: center; transition: 0.2s; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; }
-.exam-item-card:hover { border-color: var(--blue); box-shadow: 0 4px 12px rgba(21,101,192,.12); transform: translateY(-2px); }
-.exam-logo { width: 48px; height: 48px; border-radius: 50%; background: #e0f2fe; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 700; color: var(--blue); }
-.exam-title { font-size: 14px; font-weight: 600; color: var(--text); line-height: 1.3; }
-
-/* ================= PAGE HEADERS & BREADCRUMBS ================= */
-.page-head{background:#fff;border-bottom:1px solid var(--border);padding:24px 0}
-.page-head h1{font-size:26px;color:var(--blue-dark);margin-bottom:6px}
-.page-head p{font-size:14px;color:var(--muted)}
-.page-head .meta{display:inline-block;background:#e0f2fe;color:#075985;font-size:12px;padding:4px 12px;border-radius:12px;margin-top:10px;font-weight:600}
-
-.crumbs{font-size:13px;color:var(--muted);margin-bottom:16px}
-.crumbs a{color:var(--blue); cursor:pointer;}
-.crumbs a:hover{text-decoration:underline}
-.crumbs span{color:var(--text)}
-.crumbs .sep{margin:0 6px;color:var(--border)}
-
-/* ================= CHAPTER LIST ================= */
-.chapter-list{display:flex;flex-direction:column;gap:10px}
-.chapter-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;transition:.2s;gap:12px}
-.chapter-item:hover{border-color:var(--blue);box-shadow:0 4px 12px rgba(21,101,192,.08);transform:translateX(4px)}
-.chapter-item .left{display:flex;align-items:center;gap:14px;min-width:0}
-.chapter-item .num{background:var(--blue);color:#fff;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0}
-.chapter-item h3{font-size:15px;font-weight:600;margin:0;color:var(--text)}
-.chapter-item .arrow{color:var(--muted);flex-shrink:0}
-
-/* ================= EXAM DETAIL TABS ================= */
-.tabs { display: flex; gap: 10px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; flex-wrap: wrap; }
-.tab-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid var(--border); background: white; font-size: 14px; font-weight: 600; color: var(--muted); cursor: pointer; transition: all 0.2s; }
-.tab-btn.active { background: var(--blue); border-color: var(--blue); color: white; }
-.tab-btn:hover:not(.active) { background: var(--bg); color: var(--blue); }
-.tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeIn 0.3s; }
-
-/* Question Paper List */
-.paper-list { background: white; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
-.paper-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; border-bottom: 1px solid var(--border); cursor: pointer; transition: background 0.15s; }
-.paper-item:last-child { border-bottom: none; }
-.paper-item:hover { background: var(--bg); }
-.paper-icon { font-size: 20px; color: var(--blue); }
-.paper-info { flex: 1; }
-.paper-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.paper-meta { font-size: 12px; color: var(--muted); }
-
-/* ================= EMPTY & FOOTER ================= */
-.empty{text-align:center;padding:60px 20px;color:var(--muted);background:#fff;border-radius:12px;border:1px dashed var(--border)}
-.empty .icon{font-size:48px;margin-bottom:12px;opacity:.6}
-.empty h2{color:var(--blue-dark);margin-bottom:8px}
-.btn{display:inline-block;background:var(--blue);color:#fff;padding:10px 22px;border-radius:8px;font-size:14px;font-weight:600;border:none;cursor:pointer;transition:.2s}
-.btn:hover{background:var(--blue-dark)}
-
-footer{background:#0f172a;color:#cbd5e1;padding:40px 0 0;margin-top:40px}
-.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:28px;padding-bottom:28px}
-.foot-grid h4{color:#fff;margin-bottom:12px;font-size:15px}
-.foot-grid a{display:block;color:#94a3b8;font-size:13px;padding:4px 0}
-.foot-grid a:hover{color:#fff}
-.copyright{border-top:1px solid #1e293b;padding:16px;text-align:center;font-size:13px;color:#64748b}
-
-@keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
-
-@media(max-width:768px){
-  .menu-toggle{display:block}
-  .nav-inner{display:none;flex-direction:column;width:100%}
-  .nav-inner.open{display:flex}
-  .dropdown-menu{position:static;display:block;box-shadow:none;background:rgba(0,0,0,.15);border-radius:0;max-height:none}
-  .dropdown-menu a{color:#dbeafe;padding-left:28px}
-  .dropdown>a::after{content:""}
-  .logo svg{height:36px}
-  .content-box{padding:20px}
-  .page-head h1{font-size:20px}
-}
+.category-card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;display:flex;flex-direction:column;transition:.2s;min-height:230px;position:relative;cursor:pointer}
+.category-card:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.08);border-color:#1565c0}
+.category-card:first-child{border-color:#60a5fa;box-shadow:0 3px 10px rgba(21,101,192,.08)}
+.cat-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:24px;margin-bottom:16px}
+.category-card h3{font-size:17px;color:#111827;margin-bottom:6px;font-weight:600}
+.category-card p{font-size:13px;color:#6b7280;margin-bottom:24px;flex-grow:1;line-height:1.5}
+.cat-footer{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:#9ca3af;margin-top:auto;gap:8px}
+.explore-btn{color:#dc2626;font-weight:600;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.board-grid{grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.class-grid{grid-template-columns:repeat(auto-fit,minmax(135px,1fr))}.subject-grid{grid-template-columns:repeat(auto-fit,minmax(185px,1fr))}.card{display:block;background:white;border:1px solid var(--border);border-radius:13px;padding:20px;transition:.18s;min-width:0}.card:hover{transform:translateY(-3px);border-color:#93c5fd;box-shadow:0 8px 22px #0f172a12}.card .icon{font-size:30px;margin-bottom:9px}.card h3{font-size:16px;color:#12213a;margin-bottom:5px}.card p{font-size:13px;color:var(--muted)}.card .more{display:inline-block;margin-top:12px;color:var(--blue);font-size:13px;font-weight:750}
+.page-head{background:#fff;border-bottom:1px solid var(--border);padding:22px 0}.crumbs{font-size:12px;color:var(--muted);margin-bottom:12px}.crumbs a{color:var(--blue)}.crumbs span{margin:0 6px}.page-head h1{font-size:clamp(22px,3vw,29px);color:var(--dark);margin-bottom:5px}.page-head p{color:var(--muted);font-size:14px}.pill{display:inline-block;background:#e0f2fe;color:#075985;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:750;margin-top:9px}
+.panel{background:white;border:1px solid var(--border);border-radius:13px;padding:20px;margin-bottom:16px}.panel h2,.panel h3{color:#123568;margin-bottom:8px}.panel p{font-size:14px;color:var(--muted)}.resource-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}.resource-link{display:flex;gap:12px;align-items:flex-start;padding:16px;background:#fff;border:1px solid var(--border);border-radius:11px}.resource-link:hover{border-color:#60a5fa;background:#f8fbff}.resource-link .ri{font-size:24px}.resource-link strong{display:block;font-size:14px;color:#123568}.resource-link small{display:block;color:var(--muted);font-size:12px;margin-top:3px}.notice{border-left:4px solid var(--accent);background:#fffbeb;padding:13px 15px;border-radius:7px;color:#713f12;font-size:13px;margin:14px 0}.success-note{border-left:4px solid #16a34a;background:#f0fdf4;padding:13px 15px;border-radius:7px;color:#14532d;font-size:13px;margin:14px 0}.stream-title{font-size:16px;color:#0d47a1;margin:18px 0 10px}.tag-row{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.tag{background:#eff6ff;border:1px solid #bfdbfe;border-radius:20px;padding:6px 11px;font-size:12px;color:#1e40af}
+.btn{display:inline-block;border:0;border-radius:8px;background:var(--blue);color:white;padding:10px 15px;font-size:13px;font-weight:750;cursor:pointer}.btn.light{background:#eaf2ff;color:#16468a}.btn.orange{background:#ff9800;color:#172033}.empty{text-align:center;background:white;border:1px dashed var(--border);border-radius:13px;padding:45px 20px;color:var(--muted)}.empty .icon{font-size:42px;margin-bottom:8px}.empty h2{color:var(--dark);margin-bottom:5px}.result-list{display:grid;gap:10px}.result{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px}.result strong{display:block;color:var(--dark)}.result small{color:var(--muted)}
+footer{margin-top:32px;background:#0f172a;color:#cbd5e1;padding:34px 0 0}.foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:22px;padding-bottom:24px}.foot-grid h4{color:#fff;margin-bottom:8px}.foot-grid a{display:block;font-size:13px;color:#a7b5ca;padding:3px 0}.foot-grid a:hover{color:#fff}.copyright{border-top:1px solid #263449;text-align:center;padding:14px;font-size:12px;color:#91a0b5}
+@media(max-width:720px){.home-category-section{padding:18px 0 28px}.home-category-title{font-size:20px;align-items:flex-start;gap:6px}.home-category-title small{font-size:12px}.category-grid{grid-template-columns:1fr}.category-card{min-height:205px}.menu-toggle{display:block;width:100%;text-align:left}.nav-inner{display:none;flex-direction:column}.nav-inner.open{display:flex}.dropdown-menu{position:static;display:block;max-height:none;box-shadow:none;background:#1258ad;border-radius:0}.dropdown-menu a{color:#e8f1ff;padding-left:28px}.dropdown-menu a:hover{color:#fff;background:#0d47a1}.dropdown>a:after{content:""}.hero{padding:38px 14px}.logo{min-width:0}.search{min-width:100%}}
 </style>
 </head>
 <body>
-
-<div class="topbar">
-  <div class="container">
-    <span>📢 Welcome to SKYNET STUDY HUB — Free Study Material</span>
-    <span>BSEH | CBSE | PSEB | ICSE | NIOS | Entrance Exams</span>
-  </div>
-</div>
-
-<header>
-  <div class="header-inner">
-    <a href="#/" class="logo" aria-label="SKYNET STUDY HUB Home">
-      <svg viewBox="0 0 290 64" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#1565c0"/>
-            <stop offset="100%" stop-color="#0d47a1"/>
-          </linearGradient>
-        </defs>
-        <rect x="4" y="6" width="52" height="52" rx="14" fill="url(#lg)"/>
-        <polygon points="30,16 12,24 30,32 48,24" fill="#ffb74d"/>
-        <path d="M20 27 v8 c0 3 20 3 20 0 v-8" stroke="#fff" stroke-width="2" fill="none" stroke-linejoin="round"/>
-        <line x1="46" y1="24" x2="46" y2="36" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        <circle cx="46" cy="38" r="2.5" fill="#ffb74d"/>
-        <text x="70" y="30" font-family="system-ui,-apple-system,sans-serif" font-weight="800" font-size="17" fill="#1565c0" letter-spacing="0.5">SKYNET</text>
-        <text x="70" y="52" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="15" fill="#ff9800" letter-spacing="1.5">STUDY HUB</text>
-      </svg>
-    </a>
-    <form class="search" id="searchForm" onsubmit="event.preventDefault(); doSearch(this.q.value)">
-      <input name="q" id="searchInput" placeholder="Search chapters, subjects, exams..." autocomplete="off">
-      <button type="submit">Search</button>
-    </form>
-  </div>
-</header>
-
-<nav>
-  <div class="nav-inner" id="navMenu">
-    <div class="dropdown">
-      <a href="#/">Classes</a>
-      <div class="dropdown-menu" id="classMenu"></div>
-    </div>
-    <div class="dropdown">
-      <a href="#/">Boards</a>
-      <div class="dropdown-menu">
-        <a href="#/school/BSEH%20(%E0%A4%B9%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE%E0%A4%A3%E0%A4%BE%20%E0%A4%AC%E0%A5%8B%E0%A4%B0%E0%A5%8D%E0%A4%A1)">BSEH (हरियाणा बोर्ड)</a>
-        <a href="#/school/CBSE">CBSE</a>
-        <a href="#/school/PSEB">PSEB (Punjab Board)</a>
-        <a href="#/school/ICSE%20%2F%20ISC">ICSE / ISC</a>
-        <a href="#/school/NIOS">NIOS</a>
-        <a href="#/school">Other State Boards</a>
-      </div>
-    </div>
-    <a href="#/entrance">Entrance Exams</a>
-    <a href="https://scholarships.gov.in/" target="_blank">Scholarships</a>
-    
-    <div class="dropdown">
-      <a href="javascript:void(0)">Results</a>
-      <div class="dropdown-menu">
-        <a href="https://bseh.org.in/" target="_blank">BSEH (Haryana) Result</a>
-        <a href="https://www.pseb.ac.in/" target="_blank">PSEB (Punjab) Result</a>
-        <a href="https://results.cbse.nic.in/" target="_blank">CBSE Result</a>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<main id="app"></main>
-
-<footer>
-  <div class="container">
-    <div class="foot-grid">
-      <div>
-        <h4>SKYNET STUDY HUB</h4>
-        <a href="#/">Home</a><a href="#">About Us</a><a href="#">Privacy Policy</a>
-      </div>
-      <div>
-        <h4>Classes</h4>
-        <a href="#/school/CBSE/10">Class 10</a><a href="#/school/CBSE/11">Class 11</a><a href="#/school/CBSE/12">Class 12</a>
-      </div>
-      <div>
-        <h4>Entrance Exams</h4>
-        <a href="#/entrance">All Exams</a><a href="#/entrance/Engineering">Engineering</a><a href="#/entrance/Medical">Medical</a>
-      </div>
-    </div>
-  </div>
-  <div class="copyright">© 2026 SKYNET STUDY HUB. All rights reserved.</div>
-</footer>
-
+<div class="topbar"><div class="container"><span>📚 Welcome to SKYNET STUDY HUB — Board-wise & Class-wise Learning</span><span>CBSE | HBSE | PSEB | ICSE / ISC | NIOS | State Boards</span></div></div>
+<header><div class="header-inner">
+  <a class="logo" href="#/" aria-label="SKYNET Study Hub Home"><span class="logo-mark">🎓</span><span><strong>SKYNET COMPUTER</strong><small>STUDY HUB</small></span></a>
+  <form class="search" onsubmit="event.preventDefault();doSearch(document.getElementById('searchInput').value)"><input id="searchInput" type="search" placeholder="Search board, class, subject..." autocomplete="off"><button type="submit">Search</button></form>
+</div></header>
+<nav><button class="menu-toggle" id="menuToggle" type="button">☰ Menu</button><div class="nav-inner" id="navMenu">
+  <a href="#/">Home</a>
+  <div class="dropdown"><a href="#/class/1">Classes</a><div class="dropdown-menu" id="classMenu"></div></div>
+  <div class="dropdown"><a href="#/school">Boards</a><div class="dropdown-menu" id="boardMenu"></div></div>
+  <a href="#/preschool">Nursery–UKG</a><a href="#/entrance">Entrance Exams</a>
+  <a href="https://scholarships.gov.in/" target="_blank" rel="noopener">Scholarships ↗</a>
+</div></nav>
+<main id="app" aria-live="polite"></main>
+<footer><div class="container"><div class="foot-grid">
+  <div><h4>SKYNET STUDY HUB</h4><a href="#/">Home</a><a href="#/school">Select Board</a><a href="#/preschool">Nursery–UKG</a></div>
+  <div><h4>Popular Boards</h4><a href="#/school/cbse">CBSE</a><a href="#/school/hbse">HBSE Haryana</a><a href="#/school/pseb">PSEB Punjab</a><a href="#/school/cisce">ICSE / ISC</a></div>
+  <div><h4>Useful Links</h4><a href="https://ncert.nic.in/" target="_blank" rel="noopener">NCERT</a><a href="https://epathshala.nic.in/" target="_blank" rel="noopener">ePathshala</a><a href="https://diksha.gov.in/" target="_blank" rel="noopener">DIKSHA</a></div>
+</div></div><div class="copyright">© 2026 SKYNET COMPUTER · SKYNET STUDY HUB. All rights reserved.</div></footer>
 <script>
-/* ============================================================
-   DATA FOR SCHOOL SECTION (Added Contact Numbers)
-============================================================ */
-const BOARDS = [
-  {name:"CBSE", desc:"Central Board", img:"https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=400&h=220&fit=crop", contact:"011-22509256 / 011-22509257", website:"https://www.cbse.gov.in"},
-  {name:"BSEH (हरियाणा बोर्ड)", desc:"Haryana Board", img:"https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=400&h=220&fit=crop", contact:"01662-250060 / 01662-250044", website:"https://bseh.org.in"},
-  {name:"PSEB", desc:"Punjab Board", img:"https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&h=220&fit=crop", contact:"0172-5227100 / 0172-5227101", website:"https://www.pseb.ac.in"},
-  {name:"ICSE / ISC", desc:"CISCE Board", img:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&h=220&fit=crop", contact:"033-22872190 / 033-22872191", website:"https://www.cisce.org"},
-  {name:"NIOS", desc:"Open Schooling", img:"https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=220&fit=crop", contact:"011-24356901 / 011-24356902", website:"https://www.nios.ac.in"}
-];
+'use strict';
 
-const CARTOON_AVATARS = [
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Mia&backgroundColor=ffd5dc",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Leo&backgroundColor=c0aede",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Zoe&backgroundColor=b6e3f4",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Max&backgroundColor=ffdfbf",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Luna&backgroundColor=d1d4f9",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Jack&backgroundColor=ffd5dc",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Aria&backgroundColor=c0aede",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Oscar&backgroundColor=b6e3f4",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Maya&backgroundColor=ffdfbf",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Sam&backgroundColor=d1d4f9",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Chloe&backgroundColor=ffd5dc",
-  "https://api.dicebear.com/9.x/adventurer/svg?seed=Ryan&backgroundColor=c0aede"
+/* Board-wise official resources. Board websites control the current syllabus and paper PDFs. */
+const BOARDS = [
+ {id:'cbse',name:'CBSE',full:'Central Board of Secondary Education',desc:'Central board resources for Classes 1–12.',icon:'🏛️',official:'https://www.cbse.gov.in/',syllabus:'https://cbseacademic.nic.in/curriculum_2027.html',books:'https://epathshala.nic.in/wp-content/doc/book/btextbook/textbook.htm',papers:'https://www.cbse.gov.in/cbsenew/samplepaper.html',note:'CBSE curriculum link is set to the 2026–27 academic session. For primary classes, follow the school’s subject and textbook list.'},
+ {id:'hbse',name:'HBSE',full:'Board of School Education Haryana',desc:'Haryana Board study resources, syllabus and model papers.',icon:'🌾',official:'https://bseh.org.in/',syllabus:'https://bseh.org.in/question-paper-design-202627',books:'https://bseh.org.in/student-corner-base',papers:'https://bseh.org.in/model-paper-stepwise-marking-scheme-classwise-202627',note:'Haryana Board is also commonly called BSEH. The 2026–27 question-paper-design page lists Classes IX–XII; use the Student Corner for e-books and older papers.'},
+ {id:'pseb',name:'PSEB',full:'Punjab School Education Board',desc:'Punjab Board syllabus, e-books, question bank and sample papers.',icon:'🌾',official:'https://pseb.ac.in/',syllabus:'https://pseb.ac.in/syllabus',books:'https://pseb.ac.in/',papers:'https://pseb.ac.in/',note:'The official PSEB site provides session-wise syllabus, e-books, question banks and model test papers. Open the relevant section from its Academics menu.'},
+ {id:'cisce',name:'ICSE / ISC',full:'Council for the Indian School Certificate Examinations',desc:'ICSE Class X and ISC Class XII curriculum and regulations.',icon:'📘',official:'https://cisce.org/',syllabus:'https://cisce.org/icse-regulations-and-syllabuses-2027/',books:'https://cisce.org/',papers:'https://cisce.org/',note:'ICSE is the Class X examination and ISC is the Class XII examination. Classes 1–8 follow the school’s curriculum; prescribed texts can vary by school.'},
+ {id:'nios',name:'NIOS',full:'National Institute of Open Schooling',desc:'Open Basic Education, Secondary and Senior Secondary learning material.',icon:'📖',official:'https://nios.ac.in/',syllabus:'https://nios.ac.in/',books:'https://rcjammu.nios.ac.in/study-material-pdfs.html',papers:'https://nios.ac.in/',note:'NIOS does not use a regular Class 1–12 structure: OBE A/B/C are equivalent to Classes III/V/VIII; Secondary is Class X and Senior Secondary is Class XII.'},
+ {id:'upmsp',name:'UPMSP',full:'Uttar Pradesh Madhyamik Shiksha Parishad',desc:'Uttar Pradesh Board class-wise syllabus and resources.',icon:'📗',official:'https://upmsp.edu.in/',syllabus:'https://upmsp.edu.in/Board_Syllabus.aspx',books:'https://upmsp.edu.in/',papers:'https://upmsp.edu.in/',note:'Official board syllabus page provides class-wise syllabus for Classes IX–XII. Check the board site for current textbooks and examination notices.'},
+ {id:'rbse',name:'RBSE',full:'Board of Secondary Education Rajasthan',desc:'Rajasthan Board syllabus and textbook resources.',icon:'🏜️',official:'https://rajeduboard.rajasthan.gov.in/',syllabus:'https://rajeduboard.rajasthan.gov.in/anudeshika-etc/anudeshika-syllabus.htm',books:'https://rstb.rajasthan.gov.in/',papers:'https://rajeduboard.rajasthan.gov.in/contents.htm',note:'The Rajasthan Board site lists class-wise syllabus; the Rajasthan State Textbook Board is the official textbook-board resource.'},
+ {id:'bseb',name:'BSEB',full:'Bihar School Examination Board',desc:'Bihar Board examinations and official state textbooks.',icon:'📙',official:'https://www.biharboardonline.org/',syllabus:'https://www.biharboardonline.org/',books:'https://bstbpc.bihar.gov.in/',papers:'https://www.biharboardonline.org/',note:'The Bihar State Textbook Publishing Corporation provides official textbooks for Classes 1–12. Use the BSEB site for examination notices.'},
+ {id:'mpbse',name:'MPBSE',full:'Madhya Pradesh Board of Secondary Education',desc:'Madhya Pradesh Board syllabus and academic resources.',icon:'🌳',official:'https://www.mpbse.nic.in/',syllabus:'https://www.mpbse.nic.in/syllabus.htm',books:'https://www.mpbse.nic.in/',papers:'https://www.mpbse.nic.in/',note:'The official MPBSE syllabus page includes secondary and higher-secondary subject groups. Check current session details before using a syllabus.'},
+ {id:'msbshse',name:'Maharashtra State Board',full:'Maharashtra State Board of Secondary and Higher Secondary Education',desc:'Maharashtra SSC and HSC subject and syllabus resources.',icon:'🏫',official:'https://www.mahahsscboard.in/',syllabus:'https://www.mahahsscboard.in/en/studentAndSyllabus/hscGeneral',books:'https://books.ebalbharati.in/',papers:'https://www.mahahsscboard.in/',note:'The board site has separate SSC and HSC subject information. eBalbharati is the state’s textbook portal.'}
 ];
 
 const SUBJECTS = {
-  10: [
-    {slug:"maths",name:"Mathematics",icon:"🔢",chapters:[
-      {slug:"real-numbers",name:"Real Numbers",desc:"Euclid's Division Lemma, Fundamental Theorem of Arithmetic, irrational numbers, HCF and LCM."},
-      {slug:"polynomials",name:"Polynomials",desc:"Zeroes of a polynomial, relationship between zeroes and coefficients."},
-      {slug:"trigonometry",name:"Introduction to Trigonometry",desc:"Trigonometric ratios, values at specific angles, and trigonometric identities."}
-    ]},
-    {slug:"science",name:"Science",icon:"🔬",chapters:[
-      {slug:"chemical-reactions",name:"Chemical Reactions and Equations",desc:"Balanced chemical equations, types of reactions, corrosion and rancidity."},
-      {slug:"light",name:"Light – Reflection and Refraction",desc:"Laws of reflection, spherical mirrors, lens formula and magnification."}
-    ]}
-  ]
+ primary:[['English','🔤'],['Hindi / Regional Language','अ'],['Mathematics','🔢'],['EVS','🌱'],['General Knowledge','🌍'],['Computer','💻'],['Art & Craft','🎨']],
+ middle:[['English','🔤'],['Hindi / Regional Language','अ'],['Mathematics','🔢'],['Science','🔬'],['Social Science','🌏'],['Sanskrit / Third Language','📜'],['Computer / ICT','💻'],['Art & Physical Education','🎨']],
+ secondary:[['English','🔤'],['Hindi / Second Language','अ'],['Mathematics','🔢'],['Science','🔬'],['Social Science','🌏'],['Sanskrit / Third Language','📜'],['Computer / IT / Skill Subject','💻'],['Physical Education','⚽']],
+ senior:{
+  science:[['English','🔤'],['Physics','⚛️'],['Chemistry','🧪'],['Mathematics','📐'],['Biology','🧬'],['Computer Science','💻'],['Physical Education','⚽']],
+  commerce:[['English','🔤'],['Accountancy','🧾'],['Business Studies','💼'],['Economics','📊'],['Mathematics / Applied Maths','📐'],['Entrepreneurship','🚀'],['Computer Science / Informatics Practices','💻']],
+  humanities:[['English','🔤'],['History','📜'],['Political Science','🏛️'],['Geography','🌍'],['Economics','📊'],['Psychology','🧠'],['Sociology','👥'],['Home Science','🏠']]
+ }
 };
-for(let i=1; i<=12; i++){ if(!SUBJECTS[i]) SUBJECTS[i] = [{slug:"maths",name:"Maths",icon:"🔢"},{slug:"science",name:"Science",icon:"🔬"}]; }
-
-/* ============================================================
-   DATA FOR PRE SCHOOL SECTION
-============================================================ */
-const PRESCHOOL_CATEGORIES = [
-    { name: "Nursery", icon: "🧸", desc: "Pre-nursery and Nursery learning materials, worksheets, and activities." },
-    { name: "LKG", icon: "🎨", desc: "Lower Kindergarten activities, tracing worksheets, and basic learning." },
-    { name: "UKG", icon: "✏️", desc: "Upper Kindergarten learning resources, writing practice, and numbers." },
-    { name: "Kids Learning Material", icon: "🧩", desc: "Flashcards, puzzles, and fun educational activities for kids." },
-    { name: "Poem", icon: "📜", desc: "English and Hindi poems for kids to recite and enjoy." },
-    { name: "Rhyme", icon: "🎵", desc: "Classic nursery rhymes with actions and lyrics." },
-    { name: "Cartoon Learning", icon: "📺", desc: "Educational cartoons and animated videos for visual learning." }
+const SUBJECT_NOTES = {
+ 'english':'Reading, vocabulary, grammar, writing and comprehension practice.',
+ 'hindi':'वर्ण/वर्तनी, शब्द-ज्ञान, पठन, व्याकरण और लेखन अभ्यास।',
+ 'mathematics':'Number sense, calculations, patterns, geometry and problem-solving.',
+ 'evs':'Our body, family, plants, animals, food, water and surroundings.',
+ 'science':'Scientific concepts, observation, experiments and application-based questions.',
+ 'social science':'History, geography, civics, society and map-based learning.',
+ 'computer':'Computer basics, keyboard, mouse, files, internet safety and digital skills.',
+ 'gk':'India, important places, nature, inventions, sports and general awareness.',
+ 'physics':'Concepts, formulas, numericals, experiments and diagrams.',
+ 'chemistry':'Matter, reactions, equations, concepts and laboratory skills.',
+ 'biology':'Living organisms, cells, life processes, diagrams and applications.',
+ 'accountancy':'Accounting concepts, journal, ledger, trial balance and financial statements.',
+ 'business studies':'Business concepts, management, organisation and case-based learning.',
+ 'economics':'Basic economic concepts, data interpretation and applications.'
+};
+const ICON_BY_SUBJECT = {'English':'🔤','Hindi / Regional Language':'अ','Hindi / Second Language':'अ','Mathematics':'🔢','Mathematics / Applied Maths':'📐','EVS':'🌱','Science':'🔬','Social Science':'🌏','Sanskrit / Third Language':'📜','Computer':'💻','Computer / ICT':'💻','Computer / IT / Skill Subject':'💻','General Knowledge':'🌍','Art & Craft':'🎨','Art & Physical Education':'🎨','English':'🔤'};
+const PRESCHOOL = [
+ {id:'nursery',name:'Nursery',icon:'🧸',desc:'Alphabet recognition, colours, shapes, counting, rhymes and early fine-motor practice.'},
+ {id:'lkg',name:'LKG',icon:'🎨',desc:'Letter sounds, simple Hindi words, number sense, patterns and tracing.'},
+ {id:'ukg',name:'UKG',icon:'✏️',desc:'Reading readiness, simple sentences, number operations and school readiness.'},
+ {id:'kids-learning',name:'Kids Learning Material',icon:'🧩',desc:'Flashcards, puzzles, matching, basic concepts and fun practice activities.'},
+ {id:'poem',name:'Poem',icon:'📜',desc:'Short original Hindi and English poems for recitation practice.'},
+ {id:'rhyme',name:'Rhyme',icon:'🎵',desc:'Nursery rhyme activity prompts and action-based recitation practice.'},
+ {id:'cartoon-learning',name:'Cartoon Learning',icon:'📺',desc:'Safe learning-video activity ideas and topic-based viewing prompts.'}
 ];
-
-/* ============================================================
-   DATA FOR ENTRANCE EXAMS (Updated with ALL categories)
-============================================================ */
 const examData = {
     "Agricultural": ["AP AGRICET", "ICAR JRF / SRF", "JCECE", "GBPUAT", "MHT CET", "HORTICET", "AIEEA UG", "AIEEA PG", "MP PAT", "OUAT", "Rajasthan JET", "IGKV CET", "CG PAT", "TG EAPCET", "MCAER PG CET", "TBJEE", "AP EAPCET", "BCECE", "CG PET", "GATE", "Karnataka DCET", "TS AGRICET", "UPCATET"],
     "Architecture": ["LPUNEST", "OJEE", "AMUEEE", "CEETA PG", "COMEDK UGET", "DASA", "DASA PG", "GATE", "JEE Advanced", "JEE Main", "Karnataka PGCET", "KEAM", "NATA", "WBJEE", "TG PGECET", "TNSF Consortium CET", "TANCET"],
@@ -321,7 +136,6 @@ const examData = {
     "UPSC": ["NDA", "CAPF AC", "CDS", "CMS", "IAS", "IFS", "IES / ISS", "CISF AC LDCE", "ESE", "Combined Geo-Scientist"],
     "Veterinary": ["MP ADDET (DAHET)", "TBJEE", "RPVT", "MP PVFT", "UP Veterinary Entrance"]
 };
-
 const categoryIcons = {
     "Agricultural": "🌱", "Architecture": "🏛️", "Arts and Humanities": "🎨", "Banking": "🏦", 
     "Commerce": "📊", "Common": "📋", "Computer Application": "💻", "Defence": "🛡️", 
@@ -331,536 +145,86 @@ const categoryIcons = {
     "Science": "🔬", "SSC": "🏛️", "Teaching": "🍎", "University": "🏫", "UPSC": "🇮🇳", "Veterinary": "🐾"
 };
 
-/* ============================================================
-   HELPERS
-============================================================ */
-function getSubject(classNum, slug){ return (SUBJECTS[classNum] || []).find(s => s.slug === slug); }
-function getChapter(classNum, subjSlug, chSlug){
-  const subj = getSubject(classNum, subjSlug);
-  return subj && subj.chapters ? subj.chapters.find(c => c.slug === chSlug) : null;
+function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function enc(value){return encodeURIComponent(String(value));}
+function byId(id){return BOARDS.find(b=>b.id===id)||null;}
+function getRoute(){return location.hash.replace(/^#/, '')||'/';}
+function crumbs(items){return `<div class="crumbs">${items.map((x,i)=>i===items.length-1?`<b>${esc(x.label)}</b>`:`<a href="${x.href}">${esc(x.label)}</a><span>›</span>`).join('')}</div>`;}
+function pageHead(title,desc,trail=[]){return `<div class="page-head"><div class="container">${crumbs([{label:'Home',href:'#/'},...trail,{label:title}])}<h1>${esc(title)}</h1><p>${esc(desc||'')}</p></div></div>`;}
+function linkCard(icon,title,desc,url){return `<a class="resource-link" href="${esc(url)}" target="_blank" rel="noopener"><span class="ri">${icon}</span><span><strong>${esc(title)}</strong><small>${esc(desc)}</small></span></a>`;}
+function subjectSlug(name){return name.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');}
+function stageSubjects(boardId,n){
+ if(boardId==='nios'){
+  if(n===10)return [['English','🔤'],['Hindi / Other Language','अ'],['Mathematics','🔢'],['Science and Technology','🔬'],['Social Science','🌏'],['Economics','📊'],['Business Studies','💼'],['Home Science','🏠'],['Psychology','🧠'],['Painting','🎨'],['Data Entry Operations','💻']];
+  if(n===12)return [['English / Hindi / Language','🔤'],['Mathematics','🔢'],['Physics','⚛️'],['Chemistry','🧪'],['Biology','🧬'],['History','📜'],['Geography','🌍'],['Political Science','🏛️'],['Economics','📊'],['Business Studies','💼'],['Accountancy','🧾'],['Computer Science','💻'],['Psychology','🧠'],['Sociology','👥'],['Home Science','🏠'],['Data Entry Operations','⌨️']];
+ }
+ if(boardId==='cisce' && n>=9 && n<=10)return [['English','🔤'],['Second Language','🗣️'],['History & Civics','📜'],['Geography','🌍'],['Mathematics','🔢'],['Physics','⚛️'],['Chemistry','🧪'],['Biology','🧬'],['Computer Applications / Elective','💻']];
+ if(n<=5)return SUBJECTS.primary;
+ if(n<=8)return SUBJECTS.middle;
+ if(n<=10)return SUBJECTS.secondary;
+ return Object.values(SUBJECTS.senior).flat();
 }
-function crumbsHTML(items){
-  return `<div class="crumbs">${items.map((it,i)=>{
-    const isLast = i === items.length - 1;
-    return isLast ? `<span>${it.label}</span>` : `<a href="${it.href}">${it.label}</a><span class="sep">/</span>`;
-  }).join("")}</div>`;
-}
-function escapeHTML(s){ return String(s).replace(/[&<>"']/g, m => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m])); }
-
-/* ============================================================
-   PAGE RENDERERS
-============================================================ */
-
-// 1. Home Page
+function classOptions(board){if(board.id==='nios')return [{n:3,label:'OBE Level A',note:'Equivalent to Class III'},{n:5,label:'OBE Level B',note:'Equivalent to Class V'},{n:8,label:'OBE Level C',note:'Equivalent to Class VIII'},{n:10,label:'Secondary',note:'Equivalent to Class X'},{n:12,label:'Senior Secondary',note:'Equivalent to Class XII'}];return Array.from({length:12},(_,i)=>({n:i+1,label:`Class ${i+1}`,note:i+1>=11?'Senior Secondary':'School'}));}
 function renderHome(){
-  return `
-    <section class="hero">
-      <h1>SKYNET STUDY HUB</h1>
-      <p>Free Study Material for Class 1–12</p>
-      
-      <div style="background: rgba(255,255,255,0.15); padding: 24px; border-radius: 12px; max-width: 650px; margin: 0 auto; backdrop-filter: blur(8px); border: 2px solid #ffeb3b; box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);">
-          <h3 style="margin-bottom: 12px; font-size: 20px; color: #ffeb3b; text-shadow: 0 0 10px rgba(255,235,59,0.8); font-weight: 800;">💖 हमारी मेहनत का साथ दें</h3>
-          <p style="font-size: 16px; line-height: 1.6; color: #ffffff; font-weight: 500;">अगर आपको हमारी मेहनत अच्छी लगी और आप इस फ्री प्लेटफॉर्म में मदद करना चाहते हैं, तो आप एक छोटा सा डोनेशन दे सकते हैं। आपका योगदान हमें इसे सभी के लिए फ्री रखने में मदद करेगा।</p>
-      </div>
-    </section>
-
-    <section style="padding-top: 40px;"><div class="container">
-      <h2 class="section-title">Browse by Category <small>Find papers organised by exam type</small></h2>
-      
-      <div class="grid category-grid">
-        <!-- Pre School -->
-        <a class="category-card" href="#/preschool">
-          <div class="cat-icon" style="background:#ec4899;">🧸</div>
-          <h3>Pre School (1-4)</h3>
-          <p>Nursery, LKG, UKG, Kids Learning Material</p>
-          <div class="cat-footer">
-            <span>150+ papers</span>
-            <span class="explore-btn">Explore →</span>
-          </div>
-        </a>
-
-        <!-- School -->
-        <a class="category-card" href="#/school">
-          <div class="cat-icon" style="background:#ff9800;">📖</div>
-          <h3>School</h3>
-          <p>CBSE, PSEB, ICSE, and State Board previous papers</p>
-          <div class="cat-footer">
-            <span>891 papers</span>
-            <span class="explore-btn">Explore →</span>
-          </div>
-        </a>
-        
-        <!-- Entrance -->
-        <a class="category-card" href="#/entrance">
-          <div class="cat-icon" style="background:#10b981;">✍️</div>
-          <h3>Entrance Exams</h3>
-          <p>JEE, NEET, CLAT, CAT, Banking & more</p>
-          <div class="cat-footer">
-            <span>500+ Exams</span>
-            <span class="explore-btn">Explore →</span>
-          </div>
-        </a>
-        
-        <!-- College -->
-        <a class="category-card" href="#/college">
-          <div class="cat-icon" style="background:#4f46e5;">🎓</div>
-          <h3>College</h3>
-          <p>University exams, semester papers</p>
-          <div class="cat-footer">
-            <span>762 papers</span>
-            <span class="explore-btn">Explore →</span>
-          </div>
-        </a>
-
-        <!-- Competitive -->
-        <a class="category-card" href="#/competitive">
-          <div class="cat-icon" style="background:#ef4444;">🏦</div>
-          <h3>Competitive Exams</h3>
-          <p>SSC, Banking, Railway, UPSC & more</p>
-          <div class="cat-footer">
-            <span>914 papers</span>
-            <span class="explore-btn">Explore →</span>
-          </div>
-        </a>
-      </div>
-    </div></section>`;
+ const cards = [
+  {title:'Pre School (1-4)',desc:'Nursery, LKG, UKG, Kids Learning Material',count:'150+ papers',icon:'🧸',color:'#ec4899',href:'#/preschool'},
+  {title:'School',desc:'CBSE, PSEB, ICSE, and State Board previous papers',count:'891 papers',icon:'📖',color:'#ff9800',href:'#/school'},
+  {title:'Entrance Exams',desc:'JEE, NEET, CLAT, CAT, Banking & more',count:'500+ Exams',icon:'✍️',color:'#10b981',href:'#/entrance'},
+  {title:'College',desc:'University exams, semester papers',count:'762 papers',icon:'🎓',color:'#4f46e5',href:'#/college'},
+  {title:'Competitive Exams',desc:'SSC, Banking, Railway, UPSC & more',count:'914 papers',icon:'🏛️',color:'#ef4444',href:'#/competitive'}
+ ];
+ return `<section class="home-category-section"><div class="container">
+  <h2 class="home-category-title">Browse by Category <small>Find papers organised by exam type</small></h2>
+  <div class="grid category-grid">${cards.map((c,i)=>`<a class="category-card" href="${c.href}" aria-label="Open ${esc(c.title)}">
+   <div class="cat-icon" style="background:${c.color}">${c.icon}</div>
+   <h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p>
+   <div class="cat-footer"><span>${esc(c.count)}</span><span class="explore-btn">Explore →</span></div>
+  </a>`).join('')}</div>
+ </div></section>`;
+}
+function renderBoards(){return pageHead('Select Your Board','Choose the board followed by your school.','')+`<section><div class="container"><div class="grid board-grid">${BOARDS.map(b=>`<a class="card" href="#/school/${b.id}"><div class="icon">${b.icon}</div><h3>${esc(b.name)}</h3><p>${esc(b.full)}</p><span class="more">View Classes →</span></a>`).join('')}</div></div></section>`;}
+function renderClasses(boardId){const b=byId(boardId);if(!b)return render404();const options=classOptions(b);return pageHead(`${b.name} — Select Class`,`Board: ${b.full}. Choose your class or learning level.`,[{label:'Boards',href:'#/school'}])+`<section><div class="container"><div class="panel"><h2>${esc(b.full)}</h2><p>${esc(b.note)}</p><div class="tag-row"><span class="tag">Official Board: ${esc(b.name)}</span><span class="tag">Session: 2026–27 where published</span></div></div><div class="grid class-grid">${options.map(o=>`<a class="card" href="#/school/${b.id}/${o.n}" style="text-align:center"><div class="icon">🎒</div><h3>${esc(o.label)}</h3><p>${esc(o.note)}</p><span class="more">Open Subjects →</span></a>`).join('')}</div><div class="notice">Note: For Classes 1–8, exact subject names and books can vary by school, medium and state. Confirm the final subject combination with the school.</div></div></section>`;}
+function renderClassChooser(n){if(!Number.isInteger(n)||n<1||n>12)return render404();const list=BOARDS.filter(b=>b.id!=='nios'||[3,5,8,10,12].includes(n));return pageHead(`Choose Board — Class ${n}`,'Select the board to open its Class-wise study section.')+`<section><div class="container"><div class="grid board-grid">${list.map(b=>`<a class="card" href="#/school/${b.id}/${n}"><div class="icon">${b.icon}</div><h3>${esc(b.name)}</h3><p>${esc(b.desc)}</p><span class="more">Open Class ${n} →</span></a>`).join('')}</div></div></section>`;}
+function renderSubjects(boardId,n){const b=byId(boardId);if(!b||!Number.isInteger(n)||n<1||n>12)return render404();const subjects=stageSubjects(boardId,n);let body='';
+ if(n>=11&&boardId!=='nios'){
+  const streams=[['Science',SUBJECTS.senior.science],['Commerce',SUBJECTS.senior.commerce],['Humanities / Arts',SUBJECTS.senior.humanities]];
+  body=`<div class="notice">Class ${n}: नीचे दिए गए Science, Commerce और Humanities के subjects विकल्प हैं। सभी subjects हर school/board में उपलब्ध नहीं होते; अपने school की subject combination से मिलान करें।</div>${streams.map(([stream,items])=>`<h2 class="stream-title">${stream} Stream</h2><div class="grid subject-grid">${items.map(s=>subjectCard(boardId,n,s)).join('')}</div>`).join('')}`;
+ } else {body=`<div class="grid subject-grid">${subjects.map(s=>subjectCard(boardId,n,s)).join('')}</div>`;}
+ return pageHead(`${b.name} — Class ${n} Subjects`,`Choose a subject to see learning topics and official board resources.`,[{label:'Boards',href:'#/school'},{label:b.name,href:`#/school/${boardId}`}])+`<section><div class="container"><div class="panel"><h2>${esc(b.name)} · Class ${n}</h2><p>${esc(b.note)}</p><p class="pill">Subject availability depends on school / board / medium</p></div>${body}</div></section>`;
+}
+function subjectCard(boardId,n,s){const [name,icon]=s;return `<a class="card" href="#/school/${boardId}/${n}/${enc(subjectSlug(name))}"><div class="icon">${icon}</div><h3>${esc(name)}</h3><p>${esc(SUBJECT_NOTES[name.toLowerCase().split(' /')[0]]||'Study notes, practice questions and board resources.')}</p><span class="more">Open Subject →</span></a>`;}
+function practiceFor(subject,n){const key=subject.toLowerCase();if(key.includes('math'))return n<=5?['Counting and number names','Addition and subtraction','Shapes and patterns','Measurement and time']:n<=8?['Whole numbers and integers','Fractions and decimals','Algebra and geometry','Data handling']:['Number systems and algebra','Equations and functions','Geometry and mensuration','Statistics and probability'];if(key.includes('english'))return ['Reading and comprehension','Vocabulary and word meanings','Grammar practice','Paragraph and letter writing'];if(key.includes('hindi'))return ['पठन और शब्द-ज्ञान','वर्तनी और मात्राएँ','व्याकरण अभ्यास','अनुच्छेद लेखन'];if(key.includes('science')||key.includes('physics')||key.includes('chemistry')||key.includes('biology'))return ['Key terms and definitions','Diagrams and labelling','Concept questions','Application-based questions'];if(key.includes('social')||key.includes('history')||key.includes('geography')||key.includes('political'))return ['Important terms and dates','Maps and diagrams','Short and long answers','Case/source-based questions'];if(key.includes('computer'))return ['Computer fundamentals','Input/output devices','Operating system and files','Internet and cyber safety'];return ['Read the chapter or topic','Make short notes','Practise textbook questions','Attempt a self-test'];}
+function renderSubject(boardId,n,slug){const b=byId(boardId);if(!b)return render404();const options=stageSubjects(boardId,n);const chosen=options.find(s=>subjectSlug(s[0])===slug);if(!chosen)return render404();const subject=chosen[0];const topics=practiceFor(subject,n);return pageHead(`${subject} — Class ${n}`,`${b.name} study section · use the board’s current syllabus and school-prescribed textbook.`,[{label:'Boards',href:'#/school'},{label:b.name,href:`#/school/${boardId}`},{label:`Class ${n}`,href:`#/school/${boardId}/${n}`}])+`<section><div class="container"><div class="panel"><h2>${chosen[1]} ${esc(b.name)} · Class ${n} · ${esc(subject)}</h2><p>${esc(SUBJECT_NOTES[subject.toLowerCase().split(' /')[0]]||'Use this page to organise your study and open your board resources.')}</p><div class="tag-row"><span class="tag">Class-wise</span><span class="tag">Board-wise</span><span class="tag">Study planning</span></div></div><h2 class="section-title">Official ${esc(b.name)} Resources</h2><div class="resource-grid">${linkCard('📑','Official Syllabus','Check the latest subject-wise syllabus and session updates',b.syllabus)}${linkCard('📚','Books / Study Material','Open official board textbooks or study material',b.books)}${linkCard('📝','Question Papers / Model Papers','Find official sample papers, old papers or marking schemes',b.papers)}${linkCard('🌐','Board Official Website','Notices, circulars, results and academic updates',b.official)}</div><div class="panel" style="margin-top:20px"><h2>SKYNET Practice Checklist</h2><p>ये general practice topics हैं, official board chapter-list नहीं। अपनी current textbook और syllabus के अनुसार इनमें से relevant topics चुनें।</p><ol style="margin:12px 0 0 20px;line-height:2">${topics.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><button class="btn light" type="button" onclick="window.print()" style="margin-top:15px">🖨️ Print Study Checklist</button></div><div class="notice">Copyright note: SKYNET Study Hub provides links to official resources. We do not copy or host board/NCERT PDFs here. Please follow each publisher’s terms for downloads and reuse.</div></div></section>`;}
+function renderCollege(){
+ const cards = [
+  {icon:'🎓',title:'University Entrance Exams',desc:'CUET and university admission exam resources.',href:'#/entrance/University'},
+  {icon:'📚',title:'IGNOU Study Material',desc:'Open university course material and eGyanKosh resources.',href:'https://egyankosh.ac.in/'},
+  {icon:'🏛️',title:'UGC',desc:'University grants, regulations and higher-education information.',href:'https://www.ugc.gov.in/'},
+  {icon:'📝',title:'CUET Official Portal',desc:'Official Common University Entrance Test information.',href:'https://cuet.nta.nic.in/'},
+  {icon:'📖',title:'NCERT / ePathshala',desc:'Textbooks and learning resources useful for college preparation.',href:'https://epathshala.nic.in/'}
+ ];
+ return pageHead('College','University exams, semester papers and higher-education study resources.')+`<section><div class="container"><div class="grid subject-grid">${cards.map(c=>`<a class="card" href="${c.href}" ${c.href.startsWith('http')?'target="_blank" rel="noopener"':''}><div class="icon">${c.icon}</div><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><span class="more">Open Resource →</span></a>`).join('')}</div><div class="notice">Semester question papers are university-specific. Select your university from its official website to confirm the correct course and semester.</div></div></section>`;
+}
+function renderCompetitive(){
+ const cats=['SSC','Banking','Railway','UPSC','Teaching','Police','Defence'];
+ return pageHead('Competitive Exams','Choose an exam category to find official notifications, syllabus and practice resources.')+`<section><div class="container"><div class="grid category-grid">${cats.map(c=>`<a class="category-card" href="#/competitive/${enc(c)}"><div class="cat-icon" style="background:#ef4444">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${esc(c)} exams, preparation topics and official resource searches.</p><div class="cat-footer"><span>${(examData[c]||[]).length} exams</span><span class="explore-btn">Explore →</span></div></a>`).join('')}</div></div></section>`;
+}
+function renderCompetitiveCategory(category){
+ const list=examData[category];
+ if(!list || !['SSC','Banking','Railway','UPSC','Teaching','Police','Defence'].includes(category))return render404();
+ return pageHead(`${category} Exams`,'Choose an exam to find official syllabus, notifications and question papers.',[{label:'Competitive Exams',href:'#/competitive'}])+`<section><div class="container"><div class="grid subject-grid">${list.map(e=>`<a class="card" target="_blank" rel="noopener" href="https://www.google.com/search?q=${enc(e+' official website syllabus previous year question paper')}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Find official syllabus, notifications and question papers.</p><span class="more">Find Resources ↗</span></a>`).join('')}</div></div></section>`;
 }
 
-// 1.1 Pre School Page
-function renderPreSchoolPage() {
-  const cards = PRESCHOOL_CATEGORIES.map(cat => `
-    <a class="card" href="#/preschool/${encodeURIComponent(cat.name)}">
-      <div class="body" style="padding:30px 20px">
-        <div class="icon" style="font-size:44px; margin-bottom:15px;">${cat.icon}</div>
-        <h3 style="font-size:18px; margin-bottom:8px; color:var(--blue-dark);">${escapeHTML(cat.name)}</h3>
-        <p style="color:var(--muted); font-size:14px; line-height:1.4;">${escapeHTML(cat.desc)}</p>
-      </div>
-    </a>
-  `).join("");
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"Pre School (1-4)"}])}
-      <h1>Pre School Learning Hub</h1>
-      <p>Fun and interactive learning materials for young kids.</p>
-    </div></div>
-    <section><div class="container">
-      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px;">${cards}</div>
-    </div></section>
-  `;
-}
-
-// 2. School Pages
-function renderBoardsPage(){
-  const boardCards = BOARDS.map(b => `
-    <a class="card" href="#/school/${encodeURIComponent(b.name)}">
-      <img class="thumb" src="${b.img}" alt="${escapeHTML(b.name)}" loading="lazy">
-      <div class="body"><div class="icon">🏫</div><h3>${escapeHTML(b.name)}</h3><p>${escapeHTML(b.desc)}</p></div>
-    </a>`).join("");
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School"}])}
-      <h1>Select Your Board</h1>
-      <p>Choose your board to see classes</p>
-    </div></div>
-    <section><div class="container">
-      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">${boardCards}</div>
-    </div></section>
-  `;
-}
-
-function renderClassesPage(board){
-  // Find board data to show contact info
-  const boardInfo = BOARDS.find(b => b.name === board);
-  
-  let contactHTML = "";
-  if(boardInfo) {
-    contactHTML = `
-      <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:12px; padding:20px; margin-bottom:24px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:16px;">
-        <div style="display:flex; align-items:center; gap:12px;">
-          <div style="background:#0284c7; color:#fff; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:20px;">📞</div>
-          <div>
-            <h3 style="margin:0; font-size:16px; color:#0369a1;">${escapeHTML(board)} Contact Info</h3>
-            <p style="margin:0; font-size:14px; color:#0c4a6e; font-weight:600;">${boardInfo.contact}</p>
-          </div>
-        </div>
-        <a href="${boardInfo.website}" target="_blank" class="btn" style="background:#0284c7; font-size:13px; padding:8px 16px;">Visit Website 🌐</a>
-      </div>
-    `;
-  }
-
-  const classCards = Array.from({length:12},(_,i)=>{
-    const n = i+1;
-    return `<a class="card" href="#/school/${encodeURIComponent(board)}/${n}">
-      <img class="class-card-img" src="${CARTOON_AVATARS[i]}" alt="Class ${n} Cartoon" loading="lazy">
-      <div class="body"><div class="icon">📚</div><h3>Class ${n}</h3><p>Notes • Books • Solutions</p></div>
-    </a>`;
-  }).join("");
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board}])}
-      <h1>${board} — Classes</h1>
-      <p>Select your class</p>
-    </div></div>
-    <section><div class="container">
-      ${contactHTML}
-      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))">${classCards}</div>
-    </div></section>
-  `;
-}
-
-function renderSubjectsPage(board, num){
-  const subjects = SUBJECTS[num] || [];
-  const subjectCards = subjects.map(s => `
-    <a class="card" href="#/school/${encodeURIComponent(board)}/${num}/${s.slug}">
-      <div class="body" style="padding:24px 18px">
-        <div class="icon" style="font-size:34px">${s.icon}</div>
-        <h3>${escapeHTML(s.name)}</h3>
-        <p>Click to view resources</p>
-      </div>
-    </a>`).join("");
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`}])}
-      <h1>Class ${num} Subjects</h1>
-      <p>Board: ${board}</p>
-    </div></div>
-    <section><div class="container">
-      <div class="grid subj-grid">${subjectCards}</div>
-    </div></section>
-  `;
-}
-
-function renderResourcesPage(board, num, subjSlug){
-  const subj = getSubject(num, subjSlug);
-  
-  // Set default links (CBSE/NCERT)
-  let booksUrl = "https://ncert.nic.in/textbook.php";
-  let booksTitle = "NCERT Books (PDF)";
-  let booksDesc = "Free Downloadable Textbooks";
-  
-  let papersUrl = "https://www.cbse.gov.in/cbsenew/questionpaper.html";
-  let papersTitle = "Old Year Papers";
-  let papersDesc = "Previous Year Papers";
-
-  // Change links if Board is PSEB (Punjab Board)
-  if (board === "PSEB") {
-      booksUrl = "https://www.pseb.ac.in/";
-      booksTitle = "PSEB Books (Punjab Board)";
-      booksDesc = "Download Punjab Board Textbooks";
-      
-      papersUrl = "https://www.pseb.ac.in/";
-      papersTitle = "PSEB Question Papers";
-      papersDesc = "Punjab Board Previous Year Papers";
-  }
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`, href:`#/school/${encodeURIComponent(board)}/${num}`},{label:subj ? subj.name : subjSlug}])}
-      <h1>${subj ? subj.icon + ' ' + escapeHTML(subj.name) : 'Resources'} — Class ${num}</h1>
-    </div></div>
-    <section><div class="container">
-      <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">
-        <a class="card" href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters">
-          <div class="body"><div class="icon">📖</div><h3>Go to Chapters</h3><p>Read ${subj ? escapeHTML(subj.name) : ''} chapters</p></div>
-        </a>
-        <a class="card" href="${booksUrl}" target="_blank">
-          <div class="body"><div class="icon">📚</div><h3>${booksTitle}</h3><p>${booksDesc}</p></div>
-        </a>
-        <a class="card" href="${papersUrl}" target="_blank">
-          <div class="body"><div class="icon">📝</div><h3>${papersTitle}</h3><p>${papersDesc}</p></div>
-        </a>
-      </div>
-    </div></section>
-  `;
-}
-
-function renderChaptersPage(board, num, subjSlug){
-  const subj = getSubject(num, subjSlug);
-  if (!subj) return render404();
-  const chapters = subj.chapters || [];
-  const list = chapters.length
-    ? chapters.map((c,i) => `
-        <a class="chapter-item" href="#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters/${c.slug}">
-          <div class="left"><span class="num">${i+1}</span><h3>${escapeHTML(c.name)}</h3></div>
-          <span class="arrow">→</span>
-        </a>`).join("")
-    : `<div class="empty"><div class="icon">📖</div><h2>Chapters coming soon</h2></div>`;
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`, href:`#/school/${encodeURIComponent(board)}/${num}`},{label:subj.name, href:`#/school/${encodeURIComponent(board)}/${num}/${subjSlug}`},{label:"Chapters"}])}
-      <h1>${subj.icon} ${escapeHTML(subj.name)} — Chapters</h1>
-    </div></div>
-    <section><div class="container"><div class="chapter-list">${list}</div></div></section>
-  `;
-}
-
-function renderChapterContentPage(board, num, subjSlug, chSlug){
-  const subj = getSubject(num, subjSlug);
-  const ch = getChapter(num, subjSlug, chSlug);
-  if (!subj || !ch) return render404();
-
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:"School",href:"#/school"},{label:board, href:`#/school/${encodeURIComponent(board)}`},{label:`Class ${num}`, href:`#/school/${encodeURIComponent(board)}/${num}`},{label:subj.name, href:`#/school/${encodeURIComponent(board)}/${num}/${subjSlug}/chapters`},{label:ch.name}])}
-      <h1>${escapeHTML(ch.name)}</h1>
-    </div></div>
-    <section><div class="container">
-      <div style="background:#fff; padding:30px; border-radius:12px; border:1px solid var(--border);">
-        <h2 style="color:var(--blue-dark); margin-bottom:15px;">Chapter Overview</h2>
-        <p style="font-size:16px; line-height:1.7;">${escapeHTML(ch.desc || "Content coming soon.")}</p>
-      </div>
-    </div></section>
-  `;
-}
-
-/* ============================================================
-   ENTRANCE EXAM RENDERERS
-============================================================ */
-function renderEntranceHome() {
-    let catCards = '';
-    Object.keys(examData).forEach(cat => {
-        const icon = categoryIcons[cat] || "📄";
-        const count = examData[cat].length;
-        catCards += `
-            <a class="category-card" href="#/entrance/${encodeURIComponent(cat)}">
-                <div class="cat-icon" style="background:#10b981;">${icon}</div>
-                <h3>${cat}</h3>
-                <p>Browse top ${cat.toLowerCase()} exams in India.</p>
-                <div class="cat-footer">
-                    <span>${count} Exams</span>
-                    <span class="explore-btn">Explore →</span>
-                </div>
-            </a>
-        `;
-    });
-
-    return `
-        <div class="page-head"><div class="container">
-            ${crumbsHTML([{label:"Home",href:"#/"},{label:"Entrance Exams"}])}
-            <h1>All Entrance & Competitive Exams</h1>
-            <p>Syllabus, previous year papers and free mock tests for top engineering, medical, law, management and design entrance exams.</p>
-        </div></div>
-        <section><div class="container">
-            <div class="section-title" style="margin-bottom:20px;">
-                Browse Categories
-                <a href="#/entrance">View all</a>
-            </div>
-            <div class="grid category-grid">${catCards}</div>
-        </div></section>
-    `;
-}
-
-function renderEntranceCategory(category) {
-    const exams = examData[category];
-    if (!exams) return render404();
-
-    const examCards = exams.map(exam => `
-        <a class="exam-item-card" href="#/entrance/${encodeURIComponent(category)}/${encodeURIComponent(exam)}">
-            <div class="exam-logo">${exam.charAt(0)}</div>
-            <div class="exam-title">${escapeHTML(exam)}</div>
-        </a>
-    `).join('');
-
-    return `
-        <div class="page-head"><div class="container">
-            ${crumbsHTML([{label:"Home",href:"#/"},{label:"Entrance Exams",href:"#/entrance"},{label:category}])}
-            <h1>${categoryIcons[category] || '📄'} ${category} Exams</h1>
-            <p>Select an exam to view resources and question papers.</p>
-        </div></div>
-        <section><div class="container">
-            <div class="grid exam-grid">${examCards}</div>
-        </div></section>
-    `;
-}
-
-function renderEntranceDetail(category, exam) {
-    return `
-        <div class="page-head"><div class="container">
-            ${crumbsHTML([{label:"Home",href:"#/"},{label:"Entrance",href:"#/entrance"},{label:category, href:`#/entrance/${encodeURIComponent(category)}`},{label:exam}])}
-            <div style="display:flex; align-items:center; gap:16px;">
-                <div class="exam-logo" style="width:64px; height:64px; font-size:28px;">${exam.charAt(0)}</div>
-                <div>
-                    <h1 style="margin-bottom:4px;">${escapeHTML(exam)}</h1>
-                    <p style="margin:0;">${category} Exams</p>
-                </div>
-            </div>
-        </div></div>
-        <section><div class="container">
-            <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab(event, 'tab-resources')">Resources</button>
-                <button class="tab-btn" onclick="switchTab(event, 'tab-admission')">Admission Info</button>
-                <button class="tab-btn" onclick="switchTab(event, 'tab-books')">Recommended Books</button>
-            </div>
-            
-            <div id="tab-resources" class="tab-content active">
-                <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(160px,1fr))">
-                    <a class="exam-item-card" href="#/entrance/${encodeURIComponent(category)}/${encodeURIComponent(exam)}/papers">
-                        <div class="exam-logo" style="background:#fee2e2; color:#dc2626;">📄</div>
-                        <div class="exam-title">Question Paper</div>
-                    </a>
-                    <a class="exam-item-card" href="javascript:alert('Syllabus PDF coming soon!')">
-                        <div class="exam-logo" style="background:#e0f2fe; color:#0284c7;">📑</div>
-                        <div class="exam-title">Syllabus</div>
-                    </a>
-                </div>
-            </div>
-            
-            <div id="tab-admission" class="tab-content">
-                <div style="background:#fff; border:1px solid var(--border); padding:30px; border-radius:10px;">
-                    <h3 style="color:var(--blue-dark); margin-bottom:15px;">About ${escapeHTML(exam)}</h3>
-                    <p>The <strong>${escapeHTML(exam)}</strong> is a major examination under the ${category} category. This page covers complete details - eligibility, exam pattern, application process and preparation tips.</p>
-                </div>
-            </div>
-            
-            <div id="tab-books" class="tab-content">
-                <div style="background:#fff; border:1px solid var(--border); padding:30px; border-radius:10px;">
-                    <p style="color:var(--muted);">Recommended books for ${escapeHTML(exam)} will be available here soon.</p>
-                </div>
-            </div>
-        </div></section>
-    `;
-}
-
-function renderEntrancePapers(category, exam) {
-    const papers = [
-        { title: `${exam} 2026 Question Paper with Preliminary Key`, meta: "Updated 23 Oct 2026 · English" },
-        { title: `${exam} 2026 Question Paper (Set 2)`, meta: "Updated 23 Oct 2026 · English" },
-        { title: `${exam} 2025 Question Paper`, meta: "Updated 24 Sep 2026 · English" },
-        { title: `${exam} 2024 Question Paper`, meta: "Updated 15 Oct 2025 · English" }
-    ];
-
-    const paperHTML = papers.map(p => `
-        <div class="paper-item" onclick="alert('PDF download will start soon!')">
-            <div class="paper-icon">📄</div>
-            <div class="paper-info">
-                <div class="paper-title">${escapeHTML(p.title)}</div>
-                <div class="paper-meta">${escapeHTML(p.meta)}</div>
-            </div>
-            <div style="color:var(--muted); font-size:18px;">›</div>
-        </div>
-    `).join('');
-
-    return `
-        <div class="page-head"><div class="container">
-            ${crumbsHTML([
-                {label:"Home",href:"#/"},
-                {label:"Entrance",href:"#/entrance"},
-                {label:category, href:`#/entrance/${encodeURIComponent(category)}`},
-                {label:exam, href:`#/entrance/${encodeURIComponent(category)}/${encodeURIComponent(exam)}`},
-                {label:"Question Papers"}
-            ])}
-            <h1>${escapeHTML(exam)} Question Papers</h1>
-            <p>Previous year question papers help you understand the real exam pattern.</p>
-        </div></div>
-        <section><div class="container">
-            <div class="paper-list">${paperHTML}</div>
-        </div></section>
-    `;
-}
-
-function switchTab(evt, tabId) {
-    document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(tb => tb.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    evt.currentTarget.classList.add('active');
-}
-
-function renderComingSoon(category) {
-  return `
-    <div class="page-head"><div class="container">
-      ${crumbsHTML([{label:"Home",href:"#/"},{label:category}])}
-      <h1>${category} — Coming Soon</h1>
-    </div></div>
-    <section><div class="container">
-      <div class="empty">
-        <div class="icon">🚧</div>
-        <h2>We are working on it!</h2>
-        <p>Content for ${category} will be available soon.</p>
-        <a class="btn" href="#/">Go Back</a>
-      </div>
-    </div></section>
-  `;
-}
-
-function render404(){
-  return `<section><div class="container">
-    <div class="empty">
-      <div class="icon">🚫</div>
-      <h2>Page not found (404)</h2>
-      <a class="btn" href="#/">Home जाएँ</a>
-    </div>
-  </div></section>`;
-}
-
-/* ============================================================
-   ROUTER
-============================================================ */
-function getRoute(){
-  const hash = location.hash.replace(/^#/, "") || "/";
-  return hash.split("/").filter(Boolean);
-}
-
-function render(){
-  const parts = getRoute();
-  const app = document.getElementById("app");
-  let html = "";
-
-  if (parts.length === 0) html = renderHome();
-  
-  // Pre School Routes
-  else if (parts[0] === "preschool" && parts.length === 1) html = renderPreSchoolPage();
-  else if (parts[0] === "preschool" && parts.length === 2) html = renderComingSoon(decodeURIComponent(parts[1]));
-  
-  // School Routes
-  else if (parts[0] === "school" && parts.length === 1) html = renderBoardsPage();
-  else if (parts[0] === "school" && parts.length === 2) html = renderClassesPage(decodeURIComponent(parts[1]));
-  else if (parts[0] === "school" && parts.length === 3) html = renderSubjectsPage(decodeURIComponent(parts[1]), +parts[2]);
-  else if (parts[0] === "school" && parts.length === 4) html = renderResourcesPage(decodeURIComponent(parts[1]), +parts[2], parts[3]);
-  else if (parts[0] === "school" && parts.length === 5 && parts[4] === "chapters") html = renderChaptersPage(decodeURIComponent(parts[1]), +parts[2], parts[3]);
-  else if (parts[0] === "school" && parts.length === 6) html = renderChapterContentPage(decodeURIComponent(parts[1]), +parts[2], parts[3], parts[5]);
-  
-  // Entrance Exam Routes
-  else if (parts[0] === "entrance" && parts.length === 1) html = renderEntranceHome();
-  else if (parts[0] === "entrance" && parts.length === 2) html = renderEntranceCategory(decodeURIComponent(parts[1]));
-  else if (parts[0] === "entrance" && parts.length === 3) html = renderEntranceDetail(decodeURIComponent(parts[1]), decodeURIComponent(parts[2]));
-  else if (parts[0] === "entrance" && parts.length === 4 && parts[3] === "papers") html = renderEntrancePapers(decodeURIComponent(parts[1]), decodeURIComponent(parts[2]));
-  
-  // Other Routes
-  else if (["college", "competitive", "vocational"].includes(parts[0])) html = renderComingSoon(parts[0].charAt(0).toUpperCase() + parts[0].slice(1));
-  else html = render404();
-
-  app.innerHTML = html;
-  window.scrollTo(0,0);
-}
-
-function doSearch(q){
-  q = (q||"").trim();
-  if (!q) return;
-  alert("Search is under maintenance. Please use the navigation menu.");
-}
-
-/* ============================================================
-   INIT
-============================================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const cm = document.getElementById("classMenu");
-  for (let i = 1; i <= 12; i++) cm.innerHTML += `<a href="#/school/CBSE/${i}">Class ${i}</a>`;
-
-  const navInner = document.querySelector(".nav-inner");
-  const toggle = document.createElement("button");
-  toggle.className = "menu-toggle";
-  toggle.innerHTML = "☰ Menu";
-  toggle.onclick = () => navInner.classList.toggle("open");
-  document.querySelector("nav").prepend(toggle);
-
-  window.addEventListener("hashchange", render);
-  render();
-});
+function renderPreschool(){return pageHead('Nursery · LKG · UKG','Early learning material and activity sections for young children.')+`<section><div class="container"><div class="grid board-grid">${PRESCHOOL.map(x=>`<a class="card" href="#/preschool/${x.id}"><div class="icon">${x.icon}</div><h3>${x.name}</h3><p>${x.desc}</p><span class="more">Open activities →</span></a>`).join('')}</div></div></section>`;}
+function renderPreschoolLevel(id){const x=PRESCHOOL.find(p=>p.id===id);if(!x)return render404();const activities={nursery:['ABC letter recognition','Hindi swar recognition','Numbers 1–10','Colours and shapes','Fruit and animal names'],lkg:['Capital and small letters','Hindi swar and vyanjan','Numbers 1–50','Simple patterns','Rhymes and picture words'],ukg:['Alphabet and simple words','Hindi reading readiness','Numbers 1–100','Addition readiness','Simple sentences'],'kids-learning':['Alphabet and number flashcards','Match the animal with its sound','Match objects by colour and shape','Find the different picture','Count objects and choose the number'],poem:['My Original SKYNET poem: Good Morning','Hindi practice: सूरज निकला, दिन है आया','Recite a 4-line poem with clear voice','Learn new words from a poem','Draw a picture about the poem'],rhyme:['Clap and count with a number rhyme','Sing the alphabet in order','Action words: jump, clap, turn and sit','Repeat rhyming word pairs','Create actions for a familiar rhyme'],'cartoon-learning':['Watch a parent/teacher-approved alphabet lesson','Pause and name 5 objects seen in the lesson','Count objects shown in a learning video','Draw one thing learned from the video','Tell a parent/teacher two new facts']};const activity=activities[id]||activities.nursery;return pageHead(`${x.name} Learning Activities`,x.desc,[{label:'Nursery–UKG',href:'#/preschool'}])+`<section><div class="container"><div class="panel"><h2>${x.icon} ${x.name}</h2><p>यह SKYNET द्वारा तैयार की गई general early-learning activity list है; यह किसी एक school का prescribed syllabus नहीं है।</p><ol style="margin:12px 0 0 20px;line-height:2">${activity.map(t=>`<li>${esc(t)}</li>`).join('')}</ol><button class="btn light" onclick="window.print()" style="margin-top:14px">🖨️ Print Activities</button></div></div></section>`;}
+function renderEntranceHome(){const cats=Object.keys(examData).sort();return pageHead('Entrance & Competitive Exams','Choose a category to find exam names and official information.')+`<section><div class="container"><div class="grid board-grid">${cats.map(c=>`<a class="card" href="#/entrance/${enc(c)}"><div class="icon">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${examData[c].length} exams listed</p><span class="more">Browse exams →</span></a>`).join('')}</div></div></section>`;}
+function renderEntranceCategory(category){const list=examData[category];if(!list)return render404();return pageHead(`${category} Exams`,'Exam names directory. Verify eligibility, dates and papers on the relevant exam authority website.',[{label:'Entrance Exams',href:'#/entrance'}])+`<section><div class="container"><div class="grid subject-grid">${list.map(e=>`<a class="card" target="_blank" rel="noopener" href="https://www.google.com/search?q=${enc(e+' official website syllabus previous year question paper')}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Search official syllabus, notifications and question papers.</p><span class="more">Find Official Resources ↗</span></a>`).join('')}</div></div></section>`;}
+function renderSearch(q){const term=q.toLowerCase();const out=[];BOARDS.forEach(b=>{if((b.name+' '+b.full).toLowerCase().includes(term))out.push({title:b.name+' — '+b.full,desc:'Board directory',url:'#/school/'+b.id});});for(let n=1;n<=12;n++){if(('class '+n).includes(term)||String(n)===term)out.push({title:'Class '+n+' — Choose Board',desc:'Select a board for this class',url:'#/class/'+n});}const known=[...SUBJECTS.primary,...SUBJECTS.middle,...SUBJECTS.secondary,...Object.values(SUBJECTS.senior).flat()];const seen=new Set();known.forEach(([name])=>{if(name.toLowerCase().includes(term)&&!seen.has(name)){seen.add(name);out.push({title:name,desc:'Choose a board and class to open this subject',url:'#/school'});}});return pageHead('Search Results',`Results for “${q}”`)+`<section><div class="container">${out.length?`<div class="result-list">${out.map(r=>`<a class="result" href="${r.url}"><strong>${esc(r.title)}</strong><small>${esc(r.desc)}</small></a>`).join('')}</div>`:`<div class="empty"><div class="icon">🔎</div><h2>No matching item found</h2><p>Try a board name, class number or subject such as CBSE, Class 8 or Mathematics.</p></div>`}</div></section>`;}
+function doSearch(q){q=(q||'').trim();if(!q)return;location.hash='#/search/'+enc(q);}
+function render404(){return `<section><div class="container"><div class="empty"><div class="icon">🚫</div><h2>Page not found</h2><a class="btn" href="#/">Go to Home</a></div></div></section>`;}
+function render(){const raw=getRoute();const parts=raw.split('/').filter(Boolean).map(p=>{try{return decodeURIComponent(p)}catch{return p}});let html='';if(!parts.length)html=renderHome();else if(parts[0]==='school'&&parts.length===1)html=renderBoards();else if(parts[0]==='school'&&parts.length===2)html=renderClasses(parts[1]);else if(parts[0]==='school'&&parts.length===3)html=renderSubjects(parts[1],Number(parts[2]));else if(parts[0]==='school'&&parts.length===4)html=renderSubject(parts[1],Number(parts[2]),parts[3]);else if(parts[0]==='class'&&parts.length===2)html=renderClassChooser(Number(parts[1]));else if(parts[0]==='preschool'&&parts.length===1)html=renderPreschool();else if(parts[0]==='preschool'&&parts.length===2)html=renderPreschoolLevel(parts[1]);else if(parts[0]==='entrance'&&parts.length===1)html=renderEntranceHome();else if(parts[0]==='entrance'&&parts.length===2)html=renderEntranceCategory(parts[1]);else if(parts[0]==='college'&&parts.length===1)html=renderCollege();else if(parts[0]==='competitive'&&parts.length===1)html=renderCompetitive();else if(parts[0]==='competitive'&&parts.length===2)html=renderCompetitiveCategory(parts[1]);else if(parts[0]==='search'&&parts.length>=2)html=renderSearch(parts.slice(1).join(' '));else html=render404();document.getElementById('app').innerHTML=html;window.scrollTo({top:0,behavior:'instant'});}
+function initMenus(){document.getElementById('classMenu').innerHTML=Array.from({length:12},(_,i)=>`<a href="#/class/${i+1}">Class ${i+1} — Select Board</a>`).join('');document.getElementById('boardMenu').innerHTML=BOARDS.map(b=>`<a href="#/school/${b.id}">${esc(b.name)}</a>`).join('');document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('navMenu').classList.toggle('open'));document.getElementById('navMenu').addEventListener('click',e=>{if(e.target.closest('a'))document.getElementById('navMenu').classList.remove('open');});}
+document.addEventListener('DOMContentLoaded',()=>{initMenus();window.addEventListener('hashchange',render);render();});
 </script>
 </body>
 </html>
