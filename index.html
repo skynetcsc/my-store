@@ -14,620 +14,206 @@
     --violet:#8a5cff;
     --text:#e8f6ff;
   }
-
-  *{ box-sizing:border-box; margin:0; padding:0; }
-
+  *{box-sizing:border-box;margin:0;padding:0}
   body{
     min-height:100vh;
     background:
-      radial-gradient(circle at 15% 10%, rgba(0,229,255,.16), transparent 45%),
-      radial-gradient(circle at 85% 85%, rgba(255,43,214,.16), transparent 45%),
+      radial-gradient(circle at 15% 10%,rgba(0,229,255,.16),transparent 45%),
+      radial-gradient(circle at 85% 85%,rgba(255,43,214,.16),transparent 45%),
       var(--bg);
     color:var(--text);
-    font-family:"Segoe UI", system-ui, -apple-system, sans-serif;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:28px 16px 60px;
-    gap:34px;
-    overflow-x:hidden;
+    font-family:"Segoe UI",system-ui,-apple-system,sans-serif;
+    display:flex;flex-direction:column;align-items:center;
+    padding:28px 16px 60px;gap:34px;overflow-x:hidden;
   }
-
-  /* animated grid backdrop */
   body::before{
-    content:"";
-    position:fixed;
-    inset:0;
+    content:"";position:fixed;inset:0;
     background-image:
-      linear-gradient(rgba(0,229,255,.07) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,229,255,.07) 1px, transparent 1px);
-    background-size:52px 52px;
-    pointer-events:none;
-    z-index:-1;
+      linear-gradient(rgba(0,229,255,.07) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(0,229,255,.07) 1px,transparent 1px);
+    background-size:52px 52px;pointer-events:none;z-index:-1;
     animation:gridMove 14s linear infinite;
   }
-  @keyframes gridMove{
-    from{ background-position:0 0, 0 0; }
-    to  { background-position:52px 52px, 52px 52px; }
-  }
-
-  /* ---------- TOP HIGHLIGHT BUTTON ---------- */
-  .top-wrap{
-    width:100%;
-    max-width:900px;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
-    margin-top:8px;
-  }
-
-  .top-label{
-    font-size:clamp(.75rem, 2.2vw, 1rem);
-    letter-spacing:.5em;
-    text-transform:uppercase;
-    color:var(--cyan);
-    text-shadow:0 0 14px var(--cyan);
-    font-weight:700;
-    text-align:center;
-  }
-
+  @keyframes gridMove{from{background-position:0 0,0 0}to{background-position:52px 52px,52px 52px}}
+  .top-wrap{width:100%;max-width:900px;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}
+  .top-label{font-size:clamp(.75rem,2.2vw,1rem);letter-spacing:.5em;text-transform:uppercase;color:var(--cyan);text-shadow:0 0 14px var(--cyan);font-weight:700;text-align:center}
   .top-btn{
-    position:relative;
-    width:100%;
-    border:none;
-    cursor:pointer;
-    border-radius:26px;
-    padding:clamp(24px, 5vw, 46px) 20px;
-    font-family:inherit;
-    font-weight:900;
-    font-size:clamp(2rem, 9vw, 4.8rem);
-    letter-spacing:clamp(2px, 1.2vw, 10px);
-    color:#001318;
-    background:linear-gradient(100deg, var(--cyan), #7af9ff 40%, var(--magenta));
-    box-shadow:
-      0 0 0 4px rgba(0,229,255,.35),
-      0 0 45px rgba(0,229,255,.75),
-      0 0 110px rgba(255,43,214,.45),
-      inset 0 -10px 30px rgba(0,0,0,.25);
-    text-shadow:0 2px 0 rgba(255,255,255,.35);
-    animation:pulseTop 2.6s ease-in-out infinite;
-    transition:transform .18s ease, box-shadow .25s ease;
-    overflow:hidden;
-    text-decoration:none;
-    display:block;
-    text-align:center;
+    position:relative;width:100%;border:none;cursor:pointer;border-radius:26px;
+    padding:clamp(24px,5vw,46px) 20px;font-family:inherit;font-weight:900;
+    font-size:clamp(2rem,9vw,4.8rem);letter-spacing:clamp(2px,1.2vw,10px);
+    color:#001318;background:linear-gradient(100deg,var(--cyan),#7af9ff 40%,var(--magenta));
+    box-shadow:0 0 0 4px rgba(0,229,255,.35),0 0 45px rgba(0,229,255,.75),0 0 110px rgba(255,43,214,.45),inset 0 -10px 30px rgba(0,0,0,.25);
+    text-shadow:0 2px 0 rgba(255,255,255,.35);animation:pulseTop 2.6s ease-in-out infinite;
+    transition:transform .18s ease,box-shadow .25s ease;overflow:hidden;text-decoration:none;display:block;text-align:center;
   }
-
-  .top-btn span{
-    position:relative;
-    z-index:2;
-  }
-
-  /* sweeping shine */
-  .top-btn::after{
-    content:"";
-    position:absolute;
-    top:0; left:-60%;
-    width:45%; height:100%;
-    background:linear-gradient(100deg, transparent, rgba(255,255,255,.85), transparent);
-    transform:skewX(-22deg);
-    animation:sweep 3.4s ease-in-out infinite;
-  }
-
-  @keyframes sweep{
-    0%   { left:-60%; }
-    55%  { left:130%; }
-    100% { left:130%; }
-  }
-
+  .top-btn span{position:relative;z-index:2}
+  .top-btn::after{content:"";position:absolute;top:0;left:-60%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.85),transparent);transform:skewX(-22deg);animation:sweep 3.4s ease-in-out infinite}
+  @keyframes sweep{0%{left:-60%}55%{left:130%}100%{left:130%}}
   @keyframes pulseTop{
-    0%,100%{ box-shadow:0 0 0 4px rgba(0,229,255,.35), 0 0 45px rgba(0,229,255,.75), 0 0 110px rgba(255,43,214,.45), inset 0 -10px 30px rgba(0,0,0,.25); }
-    50%    { box-shadow:0 0 0 8px rgba(0,229,255,.18), 0 0 70px rgba(0,229,255,.95), 0 0 150px rgba(255,43,214,.65), inset 0 -10px 30px rgba(0,0,0,.25); }
+    0%,100%{box-shadow:0 0 0 4px rgba(0,229,255,.35),0 0 45px rgba(0,229,255,.75),0 0 110px rgba(255,43,214,.45),inset 0 -10px 30px rgba(0,0,0,.25)}
+    50%{box-shadow:0 0 0 8px rgba(0,229,255,.18),0 0 70px rgba(0,229,255,.95),0 0 150px rgba(255,43,214,.65),inset 0 -10px 30px rgba(0,0,0,.25)}
   }
-
-  .top-btn:hover{ transform:translateY(-4px) scale(1.015); }
-  .top-btn:active{ transform:scale(.985); }
-
-  /* ---------- BUTTON GRID ---------- */
-  .grid{
-    width:100%;
-    max-width:900px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
-    gap:20px;
-  }
-
+  .top-btn:hover{transform:translateY(-4px) scale(1.015)}.top-btn:active{transform:scale(.985)}
+  .grid{width:100%;max-width:900px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
   .big-btn{
-    position:relative;
-    cursor:pointer;
-    border:2px solid var(--c);
-    border-radius:22px;
-    padding:clamp(26px, 4.4vw, 40px) 22px;
-    min-height:clamp(120px, 20vw, 160px);
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    text-align:center;
-    font-family:inherit;
-    font-weight:900;
-    font-size:clamp(1.15rem, 3.4vw, 1.65rem);
-    letter-spacing:1.5px;
-    line-height:1.25;
-    color:#fff;
-    background:linear-gradient(160deg, rgba(255,255,255,.10), rgba(255,255,255,.02));
-    backdrop-filter:blur(6px);
-    box-shadow:0 0 22px -6px var(--c), inset 0 0 24px -12px var(--c);
-    transition:transform .18s ease, box-shadow .25s ease, background .25s ease;
-    overflow:hidden;
-    text-decoration:none;
+    position:relative;cursor:pointer;border:2px solid var(--c);border-radius:22px;
+    padding:clamp(26px,4.4vw,40px) 22px;min-height:clamp(120px,20vw,160px);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;
+    font-family:inherit;font-weight:900;font-size:clamp(1.15rem,3.4vw,1.65rem);
+    letter-spacing:1.5px;line-height:1.25;color:#fff;
+    background:linear-gradient(160deg,rgba(255,255,255,.10),rgba(255,255,255,.02));
+    backdrop-filter:blur(6px);box-shadow:0 0 22px -6px var(--c),inset 0 0 24px -12px var(--c);
+    transition:transform .18s ease,box-shadow .25s ease,background .25s ease;overflow:hidden;text-decoration:none;
   }
-
-  .big-btn .ico{
-    font-size:1.7em;
-    line-height:1;
-    filter:drop-shadow(0 0 10px var(--c));
-  }
-
-  .big-btn .tag{
-    font-size:.58em;
-    font-weight:600;
-    letter-spacing:.22em;
-    color:var(--c);
-    text-transform:uppercase;
-  }
-
-  .big-btn:hover{
-    transform:translateY(-6px);
-    background:linear-gradient(160deg, color-mix(in srgb, var(--c) 26%, transparent), rgba(255,255,255,.03));
-    box-shadow:0 0 42px -4px var(--c), inset 0 0 34px -10px var(--c);
-  }
-
-  .big-btn:active{ transform:translateY(-1px) scale(.98); }
-
-  /* full-width buttons */
-  .span-2{ grid-column:1 / -1; }
-
-  /* colour themes */
-  .c-cyan   { --c:var(--cyan); }
-  .c-lime   { --c:var(--lime); }
-  .c-amber  { --c:var(--amber); }
-  .c-violet { --c:var(--violet); }
-  .c-magenta{ --c:var(--magenta); }
-
-  /* ---------- SUB-PAGE: LIVE TV, MOVIES & MUSIC ---------- */
-  .sub-page{
-    width:100%;
-    max-width:900px;
-    display:none; /* Hidden by default */
-    flex-direction:column;
-    gap:20px;
-    animation:fadeIn 0.3s ease;
-  }
-  
-  @keyframes fadeIn { from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:translateY(0); } }
-
-  .back-btn{
-    background:rgba(255,255,255,0.1);
-    border:1px solid rgba(255,255,255,0.2);
-    color:#fff;
-    padding:10px 20px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:14px;
-    font-weight:600;
-    align-self:flex-start;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    transition:0.2s;
-  }
-  .back-btn:hover { background:rgba(255,255,255,0.2); }
-
-  /* Tabs for Sub-page */
-  .tv-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  .tv-tab {
-    padding: 12px 24px;
-    background: rgba(255,255,255,0.05);
-    border: 2px solid transparent;
-    border-radius: 12px;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.2s;
-    flex: 1;
-    text-align: center;
-    max-width: 200px;
-  }
-  .tv-tab:hover {
-    background: rgba(255,255,255,0.1);
-  }
-  .tv-tab.active {
-    border-color: var(--c);
-    background: rgba(255,255,255,0.1);
-    box-shadow: 0 0 15px rgba(255,255,255,0.1);
-  }
-
-  .tv-content {
-    display: none;
-    animation: fadeIn 0.3s ease;
-  }
-  .tv-content.active {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .movie-item{
-    display:flex;
-    align-items:center;
-    gap:16px;
-    background:rgba(255,255,255,0.05);
-    border:1px solid rgba(255,255,255,0.1);
-    padding:16px 20px;
-    border-radius:12px;
-    color:#fff;
-    text-decoration:none;
-    font-size:1.2rem;
-    font-weight:700;
-    transition:0.2s;
-    box-shadow:0 4px 15px rgba(0,0,0,0.2);
-  }
-  .movie-item:hover {
-    background:rgba(255,43,214,0.15);
-    border-color:var(--magenta);
-    transform:translateX(5px);
-    box-shadow:0 0 20px rgba(255,43,214,0.3);
-  }
-
-  .movie-item span.num {
-    color:var(--amber);
-    font-size:1.4rem;
-    font-weight:900;
-    min-width:30px;
-  }
-
-  .movie-item span.icon {
-    font-size:1.4rem;
-    margin-right:4px;
-  }
-
-  /* ✅ BADA AUR HIGHLIGHTED Warning Message Style */
-  .warning-box {
-    grid-column: 1 / -1;
-    background: rgba(255, 87, 34, 0.15); /* गहरा नारंगी/लाल बैकग्राउंड */
-    border: 2px solid #ff5722;
-    border-left: 8px solid #ff5722;
-    padding: 20px 24px;
-    border-radius: 12px;
-    color: #ffcc80;
-    font-size: 18px;
-    font-weight: 800;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    text-align: center;
-    box-shadow: 0 0 25px rgba(255, 87, 34, 0.5);
-    text-shadow: 0 0 8px rgba(0,0,0,0.8);
-    letter-spacing: 0.5px;
-    animation: pulseWarning 2s infinite;
-  }
-
-  @keyframes pulseWarning {
-    0% { box-shadow: 0 0 15px rgba(255, 87, 34, 0.4); }
-    50% { box-shadow: 0 0 35px rgba(255, 87, 34, 0.8); }
-    100% { box-shadow: 0 0 15px rgba(255, 87, 34, 0.4); }
-  }
-
-  /* ---------- TOAST ---------- */
-  #toast{
-    position:fixed;
-    left:50%;
-    bottom:26px;
-    transform:translate(-50%, 140%);
-    background:linear-gradient(100deg, var(--cyan), var(--magenta));
-    color:#00131a;
-    font-weight:800;
-    letter-spacing:.06em;
-    padding:14px 26px;
-    border-radius:999px;
-    box-shadow:0 0 34px rgba(0,229,255,.7);
-    transition:transform .35s cubic-bezier(.2,.9,.2,1.3);
-    z-index:99;
-    max-width:90vw;
-    text-align:center;
-  }
-  #toast.show{ transform:translate(-50%, 0); }
-
-  footer{
-    font-size:.75rem;
-    letter-spacing:.28em;
-    text-transform:uppercase;
-    color:#4d7a8c;
-    text-align:center;
-  }
-
-  @media (max-width:420px){
-    body{ padding:20px 12px 48px; gap:26px; }
-    .grid{ gap:16px; grid-template-columns:1fr; }
-    .movie-item { font-size:1rem; padding:12px 16px; }
-    .tv-tab { padding: 10px 15px; font-size: 14px; }
-    .warning-box { font-size: 15px; padding: 15px; border-left: 5px solid #ff5722; }
-  }
+  .big-btn .ico{font-size:1.7em;line-height:1;filter:drop-shadow(0 0 10px var(--c))}
+  .big-btn .tag{font-size:.58em;font-weight:600;letter-spacing:.16em;color:var(--c);text-transform:uppercase;line-height:1.5}
+  .big-btn:hover{transform:translateY(-6px);background:linear-gradient(160deg,color-mix(in srgb,var(--c) 26%,transparent),rgba(255,255,255,.03));box-shadow:0 0 42px -4px var(--c),inset 0 0 34px -10px var(--c)}
+  .big-btn:active{transform:translateY(-1px) scale(.98)}
+  .span-2{grid-column:1/-1}
+  .c-cyan{--c:var(--cyan)}.c-lime{--c:var(--lime)}.c-amber{--c:var(--amber)}.c-violet{--c:var(--violet)}.c-magenta{--c:var(--magenta)}
+  .sub-page{width:100%;max-width:900px;display:none;flex-direction:column;gap:20px;animation:fadeIn .3s ease}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+  .back-btn{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;padding:10px 20px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;align-self:flex-start;display:flex;align-items:center;gap:8px;transition:.2s}
+  .back-btn:hover{background:rgba(255,255,255,.2)}
+  .tv-tabs{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap;justify-content:center}
+  .tv-tab{padding:12px 24px;background:rgba(255,255,255,.05);border:2px solid transparent;border-radius:12px;color:#fff;font-size:16px;font-weight:700;cursor:pointer;transition:.2s;flex:1;text-align:center;max-width:200px}
+  .tv-tab:hover{background:rgba(255,255,255,.1)}
+  .tv-tab.active{border-color:var(--c);background:rgba(255,255,255,.1);box-shadow:0 0 15px rgba(255,255,255,.1)}
+  .tv-content{display:none;animation:fadeIn .3s ease}
+  .tv-content.active{display:grid;grid-template-columns:1fr;gap:12px}
+  .movie-item{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);padding:16px 20px;border-radius:12px;color:#fff;text-decoration:none;font-size:1.2rem;font-weight:700;transition:.2s;box-shadow:0 4px 15px rgba(0,0,0,.2)}
+  .movie-item:hover{background:rgba(255,43,214,.15);border-color:var(--magenta);transform:translateX(5px);box-shadow:0 0 20px rgba(255,43,214,.3)}
+  .movie-item span.num{color:var(--amber);font-size:1.4rem;font-weight:900;min-width:30px}
+  .movie-item span.icon{font-size:1.4rem;margin-right:4px}
+  .warning-box{grid-column:1/-1;background:rgba(255,87,34,.15);border:2px solid #ff5722;border-left:8px solid #ff5722;padding:20px 24px;border-radius:12px;color:#ffcc80;font-size:18px;font-weight:800;line-height:1.6;margin-bottom:15px;text-align:center;box-shadow:0 0 25px rgba(255,87,34,.5);text-shadow:0 0 8px rgba(0,0,0,.8);letter-spacing:.5px;animation:pulseWarning 2s infinite}
+  @keyframes pulseWarning{0%{box-shadow:0 0 15px rgba(255,87,34,.4)}50%{box-shadow:0 0 35px rgba(255,87,34,.8)}100%{box-shadow:0 0 15px rgba(255,87,34,.4)}}
+  #toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,140%);background:linear-gradient(100deg,var(--cyan),var(--magenta));color:#00131a;font-weight:800;letter-spacing:.06em;padding:14px 26px;border-radius:999px;box-shadow:0 0 34px rgba(0,229,255,.7);transition:transform .35s cubic-bezier(.2,.9,.2,1.3);z-index:99;max-width:90vw;text-align:center}
+  #toast.show{transform:translate(-50%,0)}
+  footer{font-size:.75rem;letter-spacing:.28em;text-transform:uppercase;color:#4d7a8c;text-align:center}
+  @media(max-width:420px){body{padding:20px 12px 48px;gap:26px}.grid{gap:16px;grid-template-columns:1fr}.movie-item{font-size:1rem;padding:12px 16px}.tv-tab{padding:10px 15px;font-size:14px}.warning-box{font-size:15px;padding:15px;border-left:5px solid #ff5722}}
 </style>
 </head>
 <body>
-
-  <!-- ============ MAIN PAGE CONTENT ============ -->
-  <div id="main-page" style="width:100%; display:flex; flex-direction:column; align-items:center; gap:34px;">
-    
-    <!-- ============ TOP BIG HIGHLIGHT BUTTON ============ -->
+  <div id="main-page" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:34px;">
     <div class="top-wrap">
       <div class="top-label">★ Top Project One ★</div>
-      <a href="https://www.skynetcc.co.in/" class="top-btn">
-        <span>SKYNET</span>
-      </a>
+      <a href="https://www.skynetcc.co.in/" class="top-btn"><span>SKYNET</span></a>
     </div>
 
-    <!-- ============ BIG BUTTON GRID ============ -->
     <main class="grid">
-
-      <!-- 1. SKYNET CYBER CAFE AND CSC CENTER -->
       <a class="big-btn c-cyan" href="https://www.skynetcc.co.in/index-2.html">
-        <span class="ico">🖥️</span>
-        <span>SKYNET CYBER CAFE AND CSC CENTER</span>
-        <span class="tag">Browse • Print • Scan</span>
+        <span class="ico">🖥️</span><span>SKYNET CYBER CAFE AND CSC CENTER</span><span class="tag">Browse • Print • Scan</span>
       </a>
-
-      <!-- 2. ALL SHOP IN RAMGARH AREA -->
       <a class="big-btn c-lime" href="https://www.skynetcc.co.in/directory.html" target="_blank" rel="noopener">
-        <span class="ico">🏬</span>
-        <span>ALL SHOP IN<br>RAMGARH AREA</span>
-        <span class="tag">Local Directory</span>
+        <span class="ico">🏬</span><span>ALL SHOP IN<br>RAMGARH AREA</span><span class="tag">Local Directory</span>
       </a>
-
-      <!-- 3. NEWSPAPER -->
       <a class="big-btn c-amber" href="https://www.skynetcc.co.in/newspaper.html" target="_blank" rel="noopener">
-        <span class="ico">📰</span>
-        <span>NEWSPAPER</span>
-        <span class="tag">Daily • News</span>
+        <span class="ico">📰</span><span>NEWSPAPER</span><span class="tag">Daily • News</span>
       </a>
-
-      <!-- 4. JOB PORTAL -->
       <a class="big-btn c-violet" href="https://www.skynetcc.co.in/jobportal.html">
-        <span class="ico">💼</span>
-        <span>JOB PORTAL</span>
-        <span class="tag">Search • Apply</span>
+        <span class="ico">💼</span><span>JOB PORTAL</span><span class="tag">Search • Apply</span>
       </a>
-
-      <!-- 5. ALL SECRET CODES -->
       <a class="big-btn c-magenta" href="https://www.skynetcc.co.in/AllSecretCodes.html" target="_blank" rel="noopener">
-        <span class="ico">🔑</span>
-        <span>ALL SECRET CODES</span>
-        <span class="tag">Tips • Tricks</span>
+        <span class="ico">🔑</span><span>ALL SECRET CODES</span><span class="tag">Tips • Tricks</span>
       </a>
-
-      <!-- SKYNET STUDY HUB -->
       <a class="big-btn c-amber" href="https://www.skynetcc.co.in/study.html">
-        <span class="ico">📚</span>
-        <span>SKYNET STUDY HUB</span>
-        <span class="tag">Notes • Tests • Help</span>
+        <span class="ico">📚</span><span>SKYNET STUDY HUB</span><span class="tag">Notes • Tests • Help</span>
       </a>
-
-      <!-- ✅ NEW: ATTENDANCE & FEE (Protected) -->
-      <button class="big-btn c-lime" onclick="checkAttendanceAuth()">
-        <span class="ico">🎓</span>
-        <span>ATTENDANCE & FEE</span>
-        <span class="tag">ERP Login</span>
+      <a class="big-btn c-lime" href="SKYNET_Computer_Premium_ERP.html" target="_blank" rel="noopener">
+        <span class="ico">🎓</span><span>ATTENDANCE &amp; FEE</span><span class="tag">Open ERP</span>
+      </a>
+      <button class="big-btn c-cyan" type="button" onclick="openLiveTV()">
+        <span class="ico">📺</span><span>LIVE TV<br>लाइव टीवी</span><span class="tag">Movies &amp; Music</span>
       </button>
-
-      <!-- ✅ LIVE TV (Opens Sub-page) -->
-      <button class="big-btn c-cyan" onclick="openLiveTV()">
-        <span class="ico">📺</span>
-        <span>LIVE TV<br>लाइव टीवी</span>
-        <span class="tag">Movies & Music</span>
-      </button>
-
-      <!-- DESI RADIO -->
       <a class="big-btn c-amber" href="https://www.skynetcc.co.in/Desi%20Radio.html" target="_blank" rel="noopener">
-        <span class="ico">📻</span>
-        <span>DESI RADIO</span>
-        <span class="tag">Listen • Music</span>
+        <span class="ico">📻</span><span>DESI RADIO</span><span class="tag">Listen • Music</span>
       </a>
-
-      <!-- EMERGENCY INDIA -->
       <a class="big-btn c-magenta" href="https://www.skynetcc.co.in/EmergencyIndia.html" target="_blank" rel="noopener">
-        <span class="ico">🚨</span>
-        <span>EMERGENCY INDIA</span>
-        <span class="tag">Helpline • Alerts</span>
+        <span class="ico">🚨</span><span>EMERGENCY INDIA</span><span class="tag">Helpline • Alerts</span>
       </a>
- <!-- Daily Register -->
-      <a class="big-btn c-magenta" https://script.google.com/macros/s/AKfycbwD_lEUFoEic1-R6KZYXrZVQJqRZSzqtUTnjk2wdvjruNy4XRp-NWcNWwur67TQG1ny/exec" target="_blank" rel="noopener">
-        <span class="ico">🚨</span>
-        <span>Register</span>
-        <span class="tag">Daily Sales, Customer Accounts,
-    Fee Register, Expenses and Tasks</span>
+
+      <!-- FIXED: Daily Register link (href added) -->
+      <a class="big-btn c-lime" href="https://script.google.com/macros/s/AKfycbwD_lEUFoEic1-R6KZYXrZVQJqRZSzqtUTnjk2wdvjruNy4XRp-NWcNWwur67TQG1ny/exec" target="_blank" rel="noopener">
+        <span class="ico">📊</span>
+        <span>SKYNET NET CYBER CAFE &amp; FEE REGISTER</span>
+        <span class="tag">Daily Sales • Customer Accounts • Fee Register • Expenses • Tasks</span>
       </a>
-      
 
-      <!-- SKYNET GAME -->
-      <button class="big-btn c-magenta span-2"
-        onclick="window.open('https://cyberszone.org/', '_blank', 'noopener'); showToast('▶ Opening SKYNET GAME…');">
-  <span class="ico">🎮</span>
-  <span>SKYNET GAME</span>
-  <span class="tag">Play Zone</span>
-</button>
-
+      <button class="big-btn c-magenta span-2" type="button" onclick="window.open('https://cyberszone.org/','_blank','noopener');showToast('▶ Opening SKYNET GAME…');">
+        <span class="ico">🎮</span><span>SKYNET GAME</span><span class="tag">Play Zone</span>
+      </button>
     </main>
   </div>
 
-  <!-- ============ SUB-PAGE: LIVE TV, MOVIES & MUSIC ============ -->
   <div id="live-tv-page" class="sub-page">
-    
-    <button class="back-btn" onclick="closeLiveTV()">
-      ← Back to Main Menu
-    </button>
-
-    <!-- Tabs Navigation -->
+    <button class="back-btn" type="button" onclick="closeLiveTV()">← Back to Main Menu</button>
     <div class="tv-tabs">
-      <button class="tv-tab active c-cyan" onclick="switchLiveTab('tv', this)">📺 Live TV</button>
-      <button class="tv-tab c-magenta" onclick="switchLiveTab('movies', this)">🎬 Movies</button>
-      <button class="tv-tab c-amber" onclick="switchLiveTab('music', this)">🎵 Music</button>
+      <button class="tv-tab active c-cyan" type="button" onclick="switchLiveTab('tv',this)">📺 Live TV</button>
+      <button class="tv-tab c-magenta" type="button" onclick="switchLiveTab('movies',this)">🎬 Movies</button>
+      <button class="tv-tab c-amber" type="button" onclick="switchLiveTab('music',this)">🎵 Music</button>
     </div>
 
-    <!-- 1. LIVE TV SECTION -->
     <div id="tab-tv" class="tv-content active">
-      
-      <!-- ⚠️ Bada Highlighted Warning Message -->
-      <div class="warning-box">
-        ⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अगर किसी अज्ञात (unknown) लिंक पर क्लिक करने से आपको कोई नुकसान होता है, तो हम जिम्मेदार नहीं होंगे।
-      </div>
-
-      <a href="https://famelack.com/tv/in" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">1.</span> <span class="icon">📡</span> Famelack India
-      </a>
-      <a href="https://www.jiotv.com/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">2.</span> <span class="icon">📺</span> JioTV
-      </a>
-      <a href="https://www.youtube.com/@DDNational/live" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">3.</span> <span class="icon">🇮🇳</span> DD National Live
-      </a>
-      <a href="https://www.youtube.com/@aajtak/live" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">4.</span> <span class="icon">📰</span> Aaj Tak Live
-      </a>
-      <a href="https://www.sonyliv.com/live-tv" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">5.</span> <span class="icon">▶️</span> SonyLIV Live TV
-      </a>
+      <div class="warning-box">⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अज्ञात लिंक खोलने से पहले उसकी सुरक्षा जाँच लें।</div>
+      <a href="https://famelack.com/tv/in" target="_blank" rel="noopener" class="movie-item"><span class="num">1.</span><span class="icon">📡</span>Famelack India</a>
+      <a href="https://www.jiotv.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">2.</span><span class="icon">📺</span>JioTV</a>
+      <a href="https://www.youtube.com/@DDNational/live" target="_blank" rel="noopener" class="movie-item"><span class="num">3.</span><span class="icon">🇮🇳</span>DD National Live</a>
+      <a href="https://www.youtube.com/@aajtak/live" target="_blank" rel="noopener" class="movie-item"><span class="num">4.</span><span class="icon">📰</span>Aaj Tak Live</a>
+      <a href="https://www.sonyliv.com/live-tv" target="_blank" rel="noopener" class="movie-item"><span class="num">5.</span><span class="icon">▶️</span>SonyLIV Live TV</a>
     </div>
 
-    <!-- 2. MOVIES SECTION -->
     <div id="tab-movies" class="tv-content">
-      
-      <!-- ⚠️ Bada Highlighted Warning Message -->
-      <div class="warning-box">
-        ⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अगर किसी अज्ञात (unknown) लिंक पर क्लिक करने से आपको कोई नुकसान होता है, तो हम जिम्मेदार नहीं होंगे।
-      </div>
-
-      <a href="https://bolly4uv.lol/" target="_blank" rel="noopener" class="movie-item" style="justify-content:center; font-size: 1.2rem; border-color: var(--magenta); background: rgba(255,43,214,0.1); padding: 20px;">
-        <span class="icon">🍿</span> SERVER-1 (Bolly4u)
-      </a>
-      <a href="https://vegamoviess.actor/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">2.</span> <span class="icon">🍿</span> SERVER-2 (Vegamovies)
-      </a>
-      <a href="https://moviesflixx.in/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">3.</span> <span class="icon">🎬</span> SERVER-3 (Moviesflix)
-      </a>
-      <a href="https://moviesnation.forum/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">4.</span> <span class="icon">📽️</span> SERVER-4 (MoviesNation)
-      </a>
+      <div class="warning-box">⚠️ चेतावनी: केवल वैध और अधिकृत streaming services का उपयोग करें। किसी अज्ञात लिंक पर व्यक्तिगत जानकारी या payment details न दें।</div>
+      <a href="https://www.netflix.com/in/" target="_blank" rel="noopener" class="movie-item" style="justify-content:center;font-size:1.2rem;border-color:var(--magenta);background:rgba(255,43,214,.1);padding:20px;"><span class="icon">🍿</span>Netflix</a>
+      <a href="https://www.primevideo.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">2.</span><span class="icon">🍿</span>Amazon Prime Video</a>
+      <a href="https://www.jiocinema.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">3.</span><span class="icon">🎬</span>JioCinema</a>
+      <a href="https://www.youtube.com/movies" target="_blank" rel="noopener" class="movie-item"><span class="num">4.</span><span class="icon">📽️</span>YouTube Movies</a>
     </div>
 
-    <!-- 3. MUSIC SECTION -->
     <div id="tab-music" class="tv-content">
-      
-      <!-- ⚠️ Bada Highlighted Warning Message -->
-      <div class="warning-box">
-        ⚠️ चेतावनी: कृपया कोई भी ऐप इंस्टॉल न करें। सिर्फ ऑनलाइन देखें (Live Watch)। अगर किसी अज्ञात (unknown) लिंक पर क्लिक करने से आपको कोई नुकसान होता है, तो हम जिम्मेदार नहीं होंगे।
-      </div>
-
-      <a href="https://music.youtube.com/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">1.</span> <span class="icon">🎵</span> YouTube Music
-      </a>
-      <a href="https://www.jiosaavn.com/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">2.</span> <span class="icon">🎧</span> JioSaavn
-      </a>
-      <a href="https://open.spotify.com/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">3.</span> <span class="icon">🟢</span> Spotify
-      </a>
-      <a href="https://gaana.com/" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">4.</span> <span class="icon">🔴</span> Gaana
-      </a>
-      <a href="https://www.wynk.in/music" target="_blank" rel="noopener" class="movie-item">
-        <span class="num">5.</span> <span class="icon">📻</span> Wynk Music
-      </a>
+      <div class="warning-box">⚠️ चेतावनी: केवल अधिकृत music streaming services का उपयोग करें।</div>
+      <a href="https://music.youtube.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">1.</span><span class="icon">🎵</span>YouTube Music</a>
+      <a href="https://www.jiosaavn.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">2.</span><span class="icon">🎧</span>JioSaavn</a>
+      <a href="https://open.spotify.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">3.</span><span class="icon">🟢</span>Spotify</a>
+      <a href="https://gaana.com/" target="_blank" rel="noopener" class="movie-item"><span class="num">4.</span><span class="icon">🔴</span>Gaana</a>
     </div>
-    
-    <p style="text-align:center; color:#555; font-size:12px; margin-top:20px; line-height:1.5;">
-      Disclaimer: We do not host any files on our server. All links redirect to safe, legal, and official streaming platforms.
-    </p>
+
+    <p style="text-align:center;color:#8aa0ad;font-size:12px;margin-top:20px;line-height:1.5;">Disclaimer: Streaming availability, subscription requirements and regional access are controlled by each service.</p>
   </div>
 
   <footer>Skynet • Ramgarh</footer>
-
-  <div id="toast">Hello</div>
+  <div id="toast" role="status" aria-live="polite">Hello</div>
 
 <script>
-  const toast = document.getElementById('toast');
+  const toast=document.getElementById('toast');
   let timer;
-
   function showToast(msg){
-    toast.textContent = msg;
+    toast.textContent=msg;
     toast.classList.add('show');
     clearTimeout(timer);
-    timer = setTimeout(() => toast.classList.remove('show'), 1800);
+    timer=setTimeout(()=>toast.classList.remove('show'),1800);
   }
 
-  document.querySelectorAll('[data-name]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      showToast('▶ ' + btn.dataset.name);
-    });
-  });
+  // Attendance & Fee opens the ERP page directly through its anchor link.
 
-  // --- Attendance & Fee Authentication Logic ---
-  function checkAttendanceAuth() {
-    // 1. Get ID
-    const id = prompt("कृपया अपनी ID दर्ज करें (Enter ID):");
-    if (id === null) return; // User clicked cancel
-
-    // 2. Get Password
-    const password = prompt("कृपया अपना पासवर्ड दर्ज करें (Enter Password):");
-    if (password === null) return; // User clicked cancel
-
-    // 3. Validate Credentials
-    if (id === "skynet" && password === "1234") {
-      // Redirect to ERP file
-      window.location.href = "SKYNET_Computer_Premium_ERP.html";
-    } else {
-      // Show error
-      showToast("❌ गलत ID या पासवर्ड! कृपया पुनः प्रयास करें।");
-    }
+  function openLiveTV(){
+    document.getElementById('main-page').style.display='none';
+    document.getElementById('live-tv-page').style.display='flex';
+    window.scrollTo(0,0);
+    const firstTab=document.querySelector('.tv-tab');
+    if(firstTab)switchLiveTab('tv',firstTab);
   }
-
-  // --- Sub-Page Navigation Logic ---
-  function openLiveTV() {
-    document.getElementById('main-page').style.display = 'none';
-    document.getElementById('live-tv-page').style.display = 'flex';
-    window.scrollTo(0, 0);
-    
-    // Default to TV tab when opened
-    const firstTab = document.querySelector('.tv-tab');
-    if(firstTab) switchLiveTab('tv', firstTab);
+  function closeLiveTV(){
+    document.getElementById('live-tv-page').style.display='none';
+    document.getElementById('main-page').style.display='flex';
+    window.scrollTo(0,0);
   }
-
-  function closeLiveTV() {
-    document.getElementById('live-tv-page').style.display = 'none';
-    document.getElementById('main-page').style.display = 'flex';
-    window.scrollTo(0, 0);
-  }
-
-  // --- Tab Switching Logic ---
-  function switchLiveTab(tabId, btn) {
-    // Hide all contents
-    document.querySelectorAll('.tv-content').forEach(el => el.classList.remove('active'));
-    // Remove active state from all tabs
-    document.querySelectorAll('.tv-tab').forEach(el => el.classList.remove('active'));
-
-    // Show selected content and activate tab
-    document.getElementById('tab-' + tabId).classList.add('active');
-    btn.classList.add('active');
+  function switchLiveTab(tabId,btn){
+    document.querySelectorAll('.tv-content').forEach(el=>el.classList.remove('active'));
+    document.querySelectorAll('.tv-tab').forEach(el=>el.classList.remove('active'));
+    const content=document.getElementById('tab-'+tabId);
+    if(content)content.classList.add('active');
+    if(btn)btn.classList.add('active');
   }
 </script>
 </body>
