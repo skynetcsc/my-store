@@ -40,6 +40,15 @@ footer{margin-top:32px;background:#0f172a;color:#cbd5e1;padding:34px 0 0}.foot-g
 .pre-game-panel{margin:20px 0;border:2px solid #bfdbfe;background:linear-gradient(135deg,#fff,#f0f7ff)}.pre-game-panel[hidden]{display:none!important}.pre-game-question{text-align:center;font-size:clamp(20px,3vw,28px);font-weight:850;padding:18px 8px}.pre-game-choices{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.pre-game-choice{background:#fff;border:2px solid #dbeafe;border-radius:12px;padding:13px 7px;min-height:58px;font-size:18px;font-weight:800;cursor:pointer;color:#123568}.pre-game-choice.correct{background:#dcfce7;border-color:#16a34a}.pre-game-choice.wrong{background:#fee2e2;border-color:#ef4444}.pre-game-choice:disabled{cursor:default}.pre-game-feedback{text-align:center;font-weight:800;min-height:28px;margin:12px 0}.pre-game-actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}.print-tool-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:15px}.print-tool-card h3{font-size:15px;margin-bottom:5px;color:#123568}.print-tool-card p{font-size:12px;color:var(--muted);margin-bottom:10px}
 @media(max-width:560px){.pre-game-choices{grid-template-columns:repeat(2,minmax(0,1fr))}.pre-library-grid{grid-template-columns:1fr}}
 
+
+.donation-strip{background:linear-gradient(90deg,#fff7e6,#fff);border-bottom:1px solid #f4d7a2;color:#713f12}
+.donation-inner{max-width:1200px;margin:auto;padding:9px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.donation-copy{font-size:12px;line-height:1.45}.donation-copy strong{display:block;color:#8a4b08;font-size:13px}
+.donation-actions{display:flex;align-items:center;gap:7px;flex-wrap:wrap}.donation-actions a,.donation-actions button{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:0;border-radius:8px;padding:8px 11px;font-size:12px;font-weight:800;cursor:pointer;text-decoration:none}
+.donation-actions a{background:#e28a12;color:#fff}.donation-actions button{background:#fff;border:1px solid #e8c98f;color:#75460d}
+.eligibility-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.resource-section{margin-top:26px}.university-card{background:#fff;border:1px solid var(--border);border-radius:13px;padding:18px;display:flex;flex-direction:column;min-height:210px}.university-card h3{font-size:16px;color:#123568;margin:6px 0}.university-card p{font-size:13px;color:var(--muted);margin-bottom:12px}.university-card .btn{margin-top:auto;align-self:flex-start}.resource-search-note{font-size:12px;color:var(--muted);margin:7px 0 14px}
+
 @media print{body{background:#fff!important}.topbar,header,nav,footer,.page-head,.no-print{display:none!important}body *{visibility:hidden!important}.worksheet-print-area,.worksheet-print-area *{visibility:visible!important}.worksheet-print-area{position:absolute!important;left:0;top:0;width:100%;border:0!important;box-shadow:none!important;margin:0!important;padding:18px!important}.worksheet-print-area h2{font-size:20px}.worksheet-print-area li{break-inside:avoid;color:#111}.worksheet-print-area p{color:#111!important}}
 @media(max-width:720px){.home-category-section{padding:18px 0 28px}.home-category-title{font-size:20px;align-items:flex-start;gap:6px}.home-category-title small{font-size:12px}.category-grid{grid-template-columns:1fr}.category-card{min-height:205px}.menu-toggle{display:block;width:100%;text-align:left}.nav-inner{display:none;flex-direction:column}.nav-inner.open{display:flex}.dropdown-menu{position:static;display:block;max-height:none;box-shadow:none;background:#1258ad;border-radius:0}.dropdown-menu a{color:#e8f1ff;padding-left:28px}.dropdown-menu a:hover{color:#fff;background:#0d47a1}.dropdown>a:after{content:""}.hero{padding:38px 14px}.logo{min-width:0}.search{min-width:100%}}
 </style>
@@ -54,7 +63,7 @@ footer{margin-top:32px;background:#0f172a;color:#cbd5e1;padding:34px 0 0}.foot-g
   <a href="#/">Home</a>
   <div class="dropdown"><a href="#/class/1">Classes</a><div class="dropdown-menu" id="classMenu"></div></div>
   <div class="dropdown"><a href="#/school">Boards</a><div class="dropdown-menu" id="boardMenu"></div></div>
-  <a href="#/preschool">Pre-School Boards</a><a href="#/preschool/tools">Games & Worksheets</a><a href="#/entrance">Entrance Exams</a>
+  <a href="#/preschool">Pre-School Boards</a><a href="#/preschool/tools">Games & Worksheets</a><a href="#/entrance">Entrance Exams</a><a href="#/entrance/University">University Admissions</a>
   <a href="https://scholarships.gov.in/" target="_blank" rel="noopener">Scholarships ↗</a>
 </div></nav>
 <main id="app" aria-live="polite"></main>
@@ -153,6 +162,145 @@ const categoryIcons = {
     "Medical": "🩺", "Nursing": "👩‍⚕️", "Pharmacy": "💊", "Police": "👮", "Railway": "🚂", 
     "Science": "🔬", "SSC": "🏛️", "Teaching": "🍎", "University": "🏫", "UPSC": "🇮🇳", "Veterinary": "🐾"
 };
+
+/* University directory: all course-specific eligibility is controlled by the latest official prospectus. */
+const UNIVERSITIES = [
+ {id:'pu-chandigarh',name:'Panjab University, Chandigarh',short:'PU Chandigarh',location:'Chandigarh, India',
+  summary:'UG, PG, professional, diploma and research programmes; course admissions may use merit, CET, JEE, NCET or other programme-specific tests.',
+  eligibility:'For selected UG courses, the official CET (UG) and PUTHAT pages list 10+2 as the minimum qualification. PG programmes generally require a relevant bachelor’s degree. Engineering, law, management and other professional courses can have separate entrance tests and subject requirements. Always check the exact course row in the current prospectus.',
+  admission:'https://admissions.puchd.ac.in/',online:'https://admissions.puchd.ac.in/online-admissions.php',
+  eligibilityUrl:'https://admissions.puchd.ac.in/entrance-test-details.php',prospectus:'https://admissions.puchd.ac.in/admission-guidelines-2026-27.pdf',
+  syllabus:'https://puchd.ac.in/syllabus.php',papers:'https://online.puexam.in/',
+  paperSearch:'Panjab University Chandigarh previous year question papers course semester PDF',
+  material:'Panjab University Chandigarh course wise study material notes PDF',
+  videos:'Panjab University Chandigarh entrance exam and semester subject video lectures',
+  practice:'Panjab University CET UG CET PG previous year sample paper mock test'},
+ {id:'kuk',name:'Kurukshetra University, Kurukshetra',short:'KUK',location:'Kurukshetra, Haryana, India',
+  summary:'UG, integrated, PG, professional, diploma, certificate, distance and online programmes.',
+  eligibility:'For KUK UG admissions, the 2026–27 UG Handbook says applicants must have passed 10+2 or an equivalent examination. It also tells applicants to upload proof of date of birth, eligibility, category and marks. Subject combinations, minimum marks and selection mode are programme-specific. PG programmes generally require a relevant bachelor’s degree; verify the applicable Handbook of Information and current notice before applying.',
+  admission:'https://kuk.ac.in/',online:'https://iums.kuk.ac.in/anon_admissionHome.htm',
+  eligibilityUrl:'https://kuk.ac.in/admission-notices/',prospectus:'https://kuk.ac.in/wp-content/uploads/2026/05/HBI-UG-UTD-2026-1.pdf',
+  syllabus:'https://kuk.ac.in/syllabi/',papers:'https://ddekuk.ac.in/old_question_paper.php',
+  material:'https://cdoekuk.ac.in/',
+  paperSearch:'site:kuk.ac.in Kurukshetra University previous year question papers course semester PDF',
+  videos:'Kurukshetra University KUK course wise subject lectures and entrance exam preparation',
+  practice:'Kurukshetra University KUK admission entrance exam sample papers practice questions'}
+];
+
+const UNIVERSITY_ELIGIBILITY = [
+ ['🎓','UG / Bachelor Degree','आमतौर पर 10+2 / Senior Secondary पास। B.A., B.Com., B.Sc., BBA, BCA, B.Pharm. आदि में विषय, अंक और प्रवेश प्रक्रिया अलग हो सकती है।'],
+ ['📘','PG / Master Degree','आमतौर पर संबंधित विषय में Graduation आवश्यक। कुछ courses में subject-specific eligibility, entrance test या minimum marks होते हैं।'],
+ ['🧑‍🏫','B.Ed. / Teacher Education','Graduation या निर्धारित equivalent qualification; stream, minimum marks, teaching subject और entrance/merit नियम prospectus में देखें।'],
+ ['⚖️','Law Programmes','5-year integrated law में सामान्यतः 10+2; 3-year LL.B. में Graduation; LL.M. के लिए LL.B. या मान्य equivalent degree की शर्तें लागू होती हैं।'],
+ ['⚙️','Engineering / Technical','B.Tech / B.E. में सामान्यतः 10+2 with required subjects (जैसे Physics/Mathematics) और applicable entrance/merit route; lateral entry अलग हो सकती है।'],
+ ['🩺','Medical / Nursing / Pharmacy','कई programmes में 10+2 Science और subject/entrance conditions होती हैं। NEET या अन्य statutory entrance जहां लागू हो, वही मान्य होगा।'],
+ ['🔬','Ph.D. / Research','आमतौर पर relevant Master’s degree या equivalent; NET/JRF/GATE/University entrance/interview की शर्तें विभाग के अनुसार बदलती हैं।'],
+ ['📜','Diploma / Certificate','Eligibility 10th, 12th, Graduation या experience में से कुछ भी हो सकती है; हर programme का notice अलग से देखें।']
+];
+
+function googleResource(query){return 'https://www.google.com/search?q='+enc(query);}
+function youtubeResource(query){return 'https://www.youtube.com/results?search_query='+enc(query);}
+function infoCard(icon,title,desc){return `<div class="resource-link"><span class="ri">${icon}</span><span><strong>${esc(title)}</strong><small>${esc(desc)}</small></span></div>`;}
+function renderUniversityDirectory(){
+ const uniCards=UNIVERSITIES.map(u=>`<article class="university-card"><div class="icon">🎓</div><span class="tag">${esc(u.short)}</span><h3>${esc(u.name)}</h3><p>${esc(u.summary)}</p><a class="btn" href="#/entrance/University/university/${u.id}">Eligibility + Study Material →</a></article>`).join('');
+ const eligibilityCards=UNIVERSITY_ELIGIBILITY.map(x=>infoCard(x[0],x[1],x[2])).join('');
+ const examCards=(examData.University||[]).map(e=>`<a class="card" href="#/entrance/University/exam/${enc(e)}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Eligibility, syllabus, previous-year papers, free PDF notes, video lectures and mock-test search.</p><span class="more">Open Study Resources →</span></a>`).join('');
+ return pageHead('University Admissions & Study Material','Panjab University Chandigarh, Kurukshetra University and other university entrance tests — eligibility, documents, syllabus, papers, PDFs and videos.',[{label:'Entrance Exams',href:'#/entrance'}])+`<section><div class="container">
+  <div class="panel"><h2>🎓 University Admission Guide</h2><p>अपनी qualification के अनुसार course चुनें। हर University और हर course की eligibility, minimum marks, subject combination, entrance test, reservation और counselling अलग हो सकती है। Final decision से पहले official prospectus / Handbook of Information अवश्य पढ़ें।</p></div>
+  <h2 class="section-title">🏫 Featured Universities <small>Open each university for admission links, qualifications and study resources.</small></h2>
+  <div class="grid board-grid">${uniCards}</div>
+  <h2 class="section-title resource-section">📋 सामान्य Qualification / Eligibility Guide <small>यह एक शुरुआती guide है; इसे किसी specific course की final eligibility न मानें।</small></h2>
+  <div class="eligibility-grid">${eligibilityCards}</div>
+  <div class="panel" style="margin-top:18px"><h2>📂 Admission के समय आमतौर पर तैयार रखने वाले Documents</h2><div class="tag-row"><span class="tag">10th Certificate</span><span class="tag">12th Marksheet</span><span class="tag">Graduation Marksheet (PG)</span><span class="tag">Photo & Signature</span><span class="tag">Valid Mobile + Email</span><span class="tag">ID Proof</span><span class="tag">Aadhaar / PPP, if asked</span><span class="tag">Category Certificate, if applicable</span><span class="tag">Domicile / Income / EWS, if applicable</span><span class="tag">Migration / Character Certificate, if asked</span><span class="tag">Entrance Score Card, if applicable</span></div><p>ये सामान्य examples हैं। केवल वही documents upload/submit करें जो current admission notice में मांगे गए हों। Originals verification के लिए मांगे जा सकते हैं।</p></div>
+  <h2 class="section-title resource-section">📚 Other University / Institute Entrance Exams <small>पहले से listed university exams भी अब अलग resource page खोलेंगे।</small></h2>
+  <div class="grid subject-grid">${examCards}</div>
+  <div class="notice">Important: Course name, eligibility, fees, seats, entrance route and dates change by academic session. Some older test names in the directory may have been renamed, replaced or moved to CUET / another admission route. Search pages are discovery helpers; prefer the current official university / exam-authority notice and check the latest PDF before applying.</div>
+ </div></section>`;
+}
+function renderUniversityProfile(id){
+ const u=UNIVERSITIES.find(x=>x.id===id);if(!u)return render404();
+ const resources=[
+  ['🏛️','Official University Website','University departments, notices, examinations and contact details.',u.id==='kuk'?'https://kuk.ac.in/':'https://puchd.ac.in/'],
+  ['📝','Admission Portal / Online Application','Open the official admission portal and check current application notices.',u.online],
+  ['📋','Course Eligibility & Entrance Tests','Course-wise minimum qualification, entrance test, dates and admission rules.',u.eligibilityUrl],
+  ['📄','Prospectus / Handbook PDF','Download and read the session-specific admission handbook or guidelines.',u.prospectus],
+  ['📚','Course Syllabus / Scheme of Examination','Subject-wise and semester-wise syllabus, course structure and exam scheme.',u.syllabus],
+  ['📑',u.id==='kuk'?'CDOE Old Question Papers':'University Exam Question Paper Portal','KUK link is for Centre for Distance and Online Education; PU exam portal availability and downloadable paper types may vary. Match course, subject and semester.',u.papers],
+  ['🔎','Previous Year Papers – More PDFs','Search for course-wise old papers, solved papers and university exam PDFs.',googleResource(u.paperSearch)],
+  ['📥','Study Material / Notes PDFs','Find course and subject study notes. Check the syllabus and source before downloading.',u.id==='kuk'?u.material:googleResource(u.material)],
+  ['🎬','Video Lectures','Find subject-wise classes, entrance preparation and revision lectures.',youtubeResource(u.videos)],
+  ['🧪','Practice Questions / Mock Tests','Search for sample papers, practice sets and mock tests for the selected course or entrance test.',googleResource(u.practice)]
+ ];
+ const cards=resources.map(x=>linkCard(x[0],x[1],x[2],x[3])).join('');
+ const specificNote=u.id==='kuk'?'KUK का official old-question-paper page CDOE/Distance & Online Education के लिए है; regular campus programme के papers के लिए course/semester-wise official exam notices भी देखें.':'Panjab University की official admission pages course-wise entrance/eligibility details देती हैं; online exam portal पर उपलब्ध paper/download options को current course और semester से मिलाएँ.';
+ return pageHead(u.name,'Admission requirements, official prospectus, syllabus, previous-year papers, study PDFs and video resources.',[{label:'Entrance Exams',href:'#/entrance'},{label:'University',href:'#/entrance/University'}])+`<section><div class="container">
+  <div class="panel"><h2>${esc(u.name)}</h2><p>${esc(u.summary)}</p><div class="tag-row"><span class="tag">${esc(u.location)}</span><span class="tag">Official Links</span><span class="tag">PDF / Videos / Papers</span></div><h3 style="margin-top:16px">🎯 Qualification & Eligibility</h3><p>${esc(u.eligibility)}</p></div>
+  <h2 class="section-title">📚 ${esc(u.short)} — Study Material & Admission Resources <small>Official admission, syllabus and study links plus targeted discovery searches.</small></h2>
+  <div class="resource-grid">${cards}</div>
+  <div class="notice">${esc(specificNote)} Always verify the latest academic session; a previous-year paper may follow an older syllabus or exam pattern.</div>
+  <div class="panel"><h2>✅ Before You Apply</h2><ol style="margin:10px 0 0 20px;line-height:1.9"><li>Choose the exact course, campus and study mode (regular / distance / online).</li><li>Read the latest Prospectus / Handbook and note required subjects and minimum marks.</li><li>Check whether selection is by merit, entrance test, national test, counselling or interview.</li><li>Prepare only the documents requested by the university.</li><li>Check official application dates, fee, reservation rules and correction window.</li></ol></div>
+ </div></section>`;
+}
+function renderUniversityExamResource(examName){return renderGenericExamResource(examName,'University / Institute Entrance', 'The qualifying class/degree depends on the programme: UG commonly starts after 10+2; PG typically needs a relevant Bachelor’s degree. Engineering, law, management, medical and research programmes may have separate subject, test and minimum-mark rules. Read the latest official university prospectus.', '#/entrance/University');}
+
+function competitiveEligibility(category,name){
+ const e=(name||'').toLowerCase();
+ if(category==='SSC'){
+  if(e.includes('cgl'))return 'Usually a Bachelor’s degree for most posts. Some specialised posts have subject/degree conditions; age limits and relaxations are post-specific.';
+  if(e.includes('chsl'))return 'Generally 12th / 10+2 pass; some posts have additional mathematics/science or skill-test conditions.';
+  if(e.includes('je'))return 'Relevant engineering diploma or degree, depending on the post and department.';
+  if(e.includes('stenographer'))return 'Generally 12th pass plus the prescribed stenography skill test.';
+  if(e.includes('gd'))return 'Generally 10th pass, with prescribed physical and medical standards.';
+  return 'Minimum education can be 10th, 12th or Graduation depending on the SSC post. Check age, physical/skill test and post code in the latest notification.';
+ }
+ if(category==='Banking')return 'Most IBPS / SBI PO and Clerk recruitments require Graduation from a recognised university. Specialist Officer posts need relevant qualifications; RRB posts may include local-language and post-specific conditions.';
+ if(category==='Railway')return 'Railway post eligibility varies: 10th / ITI, 12th, diploma or Graduation may be required. Technical posts may need a relevant trade/discipline; medical and physical standards can apply.';
+ if(category==='UPSC'){
+  if(e.includes('nda'))return 'NDA Army wing generally requires 10+2; Air Force/Naval wings require 10+2 with Physics, Chemistry and Mathematics as prescribed. Age and medical standards are strict.';
+  if(e.includes('cds'))return 'Generally a Bachelor’s degree; Air Force / Naval / engineering academy entries have additional subject or engineering-degree conditions.';
+  if(e.includes('engineering')||e.includes('ese'))return 'A recognised engineering degree in the relevant discipline is generally required.';
+  if(e.includes('cms'))return 'Medical qualification / final-year eligibility is governed by the CMS notification.';
+  if(e.includes('capf'))return 'Generally a Bachelor’s degree plus physical and medical standards.';
+  return 'Civil Services and most graduate-level UPSC examinations require a Bachelor’s degree. NDA, technical and specialist examinations have different education and subject requirements.';
+ }
+ if(category==='Teaching'){
+  if(e.includes('ugc net')||e.includes('csir net'))return 'Generally a Master’s degree or recognised equivalent in the relevant subject; prescribed marks, category relaxation and final-year conditions are in the current notification.';
+  return 'TET eligibility depends on teaching level and generally involves Senior Secondary / Graduation plus a recognised teacher-training qualification (D.El.Ed., B.Ed. etc.) as per NCTE and state rules.';
+ }
+ if(category==='Police')return 'Education ranges from 10th / 12th to Graduation depending on state and post. Physical measurement, running, medical test, domicile and age rules are recruitment-specific.';
+ if(category==='Defence')return 'NDA, CDS, CAPF and Agniveer have different education routes: 10+2, Graduation or trade-specific qualifications. Medical, fitness, age and subject requirements are essential.';
+ return 'Eligibility depends on the particular exam and recruiting authority. Check the official notification for education, subjects, marks, age, category relaxation and selection stages.';
+}
+function examResourceCards(examName,category){
+ const officialMap={SSC:'https://ssc.gov.in/',Banking:'https://www.ibps.in/',Railway:'https://www.rrbapply.gov.in/',UPSC:'https://upsc.gov.in/',Teaching:'https://ctet.nic.in/',Defence:((examName||'').toLowerCase().match(/nda|cds|capf/) ? 'https://upsc.gov.in/' : 'https://joinindianarmy.nic.in/'),Police:googleResource('official state police recruitment portal '+examName)};
+ const cards=[];
+ if(category==='Banking'){
+  cards.push(linkCard('🏛️','IBPS Official Website','IBPS recruitment notifications and exam details.','https://www.ibps.in/'));
+  cards.push(linkCard('🏦','SBI Careers','SBI recruitment notifications and application details.','https://sbi.co.in/web/careers'));
+ }else if(category==='Teaching' && examName.toLowerCase().includes('ugc net')){
+  cards.push(linkCard('🏛️','UGC NET Official Portal','NTA UGC NET notices, syllabus and exam updates.','https://ugcnet.nta.ac.in/'));
+  cards.push(linkCard('📚','UGC NET Syllabus','Official subject-wise syllabus and updates.','https://ugcnet.nta.ac.in/'));
+ }else{
+  cards.push(linkCard('🏛️','Official Website / Recruitment','Open the official authority page. Check the exam notice and application details.',officialMap[category]||googleResource(examName+' official recruitment website')));
+ }
+ cards.push(linkCard('📋','Eligibility & Qualification','Search for latest official qualification, age limit, subject requirements and selection process.',googleResource(examName+' official notification eligibility qualification age limit')));
+ cards.push(linkCard('📑','Official Syllabus PDF','Find exam pattern, subject-wise syllabus and official syllabus PDF.',googleResource(examName+' official syllabus PDF exam pattern')));
+ cards.push(linkCard('📝','Previous Year Question Papers PDF','Search year-wise question papers, answer keys and solved papers.',googleResource(examName+' previous year question papers PDF answer key')));
+ cards.push(linkCard('📥','Free Notes / Study Material PDFs','Find topic-wise notes, formula sheets, GK and practice PDFs.',googleResource(examName+' free study material notes PDF topic wise')));
+ cards.push(linkCard('🎬','Video Lectures / Full Course','Open topic-wise and full-course video lessons.',youtubeResource(examName+' complete preparation course Hindi')));
+ cards.push(linkCard('🧪','Mock Tests / Practice Sets','Find online practice sets and mock tests; verify source and exam pattern.',googleResource(examName+' free mock test practice set online')));
+ return cards.join('');
+}
+function renderGenericExamResource(examName,sectionTitle,eligibility,backHref){
+ return pageHead(examName+' — Study Material', 'Eligibility, syllabus, previous-year papers, free PDFs, video lessons and mock tests.',[{label:sectionTitle,href:backHref}])+`<section><div class="container">
+  <div class="panel"><h2>🎯 Qualification / Eligibility</h2><p>${esc(eligibility)}</p><p class="resource-search-note">Eligibility is a guide only. Minimum marks, age, category relaxations, subjects and final-year rules must be checked in the current official notification.</p></div>
+  <h2 class="section-title">📚 Complete Study Material <small>Choose a resource below. Search links help find current PDFs and videos; prefer official or reputable sources.</small></h2>
+  <div class="resource-grid">${examResourceCards(examName,sectionTitle==='University / Institute Entrance'?'University':sectionTitle)}</div>
+  <div class="panel" style="margin-top:18px"><h2>🗂️ Preparation Checklist</h2><ol style="margin:10px 0 0 20px;line-height:1.9"><li>Download the current official notification and syllabus.</li><li>Check eligibility, age, subject combination and application dates.</li><li>Study topic-wise from standard books / PDFs and reliable video lessons.</li><li>Solve previous-year papers and analyse mistakes.</li><li>Take timed mock tests and revise weak topics.</li></ol></div>
+  <div class="notice">PDFs, videos, answer keys and mock tests may be hosted by third-party publishers. Check the year, exam pattern, source reliability and copyright terms before downloading.</div>
+ </div></section>`;
+}
+function renderCompetitiveExamResource(category,examName){return renderGenericExamResource(examName,category,competitiveEligibility(category,examName),'#/competitive/'+enc(category));}
 
 function esc(value){return String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function enc(value){return encodeURIComponent(String(value));}
@@ -368,22 +516,26 @@ function renderSubject(boardId,n,slug){
 }
 function renderCollege(){
  const cards = [
-  {icon:'🎓',title:'University Entrance Exams',desc:'CUET and university admission exam resources.',href:'#/entrance/University'},
+  {icon:'🎓',title:'University Admissions & Study Material',desc:'Panjab University Chandigarh, Kurukshetra University, eligibility, syllabus and old papers.',href:'#/entrance/University'},
   {icon:'📚',title:'IGNOU Study Material',desc:'Open university course material and eGyanKosh resources.',href:'https://egyankosh.ac.in/'},
   {icon:'🏛️',title:'UGC',desc:'University grants, regulations and higher-education information.',href:'https://www.ugc.gov.in/'},
   {icon:'📝',title:'CUET Official Portal',desc:'Official Common University Entrance Test information.',href:'https://cuet.nta.nic.in/'},
   {icon:'📖',title:'NCERT / ePathshala',desc:'Textbooks and learning resources useful for college preparation.',href:'https://epathshala.nic.in/'}
  ];
- return pageHead('College','University exams, semester papers and higher-education study resources.')+`<section><div class="container"><div class="grid subject-grid">${cards.map(c=>`<a class="card" href="${c.href}" ${c.href.startsWith('http')?'target="_blank" rel="noopener"':''}><div class="icon">${c.icon}</div><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><span class="more">Open Resource →</span></a>`).join('')}</div><div class="notice">Semester question papers are university-specific. Select your university from its official website to confirm the correct course and semester.</div></div></section>`;
+ return pageHead('College','University admissions, eligibility, semester papers and higher-education study resources.')+`<section><div class="container"><div class="grid subject-grid">${cards.map(c=>`<a class="card" href="${c.href}" ${c.href.startsWith('http')?'target="_blank" rel="noopener"':''}><div class="icon">${c.icon}</div><h3>${esc(c.title)}</h3><p>${esc(c.desc)}</p><span class="more">Open Resource →</span></a>`).join('')}</div><div class="notice">Semester question papers are university-specific. Select your university and verify course, subject, semester and syllabus before using a paper.</div></div></section>`;
 }
 function renderCompetitive(){
  const cats=['SSC','Banking','Railway','UPSC','Teaching','Police','Defence'];
- return pageHead('Competitive Exams','Choose an exam category to find official notifications, syllabus and practice resources.')+`<section><div class="container"><div class="grid category-grid">${cats.map(c=>`<a class="category-card" href="#/competitive/${enc(c)}"><div class="cat-icon" style="background:#ef4444">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${esc(c)} exams, preparation topics and official resource searches.</p><div class="cat-footer"><span>${(examData[c]||[]).length} exams</span><span class="explore-btn">Explore →</span></div></a>`).join('')}</div></div></section>`;
+ const qualification=[
+  ['🏛️','SSC','10th / 12th / Graduation — post-wise'],['🏦','Banking','Most PO / Clerk posts: Graduation'],['🚂','Railway','10th / ITI / 12th / Diploma / Degree — post-wise'],['🇮🇳','UPSC','Graduation for many exams; NDA is 10+2 route'],['🍎','Teaching','Teacher-training qualification / Master’s for NET'],['👮','Police','10th / 12th / Graduation plus physical tests'],['🛡️','Defence','10+2 / Graduation / trade-specific qualification']
+ ];
+ return pageHead('Competitive Exams','SSC, Banking, Railway, UPSC, Teaching, Police and Defence — qualification, syllabus, PDFs, videos and previous-year papers.')+`<section><div class="container"><div class="panel"><h2>🎯 Qualification Guide</h2><p>Competitive exam eligibility post-wise बदलती है। Education के अलावा age limit, category relaxation, nationality, physical/medical standards, typing/skill test और subject combination भी लागू हो सकते हैं। Final eligibility हमेशा official notification से verify करें।</p></div><div class="eligibility-grid">${qualification.map(x=>infoCard(x[0],x[1],x[2])).join('')}</div><h2 class="section-title resource-section">Choose Exam Category <small>Open a category, then select an exam to see its detailed study resources.</small></h2><div class="grid category-grid">${cats.map(c=>`<a class="category-card" href="#/competitive/${enc(c)}"><div class="cat-icon" style="background:#ef4444">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${esc(c)} exams, eligibility guide, syllabus, previous papers, PDFs and video lessons.</p><div class="cat-footer"><span>${(examData[c]||[]).length} exams</span><span class="explore-btn">Explore →</span></div></a>`).join('')}</div></div></section>`;
 }
 function renderCompetitiveCategory(category){
  const list=examData[category];
  if(!list || !['SSC','Banking','Railway','UPSC','Teaching','Police','Defence'].includes(category))return render404();
- return pageHead(`${category} Exams`,'Choose an exam to find official syllabus, notifications and question papers.',[{label:'Competitive Exams',href:'#/competitive'}])+`<section><div class="container"><div class="grid subject-grid">${list.map(e=>`<a class="card" target="_blank" rel="noopener" href="https://www.google.com/search?q=${enc(e+' official website syllabus previous year question paper')}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Find official syllabus, notifications and question papers.</p><span class="more">Find Resources ↗</span></a>`).join('')}</div></div></section>`;
+ const intro=competitiveEligibility(category,'');
+ return pageHead(`${category} Exams`,'Choose an exam to open eligibility, official syllabus, previous-year papers, free PDFs, video lectures and mock tests.',[{label:'Competitive Exams',href:'#/competitive'}])+`<section><div class="container"><div class="panel"><h2>🎯 ${esc(category)} Eligibility</h2><p>${esc(intro)}</p></div><div class="grid subject-grid">${list.map(e=>`<a class="card" href="#/competitive/${enc(category)}/${enc(e)}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Qualification, syllabus PDF, previous-year question papers, notes, videos and mock tests.</p><span class="more">Open Study Material →</span></a>`).join('')}</div></div></section>`;
 }
 
 /* ================= BOARD-WISE PRE-SCHOOL LEARNING HUB ================= */
@@ -551,15 +703,15 @@ function renderPreschoolTools(){
  return pageHead('Games & Printable Worksheets','Play short learning quizzes and print A4 practice sheets for Nursery, LKG and UKG.',[{label:'Pre-School',href:'#/preschool'}])+`<section><div class="container"><div class="panel"><h2>🎮 Play & Learn</h2><p>Choose a quiz below. Questions are generated in this page; scores are kept only in this browser session/device.</p><div class="pre-library-actions" style="margin-top:12px"><button type="button" onclick="startPreGame('mixed')">🎲 Mixed Game</button><button type="button" onclick="startPreGame('alphabet')">🔤 Alphabet</button><button type="button" onclick="startPreGame('numbers')">🔢 Counting</button><button type="button" onclick="startPreGame('colors')">🎨 Colours</button><button type="button" onclick="startPreGame('hindi')">अ हिंदी अक्षर</button><button type="button" onclick="startPreGame('hindiNumbers')">१ हिंदी गिनती</button><button type="button" onclick="startPreGame('shapes')">🔺 Shapes</button><button type="button" onclick="startPreGame('animals')">🐶 Animals</button></div></div>${preGameMarkup()}<h2 class="section-title">🖨️ Ready-to-Print A4 Worksheets <small>Open the print window, then choose your printer or “Save as PDF”.</small></h2><div class="grid subject-grid">${printTypes.map(x=>`<article class="print-tool-card"><div class="icon">${x[1]}</div><h3>${x[2]}</h3><p>${x[3]}</p><button class="btn" type="button" onclick="printPreSheet('${x[0]}')">🖨️ Print / Save PDF</button></article>`).join('')}</div><h2 class="section-title" style="margin-top:28px">🌐 External Learning Sites</h2>${preschoolLibraryCards()}${preschoolTrackerMarkup()}<div class="panel"><h2>👨‍👩‍👧 Parents & Teachers Note</h2><p>बच्चों के साथ रोज़ 10–15 मिनट पढ़ें, गाएं और खेलें। वीडियो देखते समय किसी बड़े व्यक्ति को साथ रहना चाहिए। बच्चे की उम्र और सीखने की गति के अनुसार गतिविधि चुनें। External links दूसरे websites पर खुलते हैं।</p></div><div class="notice">External websites open in a new tab and may change their content, availability, advertisements or terms. An external website may offer paid content; check before downloading or subscribing. Print worksheets are generated locally by SKYNET Study Hub.</div></div></section>`;
 }
 
-function renderEntranceHome(){const cats=Object.keys(examData).sort();return pageHead('Entrance & Competitive Exams','Choose a category to find exam names and official information.')+`<section><div class="container"><div class="grid board-grid">${cats.map(c=>`<a class="card" href="#/entrance/${enc(c)}"><div class="icon">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${examData[c].length} exams listed</p><span class="more">Browse exams →</span></a>`).join('')}</div></div></section>`;}
-function renderEntranceCategory(category){const list=examData[category];if(!list)return render404();return pageHead(`${category} Exams`,'Exam names directory. Verify eligibility, dates and papers on the relevant exam authority website.',[{label:'Entrance Exams',href:'#/entrance'}])+`<section><div class="container"><div class="grid subject-grid">${list.map(e=>`<a class="card" target="_blank" rel="noopener" href="https://www.google.com/search?q=${enc(e+' official website syllabus previous year question paper')}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Search official syllabus, notifications and question papers.</p><span class="more">Find Official Resources ↗</span></a>`).join('')}</div></div></section>`;}
+function renderEntranceHome(){const cats=Object.keys(examData).sort();return pageHead('Entrance & Competitive Exams','Choose a category to find university admissions, entrance tests, qualifications and study resources.')+`<section><div class="container"><div class="panel"><h2>🎓 University & Entrance Exam Support</h2><p>University admission requirements, competitive exam qualifications, syllabus PDFs, previous-year papers, video lectures and practice resources are organised by category.</p><a class="btn" href="#/entrance/University">🏫 Open University Admissions</a></div><div class="grid board-grid">${cats.map(c=>`<a class="card" href="#/entrance/${enc(c)}"><div class="icon">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${examData[c].length} exams / entries listed</p><span class="more">Browse exams →</span></a>`).join('')}</div></div></section>`;}
+function renderEntranceCategory(category){if(category==='University')return renderUniversityDirectory();const list=examData[category];if(!list)return render404();return pageHead(`${category} Entrance Exams`,'Exam names directory. Open an exam to find eligibility, official syllabus, papers, PDF notes, videos and mock tests.',[{label:'Entrance Exams',href:'#/entrance'}])+`<section><div class="container"><div class="grid subject-grid">${list.map(e=>`<a class="card" href="#/entrance/${enc(category)}/exam/${enc(e)}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Eligibility, qualification, syllabus, previous-year papers, free PDF notes and video lessons.</p><span class="more">Open Study Resources →</span></a>`).join('')}</div></div></section>`;}
 function renderSearch(q){const term=q.toLowerCase();const out=[];BOARDS.forEach(b=>{if((b.name+' '+b.full).toLowerCase().includes(term))out.push({title:b.name+' — '+b.full,desc:'Board directory',url:'#/school/'+b.id});});for(let n=1;n<=12;n++){if(('class '+n).includes(term)||String(n)===term)out.push({title:'Class '+n+' — Choose Board',desc:'Select a board for this class',url:'#/class/'+n});}const known=[...SUBJECTS.primary,...SUBJECTS.middle,...SUBJECTS.secondary,...Object.values(SUBJECTS.senior).flat()];const seen=new Set();known.forEach(([name])=>{if(name.toLowerCase().includes(term)&&!seen.has(name)){seen.add(name);out.push({title:name,desc:'Choose a board and class to open this subject',url:'#/school'});}});if('preschool nursery lkg ukg games worksheets rhymes pdf videos'.includes(term)||term.includes('preschool'))out.push({title:'Pre-School Learning Hub',desc:'Nursery, LKG and UKG lessons, PDFs, videos, rhymes and games',url:'#/preschool'});PRESCHOOL_LIBRARY.forEach(x=>{if((x.title+' '+x.desc+' '+x.tag).toLowerCase().includes(term))out.push({title:x.title,desc:'Pre-School learning resource: '+x.tag,url:'#/preschool/tools'});});return pageHead('Search Results',`Results for “${q}”`)+`<section><div class="container">${out.length?`<div class="result-list">${out.map(r=>`<a class="result" href="${r.url}"><strong>${esc(r.title)}</strong><small>${esc(r.desc)}</small></a>`).join('')}</div>`:`<div class="empty"><div class="icon">🔎</div><h2>No matching item found</h2><p>Try a board name, class number or subject such as CBSE, Class 8 or Mathematics.</p></div>`}</div></section>`;}
+function copyDonationUPI(){const upi='8901010994@ptsbi';if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(upi).then(()=>alert('UPI ID copied: '+upi)).catch(()=>window.prompt('Copy this UPI ID:',upi));}else{window.prompt('Copy this UPI ID:',upi);}}
 function doSearch(q){q=(q||'').trim();if(!q)return;location.hash='#/search/'+enc(q);}
 function render404(){return `<section><div class="container"><div class="empty"><div class="icon">🚫</div><h2>Page not found</h2><a class="btn" href="#/">Go to Home</a></div></div></section>`;}
-function render(){const raw=getRoute();const parts=raw.split('/').filter(Boolean).map(p=>{try{return decodeURIComponent(p)}catch{return p}});let html='';if(!parts.length)html=renderHome();else if(parts[0]==='school'&&parts.length===1)html=renderBoards();else if(parts[0]==='school'&&parts.length===2)html=renderClasses(parts[1]);else if(parts[0]==='school'&&parts.length===3)html=renderSubjects(parts[1],Number(parts[2]));else if(parts[0]==='school'&&parts.length===4)html=renderSubject(parts[1],Number(parts[2]),parts[3]);else if(parts[0]==='class'&&parts.length===2)html=renderClassChooser(Number(parts[1]));else if(parts[0]==='preschool'&&parts.length===1)html=renderPreschool();else if(parts[0]==='preschool'&&parts.length===2&&parts[1]==='tools')html=renderPreschoolTools();else if(parts[0]==='preschool'&&parts.length===2)html=renderPreschoolBoard(parts[1]);else if(parts[0]==='preschool'&&parts.length===3)html=renderPreschoolLevel(parts[1],parts[2]);else if(parts[0]==='preschool'&&parts.length===4)html=renderPreschoolSubject(parts[1],parts[2],parts[3]);else if(parts[0]==='entrance'&&parts.length===1)html=renderEntranceHome();else if(parts[0]==='entrance'&&parts.length===2)html=renderEntranceCategory(parts[1]);else if(parts[0]==='college'&&parts.length===1)html=renderCollege();else if(parts[0]==='competitive'&&parts.length===1)html=renderCompetitive();else if(parts[0]==='competitive'&&parts.length===2)html=renderCompetitiveCategory(parts[1]);else if(parts[0]==='search'&&parts.length>=2)html=renderSearch(parts.slice(1).join(' '));else html=render404();document.getElementById('app').innerHTML=html;initPreTracker();window.scrollTo({top:0,behavior:'instant'});}
+function render(){const raw=getRoute();const parts=raw.split('/').filter(Boolean).map(p=>{try{return decodeURIComponent(p)}catch{return p}});let html='';if(!parts.length)html=renderHome();else if(parts[0]==='school'&&parts.length===1)html=renderBoards();else if(parts[0]==='school'&&parts.length===2)html=renderClasses(parts[1]);else if(parts[0]==='school'&&parts.length===3)html=renderSubjects(parts[1],Number(parts[2]));else if(parts[0]==='school'&&parts.length===4)html=renderSubject(parts[1],Number(parts[2]),parts[3]);else if(parts[0]==='class'&&parts.length===2)html=renderClassChooser(Number(parts[1]));else if(parts[0]==='preschool'&&parts.length===1)html=renderPreschool();else if(parts[0]==='preschool'&&parts.length===2&&parts[1]==='tools')html=renderPreschoolTools();else if(parts[0]==='preschool'&&parts.length===2)html=renderPreschoolBoard(parts[1]);else if(parts[0]==='preschool'&&parts.length===3)html=renderPreschoolLevel(parts[1],parts[2]);else if(parts[0]==='preschool'&&parts.length===4)html=renderPreschoolSubject(parts[1],parts[2],parts[3]);else if(parts[0]==='entrance'&&parts.length===1)html=renderEntranceHome();else if(parts[0]==='entrance'&&parts[1]==='University'&&parts[2]==='university'&&parts.length===4)html=renderUniversityProfile(parts[3]);else if(parts[0]==='entrance'&&parts[1]==='University'&&parts[2]==='exam'&&parts.length===4)html=renderUniversityExamResource(parts[3]);else if(parts[0]==='entrance'&&parts[1]==='University'&&parts[2]==='exam'&&parts.length===5)html=renderUniversityExamResource(parts.slice(3).join(' '));else if(parts[0]==='entrance'&&parts.length===2)html=renderEntranceCategory(parts[1]);else if(parts[0]==='entrance'&&parts.length===4)html=renderGenericExamResource(parts[3],'Entrance Exam','The required qualification depends on the exam, course and authority. Check the official notification for minimum education, subject combination, marks, age and selection rules.','#/entrance');else if(parts[0]==='college'&&parts.length===1)html=renderCollege();else if(parts[0]==='competitive'&&parts.length===1)html=renderCompetitive();else if(parts[0]==='competitive'&&parts.length===2)html=renderCompetitiveCategory(parts[1]);else if(parts[0]==='competitive'&&parts.length===3)html=renderCompetitiveExamResource(parts[1],parts[2]);else if(parts[0]==='search'&&parts.length>=2)html=renderSearch(parts.slice(1).join(' '));else html=render404();document.getElementById('app').innerHTML=html;initPreTracker();window.scrollTo({top:0,behavior:'instant'});}
 function initMenus(){document.getElementById('classMenu').innerHTML=Array.from({length:12},(_,i)=>`<a href="#/class/${i+1}">Class ${i+1} — Select Board</a>`).join('');document.getElementById('boardMenu').innerHTML=BOARDS.map(b=>`<a href="#/school/${b.id}">${esc(b.name)}</a>`).join('');document.getElementById('menuToggle').addEventListener('click',()=>document.getElementById('navMenu').classList.toggle('open'));document.getElementById('navMenu').addEventListener('click',e=>{if(e.target.closest('a'))document.getElementById('navMenu').classList.remove('open');});}
 document.addEventListener('DOMContentLoaded',()=>{initMenus();window.addEventListener('hashchange',render);render();});
 </script>
 </body>
 </html>
-  
