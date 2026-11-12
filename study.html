@@ -49,6 +49,31 @@ footer{margin-top:32px;background:#0f172a;color:#cbd5e1;padding:34px 0 0}.foot-g
 .eligibility-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
 .resource-section{margin-top:26px}.university-card{background:#fff;border:1px solid var(--border);border-radius:13px;padding:18px;display:flex;flex-direction:column;min-height:210px}.university-card h3{font-size:16px;color:#123568;margin:6px 0}.university-card p{font-size:13px;color:var(--muted);margin-bottom:12px}.university-card .btn{margin-top:auto;align-self:flex-start}.resource-search-note{font-size:12px;color:var(--muted);margin:7px 0 14px}
 
+
+/* SKYNET feedback widget */
+.feedback-fab{position:fixed;right:18px;bottom:18px;z-index:9000;border:0;border-radius:999px;background:linear-gradient(110deg,#155fc4,#0d47a1);color:#fff;padding:13px 18px;font-size:13px;font-weight:800;box-shadow:0 9px 28px rgba(13,71,161,.32);cursor:pointer}
+.feedback-fab:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.feedback-backdrop{position:fixed;inset:0;z-index:9001;background:rgba(8,20,40,.56);display:none;align-items:center;justify-content:center;padding:16px}
+.feedback-backdrop.open{display:flex}
+.feedback-modal{width:min(100%,520px);max-height:calc(100vh - 32px);overflow:auto;background:#fff;border-radius:18px;box-shadow:0 24px 80px rgba(0,0,0,.3);padding:22px}
+.feedback-modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:14px}
+.feedback-modal-head h2{font-size:21px;color:#123568;margin:0 0 4px}
+.feedback-modal-head p{font-size:12px;color:#64748b;margin:0}
+.feedback-close{border:1px solid #e2e8f0;background:#f8fafc;color:#334155;border-radius:9px;width:34px;height:34px;font-size:20px;line-height:1;cursor:pointer;flex:none}
+.feedback-field{margin:12px 0}
+.feedback-field label{display:block;color:#40536d;font-size:11px;font-weight:800;margin-bottom:6px}
+.feedback-field input,.feedback-field select,.feedback-field textarea{width:100%;border:1px solid #dbe3ee;background:#fbfdff;border-radius:10px;padding:11px 12px;font:inherit;font-size:13px;color:#172338;outline:none}
+.feedback-field textarea{min-height:116px;resize:vertical}
+.feedback-field input:focus,.feedback-field select:focus,.feedback-field textarea:focus{border-color:#5d8ce8;box-shadow:0 0 0 3px #eaf1ff}
+.feedback-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.feedback-submit{border:0;border-radius:10px;background:#16845b;color:#fff;font-size:13px;font-weight:800;padding:11px 15px;cursor:pointer}
+.feedback-email{display:inline-flex;align-items:center;border:1px solid #dbe3ee;border-radius:10px;background:#fff;color:#2457a5;font-size:12px;font-weight:800;padding:10px 13px}
+.feedback-privacy{font-size:10px;color:#78869a;line-height:1.5;margin-top:10px}
+.feedback-status{display:none;border-radius:9px;padding:10px 12px;margin-top:12px;font-size:12px;line-height:1.5;background:#eff8ff;border:1px solid #cfe4ff;color:#174b87}
+.feedback-status.show{display:block}
+@media(max-width:560px){.feedback-fab{right:12px;bottom:12px;padding:12px 15px;font-size:12px}.feedback-modal{padding:17px}}
+@media print{.feedback-fab,.feedback-backdrop{display:none!important}}
+
 @media print{body{background:#fff!important}.topbar,header,nav,footer,.page-head,.no-print{display:none!important}body *{visibility:hidden!important}.worksheet-print-area,.worksheet-print-area *{visibility:visible!important}.worksheet-print-area{position:absolute!important;left:0;top:0;width:100%;border:0!important;box-shadow:none!important;margin:0!important;padding:18px!important}.worksheet-print-area h2{font-size:20px}.worksheet-print-area li{break-inside:avoid;color:#111}.worksheet-print-area p{color:#111!important}}
 @media(max-width:720px){.home-category-section{padding:18px 0 28px}.home-category-title{font-size:20px;align-items:flex-start;gap:6px}.home-category-title small{font-size:12px}.category-grid{grid-template-columns:1fr}.category-card{min-height:205px}.menu-toggle{display:block;width:100%;text-align:left}.nav-inner{display:none;flex-direction:column}.nav-inner.open{display:flex}.dropdown-menu{position:static;display:block;max-height:none;box-shadow:none;background:#1258ad;border-radius:0}.dropdown-menu a{color:#e8f1ff;padding-left:28px}.dropdown-menu a:hover{color:#fff;background:#0d47a1}.dropdown>a:after{content:""}.hero{padding:38px 14px}.logo{min-width:0}.search{min-width:100%}}
 </style>
@@ -79,6 +104,26 @@ footer{margin-top:32px;background:#0f172a;color:#cbd5e1;padding:34px 0 0}.foot-g
   </div>
 </div>
 <main id="app" aria-live="polite"></main>
+
+<button class="feedback-fab" type="button" onclick="openSuggestion()" aria-haspopup="dialog" aria-controls="suggestionDialog">💡 Suggest an Improvement</button>
+<div class="feedback-backdrop" id="suggestionDialog" role="dialog" aria-modal="true" aria-labelledby="suggestionTitle" onclick="if(event.target===this)closeSuggestion()">
+  <div class="feedback-modal">
+    <div class="feedback-modal-head">
+      <div><h2 id="suggestionTitle">💡 Help us improve SKYNET STUDY HUB</h2><p>Share a correction, missing resource or new idea.</p></div>
+      <button class="feedback-close" type="button" onclick="closeSuggestion()" aria-label="Close">×</button>
+    </div>
+    <form id="suggestionForm" onsubmit="sendSuggestion(event)">
+      <div class="feedback-field"><label for="suggestionType">WHAT IS YOUR SUGGESTION ABOUT?</label><select id="suggestionType" required><option value="">Choose a category</option><option>Broken / outdated link</option><option>Missing PDF / notes / book</option><option>New class / subject / board</option><option>Wrong information / correction</option><option>New feature / improvement</option><option>Other feedback</option></select></div>
+      <div class="feedback-field"><label for="suggestionDetails">YOUR SUGGESTION *</label><textarea id="suggestionDetails" required maxlength="1500" placeholder="Tell us what is missing or what should be improved..."></textarea></div>
+      <div class="feedback-field"><label for="suggestionName">YOUR NAME (OPTIONAL)</label><input id="suggestionName" maxlength="80" placeholder="Your name"></div>
+      <div class="feedback-field"><label for="suggestionContact">PHONE / EMAIL (OPTIONAL)</label><input id="suggestionContact" maxlength="120" placeholder="Only if you want us to contact you"></div>
+      <div class="feedback-actions"><button class="feedback-submit" type="submit">Send Suggestion on WhatsApp ↗</button><a class="feedback-email" id="suggestionEmailLink" href="mailto:ramgarhskynet@gmail.com?subject=SKYNET%20STUDY%20HUB%20Suggestion" onclick="return emailSuggestion(event)">Send by Email</a></div>
+      <div class="feedback-status" id="suggestionStatus" role="status" aria-live="polite"></div>
+      <p class="feedback-privacy">WhatsApp will open with your message filled in. Please press Send in WhatsApp to deliver it to SKYNET. Your suggestion is not submitted until you send it. Name and contact details are optional.</p>
+    </form>
+  </div>
+</div>
+
 <footer><div class="container"><div class="foot-grid">
   <div><h4>SKYNET STUDY HUB</h4><a href="#/">Home</a><a href="#/school">Select Board</a><a href="#/preschool">Pre-School Boards</a></div>
   <div><h4>Popular Boards</h4><a href="#/school/cbse">CBSE</a><a href="#/school/hbse">HBSE Haryana</a><a href="#/school/pseb">PSEB Punjab</a><a href="#/school/cisce">ICSE / ISC</a></div>
@@ -718,6 +763,64 @@ function renderPreschoolTools(){
 function renderEntranceHome(){const cats=Object.keys(examData).sort();return pageHead('Entrance & Competitive Exams','Choose a category to find university admissions, entrance tests, qualifications and study resources.')+`<section><div class="container"><div class="panel"><h2>🎓 University & Entrance Exam Support</h2><p>University admission requirements, competitive exam qualifications, syllabus PDFs, previous-year papers, video lectures and practice resources are organised by category.</p><a class="btn" href="#/entrance/University">🏫 Open University Admissions</a></div><div class="grid board-grid">${cats.map(c=>`<a class="card" href="#/entrance/${enc(c)}"><div class="icon">${categoryIcons[c]||'📝'}</div><h3>${esc(c)}</h3><p>${examData[c].length} exams / entries listed</p><span class="more">Browse exams →</span></a>`).join('')}</div></div></section>`;}
 function renderEntranceCategory(category){if(category==='University')return renderUniversityDirectory();const list=examData[category];if(!list)return render404();return pageHead(`${category} Entrance Exams`,'Exam names directory. Open an exam to find eligibility, official syllabus, papers, PDF notes, videos and mock tests.',[{label:'Entrance Exams',href:'#/entrance'}])+`<section><div class="container"><div class="grid subject-grid">${list.map(e=>`<a class="card" href="#/entrance/${enc(category)}/exam/${enc(e)}"><div class="icon">📝</div><h3>${esc(e)}</h3><p>Eligibility, qualification, syllabus, previous-year papers, free PDF notes and video lessons.</p><span class="more">Open Study Resources →</span></a>`).join('')}</div></div></section>`;}
 function renderSearch(q){const term=q.toLowerCase();const out=[];BOARDS.forEach(b=>{if((b.name+' '+b.full).toLowerCase().includes(term))out.push({title:b.name+' — '+b.full,desc:'Board directory',url:'#/school/'+b.id});});for(let n=1;n<=12;n++){if(('class '+n).includes(term)||String(n)===term)out.push({title:'Class '+n+' — Choose Board',desc:'Select a board for this class',url:'#/class/'+n});}const known=[...SUBJECTS.primary,...SUBJECTS.middle,...SUBJECTS.secondary,...Object.values(SUBJECTS.senior).flat()];const seen=new Set();known.forEach(([name])=>{if(name.toLowerCase().includes(term)&&!seen.has(name)){seen.add(name);out.push({title:name,desc:'Choose a board and class to open this subject',url:'#/school'});}});if('preschool nursery lkg ukg games worksheets rhymes pdf videos'.includes(term)||term.includes('preschool'))out.push({title:'Pre-School Learning Hub',desc:'Nursery, LKG and UKG lessons, PDFs, videos, rhymes and games',url:'#/preschool'});PRESCHOOL_LIBRARY.forEach(x=>{if((x.title+' '+x.desc+' '+x.tag).toLowerCase().includes(term))out.push({title:x.title,desc:'Pre-School learning resource: '+x.tag,url:'#/preschool/tools'});});return pageHead('Search Results',`Results for “${q}”`)+`<section><div class="container">${out.length?`<div class="result-list">${out.map(r=>`<a class="result" href="${r.url}"><strong>${esc(r.title)}</strong><small>${esc(r.desc)}</small></a>`).join('')}</div>`:`<div class="empty"><div class="icon">🔎</div><h2>No matching item found</h2><p>Try a board name, class number or subject such as CBSE, Class 8 or Mathematics.</p></div>`}</div></section>`;}
+
+function openSuggestion(){
+ const modal=document.getElementById('suggestionDialog');
+ if(!modal)return;
+ modal.classList.add('open');
+ document.body.style.overflow='hidden';
+ setTimeout(()=>document.getElementById('suggestionDetails')?.focus(),50);
+}
+function closeSuggestion(){
+ const modal=document.getElementById('suggestionDialog');
+ if(!modal)return;
+ modal.classList.remove('open');
+ document.body.style.overflow='';
+}
+function emailSuggestion(event){
+ event.preventDefault();
+ const type=document.getElementById('suggestionType').value.trim();
+ const details=document.getElementById('suggestionDetails').value.trim();
+ const name=document.getElementById('suggestionName').value.trim()||'Not provided';
+ const contact=document.getElementById('suggestionContact').value.trim()||'Not provided';
+ const status=document.getElementById('suggestionStatus');
+ if(!type||!details){status.textContent='Please choose a category and write your suggestion first.';status.classList.add('show');return false;}
+ const message=['SKYNET STUDY HUB — Website Suggestion','Category: '+type,'Suggestion: '+details,'Name: '+name,'Contact: '+contact,'Page: '+location.href,'Date: '+new Date().toLocaleString('en-IN')].join('\n');
+ const mail='mailto:ramgarhskynet@gmail.com?subject='+encodeURIComponent('SKYNET STUDY HUB — '+type)+'&body='+encodeURIComponent(message);
+ window.location.href=mail;
+ status.textContent='Your email app is opening with the suggestion. Press Send in your email app to deliver it.';
+ status.classList.add('show');
+ return false;
+}
+function sendSuggestion(event){
+ event.preventDefault();
+ const type=document.getElementById('suggestionType').value.trim();
+ const details=document.getElementById('suggestionDetails').value.trim();
+ const name=document.getElementById('suggestionName').value.trim()||'Not provided';
+ const contact=document.getElementById('suggestionContact').value.trim()||'Not provided';
+ if(!type||!details){document.getElementById('suggestionStatus').textContent='Please choose a category and write your suggestion.';document.getElementById('suggestionStatus').classList.add('show');return;}
+ const page=location.href;
+ const message=[
+  'SKYNET STUDY HUB — Website Suggestion',
+  'Category: '+type,
+  'Suggestion: '+details,
+  'Name: '+name,
+  'Contact: '+contact,
+  'Page: '+page,
+  'Date: '+new Date().toLocaleString('en-IN')
+ ].join('\n');
+ const wa='https://wa.me/918901010994?text='+encodeURIComponent(message);
+ const mail='mailto:ramgarhskynet@gmail.com?subject='+encodeURIComponent('SKYNET STUDY HUB — '+type)+'&body='+encodeURIComponent(message);
+ const emailLink=document.getElementById('suggestionEmailLink');
+ if(emailLink)emailLink.href=mail;
+ const opened=window.open(wa,'_blank');
+ if(opened)opened.opener=null;
+ const status=document.getElementById('suggestionStatus');
+ status.textContent=opened?'WhatsApp opened with your suggestion. Please press SEND there so SKYNET receives it.':'Your browser blocked the WhatsApp window. Please use the Send by Email button, or allow pop-ups and try again.';
+ status.classList.add('show');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeSuggestion();});
+
 function copyDonationUPI(){const upi='8901010994@ptsbi';if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(upi).then(()=>alert('UPI ID copied: '+upi)).catch(()=>window.prompt('Copy this UPI ID:',upi));}else{window.prompt('Copy this UPI ID:',upi);}}
 function doSearch(q){q=(q||'').trim();if(!q)return;location.hash='#/search/'+enc(q);}
 function render404(){return `<section><div class="container"><div class="empty"><div class="icon">🚫</div><h2>Page not found</h2><a class="btn" href="#/">Go to Home</a></div></div></section>`;}
