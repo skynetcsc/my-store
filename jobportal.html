@@ -6,28 +6,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SKYNET JOBS</title>
   <style>
-    :root{--navy:#10213b;--navy2:#173456;--blue:#2563eb;--cyan:#12b8c7;--ink:#162338;--muted:#68778d;--line:#e4eaf2;--bg:#f3f6fb;--white:#fff;--green:#11845b;--amber:#b7791f;--red:#c24141;--shadow:0 18px 48px rgba(16,33,59,.10)}
-    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{max-width:1240px;margin:auto;padding:0 22px}.topbar{background:#0b172a;color:#dce8fb}.topinner{height:42px;display:flex;align-items:center;justify-content:space-between;font-size:12px;gap:12px}.topinner span{opacity:.82}.brandbar{background:linear-gradient(110deg,#10213b,#173456);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}.brandinner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brandmark{width:46px;height:46px;border-radius:14px;background:linear-gradient(140deg,#27c1d1,#3474ef);display:grid;place-items:center;font-size:23px;font-weight:900;box-shadow:0 8px 20px #08182e}.brandname{font-size:21px;font-weight:900;letter-spacing:1.2px}.brandtag{font-size:11px;color:#b9c9e0;margin-top:3px;letter-spacing:.5px}.navpill{border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:9px 14px;font-size:12px;color:#dce8fb}.hero{background:radial-gradient(circle at 80% 18%,rgba(18,184,199,.22),transparent 25%),linear-gradient(120deg,#10213b,#183b65);color:#fff;padding:44px 0 54px}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;color:#9be6eb;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}.dot{width:7px;height:7px;background:#33d6c2;border-radius:50%;box-shadow:0 0 0 5px rgba(51,214,194,.13)}h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:17px 0 16px;letter-spacing:-1.9px}.hero p{color:#c6d5e8;line-height:1.7;font-size:15px;max-width:620px}.location-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}.location-chip{border:1px solid rgba(255,255,255,.19);background:rgba(255,255,255,.07);padding:7px 11px;border-radius:99px;font-size:11px;color:#e6f1ff}.hero-stats{display:flex;gap:22px;margin-top:30px}.hero-stat strong{display:block;font-size:20px}.hero-stat span{font-size:11px;color:#adc0d9}.auth-card{background:#fff;color:var(--ink);border-radius:22px;padding:24px;box-shadow:0 22px 70px rgba(0,0,0,.24);max-width:480px;margin-left:auto;width:100%}.auth-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:17px}.auth-head h2{margin:0;font-size:21px}.auth-head p{font-size:12px;color:var(--muted);margin:6px 0 0}.secure-tag{background:#eaf8f4;color:#0c845c;border-radius:99px;padding:6px 9px;font-weight:800;font-size:10px}.role-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0}.role-btn{border:1px solid var(--line);background:#f8fafd;border-radius:12px;padding:11px 4px 9px;color:#526176;font-size:10px;font-weight:800;line-height:1.3}.role-btn .ico{font-size:19px;display:block;margin-bottom:5px}.role-btn.active{border-color:#5d8cf5;background:#edf3ff;color:#1d50b7;box-shadow:inset 0 0 0 1px #8eb0ff}.field{margin:11px 0}.field label{display:block;font-size:11px;font-weight:800;color:#506078;margin-bottom:6px}.field input,.field select,.field textarea{width:100%;border:1px solid #dce4ee;background:#fbfcfe;border-radius:10px;padding:11px 12px;outline:none;color:var(--ink);font-size:13px}.field textarea{min-height:95px;resize:vertical}.field input:focus,.field textarea:focus,.field select:focus{border-color:#6a93ed;box-shadow:0 0 0 3px #eaf0ff}.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}.primary{border:0;color:#fff;background:linear-gradient(100deg,#2563eb,#12aebc);border-radius:11px;padding:12px 16px;font-size:13px;font-weight:800;box-shadow:0 8px 18px rgba(37,99,235,.22)}.primary:hover{filter:brightness(1.05)}.secondary{border:1px solid #dce4ee;background:#fff;color:#30415b;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:800}.danger{border:1px solid #f3caca;background:#fff5f5;color:#b42323;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:800}.success{border:1px solid #b9ead7;background:#f0fcf6;color:#08764e;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:800}.wide{width:100%}.auth-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:13px;font-size:11px;color:var(--muted)}.linkbtn{border:0;background:none;padding:0;color:#245dca;font-weight:800;font-size:11px}.message{display:none;padding:10px 12px;border-radius:10px;margin:10px 0;font-size:12px;line-height:1.5}.message.show{display:block}.message.err{color:#a62828;background:#fff0f0;border:1px solid #ffd3d3}.message.ok{color:#08764e;background:#eefbf5;border:1px solid #c8efdd}.below{padding:34px 0 50px}.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:16px}.section-head h2{margin:0;font-size:23px}.section-head p{margin:6px 0 0;color:var(--muted);font-size:12px}.feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.feature{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 5px 18px rgba(20,41,69,.03)}.feature .ficon{font-size:23px}.feature h3{margin:10px 0 6px;font-size:14px}.feature p{margin:0;font-size:12px;color:var(--muted);line-height:1.55}.footer{background:#0d1b31;color:#b8c9e0;padding:21px 0;font-size:11px}.footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}.hidden{display:none!important}.appbar{background:#10213b;color:#fff;padding:14px 0}.appbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}.appbar .brandmark{width:38px;height:38px;border-radius:12px;font-size:19px}.appbar .brandname{font-size:17px}.userbox{display:flex;align-items:center;gap:12px}.userbox small{display:block;color:#b8cae2;font-size:10px;margin-top:3px}.logout{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:9px 13px;border-radius:9px;font-weight:700;font-size:11px}.dashboard{padding:26px 0 55px}.welcome{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:18px}.welcome h1{color:var(--ink);font-size:28px;letter-spacing:-.8px;margin:0}.welcome p{color:var(--muted);font-size:12px;margin:6px 0 0}.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.stat strong{display:block;font-size:24px;color:#183b65}.stat span{font-size:11px;color:var(--muted)}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px;margin:14px 0;box-shadow:0 5px 18px rgba(20,41,69,.03)}.panel h2{font-size:16px;margin:0 0 13px}.panel h3{font-size:13px;margin:0 0 10px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}.panel-head h2{margin:0}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.joblist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.job-card,.item-card{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff}.job-card h3{font-size:15px;margin:0 0 5px}.muted{color:var(--muted);font-size:11px;line-height:1.5}.chips{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}.chip{background:#eef4ff;color:#315ca6;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:700}.tag{display:inline-block;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:800;background:#eef2f7;color:#4c5c72}.tag.pending{background:#fff6e7;color:#95600f}.tag.verified,.tag.approved{background:#eaf8f1;color:#0c8058}.tag.rejected,.tag.expired{background:#fff0f0;color:#b42323}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.empty{padding:22px;text-align:center;background:#f8fafd;border:1px dashed #d6e0ed;border-radius:12px;color:var(--muted);font-size:12px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:11px}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #edf1f6;vertical-align:top}th{color:#52627a;font-size:10px;text-transform:uppercase;letter-spacing:.5px;background:#f8fafd}.smallform{display:flex;gap:8px;flex-wrap:wrap}.smallform input,.smallform select{border:1px solid #dce4ee;border-radius:9px;padding:9px;font-size:11px;min-width:140px}.notice{background:#f3f8ff;border:1px solid #d9e7ff;color:#355b94;padding:12px;border-radius:11px;font-size:11px;line-height:1.55;margin:12px 0}.warning{background:#fff8e9;border:1px solid #f4e1b7;color:#805b14;padding:12px;border-radius:11px;font-size:11px;line-height:1.55;margin:12px 0}.searchrow{display:flex;gap:8px;margin-bottom:12px}.searchrow input{flex:1;border:1px solid #dce4ee;border-radius:9px;padding:10px;font-size:12px}.resume-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.resume-form input[type=file]{font-size:11px;max-width:260px}.pill-nav{display:flex;gap:7px;flex-wrap:wrap;margin:10px 0 18px}.pill-nav button{border:1px solid var(--line);background:#fff;border-radius:99px;padding:8px 12px;font-size:11px;color:#526176;font-weight:800}.pill-nav button.active{background:#eaf1ff;border-color:#a9c1ff;color:#2457b8}.admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.item-card .title{font-size:13px;font-weight:800;margin-bottom:5px}.item-card .meta{color:var(--muted);font-size:10px;line-height:1.5}.loading{opacity:.65;pointer-events:none}.subtle{font-size:10px;color:#8290a2}.divider{height:1px;background:var(--line);margin:14px 0}
+    :root{--navy:#10213b;--navy2:#173456;--blue:#2563eb;--cyan:#12b8c7;--ink:#162338;--muted:#68778d;--line:#e4eaf2;--bg:#f3f6fb;--white:#fff;--green:#11845b;--amber:#b7791f;--red:#c24141}
+    *{box-sizing:border-box}
+    body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Segoe UI,Arial,sans-serif}
+    button,input,select,textarea{font:inherit}
+    button{cursor:pointer}
+    .shell{max-width:1240px;margin:auto;padding:0 22px}
+    .topbar{background:#0b172a;color:#dce8fb}
+    .topinner{height:42px;display:flex;align-items:center;justify-content:space-between;font-size:12px;gap:12px}
+    .topinner span{opacity:.82}
+    .brandbar{background:linear-gradient(110deg,#10213b,#173456);color:#fff;border-bottom:1px solid rgba(255,255,255,.1)}
+    .brandinner{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brandmark{width:46px;height:46px;border-radius:14px;background:linear-gradient(140deg,#27c1d1,#3474ef);display:grid;place-items:center;font-size:23px;font-weight:900;box-shadow:0 8px 20px #08182e}
+    .brandname{font-size:21px;font-weight:900;letter-spacing:1.2px}
+    .brandtag{font-size:11px;color:#b9c9e0;margin-top:3px;letter-spacing:.5px}
+    .navpill{border:1px solid rgba(255,255,255,.2);border-radius:99px;padding:9px 14px;font-size:12px;color:#dce8fb}
+    .hero{background:radial-gradient(circle at 80% 18%,rgba(18,184,199,.22),transparent 25%),linear-gradient(120deg,#10213b,#183b65);color:#fff;padding:44px 0 54px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:38px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;color:#9be6eb;font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase}
+    .dot{width:7px;height:7px;background:#33d6c2;border-radius:50%;box-shadow:0 0 0 5px rgba(51,214,194,.13)}
+    h1{font-size:clamp(34px,5vw,58px);line-height:1.04;margin:17px 0 16px;letter-spacing:-1.9px}
+    .hero p{color:#c6d5e8;line-height:1.7;font-size:15px;max-width:620px}
+    .location-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+    .location-chip{border:1px solid rgba(255,255,255,.19);background:rgba(255,255,255,.07);padding:7px 11px;border-radius:99px;font-size:11px;color:#e6f1ff}
+    .hero-stats{display:flex;gap:22px;margin-top:30px}
+    .hero-stat strong{display:block;font-size:20px}
+    .hero-stat span{font-size:11px;color:#adc0d9}
+    .auth-card{background:#fff;color:var(--ink);border-radius:22px;padding:24px;box-shadow:0 22px 70px rgba(0,0,0,.24);max-width:480px;margin-left:auto;width:100%}
+    .auth-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:17px}
+    .auth-head h2{margin:0;font-size:21px}
+    .auth-head p{font-size:12px;color:var(--muted);margin:6px 0 0}
+    .secure-tag{background:#eaf8f4;color:#0c845c;border-radius:99px;padding:6px 9px;font-weight:800;font-size:10px}
+    .role-select-wrap{margin:16px 0}
+    .role-select{width:100%;min-height:52px;border:1px solid #dce4ee;border-radius:12px;background:#f8fafd;color:#162338;padding:12px 14px;font-size:14px;font-weight:800;cursor:pointer}
+    .role-select:focus{outline:3px solid #dce8ff;border-color:#5d8cf5}
+    .field{margin:11px 0}
+    .field label{display:block;font-size:11px;font-weight:800;color:#506078;margin-bottom:6px}
+    .field input,.field select,.field textarea{width:100%;border:1px solid #dce4ee;background:#fbfcfe;border-radius:10px;padding:11px 12px;outline:none;color:var(--ink);font-size:13px}
+    .field textarea{min-height:95px;resize:vertical}
+    .field input:focus,.field textarea:focus,.field select:focus{border-color:#6a93ed;box-shadow:0 0 0 3px #eaf0ff}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .primary{border:0;color:#fff;background:linear-gradient(100deg,#2563eb,#12aebc);border-radius:11px;padding:12px 16px;font-size:13px;font-weight:800;box-shadow:0 8px 18px rgba(37,99,235,.22)}
+    .primary:hover{filter:brightness(1.05)}
+    .primary:disabled{opacity:.6;cursor:wait}
+    .secondary{border:1px solid #dce4ee;background:#fff;color:#30415b;border-radius:10px;padding:9px 12px;font-size:12px;font-weight:800}
+    .danger{border:1px solid #f3caca;background:#fff5f5;color:#b42323;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:800}
+    .success{border:1px solid #b9ead7;background:#f0fcf6;color:#08764e;border-radius:9px;padding:8px 11px;font-size:11px;font-weight:800}
+    .wide{width:100%}
+    .auth-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:13px;font-size:11px;color:var(--muted)}
+    .linkbtn{border:0;background:none;padding:0;color:#245dca;font-weight:800;font-size:11px}
+    .message{display:none;padding:10px 12px;border-radius:10px;margin:10px 0;font-size:12px;line-height:1.5}
+    .message.show{display:block}
+    .message.err{color:#a62828;background:#fff0f0;border:1px solid #ffd3d3}
+    .message.ok{color:#08764e;background:#eefbf5;border:1px solid #c8efdd}
+    .below{padding:34px 0 50px}
+    .section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:16px}
+    .section-head h2{margin:0;font-size:23px}
+    .section-head p{margin:6px 0 0;color:var(--muted);font-size:12px}
+    .feature-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+    .feature{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:0 5px 18px rgba(20,41,69,.03)}
+    .feature .ficon{font-size:23px}
+    .feature h3{margin:10px 0 6px;font-size:14px}
+    .feature p{margin:0;font-size:12px;color:var(--muted);line-height:1.55}
+    .footer{background:#0d1b31;color:#b8c9e0;padding:21px 0;font-size:11px}
+    .footer-inner{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .hidden{display:none!important}
+    .appbar{background:#10213b;color:#fff;padding:14px 0}
+    .appbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .appbar .brandmark{width:38px;height:38px;border-radius:12px;font-size:19px}
+    .appbar .brandname{font-size:17px}
+    .userbox{display:flex;align-items:center;gap:12px}
+    .userbox small{display:block;color:#b8cae2;font-size:10px;margin-top:3px}
+    .logout{border:1px solid rgba(255,255,255,.25);background:transparent;color:#fff;padding:9px 13px;border-radius:9px;font-weight:700;font-size:11px}
+    .dashboard{padding:26px 0 90px}
+    .welcome{display:flex;justify-content:space-between;gap:18px;align-items:center;margin-bottom:18px}
+    .welcome h1{color:var(--ink);font-size:28px;letter-spacing:-.8px;margin:0}
+    .welcome p{color:var(--muted);font-size:12px;margin:6px 0 0}
+    .statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+    .stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+    .stat strong{display:block;font-size:24px;color:#183b65}
+    .stat span{font-size:11px;color:var(--muted)}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:19px;margin:14px 0;box-shadow:0 5px 18px rgba(20,41,69,.03)}
+    .panel h2{font-size:16px;margin:0 0 13px}
+    .panel h3{font-size:13px;margin:0 0 10px}
+    .panel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+    .panel-head h2{margin:0}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .joblist{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .job-card,.item-card{border:1px solid var(--line);border-radius:13px;padding:15px;background:#fff;transition:box-shadow .15s}
+    .job-card:hover{border-color:#c7d6f0;box-shadow:0 8px 22px rgba(37,99,235,.08)}
+    .job-card{cursor:pointer}
+    .job-card h3{font-size:15px;margin:0 0 5px}
+    .muted{color:var(--muted);font-size:11px;line-height:1.5}
+    .chips{display:flex;gap:6px;flex-wrap:wrap;margin:9px 0}
+    .chip{background:#eef4ff;color:#315ca6;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:700}
+    .tag{display:inline-block;padding:5px 8px;border-radius:99px;font-size:10px;font-weight:800;background:#eef2f7;color:#4c5c72}
+    .tag.pending{background:#fff6e7;color:#95600f}
+    .tag.verified,.tag.approved{background:#eaf8f1;color:#0c8058}
+    .tag.rejected,.tag.expired{background:#fff0f0;color:#b42323}
+    .tag.new{background:#e0e7ff;color:#3730a3}
+    .actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+    .empty{padding:22px;text-align:center;background:#f8fafd;border:1px dashed #d6e0ed;border-radius:12px;color:var(--muted);font-size:12px}
+    .tablewrap{overflow:auto}
+    table{border-collapse:collapse;width:100%;font-size:11px}
+    th,td{text-align:left;padding:10px 8px;border-bottom:1px solid #edf1f6;vertical-align:top}
+    th{color:#52627a;font-size:10px;text-transform:uppercase;letter-spacing:.5px;background:#f8fafd}
+    .smallform{display:flex;gap:8px;flex-wrap:wrap}
+    .smallform input,.smallform select{border:1px solid #dce4ee;border-radius:9px;padding:9px;font-size:11px;min-width:140px}
+    .notice{background:#f3f8ff;border:1px solid #d9e7ff;color:#355b94;padding:12px;border-radius:11px;font-size:11px;line-height:1.55;margin:12px 0}
+    .warning{background:#fff8e9;border:1px solid #f4e1b7;color:#805b14;padding:12px;border-radius:11px;font-size:11px;line-height:1.55;margin:12px 0}
+    .searchrow{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+    .searchrow input{flex:1;min-width:200px;border:1px solid #dce4ee;border-radius:9px;padding:10px;font-size:12px}
+    .searchrow select{border:1px solid #dce4ee;border-radius:9px;padding:10px;font-size:12px;background:#fff;min-width:160px}
+    .searchrow input:focus,.searchrow select:focus{outline:none;border-color:#6a93ed;box-shadow:0 0 0 3px #eaf0ff}
+    .resume-form{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    .resume-form input[type=file]{font-size:11px;max-width:260px}
+    .admin-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .item-card .title{font-size:13px;font-weight:800;margin-bottom:5px}
+    .item-card .meta{color:var(--muted);font-size:10px;line-height:1.5}
+    .subtle{font-size:10px;color:#8290a2}
+    .divider{height:1px;background:var(--line);margin:14px 0}
+
+    /* Tabs */
+    .tabs{display:flex;gap:4px;margin:14px 0 18px;border-bottom:2px solid #e4eaf2;overflow-x:auto;padding-bottom:0}
+    .tab{border:0;background:transparent;padding:11px 16px;font-size:12px;font-weight:800;color:#68778d;border-bottom:3px solid transparent;white-space:nowrap;display:inline-flex;align-items:center;gap:6px;margin-bottom:-2px}
+    .tab:hover{color:#2563eb}
+    .tab.active{color:#10213b;border-bottom-color:#2563eb}
+    .tab .count{background:#e4eaf2;color:#4b5b73;border-radius:99px;padding:1px 7px;font-size:10px;font-weight:900}
+    .tab.active .count{background:#2563eb;color:#fff}
+    .tab .count.alert{background:#ef4444;color:#fff;animation:pulse 1.6s infinite}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+
+    /* Mobile bottom nav */
+    .mobile-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e4eaf2;box-shadow:0 -4px 16px rgba(16,33,59,.06);z-index:50;padding:6px 0 env(safe-area-inset-bottom,0)}
+    .mobile-nav-inner{display:flex;justify-content:space-around;max-width:500px;margin:auto}
+    .mnav-btn{border:0;background:none;padding:8px 10px;display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;font-weight:800;color:#68778d;position:relative;flex:1}
+    .mnav-btn .icon{font-size:19px;line-height:1}
+    .mnav-btn.active{color:#2563eb}
+    .mnav-btn .mbadge{position:absolute;top:4px;right:calc(50% - 22px);background:#ef4444;color:#fff;border-radius:99px;padding:1px 5px;font-size:9px;font-weight:900;min-width:15px;text-align:center}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(16,33,59,.55);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;overflow-y:auto;animation:fadeIn .15s}
+    @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+    .modal-card{background:#fff;border-radius:16px;padding:22px;max-width:600px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 70px rgba(0,0,0,.3);animation:slideUp .2s}
+    @keyframes slideUp{from{transform:translateY(10px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .modal-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:14px}
+    .modal-head h2{margin:0;font-size:20px;color:#10213b;line-height:1.3}
+    .modal-close{border:0;background:#f3f6fb;width:34px;height:34px;border-radius:50%;font-size:16px;color:#68778d;flex-shrink:0;display:grid;place-items:center}
+    .modal-close:hover{background:#e4eaf2;color:#10213b}
+    .modal-section{margin:14px 0}
+    .modal-section strong{display:block;font-size:11px;color:#52627a;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+
     @media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:25px}.auth-card{margin:0;max-width:none}.feature-grid{grid-template-columns:repeat(2,1fr)}.statgrid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:620px){.shell{padding:0 14px}.topinner{font-size:10px}.brandinner{min-height:70px}.navpill{display:none}.hero{padding:34px 0}.hero-stats{gap:13px}.hero-stat strong{font-size:17px}.auth-card{padding:18px}.role-grid{gap:5px}.role-btn{font-size:9px}.two,.grid2,.joblist,.admin-grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}.welcome{align-items:flex-start;flex-direction:column}.welcome h1{font-size:24px}.stat{padding:13px}.stat strong{font-size:21px}.panel{padding:14px}.appbar-inner{align-items:flex-start}.userbox{gap:7px}.userbox>div:first-child{display:none}}
+    @media(max-width:620px){
+      .shell{padding:0 14px}.topinner{font-size:10px}.brandinner{min-height:70px}.navpill{display:none}
+      .hero{padding:34px 0}.hero-stats{gap:13px}.hero-stat strong{font-size:17px}.auth-card{padding:18px}
+      .two,.grid2,.joblist,.admin-grid{grid-template-columns:1fr}.feature-grid{grid-template-columns:1fr 1fr}
+      .welcome{align-items:flex-start;flex-direction:column}.welcome h1{font-size:24px}
+      .stat{padding:13px}.stat strong{font-size:21px}.panel{padding:14px}
+      .appbar-inner{align-items:flex-start}.userbox{gap:7px}.userbox>div:first-child{display:none}
+      .mobile-nav{display:block}.dashboard{padding-bottom:90px}.tabs{margin-bottom:14px}.tab{padding:10px 12px;font-size:11px}
+    }
   </style>
 </head>
 <body>
   <div id="authView">
-    <div class="topbar"><div class="shell topinner"><span>CAREER OPPORTUNITIES • TRICITY & NEARBY AREAS</span><span>One portal for candidates and employers</span></div></div>
+    <div class="topbar"><div class="shell topinner"><span>CAREER OPPORTUNITIES • TRICITY &amp; NEARBY</span><span>One portal for candidates and employers</span></div></div>
     <div class="brandbar"><div class="shell brandinner"><div class="brand"><div class="brandmark">S</div><div><div class="brandname">SKYNET JOBS</div><div class="brandtag">YOUR CAREER. YOUR CITY. YOUR FUTURE.</div></div></div><div class="navpill">CHANDIGARH · PANCHKULA · ZIRAKPUR · MOHALI</div></div></div>
     <section class="hero"><div class="shell hero-grid">
-      <div><div class="eyebrow"><span class="dot"></span> LOCAL TALENT. REAL OPPORTUNITIES.</div><h1>Find the work.<br><span style="color:#54d5dc">Build your future.</span></h1><p>Discover local opportunities, connect with verified employers and manage your hiring journey in one place. Built for Chandigarh, Panchkula, Zirakpur, Mohali and nearby markets.</p>
+      <div><div class="eyebrow"><span class="dot"></span> LOCAL TALENT. REAL OPPORTUNITIES.</div><h1>Find the work.<br><span style="color:#54d5dc">Build your future.</span></h1><p>Discover local opportunities, connect with verified employers and manage your hiring journey in one place.</p>
         <div class="location-row"><span class="location-chip">Chandigarh</span><span class="location-chip">Panchkula</span><span class="location-chip">Zirakpur</span><span class="location-chip">Mohali</span><span class="location-chip">Dera Bassi</span><span class="location-chip">New Chandigarh</span></div>
-        <div class="hero-stats"><div class="hero-stat"><strong>5 FREE</strong><span>Applications for candidates</span></div><div class="hero-stat"><strong>5 FREE</strong><span>Job posts for employers</span></div><div class="hero-stat"><strong>ADMIN</strong><span>Approval before publishing</span></div></div>
+        <div class="hero-stats"><div class="hero-stat"><strong>5 FREE</strong><span>Applications</span></div><div class="hero-stat"><strong>5 FREE</strong><span>Job posts</span></div><div class="hero-stat"><strong>ADMIN</strong><span>Approval</span></div></div>
       </div>
       <div class="auth-card">
-        <div class="auth-head"><div><h2 id="authTitle">Welcome back</h2><p id="authSubtitle">Choose your account type to continue.</p></div><div class="secure-tag">● SECURE ACCESS</div></div>
-        <div class="role-grid">
-          <button class="role-btn active" data-role="CANDIDATE" onclick="selectRole('CANDIDATE')"><span class="ico">👤</span>Candidate</button>
-          <button class="role-btn" data-role="EMPLOYER" onclick="selectRole('EMPLOYER')"><span class="ico">🏢</span>Employer</button>
-          <button class="role-btn" data-role="ADMIN" onclick="selectRole('ADMIN')"><span class="ico">🛡️</span>Admin</button>
-          <button class="role-btn" data-role="SUPER_ADMIN" onclick="selectRole('SUPER_ADMIN')"><span class="ico">👑</span>Super Admin</button>
+        <div class="auth-head"><div><h2 id="authTitle">Welcome back</h2><p id="authSubtitle">Choose your account type to continue.</p></div><div class="secure-tag">● SECURE</div></div>
+        <div class="role-select-wrap">
+          <label for="accountRole" style="display:block;font-size:11px;font-weight:800;color:#506078;margin-bottom:7px">SELECT ACCOUNT TYPE</label>
+          <select id="accountRole" class="role-select" aria-label="Select account type">
+            <option value="CANDIDATE" selected>👤 Candidate Login</option>
+            <option value="EMPLOYER">🏢 Employer Login</option>
+            <option value="ADMIN">🛡️ Admin Login</option>
+            <option value="SUPER_ADMIN">👑 Super Admin Login</option>
+          </select>
         </div>
         <div id="authMessage" class="message"></div>
         <form id="authForm" onsubmit="submitAuth(event)">
@@ -48,7 +209,7 @@
     </div></section>
     <section class="below"><div class="shell"><div class="section-head"><div><h2>Everything in one career portal</h2><p>Clear workflows for applicants, recruiters and administrators.</p></div></div>
       <div class="feature-grid">
-        <div class="feature"><div class="ficon">📄</div><h3>Candidate Profile & CV</h3><p>Create a profile, upload a private CV and apply to approved opportunities.</p></div>
+        <div class="feature"><div class="ficon">📄</div><h3>Candidate Profile &amp; CV</h3><p>Create a profile, upload a private CV and apply to approved opportunities.</p></div>
         <div class="feature"><div class="ficon">🏢</div><h3>Employer Hiring Desk</h3><p>Post vacancies, review applications and search candidates by skills.</p></div>
         <div class="feature"><div class="ficon">✅</div><h3>Admin Approval</h3><p>Employer verification and job approval before a vacancy goes public.</p></div>
         <div class="feature"><div class="ficon">🔎</div><h3>Hiring Lead Discovery</h3><p>Collect permitted RSS/Atom feed leads into a separate unverified queue.</p></div>
@@ -58,55 +219,765 @@
   </div>
 
   <div id="appView" class="hidden">
-    <div class="appbar"><div class="shell appbar-inner"><div class="brand"><div class="brandmark">S</div><div><div class="brandname">SKYNET JOBS</div><div class="brandtag">CAREER & HIRING MANAGEMENT</div></div></div><div class="userbox"><div><strong id="userName">User</strong><small id="userRole">ACCOUNT</small></div><button class="logout" onclick="logout()">LOG OUT ↗</button></div></div></div>
-    <main class="shell dashboard"><div class="welcome"><div><h1 id="welcomeTitle">Dashboard</h1><p id="welcomeSubtitle">Manage your SKYNET JOBS account.</p></div><div id="welcomeStatus"></div></div><div id="dashboardContent"></div></main>
-    <div class="footer"><div class="shell footer-inner"><span>© SKYNET JOBS</span><span>Keep your account details and password private.</span></div></div>
+    <div class="appbar"><div class="shell appbar-inner"><div class="brand"><div class="brandmark">S</div><div><div class="brandname">SKYNET JOBS</div><div class="brandtag">CAREER &amp; HIRING MANAGEMENT</div></div></div><div class="userbox"><div><strong id="userName">User</strong><small id="userRole">ACCOUNT</small></div><button class="logout" onclick="logout()">LOG OUT ↗</button></div></div></div>
+    <main class="shell dashboard">
+      <div class="welcome"><div><h1 id="welcomeTitle">Dashboard</h1><p id="welcomeSubtitle">Manage your SKYNET JOBS account.</p></div><div id="welcomeStatus"></div></div>
+      <div id="dashboardContent"></div>
+    </main>
+    <div class="footer"><div class="shell footer-inner"><span>© SKYNET JOBS</span><span>Keep your account details private.</span></div></div>
+    <nav id="mobileNav" class="mobile-nav"><div class="mobile-nav-inner" id="mobileNavInner"></div></nav>
+  </div>
+
+  <div id="jobDetailModal" class="modal-backdrop hidden" onclick="if(event.target===this)closeJobDetail()">
+    <div class="modal-card" id="jobDetailContent"></div>
   </div>
 
 <script>
-  let selectedRole='CANDIDATE'; let isRegister=false; let sessionToken=''; let dashboard=null;
-  const $=id=>document.getElementById(id);
-  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-  function msg(id,text,type){const el=$(id);el.textContent=text;el.className='message show '+(type||'ok');}
-  function hideMsg(id){$(id).className='message';$(id).textContent='';}
-  function selectRole(role){selectedRole=role;document.querySelectorAll('.role-btn').forEach(b=>b.classList.toggle('active',b.dataset.role===role));if(isRegister&&role!=='CANDIDATE'&&role!=='EMPLOYER')isRegister=false;syncAuthMode();}
-  function toggleMode(){isRegister=!isRegister;if(isRegister&&selectedRole!=='CANDIDATE'&&selectedRole!=='EMPLOYER')selectedRole='CANDIDATE';document.querySelectorAll('.role-btn').forEach(b=>b.classList.toggle('active',b.dataset.role===selectedRole));syncAuthMode();}
-  function syncAuthMode(){const canRegister=selectedRole==='CANDIDATE'||selectedRole==='EMPLOYER';if(!canRegister)isRegister=false;$('registerFields').classList.toggle('hidden',!isRegister);$('companyField').classList.toggle('hidden',!(isRegister&&selectedRole==='EMPLOYER'));$('websiteField').classList.toggle('hidden',!(isRegister&&selectedRole==='EMPLOYER'));$('addressField').classList.toggle('hidden',!(isRegister&&selectedRole==='EMPLOYER'));$('authTitle').textContent=isRegister?'Create your account':'Welcome back';$('authSubtitle').textContent=isRegister?'Join SKYNET JOBS in a few simple steps.':'Choose your account type to continue.';$('authSubmit').textContent=isRegister?'CREATE ACCOUNT →':'LOGIN TO SKYNET JOBS →';$('authModeText').textContent=canRegister?(isRegister?'Already registered?':'New candidate or employer?'):'Admin access only';$('modeToggle').textContent=canRegister?(isRegister?'Back to login':'Create account'):'Not available';$('modeToggle').style.display=canRegister?'inline':'none';hideMsg('authMessage');}
-  function rpc(fn,...args){return new Promise((resolve,reject)=>{const runner=google.script.run.withSuccessHandler(resolve).withFailureHandler(err=>reject(new Error(err&&err.message?err.message:String(err))));runner[fn](...args);});}
-  async function submitAuth(ev){ev.preventDefault();hideMsg('authMessage');const btn=$('authSubmit');btn.disabled=true;btn.textContent='PLEASE WAIT…';try{let result;if(isRegister){const data={role:selectedRole,fullName:$('fullName').value,email:$('email').value,phone:$('phone').value,city:$('city').value,password:$('password').value,companyName:$('companyName').value,website:$('website').value,address:$('address').value};result=await rpc('registerAccount',data);}else{result=await rpc('loginAccount',{role:selectedRole,email:$('email').value,password:$('password').value});}if(!result||!result.token)throw new Error('Login response नहीं मिला।');sessionToken=result.token;sessionStorage.setItem('skynetJobsToken',sessionToken);await loadDashboard();}catch(err){msg('authMessage',err.message,'err');}finally{btn.disabled=false;syncAuthMode();}}
-  async function loadDashboard(){const data=await rpc('getDashboardData',sessionToken);dashboard=data;$('authView').classList.add('hidden');$('appView').classList.remove('hidden');$('userName').textContent=data.user.fullName||data.user.email;$('userRole').textContent=data.role.replace('_',' ');renderDashboard(data);}
-  async function changeMyPassword(ev){ev.preventDefault();try{await rpc('changePassword',sessionToken,$('oldPassword').value,$('newPassword').value);alert('Password changed successfully.');$('oldPassword').value='';$('newPassword').value='';}catch(e){alert(e.message);}}
-  async function logout(){try{await rpc('logoutAccount',sessionToken);}catch(e){}sessionToken='';sessionStorage.removeItem('skynetJobsToken');dashboard=null;$('appView').classList.add('hidden');$('authView').classList.remove('hidden');$('password').value='';}
-  function stats(items){return '<div class="statgrid">'+items.map(x=>'<div class="stat"><strong>'+esc(x.value)+'</strong><span>'+esc(x.label)+'</span></div>').join('')+'</div>';}
-  function renderDashboard(d){const role=d.role;$('welcomeTitle').textContent=role==='CANDIDATE'?'Candidate Dashboard':role==='EMPLOYER'?'Employer Dashboard':role==='SUPER_ADMIN'?'Super Admin Control Centre':'Admin Control Centre';$('welcomeSubtitle').textContent=role==='CANDIDATE'?'Find approved jobs and track your applications.':role==='EMPLOYER'?'Manage company profile, vacancies and applicants.':'Review jobs, verify employers and manage hiring leads.';$('welcomeStatus').innerHTML='<span class="tag '+(role==='EMPLOYER'?(d.employer&&d.employer.verificationStatus==='VERIFIED'?'verified':'pending'):'approved')+'">'+(role==='EMPLOYER'?'EMPLOYER '+esc((d.employer||{}).verificationStatus||'PENDING'):esc(role.replace('_',' ')))+'</span>';if(role==='CANDIDATE')renderCandidate(d);else if(role==='EMPLOYER')renderEmployer(d);else renderAdmin(d);}
-  function renderCandidate(d){const p=d.profile||{};$('dashboardContent').innerHTML=stats([{value:d.stats.applications,label:'Applications submitted'},{value:d.stats.freeRemaining,label:'Free applications left'},{value:(d.jobs||[]).length,label:'Approved jobs available'},{value:p.resumeFileName?'Uploaded':'Not uploaded',label:'CV status'}])+`<div class="grid2"><section class="panel"><h2>My Candidate Profile</h2><form id="candidateProfile" onsubmit="saveCandidate(event)"><div class="field"><label>PROFILE HEADLINE</label><input id="cHeadline" value="${esc(p.headline)}" placeholder="e.g. Computer Operator | Data Entry"></div><div class="two"><div class="field"><label>CITY</label><select id="cCity">${cityOptions(p.city)}</select></div><div class="field"><label>EXPERIENCE (YEARS)</label><input id="cExp" type="number" min="0" max="60" value="${esc(p.experienceYears)}"></div></div><div class="field"><label>SKILLS (COMMA SEPARATED)</label><input id="cSkills" value="${esc(p.skills)}" placeholder="MS Office, Tally, Excel, Sales"></div><label class="muted"><input id="cSearchable" type="checkbox" ${p.searchable?'checked':''}> Allow verified employers to find my basic profile</label><div class="actions"><button class="primary" type="submit">SAVE PROFILE</button></div></form></section><section class="panel"><h2>Upload / Replace CV</h2><p class="muted">PDF, DOC or DOCX · Maximum 2 MB. CV is saved in a private Google Drive folder and is not public.</p><form id="resumeForm" class="resume-form" onsubmit="uploadCV(event)"><input type="hidden" name="token" value="${esc(sessionToken)}"><input type="file" name="resumeFile" accept=".pdf,.doc,.docx" required><button class="primary" type="submit">UPLOAD CV</button></form><div class="notice">Current CV: <strong>${esc(p.resumeFileName||'Not uploaded')}</strong></div><div class="warning">Your profile becomes searchable only after you enable the checkbox and save. Your Applying for a job shares your uploaded CV only with that verified employer.</div></section></div><section class="panel"><div class="panel-head"><h2>Latest Approved Jobs</h2><span class="tag approved">PUBLIC JOBS</span></div><div class="joblist">${(d.jobs||[]).length?d.jobs.map(jobCard).join(''):'<div class="empty">अभी कोई approved job उपलब्ध नहीं है।</div>'}</div></section><section class="panel"><h2>My Applications</h2>${(d.applications||[]).length?'<div class="tablewrap"><table><thead><tr><th>Job</th><th>Company</th><th>Date</th><th>Status</th></tr></thead><tbody>'+d.applications.map(a=>'<tr><td>'+esc(a.jobTitle)+'</td><td>'+esc(a.companyName)+'</td><td>'+esc(a.createdAt)+'</td><td><span class="tag">'+esc(a.status)+'</span></td></tr>').join('')+'</tbody></table></div>':'<div class="empty">अभी तक कोई application नहीं भेजी गई।</div>'}</section><div class="panel"><h2>Plan & Free Limit</h2><p class="muted">पहली 5 applications free हैं। उसके बाद application रोक दी जाएगी जब तक Super Admin account पर paid plan activate नहीं करता।</p><button class="secondary" onclick="upgrade('CANDIDATE')">REQUEST PAID PLAN</button></div>`;}
-  function cityOptions(selected){return '<option value="">Select city</option>'+['Chandigarh','Panchkula','Zirakpur','Mohali','Dera Bassi','New Chandigarh'].map(c=>'<option '+(selected===c?'selected':'')+'>'+c+'</option>').join('');}
-  function jobCard(j){return `<article class="job-card"><h3>${esc(j.title)}</h3><div class="muted">${esc(j.companyName)} · ${esc(j.city)}</div><div class="chips"><span class="chip">${esc(j.jobType||'Full-time')}</span>${j.category?'<span class="chip">'+esc(j.category)+'</span>':''}</div><p class="muted">${esc((j.description||'').slice(0,230))}${(j.description||'').length>230?'…':''}</p><div class="muted">Skills: ${esc(j.skills||'Not specified')}</div><div class="actions"><button class="primary" onclick="applyJob('${esc(j.jobId)}')">APPLY NOW</button><button class="secondary" onclick="reportJobUI('${esc(j.jobId)}')">REPORT JOB</button></div></article>`;}
-  async function saveCandidate(ev){ev.preventDefault();try{await rpc('saveCandidateProfile',sessionToken,{headline:$('cHeadline').value,city:$('cCity').value,experienceYears:$('cExp').value,skills:$('cSkills').value,searchable:$('cSearchable').checked});alert('Profile saved.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function uploadCV(ev){ev.preventDefault();const btn=ev.submitter;if(btn){btn.disabled=true;btn.textContent='UPLOADING…';}try{const result=await new Promise((resolve,reject)=>google.script.run.withSuccessHandler(resolve).withFailureHandler(err=>reject(new Error(err.message||err))).uploadResume(ev.target));alert(result.message||('CV uploaded: '+result.fileName));await loadDashboard();}catch(e){alert(e.message);}finally{if(btn){btn.disabled=false;btn.textContent='UPLOAD CV';}}}
-  async function applyJob(id){const note=prompt('Optional: write a short note to the employer');if(note===null)return;try{const r=await rpc('applyToJob',sessionToken,id,note);if(r.needsPlan){alert(r.message);await upgrade('CANDIDATE');return;}alert(r.message);await loadDashboard();}catch(e){alert(e.message);}}
-  async function reportJobUI(id){const reason=prompt('Report reason (e.g. fake job, wrong details, payment demand)');if(!reason)return;try{await rpc('reportJob',sessionToken,id,reason);alert('Report admin को भेज दी गई।');}catch(e){alert(e.message);}}
-  async function upgrade(role){try{const r=await rpc('requestUpgrade',sessionToken,role+'_PLAN');alert(r.message);}catch(e){alert(e.message);}}
-  function renderEmployer(d){const e=d.employer||{};$('dashboardContent').innerHTML=stats([{value:d.stats.jobs,label:'Job posts submitted'},{value:d.stats.freeRemaining,label:'Free job posts left'},{value:d.stats.applicants,label:'Applications received'},{value:e.verificationStatus||'PENDING',label:'Verification status'}])+`<div class="warning">Employer verification: <strong>${esc(e.verificationStatus||'PENDING')}</strong>. Jobs are not public until the employer is verified and an Admin approves each job.</div><div class="grid2"><section class="panel"><h2>Company Profile</h2><form onsubmit="saveEmployer(event)"><div class="field"><label>COMPANY NAME</label><input id="eCompany" required value="${esc(e.companyName)}"></div><div class="field"><label>WEBSITE</label><input id="eWebsite" value="${esc(e.website)}" placeholder="https://"></div><div class="two"><div class="field"><label>CITY</label><select id="eCity">${cityOptions(e.city)}</select></div><div class="field"><label>ADDRESS</label><input id="eAddress" value="${esc(e.address)}"></div></div><button class="primary" type="submit">SAVE COMPANY</button></form></section><section class="panel"><h2>Post a New Job</h2><form onsubmit="postJob(event)"><div class="field"><label>JOB TITLE</label><input id="jTitle" required placeholder="e.g. Accountant"></div><div class="two"><div class="field"><label>CITY</label><select id="jCity" required>${cityOptions(e.city)}</select></div><div class="field"><label>JOB TYPE</label><select id="jType"><option>Full-time</option><option>Part-time</option><option>Work from office</option><option>Work from home</option><option>Internship</option></select></div></div><div class="two"><div class="field"><label>CATEGORY</label><input id="jCategory" placeholder="Sales / IT / Accounts"></div><div class="field"><label>SKILLS</label><input id="jSkills" placeholder="Excel, Tally, communication"></div></div><div class="two"><div class="field"><label>MIN MONTHLY SALARY (₹)</label><input id="jMin" type="number" min="0"></div><div class="field"><label>MAX MONTHLY SALARY (₹)</label><input id="jMax" type="number" min="0"></div></div><div class="field"><label>JOB DESCRIPTION</label><textarea id="jDescription" required placeholder="Responsibilities, eligibility, timings and contact process"></textarea></div><div class="field"><label>LAST DATE</label><input id="jExpiry" type="date"></div><button class="primary" type="submit">SUBMIT FOR ADMIN APPROVAL</button></form></section></div><section class="panel"><h2>My Job Posts</h2>${(d.jobs||[]).length?'<div class="tablewrap"><table><thead><tr><th>Job title</th><th>City</th><th>Created</th><th>Expiry</th><th>Status</th></tr></thead><tbody>'+d.jobs.map(j=>'<tr><td>'+esc(j.title)+'</td><td>'+esc(j.city)+'</td><td>'+esc(j.createdAt)+'</td><td>'+esc(j.expiresAt)+'</td><td><span class="tag '+(j.status==='APPROVED'?'approved':j.status==='REJECTED'?'rejected':'pending')+'">'+esc(j.status)+'</span></td></tr>').join('')+'</tbody></table></div>':'<div class="empty">अभी कोई job post नहीं की गई।</div>'}</section><section class="panel"><h2>Applicants</h2>${(d.applicants||[]).length?'<div class="tablewrap"><table><thead><tr><th>Candidate</th><th>Job</th><th>Contact / CV</th><th>Note</th><th>Status</th><th>Update</th></tr></thead><tbody>'+d.applicants.map(a=>'<tr><td>'+esc(a.candidateName)+'</td><td>'+esc(a.jobTitle)+'</td><td>'+esc(a.candidateEmail)+(a.resumeUrl?' <br><a href="'+safeHref(a.resumeUrl)+'" target="_blank" rel="noopener">Open CV</a>':'')+'</td><td>'+esc(a.coverNote)+'</td><td>'+esc(a.status)+'</td><td><select onchange="changeAppStatus(\''+esc(a.applicationId)+'\',this.value)"><option value="">Choose</option><option>REVIEWING</option><option>SHORTLISTED</option><option>REJECTED</option><option>HIRED</option></select></td></tr>').join('')+'</tbody></table></div>':'<div class="empty">अभी कोई applicant नहीं है।</div>'}</section><section class="panel"><h2>Search Candidates by Skills</h2><p class="muted">केवल verified employers candidate search कर सकते हैं। Candidate profile searchable होना चाहिए।</p><div class="searchrow"><input id="candidateQuery" placeholder="Search: Excel, Tally, sales, computer operator"><button class="primary" onclick="runCandidateSearch()">SEARCH</button></div><div id="candidateResults"></div></section><div class="panel"><h2>Plan & Free Limit</h2><p class="muted">पहली 5 job posts free हैं। उसके बाद online payment फिलहाल connected नहीं है; Super Admin request approve करके plan activate कर सकता है।</p><button class="secondary" onclick="upgrade('EMPLOYER')">REQUEST PAID PLAN</button></div>`;}
-  async function saveEmployer(ev){ev.preventDefault();try{await rpc('saveEmployerProfile',sessionToken,{companyName:$('eCompany').value,website:$('eWebsite').value,city:$('eCity').value,address:$('eAddress').value});alert('Company profile saved. Verification may still be pending.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function postJob(ev){ev.preventDefault();try{const r=await rpc('createJob',sessionToken,{title:$('jTitle').value,city:$('jCity').value,jobType:$('jType').value,category:$('jCategory').value,skills:$('jSkills').value,salaryMin:$('jMin').value,salaryMax:$('jMax').value,description:$('jDescription').value,expiresAt:$('jExpiry').value});if(r.needsPlan){alert(r.message);await upgrade('EMPLOYER');return;}alert(r.message);await loadDashboard();}catch(e){alert(e.message);}}
-  async function changeAppStatus(id,status){if(!status)return;try{await rpc('updateApplicationStatus',sessionToken,id,status);alert('Applicant status updated.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function runCandidateSearch(){const box=$('candidateResults');box.innerHTML='<div class="empty">Searching…</div>';try{const rows=await rpc('searchCandidates',sessionToken,$('candidateQuery').value);box.innerHTML=rows.length?'<div class="joblist">'+rows.map(c=>'<div class="item-card"><div class="title">'+esc(c.headline||'Candidate')+'</div><div class="meta">'+esc(c.city)+' · '+esc(c.experienceYears)+' years experience</div><div class="chips">'+String(c.skills||'').split(',').filter(Boolean).map(s=>'<span class="chip">'+esc(s.trim())+'</span>').join('')+'</div></div>').join('')+'</div>':'<div class="empty">No searchable candidate profiles found.</div>';}catch(e){box.innerHTML='<div class="warning">'+esc(e.message)+'</div>';}}
-  function renderAdmin(d){const s=d.stats||{};let html=stats([{value:s.users||0,label:'Total accounts'},{value:s.pendingJobs||0,label:'Jobs awaiting approval'},{value:s.pendingEmployers||0,label:'Employers awaiting verification'},{value:s.leads||0,label:'Unverified discovery leads'}]);html+=`<div class="notice">Admin approval is mandatory. A job becomes public only when the employer is VERIFIED and an Admin approves the job. Discovery leads are unverified signals, not confirmed vacancies.</div><section class="panel"><h2>Employer Verification Queue</h2><div class="admin-grid">${(d.pendingEmployers||[]).length?d.pendingEmployers.map(e=>`<div class="item-card"><div class="title">${esc(e.companyName)}</div><div class="meta">${esc(e.email)} · ${esc(e.city)}<br>${esc(e.website)}<br>${esc(e.address)}</div><div class="actions"><button class="success" onclick="verifyEmployer('${esc(e.userId)}',true)">VERIFY</button><button class="danger" onclick="verifyEmployer('${esc(e.userId)}',false)">REJECT</button></div></div>`).join(''):'<div class="empty">No pending employers.</div>'}</div></section><section class="panel"><h2>Job Approval Queue</h2><div class="admin-grid">${(d.pendingJobs||[]).length?d.pendingJobs.map(j=>`<div class="item-card"><div class="title">${esc(j.title)} · ${esc(j.companyName)}</div><div class="meta">${esc(j.city)} · ${esc(j.jobType)} · ${esc(j.employerEmail)}<br>${esc(j.description)}</div><div class="chips"><span class="chip">${esc(j.skills)}</span></div><div class="actions"><button class="success" onclick="reviewJob('${esc(j.jobId)}',true)">APPROVE</button><button class="danger" onclick="reviewJob('${esc(j.jobId)}',false)">REJECT</button></div></div>`).join(''):'<div class="empty">No pending jobs.</div>'}</div></section><section class="panel"><div class="panel-head"><h2>Automatic Discovery — Unverified Leads</h2><button class="secondary" onclick="runDiscoveryNow()">RUN FEED CHECK NOW</button></div><div class="warning">Only permitted RSS/Atom feeds configured below are fetched. Each result stays UNVERIFIED until a human confirms the vacancy with the employer. This is not an unrestricted web crawler.</div><div class="admin-grid">${(d.leads||[]).length?d.leads.map(l=>`<div class="item-card"><div class="title">${esc(l.title)}</div><div class="meta">${esc(l.companyName)} · ${esc(l.city)}<br>Source date: ${esc(l.sourceDate)} · Found: ${esc(l.discoveredAt)}<br><a href="${safeHref(l.sourceUrl)}" target="_blank" rel="noopener">Open source ↗</a><br>${esc(l.notes)}</div><div class="actions"><button class="success" onclick="reviewLead('${esc(l.leadId)}','REVIEW')">MARK REVIEWED</button><button class="danger" onclick="reviewLead('${esc(l.leadId)}','REJECT')">REJECT</button></div></div>`).join(''):'<div class="empty">No discovery leads. Add permitted RSS/Atom feeds to start collection.</div>'}</div></section><section class="panel"><h2>Permitted RSS / Atom Feed Sources</h2><p class="muted">Add only feeds whose terms permit this use. The daily trigger checks these sources and saves unique source URLs as UNVERIFIED leads.</p><form class="smallform" onsubmit="addFeed(event)"><input id="feedName" placeholder="Source name" required><input id="feedUrl" placeholder="https://.../feed.xml" style="flex:2;min-width:220px" required><select id="feedCity">${cityOptions('')}</select><button class="primary" type="submit">ADD FEED</button></form><div class="divider"></div>${(d.feedSources||[]).map(f=>'<div class="item-card" style="margin:7px 0"><div class="title">'+esc(f.sourceName)+' · '+esc(f.city)+'</div><div class="meta">'+esc(f.feedUrl)+'</div><div class="actions"><button class="secondary" onclick="toggleFeed(\''+esc(f.feedId)+'\','+(!f.active)+')">'+(f.active?'PAUSE':'ACTIVATE')+'</button></div></div>').join('')||'<div class="empty">No feed sources configured yet.</div>'}</section><section class="panel"><h2>Fake Job Reports</h2>${(d.reports||[]).length?(d.reports.map(r=>'<div class="item-card" style="margin:7px 0"><div class="title">Job ID: '+esc(r.jobId)+'</div><div class="meta">'+esc(r.reason)+' · '+esc(r.createdAt)+'</div><button class="secondary" onclick="closeReport(\''+esc(r.reportId)+'\')">MARK CLOSED</button></div>').join('')):'<div class="empty">No open reports.</div>'}</section>`;if(d.role==='SUPER_ADMIN')html+=superAdminPanel(d);$('dashboardContent').innerHTML=html;}
-  function superAdminPanel(d){return `<section class="panel"><h2>Super Admin — Admin Accounts</h2><div class="warning">Only Super Admin can create or suspend Admin accounts and grant paid plans. Never share the Super Admin password.</div><form class="smallform" onsubmit="createAdmin(event)"><input id="newAdminName" placeholder="Admin full name" required><input id="newAdminEmail" type="email" placeholder="Admin email" required><input id="newAdminPassword" type="password" placeholder="Temporary password (10+ chars)" minlength="10" required><button class="primary" type="submit">CREATE ADMIN</button></form><div class="divider"></div>${(d.admins||[]).map(a=>'<div class="item-card" style="margin:7px 0"><div class="title">'+esc(a.fullName)+' · '+esc(a.role)+'</div><div class="meta">'+esc(a.email)+' · '+esc(a.status)+'</div>'+(a.role==='ADMIN'?'<button class="secondary" onclick="setUserStatus(\''+esc(a.userId)+'\',\''+(a.status==='ACTIVE'?'SUSPENDED':'ACTIVE')+'\')">'+(a.status==='ACTIVE'?'SUSPEND':'ACTIVATE')+'</button>':'')+'</div>').join('')}<div class="divider"></div><h3>Paid Plan Requests</h3>${(d.upgradeRequests||[]).length?(d.upgradeRequests.map(r=>'<div class="item-card" style="margin:7px 0"><div class="title">'+esc(r.email)+' · '+esc(r.role)+'</div><div class="meta">'+esc(r.product)+' · '+esc(r.createdAt)+'</div><div class="actions"><button class="success" onclick="resolveUpgrade(\''+esc(r.requestId)+'\',true)">APPROVE 30 DAYS</button><button class="danger" onclick="resolveUpgrade(\''+esc(r.requestId)+'\',false)">REJECT</button></div></div>').join('')):'<div class="empty">No pending upgrade requests.</div>'}</section>`;}
-  function safeHref(url){const u=String(url||'');return /^https:\/\//i.test(u)?esc(u):'#';}
-  async function reviewJob(id,yes){try{await rpc('adminReviewJob',sessionToken,id,yes);alert(yes?'Job approved.':'Job rejected.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function verifyEmployer(id,yes){try{await rpc('adminVerifyEmployer',sessionToken,id,yes);alert(yes?'Employer verified.':'Employer rejected.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function reviewLead(id,decision){try{await rpc('adminReviewLead',sessionToken,id,decision);alert('Lead status updated.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function addFeed(ev){ev.preventDefault();try{await rpc('adminCreateFeedSource',sessionToken,{sourceName:$('feedName').value,feedUrl:$('feedUrl').value,city:$('feedCity').value});alert('Feed added.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function toggleFeed(id,active){try{await rpc('adminToggleFeed',sessionToken,id,active);await loadDashboard();}catch(e){alert(e.message);}}
-  async function runDiscoveryNow(){try{const r=await rpc('adminRunDiscovery',sessionToken);alert('Feed check complete. New leads: '+r.added+' · Failed feeds: '+r.failed);await loadDashboard();}catch(e){alert(e.message);}}
-  async function closeReport(id){try{await rpc('adminCloseReport',sessionToken,id);await loadDashboard();}catch(e){alert(e.message);}}
-  async function createAdmin(ev){ev.preventDefault();try{await rpc('superCreateAdmin',sessionToken,{fullName:$('newAdminName').value,email:$('newAdminEmail').value,password:$('newAdminPassword').value});alert('Admin account created.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function setUserStatus(id,status){if(!confirm('Change Admin status to '+status+'?'))return;try{await rpc('superSetUserStatus',sessionToken,id,status);await loadDashboard();}catch(e){alert(e.message);}}
-  async function resolveUpgrade(id,yes){try{await rpc('superResolveUpgrade',sessionToken,id,yes,30);alert('Request updated.');await loadDashboard();}catch(e){alert(e.message);}}
-  async function init(){sessionToken=sessionStorage.getItem('skynetJobsToken')||'';syncAuthMode();if(sessionToken){try{await loadDashboard();}catch(e){sessionToken='';sessionStorage.removeItem('skynetJobsToken');}}}
-  init();
+  let selectedRole = 'CANDIDATE';
+  let isRegister = false;
+  let sessionToken = '';
+  let dashboard = null;
+  let activeTab = {};
+  let jobSearchQuery = '';
+  let jobCityFilter = '';
+  let _searchDebounce;
+
+  const $ = function(id) { return document.getElementById(id); };
+
+  function esc(v) {
+    return String(v == null ? '' : v).replace(/[&<>"']/g, function(c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function jsq(v) {
+    return String(v == null ? '' : v).replace(/\\/g, '\\\\').replace(/'/g, "\\'")
+      .replace(/</g, '\\u003c').replace(/>/g, '\\u003e').replace(/&/g, '\\u0026')
+      .replace(/\n/g, '\\n').replace(/\r/g, '\\r');
+  }
+  function msg(id, text, type) { const el = $(id); el.textContent = text; el.className = 'message show ' + (type || 'ok'); }
+  function hideMsg(id) { $(id).className = 'message'; $(id).textContent = ''; }
+
+  function showToast(message, type) {
+    let toast = document.getElementById('skynetToast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'skynetToast';
+      toast.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);padding:12px 20px;border-radius:10px;font-size:13px;font-weight:600;z-index:9999;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:0;transition:opacity .2s;pointer-events:none;max-width:90%;text-align:center;color:#fff';
+      document.body.appendChild(toast);
+    }
+    toast.textContent = message;
+    toast.style.background = type === 'error' ? '#b42323' : type === 'success' ? '#0c8058' : '#10213b';
+    toast.style.opacity = '1';
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(function(){ toast.style.opacity = '0'; }, 2500);
+  }
+
+  function openJobDetail(jobId) {
+    const job = (dashboard && dashboard.jobs || []).find(function(j){ return j.jobId === jobId; });
+    if (!job) return;
+    const applied = (dashboard.applications || []).some(function(a){ return a.jobId === jobId; });
+    const salaryRange = (job.salaryMin || job.salaryMax)
+      ? '₹' + (job.salaryMin || '0') + ' - ₹' + (job.salaryMax || '0') + '/month'
+      : 'Not disclosed';
+
+    document.getElementById('jobDetailContent').innerHTML =
+      '<div class="modal-head">' +
+        '<div>' +
+          '<h2>' + esc(job.title) + '</h2>' +
+          '<div class="muted" style="margin-top:6px">' + esc(job.companyName) + ' · ' + esc(job.city) + '</div>' +
+        '</div>' +
+        '<button class="modal-close" onclick="closeJobDetail()">✕</button>' +
+      '</div>' +
+      '<div class="chips">' +
+        '<span class="chip">' + esc(job.jobType || 'Full-time') + '</span>' +
+        (job.category ? '<span class="chip">' + esc(job.category) + '</span>' : '') +
+        '<span class="chip">' + esc(salaryRange) + '</span>' +
+      '</div>' +
+      '<div class="modal-section"><strong>Description</strong><p class="muted" style="white-space:pre-wrap;font-size:13px;line-height:1.7">' + esc(job.description) + '</p></div>' +
+      '<div class="modal-section"><strong>Skills Required</strong><p class="muted" style="font-size:13px">' + esc(job.skills || 'Not specified') + '</p></div>' +
+      '<div class="actions" style="margin-top:20px">' +
+        (applied
+          ? '<button class="secondary" disabled>✓ ALREADY APPLIED</button>'
+          : '<button class="primary" onclick="applyJob(\'' + jsq(job.jobId) + '\',event);closeJobDetail()">APPLY NOW</button>') +
+        '<button class="secondary" onclick="closeJobDetail()">CLOSE</button>' +
+      '</div>';
+    document.getElementById('jobDetailModal').classList.remove('hidden');
+  }
+  function closeJobDetail() {
+    document.getElementById('jobDetailModal').classList.add('hidden');
+  }
+
+  function selectRole(role) {
+    selectedRole = String(role || 'CANDIDATE').toUpperCase();
+    const selector = $('accountRole');
+    if (selector && selector.value !== selectedRole) selector.value = selectedRole;
+    if (isRegister && selectedRole !== 'CANDIDATE' && selectedRole !== 'EMPLOYER') isRegister = false;
+    syncAuthMode();
+  }
+  function bindRoleSelector() {
+    const selector = $('accountRole');
+    if (!selector) return;
+    selector.addEventListener('change', function() { selectRole(this.value); });
+  }
+  function toggleMode() {
+    isRegister = !isRegister;
+    if (isRegister && selectedRole !== 'CANDIDATE' && selectedRole !== 'EMPLOYER') {
+      selectedRole = 'CANDIDATE'; $('accountRole').value = 'CANDIDATE';
+    }
+    syncAuthMode();
+  }
+  function syncAuthMode() {
+    const canRegister = selectedRole === 'CANDIDATE' || selectedRole === 'EMPLOYER';
+    if (!canRegister) isRegister = false;
+    $('registerFields').classList.toggle('hidden', !isRegister);
+    $('companyField').classList.toggle('hidden', !(isRegister && selectedRole === 'EMPLOYER'));
+    $('websiteField').classList.toggle('hidden', !(isRegister && selectedRole === 'EMPLOYER'));
+    $('addressField').classList.toggle('hidden', !(isRegister && selectedRole === 'EMPLOYER'));
+    ['fullName','phone','city'].forEach(function(id){ const el=$(id); if(el) el.required=isRegister; });
+    const co = $('companyName'); if (co) co.required = isRegister && selectedRole === 'EMPLOYER';
+    $('authTitle').textContent = isRegister ? 'Create your account' : 'Welcome back';
+    $('authSubtitle').textContent = isRegister ? 'Join SKYNET JOBS in a few simple steps.' : 'Choose your account type to continue.';
+    $('authSubmit').textContent = isRegister ? 'CREATE ACCOUNT →' : 'LOGIN TO SKYNET JOBS →';
+    $('authModeText').textContent = canRegister ? (isRegister ? 'Already registered?' : 'New candidate or employer?') : 'Admin access only';
+    $('modeToggle').textContent = canRegister ? (isRegister ? 'Back to login' : 'Create account') : 'Not available';
+    $('modeToggle').style.display = canRegister ? 'inline' : 'none';
+    hideMsg('authMessage');
+  }
+
+  function rpc(fn) {
+    const args = Array.prototype.slice.call(arguments, 1);
+    return new Promise(function(resolve, reject) {
+      let settled = false;
+      const timer = setTimeout(function() {
+        if (!settled) { settled = true; reject(new Error('Server response 90 seconds me nahi aaya. Refresh karein.')); }
+      }, 90000);
+      try {
+        const runner = google.script.run
+          .withSuccessHandler(function(result) { if (settled) return; settled = true; clearTimeout(timer); resolve(result); })
+          .withFailureHandler(function(err) { if (settled) return; settled = true; clearTimeout(timer); reject(new Error(err && err.message ? err.message : String(err))); });
+        if (!runner || typeof runner[fn] !== 'function') throw new Error('Server function not found: ' + fn);
+        runner[fn].apply(runner, args);
+      } catch (err) { if (!settled) { settled = true; clearTimeout(timer); reject(err); } }
+    });
+  }
+
+  async function submitAuth(ev) {
+    ev.preventDefault();
+    selectedRole = String($('accountRole').value || 'CANDIDATE').toUpperCase();
+    syncAuthMode();
+    hideMsg('authMessage');
+    const btn = $('authSubmit');
+    btn.disabled = true;
+    const originalLabel = btn.textContent;
+    btn.textContent = 'PLEASE WAIT…';
+    try {
+      msg('authMessage', isRegister ? 'Account create ho raha hai…' : 'Login details verify ho rahe hain…', 'ok');
+      let result;
+      if (isRegister) {
+        result = await rpc('registerAccount', {
+          role: selectedRole,
+          fullName: $('fullName').value, email: $('email').value,
+          phone: $('phone').value, city: $('city').value, password: $('password').value,
+          companyName: $('companyName').value, website: $('website').value, address: $('address').value
+        });
+      } else {
+        result = await rpc('loginAccount', { role: selectedRole, email: $('email').value, password: $('password').value });
+      }
+      if (!result || !result.token) throw new Error('Login response nahi mila.');
+      sessionToken = result.token;
+      sessionStorage.setItem('skynetJobsToken', sessionToken);
+      msg('authMessage', 'Login successful. Dashboard load ho raha hai…', 'ok');
+      await loadDashboard();
+    } catch (err) {
+      sessionToken = ''; sessionStorage.removeItem('skynetJobsToken');
+      $('appView').classList.add('hidden'); $('authView').classList.remove('hidden');
+      msg('authMessage', (isRegister ? 'Account create fail: ' : 'Login fail: ') + (err && err.message ? err.message : String(err)), 'err');
+    } finally {
+      btn.disabled = false; btn.textContent = originalLabel;
+    }
+  }
+
+  async function loadDashboard() {
+    const data = await rpc('getDashboardData', sessionToken);
+    if (!data || !data.user || !data.role) throw new Error('Server ne incomplete dashboard data bheja.');
+    dashboard = data;
+    $('userName').textContent = data.user.fullName || data.user.email || 'User';
+    $('userRole').textContent = String(data.role).replace(/_/g, ' ');
+    if (!activeTab[data.role]) {
+      activeTab[data.role] = data.role === 'CANDIDATE' ? 'jobs' :
+                             data.role === 'EMPLOYER' ? 'post' : 'approvals';
+    }
+    renderDashboard(data);
+    $('authView').classList.add('hidden');
+    $('appView').classList.remove('hidden');
+  }
+
+  async function logout() {
+    try { await rpc('logoutAccount', sessionToken); } catch (e) {}
+    sessionToken = ''; sessionStorage.removeItem('skynetJobsToken');
+    dashboard = null; activeTab = {}; jobSearchQuery = ''; jobCityFilter = '';
+    $('appView').classList.add('hidden'); $('authView').classList.remove('hidden');
+    $('password').value = '';
+  }
+
+  function stats(items) {
+    return '<div class="statgrid">' + items.map(function(x) {
+      return '<div class="stat"><strong>' + esc(x.value) + '</strong><span>' + esc(x.label) + '</span></div>';
+    }).join('') + '</div>';
+  }
+  function cityOptions(selected) {
+    return '<option value="">Select city</option>' +
+      ['Chandigarh','Panchkula','Zirakpur','Mohali','Dera Bassi','New Chandigarh']
+        .map(function(c) { return '<option ' + (selected === c ? 'selected' : '') + '>' + c + '</option>'; }).join('');
+  }
+  function cityFilterOptions(selected) {
+    return '<option value="">All Cities</option>' +
+      ['Chandigarh','Panchkula','Zirakpur','Mohali','Dera Bassi','New Chandigarh']
+        .map(function(c) { return '<option ' + (selected === c ? 'selected' : '') + '>' + c + '</option>'; }).join('');
+  }
+
+  function currentTab(role) {
+    return activeTab[role] || (role === 'CANDIDATE' ? 'jobs' : role === 'EMPLOYER' ? 'post' : 'approvals');
+  }
+  function setTab(role, tab) {
+    activeTab[role] = tab;
+    if (dashboard) renderDashboard(dashboard);
+  }
+  function renderTabs(role, items) {
+    return '<nav class="tabs">' + items.map(function(it) {
+      const active = currentTab(role) === it.id ? 'active' : '';
+      const count = (it.count && it.count > 0) ? '<span class="count ' + (it.alert ? 'alert' : '') + '">' + it.count + '</span>' : '';
+      return '<button class="tab ' + active + '" onclick="setTab(\'' + role + '\',\'' + it.id + '\')">' + it.icon + ' ' + it.label + count + '</button>';
+    }).join('') + '</nav>';
+  }
+  function renderMobileNav(role, items) {
+    const el = $('mobileNavInner');
+    if (!el) return;
+    el.innerHTML = items.map(function(it) {
+      const active = currentTab(role) === it.id ? 'active' : '';
+      const badge = (it.count && it.count > 0 && it.alert) ? '<span class="mbadge">' + it.count + '</span>' : '';
+      return '<button class="mnav-btn ' + active + '" onclick="setTab(\'' + role + '\',\'' + it.id + '\')">' + badge + '<span class="icon">' + it.icon + '</span><span>' + it.label + '</span></button>';
+    }).join('');
+  }
+
+  function jobCard(j, applied) {
+    const applyBtn = applied
+      ? '<button class="secondary" disabled>✓ APPLIED</button>'
+      : '<button class="primary" onclick="event.stopPropagation();applyJob(\'' + jsq(j.jobId) + '\',event)">APPLY NOW</button>';
+    return '<article class="job-card" onclick="openJobDetail(\'' + jsq(j.jobId) + '\')">' +
+      '<h3>' + esc(j.title) + '</h3>' +
+      '<div class="muted">' + esc(j.companyName) + ' · ' + esc(j.city) + '</div>' +
+      '<div class="chips"><span class="chip">' + esc(j.jobType || 'Full-time') + '</span>' +
+        (j.category ? '<span class="chip">' + esc(j.category) + '</span>' : '') + '</div>' +
+      '<p class="muted">' + esc((j.description || '').slice(0, 180)) + ((j.description || '').length > 180 ? '…' : '') + '</p>' +
+      '<div class="muted">Skills: ' + esc(j.skills || 'Not specified') + '</div>' +
+      '<div class="actions">' + applyBtn +
+        '<button class="secondary" onclick="event.stopPropagation();reportJobUI(\'' + jsq(j.jobId) + '\')">REPORT</button>' +
+      '</div></article>';
+  }
+  function renderJobList(jobs, appliedJobIds) {
+    if (!jobs.length) return '<div class="empty">Koi matching job nahi mili. Filter change karein.</div>';
+    return '<div class="joblist">' + jobs.map(function(j) { return jobCard(j, (appliedJobIds || []).indexOf(j.jobId) !== -1); }).join('') + '</div>';
+  }
+  function applyJobFilterDebounced() {
+    clearTimeout(_searchDebounce);
+    _searchDebounce = setTimeout(applyJobFilter, 250);
+  }
+  function applyJobFilter() {
+    jobSearchQuery = ($('jobSearch') || {}).value || '';
+    jobCityFilter = ($('jobCityFilter') || {}).value || '';
+    const jobs = (dashboard.jobs || []).filter(function(j) {
+      const q = jobSearchQuery.toLowerCase();
+      const text = [j.title, j.companyName, j.skills, j.category, j.description].join(' ').toLowerCase();
+      const matchQ = !q || text.indexOf(q) !== -1;
+      const matchCity = !jobCityFilter || j.city === jobCityFilter;
+      return matchQ && matchCity;
+    });
+    const appliedIds = (dashboard.applications || []).map(function(a){ return a.jobId; });
+    const body = $('jobListBody');
+    if (body) body.innerHTML = renderJobList(jobs, appliedIds);
+    const cnt = $('jobCount');
+    if (cnt) cnt.textContent = jobs.length;
+  }
+
+  function renderDashboard(d) {
+    const role = d.role;
+    $('welcomeTitle').textContent =
+      role === 'CANDIDATE' ? 'Candidate Dashboard' :
+      role === 'EMPLOYER' ? 'Employer Dashboard' :
+      role === 'SUPER_ADMIN' ? 'Super Admin Control Centre' : 'Admin Control Centre';
+    $('welcomeSubtitle').textContent =
+      role === 'CANDIDATE' ? 'Find approved jobs and track your applications.' :
+      role === 'EMPLOYER' ? 'Manage company profile, vacancies and applicants.' :
+      'Review jobs, verify employers and manage hiring leads.';
+    let statusCls = 'approved';
+    let statusTxt = String(role).replace('_', ' ');
+    if (role === 'EMPLOYER') {
+      const v = (d.employer || {}).verificationStatus || 'PENDING';
+      statusCls = v === 'VERIFIED' ? 'verified' : 'pending';
+      statusTxt = 'EMPLOYER ' + v;
+    }
+    $('welcomeStatus').innerHTML = '<span class="tag ' + statusCls + '">' + esc(statusTxt) + '</span>';
+    if (role === 'CANDIDATE') renderCandidate(d);
+    else if (role === 'EMPLOYER') renderEmployer(d);
+    else renderAdmin(d);
+  }
+
+  function renderCandidate(d) {
+    const p = d.profile || {};
+    const appliedIds = (d.applications || []).map(function(a){ return a.jobId; });
+    const tab = currentTab('CANDIDATE');
+    const tabs = [
+      { id: 'jobs', icon: '🔍', label: 'Find Jobs', count: (d.jobs || []).length },
+      { id: 'apps', icon: '📄', label: 'My Applications', count: (d.applications || []).length },
+      { id: 'profile', icon: '👤', label: 'Profile' }
+    ];
+    let html = stats([
+      { value: d.stats.applications, label: 'Applications submitted' },
+      { value: d.stats.freeRemaining, label: 'Free applications left' },
+      { value: (d.jobs || []).length, label: 'Approved jobs available' },
+      { value: p.resumeFileName ? 'Uploaded' : 'Not uploaded', label: 'CV status' }
+    ]);
+    html += renderTabs('CANDIDATE', tabs);
+
+    if (tab === 'jobs') {
+      html += '<section class="panel">' +
+        '<div class="panel-head"><h2>Browse Jobs</h2><span class="tag approved" id="jobCount">' + (d.jobs || []).length + '</span></div>' +
+        '<div class="searchrow">' +
+          '<input id="jobSearch" placeholder="🔍 Search title, skills, company..." value="' + esc(jobSearchQuery) + '" oninput="applyJobFilterDebounced()">' +
+          '<select id="jobCityFilter" onchange="applyJobFilter()">' + cityFilterOptions(jobCityFilter) + '</select>' +
+        '</div>' +
+        '<div id="jobListBody">' + renderJobList(d.jobs || [], appliedIds) + '</div>' +
+      '</section>';
+    } else if (tab === 'apps') {
+      html += '<section class="panel"><h2>My Applications</h2>' +
+        ((d.applications || []).length
+          ? '<div class="tablewrap"><table><thead><tr><th>Job</th><th>Company</th><th>Date</th><th>Status</th></tr></thead><tbody>' +
+            d.applications.map(function(a) {
+              const cls = a.status === 'HIRED' ? 'approved' : a.status === 'SHORTLISTED' ? 'new' : a.status === 'REJECTED' ? 'rejected' : 'pending';
+              return '<tr><td>' + esc(a.jobTitle) + '</td><td>' + esc(a.companyName) + '</td><td>' + esc(a.createdAt) + '</td><td><span class="tag ' + cls + '">' + esc(a.status) + '</span></td></tr>';
+            }).join('') + '</tbody></table></div>'
+          : '<div class="empty">Abhi tak koi application nahi. <br><br><button class="primary" onclick="setTab(\'CANDIDATE\',\'jobs\')">BROWSE JOBS →</button></div>') +
+      '</section>';
+      html += '<div class="panel"><h2>Plan &amp; Free Limit</h2>' +
+        '<p class="muted">Pehli 5 applications free. Uske baad paid plan activate karwana hoga.</p>' +
+        '<button class="secondary" onclick="upgrade(\'CANDIDATE\')">REQUEST PAID PLAN</button></div>';
+    } else {
+      html += '<div class="grid2">' +
+        '<section class="panel"><h2>My Candidate Profile</h2>' +
+          '<form onsubmit="saveCandidate(event)">' +
+            '<div class="field"><label>PROFILE HEADLINE</label><input id="cHeadline" value="' + esc(p.headline) + '" placeholder="e.g. Computer Operator | Data Entry"></div>' +
+            '<div class="two"><div class="field"><label>CITY</label><select id="cCity">' + cityOptions(p.city) + '</select></div>' +
+            '<div class="field"><label>EXPERIENCE (YEARS)</label><input id="cExp" type="number" min="0" max="60" value="' + esc(p.experienceYears) + '"></div></div>' +
+            '<div class="field"><label>SKILLS (COMMA SEPARATED)</label><input id="cSkills" value="' + esc(p.skills) + '" placeholder="MS Office, Tally, Excel"></div>' +
+            '<label class="muted"><input id="cSearchable" type="checkbox" ' + (p.searchable ? 'checked' : '') + '> Allow verified employers to find me</label>' +
+            '<div class="actions"><button class="primary" type="submit">SAVE PROFILE</button></div>' +
+          '</form></section>' +
+        '<section class="panel"><h2>Upload / Replace CV</h2>' +
+          '<p class="muted">PDF, DOC or DOCX · Max 2 MB. Private Drive folder.</p>' +
+          '<form id="resumeForm" class="resume-form" onsubmit="uploadCV(event)">' +
+            '<input type="hidden" name="token" value="' + esc(sessionToken) + '">' +
+            '<input type="file" name="resumeFile" accept=".pdf,.doc,.docx" required>' +
+            '<button class="primary" type="submit">UPLOAD CV</button>' +
+          '</form>' +
+          '<div class="notice">Current CV: <strong>' + esc(p.resumeFileName || 'Not uploaded') + '</strong></div>' +
+          '<div class="warning">CV sirf us employer ko share hota hai jis job pe aap apply karte ho.</div>' +
+        '</section>' +
+      '</div>';
+    }
+    $('dashboardContent').innerHTML = html;
+    renderMobileNav('CANDIDATE', tabs);
+  }
+
+  async function saveCandidate(ev) {
+    ev.preventDefault();
+    try {
+      await rpc('saveCandidateProfile', sessionToken, {
+        headline: $('cHeadline').value, city: $('cCity').value,
+        experienceYears: $('cExp').value, skills: $('cSkills').value,
+        searchable: $('cSearchable').checked
+      });
+      showToast('Profile saved.', 'success'); await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+  }
+  async function uploadCV(ev) {
+    ev.preventDefault();
+    const form = ev.target;
+    const btn = form.querySelector('button[type=submit]');
+    if (btn) { btn.disabled = true; btn.textContent = 'UPLOADING…'; }
+    try {
+      const result = await new Promise(function(resolve, reject) {
+        google.script.run.withSuccessHandler(resolve)
+          .withFailureHandler(function(err) { reject(new Error(err && err.message ? err.message : String(err))); })
+          .uploadResume(form);
+      });
+      showToast((result && result.fileName) ? ('CV uploaded: ' + result.fileName) : 'CV uploaded.', 'success');
+      await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+    finally { if (btn) { btn.disabled = false; btn.textContent = 'UPLOAD CV'; } }
+  }
+  async function applyJob(id, ev) {
+    const btn = ev && ev.target;
+    const originalText = btn ? btn.textContent : '';
+    const originalClass = btn ? btn.className : '';
+    if (btn) { btn.disabled = true; btn.textContent = 'APPLYING…'; }
+    try {
+      const r = await rpc('applyToJob', sessionToken, id, '');
+      if (r && r.needsPlan) {
+        if (btn) { btn.disabled = false; btn.textContent = originalText; btn.className = originalClass; }
+        alert(r.message); await upgrade('CANDIDATE'); return;
+      }
+      if (btn) { btn.textContent = '✓ APPLIED'; btn.className = 'secondary'; btn.disabled = true; }
+      if (dashboard) {
+        if (!dashboard.applications) dashboard.applications = [];
+        const job = (dashboard.jobs || []).find(function(j){ return j.jobId === id; }) || {};
+        dashboard.applications.unshift({
+          applicationId: 'temp_' + Date.now(), jobId: id,
+          jobTitle: job.title || '', companyName: job.companyName || '',
+          status: 'SUBMITTED', createdAt: new Date().toLocaleString()
+        });
+        if (dashboard.stats) {
+          dashboard.stats.applications = (dashboard.stats.applications || 0) + 1;
+          dashboard.stats.freeRemaining = Math.max(0, (dashboard.stats.freeRemaining || 0) - 1);
+        }
+      }
+      showToast('Application submitted! 🎉', 'success');
+    } catch (e) {
+      if (btn) { btn.disabled = false; btn.textContent = originalText; btn.className = originalClass; }
+      showToast(e.message, 'error');
+    }
+  }
+  async function reportJobUI(id) {
+    const reason = prompt('Report reason (e.g. fake job, wrong details)');
+    if (!reason) return;
+    try { await rpc('reportJob', sessionToken, id, reason); showToast('Report admin ko bhej di gayi.', 'success'); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function upgrade(role) {
+    try { const r = await rpc('requestUpgrade', sessionToken, role + '_PLAN'); showToast(r.message, 'success'); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+
+  function renderEmployer(d) {
+    const e = d.employer || {};
+    const newApplicants = (d.applicants || []).filter(function(a){ return a.status === 'SUBMITTED'; }).length;
+    const tab = currentTab('EMPLOYER');
+    const tabs = [
+      { id: 'post', icon: '📝', label: 'Post Job' },
+      { id: 'jobs', icon: '💼', label: 'My Jobs', count: (d.jobs || []).length },
+      { id: 'applicants', icon: '👥', label: 'Applicants', count: (d.applicants || []).length, alert: newApplicants > 0 },
+      { id: 'company', icon: '🏢', label: 'Company' }
+    ];
+    let html = stats([
+      { value: d.stats.jobs, label: 'Job posts submitted' },
+      { value: d.stats.freeRemaining, label: 'Free posts left' },
+      { value: d.stats.applicants, label: 'Total applicants' },
+      { value: newApplicants, label: 'New applicants' }
+    ]);
+    if (e.verificationStatus !== 'VERIFIED') {
+      html += '<div class="warning">Employer verification: <strong>' + esc(e.verificationStatus || 'PENDING') + '</strong>. Admin verify karne tak jobs public nahi hongi.</div>';
+    }
+    html += renderTabs('EMPLOYER', tabs);
+
+    if (tab === 'post') {
+      html += '<section class="panel"><h2>Post a New Job</h2>' +
+        '<form onsubmit="postJob(event)">' +
+          '<div class="field"><label>JOB TITLE *</label><input id="jTitle" required placeholder="e.g. Accountant"></div>' +
+          '<div class="two"><div class="field"><label>CITY *</label><select id="jCity" required>' + cityOptions(e.city) + '</select></div>' +
+          '<div class="field"><label>JOB TYPE</label><select id="jType"><option>Full-time</option><option>Part-time</option><option>Work from office</option><option>Work from home</option><option>Internship</option></select></div></div>' +
+          '<div class="two"><div class="field"><label>CATEGORY</label><input id="jCategory" placeholder="Sales / IT / Accounts"></div>' +
+          '<div class="field"><label>SKILLS</label><input id="jSkills" placeholder="Excel, Tally, communication"></div></div>' +
+          '<div class="two"><div class="field"><label>MIN SALARY (₹)</label><input id="jMin" type="number" min="0"></div>' +
+          '<div class="field"><label>MAX SALARY (₹)</label><input id="jMax" type="number" min="0"></div></div>' +
+          '<div class="field"><label>JOB DESCRIPTION *</label><textarea id="jDescription" required placeholder="Responsibilities, eligibility, timings"></textarea></div>' +
+          '<div class="field"><label>LAST DATE</label><input id="jExpiry" type="date"></div>' +
+          '<button class="primary" type="submit">SUBMIT FOR ADMIN APPROVAL</button>' +
+        '</form></section>';
+    } else if (tab === 'jobs') {
+      html += '<section class="panel"><h2>My Job Posts</h2>' +
+        ((d.jobs || []).length
+          ? '<div class="tablewrap"><table><thead><tr><th>Job title</th><th>City</th><th>Created</th><th>Status</th></tr></thead><tbody>' +
+            d.jobs.map(function(j) {
+              const cls = j.status === 'APPROVED' ? 'approved' : j.status === 'REJECTED' ? 'rejected' : 'pending';
+              return '<tr><td>' + esc(j.title) + '</td><td>' + esc(j.city) + '</td><td>' + esc(j.createdAt) + '</td><td><span class="tag ' + cls + '">' + esc(j.status) + '</span></td></tr>';
+            }).join('') + '</tbody></table></div>'
+          : '<div class="empty">Abhi koi job post nahi. <br><br><button class="primary" onclick="setTab(\'EMPLOYER\',\'post\')">POST FIRST JOB →</button></div>') +
+      '</section>';
+    } else if (tab === 'applicants') {
+      html += '<section class="panel"><h2>Applicants</h2>' +
+        ((d.applicants || []).length
+          ? '<div class="tablewrap"><table><thead><tr><th>Candidate</th><th>Job</th><th>Contact / CV</th><th>Status</th><th>Update</th></tr></thead><tbody>' +
+            d.applicants.map(function(a) {
+              const link = a.resumeUrl ? ' <br><a href="' + safeHref(a.resumeUrl) + '" target="_blank" rel="noopener">📄 Open CV</a>' : '';
+              const cls = a.status === 'HIRED' ? 'approved' : a.status === 'SHORTLISTED' ? 'new' : a.status === 'REJECTED' ? 'rejected' : 'pending';
+              return '<tr><td>' + esc(a.candidateName) + '</td><td>' + esc(a.jobTitle) + '</td><td>' + esc(a.candidateEmail) + link + '</td><td><span class="tag ' + cls + '">' + esc(a.status) + '</span></td><td>' +
+                '<select onchange="changeAppStatus(\'' + jsq(a.applicationId) + '\',this.value)">' +
+                  '<option value="">Change</option><option>REVIEWING</option><option>SHORTLISTED</option><option>REJECTED</option><option>HIRED</option>' +
+                '</select></td></tr>';
+            }).join('') + '</tbody></table></div>'
+          : '<div class="empty">Abhi koi applicant nahi.</div>') +
+      '</section>';
+      html += '<section class="panel"><h2>Search Candidates</h2>' +
+        '<p class="muted">Sirf verified employers candidate search kar sakte hain.</p>' +
+        '<div class="searchrow"><input id="candidateQuery" placeholder="🔍 Excel, Tally, sales..."><button class="primary" onclick="runCandidateSearch()">SEARCH</button></div>' +
+        '<div id="candidateResults"></div></section>';
+    } else {
+      html += '<div class="grid2">' +
+        '<section class="panel"><h2>Company Profile</h2>' +
+          '<form onsubmit="saveEmployer(event)">' +
+            '<div class="field"><label>COMPANY NAME</label><input id="eCompany" required value="' + esc(e.companyName) + '"></div>' +
+            '<div class="field"><label>WEBSITE</label><input id="eWebsite" value="' + esc(e.website) + '" placeholder="https://"></div>' +
+            '<div class="two"><div class="field"><label>CITY</label><select id="eCity">' + cityOptions(e.city) + '</select></div>' +
+            '<div class="field"><label>ADDRESS</label><input id="eAddress" value="' + esc(e.address) + '"></div></div>' +
+            '<button class="primary" type="submit">SAVE COMPANY</button>' +
+          '</form></section>' +
+        '<section class="panel"><h2>Plan &amp; Free Limit</h2>' +
+          '<p class="muted">Pehli 5 job posts free. Uske baad paid plan needed.</p>' +
+          '<button class="secondary" onclick="upgrade(\'EMPLOYER\')">REQUEST PAID PLAN</button></section>' +
+      '</div>';
+    }
+    $('dashboardContent').innerHTML = html;
+    renderMobileNav('EMPLOYER', tabs);
+  }
+
+  async function saveEmployer(ev) {
+    ev.preventDefault();
+    try {
+      await rpc('saveEmployerProfile', sessionToken, {
+        companyName: $('eCompany').value, website: $('eWebsite').value,
+        city: $('eCity').value, address: $('eAddress').value
+      });
+      showToast('Company profile saved.', 'success'); await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+  }
+  async function postJob(ev) {
+    ev.preventDefault();
+    try {
+      const r = await rpc('createJob', sessionToken, {
+        title: $('jTitle').value, city: $('jCity').value, jobType: $('jType').value,
+        category: $('jCategory').value, skills: $('jSkills').value,
+        salaryMin: $('jMin').value, salaryMax: $('jMax').value,
+        description: $('jDescription').value, expiresAt: $('jExpiry').value
+      });
+      if (r && r.needsPlan) { alert(r.message); await upgrade('EMPLOYER'); return; }
+      showToast(r.message || 'Job submitted.', 'success');
+      activeTab['EMPLOYER'] = 'jobs';
+      await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+  }
+  async function changeAppStatus(id, status) {
+    if (!status) return;
+    try { await rpc('updateApplicationStatus', sessionToken, id, status); showToast('Status updated.', 'success'); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function runCandidateSearch() {
+    const box = $('candidateResults');
+    box.innerHTML = '<div class="empty">Searching…</div>';
+    try {
+      const rows = await rpc('searchCandidates', sessionToken, $('candidateQuery').value);
+      box.innerHTML = rows.length
+        ? '<div class="joblist">' + rows.map(function(c) {
+            return '<div class="item-card"><div class="title">' + esc(c.headline || 'Candidate') + '</div>' +
+              '<div class="meta">' + esc(c.city) + ' · ' + esc(c.experienceYears) + ' years</div>' +
+              '<div class="chips">' + String(c.skills || '').split(',').filter(Boolean).map(function(s) { return '<span class="chip">' + esc(s.trim()) + '</span>'; }).join('') + '</div></div>';
+          }).join('') + '</div>'
+        : '<div class="empty">No matching candidates.</div>';
+    } catch (e) { box.innerHTML = '<div class="warning">' + esc(e.message) + '</div>'; }
+  }
+
+  function renderAdmin(d) {
+    const role = d.role;
+    const s = d.stats || {};
+    const openReports = (d.reports || []).length;
+    const tab = currentTab(role);
+    const tabs = [
+      { id: 'approvals', icon: '✅', label: 'Approvals', count: (s.pendingJobs || 0) + (s.pendingEmployers || 0), alert: ((s.pendingJobs||0) + (s.pendingEmployers||0)) > 0 },
+      { id: 'leads', icon: '🔎', label: 'Leads', count: s.leads || 0 },
+      { id: 'reports', icon: '🚨', label: 'Reports', count: openReports, alert: openReports > 0 },
+      { id: 'feeds', icon: '📡', label: 'Feeds' }
+    ];
+    if (role === 'SUPER_ADMIN') tabs.push({ id: 'super', icon: '👑', label: 'Super' });
+
+    let html = stats([
+      { value: s.users || 0, label: 'Total accounts' },
+      { value: s.pendingJobs || 0, label: 'Jobs pending' },
+      { value: s.pendingEmployers || 0, label: 'Employers pending' },
+      { value: s.leads || 0, label: 'Unverified leads' }
+    ]);
+    html += renderTabs(role, tabs);
+
+    if (tab === 'approvals') {
+      html += '<section class="panel"><h2>Employer Verification Queue</h2><div class="admin-grid">' +
+        ((d.pendingEmployers || []).length
+          ? d.pendingEmployers.map(function(e) {
+              return '<div class="item-card"><div class="title">' + esc(e.companyName) + '</div>' +
+                '<div class="meta">' + esc(e.email) + ' · ' + esc(e.city) + '<br>' + esc(e.website) + '<br>' + esc(e.address) + '</div>' +
+                '<div class="actions">' +
+                  '<button class="success" onclick="verifyEmployer(\'' + jsq(e.userId) + '\',true)">✅ VERIFY</button>' +
+                  '<button class="danger" onclick="verifyEmployer(\'' + jsq(e.userId) + '\',false)">❌ REJECT</button>' +
+                '</div></div>';
+            }).join('')
+          : '<div class="empty">No pending employers. 🎉</div>') +
+        '</div></section>';
+      html += '<section class="panel"><h2>Job Approval Queue</h2><div class="admin-grid">' +
+        ((d.pendingJobs || []).length
+          ? d.pendingJobs.map(function(j) {
+              return '<div class="item-card"><div class="title">' + esc(j.title) + ' · ' + esc(j.companyName) + '</div>' +
+                '<div class="meta">' + esc(j.city) + ' · ' + esc(j.jobType) + ' · ' + esc(j.employerEmail) + '<br>' + esc(j.description) + '</div>' +
+                '<div class="chips"><span class="chip">' + esc(j.skills) + '</span></div>' +
+                '<div class="actions">' +
+                  '<button class="success" onclick="reviewJob(\'' + jsq(j.jobId) + '\',true)">✅ APPROVE</button>' +
+                  '<button class="danger" onclick="reviewJob(\'' + jsq(j.jobId) + '\',false)">❌ REJECT</button>' +
+                '</div></div>';
+            }).join('')
+          : '<div class="empty">No pending jobs. 🎉</div>') +
+        '</div></section>';
+    } else if (tab === 'leads') {
+      html += '<section class="panel"><div class="panel-head"><h2>Unverified Discovery Leads</h2>' +
+        '<button class="secondary" onclick="runDiscoveryNow()">RUN FEED CHECK</button></div>' +
+        '<div class="warning">Only configured RSS/Atom feeds fetched. Har lead UNVERIFIED hai jab tak human confirm na kare.</div>' +
+        '<div class="admin-grid">' +
+        ((d.leads || []).length
+          ? d.leads.map(function(l) {
+              return '<div class="item-card"><div class="title">' + esc(l.title) + '</div>' +
+                '<div class="meta">' + esc(l.companyName) + ' · ' + esc(l.city) + '<br>' + esc(l.sourceDate) + '<br>' +
+                '<a href="' + safeHref(l.sourceUrl) + '" target="_blank" rel="noopener">Open source ↗</a></div>' +
+                '<div class="actions">' +
+                  '<button class="success" onclick="reviewLead(\'' + jsq(l.leadId) + '\',\'REVIEW\')">REVIEW</button>' +
+                  '<button class="danger" onclick="reviewLead(\'' + jsq(l.leadId) + '\',\'REJECT\')">REJECT</button>' +
+                '</div></div>';
+            }).join('')
+          : '<div class="empty">No leads. Add RSS feeds to start.</div>') +
+        '</div></section>';
+    } else if (tab === 'reports') {
+      html += '<section class="panel"><h2>Fake Job Reports</h2>' +
+        (openReports
+          ? d.reports.map(function(r) {
+              return '<div class="item-card" style="margin:7px 0"><div class="title">Job ID: ' + esc(r.jobId) + '</div>' +
+                '<div class="meta">' + esc(r.reason) + ' · ' + esc(r.createdAt) + '</div>' +
+                '<button class="secondary" onclick="closeReport(\'' + jsq(r.reportId) + '\')">MARK CLOSED</button></div>';
+            }).join('')
+          : '<div class="empty">No open reports. 🎉</div>') +
+      '</section>';
+    } else if (tab === 'feeds') {
+      html += '<section class="panel"><h2>RSS / Atom Feed Sources</h2>' +
+        '<form class="smallform" onsubmit="addFeed(event)">' +
+          '<input id="feedName" placeholder="Source name" required>' +
+          '<input id="feedUrl" placeholder="https://.../feed.xml" style="flex:2;min-width:220px" required>' +
+          '<select id="feedCity">' + cityOptions('') + '</select>' +
+          '<button class="primary" type="submit">ADD FEED</button>' +
+        '</form><div class="divider"></div>' +
+        ((d.feedSources || []).length
+          ? d.feedSources.map(function(f) {
+              return '<div class="item-card" style="margin:7px 0"><div class="title">' + esc(f.sourceName) + ' · ' + esc(f.city) + '</div>' +
+                '<div class="meta">' + esc(f.feedUrl) + '</div>' +
+                '<div class="actions"><button class="secondary" onclick="toggleFeed(\'' + jsq(f.feedId) + '\',' + (!f.active) + ')">' + (f.active ? '⏸ PAUSE' : '▶ ACTIVATE') + '</button></div></div>';
+            }).join('')
+          : '<div class="empty">No feeds configured.</div>') +
+      '</section>';
+    } else if (tab === 'super') {
+      html += superAdminPanel(d);
+    }
+    $('dashboardContent').innerHTML = html;
+    renderMobileNav(role, tabs.slice(0, 4));
+  }
+
+  function superAdminPanel(d) {
+    return '<section class="panel"><h2>Super Admin — Admin Accounts</h2>' +
+      '<div class="warning">Only Super Admin can create/suspend Admin accounts and grant plans.</div>' +
+      '<form class="smallform" onsubmit="createAdmin(event)">' +
+        '<input id="newAdminName" placeholder="Admin full name" required>' +
+        '<input id="newAdminEmail" type="email" placeholder="Admin email" required>' +
+        '<input id="newAdminPassword" type="password" placeholder="Password (10+)" minlength="10" required>' +
+        '<button class="primary" type="submit">CREATE ADMIN</button>' +
+      '</form><div class="divider"></div>' +
+      (d.admins || []).map(function(a) {
+        return '<div class="item-card" style="margin:7px 0"><div class="title">' + esc(a.fullName) + ' · ' + esc(a.role) + '</div>' +
+          '<div class="meta">' + esc(a.email) + ' · ' + esc(a.status) + '</div>' +
+          (a.role === 'ADMIN' ? '<button class="secondary" onclick="setUserStatus(\'' + jsq(a.userId) + '\',\'' + (a.status === 'ACTIVE' ? 'SUSPENDED' : 'ACTIVE') + '\')">' + (a.status === 'ACTIVE' ? 'SUSPEND' : 'ACTIVATE') + '</button>' : '') +
+        '</div>';
+      }).join('') +
+      '<div class="divider"></div><h3>Paid Plan Requests</h3>' +
+      ((d.upgradeRequests || []).length
+        ? d.upgradeRequests.map(function(r) {
+            return '<div class="item-card" style="margin:7px 0"><div class="title">' + esc(r.email) + ' · ' + esc(r.role) + '</div>' +
+              '<div class="meta">' + esc(r.product) + ' · ' + esc(r.createdAt) + '</div>' +
+              '<div class="actions">' +
+                '<button class="success" onclick="resolveUpgrade(\'' + jsq(r.requestId) + '\',true)">APPROVE 30D</button>' +
+                '<button class="danger" onclick="resolveUpgrade(\'' + jsq(r.requestId) + '\',false)">REJECT</button>' +
+              '</div></div>';
+          }).join('')
+        : '<div class="empty">No pending upgrade requests.</div>') +
+      '</section>';
+  }
+
+  function safeHref(url) { const u = String(url || ''); return /^https:\/\//i.test(u) ? esc(u) : '#'; }
+
+  async function reviewJob(id, yes) {
+    try { await rpc('adminReviewJob', sessionToken, id, yes); showToast(yes ? 'Job approved.' : 'Job rejected.', 'success'); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function verifyEmployer(id, yes) {
+    try { await rpc('adminVerifyEmployer', sessionToken, id, yes); showToast(yes ? 'Employer verified.' : 'Rejected.', 'success'); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function reviewLead(id, decision) {
+    try { await rpc('adminReviewLead', sessionToken, id, decision); showToast('Lead updated.', 'success'); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function addFeed(ev) {
+    ev.preventDefault();
+    try {
+      await rpc('adminCreateFeedSource', sessionToken, { sourceName: $('feedName').value, feedUrl: $('feedUrl').value, city: $('feedCity').value });
+      showToast('Feed added.', 'success'); await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+  }
+  async function toggleFeed(id, active) {
+    try { await rpc('adminToggleFeed', sessionToken, id, active); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function runDiscoveryNow() {
+    try {
+      const r = await rpc('adminRunDiscovery', sessionToken);
+      showToast('Done. New leads: ' + r.added + ' · Failed: ' + r.failed, 'success'); await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+  }
+  async function closeReport(id) {
+    try { await rpc('adminCloseReport', sessionToken, id); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function createAdmin(ev) {
+    ev.preventDefault();
+    try {
+      await rpc('superCreateAdmin', sessionToken, { fullName: $('newAdminName').value, email: $('newAdminEmail').value, password: $('newAdminPassword').value });
+      showToast('Admin created.', 'success'); await loadDashboard();
+    } catch (e) { showToast(e.message, 'error'); }
+  }
+  async function setUserStatus(id, status) {
+    if (!confirm('Change status to ' + status + '?')) return;
+    try { await rpc('superSetUserStatus', sessionToken, id, status); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+  async function resolveUpgrade(id, yes) {
+    try { await rpc('superResolveUpgrade', sessionToken, id, yes, 30); showToast('Updated.', 'success'); await loadDashboard(); }
+    catch (e) { showToast(e.message, 'error'); }
+  }
+
+  async function init() {
+    bindRoleSelector();
+    selectedRole = $('accountRole').value || 'CANDIDATE';
+    sessionToken = sessionStorage.getItem('skynetJobsToken') || '';
+    syncAuthMode();
+    if (sessionToken) {
+      try { await loadDashboard(); }
+      catch (e) {
+        sessionToken = ''; sessionStorage.removeItem('skynetJobsToken');
+        $('appView').classList.add('hidden'); $('authView').classList.remove('hidden');
+        msg('authMessage', 'Session restore nahi hua: ' + (e && e.message ? e.message : String(e)), 'err');
+      }
+    }
+  }
+  try { init(); } catch (e) { console.error(e); }
 </script>
 </body>
 </html>
